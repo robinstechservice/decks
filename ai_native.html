@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<title>AI 原生企業的建構與轉型策略 — 10 頁懶人包</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --cream: #FDFBF4;
+    --green-0: #2F5C28;
+    --green: #4F7A3B;
+    --green-2: #6BA053;
+    --green-soft: #DFEED5;
+    --orange-0: #C26F1A;
+    --orange: #E89E3F;
+    --orange-soft: #FBE5C9;
+    --red: #C73A28;
+    --red-soft: #F8D5CD;
+    --ink-0: #1E1E1E;
+    --ink-1: #3A3A3A;
+    --ink-2: #6E6E6E;
+    --line: #C9D6BA;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #D8DEEA;
+    font-family: "Noto Sans TC", "思源黑體 TC", "PingFang TC", "Heiti TC", sans-serif;
+    color: var(--ink-0);
+    -webkit-font-smoothing: antialiased;
+  }
+  body { width: 1080px; }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    padding: 50px 56px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Page number top-right with red wavy underline */
+  .page-num {
+    position: absolute;
+    top: 36px; right: 56px;
+    font-family: "Caveat", "Noto Sans TC", cursive;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--ink-0);
+    z-index: 3;
+  }
+  .page-num::after {
+    content: ""; display: block;
+    width: 100%; height: 6px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'><path d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3 T50 3 T60 3' stroke='%23C73A28' stroke-width='2' fill='none'/></svg>") repeat-x;
+    margin-top: 2px;
+  }
+
+  /* Big title with double green underline */
+  h1.bigtitle {
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--ink-0);
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 4px;
+    letter-spacing: -1px;
+    position: relative;
+  }
+  h1.bigtitle::after {
+    content: ""; display: block;
+    width: 80%; margin: 12px auto 0;
+    height: 8px;
+    background: linear-gradient(to bottom, var(--green) 30%, transparent 30%, transparent 60%, var(--green) 60%);
+  }
+  h1.bigtitle .red { color: var(--red); }
+  h1.bigtitle .green { color: var(--green); }
+  h1.bigtitle .orange { color: var(--orange-0); }
+
+  /* English subtitle with green flank */
+  .en-sub {
+    text-align: center;
+    font-family: "Caveat", "Noto Sans TC", cursive;
+    font-size: 30px;
+    color: var(--green);
+    font-weight: 700;
+    margin: 18px 0 26px;
+    letter-spacing: 0.5px;
+  }
+  .en-sub::before, .en-sub::after {
+    content: "≡";
+    color: var(--green);
+    margin: 0 14px;
+    font-size: 28px;
+  }
+
+  /* Lightbulb core insight box */
+  .insight-box {
+    border: 2.5px solid var(--green);
+    border-radius: 22px;
+    padding: 22px 28px 22px 76px;
+    margin-bottom: 28px;
+    position: relative;
+    background: var(--cream);
+    font-size: 26px;
+    line-height: 1.5;
+    color: var(--ink-0);
+  }
+  .insight-box::before {
+    content: "💡";
+    position: absolute;
+    left: 20px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 38px;
+  }
+  .insight-box strong { color: var(--green-0); font-weight: 800; }
+  .insight-box .red-wavy {
+    background: linear-gradient(to bottom, transparent 80%, var(--red) 80%, var(--red) 90%, transparent 90%);
+    padding: 0 2px;
+    color: var(--red);
+    font-weight: 800;
+  }
+
+  /* 2x2 grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+  .grid .cell {
+    border: 2px solid var(--ink-1);
+    border-radius: 14px;
+    padding: 18px 20px 18px 24px;
+    background: var(--bg);
+    position: relative;
+  }
+  .grid .cell.full { grid-column: span 2; }
+  .grid .cell .num-circle {
+    position: absolute;
+    top: -16px; left: 18px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Caveat", "Noto Sans TC", cursive;
+    font-size: 24px;
+    font-weight: 900;
+    border: 2.5px solid var(--ink-0);
+  }
+  .grid .cell h3 {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--ink-0);
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--orange);
+    display: inline-block;
+  }
+  .grid .cell ul { list-style: none; }
+  .grid .cell ul li {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 6px 0;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--ink-1);
+  }
+  .grid .cell ul li .ico {
+    color: var(--green);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .grid .cell ul li strong { color: var(--ink-0); font-weight: 800; }
+
+  /* Target bottom takeaway */
+  .takeaway {
+    border: 2.5px solid var(--green);
+    border-radius: 22px;
+    padding: 22px 76px 22px 76px;
+    background: var(--green-soft);
+    position: relative;
+    font-size: 24px;
+    line-height: 1.45;
+    color: var(--ink-0);
+    font-weight: 700;
+    text-align: center;
+  }
+  .takeaway::before {
+    content: "🎯";
+    position: absolute;
+    left: 24px; top: 50%; transform: translateY(-50%);
+    font-size: 38px;
+  }
+  .takeaway::after {
+    content: "🤖";
+    position: absolute;
+    right: 24px; top: 50%; transform: translateY(-50%);
+    font-size: 38px;
+  }
+  .takeaway .red-wavy {
+    background: linear-gradient(to bottom, transparent 80%, var(--red) 80%, var(--red) 90%, transparent 90%);
+    padding: 0 2px;
+    color: var(--red);
+    font-weight: 800;
+  }
+
+  /* Comparison Table */
+  table.compare {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 18px;
+    border: 2px solid var(--ink-0);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  table.compare th {
+    background: var(--green);
+    color: white;
+    padding: 14px 16px;
+    text-align: left;
+    font-weight: 800;
+    font-size: 20px;
+  }
+  table.compare th.orange-bg { background: var(--orange); }
+  table.compare td {
+    padding: 14px 16px;
+    border-top: 1.5px solid var(--line);
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--ink-1);
+    vertical-align: top;
+  }
+  table.compare td:first-child { font-weight: 800; color: var(--ink-0); background: var(--cream); }
+  table.compare td .hl { color: var(--red); font-weight: 800; }
+
+  /* Cover style override */
+  .slide.cover {
+    background: var(--cream);
+    justify-content: center;
+    align-items: center;
+    padding: 60px 70px;
+  }
+  .slide.cover h1.bigtitle { font-size: 70px; }
+  .slide.cover .en-sub { font-size: 34px; }
+  .slide.cover .credits {
+    margin-top: 30px;
+    background: white;
+    border: 2px solid var(--green);
+    border-radius: 16px;
+    padding: 16px 22px;
+    display: flex; align-items: center; gap: 16px;
+    font-size: 18px;
+    color: var(--ink-1);
+  }
+  .slide.cover .credits img { height: 40px; }
+  .slide.cover .credits strong { color: var(--green-0); font-weight: 800; }
+
+  /* Process diagram center for some slides */
+  .center-diagram {
+    text-align: center;
+    margin: 14px 0 20px;
+    font-size: 22px;
+    color: var(--ink-1);
+    font-weight: 700;
+  }
+  .center-diagram .step {
+    display: inline-block;
+    background: white;
+    border: 2px solid var(--green);
+    border-radius: 50px;
+    padding: 8px 18px;
+    margin: 4px 6px;
+    color: var(--green-0);
+    font-weight: 800;
+  }
+  .center-diagram .arrow {
+    color: var(--orange);
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  /* Footer mini brand */
+  .footer-mini {
+    position: absolute;
+    bottom: 26px; left: 56px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px;
+    color: var(--ink-2);
+    letter-spacing: 1px;
+    z-index: 3;
+  }
+  .footer-mini img { height: 26px; opacity: 0.8; }
+</style>
+</head>
+<body>
+
+<!-- ============ P1 COVER ============ -->
+<section class="slide cover">
+  <div class="page-num">1/10</div>
+  <h1 class="bigtitle">AI 原生企業的<br/>建構與<span class="red">轉型</span>策略</h1>
+  <div class="en-sub">From SaaS to Agents-as-a-Service</div>
+  <div class="insight-box" style="margin-top:30px;max-width:780px;">
+    <strong>第三波垂直軟體浪潮</strong>：「雲端 ＋ 金融科技 ＋ AI」 —— 把<span class="red-wavy">勞動力</span>轉化為可擴展的軟體產品。
+  </div>
+  <div class="credits">
+    <img src="data:image/png;base64,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" alt="羅賓斯科技"/>
+    <div>
+      <strong>導讀者</strong>：Evin Lin（林奕帆）
+      <strong>協作整理</strong>：IRIS（羅賓斯科技 社群代理人）
+    </div>
+  </div>
+</section>
+
+<!-- ============ P2 AI 原生 vs SaaS ============ -->
+<section class="slide">
+  <div class="page-num">2/10</div>
+  <h1 class="bigtitle"><span class="green">AI 原生</span> vs 傳統 SaaS</h1>
+  <div class="en-sub">10× leverage, math doesn't lie</div>
+  <div class="insight-box">本質測試：<strong>把 AI 從公司移除，公司會字面意義上停止運作嗎？</strong> 如果會 —— 你才是 <span class="red-wavy">AI 原生</span>。<br/>例：Perplexity 每月處理<strong>數億查詢</strong>卻無人類研究員；Anthropic / Cursor 的人均營收槓桿，傳統 SaaS 數學上不可能達到。</div>
+  <table class="compare">
+    <tr><th>指標</th><th class="orange-bg">傳統 SaaS</th><th>AI 原生</th></tr>
+    <tr><td>到 1M ARR</td><td>3-5 年</td><td><span class="hl">約 11 個月</span></td></tr>
+    <tr><td>年成長中位數</td><td>~23%</td><td><span class="hl">~100%</span></td></tr>
+    <tr><td>到獨角獸</td><td>平均 9 年</td><td><span class="hl">約 2 年</span></td></tr>
+    <tr><td>人均營收</td><td>~$1.8M</td><td><span class="hl">$16M-$18M</span></td></tr>
+  </table>
+  <div class="takeaway">AI 處理前 <span class="red-wavy">90%</span> 基礎工作 — 人類聚焦最後 <span class="red-wavy">10%</span> 的規模化、可靠性與工藝。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P3 SaaS 解構 ============ -->
+<section class="slide">
+  <div class="page-num">3/10</div>
+  <h1 class="bigtitle">SaaS 解構：<br/>從<span class="orange">工具</span>到<span class="green">代理人即服務</span></h1>
+  <div class="en-sub">SaaS Apocalypse → AaaS Era</div>
+  <div class="insight-box">用戶不再需要導航複雜的儀表板 —— 通過<strong>對話式介面</strong>直接執行完整工作流。</div>
+  <div class="grid">
+    <div class="cell">
+      <span class="num-circle">1</span>
+      <h3>從 CRUD 到對話</h3>
+      <ul>
+        <li><span class="ico">●</span>不再點 50 個按鈕填表單</li>
+        <li><span class="ico">●</span>「幫我處理 X」一句話搞定</li>
+        <li><span class="ico">●</span>例：Decagon 客服無 UI 純對話</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">2</span>
+      <h3>從工具到大腦</h3>
+      <ul>
+        <li><span class="ico">●</span>軟體不再「等你用」</li>
+        <li><span class="ico">●</span>它主動執行 + 回報</li>
+        <li><span class="ico">●</span>例：Lindy 自動回 email + 排日曆</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">3</span>
+      <h3>定價模式崩塌</h3>
+      <ul>
+        <li><span class="ico">●</span>Per-seat 失效（AI 取代座位）</li>
+        <li><span class="ico">●</span>轉 <strong>成果 / 使用量導向</strong></li>
+        <li><span class="ico">●</span>例：Harvey 法律審按案計費</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">4</span>
+      <h3>佔錢包不同</h3>
+      <ul>
+        <li><span class="ico">●</span>不再吃軟體預算（5 萬/年）</li>
+        <li><span class="ico">●</span>吃<strong>人頭預算</strong>（50 萬/年）</li>
+        <li><span class="ico">●</span>= TAM 放大 <strong>10×</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">當軟體被推銷為「<span class="red-wavy">數位團隊</span>」而非「工具」 —— 預算池大 10 倍。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P4 解構 Reddit ============ -->
+<section class="slide">
+  <div class="page-num">4/10</div>
+  <h1 class="bigtitle">解構 <span class="red">Reddit</span>：<br/>找市場「密度」</h1>
+  <div class="en-sub">The world's biggest focus group</div>
+  <div class="insight-box">Reddit = 世界最大的去中心化焦點小組。每個 <strong>Subreddit</strong> 都是一個有獨特儀式、俚語、未被滿足需求的<span class="red-wavy">微型文化圈</span>。</div>
+  <div class="grid">
+    <div class="cell">
+      <span class="num-circle">1</span>
+      <h3>抱怨頻率高</h3>
+      <ul>
+        <li><span class="ico">●</span>「為什麼沒人做 X」貼文 ≥ 100 篇</li>
+        <li><span class="ico">●</span>同個痛點被反覆貼 6 個月</li>
+        <li><span class="ico">●</span>= 需求驗證免費完成</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">2</span>
+      <h3>術語密度高</h3>
+      <ul>
+        <li><span class="ico">●</span>外人聽不懂的縮寫</li>
+        <li><span class="ico">●</span>例：r/Veterinary 醫療術語</li>
+        <li><span class="ico">●</span>= 通用 ChatGPT 答不準</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">3</span>
+      <h3>水平工具失效</h3>
+      <ul>
+        <li><span class="ico">●</span>大平台「一體適用」不精準</li>
+        <li><span class="ico">●</span>例：Slack 在律所沒人用</li>
+        <li><span class="ico">●</span>= 訂製化平台機會</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">4</span>
+      <h3>專業壁壘深</h3>
+      <ul>
+        <li><span class="ico">●</span>需懂行話 + 工作流</li>
+        <li><span class="ico">●</span>新進場者要花 1-2 年學</li>
+        <li><span class="ico">●</span>= 護城河天然成形</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">不要做「<span class="red-wavy">一體適用平台</span>」 — 要做<span class="red-wavy">訂製化平台</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P5 ACP 漏斗 ============ -->
+<section class="slide">
+  <div class="page-num">5/10</div>
+  <h1 class="bigtitle"><span class="green">ACP 漏斗</span>：<br/>去風險化的創業路徑</h1>
+  <div class="en-sub">Audience → Community → Product</div>
+  <div class="insight-box">在<strong>寫任何一行程式碼之前</strong>，先有一群<span class="red-wavy">排隊等買</span>的精準客戶。</div>
+  <div class="center-diagram">
+    <span class="step">A · Audience</span>
+    <span class="arrow">▸</span>
+    <span class="step">C · Community</span>
+    <span class="arrow">▸</span>
+    <span class="step">P · Product</span>
+  </div>
+  <div class="grid">
+    <div class="cell">
+      <span class="num-circle">A</span>
+      <h3>建立受眾</h3>
+      <ul>
+        <li><span class="ico">●</span>垂直主題 newsletter</li>
+        <li><span class="ico">●</span>每天 LinkedIn 專業洞察</li>
+        <li><span class="ico">●</span>目標 1 年累積 5K-10K</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">C</span>
+      <h3>聚成社群</h3>
+      <ul>
+        <li><span class="ico">●</span>Discord / Slack / Circle</li>
+        <li><span class="ico">●</span>互動 + 互相幫助</li>
+        <li><span class="ico">●</span>50-200 活躍用戶 = 黃金</li>
+      </ul>
+    </div>
+    <div class="cell full">
+      <span class="num-circle">P</span>
+      <h3>產品自然落地</h3>
+      <ul>
+        <li><span class="ico">●</span>社群反覆出現的痛點 = MVP 規格（不需另外做 user interview）</li>
+        <li><span class="ico">●</span>第一批客戶不用找 —— 他們已在你 list 裡，產品上線當天 conversion 5-15%</li>
+        <li><span class="ico">●</span>例：Greg Isenberg 的 LATKA / IdeaBrowser 皆走這條</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P6 六步 MVP ============ -->
+<section class="slide">
+  <div class="page-num">6/10</div>
+  <h1 class="bigtitle">三小時構建 MVP：<br/><span class="orange">6 步</span>工作流</h1>
+  <div class="en-sub">From idea to automation in one afternoon</div>
+  <table class="compare">
+    <tr><th>步驟</th><th class="orange-bg">核心任務</th><th>工具建議</th></tr>
+    <tr><td>1 · 尋找創意</td><td>掃社群未滿足需求</td><td>IdeaBrowser / Reddit</td></tr>
+    <tr><td>2 · 草擬產品</td><td>可視化 UX 與流程</td><td>TLDraw / 線框圖</td></tr>
+    <tr><td>3 · 定義 MVP</td><td>找單一殺手功能</td><td>Manus AI 範圍界定</td></tr>
+    <tr><td>4 · 構建原型</td><td>快速開發工作版</td><td>Cursor / Supabase / Vercel</td></tr>
+    <tr><td>5 · 氛圍行銷</td><td>真實內容 + 引流磁鐵</td><td>Vibe Marketer / Wispr Flow</td></tr>
+    <tr><td>6 · 代理自動化</td><td>AI 取代整個部門</td><td>Lindy / Windsurf</td></tr>
+  </table>
+  <div class="takeaway">過去要 <span class="red-wavy">3 個月</span>，現在 <span class="red-wavy">3 小時</span> —— 開發成本崩塌，<strong>競爭轉移到分銷</strong>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P7 從產品到分銷 ============ -->
+<section class="slide">
+  <div class="page-num">7/10</div>
+  <h1 class="bigtitle">第二代創始人：<br/><span class="red">分銷 ＞ 產品</span></h1>
+  <div class="en-sub">Vibe Marketing era</div>
+  <div class="insight-box">開發成本崩塌，競爭焦點轉到「<strong>如何被找到</strong>」 —— 氛圍行銷（Vibe Marketing）登場。</div>
+  <div class="grid">
+    <div class="cell">
+      <span class="num-circle">1</span>
+      <h3>真實內容</h3>
+      <ul>
+        <li><span class="ico">●</span>不是業配文</li>
+        <li><span class="ico">●</span>是解決真實痛點的 demo</li>
+        <li><span class="ico">●</span>每週 1-3 篇深度長文</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">2</span>
+      <h3>短影音 demo</h3>
+      <ul>
+        <li><span class="ico">●</span>「45 秒處理繁瑣行政」</li>
+        <li><span class="ico">●</span>CAC 從 $200 → $80</li>
+        <li><span class="ico">●</span>TikTok / Shorts / LinkedIn 三投</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">3</span>
+      <h3>引流磁鐵</h3>
+      <ul>
+        <li><span class="ico">●</span>免費小工具當入口</li>
+        <li><span class="ico">●</span>樣板 / 計算機 / GPT</li>
+        <li><span class="ico">●</span>例：HubSpot 免費 CRM 樣板</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">4</span>
+      <h3>品牌信任</h3>
+      <ul>
+        <li><span class="ico">●</span>用內容養 6-12 個月</li>
+        <li><span class="ico">●</span>產品上線當天 launch day 賣爆</li>
+        <li><span class="ico">●</span>例：Riverside.fm $0 → $5M 18 月</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P8 垂直 AI ============ -->
+<section class="slide">
+  <div class="page-num">8/10</div>
+  <h1 class="bigtitle"><span class="green">垂直 AI</span>：<br/>勞動力即軟體</h1>
+  <div class="en-sub">Labor as Software, sold as ROI</div>
+  <div class="insight-box">不再是「賣軟體工具」 —— 是賣「<span class="red-wavy">數位團隊成員</span>」，吃人頭預算（10 倍以上）。</div>
+  <div class="grid">
+    <div class="cell">
+      <span class="num-circle">1</span>
+      <h3>數據金礦</h3>
+      <ul>
+        <li><span class="ico">●</span>大量非結構化資料（PDF / 音檔）</li>
+        <li><span class="ico">●</span>醫生筆記 / 法律 / 感測器</li>
+        <li><span class="ico">●</span>例：Abridge 醫療對話轉病歷</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">2</span>
+      <h3>高風險決策</h3>
+      <ul>
+        <li><span class="ico">●</span>單筆錯誤成本 ≥ $100K</li>
+        <li><span class="ico">●</span>承保 / 藥物研發 / 供應鏈</li>
+        <li><span class="ico">●</span>例：Tractable 車險定損</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">3</span>
+      <h3>耗時任務</h3>
+      <ul>
+        <li><span class="ico">●</span>高薪人士做的重複工作（$200/hr）</li>
+        <li><span class="ico">●</span>法律檢索 / 財務審計</li>
+        <li><span class="ico">●</span>例：Harvey 法律 / Pilot 會計</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">4</span>
+      <h3>行業術語</h3>
+      <ul>
+        <li><span class="ico">●</span>高度專業語境</li>
+        <li><span class="ico">●</span>通用 AI 答錯率 ≥ 40%</li>
+        <li><span class="ico">●</span>例：Mediquant 醫療碼</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway">房地產例：AI 代理鏈自動化整個 <span class="red-wavy">租賃審核</span> — 從 PDF 提取到條款分析到續租排程。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P9 AI 通才 ============ -->
+<section class="slide">
+  <div class="page-num">9/10</div>
+  <h1 class="bigtitle"><span class="orange">AI 通才</span> 崛起<br/>數據科學家退場</h1>
+  <div class="en-sub">From Builder to Orchestrator</div>
+  <div class="insight-box">不是編碼專家 —— 是「<strong>邏輯流利者</strong>」與「<strong>工作流架構師</strong>」。</div>
+  <table class="compare">
+    <tr><th>能力</th><th class="orange-bg">傳統 數據科學家</th><th>AI 通才</th></tr>
+    <tr><td>核心專注</td><td>模型構建 + 深度研究</td><td><span class="hl">系統編排 + 集成</span></td></tr>
+    <tr><td>生產系統</td><td>次要的</td><td><span class="hl">核心預期</span></td></tr>
+    <tr><td>業務對齊</td><td>變動性大</td><td><span class="hl">核心焦點</span></td></tr>
+    <tr><td>溝通能力</td><td>輔助性</td><td><span class="hl">必不可少</span></td></tr>
+    <tr><td>系統思維</td><td>限模型性能</td><td><span class="hl">理解整個業務流</span></td></tr>
+  </table>
+  <div class="takeaway">人才重點：從「<span class="red-wavy">構建者</span>」轉到「<span class="red-wavy">協調者</span>」 — AI 操作，人類負責「解釋、驗證、戰略」。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+<!-- ============ P10 結語 ============ -->
+<section class="slide cover">
+  <div class="page-num">10/10</div>
+  <h1 class="bigtitle">未來十年，<br/>不看<span class="red">代碼量</span>，<br/>看<span class="green">代理人能力</span>。</h1>
+  <div class="en-sub">Your competitive moat = your data flywheel</div>
+  <div class="insight-box" style="max-width:780px;">
+    AI 原生<strong>不是技術選擇</strong>，是一種<span class="red-wavy">全新的、更具槓桿效應的商業文明</span>。
+  </div>
+  <div class="grid" style="max-width:880px;">
+    <div class="cell">
+      <span class="num-circle">1</span>
+      <h3>把 AI 從技術部</h3>
+      <ul>
+        <li><span class="ico">●</span>升級成<strong>公司核心靈魂</strong></li>
+        <li><span class="ico">●</span>CEO 直接 own AI 路線</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">2</span>
+      <h3>從產品到分銷</h3>
+      <ul>
+        <li><span class="ico">●</span>先有受眾，再寫 code</li>
+        <li><span class="ico">●</span>ACP 漏斗去風險</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">3</span>
+      <h3>養專屬資料飛輪</h3>
+      <ul>
+        <li><span class="ico">●</span>用戶每次互動 = 模型升級</li>
+        <li><span class="ico">●</span>= 不可複製的護城河</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <span class="num-circle">4</span>
+      <h3>定價綁成果</h3>
+      <ul>
+        <li><span class="ico">●</span>不賣工具，賣「<strong>解決掉的問題</strong>」</li>
+        <li><span class="ico">●</span>例：Harvey 按案 / Decagon 按 ticket</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway" style="max-width:880px;margin-top:20px;">擺脫<span class="red-wavy">修補式</span>思維 —— 擁抱全新的營運邏輯。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section>
+
+</body>
+</html>

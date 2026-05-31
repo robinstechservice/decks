@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<title>思辨，從問對問題開始 — 15 頁濃縮版</title>
+<style>
+:root {
+  --bg:#FFFFFF; --cream:#FDFBF4;
+  --green-0:#2F5C28; --green:#4F7A3B; --green-soft:#DFEED5;
+  --orange-0:#C26F1A; --orange:#E89E3F; --orange-soft:#FBE5C9;
+  --red:#C73A28;
+  --ink-0:#1E1E1E; --ink-1:#3A3A3A; --ink-2:#6E6E6E;
+  --line:#C9D6BA;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#D8DEEA;font-family:"Noto Sans TC","思源黑體 TC","PingFang TC","Heiti TC",sans-serif;color:var(--ink-0);-webkit-font-smoothing:antialiased;}
+body{width:1080px;}
+.slide{width:1080px;height:1080px;background:var(--bg);position:relative;overflow:hidden;padding:46px 54px;display:flex;flex-direction:column;}
+.page-num{position:absolute;top:34px;right:54px;font-family:"Caveat","Noto Sans TC",cursive;font-size:30px;font-weight:800;color:var(--ink-0);z-index:3;}
+.page-num::after{content:"";display:block;width:100%;height:6px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'><path d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3 T50 3 T60 3' stroke='%23C73A28' stroke-width='2' fill='none'/></svg>") repeat-x;margin-top:2px;}
+h1.bigtitle{font-size:46px;font-weight:900;color:var(--ink-0);line-height:1.18;text-align:center;margin-bottom:4px;letter-spacing:-1px;}
+h1.bigtitle::after{content:"";display:block;width:78%;margin:10px auto 0;height:7px;background:linear-gradient(to bottom,var(--green) 30%,transparent 30%,transparent 60%,var(--green) 60%);}
+h1.bigtitle .red{color:var(--red);} h1.bigtitle .green{color:var(--green);} h1.bigtitle .orange{color:var(--orange-0);}
+.en-sub{text-align:center;font-family:"Caveat","Noto Sans TC",cursive;font-size:26px;color:var(--green);font-weight:700;margin:12px 0 16px;letter-spacing:0.5px;}
+.en-sub::before,.en-sub::after{content:"≡";color:var(--green);margin:0 12px;font-size:24px;}
+.insight-box{border:2.5px solid var(--green);border-radius:20px;padding:16px 22px 16px 66px;margin-bottom:18px;position:relative;background:var(--cream);font-size:19px;line-height:1.5;color:var(--ink-0);}
+.insight-box::before{content:"💡";position:absolute;left:16px;top:50%;transform:translateY(-50%);font-size:32px;}
+.insight-box strong{color:var(--green-0);font-weight:800;}
+.insight-box .red-wavy{background:linear-gradient(to bottom,transparent 80%,var(--red) 80%,var(--red) 90%,transparent 90%);padding:0 2px;color:var(--red);font-weight:800;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;flex:1;}
+.grid .cell{border:2px solid var(--ink-1);border-radius:12px;padding:14px 16px 12px 20px;background:var(--bg);position:relative;}
+.grid .cell.full{grid-column:span 2;}
+.grid .cell .num-circle{position:absolute;top:-14px;left:16px;width:32px;height:32px;border-radius:50%;background:var(--orange);color:white;display:flex;align-items:center;justify-content:center;font-family:"Caveat","Noto Sans TC",cursive;font-size:20px;font-weight:900;border:2.5px solid var(--ink-0);}
+.grid .cell h3{font-size:20px;font-weight:900;color:var(--ink-0);margin-bottom:8px;padding-bottom:3px;border-bottom:2px solid var(--orange);display:inline-block;}
+.grid .cell ul{list-style:none;}
+.grid .cell ul li{display:flex;align-items:flex-start;gap:7px;padding:3px 0;font-size:16px;line-height:1.36;color:var(--ink-1);}
+.grid .cell ul li .ico{color:var(--green);font-size:13px;flex-shrink:0;margin-top:4px;}
+.grid .cell ul li strong{color:var(--ink-0);font-weight:800;}
+.takeaway{border:2.5px solid var(--green);border-radius:20px;padding:16px 66px;background:var(--green-soft);position:relative;font-size:19px;line-height:1.45;color:var(--ink-0);font-weight:700;text-align:center;}
+.takeaway::before{content:"🎯";position:absolute;left:20px;top:50%;transform:translateY(-50%);font-size:32px;}
+.takeaway::after{content:"🤖";position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:32px;}
+.takeaway .red-wavy{background:linear-gradient(to bottom,transparent 80%,var(--red) 80%,var(--red) 90%,transparent 90%);padding:0 2px;color:var(--red);font-weight:800;}
+table.compare{width:100%;border-collapse:separate;border-spacing:0;margin-bottom:14px;border:2px solid var(--ink-0);border-radius:10px;overflow:hidden;}
+table.compare th{background:var(--green);color:white;padding:10px 12px;text-align:left;font-weight:800;font-size:17px;}
+table.compare th.orange-bg{background:var(--orange);}
+table.compare td{padding:9px 12px;border-top:1.5px solid var(--line);font-size:16px;line-height:1.32;color:var(--ink-1);vertical-align:top;}
+table.compare td:first-child{font-weight:800;color:var(--ink-0);background:var(--cream);}
+table.compare td .hl{color:var(--red);font-weight:800;}
+.slide.cover{background:var(--cream);justify-content:center;align-items:center;padding:60px 70px;}
+.slide.cover h1.bigtitle{font-size:62px;}
+.slide.cover .en-sub{font-size:30px;}
+.slide.cover .credits{margin-top:24px;background:white;border:2px solid var(--green);border-radius:16px;padding:14px 22px;display:flex;align-items:center;gap:16px;font-size:17px;color:var(--ink-1);max-width:780px;}
+.slide.cover .credits img{height:38px;}
+.slide.cover .credits strong{color:var(--green-0);font-weight:800;}
+.footer-mini{position:absolute;bottom:22px;left:54px;display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink-2);letter-spacing:1px;z-index:3;}
+.footer-mini img{height:22px;opacity:0.8;}
+.chapter-tag{position:absolute;top:34px;left:54px;background:var(--orange-soft);color:var(--orange-0);border:1.5px solid var(--orange);border-radius:50px;padding:4px 12px;font-size:13px;font-weight:800;font-family:"Noto Sans TC",sans-serif;letter-spacing:1px;}
+</style>
+</head>
+<body>
+<section class="slide cover">
+  <div class="page-num">1/15</div>
+  <h1 class="bigtitle"><span class="green">思辨</span>，從<span class="red">問對問題</span>開始</h1>
+  <div class="en-sub">Asking the Right Questions · 15 頁濃縮版</div>
+  <div class="insight-box" style="margin-top:24px;max-width:820px;">
+    <strong>11 個批判性問題 + 13 大邏輯謬誤</strong>，把資訊海嘯時代的<span class="red-wavy">盲信</span>翻成<span class="red-wavy">判斷力</span>。<br/>美國大學使用 30+ 年的批判思考聖經（M. Neil Browne / Stuart M. Keeley）。
+  </div>
+  <div class="credits">
+    <img src="data:image/png;base64,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"/>
+    <div>
+      <strong>導讀者</strong>：Evin Lin（林奕帆） &nbsp;|&nbsp;
+      <strong>協作整理</strong>：IRIS（羅賓斯科技 社群代理人）
+    </div>
+  </div>
+</section><section class="slide">
+  <div class="page-num">2/15</div>
+  <div class="chapter-tag">Ch.1 基礎</div>
+  <h1 class="bigtitle">思辨 <span class="green">3 個基本</span></h1>
+  <div class="en-sub">Why + Sponge vs Panning + Strong-sense</div>
+  <div class="insight-box"><strong>為什麼學 + 怎麼讀 + 對誰嚴格</strong>—— 開始 11 題之前先建立的 3 個底層概念。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">為什麼非學不可</h3>
+      <ul><li><span class="ico">●</span>每天接觸 ≥ 6,000 訊息 + AI 生成內容</li><li><span class="ico">●</span>演算法只推符合你偏好的 → 回音壁</li><li><span class="ico">●</span>「專家說...」也有立場、贊助、盲區</li><li><span class="ico">●</span>= 不能外包腦袋</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">海綿 vs 淘金</h3>
+      <ul><li><span class="ico">●</span><strong>海綿</strong>：被動接收，作者說啥信啥</li><li><span class="ico">●</span><strong>淘金</strong>：每讀一句問「為什麼」</li><li><span class="ico">●</span>海綿 = 你刷短影音時；淘金 = 律師讀對方訴狀</li><li><span class="ico">●</span>本書教淘金 = 主動互動</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">3</span>
+      <h3 style="border-bottom-color:var(--green);">弱義 vs 強義</h3>
+      <ul><li><span class="ico">●</span><strong>弱義</strong>：只挑對方論證的洞，目標是贏</li><li><span class="ico">●</span><strong>強義</strong>：同標準先檢視自己，目標找真相</li><li><span class="ico">●</span>判別：最近一次改變大主意是何時？</li><li><span class="ico">●</span>若 ≥ 1 年沒改 → 多半弱義</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">本書 11 題 + 13 謬誤</h3>
+      <ul><li><span class="ico">●</span>11 題 = 評估任何論證的工具箱</li><li><span class="ico">●</span>13 謬誤 = 80% 爛論證的型錄</li><li><span class="ico">●</span>結合 = 從盲信變判斷力</li><li><span class="ico">●</span>= 一生最值錢的閱讀技能</li></ul>
+    </div></div>
+  <div class="takeaway">不是要懷疑一切，是<span class="red-wavy">問對問題</span>後再決定信不信。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">3/15</div>
+  <div class="chapter-tag">11 題 cheat sheet</div>
+  <h1 class="bigtitle">11 個 <span class="green">批判性問題</span> 總覽</h1>
+  <div class="en-sub">The 11 critical questions at a glance</div>
+  <div class="insight-box"><strong>讀任何論證前，依序問這 11 題</strong>。後面 P4-P9 詳解每題的細節 + 反制工具。</div>
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px;">
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">1</span><h3 style="font-size:18px;">議題</h3><ul><li><span class="ico">●</span>他到底在討論什麼？描述性 or 規範性？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">2</span><h3 style="font-size:18px;">結論</h3><ul><li><span class="ico">●</span>他想說服我相信什麼？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">3</span><h3 style="font-size:18px;">理由</h3><ul><li><span class="ico">●</span>支持的理由有哪些？列出來</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">4</span><h3 style="font-size:18px;">字義</h3><ul><li><span class="ico">●</span>有沒有曖昧不明的關鍵詞？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">5</span><h3 style="font-size:18px;">假設</h3><ul><li><span class="ico">●</span>價值觀 + 描述性假設是什麼？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">6</span><h3 style="font-size:18px;">謬誤</h3><ul><li><span class="ico">●</span>13 大邏輯謬誤有沒有踩到？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">7</span><h3 style="font-size:18px;">證據強度</h3><ul><li><span class="ico">●</span>個人 / 案例 / 證言 / 權威？哪等級？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">8</span><h3 style="font-size:18px;">研究證據</h3><ul><li><span class="ico">●</span>研究方法、樣本、p-hacking 有問題嗎？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">9</span><h3 style="font-size:18px;">替代成因</h3><ul><li><span class="ico">●</span>還有什麼可能解釋這個結果？</li></ul></div>
+    <div class="cell" style="padding:10px 14px;"><span class="num-circle">10</span><h3 style="font-size:18px;">統計</h3><ul><li><span class="ico">●</span>跟什麼比 / 分母多少 / 怎麼測？</li></ul></div>
+    <div class="cell full" style="padding:10px 14px;"><span class="num-circle">11</span><h3 style="font-size:18px;">替代結論</h3><ul><li><span class="ico">●</span>同樣理由能不能推出另一個更穩的結論？</li></ul></div>
+  </div>
+  <div class="takeaway" style="font-size:17px;padding:14px 66px;">11 題答完才下判斷 —— <span class="red-wavy">這是淘金式閱讀的全套工具</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">4/15</div>
+  <div class="chapter-tag">Ch.2-3</div>
+  <h1 class="bigtitle">Q1+Q2：<span class="orange">議題 / 結論 / 理由</span></h1>
+  <div class="en-sub">Issue & Conclusion & Reasons</div>
+  <div class="insight-box"><strong>找到主張 + 找到支撐</strong> —— 沒這兩塊，連評估都不必開始。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">找議題（Q1）</h3>
+      <ul><li><span class="ico">●</span><strong>描述性</strong>：X 是不是真的？(事實題)</li><li><span class="ico">●</span><strong>規範性</strong>：應不應該做 X？(價值題)</li><li><span class="ico">●</span>看標題 + 第一段 + 結尾段</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">找結論（Q1）</h3>
+      <ul><li><span class="ico">●</span>問作者：「你想說服我什麼？」</li><li><span class="ico">●</span>找提示詞：所以、因此、顯示、證明</li><li><span class="ico">●</span>把例證 / 背景 / 統計 跟結論分開</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">找理由（Q2）</h3>
+      <ul><li><span class="ico">●</span>支持結論的「因為...」陳述</li><li><span class="ico">●</span>提示詞：因為、由於、研究指出、首先</li><li><span class="ico">●</span>把所有理由列點 → 論證骨架現形</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">評估順序</h3>
+      <ul><li><span class="ico">●</span>先<strong>列</strong>：找到所有理由</li><li><span class="ico">●</span>再<strong>問</strong>：每條真的嗎？</li><li><span class="ico">●</span>最後<strong>算</strong>：合起來夠不夠支持結論</li></ul>
+    </div></div>
+  <div class="takeaway"><span class="red-wavy">結論 - 理由 = 0</span> → 不必繼續評估，請作者先說清楚。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">5/15</div>
+  <div class="chapter-tag">Ch.4-5</div>
+  <h1 class="bigtitle">Q3+Q4：<span class="orange">字義 + 假設</span></h1>
+  <div class="en-sub">Ambiguity & Assumptions</div>
+  <div class="insight-box"><strong>看不見的兩塊：意義不對齊 + 沒明說的前提</strong>。是論證裡最常被偷藏的地方。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">字義曖昧（Q3）</h3>
+      <ul><li><span class="ico">●</span>高風險詞：自由 / 公平 / 進步 / 成功</li><li><span class="ico">●</span>情緒詞：恐怖 / 偉大 / 災難</li><li><span class="ico">●</span>比較詞：較好 / 更多 / 大量</li><li><span class="ico">●</span>問：「你說的 X 是什麼意思？」</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">釐清 3 招</h3>
+      <ul><li><span class="ico">●</span>找作者有沒有給定義</li><li><span class="ico">●</span>辭典只給通用，本書脈絡可能不同</li><li><span class="ico">●</span><strong>問脈絡 > 查辭典</strong></li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">價值觀假設（Q4）</h3>
+      <ul><li><span class="ico">●</span>偏好「A 比 B 重要」（未明說）</li><li><span class="ico">●</span>例：「禁速食廣告」隱含「健康 > 言論自由」</li><li><span class="ico">●</span>找：作者覺得什麼最重要？</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">描述性假設（Q4）</h3>
+      <ul><li><span class="ico">●</span>關於「世界如何運作」的隱含信念</li><li><span class="ico">●</span>例：「該漲學費」假設「漲價 ≠ 影響入學」</li><li><span class="ico">●</span>找假設：問「為什麼理由能支持結論？」→ 答案即</li></ul>
+    </div></div>
+  <div class="takeaway"><span class="red-wavy">同字異義</span> + <span class="red-wavy">隱藏前提</span> = 辯論失敗 80% 的原因。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">6/15</div>
+  <div class="chapter-tag">Ch.6-7</div>
+  <h1 class="bigtitle">Q5+Q6：<span class="red">謬誤</span> + <span class="green">證據強度</span></h1>
+  <div class="en-sub">Fallacies & Evidence quality</div>
+  <div class="insight-box"><strong>推論有沒有跳躍 + 證據夠不夠強</strong>。Q5 看「思路對嗎」，Q6 看「材料夠嗎」。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">1</span>
+      <h3 style="border-bottom-color:var(--red);">謬誤總覽（Q5）</h3>
+      <ul><li><span class="ico">●</span><strong>轉移焦點</strong>：稻草人、紅鯡魚、人身攻擊</li><li><span class="ico">●</span><strong>訴諸不當權威</strong>：權威、大眾、傳統</li><li><span class="ico">●</span><strong>錯誤類比</strong>：滑坡、假二分、過度概化</li><li><span class="ico">●</span>13 大類詳解 P10-P12</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">識別謬誤流程</h3>
+      <ul><li><span class="ico">●</span>找結論 + 理由（Q1-Q2）</li><li><span class="ico">●</span>問「理由真的支持結論嗎？」</li><li><span class="ico">●</span>若中間有跳躍 → 對號入座 13 類</li><li><span class="ico">●</span>謬誤都「直覺上 sounds right」</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">3</span>
+      <h3 style="border-bottom-color:var(--green);">證據 4 等級（Q6）</h3>
+      <ul><li><span class="ico">●</span><strong>個人經驗</strong>：樣本=1，最弱</li><li><span class="ico">●</span><strong>案例研究</strong>：生動但孤例不能推廣</li><li><span class="ico">●</span><strong>證言</strong>：考慮利益 + 真偽（Amazon 假評 ≥ 30%）</li><li><span class="ico">●</span><strong>訴諸權威</strong>：同行公認 + 領域內才算</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">判別 tip</h3>
+      <ul><li><span class="ico">●</span>諾貝爾物理學家賣保健品 = 訴諸不當權威</li><li><span class="ico">●</span>「我認識一個...」= 個人經驗</li><li><span class="ico">●</span>「100 人都這樣」= 訴諸大眾</li></ul>
+    </div></div>
+  <div class="takeaway">看到「<span class="red-wavy">專家 / 大家</span>」先問「哪位？是否同行公認？」</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">7/15</div>
+  <div class="chapter-tag">Ch.8-9</div>
+  <h1 class="bigtitle">Q7+Q8：<span class="green">研究證據 + 替代成因</span></h1>
+  <div class="en-sub">Research evidence & Rival causes</div>
+  <div class="insight-box"><strong>「研究指出...」也可能是垃圾</strong>。再加上：A 不一定造成 B，也可能 C 同時造成兩者。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">問卷常見問題（Q7）</h3>
+      <ul><li><span class="ico">●</span>問題引導：「你會不會反對 X？」</li><li><span class="ico">●</span>順序效應 + Yes-bias 偏差</li><li><span class="ico">●</span>回應率 < 50% 多半偏</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">研究方法等級</h3>
+      <ul><li><span class="ico">●</span><strong>RCT 隨機對照 > 觀察研究 > 案例</strong></li><li><span class="ico">●</span>Cochrane reviews 最高</li><li><span class="ico">●</span>醫學界以此分 Level 1-5</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">替代成因（Q8）</h3>
+      <ul><li><span class="ico">●</span><strong>反向因果</strong>：X 導致 Y 反過來</li><li><span class="ico">●</span><strong>共因</strong>：Z 同時造成 X 和 Y</li><li><span class="ico">●</span><strong>巧合</strong>：純粹樣本太小</li><li><span class="ico">●</span>經典：「上私校 → 成績好」可能是家庭背景共因</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">鑑別 SOP</h3>
+      <ul><li><span class="ico">●</span>問：「還有什麼可能造成 X？」</li><li><span class="ico">●</span>列至少 3 個對立成因</li><li><span class="ico">●</span>比較哪個證據最強（奧坎剃刀：最少額外假設）</li><li><span class="ico">●</span><span style='color:var(--red);'>單一成因說法 = 警鈴大作</span></li></ul>
+    </div></div>
+  <div class="takeaway">看到「研究指出」先問<span class="red-wavy">「是誰做、樣本多大、方法是什麼」</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAnFBMVEX////6/f21ydOAyNMAVIAApbuxw9ATXIXc8PJcvMkAprr///3X4ObA5ecAWIM9cpPK1d0AQ3ZPuMfz9/jf5+vS6u7q8PMATX1diqSnvcolaY2kuMePq74cq73j7e8AUX92lq1qkqpzjaeYscCAnbK43uWRz9ej1dxKeZhZgZ88scFuws4eYohOf5mZqbs2aY9OcpQoWoYAO3I3dJBs+m23AAAHYUlEQVR4nO2cDZOqNheACSIqIMQNBpCgsEQFxXrb/v//1vChIhtv571vu5LpeWZ2Rgiu55HkkISgpgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G9Dlz3Iu6P5/1gvptb0hrXuF/nOu4L6RdYfVvJxZzHvFfle9Lawfon9yUoO6zvzXjXD3kp/X2D/O+hoTZOjtJ0gc2MYKsmQg2UlSyQtyit3ppLM9pxYp7W0iLKZYagkM18IF3kqptksKJhCMuuPxFrIqpitUW8XlNRURsbeW1PrIC9zZjsjJZoyMiKNWclR2vQ1fWfMmKh+qsgQ4XLay4uiwK3i+pUSMqJNTMRV/1Ua2xle66CEjDY/W8lC7uKnbuDh9rUSMmuRkidzaZETukF5610qIIP2IiUf5JcXXBhB6t+2xi+DjifLepXGPMNg9L45chnbRofEsvZyl8jdGXmvaOwy5Gy96o1pqUjJT8GPXAZNpslC1vRtDYUr95bGOsYv8+Lysr0Erkhjdn/f+GWkJwY5xc7NtoO9asog3du5/EtWUFKGRNfdLP+a4VSUIewaXE1JtlZQhmRuUGDZ0erJkIvx6I09o5zMtjJ25TCNdagmg3eukb46WikZG0Wu4bKXRyslo0UzYxZpT5d9pE5HcyDDdmKA/NSDQctesWIyJX52Icd+l1otGTxIyeSQJMrKDK769JxYi16aVkvmmfmHZZ37pQrLrMV4+rztNyF1ZfbCZfJc75SVOVhJchzsU1RGpLHp16lnNWXmE8uSzA0oKVMvBJA5qiiz/LAS6dSzgjL70zSRTz3rs51iMsfk1UIAjblqydgT4fJi6jmv3EA6NzAShjLobE0T2RSnrRHuGqsxuwxl5gtr+vFqIcDOcLfPA4SR8SyzPomUbEvjdcrAfTXPMRb6MqhezzTRpDLYC2YpHfV5eZJBx8Q6HSRNXxjoVVD17qCNlIdMvZ7pJE9jKDZ2m3j8yxvvMvPJ1PqQr82izDA8XZ6tR8VNRqQx0RuTNoltbyHAuOlk1vUAWZ6rnNINipGnsY5WZnlKphP0NY3Z9UIAd5WNvum3NDL7ZDodDio78MZd8fE3/ZZa5mxZU/l6JhStDCP+5pB+HSFjiZS8lBYStnKvY+4mD0ATK2nWM0kSGU0DV34HbaTUixrO8ukZPwzcUKnV8kJm8shVto8fFDvjsZ5JCdDkaYCce3fEQGz8vbEB86e8y1cPgkiVlPwC6vRQoDcGAAAAAAAAAG9m3LPkA1BvvEL8X46dvGXYM4zWZ48wzBINi9F6v1+Tv1eMRjF/g2ePYTH+bViKDovJedHe4oh/Nq8R8n8+tJ9ia5QgTJobSf5thZxTER93s8i0rWY+IrfSZbImdL2uZfyK+a23KCXdGb6/DBnC3zwqzbOyqgMnzCuvabPL8VLvcmVNHHpRB4Z+S4tL9dnUvn1yDzBzvVCvvxH8o7h067f1a1GUuP5ysqIovO+dx2FB3Hy5eYEprZqa4VxLSvGm+e2FqGpk0plD6aZZC0w+ksParvfaxMubVr69moTGZf1//CCi21hvVTHFP75xEtfWWNF83zSsY8e/1wE5lV/fFfusz0C0aWQ+6/PEwuY96LiwuhUB3Y9NRN7W8XHzACrz7v87zOrtb5xdFzJZE5Zf1xfN/33byNRKZkl6MrE4Kg/v7+vWznrt955vLqJKZfWMbfo4pk4A9ltkCK8/lf2oN5z6sRL62VS5rzKUonp507Ing2v79upk7oiGKH2LjKbxVkbDBdfz9hk/5+rFOi+aBt21mVamrPccF8fl/tzeTuOFjuvExT3T5KzJZmGpx5f4JoO+V0aPuuTksM+0ndr3c8w/WZuccPsAgImRZutNjGg/OU8O7Zw65ak4ibZGos+0ewPJP9OoOTPNRVPXv1HGft3VsgeH2PZt15dOwd98wvfR3bF8+kz7vv9J9nHkIEJb+hIA/iP8tNY/WlO3NWxB8oVc78JGhFJCCelSNhFdaHLbsn0i+sSk+wEwceQWif40bQVo3UcexSDmgel5u2xVbtqw/JBnXsbD9hLkZHqYiwtq3LhtWcV9E6fd4MDkvi/GQv6YbkZhnqd4Y/IufMY4E3/tlu6FG365Dcl8vUI0YrzdpjzMGZ/lbEx3CQlnelTwuBuemSEvQ+63ERIWhU4Wm+11HeezCDv+TYZlWJyZ7agWB+FS1KWMd5UHe5c8y7oTI0RTz8lYkbfjBhYwzPSuI6PhTOcsZa+fgHwDziUV5yIM20fm/GjDWN5FL6pSXuKQdOdCCyuGfD1tC53wglNGilH9oB7mUcrDLLt931czisI2XiTqXMY3N5mYF1sWhl7bMyYxoyTrhhRjweRRlnPOuyma7SbMwu5njGzK4xBvtE7GJ57m+E7X2RY9bEKKP8a12CmKxeCkKrz2Rwyc8M9Iw2EzurGFKMEzU8u68JGr1au0OzWPsSoil+vY1qKQe11B28EOTeyg5PH6XoZo+4TwmDIzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMOQvfMSLRWURg2QAAAAASUVORK5CYII="/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">8/15</div>
+  <div class="chapter-tag">Ch.10-11</div>
+  <h1 class="bigtitle">Q9+Q10：<span class="red">統計</span> + <span class="orange">資訊遺漏</span></h1>
+  <div class="en-sub">Statistical tricks & Omitted information</div>
+  <div class="insight-box"><strong>統計可以說真話也可以技術上不假但誤導 + 論者只選對自己有利的</strong>。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">平均數陷阱</h3>
+      <ul><li><span class="ico">●</span>「人均收入」隱藏分佈</li><li><span class="ico">●</span>比爾蓋茲走進酒吧 → 平均變億萬</li><li><span class="ico">●</span>問：用中位數還是平均？</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">絕對 vs 相對 + 缺失分母</h3>
+      <ul><li><span class="ico">●</span>「風險增加 100%」聽很恐怖 → 實際 1/1000→2/1000</li><li><span class="ico">●</span>「100 人吃 X 得癌症」← 沒分母</li><li><span class="ico">●</span>Y 軸從非 0 開始 → 差距誇大</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">資訊遺漏 4 種</h3>
+      <ul><li><span class="ico">●</span><strong>對立證據</strong>：研究有但作者沒提</li><li><span class="ico">●</span><strong>負面後果</strong>：成本 / 副作用</li><li><span class="ico">●</span><strong>長期影響</strong>：只講短期成果</li><li><span class="ico">●</span><strong>反方觀點</strong>：1 句帶過</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">找漏洞 SOP</h3>
+      <ul><li><span class="ico">●</span>問：「他沒提什麼？」</li><li><span class="ico">●</span>去查反對方論述（強義批判）</li><li><span class="ico">●</span>搜「X criticism / X limitations」</li><li><span class="ico">●</span><strong>99% 論者都會省略 — 不是惡意，是天性</strong></li></ul>
+    </div></div>
+  <div class="takeaway">看到統計三問：<span class="red-wavy">跟什麼比 / 分母多少 / 怎麼測</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">9/15</div>
+  <div class="chapter-tag">Ch.12 + 深化</div>
+  <h1 class="bigtitle">Q11：<span class="green">更合理結論</span> + 5 招統計術</h1>
+  <div class="en-sub">Better conclusions & Stat literacy</div>
+  <div class="insight-box"><strong>同組理由可推多結論 + 5 個常見統計騙術一次盤點</strong>。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">1</span>
+      <h3 style="border-bottom-color:var(--green);">Q11 替代結論</h3>
+      <ul><li><span class="ico">●</span>二分法假象（其實多選項）</li><li><span class="ico">●</span>程度問題（不是全有全無）</li><li><span class="ico">●</span>脈絡限定（A 在情境 1，B 在情境 2）</li><li><span class="ico">●</span>= 灰階思考 / 法律思考標準</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">練習生成替代</h3>
+      <ul><li><span class="ico">●</span>寫下作者結論</li><li><span class="ico">●</span>問：「同這些理由還能推出什麼？」</li><li><span class="ico">●</span>列至少 3 個對立 / 折衷結論</li><li><span class="ico">●</span>= 智識誠實的核心</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">統計 5 招速查</h3>
+      <ul><li><span class="ico">●</span><strong>平均數</strong>：中位數 vs 算術平均差很大</li><li><span class="ico">●</span><strong>相對 %</strong>：基數小時看起來嚇人</li><li><span class="ico">●</span><strong>缺基準</strong>：跟誰比？怎麼測？</li><li><span class="ico">●</span><strong>p-hacking</strong>：跑 20 個分析挑顯著的</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">圖表騙術</h3>
+      <ul><li><span class="ico">●</span>Y 軸從非 0 開始 → 差距誇大</li><li><span class="ico">●</span>3D 圖混淆視覺比例</li><li><span class="ico">●</span>顏色暗示（紅 = 壞 / 綠 = 好）vs 中性</li><li><span class="ico">●</span>圖表方向錯：時間軸顛倒</li></ul>
+    </div></div>
+  <div class="takeaway">11 題答完 = 你的<span class="red-wavy">批判思考永久工具箱</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">10/15</div>
+  <div class="chapter-tag">13 謬誤 1/3</div>
+  <h1 class="bigtitle">13 謬誤 <span class="red">Part A</span>：轉移焦點型</h1>
+  <div class="en-sub">Fallacies A: Shifting focus</div>
+  <div class="insight-box"><strong>「不對人對事」的反向操作</strong>。4 種最常見的轉移注意力手法。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">1</span>
+      <h3 style="border-bottom-color:var(--red);">人身攻擊</h3>
+      <ul><li><span class="ico">●</span>攻擊對方人格 / 動機 / 出身</li><li><span class="ico">●</span>例：「你沒當過父母，你說的不算」</li><li><span class="ico">●</span><strong>反制</strong>：請就論點本身回應</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">2</span>
+      <h3 style="border-bottom-color:var(--red);">稻草人</h3>
+      <ul><li><span class="ico">●</span>歪曲對方論點再打</li><li><span class="ico">●</span>例：「你要環保 = 你要全民失業」</li><li><span class="ico">●</span><strong>反制</strong>：「我說的不是這個，我說的是...」</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">3</span>
+      <h3 style="border-bottom-color:var(--red);">滑坡</h3>
+      <ul><li><span class="ico">●</span>A → B → C → 災難（缺乏每步證據）</li><li><span class="ico">●</span>例：「同婚合法 → 接著就會跟動物結婚」</li><li><span class="ico">●</span><strong>反制</strong>：要求證明每一步必然連動</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">假二分</h3>
+      <ul><li><span class="ico">●</span>把多選項簡化成 A 或 B</li><li><span class="ico">●</span>例：「不愛這國家就滾出去」</li><li><span class="ico">●</span><strong>反制</strong>：「除了 A 和 B 還有沒有 C？」</li></ul>
+    </div></div>
+  <div class="takeaway"><span class="red-wavy">恐懼 + 二分</span>的雞尾酒 = 90% 政治廣告配方。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">11/15</div>
+  <div class="chapter-tag">13 謬誤 2/3</div>
+  <h1 class="bigtitle">13 謬誤 <span class="red">Part B</span>：訴諸不當型</h1>
+  <div class="en-sub">Fallacies B: Appeals</div>
+  <div class="insight-box"><strong>「專家說 / 大家說 / 感覺對 / 看那邊」</strong> —— 4 種繞過理性的訴諸。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">1</span>
+      <h3 style="border-bottom-color:var(--red);">訴諸不當權威</h3>
+      <ul><li><span class="ico">●</span>跨領域引用（諾貝爾物理學家賣保健品）</li><li><span class="ico">●</span>權威也有立場 / 贊助</li><li><span class="ico">●</span><strong>判準</strong>：同行普遍認可 + 領域內</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">2</span>
+      <h3 style="border-bottom-color:var(--red);">訴諸大眾 / 人氣</h3>
+      <ul><li><span class="ico">●</span>「100 萬人都這樣 ≠ 對」</li><li><span class="ico">●</span>歷史曾「多數」相信地心說 / 種族歧視</li><li><span class="ico">●</span><strong>反制</strong>：「這 100 萬人怎麼決定的？」</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">3</span>
+      <h3 style="border-bottom-color:var(--red);">訴諸感情</h3>
+      <ul><li><span class="ico">●</span>訴諸恐懼 / 同情 / 憤怒 / 罪惡感</li><li><span class="ico">●</span>例：保險廣告「不買孩子怎麼辦」</li><li><span class="ico">●</span><strong>自檢</strong>：「太對了！」← 暫停反問論證在哪</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">紅鯡魚</h3>
+      <ul><li><span class="ico">●</span>丟另一個議題轉移焦點</li><li><span class="ico">●</span>例：「我貪汙？看那些更糟的政客」</li><li><span class="ico">●</span><strong>反制</strong>：「回到原本議題」</li></ul>
+    </div></div>
+  <div class="takeaway">感動 / 憤怒 / 害怕 = 該<span class="red-wavy">提高警覺</span>而非接受論點。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">12/15</div>
+  <div class="chapter-tag">13 謬誤 3/3</div>
+  <h1 class="bigtitle">13 謬誤 <span class="red">Part C</span>：推論錯誤型</h1>
+  <div class="en-sub">Fallacies C: Reasoning errors</div>
+  <div class="insight-box"><strong>從少數推全部 / 從先後推因果 / 用結論證結論</strong> —— 5 種最隱蔽的腦袋短路。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">1</span>
+      <h3 style="border-bottom-color:var(--red);">過度概化</h3>
+      <ul><li><span class="ico">●</span>從少數案例推全體</li><li><span class="ico">●</span>例：認識 1 個騙子 → 那族群都騙子</li><li><span class="ico">●</span><strong>判準</strong>：樣本足夠多 + 多元？</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">2</span>
+      <h3 style="border-bottom-color:var(--red);">因果謬誤</h3>
+      <ul><li><span class="ico">●</span>A 在 B 之前 → A 導致 B（Post hoc）</li><li><span class="ico">●</span>例：「打疫苗後感冒 → 疫苗害的」</li><li><span class="ico">●</span><strong>反制</strong>：第三變數？反向因果？</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">3</span>
+      <h3 style="border-bottom-color:var(--red);">循環論證 + 偷換概念</h3>
+      <ul><li><span class="ico">●</span><strong>循環</strong>：用結論證結論「聖經真的因聖經寫」</li><li><span class="ico">●</span><strong>偷換</strong>：「自由」前段法律自由後段經濟自由</li><li><span class="ico">●</span><strong>反制</strong>：明確定義關鍵詞 + 圖解論證</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">訴諸傳統 + 不當類比</h3>
+      <ul><li><span class="ico">●</span><strong>傳統</strong>：「一直都這樣」≠ 該繼續</li><li><span class="ico">●</span>歷史曾接受奴隸 / 不讓女性投票</li><li><span class="ico">●</span><strong>類比</strong>：「公司像家庭」← 關鍵差異被忽略</li></ul>
+    </div></div>
+  <div class="takeaway">13 種看完 = 對 <span class="red-wavy">80% 爛論證免疫</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">13/15</div>
+  <div class="chapter-tag">速查 + 自檢</div>
+  <h1 class="bigtitle"><span class="orange">提示字詞</span> + <span class="green">11 題</span> 速查</h1>
+  <div class="en-sub">Indicators table & 11-Q checklist</div>
+  <div class="insight-box" style="font-size:18px;padding:14px 22px 14px 60px;"><strong>讀任何主張前先掃這 11 題</strong>。提示字詞表幫你秒辨「結論 vs 理由」的位置。</div>
+  <table class="compare" style="margin-bottom:12px;">
+    <tr><th style="padding:8px 10px;font-size:15px;">類型</th><th class="orange-bg" style="padding:8px 10px;font-size:15px;">中文提示詞</th><th style="padding:8px 10px;font-size:15px;">English</th></tr>
+    <tr><td style="padding:7px 10px;font-size:14px;"><span class="hl">結論詞</span></td><td style="padding:7px 10px;font-size:14px;">所以、因此、顯示、證明、指出、事實是</td><td style="padding:7px 10px;font-size:14px;">therefore, thus, shows, proves</td></tr>
+    <tr><td style="padding:7px 10px;font-size:14px;"><span class="hl">理由詞</span></td><td style="padding:7px 10px;font-size:14px;">因為、由於、研究指出、首先 / 其次</td><td style="padding:7px 10px;font-size:14px;">because, since, research shows</td></tr>
+    <tr><td style="padding:7px 10px;font-size:14px;">假設指標</td><td style="padding:7px 10px;font-size:14px;"><span class="hl">顯然、明顯地、無疑、當然、人人都知道</span></td><td style="padding:7px 10px;font-size:14px;">obviously, clearly, of course</td></tr>
+  </table>
+  <div style="font-size:16px;color:var(--ink-1);font-weight:700;margin-bottom:8px;text-align:center;">▼ 11 題 Checklist（印出來貼桌前）</div>
+  <div class="grid" style="grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;">
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">1</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">議題</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">2</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">結論</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">3</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">理由</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">4</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">字義</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">5</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">假設</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">6</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">謬誤</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">7</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">證據</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">8</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">研究</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">9</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">替代因</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">10</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">統計</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;"><span class="num-circle" style="width:22px;height:22px;font-size:14px;top:-10px;">11</span><h3 style="font-size:14px;margin-bottom:0;padding-bottom:1px;">替代結論</h3></div>
+    <div class="cell" style="padding:8px 10px;border-radius:8px;background:var(--green-soft);border-color:var(--green);"><h3 style="font-size:13px;margin-bottom:0;padding-bottom:1px;border-bottom:none;color:var(--green-0);">✓ 全跑過再下判斷</h3></div>
+  </div>
+  <div class="takeaway" style="font-size:17px;padding:12px 60px;">看到「<span class="red-wavy">顯然 / 明顯地 / 大家都知道</span>」警鈴大作 —— 後面常接隱藏假設。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">14/15</div>
+  <div class="chapter-tag">實踐</div>
+  <h1 class="bigtitle"><span class="green">5 步 SOP</span> + <span class="orange">對話 + 障礙</span></h1>
+  <div class="en-sub">Daily SOP + Etiquette + Barriers</div>
+  <div class="insight-box"><strong>每天可用 5 步流程 + 批判而不傷人的對話 + 知道方法後最大的敵人</strong>。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">1</span>
+      <h3 style="border-bottom-color:var(--green);">5 步淘金 SOP</h3>
+      <ul><li><span class="ico">●</span>圈出結論（找標靶）</li><li><span class="ico">●</span>列出理由（1, 2, 3）</li><li><span class="ico">●</span>找薄弱點（跳躍最大那條）</li><li><span class="ico">●</span>想替代解釋（至少 2 個）</li><li><span class="ico">●</span>問「若 X 出現我會改信他嗎？」</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">對話禮儀</h3>
+      <ul><li><span class="ico">●</span>先肯定意圖再質疑論證</li><li><span class="ico">●</span>問句 >> 陳述句（「你的意思是不是 X？」）</li><li><span class="ico">●</span>保留改變空間（「目前傾向，但若 Y 證據願換」）</li><li><span class="ico">●</span>停止當「正確魔人」，選戰場</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">3</span>
+      <h3 style="border-bottom-color:var(--red);">心理障礙 4 種</h3>
+      <ul><li><span class="ico">●</span><strong>確認偏誤</strong>：只看支持自己的證據</li><li><span class="ico">●</span><strong>群體歸屬</strong>：改變 = 背叛朋友？</li><li><span class="ico">●</span><strong>情緒推理</strong>：「感覺對 = 就是對」</li><li><span class="ico">●</span><strong>自我形象</strong>：承認錯 = 否定過去自己</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">對應 4 解法</h3>
+      <ul><li><span class="ico">●</span>每月強迫讀對立陣營 1 篇深度文</li><li><span class="ico">●</span>認識多元群體 + 不把立場當身分</li><li><span class="ico">●</span>感覺強烈時延遲 24 小時再決定</li><li><span class="ico">●</span>把「改變主意」重新定義為「升級」</li></ul>
+    </div></div>
+  <div class="takeaway"><span class="red-wavy">知道 ≠ 做到</span>。批判思考是一輩子的肌力訓練。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide cover">
+  <div class="page-num">15/15</div>
+  <h1 class="bigtitle">下一步：<span class="green">3 件事</span> 今天就做</h1>
+  <div class="en-sub">Start today. Critical thinking is a muscle.</div>
+  <div class="insight-box" style="max-width:840px;">
+    <strong>讀完不練 = 沒讀</strong>。挑下面 1 件今天做、1 件這週做、1 件這月做。<span class="red-wavy">3 個月後</span>你就再也不會被資訊牽著走。
+  </div>
+  <div class="grid" style="max-width:880px;">
+    <div class="cell"><span class="num-circle">1</span><h3>今天</h3>
+      <ul>
+        <li><span class="ico">●</span>把 P13 的 11 題印出來</li>
+        <li><span class="ico">●</span>挑 1 篇你今天看到的「主張型」文章跑一遍</li>
+      </ul>
+    </div>
+    <div class="cell"><span class="num-circle">2</span><h3>這週</h3>
+      <ul>
+        <li><span class="ico">●</span>找出你最堅信的 3 件事</li>
+        <li><span class="ico">●</span>為每件找 1 個最強反論</li>
+      </ul>
+    </div>
+    <div class="cell full"><span class="num-circle">3</span><h3>這月</h3>
+      <ul>
+        <li><span class="ico">●</span>主動讀 1 篇你立場對立陣營的深度文章（不為戰，為了懂）</li>
+        <li><span class="ico">●</span>記錄你有沒有因為任何證據改變過任何想法（沒有 → 警鈴）</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway" style="max-width:880px;">學會問對問題後 → <span class="red-wavy">你就再也不需要別人告訴你該相信什麼</span>。</div>
+  <div class="credits">
+    <img src="data:image/png;base64,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"/>
+    <div>
+      <strong>導讀者</strong>：Evin Lin（林奕帆） &nbsp;|&nbsp;
+      <strong>協作整理</strong>：IRIS（羅賓斯科技 社群代理人）<br/>
+      <em>原著：M. Neil Browne / Stuart M. Keeley · 商業周刊出版</em>
+    </div>
+  </div>
+</section>
+</body>
+</html>
