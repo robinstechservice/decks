@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<title>財報就像一本故事書 — 18 頁導讀（劉順仁）</title>
+<style>
+:root {
+  --bg:#FFFFFF; --cream:#FDFBF4;
+  --green-0:#2F5C28; --green:#4F7A3B; --green-soft:#DFEED5;
+  --orange-0:#C26F1A; --orange:#E89E3F; --orange-soft:#FBE5C9;
+  --red:#C73A28;
+  --ink-0:#1E1E1E; --ink-1:#3A3A3A; --ink-2:#6E6E6E;
+  --line:#C9D6BA;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:#D8DEEA;font-family:"Noto Sans TC","思源黑體 TC","PingFang TC","Heiti TC",sans-serif;color:var(--ink-0);-webkit-font-smoothing:antialiased;}
+body{width:1080px;}
+.slide{width:1080px;height:1080px;background:var(--bg);position:relative;overflow:hidden;padding:78px 50px 70px 50px;display:flex;flex-direction:column;}
+.page-num{position:absolute;top:26px;right:50px;font-family:"Caveat","Noto Sans TC",cursive;font-size:32px;font-weight:800;color:var(--ink-0);z-index:3;}
+.page-num::after{content:"";display:block;width:100%;height:6px;background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 6'><path d='M0 3 Q5 0 10 3 T20 3 T30 3 T40 3 T50 3 T60 3' stroke='%23C73A28' stroke-width='2' fill='none'/></svg>") repeat-x;margin-top:2px;}
+h1.bigtitle{font-size:54px;font-weight:900;color:var(--ink-0);line-height:1.2;text-align:center;margin-bottom:4px;letter-spacing:-1px;}
+h1.bigtitle::after{content:"";display:block;width:80%;margin:10px auto 0;height:8px;background:linear-gradient(to bottom,var(--green) 30%,transparent 30%,transparent 60%,var(--green) 60%);}
+h1.bigtitle .red{color:var(--red);} h1.bigtitle .green{color:var(--green);} h1.bigtitle .orange{color:var(--orange-0);}
+.en-sub{text-align:center;font-family:"Caveat","Noto Sans TC",cursive;font-size:30px;color:var(--green);font-weight:700;margin:12px 0 16px;letter-spacing:0.5px;}
+.en-sub::before,.en-sub::after{content:"≡";color:var(--green);margin:0 14px;font-size:28px;}
+.insight-box{border:2.5px solid var(--green);border-radius:22px;padding:18px 26px 18px 74px;margin-bottom:18px;position:relative;background:var(--cream);font-size:25px;line-height:1.45;color:var(--ink-0);}
+.insight-box::before{content:"💡";position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:40px;}
+.insight-box strong{color:var(--green-0);font-weight:800;}
+.insight-box .red-wavy{background:linear-gradient(to bottom,transparent 80%,var(--red) 80%,var(--red) 90%,transparent 90%);padding:0 2px;color:var(--red);font-weight:800;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;flex:1;}
+.grid .cell{border:2px solid var(--ink-1);border-radius:14px;padding:14px 18px 12px 22px;background:var(--bg);position:relative;}
+.grid .cell.full{grid-column:span 2;}
+.grid .cell .num-circle{position:absolute;top:-16px;left:18px;width:38px;height:38px;border-radius:50%;background:var(--orange);color:white;display:flex;align-items:center;justify-content:center;font-family:"Caveat","Noto Sans TC",cursive;font-size:24px;font-weight:900;border:2.5px solid var(--ink-0);}
+.grid .cell h3{font-size:24px;font-weight:900;color:var(--ink-0);margin-bottom:8px;padding-bottom:3px;border-bottom:2px solid var(--orange);display:inline-block;}
+.grid .cell ul{list-style:none;}
+.grid .cell ul li{display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:21px;line-height:1.38;color:var(--ink-1);}
+.grid .cell ul li .ico{color:var(--green);font-size:15px;flex-shrink:0;margin-top:5px;}
+.grid .cell ul li strong{color:var(--ink-0);font-weight:800;}
+.takeaway{border:2.5px solid var(--green);border-radius:22px;padding:16px 74px;background:var(--green-soft);position:relative;font-size:23px;line-height:1.4;color:var(--ink-0);font-weight:700;text-align:center;}
+.takeaway::before{content:"🎯";position:absolute;left:22px;top:50%;transform:translateY(-50%);font-size:40px;}
+.takeaway::after{content:"📖";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:40px;}
+.takeaway .red-wavy{background:linear-gradient(to bottom,transparent 80%,var(--red) 80%,var(--red) 90%,transparent 90%);padding:0 2px;color:var(--red);font-weight:800;}
+table.compare{width:100%;border-collapse:separate;border-spacing:0;margin-bottom:14px;border:2px solid var(--ink-0);border-radius:12px;overflow:hidden;}
+table.compare th{background:var(--green);color:white;padding:12px 14px;text-align:left;font-weight:800;font-size:20px;}
+table.compare th.orange-bg{background:var(--orange);}
+table.compare td{padding:11px 14px;border-top:1.5px solid var(--line);font-size:19px;line-height:1.36;color:var(--ink-1);vertical-align:top;}
+table.compare td:first-child{font-weight:800;color:var(--ink-0);background:var(--cream);}
+table.compare td .hl{color:var(--red);font-weight:800;}
+.slide.cover{background:var(--cream);justify-content:center;align-items:center;padding:54px 64px;}
+.slide.cover h1.bigtitle{font-size:68px;}
+.slide.cover .en-sub{font-size:32px;}
+.slide.cover .credits{margin-top:22px;background:white;border:2px solid var(--green);border-radius:16px;padding:14px 22px;display:flex;align-items:center;gap:16px;font-size:19px;color:var(--ink-1);max-width:820px;}
+.slide.cover .credits img{height:42px;}
+.slide.cover .credits strong{color:var(--green-0);font-weight:800;}
+.footer-mini{position:absolute;bottom:22px;left:50px;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2);letter-spacing:1px;z-index:3;}
+.footer-mini img{height:26px;opacity:0.8;}
+.chapter-tag{position:absolute;top:30px;left:50px;background:var(--orange-soft);color:var(--orange-0);border:1.5px solid var(--orange);border-radius:50px;padding:5px 16px;font-size:17px;font-weight:800;font-family:"Noto Sans TC",sans-serif;letter-spacing:0.5px;max-width:80%;}
+</style>
+</head>
+<body>
+<section class="slide cover">
+  <div class="page-num">1/18</div>
+  <h1 class="bigtitle"><span class="green">財報</span>就像一本<span class="red">故事書</span></h1>
+  <div class="en-sub">Financial Statements Like a Storybook · 18 頁導讀</div>
+  <div class="insight-box" style="margin-top:24px;max-width:820px;">
+    <strong>創業家說它 · 經理人寫它 · 投資人讀它</strong>。財報顯現企業<span class="red-wavy">商業智謀</span>的高低，衡量<span class="red-wavy">競爭力</span>的強弱，刻畫企業的起伏興衰。<br/>劉順仁（台大會計系教授）暢銷經典，2003 首版至今 20+ 年。
+  </div>
+  <div class="credits">
+    <img src="data:image/png;base64,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"/>
+    <div>
+      <strong>導讀者</strong>：Evin Lin（林奕帆） &nbsp;|&nbsp;
+      <strong>協作整理</strong>：IRIS（羅賓斯科技 社群代理人）
+    </div>
+  </div>
+</section><section class="slide">
+  <div class="page-num">2/18</div>
+  <div class="chapter-tag">Ch.1 · 原書 p.20-40</div>
+  <h1 class="bigtitle">為什麼<span class="red">非讀財報</span>不可？</h1>
+  <div class="en-sub">Why critical to read financials?</div>
+  <div class="insight-box"><strong>商業智謀的起點</strong>：財報是淬煉判斷力、避開陷阱、看穿企業真實樣貌的<span class="red-wavy">第一關鍵技能</span>。劉順仁：「財報是淬煉商業智謀的起點。」</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">資訊不對稱時代</h3>
+      <ul><li><span class="ico">●</span>公司年報 200+ 頁，散戶不會讀</li><li><span class="ico">●</span>新聞 / 名嘴推薦不準</li><li><span class="ico">●</span>= 自己會讀 = 自己拿主導權</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">三類使用者</h3>
+      <ul><li><span class="ico">●</span><strong>創業家</strong>：用財報募資 + 溝通</li><li><span class="ico">●</span><strong>經理人</strong>：用財報管理 + 決策</li><li><span class="ico">●</span><strong>投資人</strong>：用財報判斷 + 下注</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">可以看出什麼</h3>
+      <ul><li><span class="ico">●</span>企業是否真的賺錢（vs 虛胖）</li><li><span class="ico">●</span>競爭力是否在強化（vs 衰退）</li><li><span class="ico">●</span>管理層是否誠實（vs 美化）</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">本書的承諾</h3>
+      <ul><li><span class="ico">●</span>把財報變成「故事書」一樣讀</li><li><span class="ico">●</span>用 5 大神功訓練商業判斷</li><li><span class="ico">●</span>30 + 章節從心法到實戰</li></ul>
+    </div></div>
+  <div class="takeaway">不會讀財報 = 永遠被別人說的「公司故事」<span class="red-wavy">牽著走</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">3/18</div>
+  <div class="chapter-tag">Ch.1 · 原書 p.30-45</div>
+  <h1 class="bigtitle">貝佐斯的 <span class="orange">4 個</span> 說故事原則</h1>
+  <div class="en-sub">Amazon Bezos & Storytelling 4 Rules</div>
+  <div class="insight-box"><strong>劉順仁引用 Amazon 貝佐斯</strong>：用財報「說故事」是 CEO 的關鍵能力。4 個原則寫進每年致股東信。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">心態：真實誠懇</h3>
+      <ul><li><span class="ico">●</span>不誇大成果</li><li><span class="ico">●</span>不掩飾失敗</li><li><span class="ico">●</span>把壞消息也寫進財報</li><li><span class="ico">●</span>= 投資人才會相信好消息</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">結構：簡單易懂</h3>
+      <ul><li><span class="ico">●</span>3-5 個關鍵指標講清楚</li><li><span class="ico">●</span>用比喻、用對比、用故事</li><li><span class="ico">●</span>不是塞滿數字嚇人</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">情節：豐富多元</h3>
+      <ul><li><span class="ico">●</span>策略 / 競爭 / 風險 / 機會</li><li><span class="ico">●</span>短期 + 長期都講</li><li><span class="ico">●</span>讓不同類型的讀者都有收穫</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">4</span>
+      <h3 style="border-bottom-color:var(--green);">結語：餘韻無窮</h3>
+      <ul><li><span class="ico">●</span>長期承諾 + 短期里程碑</li><li><span class="ico">●</span>預告未來方向（不過度承諾）</li><li><span class="ico">●</span>「我們才剛開始」（貝佐斯 30 年沿用句）</li></ul>
+    </div></div>
+  <div class="takeaway">貝佐斯靠這 4 原則，把 Amazon 寫成<span class="red-wavy">市值 1.5 兆</span>的故事。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">4/18</div>
+  <div class="chapter-tag">Ch.2 · 原書 p.41-60</div>
+  <h1 class="bigtitle">本書 <span class="green">骨架</span>：1-2-3-4-5</h1>
+  <div class="en-sub">Structure: 1-2-3-4-5 framework</div>
+  <div class="insight-box"><strong>劉順仁把 320 頁的書濃縮成 5 個數字</strong>：1 個堅持、2 個方法、3 類活動、4 份報表、5 大神功。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">一個堅持</h3>
+      <ul><li><span class="ico">●</span><strong>課責性</strong>（Accountability）</li><li><span class="ico">●</span>管理層對股東負責</li><li><span class="ico">●</span>= 透明、公開、可被檢驗</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">兩個方法</h3>
+      <ul><li><span class="ico">●</span><strong>表達事實</strong>：發生什麼</li><li><span class="ico">●</span><strong>解釋變化原因</strong>：為什麼會這樣</li><li><span class="ico">●</span>缺一不可</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">三類活動</h3>
+      <ul><li><span class="ico">●</span><strong>營運活動</strong>：短期成敗（每天）</li><li><span class="ico">●</span><strong>投資活動</strong>：長期成敗（5-10 年）</li><li><span class="ico">●</span><strong>融資活動</strong>：資金來源（股 vs 債）</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">四份報表 + 五大神功</h3>
+      <ul><li><span class="ico">●</span>損益、綜合損益、資產負債、權益變動、現金流量 (5 報表)</li><li><span class="ico">●</span>看穿/評估/比較/預測/避雷 (5 神功)</li><li><span class="ico">●</span>= 後面 P8-P16 詳解</li></ul>
+    </div></div>
+  <div class="takeaway">記住 <span class="red-wavy">1-2-3-4-5</span> = 看任何公司財報都有切入點。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">5/18</div>
+  <div class="chapter-tag">Ch.3 · 原書 p.61-85</div>
+  <h1 class="bigtitle">心法 1：<span class="green">課責性</span></h1>
+  <div class="en-sub">Accountability is the heart</div>
+  <div class="insight-box"><strong>看財報前先看人</strong>：管理層對小股東的態度，比任何指標都關鍵。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">什麼算課責性</h3>
+      <ul><li><span class="ico">●</span>定期完整披露財報（季 / 年）</li><li><span class="ico">●</span>對小股東開放詢問管道</li><li><span class="ico">●</span>對失敗也誠實揭露</li><li><span class="ico">●</span>= 願意被檢驗</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">如何檢視</h3>
+      <ul><li><span class="ico">●</span>看年報的 MD&A（管理層討論分析）</li><li><span class="ico">●</span>看股東會 Q&A 的回答誠不誠懇</li><li><span class="ico">●</span>看財務長 / CEO 公開接觸頻率</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">3</span>
+      <h3 style="border-bottom-color:var(--green);">高課責的徵兆</h3>
+      <ul><li><span class="ico">●</span>主動揭露壞消息</li><li><span class="ico">●</span>把假設說清楚不躲閃</li><li><span class="ico">●</span>改進歷史錯誤不甩鍋</li><li><span class="ico">●</span>例：台積電年報 100+ 頁深度揭露</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">低課責的徵兆</h3>
+      <ul><li><span class="ico">●</span>只報好不報壞</li><li><span class="ico">●</span>重大變動不解釋只說「市場因素」</li><li><span class="ico">●</span>媒體曝光迴避財務問題</li><li><span class="ico">●</span>例：諸多博弈股 / 中概股</li></ul>
+    </div></div>
+  <div class="takeaway">不誠實的公司，<span class="red-wavy">財報數字再漂亮也是地雷</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">6/18</div>
+  <div class="chapter-tag">Ch.3 · 原書 p.70-90</div>
+  <h1 class="bigtitle">心法 2：<span class="orange">事實</span> + <span class="green">原因</span></h1>
+  <div class="en-sub">State facts + Explain changes</div>
+  <div class="insight-box"><strong>好財報 = 事實清楚 + 變化有解釋</strong>。光列數字不夠，要說「為什麼變這樣」。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">表達事實</h3>
+      <ul><li><span class="ico">●</span>數字準確 + 來源清楚</li><li><span class="ico">●</span>GAAP / IFRS 準則一致</li><li><span class="ico">●</span>比較期間（去年 / 去年同期）</li><li><span class="ico">●</span>= 像新聞的「5W1H」</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">解釋變化原因</h3>
+      <ul><li><span class="ico">●</span>營收為何增 / 減 → 銷量 vs 價格</li><li><span class="ico">●</span>毛利率為何變 → 成本 vs 售價</li><li><span class="ico">●</span>現金為何短缺 → 應收帳款 vs 庫存</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">好範例</h3>
+      <ul><li><span class="ico">●</span>「Q2 營收年增 12%，源自 A 產品銷量 +18%」</li><li><span class="ico">●</span>vs 「Q2 表現符合預期」← 沒解釋</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">壞範例（警鈴）</h3>
+      <ul><li><span class="ico">●</span>只列 number 不講為什麼</li><li><span class="ico">●</span>重大變動「未來再說」</li><li><span class="ico">●</span>用艱深會計術語躲避（impairment / restructuring）</li><li><span class="ico">●</span>= 故意讓你看不懂</li></ul>
+    </div></div>
+  <div class="takeaway">看財報問 1 句：「<span class="red-wavy">為什麼這數字變這樣？</span>」答不出來 = 紅旗。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">7/18</div>
+  <div class="chapter-tag">Ch.3 · 原書 p.80-90</div>
+  <h1 class="bigtitle">心法 3：<span class="orange">三類活動</span></h1>
+  <div class="en-sub">Operating · Investing · Financing</div>
+  <div class="insight-box"><strong>所有企業活動 = 3 大類</strong>。看財報前先分類，思考各類比重是否健康。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">營運活動</h3>
+      <ul><li><span class="ico">●</span>賣產品 / 收貨款 / 付薪資</li><li><span class="ico">●</span>決定<strong>短期生存</strong></li><li><span class="ico">●</span>OCF（營運現金流）為負 → 警鈴</li><li><span class="ico">●</span>成熟企業 OCF 應 > 淨利</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">投資活動</h3>
+      <ul><li><span class="ico">●</span>買設備 / 蓋廠 / 投資子公司</li><li><span class="ico">●</span>決定<strong>長期競爭</strong>（5-10 年）</li><li><span class="ico">●</span>看資本支出（CapEx）佔比</li><li><span class="ico">●</span>高 CapEx + 高 ROIC = 良性</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">融資活動</h3>
+      <ul><li><span class="ico">●</span>發債 / 增資 / 配息 / 買回</li><li><span class="ico">●</span>決定<strong>資金結構</strong></li><li><span class="ico">●</span>高負債比 + 低 OCF = 危險</li><li><span class="ico">●</span>穩定配息 = 對股東誠意</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">4</span>
+      <h3 style="border-bottom-color:var(--green);">健康比例</h3>
+      <ul><li><span class="ico">●</span><strong>OCF > CapEx</strong>（內生資金夠投資）</li><li><span class="ico">●</span><strong>OCF > 配息</strong>（不靠借錢配股息）</li><li><span class="ico">●</span>三類加總 = 期末現金變動</li><li><span class="ico">●</span>= 自我驗算的好工具</li></ul>
+    </div></div>
+  <div class="takeaway">把企業活動分 3 類 → <span class="red-wavy">看出短中長期健康度</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">8/18</div>
+  <div class="chapter-tag">Ch.4 · 原書 p.91-115</div>
+  <h1 class="bigtitle">招式 1：<span class="orange">損益表</span></h1>
+  <div class="en-sub">Income Statement — Profitability</div>
+  <div class="insight-box"><strong>公司有沒有賺錢？</strong> 答案在這張。從營收一路扣到淨利，每層都看「品質」。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">5 層結構</h3>
+      <ul><li><span class="ico">●</span><strong>營收</strong> Revenue</li><li><span class="ico">●</span>  - <strong>銷貨成本</strong> COGS</li><li><span class="ico">●</span>= <strong>毛利</strong> Gross Profit</li><li><span class="ico">●</span>  - 營業費用 OpEx</li><li><span class="ico">●</span>= <strong>營業利益</strong> → 稅後 → <strong>EPS</strong></li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">毛利率</h3>
+      <ul><li><span class="ico">●</span>= 毛利 ÷ 營收</li><li><span class="ico">●</span>看<strong>產品本身</strong>有沒有競爭力</li><li><span class="ico">●</span>台積電 50%+ / 鴻海 ~6%</li><li><span class="ico">●</span>高毛利 = 高定價權</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">營業利益率</h3>
+      <ul><li><span class="ico">●</span>= 營業利益 ÷ 營收</li><li><span class="ico">●</span>看<strong>整體營運效率</strong>（含管銷研）</li><li><span class="ico">●</span>扣掉非核心收入後最乾淨</li><li><span class="ico">●</span>比 EPS 更難造假</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">EPS 迷思</h3>
+      <ul><li><span class="ico">●</span>EPS 高 ≠ 公司好</li><li><span class="ico">●</span>可被買回庫藏股拉高</li><li><span class="ico">●</span>可被一次性收入美化</li><li><span class="ico">●</span><strong>配合本益比 + EPS 成長率</strong>看才準</li></ul>
+    </div></div>
+  <div class="takeaway">毛利率 + 營業利益率 + EPS 成長率 = <span class="red-wavy">獲利三劍</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">9/18</div>
+  <div class="chapter-tag">Ch.5 · 原書 p.116-130</div>
+  <h1 class="bigtitle">招式 2：<span class="green">綜合損益表</span></h1>
+  <div class="en-sub">Comprehensive Income — Market waves</div>
+  <div class="insight-box"><strong>「穿透企業的市場重力波」</strong>。除了損益表的數字外，加上匯率、股權投資、避險工具的影響。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">為什麼需要</h3>
+      <ul><li><span class="ico">●</span><strong>外匯換算</strong>：海外子公司影響</li><li><span class="ico">●</span><strong>金融資產評價</strong>：股票市值起伏</li><li><span class="ico">●</span><strong>避險工具</strong>：選擇權 / 期貨損益</li><li><span class="ico">●</span>這些不在傳統損益表</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">公式</h3>
+      <ul><li><span class="ico">●</span><strong>綜合損益 = 本期淨利 + 其他綜合損益</strong></li><li><span class="ico">●</span>其他綜合損益 = OCI</li><li><span class="ico">●</span>可能正可能負</li><li><span class="ico">●</span>= 真實財富變動</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">什麼公司影響大</h3>
+      <ul><li><span class="ico">●</span><strong>跨國企業</strong>（如台積電 / 鴻海）</li><li><span class="ico">●</span><strong>金融業</strong>（股債部位大）</li><li><span class="ico">●</span><strong>有避險的出口商</strong></li><li><span class="ico">●</span>純內銷 SMB 影響小</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">4</span>
+      <h3 style="border-bottom-color:var(--green);">看點</h3>
+      <ul><li><span class="ico">●</span>OCI 大幅波動 → 業外風險增</li><li><span class="ico">●</span>長期累積（保留盈餘 vs OCI 累積）</li><li><span class="ico">●</span>別只看 EPS，要看完整圖</li></ul>
+    </div></div>
+  <div class="takeaway">跨國 / 金融業看到 OCI 起伏，<span class="red-wavy">才是完整盈虧</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAnFBMVEX////6/f21ydOAyNMAVIAApbuxw9ATXIXc8PJcvMkAprr///3X4ObA5ecAWIM9cpPK1d0AQ3ZPuMfz9/jf5+vS6u7q8PMATX1diqSnvcolaY2kuMePq74cq73j7e8AUX92lq1qkqpzjaeYscCAnbK43uWRz9ej1dxKeZhZgZ88scFuws4eYohOf5mZqbs2aY9OcpQoWoYAO3I3dJBs+m23AAAHYUlEQVR4nO2cDZOqNheACSIqIMQNBpCgsEQFxXrb/v//1vChIhtv571vu5LpeWZ2Rgiu55HkkISgpgEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8G9Dlz3Iu6P5/1gvptb0hrXuF/nOu4L6RdYfVvJxZzHvFfle9Lawfon9yUoO6zvzXjXD3kp/X2D/O+hoTZOjtJ0gc2MYKsmQg2UlSyQtyit3ppLM9pxYp7W0iLKZYagkM18IF3kqptksKJhCMuuPxFrIqpitUW8XlNRURsbeW1PrIC9zZjsjJZoyMiKNWclR2vQ1fWfMmKh+qsgQ4XLay4uiwK3i+pUSMqJNTMRV/1Ua2xle66CEjDY/W8lC7uKnbuDh9rUSMmuRkidzaZETukF5610qIIP2IiUf5JcXXBhB6t+2xi+DjifLepXGPMNg9L45chnbRofEsvZyl8jdGXmvaOwy5Gy96o1pqUjJT8GPXAZNpslC1vRtDYUr95bGOsYv8+Lysr0Erkhjdn/f+GWkJwY5xc7NtoO9asog3du5/EtWUFKGRNfdLP+a4VSUIewaXE1JtlZQhmRuUGDZ0erJkIvx6I09o5zMtjJ25TCNdagmg3eukb46WikZG0Wu4bKXRyslo0UzYxZpT5d9pE5HcyDDdmKA/NSDQctesWIyJX52Icd+l1otGTxIyeSQJMrKDK769JxYi16aVkvmmfmHZZ37pQrLrMV4+rztNyF1ZfbCZfJc75SVOVhJchzsU1RGpLHp16lnNWXmE8uSzA0oKVMvBJA5qiiz/LAS6dSzgjL70zSRTz3rs51iMsfk1UIAjblqydgT4fJi6jmv3EA6NzAShjLobE0T2RSnrRHuGqsxuwxl5gtr+vFqIcDOcLfPA4SR8SyzPomUbEvjdcrAfTXPMRb6MqhezzTRpDLYC2YpHfV5eZJBx8Q6HSRNXxjoVVD17qCNlIdMvZ7pJE9jKDZ2m3j8yxvvMvPJ1PqQr82izDA8XZ6tR8VNRqQx0RuTNoltbyHAuOlk1vUAWZ6rnNINipGnsY5WZnlKphP0NY3Z9UIAd5WNvum3NDL7ZDodDio78MZd8fE3/ZZa5mxZU/l6JhStDCP+5pB+HSFjiZS8lBYStnKvY+4mD0ATK2nWM0kSGU0DV34HbaTUixrO8ukZPwzcUKnV8kJm8shVto8fFDvjsZ5JCdDkaYCce3fEQGz8vbEB86e8y1cPgkiVlPwC6vRQoDcGAAAAAAAAAG9m3LPkA1BvvEL8X46dvGXYM4zWZ48wzBINi9F6v1+Tv1eMRjF/g2ePYTH+bViKDovJedHe4oh/Nq8R8n8+tJ9ia5QgTJobSf5thZxTER93s8i0rWY+IrfSZbImdL2uZfyK+a23KCXdGb6/DBnC3zwqzbOyqgMnzCuvabPL8VLvcmVNHHpRB4Z+S4tL9dnUvn1yDzBzvVCvvxH8o7h067f1a1GUuP5ysqIovO+dx2FB3Hy5eYEprZqa4VxLSvGm+e2FqGpk0plD6aZZC0w+ksParvfaxMubVr69moTGZf1//CCi21hvVTHFP75xEtfWWNF83zSsY8e/1wE5lV/fFfusz0C0aWQ+6/PEwuY96LiwuhUB3Y9NRN7W8XHzACrz7v87zOrtb5xdFzJZE5Zf1xfN/33byNRKZkl6MrE4Kg/v7+vWznrt955vLqJKZfWMbfo4pk4A9ltkCK8/lf2oN5z6sRL62VS5rzKUonp507Ing2v79upk7oiGKH2LjKbxVkbDBdfz9hk/5+rFOi+aBt21mVamrPccF8fl/tzeTuOFjuvExT3T5KzJZmGpx5f4JoO+V0aPuuTksM+0ndr3c8w/WZuccPsAgImRZutNjGg/OU8O7Zw65ak4ibZGos+0ewPJP9OoOTPNRVPXv1HGft3VsgeH2PZt15dOwd98wvfR3bF8+kz7vv9J9nHkIEJb+hIA/iP8tNY/WlO3NWxB8oVc78JGhFJCCelSNhFdaHLbsn0i+sSk+wEwceQWif40bQVo3UcexSDmgel5u2xVbtqw/JBnXsbD9hLkZHqYiwtq3LhtWcV9E6fd4MDkvi/GQv6YbkZhnqd4Y/IufMY4E3/tlu6FG365Dcl8vUI0YrzdpjzMGZ/lbEx3CQlnelTwuBuemSEvQ+63ERIWhU4Wm+11HeezCDv+TYZlWJyZ7agWB+FS1KWMd5UHe5c8y7oTI0RTz8lYkbfjBhYwzPSuI6PhTOcsZa+fgHwDziUV5yIM20fm/GjDWN5FL6pSXuKQdOdCCyuGfD1tC53wglNGilH9oB7mUcrDLLt931czisI2XiTqXMY3N5mYF1sWhl7bMyYxoyTrhhRjweRRlnPOuyma7SbMwu5njGzK4xBvtE7GJ57m+E7X2RY9bEKKP8a12CmKxeCkKrz2Rwyc8M9Iw2EzurGFKMEzU8u68JGr1au0OzWPsSoil+vY1qKQe11B28EOTeyg5PH6XoZo+4TwmDIzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMOQvfMSLRWURg2QAAAAASUVORK5CYII="/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">10/18</div>
+  <div class="chapter-tag">Ch.6 · 原書 p.131-160</div>
+  <h1 class="bigtitle">招式 3：<span class="orange">資產負債表</span></h1>
+  <div class="en-sub">Balance Sheet — Venice merchant</div>
+  <div class="insight-box"><strong>威尼斯商人的智慧</strong>：資產 = 負債 + 股東權益。某時間點的「財富快照」。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">三大區塊</h3>
+      <ul><li><span class="ico">●</span><strong>資產</strong>：公司擁有什麼（現金 / 庫存 / 設備）</li><li><span class="ico">●</span><strong>負債</strong>：公司欠誰（短貸 / 長債 / 應付）</li><li><span class="ico">●</span><strong>權益</strong>：扣完負債後屬於股東的</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">2</span>
+      <h3 style="border-bottom-color:var(--red);">資產比負債<span class='hl' style='color:var(--red);'>更危險</span></h3>
+      <ul><li><span class="ico">●</span><strong>負債</strong>：金額固定、容易協商</li><li><span class="ico">●</span><strong>資產</strong>：會貶值（庫存過時、應收呆帳）</li><li><span class="ico">●</span>「資產減損」往往一夕重創 EPS</li><li><span class="ico">●</span>例：2008 雷曼資產一夕蒸發</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">流動性配對</h3>
+      <ul><li><span class="ico">●</span><strong>短期負債 應用 短期資產 covering</strong></li><li><span class="ico">●</span>用長期資產（廠房）抵短債 = 找死</li><li><span class="ico">●</span>= 流動比率 + 速動比率</li><li><span class="ico">●</span>理想 > 1.5</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">避雷指標</h3>
+      <ul><li><span class="ico">●</span>商譽 / 無形資產佔比過高</li><li><span class="ico">●</span>應收帳款週轉天數異常拉長</li><li><span class="ico">●</span>存貨週轉率突降</li><li><span class="ico">●</span>= 資產品質惡化</li></ul>
+    </div></div>
+  <div class="takeaway">負債好估、資產難估 — <span class="red-wavy">資產比負債更危險</span>是這書神句。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">11/18</div>
+  <div class="chapter-tag">Ch.7 · 原書 p.161-180</div>
+  <h1 class="bigtitle">招式 4：<span class="orange">權益變動表</span></h1>
+  <div class="en-sub">Equity Changes — Who moved my cheese</div>
+  <div class="insight-box"><strong>「是誰動了我的奶酪？」</strong>本書最容易被忽略的一張表，但它反映管理層對股東是否公平。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">4 大變動來源</h3>
+      <ul><li><span class="ico">●</span><strong>淨利</strong>：賺來的（+）</li><li><span class="ico">●</span><strong>配息</strong>：發給股東（-）</li><li><span class="ico">●</span><strong>增資 / 庫藏股</strong>：股本變動</li><li><span class="ico">●</span><strong>OCI 累積</strong>：匯率 / 評價影響</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">保留盈餘</h3>
+      <ul><li><span class="ico">●</span>= 歷年淨利累積 - 歷年配息</li><li><span class="ico">●</span>代表公司「內生資金實力」</li><li><span class="ico">●</span>高保留盈餘 + 低負債 = 財務最強</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">3</span>
+      <h3 style="border-bottom-color:var(--red);">看不公平徵兆</h3>
+      <ul><li><span class="ico">●</span>經理人股票選擇權超發</li><li><span class="ico">●</span>用低於市價發給特定股東</li><li><span class="ico">●</span>重大決議閃避一般股東</li><li><span class="ico">●</span>= 把奶酪分給自己人</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">4</span>
+      <h3 style="border-bottom-color:var(--green);">看健康徵兆</h3>
+      <ul><li><span class="ico">●</span>定期透明配息（5 年穩定）</li><li><span class="ico">●</span>庫藏股買回 + 註銷（提升 EPS）</li><li><span class="ico">●</span>員工股票選擇權合理範圍 < 5%</li><li><span class="ico">●</span>= 對所有股東公平</li></ul>
+    </div></div>
+  <div class="takeaway">權益變動表看出<span class="red-wavy">管理層的心</span>—— 對股東是貪婪還是公平。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">12/18</div>
+  <div class="chapter-tag">Ch.8 · 原書 p.181-200</div>
+  <h1 class="bigtitle">招式 5：<span class="red">現金流量表</span></h1>
+  <div class="en-sub">Cash Flow — Don't run out of gas</div>
+  <div class="insight-box"><strong>「別只顧加速，卻忘了油箱沒油」</strong>。現金不是 EPS，是真實能用的鈔票。劉順仁稱為「評估企業持續經營的核心工具」。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">三類現金流</h3>
+      <ul><li><span class="ico">●</span><strong>OCF 營運現金流</strong> — 本業賺錢</li><li><span class="ico">●</span><strong>ICF 投資現金流</strong> — 買設備 / 投資 (通常 -)</li><li><span class="ico">●</span><strong>FCF 融資現金流</strong> — 借錢 / 還錢 / 配息</li><li><span class="ico">●</span>三者加總 = 期末現金變動</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">OCF > 淨利 = 健康</h3>
+      <ul><li><span class="ico">●</span>淨利可造假，現金不會說謊</li><li><span class="ico">●</span>OCF > 淨利 = 賺到真錢</li><li><span class="ico">●</span>OCF < 淨利 = 帳上賺、現金沒進來</li><li><span class="ico">●</span>可能是應收帳款拉長、庫存堆積</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">3</span>
+      <h3 style="border-bottom-color:var(--green);">自由現金流（FCF）</h3>
+      <ul><li><span class="ico">●</span><strong>FCF = OCF - CapEx</strong></li><li><span class="ico">●</span>= 公司「真自由能用」的錢</li><li><span class="ico">●</span>高 FCF = 高股東報酬潛力</li><li><span class="ico">●</span>= 巴菲特最看重指標</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">4 大現金 pattern</h3>
+      <ul><li><span class="ico">●</span><strong>成長型</strong>：OCF + / ICF -- / FCF + → 借錢擴張</li><li><span class="ico">●</span><strong>績優型</strong>：OCF +++ / ICF - / FCF -</li><li><span class="ico">●</span><strong>地雷型</strong>：OCF - / ICF + / FCF +</li><li><span class="ico">●</span><strong>夕陽型</strong>：OCF + / ICF + / FCF -</li></ul>
+    </div></div>
+  <div class="takeaway">損益表造假容易，<span class="red-wavy">現金流量表造假極難</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">13/18</div>
+  <div class="chapter-tag">Ch.10 · 原書 p.221-240</div>
+  <h1 class="bigtitle">進階 1：<span class="green">盈餘品質 5 條件</span></h1>
+  <div class="en-sub">Quality of Earnings: 5 Criteria</div>
+  <div class="insight-box"><strong>同樣 EPS 1 元，品質可能差很大</strong>。劉順仁在第 10 章列 5 條件評估「盈餘質量」。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">高持續性</h3>
+      <ul><li><span class="ico">●</span>每季 / 每年都穩定的盈餘</li><li><span class="ico">●</span>vs 一次性收入（賣土地 / 業外）</li><li><span class="ico">●</span>= 可預期未來</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">高可預測性</h3>
+      <ul><li><span class="ico">●</span>變動有跡可循（季節性）</li><li><span class="ico">●</span>管理層 guidance 跟結果接近</li><li><span class="ico">●</span>= 投資人能規劃</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">3</span>
+      <h3 style="border-bottom-color:var(--green);">高現金轉換性</h3>
+      <ul><li><span class="ico">●</span>賺的「帳上盈餘」轉成 OCF 比率高</li><li><span class="ico">●</span>OCF / 淨利 > 1 最理想</li><li><span class="ico">●</span>< 0.7 = 警鈴（帳賺現沒）</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">低變異 + 低人為操縱</h3>
+      <ul><li><span class="ico">●</span><strong>低變異</strong>：相對同業 / 自身歷史不大起大落</li><li><span class="ico">●</span><strong>低人為操縱</strong>：少用會計裁量空間（如折舊年限 / 庫存方法切換）</li><li><span class="ico">●</span>= 經得起會計師檢驗</li></ul>
+    </div></div>
+  <div class="takeaway">5 條件全勾 = <span class="red-wavy">真正的高品質公司</span>，值得長抱。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">14/18</div>
+  <div class="chapter-tag">Ch.8 + Ch.11 · 原書 p.190-260</div>
+  <h1 class="bigtitle">進階 2：<span class="orange">4 大企業類型</span></h1>
+  <div class="en-sub">Four Company Archetypes</div>
+  <div class="insight-box"><strong>從現金流組合認出企業類型</strong>。每種策略不同、風險不同、估值方法不同。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">成長型</h3>
+      <ul><li><span class="ico">●</span>OCF + / ICF -- / FCF +</li><li><span class="ico">●</span>本業賺、大舉投資、借錢擴張</li><li><span class="ico">●</span>例：早期亞馬遜 / 特斯拉</li><li><span class="ico">●</span>風險：擴張失敗則崩</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">2</span>
+      <h3 style="border-bottom-color:var(--green);">績優型</h3>
+      <ul><li><span class="ico">●</span>OCF +++ / ICF - / FCF -</li><li><span class="ico">●</span>本業狂賺、適度投資、回饋股東</li><li><span class="ico">●</span>例：台積電 / 鴻海 / 蘋果</li><li><span class="ico">●</span>= 巴菲特最愛</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">3</span>
+      <h3 style="border-bottom-color:var(--red);">地雷型</h3>
+      <ul><li><span class="ico">●</span>OCF - / ICF + / FCF +</li><li><span class="ico">●</span>本業虧損、賣資產求生、借錢度日</li><li><span class="ico">●</span>例：諸多面板廠衰退期</li><li><span class="ico">●</span>= 一定避開</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">夕陽型</h3>
+      <ul><li><span class="ico">●</span>OCF + / ICF + / FCF -</li><li><span class="ico">●</span>本業還賺、賣老資產、還債縮表</li><li><span class="ico">●</span>例：某些紙業 / 傳產</li><li><span class="ico">●</span>可能是高息股，但無成長</li></ul>
+    </div></div>
+  <div class="takeaway">看 3 個現金流的<span class="red-wavy">正負組合</span> → 1 秒分類企業。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">15/18</div>
+  <div class="chapter-tag">Ch.12 · 原書 p.261-280</div>
+  <h1 class="bigtitle">進階 3：<span class="red">避開地雷股 5 要訣</span></h1>
+  <div class="en-sub">Five Red Flags</div>
+  <div class="insight-box"><strong>劉順仁第 12 章「最重要的是要隨時保護你自己」</strong>。看到 1 個警鈴升警覺，看到 2 個直接撤。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">1</span>
+      <h3 style="border-bottom-color:var(--red);">董監事異常</h3>
+      <ul><li><span class="ico">●</span><strong>持股比例異常低</strong>（< 10%）</li><li><span class="ico">●</span><strong>質押比例異常高</strong>（> 50%）</li><li><span class="ico">●</span>= 管理層不信自家股票</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">2</span>
+      <h3 style="border-bottom-color:var(--red);">大股東出脫</h3>
+      <ul><li><span class="ico">●</span>大股東 / 機構大幅減持</li><li><span class="ico">●</span>尤其在「沒有公告壞消息」時</li><li><span class="ico">●</span>= 內線提早跑</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">3</span>
+      <h3 style="border-bottom-color:var(--red);">董監結構異常</h3>
+      <ul><li><span class="ico">●</span>獨董短期內辭職</li><li><span class="ico">●</span>董事會席次「自己人」過多</li><li><span class="ico">●</span>= 公司治理崩</li></ul>
+    </div><div class="cell" style="border-color:var(--red);">
+      <span class="num-circle" style="background:var(--red);">4</span>
+      <h3 style="border-bottom-color:var(--red);">會計變動 + 人事頻變</h3>
+      <ul><li><span class="ico">●</span><strong>會計師變更</strong>（特別是 Big 4 → 小所）</li><li><span class="ico">●</span><strong>保留意見</strong> / <strong>無法表示意見</strong></li><li><span class="ico">●</span><strong>CFO / CEO / 內審 1 年內換 2 次</strong></li><li><span class="ico">●</span>= 帳本有鬼</li></ul>
+    </div></div>
+  <div class="takeaway">5 個警鈴出現 <span class="red-wavy">2 個以上</span> → 立刻撤，不要僥倖。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">16/18</div>
+  <div class="chapter-tag">Ch.13 · 原書 p.281-290</div>
+  <h1 class="bigtitle">進階 4：用 <span class="green">孫子兵法</span> 看財報</h1>
+  <div class="en-sub">Sun Tzu meets Financial Statements</div>
+  <div class="insight-box"><strong>本書最別出心裁的一章</strong>：把財報分析跟「知彼知己、百戰不殆」對應。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">知彼：分析競爭對手</h3>
+      <ul><li><span class="ico">●</span>拿同業 3-5 家財報比較</li><li><span class="ico">●</span>毛利率 / OCF / ROE 排序</li><li><span class="ico">●</span>看誰護城河最寬</li><li><span class="ico">●</span>= 找產業 winner</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">知己：誠實看自己</h3>
+      <ul><li><span class="ico">●</span>把自己公司放進同樣比較</li><li><span class="ico">●</span>別美化、別合理化弱項</li><li><span class="ico">●</span>= 找改進方向</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">上兵伐謀：策略選戰場</h3>
+      <ul><li><span class="ico">●</span>從財報看出市場結構</li><li><span class="ico">●</span>進入毛利率 30%+ 的「藍海」</li><li><span class="ico">●</span>避開毛利 < 10% 的「紅海」</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">4</span>
+      <h3 style="border-bottom-color:var(--orange);">其疾如風 / 其徐如林</h3>
+      <ul><li><span class="ico">●</span><strong>疾</strong>：發現機會立刻行動（成長型）</li><li><span class="ico">●</span><strong>徐</strong>：判斷不明寧可不動</li><li><span class="ico">●</span>= 用財報節奏判斷時機</li></ul>
+    </div></div>
+  <div class="takeaway">財報 + 兵法 = <span class="red-wavy">商業判斷力</span>的雙翼。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide">
+  <div class="page-num">17/18</div>
+  <div class="chapter-tag">Ch.14 · 原書 p.291-310</div>
+  <h1 class="bigtitle">外一章：<span class="orange">何麗梅</span> 說台積電</h1>
+  <div class="en-sub">Lora Ho · TSMC CFO</div>
+  <div class="insight-box"><strong>劉順仁訪問台積電前財務長何麗梅</strong>，談「如何用財報向法人說故事」。實戰級的 storytelling 範本。</div>
+  <div class="grid"><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">1</span>
+      <h3 style="border-bottom-color:var(--orange);">對法人的 3 原則</h3>
+      <ul><li><span class="ico">●</span><strong>長期視角</strong>：不講單季震盪</li><li><span class="ico">●</span><strong>透明數字</strong>：CapEx / R&D / 產能利用率全公開</li><li><span class="ico">●</span><strong>競爭格局</strong>：不只說自己、說產業</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">2</span>
+      <h3 style="border-bottom-color:var(--orange);">台積電年報的秘密</h3>
+      <ul><li><span class="ico">●</span>100+ 頁深度揭露（同業 30 頁）</li><li><span class="ico">●</span>MD&A 詳細解釋每個變動</li><li><span class="ico">●</span>= 法人最信任的台廠</li></ul>
+    </div><div class="cell" style="border-color:var(--ink-1);">
+      <span class="num-circle" style="background:var(--orange);">3</span>
+      <h3 style="border-bottom-color:var(--orange);">說故事 3 層次</h3>
+      <ul><li><span class="ico">●</span><strong>短期</strong>：本季 vs 預期</li><li><span class="ico">●</span><strong>中期</strong>：1-3 年技術路線圖</li><li><span class="ico">●</span><strong>長期</strong>：5-10 年願景</li></ul>
+    </div><div class="cell" style="border-color:var(--green);">
+      <span class="num-circle" style="background:var(--green);">4</span>
+      <h3 style="border-bottom-color:var(--green);">為什麼學她</h3>
+      <ul><li><span class="ico">●</span>不論你 CFO / 老闆 / 經理人</li><li><span class="ico">●</span>「向法人說故事」= 對外溝通能力</li><li><span class="ico">●</span>= 募資 / IPO / 出售 都用得到</li></ul>
+    </div></div>
+  <div class="takeaway">台積電 30 年股價神話，<span class="red-wavy">一半是技術一半是故事</span>。</div>
+  <div class="footer-mini"><img src="data:image/png;base64,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"/>導讀 Evin · 整理 IRIS</div>
+</section><section class="slide cover">
+  <div class="page-num">18/18</div>
+  <h1 class="bigtitle">下一步：<span class="green">3 個練習</span></h1>
+  <div class="en-sub">Start reading reports tomorrow.</div>
+  <div class="insight-box" style="max-width:840px;">
+    <strong>讀完不練 = 沒讀</strong>。挑下面 3 件事做 — 今天 / 這週 / 這月各 1 件。<span class="red-wavy">3 個月後</span>你會習慣性「先看財報再下判斷」。
+  </div>
+  <div class="grid" style="max-width:880px;">
+    <div class="cell"><span class="num-circle">1</span><h3>今天</h3>
+      <ul>
+        <li><span class="ico">●</span>挑 1 家你常用的公司（如台積電、富邦）</li>
+        <li><span class="ico">●</span>從公開資訊觀測站抓最新年報 PDF</li>
+        <li><span class="ico">●</span>跑一次 1-2-3-4-5 架構</li>
+      </ul>
+    </div>
+    <div class="cell"><span class="num-circle">2</span><h3>這週</h3>
+      <ul>
+        <li><span class="ico">●</span>用「現金流 3 類正負組合」</li>
+        <li><span class="ico">●</span>把你持有的 5 支股 分類</li>
+        <li><span class="ico">●</span>看看是否有地雷型混進去</li>
+      </ul>
+    </div>
+    <div class="cell full"><span class="num-circle">3</span><h3>這月</h3>
+      <ul>
+        <li><span class="ico">●</span>把 P15 避雷 5 警鈴印出來貼桌前</li>
+        <li><span class="ico">●</span>每次想投資前過一輪 — 看到 2 個警鈴就 pass</li>
+      </ul>
+    </div>
+  </div>
+  <div class="takeaway" style="max-width:880px;">會讀財報後 → <span class="red-wavy">你就再也不需要別人告訴你公司好不好</span>。</div>
+  <div class="credits">
+    <img src="data:image/png;base64,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"/>
+    <div>
+      <strong>導讀者</strong>：Evin Lin（林奕帆） &nbsp;|&nbsp;
+      <strong>協作整理</strong>：IRIS（羅賓斯科技 社群代理人）<br/>
+      <em>原著：劉順仁 · 台大會計系教授 · 大塊文化出版 · 最新增訂版 2018</em>
+    </div>
+  </div>
+</section>
+</body>
+</html>
