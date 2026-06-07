@@ -112,8 +112,32 @@
     background: #F8FAFC;
   }
   .transcript-card .list .item.active {
-    background: #FBE5C9;
-    border-left: 4px solid #E89E3F;
+    background: linear-gradient(90deg, #E89E3F 0%, #F4C078 100%);
+    border-left: 6px solid #C26F1A;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(232,158,63,0.4);
+    transition: all 0.2s ease;
+  }
+  .transcript-card .list .item.active .time {
+    color: white;
+    font-weight: 900;
+  }
+  .transcript-card .list .item.active .en {
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .transcript-card .list .item.active .zh {
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+  }
+  .video-card .current-sub.pulse .zh {
+    animation: pulse-glow 1.5s ease-in-out;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 0 transparent; }
+    50% { text-shadow: 0 0 16px rgba(232,158,63,0.8); }
   }
   .transcript-card .list .item .time {
     font-size: 11px;
@@ -174,6 +198,12 @@
         <div class="en" id="current-en">Playing video...</div>
         <div class="zh" id="current-zh">影片載入中</div>
       </div>
+      <div style="background:#0F1F4D;color:white;padding:10px 22px;display:flex;align-items:center;gap:12px;font-size:13px;">
+        <label style="white-space:nowrap;color:rgba(255,255,255,0.85);font-weight:700;">字幕 offset：</label>
+        <input type="range" id="offset-slider" min="-3" max="3" step="0.1" value="-1.5" style="flex:1;accent-color:#E89E3F;">
+        <span id="offset-display" style="font-family:monospace;font-weight:800;color:#E89E3F;min-width:50px;text-align:right;">-1.5s</span>
+        <button id="reset-offset" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">↺</button>
+      </div>
     </div>
 
     <div class="transcript-card">
@@ -210,6 +240,21 @@ count.textContent = SUBTITLES.length + ' 句';
 
 let player = null;
 let currentIdx = -1;
+let subOffset = -1.5;  // seconds, negative = subtitles appear earlier (compensate YouTube CC delay)
+
+// Offset slider
+const offsetSlider = document.getElementById('offset-slider');
+const offsetDisplay = document.getElementById('offset-display');
+const resetBtn = document.getElementById('reset-offset');
+offsetSlider.addEventListener('input', () => {
+  subOffset = parseFloat(offsetSlider.value);
+  offsetDisplay.textContent = `${subOffset >= 0 ? '+' : ''}${subOffset.toFixed(1)}s`;
+});
+resetBtn.addEventListener('click', () => {
+  subOffset = -1.5;
+  offsetSlider.value = -1.5;
+  offsetDisplay.textContent = '-1.5s';
+});
 
 function timeToSec(t) {
   // "00:01:23,456" → seconds
@@ -256,13 +301,17 @@ function onYouTubeIframeAPIReady() {
 
 function updateSub() {
   if (!player || !player.getCurrentTime) return;
-  const t = player.getCurrentTime();
+  const t = player.getCurrentTime() - subOffset;  // shift forward by abs(offset) when offset is negative
   let active = -1;
-  for (let i = 0; i < SUBTITLES.length; i++) {
+  // Find latest subtitle whose start <= t (overlap-safe)
+  for (let i = SUBTITLES.length - 1; i >= 0; i--) {
     const { start, end } = parseTimeRange(SUBTITLES[i].time);
-    if (t >= start && t <= end) {
-      active = i;
-      break;
+    if (t >= start) {
+      // Only treat as active if also within end OR no later cue has started
+      if (t <= end + 2) {  // 2s grace for cue end
+        active = i;
+        break;
+      }
     }
   }
   if (active !== currentIdx) {
@@ -271,6 +320,11 @@ function updateSub() {
       const sub = SUBTITLES[active];
       curEn.textContent = sub.en;
       curZh.textContent = sub.zh;
+      // Pulse animation on bottom subtitle
+      const subBox = document.getElementById('current-sub');
+      subBox.classList.remove('pulse');
+      void subBox.offsetWidth;  // force reflow to restart animation
+      subBox.classList.add('pulse');
       // Highlight in list + scroll
       document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
       const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
