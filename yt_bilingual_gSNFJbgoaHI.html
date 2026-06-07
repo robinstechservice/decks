@@ -139,6 +139,23 @@
     0%, 100% { text-shadow: 0 0 0 transparent; }
     50% { text-shadow: 0 0 16px rgba(232,158,63,0.8); }
   }
+  /* Word-level karaoke: spoken words turn green */
+  .video-card .current-sub .en .spoken {
+    color: #6BB05E;
+    transition: color 0.15s;
+    text-shadow: 0 0 8px rgba(107,176,94,0.4);
+  }
+  .video-card .current-sub .zh .spoken {
+    color: #6BB05E;
+    transition: color 0.1s;
+    text-shadow: 0 0 12px rgba(107,176,94,0.5);
+  }
+  .video-card .current-sub .en .pending {
+    color: rgba(255,255,255,0.55);
+  }
+  .video-card .current-sub .zh .pending {
+    color: rgba(232,158,63,0.55);
+  }
   .transcript-card .list .item .time {
     font-size: 11px;
     color: #4F7A3B;
@@ -301,14 +318,12 @@ function onYouTubeIframeAPIReady() {
 
 function updateSub() {
   if (!player || !player.getCurrentTime) return;
-  const t = player.getCurrentTime() - subOffset;  // shift forward by abs(offset) when offset is negative
+  const t = player.getCurrentTime() - subOffset;
   let active = -1;
-  // Find latest subtitle whose start <= t (overlap-safe)
   for (let i = SUBTITLES.length - 1; i >= 0; i--) {
     const { start, end } = parseTimeRange(SUBTITLES[i].time);
     if (t >= start) {
-      // Only treat as active if also within end OR no later cue has started
-      if (t <= end + 2) {  // 2s grace for cue end
+      if (t <= end + 2) {
         active = i;
         break;
       }
@@ -318,13 +333,15 @@ function updateSub() {
     currentIdx = active;
     if (active >= 0) {
       const sub = SUBTITLES[active];
-      curEn.textContent = sub.en;
-      curZh.textContent = sub.zh;
-      // Pulse animation on bottom subtitle
-      const subBox = document.getElementById('current-sub');
-      subBox.classList.remove('pulse');
-      void subBox.offsetWidth;  // force reflow to restart animation
-      subBox.classList.add('pulse');
+      // Init word-level structure
+      const enWords = sub.en.split(/(\s+)/);  // keep whitespace
+      const zhChars = [...sub.zh];  // unicode-safe
+      curEn.innerHTML = enWords.map((w, i) =>
+        w.trim() ? `<span class="word-en" data-idx="${i}">${escapeHtml(w)}</span>` : w
+      ).join('');
+      curZh.innerHTML = zhChars.map((c, i) =>
+        `<span class="word-zh" data-idx="${i}">${escapeHtml(c)}</span>`
+      ).join('');
       // Highlight in list + scroll
       document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
       const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
@@ -336,6 +353,26 @@ function updateSub() {
       curEn.textContent = '';
       curZh.textContent = '';
     }
+  }
+
+  // Word-level karaoke (proportional progress within current cue)
+  if (active >= 0) {
+    const sub = SUBTITLES[active];
+    const { start, end } = parseTimeRange(sub.time);
+    const dur = Math.max(0.5, end - start);
+    const progress = Math.max(0, Math.min(1, (t - start) / dur));
+    // EN words
+    const enSpans = curEn.querySelectorAll('.word-en');
+    const activeEn = Math.floor(enSpans.length * progress);
+    enSpans.forEach((sp, i) => {
+      sp.className = 'word-en ' + (i < activeEn ? 'spoken' : (i === activeEn ? 'spoken' : 'pending'));
+    });
+    // ZH chars
+    const zhSpans = curZh.querySelectorAll('.word-zh');
+    const activeZh = Math.floor(zhSpans.length * progress);
+    zhSpans.forEach((sp, i) => {
+      sp.className = 'word-zh ' + (i < activeZh ? 'spoken' : (i === activeZh ? 'spoken' : 'pending'));
+    });
   }
 }
 </script>
