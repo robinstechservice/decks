@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>How to Build an AI-Native Services Company · 中英雙語字幕</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Heiti TC", -apple-system, sans-serif;
+    background: #0F1F4D;
+    color: #1E1E1E;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  header {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  header img { height: 40px; }
+  header .title-block { flex: 1; }
+  header h1 { font-size: 20px; font-weight: 900; color: #0F1F4D; line-height: 1.2; }
+  header .meta { font-size: 13px; color: #6E6E6E; margin-top: 4px; }
+  header .credit { font-size: 12px; color: #4F7A3B; font-weight: 700; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  .video-card {
+    background: black;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+  }
+  .video-card .current-sub {
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 16px 22px;
+    text-align: center;
+    min-height: 100px;
+  }
+  .video-card .current-sub .en {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 6px;
+  }
+  .video-card .current-sub .zh {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #E89E3F;
+    font-weight: 800;
+  }
+
+  .transcript-card {
+    background: white;
+    border-radius: 14px;
+    height: 80vh;
+    max-height: 720px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .transcript-card .header {
+    padding: 14px 20px;
+    border-bottom: 2px solid #E0E7F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .transcript-card .header h2 {
+    font-size: 16px;
+    font-weight: 900;
+    color: #0F1F4D;
+  }
+  .transcript-card .header .count {
+    font-size: 12px;
+    color: #6E6E6E;
+  }
+  .transcript-card .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .transcript-card .list .item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .transcript-card .list .item:hover {
+    background: #F8FAFC;
+  }
+  .transcript-card .list .item.active {
+    background: #FBE5C9;
+    border-left: 4px solid #E89E3F;
+  }
+  .transcript-card .list .item .time {
+    font-size: 11px;
+    color: #4F7A3B;
+    font-weight: 800;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .transcript-card .list .item .en {
+    font-size: 14px;
+    color: #3A3A3A;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .transcript-card .list .item .zh {
+    font-size: 15px;
+    color: #0F1F4D;
+    margin-top: 3px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #6E6E6E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .right {
+    color: #2F5C28;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="data:image/png;base64,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" alt="羅賓斯科技"/>
+    <div class="title-block">
+      <h1>How to Build an AI-Native Services Company</h1>
+      <div class="meta">Y Combinator · 2025 · YouTube · 中英雙語字幕</div>
+      <div class="credit">📖 學員：Evin Lin · 整理 IRIS · 翻譯 Calliope · 轉錄 Eos</div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div class="video-card">
+      <iframe id="ytplayer"
+        src="https://www.youtube.com/embed/gSNFJbgoaHI?enablejsapi=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <div class="current-sub" id="current-sub">
+        <div class="en" id="current-en">Playing video...</div>
+        <div class="zh" id="current-zh">影片載入中</div>
+      </div>
+    </div>
+
+    <div class="transcript-card">
+      <div class="header">
+        <h2>📜 完整逐字稿（點任一句跳到影片時間）</h2>
+        <span class="count" id="count">— 句</span>
+      </div>
+      <div class="list" id="list">
+        <!-- subtitles injected here -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="left">永久 hosting · GitHub Pages · 自動發佈</div>
+    <div class="right">🦊 羅賓斯科技 · 學員學習資料庫</div>
+  </footer>
+<div style="background:#FFFBEB;border:1.5px solid #E89E3F;border-radius:8px;padding:10px 16px;margin-top:12px;font-size:11px;color:#6E6E6E;text-align:center;">
+  ⚠️ Source: YouTube @YCombinator — <a href="https://youtu.be/gSNFJbgoaHI" style="color:#0F1F4D;text-decoration:underline;">原始影片</a> · 字幕為 AI 自動轉錄 + 翻譯（Whisper + Gemini）· For internal Robinstech use only · 個人學習參考
+</div>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+// === SUBTITLE DATA INJECTED HERE BY BUILD ===
+const SUBTITLES = [{"idx": 1, "time": "00:00:09,359 --> 00:00:24,640", "en": "Some of the biggest companies of the next decade won't be software businesses at all. They'll be services companies like insurance carriers and law firms rebuilt from scratch with AI doing most", "zh": "未來十年一些最大的公司將不會是軟體業務。它們會是服務型公司，例如保險公司和法律事務所，從零打造，並由 AI 完成大部分"}, {"idx": 2, "time": "00:00:20,800 --> 00:00:35,039", "en": "of the work. These are what we call AI native service companies. And the markets are trillions of dollars in size. tax, audit, insurance, law, parts of healthcare, and so forth. This", "zh": "工作。我們稱這些為 AI 原生服務型公司。這些市場規模高達數兆美元，涵蓋稅務、審計、保險、法律、部分醫療保健等等。這個"}, {"idx": 3, "time": "00:00:31,199 --> 00:00:45,039", "en": "opportunity didn't exist even a couple years ago. But advances in the models have unlocked this new type of business where companies provide the outcome to the customer versus build a co-pilot", "zh": "機會甚至在幾年前都不存在。但模型方面的進步開啟了這種新型業務，公司直接向客戶提供成果，而非打造一個客戶內部使用的 co-pilot。"}, {"idx": 4, "time": "00:00:41,359 --> 00:00:54,799", "en": "that the customer uses internally. These companies also look and feel different than most startups today. In this video, I'll walk through a playbook for founders starting AI services businesses", "zh": "客戶內部使用的 co-pilot。這些公司也與當今大多數新創的外觀和感覺不同。在這支影片中，我將為從零打造 AI 服務業務的創辦人介紹一份策略手冊，"}, {"idx": 5, "time": "00:00:50,878 --> 00:01:04,640", "en": "from scratch. It's aimed at people thinking about starting a company, not if you're already running one. I'll share some obvious and non-obvious elements of building these businesses", "zh": "從零打造。這針對的是考慮創業的人，而不是那些已經在經營公司的人。我將分享我們在 YC 觀察到，建立這些業務的一些明顯和非明顯的要素。"}, {"idx": 6, "time": "00:00:59,679 --> 00:01:15,679", "en": "that we've observed here at YC. Topics include picking a market, forming a team, building the actual product, serving the customers, the P&L, and whether or not you should even buy a", "zh": "我們在 YC 觀察到，建立這些業務的一些明顯和非明顯的要素。主題包括選擇市場、組建團隊、打造實際的產品、服務客戶、P&L，以及你是否應該收購一家"}, {"idx": 7, "time": "00:01:11,599 --> 00:01:20,240", "en": "business. One general comment before we get started. We're still early here.", "zh": "公司。在我們開始之前，有一點總體看法。我們仍處於早期階段。"}, {"idx": 8, "time": "00:01:15,680 --> 00:01:30,478", "en": "Like most things in AI, the market is moving fast. We're learning as we go, but the early successes here should get you really excited. First, picking the right market. The same general advice", "zh": "就像 AI 中的大多數事物一樣，市場正在快速發展。我們邊做邊學，但這裡的早期成功案例應該會讓你非常興奮。首先，選擇正確的市場。同樣的一般性建議"}, {"idx": 9, "time": "00:01:26,719 --> 00:01:42,478", "en": "for all startups applies here with some important caveats. You should pick a market you're excited to work in for a long time. These companies still take a decade or more. If you don't love some", "zh": "適用於所有新創，但有一些重要的注意事項。你應該選擇一個你有熱情長期投入的市場。這些公司仍然需要十年甚至更長時間才能成功。如果你不喜歡"}, {"idx": 10, "time": "00:01:37,438 --> 00:01:53,920", "en": "combination of the customers or the market or the technical problem, you're not going to make it. And that part isn't really new. But the best markets for AI services have four new pretty", "zh": "客戶、市場或技術問題的任何組合，你就不會成功。這部分其實不新鮮。但最適合 AI 服務的市場有四個相當獨特的新特點。"}, {"idx": 11, "time": "00:01:48,719 --> 00:02:04,320", "en": "unique traits. The first is low trust, meaning the work is already outsourced and the customer cares about the final product, not how they got there. You're displacing a vendor, not asking the", "zh": "特點。第一個是低信任度，這表示工作已經外包，客戶關心的是最終產品，而不是其產生的過程。你正在取代現有供應商，而不是要求"}, {"idx": 12, "time": "00:02:00,799 --> 00:02:14,959", "en": "customer to do something fundamentally different. That's a huge deal because you're not changing behavior. You're showing up where the budget already lives and doing the work. Second, low", "zh": "客戶做一些本質上不同的事情。這是一件大事，因為你沒有改變客戶行為。你出現在預算已經存在的地方，並完成工作。第二個特點是在任務層面上判斷力要求低。"}, {"idx": 13, "time": "00:02:10,479 --> 00:02:26,080", "en": "judgment at the task level. If you can break the work into pieces and every piece needs a human exercising actual judgment, you can't really scale. You need most of the steps to be automatable", "zh": "判斷力要求低。如果你能將工作拆分成多個部分，並且每個部分都需要人類做出實際判斷，你就很難真正擴張。你需要大多數步驟都是可自動化的，"}, {"idx": 14, "time": "00:02:21,520 --> 00:02:37,199", "en": "with judgment focused in a few places where humans stay in the loop. The third is a high intelligence threshold. This sounds contradictory, but actually it isn't. The overall work has to be hard.", "zh": "判斷力集中在少數幾個需要人類保持參與的地方。第三個特點是高智力門檻。這聽起來很矛盾，但實際上並非如此。整體工作必須很難。"}, {"idx": 15, "time": "00:02:33,439 --> 00:02:45,440", "en": "Hard enough that models plus humans are need to actually deliver an outcome the customer accepts. The fourth is regulation could actually be good.", "zh": "難到足以讓模型加上人類真正交付客戶接受的成果。第四個特點是法規實際上可能是一件好事。"}, {"idx": 16, "time": "00:02:41,360 --> 00:02:56,719", "en": "Regulated industries have higher expectations and legal accountability that raises the bar and the moat for founders. For instance, Panacea is a current YC company that provides FDA", "zh": "受監管的產業有更高的期望和法律責任，這提高了標準，並為創辦人建立了護城河。例如，Panacea 是一家目前的 YC 公司，提供 FDA"}, {"idx": 17, "time": "00:02:52,878 --> 00:03:07,598", "en": "regulatory services for biotechs and medteex. They actually hire experienced FDA consultants, pair them with an AI platform to deliver faster, higher quality FDA approvals. So, what are some", "zh": "生技公司和醫療科技公司的法規服務。他們實際僱用經驗豐富的 FDA 顧問，將他們與 AI 平台結合，以更快、更高品質的方式取得 FDA 批准。那麼，有哪些"}, {"idx": 18, "time": "00:03:03,199 --> 00:03:18,079", "en": "of the specific markets we have in mind here at YC? The known good fit markets include tax, audit, insurance, mortgages, parts of healthcare, and parts of logistics. But there are plenty", "zh": "我們在 YC 心中想到的具體市場呢？已知適合的市場包括稅務、審計、保險、抵押貸款、部分醫療保健和部分物流。但還有許多"}, {"idx": 19, "time": "00:03:14,639 --> 00:03:20,480", "en": "more markets nobody has touched yet.", "zh": "市場尚未被觸及。"}, {"idx": 20, "time": "00:03:16,400 --> 00:03:30,879", "en": "Don't hold yourself to the obvious ones or what people talk about on X. And here are a few more things to keep an eye on when it comes to the markets. The first is on the models. Will the models", "zh": "不要只局限於顯而易見的，或是人們在 X 上談論的。此外，關於這些市場，還有幾件事需要留意。首先是關於模型。模型是否會"}, {"idx": 21, "time": "00:03:26,400 --> 00:03:41,839", "en": "disrupt these businesses? It depends on what I call the Sam Alman test. You should ask yourself as the models get better, does your service get stronger or does the model itself commoditize", "zh": "顛覆這些業務？這取決於我所謂的 Sam Altman 測試。你應該問自己，隨著模型變得更好，你的服務是變得更強大，還是模型本身會使你的服務商品化？"}, {"idx": 22, "time": "00:03:37,199 --> 00:03:51,518", "en": "you? You want to be in the first camp where to be careful. Anything involving equipment and on-site labor. The software margin math doesn't apply when you own and operate physical things.", "zh": "你希望屬於第一種情況，但要小心。任何涉及設備和現場勞務的業務。當你擁有並營運實體物品時，軟體利潤率的計算就不適用了。"}, {"idx": 23, "time": "00:03:48,479 --> 00:04:02,318", "en": "It's very hard to create real leverage, though these can be really good businesses. Let's leave this area to the robotics founders. One more honesty check. Ask yourself sincerely, are you", "zh": "儘管這些可能是非常好的業務，但很難創造真正的槓桿效應。讓我們把這個領域留給機器人學創辦人。再做一次誠實檢驗。真誠地問自己，你是否"}, {"idx": 24, "time": "00:03:58,479 --> 00:04:11,920", "en": "using humans because the work genuinely needs judgment, or are you compensating for product gaps? Be honest here so you're not papering over product shortcomings with actual humans. There", "zh": "使用人類是因為工作確實需要判斷力，還是你正在彌補產品的不足？在這裡要誠實，這樣你才不會用實際的人力來掩蓋產品缺陷。仍有"}, {"idx": 25, "time": "00:04:08,560 --> 00:04:19,120", "en": "are still great massive technology businesses to be built with humans in the loop. Second, and maybe most importantly, the right founding team.", "zh": "許多龐大的科技業務，可以在人類參與下建立。第二點，或許也是最重要的一點，是合適的創始團隊。"}, {"idx": 26, "time": "00:04:15,598 --> 00:04:29,039", "en": "The same advice applies for all startups here, but again, with some important caveats. You should build companies with people you already know and you've worked with. If you're so low, think", "zh": "這些建議適用於這裡所有的新創，但再次強調，有些重要的注意事項。你們應該和已經認識且共事過的人一起創辦公司。如果你的人脈很有限，想想看"}, {"idx": 27, "time": "00:04:25,279 --> 00:04:39,680", "en": "about the best people you've ever worked with and ask them to join you. You'd be surprised who says yes. For AI services specifically, there's three attributes that all the best founders share. The", "zh": "你曾共事過最優秀的人，邀請他們加入。你會驚訝於誰會答應。對於 AI 服務型公司來說，所有最優秀的創辦人都具備三個特質。第"}, {"idx": 28, "time": "00:04:35,439 --> 00:04:50,800", "en": "first is domain fluency. Direct experience is best, but learned is actually okay. You're selling to skeptical buyers and often regulated spaces. You have to bleed credibility.", "zh": "一是領域知識的掌握度。直接經驗最好，但後天學習其實也沒關係。你們的客戶是懷疑論者，而且通常身處於受管制的領域。你必須展現極高的可信度。"}, {"idx": 29, "time": "00:04:46,240 --> 00:05:00,800", "en": "How you acquire it matters somewhat less. The second is model fluency. You need to know what frontier models can do today and design the product to ride the curve as they get better. There is no", "zh": "如何獲得這些可信度，重要性相對較低。第二是模型熟練度。你需要了解目前 frontier models 的能力，並設計產品以順應模型的改進趨勢。在這方面，沒有任何"}, {"idx": 30, "time": "00:04:56,319 --> 00:05:11,600", "en": "substitute for great tech here. People underestimate this. Next is operational rigor. Topics like variance, throughput, cycle times, SOPs. This is not an exciting set of words for most founders,", "zh": "能夠取代卓越技術的。人們常常低估了這一點。接下來是營運嚴謹性。像是 variance、throughput、cycle times、SOPs 等議題。對大多數創辦人來說，這些詞聽起來並不令人興奮，"}, {"idx": 31, "time": "00:05:08,160 --> 00:05:21,758", "en": "but you are fundamentally running an operation. You have to learn that skill set and you have to enjoy it or at least you have to respect it. The product is an operation. A great example here is", "zh": "但你們本質上是在經營一個營運體系。你們必須學習這套技能，而且必須樂在其中，或者至少要尊重它。產品就是一個營運體系。一個很好的例子是"}, {"idx": 32, "time": "00:05:17,519 --> 00:05:25,759", "en": "the general legal team which is an AI native law firm that YC recently backed.", "zh": "通用法律團隊（general legal team），這是一家 YC 最近投資的 AI 原生法律事務所。"}, {"idx": 33, "time": "00:05:21,759 --> 00:05:35,038", "en": "The founders have a unique mix of actual law firm experience at Cooling Fenwick as well as years of technical leadership at Caseex. But most importantly, they think deeply about throughput and how", "zh": "這些創辦人獨特地結合了在 Cooling Fenwick 的實際法律事務所經驗，以及在 Caseex 多年的技術領導經驗。但最重要的是，他們深入思考吞吐量以及如何"}, {"idx": 34, "time": "00:05:31,839 --> 00:05:43,038", "en": "they staff their firm. They've integrated shift work into how they serve clients to reduce cycle times and attract the best lawyers on the team.", "zh": "配置他們事務所的人力。他們將輪班制整合到服務客戶的方式中，以縮短週期時間並吸引最優秀的律師加入團隊。"}, {"idx": 35, "time": "00:05:39,199 --> 00:05:47,199", "en": "This is a win-win for scale. Now, let's talk about building the actual product.", "zh": "這對於擴張來說是雙贏的局面。現在，我們來談談如何打造實際產品。"}, {"idx": 36, "time": "00:05:43,038 --> 00:05:56,240", "en": "With AI services, the setup is the opposite of most software. The human is the interface of the customer, not the product. The product helps the human scale their work nonlinearly. That", "zh": "對於 AI 服務型公司來說，其設置與大多數軟體業務正好相反。人是客戶的介面，而不是產品。產品協助人類以非線性方式擴張工作。這"}, {"idx": 37, "time": "00:05:52,800 --> 00:06:02,320", "en": "changes pretty much everything around building the actual product. First, you need to apply an operations mindset.", "zh": "幾乎改變了所有關於打造實際產品的方面。首先，你需要應用營運思維。"}, {"idx": 38, "time": "00:05:58,160 --> 00:06:14,160", "en": "Find the bottlenecks and build for the bottlenecks. Throughput and cycle time are now product metrics. Track them like you would daily active users. Variance is the existential problem here. By", "zh": "找出瓶頸並為其打造解決方案。吞吐量和週期時間現在是產品指標。追蹤它們，就像你追蹤每日活躍用戶一樣。變異是這裡存在的根本問題。所謂的"}, {"idx": 39, "time": "00:06:09,439 --> 00:06:23,120", "en": "variance, I mean non-uniform outputs from your actual service. Customers will fire you for variance faster than they will fire you for being a bit slower or a bit more expensive than the", "zh": "變異，我指的是你的實際服務產出不一致。客戶會因為變異而淘汰你，比因為你比現有業者稍微慢一點或貴一點而淘汰你更快。"}, {"idx": 40, "time": "00:06:18,639 --> 00:06:34,239", "en": "incumbents. They need to trust the output. Inconsistency destroys trust, which causes churn. Thirdly, humans in the loop should scale nonlinearly. If revenue scales just in line with the", "zh": "現有業者。他們需要信任產出。不一致會破壞信任，導致流失。第三，在迴圈中的人類應該以非線性方式擴張。如果營收只隨著"}, {"idx": 41, "time": "00:06:30,399 --> 00:06:43,839", "en": "number of humans you add, you'll have major problems. The humans in the loop also need to enjoy the software. They are your users. A general point, it's okay to do things that don't scale at", "zh": "你所增加的人數而擴張，那將會出現大問題。在迴圈中的人類也需要喜歡這個軟體。他們是你的用戶。一般而言，一開始做一些無法擴張的事情是可以的，但最終你確實需要擴張。"}, {"idx": 42, "time": "00:06:40,079 --> 00:06:53,600", "en": "the very beginning, but eventually you really do need to scale. Automating the process is the product. Okay. Sales and customer success. The biggest challenge facing founders here is what I'll call", "zh": "但最終你確實需要擴張。自動化流程就是產品。好的。銷售與客戶成功。創辦人在這裡面臨的最大挑戰是我稱之為"}, {"idx": 43, "time": "00:06:49,360 --> 00:07:03,198", "en": "the early demand trap. It's easy to sign up a lot of pilot customers when you're just starting out and have nothing. But it can quickly overwhelm your ability to serve them and you won't be able to", "zh": "早期需求陷阱。當你剛開始，一無所有時，很容易就能簽下很多試點客戶。但這很快就會超出你的服務能力，你將無法"}, {"idx": 44, "time": "00:06:59,279 --> 00:07:13,439", "en": "build the product to scale. You'll be stuck using humans. It is a literal trap. Our advice here is to cap your first pilot customers to a small handful. Resist the temptation to sign", "zh": "打造能擴張的產品。你會卡在只用人力來服務。這確實是一個陷阱。我們的建議是，將你的首批試點客戶數量限制在少數幾個。抵制簽下"}, {"idx": 45, "time": "00:07:09,279 --> 00:07:23,120", "en": "too many too quickly. Assuming you avoid this early demand trap, pre and post sales looks pretty different, too. You have to sell outcomes, not seats or tokens. The pilot is the product. For", "zh": "過多客戶的誘惑，以免過快地簽下過多客戶。假設你避開了這個早期需求陷阱，那麼售前和售後服務看起來也大不相同。你必須販售成果，而不是 seats 或 tokens。試點就是產品。對於"}, {"idx": 46, "time": "00:07:19,360 --> 00:07:32,800", "en": "the first handful of customers, don't try and standardize too early. Use those pilots to learn. Find the spots where AI gives you unique leverage versus spots where you're just automating something", "zh": "首批少數客戶，不要太早嘗試標準化。利用這些試點來學習。找出 AI 能提供獨特優勢的地方，與你只是自動化一些"}, {"idx": 47, "time": "00:07:28,079 --> 00:07:40,800", "en": "obvious. Build the product accordingly and do it fast. Pricing is harder than traditional software because you're not competing with other software providers.", "zh": "顯而易見事物的地方進行比較。據此快速打造產品。定價比傳統軟體更困難，因為你不是在與其他軟體供應商競爭。"}, {"idx": 48, "time": "00:07:36,160 --> 00:07:49,519", "en": "You're competing directly with the cost of labor internal or outsourced. A few options here on pricing. There's perunit pricing. So per return, per claim, per loan. This is the cleanest. It's the", "zh": "你直接與內部或外包的人力成本競爭。這裡有一些定價選項。有單位計價法。例如：每筆退貨、每筆理賠、每筆貸款。這是最簡潔的。也是最"}, {"idx": 49, "time": "00:07:46,240 --> 00:08:00,159", "en": "easiest to explain. There's also outcomebased pricing. This aligns incentives beautifully, but it can be harder for you to forecast in your business. Panace prices on the completed consultant study versus hourly, which is", "zh": "容易解釋的。也有基於成果的定價法。這種方式能完美地協調誘因，但對你的業務來說，預測起來會更困難。Panace 以完成的顧問研究報告計價，而非業界通行的按時計費，這"}, {"idx": 50, "time": "00:07:57,038 --> 00:08:08,639", "en": "the norm in the industry. There's definitely two pricing strategies to avoid. Cost plus pricing caps your upside permanently. Don't do it.", "zh": "是業界常態。絕對有兩種定價策略要避免。成本加成定價會永久限制你的上行空間。不要這麼做。"}, {"idx": 51, "time": "00:08:05,360 --> 00:08:17,439", "en": "Straight line undercutting makes your work seem cheap and potentially low quality. Price on value. Next, the P&L or the profit and loss statement. This is where these companies live or die.", "zh": "直線削價競爭會讓你的工作看起來廉價，且可能品質低劣。請以價值定價。接下來是損益表，這是決定這些公司生死存亡的關鍵。"}, {"idx": 52, "time": "00:08:14,800 --> 00:08:26,400", "en": "So, let's do a quick walk through. If you haven't stared at one of these financial statements before, you're not alone among founders, and that's okay.", "zh": "那麼，我們來快速瀏覽一下。如果你以前從未仔細研究過這些財務報表，在創辦人中你並不孤單，那也沒關係。"}, {"idx": 53, "time": "00:08:21,199 --> 00:08:35,360", "en": "The general structure is revenue minus cost of goods sold gets you to gross profit. Gross profit minus operating expenses gets you to operating income.", "zh": "一般結構是「營收」減去「銷貨成本」得到「毛利」。毛利減去「營運費用」得到「營業利益」。"}, {"idx": 54, "time": "00:08:31,120 --> 00:08:44,799", "en": "Let's dive into each of these in the context of AI services. Revenue. Ah, the easy part relatively speaking. You will be able to sign contracts. Can you deliver on them repeatedly? I don't", "zh": "讓我們在 AI 服務的背景下深入探討每個部分。營收。嗯，相對而言，這是簡單的部分。你將能夠簽訂合約。但你能持續兌現這些合約嗎？我不知道。"}, {"idx": 55, "time": "00:08:41,120 --> 00:08:56,720", "en": "know. That depends on your product and your process. Eventually, you want smooth and predictable growth. A great product process is going to smooth out that lumpiness, but in the early days,", "zh": "這取決於你的產品和你的流程。最終，你希望實現平穩且可預測的成長。優秀的產品流程將會讓這些波動平穩下來，但在初期，"}, {"idx": 56, "time": "00:08:50,720 --> 00:08:59,119", "en": "it'll be spiky on a monthly basis.", "zh": "每月會出現劇烈波動。"}, {"idx": 57, "time": "00:08:52,958 --> 00:09:00,560", "en": "That's okay. Cost of goods sold or COGS.", "zh": "這沒關係。銷貨成本，或稱 COGS。"}, {"idx": 58, "time": "00:08:56,720 --> 00:09:11,120", "en": "Obsess over this from day one. There's three main components here. There's model costs, hosting costs, and those humans in the loop. All three of them need a number, a trend line, and someone", "zh": "從第一天起就對此密切關注。這裡有三個主要組成部分：模型成本、託管成本，以及人工參與的部分。這三者都需要一個數字、一條趨勢線，以及一個"}, {"idx": 59, "time": "00:09:06,240 --> 00:09:14,959", "en": "who owns them. Be deeply suspicious of zero margin or negative margin pilots.", "zh": "負責人。對零利潤或負利潤的試點專案保持高度懷疑。"}, {"idx": 60, "time": "00:09:11,120 --> 00:09:19,439", "en": "They're fine to learn from, but it's really dangerous to get hooked on those.", "zh": "從中學習沒有問題，但沉迷於這些專案是非常危險的。"}, {"idx": 61, "time": "00:09:14,958 --> 00:09:30,320", "en": "The core bet here is the more the product is built, the lower the cogs, the better the gross margin. I call this AI operating leverage. Okay. Opex. This includes research and development costs.", "zh": "這裡的核心賭注是，產品開發得越多，COGS 就越低，毛利率就越好。我稱之為「AI 營運槓桿」。好的。營運費用（Opex）。這包括研發成本。"}, {"idx": 62, "time": "00:09:26,720 --> 00:09:39,919", "en": "So, building the product, sales and general administrative, which is like finance, legal, exact salaries. Pretty standard stuff here. Operating income.", "zh": "也就是產品開發、銷售與一般行政費用，例如財務、法務、高階主管薪資。這些都是相當標準的東西。營業利益。"}, {"idx": 63, "time": "00:09:35,120 --> 00:09:49,439", "en": "This is the revenue minus the COGS minus the opex. You will be judged on your operating income in these businesses faster than you might expect. Net income. This is the operating income", "zh": "這就是營收減去 COGS 再減去營運費用。在這些業務中，你將比預期更快地因營業利益而被評斷。淨利。這是營業利益"}, {"idx": 64, "time": "00:09:45,278 --> 00:10:00,559", "en": "less taxes and interest. That's less important in the medium term. So, here's the actual P&L opportunity for these businesses. Traditional services firms top out around 30% margins. Pure", "zh": "減去稅金和利息。中期而言較不重要。所以，這就是這些業務實際的損益機會。傳統服務型公司的毛利率最高約 30%。純"}, {"idx": 65, "time": "00:09:56,000 --> 00:10:10,639", "en": "software and agent companies have more margin, but often smaller TAMs. The bet on these services companies is that that AI operating leverage gets you closer to software margin, say 50% plus on a", "zh": "軟體公司和 agent 公司的利潤更高，但通常總體目標市場（TAM）較小。對這些服務型公司的賭注是，AI 營運槓桿能讓你更接近軟體業的利潤水準，例如 50% 以上，而且市場"}, {"idx": 66, "time": "00:10:07,519 --> 00:10:18,958", "en": "market that's two to three times bigger than software. You don't need to be there right away. That's okay. But the trajectory has to be believable. Okay.", "zh": "比軟體市場大兩到三倍。你不必立即達到那個水準。這沒關係。但發展軌跡必須是可信的。好的。"}, {"idx": 67, "time": "00:10:15,039 --> 00:10:28,958", "en": "Last but not least, don't try to buy your way in. There's a temptation we've seen, especially among founders with some operating background, to try and buy an existing services business, add", "zh": "最後但同樣重要的一點是，不要試圖用收購的方式進入。我們觀察到一種誘惑，尤其是在一些具有營運背景的創辦人中，他們試圖收購現有的服務型公司，然後在上面"}, {"idx": 68, "time": "00:10:24,639 --> 00:10:33,759", "en": "some AI on top, short circuit the revenue. This is generally a trap.", "zh": "疊加一些 AI 功能，以縮短營收路徑。這通常是一個陷阱。"}, {"idx": 69, "time": "00:10:28,958 --> 00:10:42,399", "en": "There's one decent reason to do it. You need a regulatory mode fast, insurance licensing for example, but otherwise this almost never works. So why is that?", "zh": "只有一個不錯的理由可以這麼做：你需要快速取得監管上的護城河，例如保險執照。否則這種做法幾乎從未奏效。那這是為什麼呢？"}, {"idx": 70, "time": "00:10:38,320 --> 00:10:51,679", "en": "You just can't acquire a product market fit. Legacy service businesses are, you know, legacy. They have different expectations on metrics, hiring, and performance. Adding AI on top of that", "zh": "你就是無法收購產品市場契合度。傳統服務型公司就是，你知道，很傳統。它們對指標、招聘和績效有不同的期望。在上面疊加 AI 功能"}, {"idx": 71, "time": "00:10:48,159 --> 00:11:00,799", "en": "doesn't immediately change any of those realities. Building is almost always better than buying. Okay, to recap, AI services companies present an incredible opportunity for today's founders, but", "zh": "並不會立即改變這些現實。打造（從零開始）幾乎總是比收購更好。好的，總結一下，AI 服務型公司為當今的創辦人提供了不可思議的機會，但"}, {"idx": 72, "time": "00:10:58,000 --> 00:11:13,958", "en": "these are fundamentally different startups to build. If you avoid the traps and focus on the process as the product and the product as the process, you have a chance to create a generational company. We're excited to", "zh": "這些從根本上來說是不同類型的新創。如果你能避免陷阱，並專注於將流程視為產品，將產品視為流程，你就有機會創造一家世代相傳的公司。我們很期待"}, {"idx": 73, "time": "00:11:09,278 --> 00:11:13,958", "en": "see what you build and hope you apply to YC.", "zh": "看到你的成果，並希望你申請 YC。"}];
+
+const list = document.getElementById('list');
+const curEn = document.getElementById('current-en');
+const curZh = document.getElementById('current-zh');
+const count = document.getElementById('count');
+
+count.textContent = SUBTITLES.length + ' 句';
+
+let player = null;
+let currentIdx = -1;
+
+function timeToSec(t) {
+  // "00:01:23,456" → seconds
+  const [h, m, rest] = t.split(':');
+  const [s, ms] = rest.split(',');
+  return (+h) * 3600 + (+m) * 60 + (+s) + (+ms) / 1000;
+}
+
+function parseTimeRange(tr) {
+  const [start, end] = tr.split(' --> ');
+  return { start: timeToSec(start), end: timeToSec(end) };
+}
+
+// Render list
+SUBTITLES.forEach((sub, i) => {
+  const item = document.createElement('div');
+  item.className = 'item';
+  item.dataset.idx = i;
+  item.innerHTML = `
+    <div class="time">${sub.time.split(' --> ')[0]}</div>
+    <div class="en">${escapeHtml(sub.en)}</div>
+    <div class="zh">${escapeHtml(sub.zh)}</div>
+  `;
+  item.addEventListener('click', () => {
+    if (player && player.seekTo) {
+      const t = parseTimeRange(sub.time).start;
+      player.seekTo(t, true);
+      player.playVideo();
+    }
+  });
+  list.appendChild(item);
+});
+
+function escapeHtml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// YouTube API ready
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytplayer', {
+    events: { 'onReady': () => { setInterval(updateSub, 250); } }
+  });
+}
+
+function updateSub() {
+  if (!player || !player.getCurrentTime) return;
+  const t = player.getCurrentTime();
+  let active = -1;
+  for (let i = 0; i < SUBTITLES.length; i++) {
+    const { start, end } = parseTimeRange(SUBTITLES[i].time);
+    if (t >= start && t <= end) {
+      active = i;
+      break;
+    }
+  }
+  if (active !== currentIdx) {
+    currentIdx = active;
+    if (active >= 0) {
+      const sub = SUBTITLES[active];
+      curEn.textContent = sub.en;
+      curZh.textContent = sub.zh;
+      // Highlight in list + scroll
+      document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+      const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        activeEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } else {
+      curEn.textContent = '';
+      curZh.textContent = '';
+    }
+  }
+}
+</script>
+</body>
+</html>
