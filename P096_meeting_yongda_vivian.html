@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>會議紀錄 · 羅賓斯 × 永達保經 Vivian · 2026-06-15</title>
+<style>
+:root {
+  --navy: #0F1F4D;
+  --navy-light: #1E3A6F;
+  --gold: #E89E3F;
+  --gold-light: #F2C28A;
+  --green: #2BA84A;
+  --orange: #F26B3F;
+  --purple: #7C3AED;
+  --rose: #E85A8A;
+  --teal: #14B8A6;
+  --ink: #121822;
+  --ink-light: #394350;
+  --grey: #6B7280;
+  --bg: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --border: #E5E7EB;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  font-family: "Source Han Sans TC", "Noto Sans CJK TC",
+               "Microsoft JhengHei", -apple-system, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 40px 56px 32px 56px;
+  color: white;
+}
+.hero-eyebrow {
+  font-size: 12px; letter-spacing: 4px;
+  color: var(--gold); font-weight: 600;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.hero-title {
+  font-size: 30px; font-weight: 800;
+  margin: 0 0 6px 0; letter-spacing: -0.5px;
+}
+.hero-subtitle {
+  font-size: 16px; color: rgba(255,255,255,0.85);
+  margin: 0;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+.hero-meta-label {
+  font-size: 10px; letter-spacing: 1px;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.hero-meta-val {
+  font-size: 14px; font-weight: 600;
+}
+.attendees {
+  background: var(--bg-card);
+  padding: 18px 56px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.attendees-label {
+  font-weight: 700; color: var(--navy);
+}
+.speaker-chip {
+  display: inline-block;
+  color: white;
+  padding: 3px 12px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 4px;
+}
+.section {
+  padding: 32px 56px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+.section-eyebrow {
+  font-size: 11px; letter-spacing: 3px;
+  color: var(--gold); font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.section-title {
+  font-size: 24px; font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--gold);
+  display: inline-block;
+}
+.summary-body h3 {
+  font-size: 18px; font-weight: 800;
+  color: var(--navy);
+  margin: 24px 0 8px 0;
+  padding-left: 12px;
+  border-left: 4px solid var(--gold);
+}
+.summary-body h4 {
+  font-size: 15px; font-weight: 700;
+  color: var(--navy-light);
+  margin: 18px 0 6px 0;
+}
+.summary-body p {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin: 8px 0;
+}
+.summary-body strong { color: var(--navy); }
+.topics-list {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.topics-list li {
+  background: #FFFBEB;
+  border-left: 3px solid var(--gold);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--ink);
+  border-radius: 0 4px 4px 0;
+  counter-increment: topic;
+  position: relative;
+}
+.topics-list li::before {
+  content: counter(topic);
+  display: inline-block;
+  width: 22px; height: 22px;
+  border-radius: 100px;
+  background: var(--gold);
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 22px;
+  margin-right: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+.topics-list { counter-reset: topic; }
+.action-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.action-table th {
+  background: var(--navy);
+  color: white;
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.action-table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--ink-light);
+}
+.ai-num {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  color: var(--gold);
+  font-size: 20px;
+  width: 40px;
+}
+.ai-item { font-weight: 600; color: var(--ink); width: 35%; }
+.ai-owner {
+  font-weight: 700; color: var(--navy);
+  white-space: nowrap;
+}
+.ai-deadline { color: var(--grey); white-space: nowrap; }
+.ai-context { color: var(--ink-light); font-size: 12px; }
+.transcript {
+  background: var(--bg);
+  padding: 20px 24px;
+  max-height: 800px;
+  overflow-y: auto;
+  border-radius: 4px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+}
+.ts-line {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.ts-line:last-child { border-bottom: none; }
+.ts-time {
+  font-family: "Montserrat", monospace;
+  font-size: 11px;
+  color: var(--grey);
+  font-weight: 600;
+  flex-shrink: 0;
+  width: 50px;
+  padding-top: 2px;
+}
+.ts-speaker {
+  font-weight: 700;
+  flex-shrink: 0;
+  width: 60px;
+}
+.ts-content {
+  color: var(--ink-light);
+  flex: 1;
+  line-height: 1.6;
+}
+.ts-cont {
+  padding-left: 120px;
+  color: var(--ink-light);
+}
+.notice-box {
+  background: #FEF3C7;
+  border-left: 4px solid var(--gold);
+  padding: 14px 18px;
+  margin: 16px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 12px;
+}
+.notice-box strong { color: var(--navy); }
+.notice-box ul {
+  margin: 8px 0 0 0;
+  padding-left: 18px;
+  color: var(--ink-light);
+}
+.footer {
+  padding: 20px 56px;
+  background: var(--navy);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  font-size: 11px;
+}
+.footer strong {
+  display: block;
+  color: var(--gold);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">羅賓斯科技 × 永達保經 — AI 家族辦公室</h1>
+  <p class="hero-subtitle">Evin × Vivian 協理 × 品萱 × Carpost Kevin</p>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-meta-label">日期</div>
+      <div class="hero-meta-val">2026 年 6 月 15 日（日）</div>
+    </div>
+    <div>
+      <div class="hero-meta-label">時長</div>
+      <div class="hero-meta-val">約 49 分鐘</div>
+    </div>
+    <div>
+      <div class="hero-meta-label">主題</div>
+      <div class="hero-meta-val">AI 家族辦公室方案</div>
+    </div>
+    <div>
+      <div class="hero-meta-label">出席</div>
+      <div class="hero-meta-val">4 人</div>
+    </div>
+  </div>
+</div>
+
+<!-- Attendees chips -->
+<div class="attendees">
+  <span class="attendees-label">與會者：</span>
+  <span class="speaker-chip" style="background:#7C3AED">Vivian</span> <span class="speaker-chip" style="background:#E85A8A">品萱</span> <span class="speaker-chip" style="background:#0F1F4D">Evin</span> <span class="speaker-chip" style="background:#14B8A6">Kevin</span>
+</div>
+
+<!-- Section 1: Summary -->
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body">
+    <h3>重點摘要</h3>
+<p>本摘要旨在提供 5 分鐘快速掌握「羅賓斯科技提供 AI 服務給永達保經 — AI 家族辦公室」會議的全貌，涵蓋會議目的、討論要點、解決方案、達成共識及後續行動計畫。</p>
+<h4>(1) 會議目的與背景</h4>
+<p>本次會議由羅賓斯科技 CEO Evin Lin 向永達保經 Vivian 協理及其團隊成員品萱，提案其專為保險經紀人團隊設計的「AI 家族辦公室」解決方案。會議旨在探討如何運用 AI 技術解決永達保經在業務員賦能、知識傳承、客戶開發與服務效率上的痛點。品萱作為成功導入 AI 工具的年輕業務員，分享其個人經驗，作為方案可行性的實證案例。</p>
+<h4>(2) 永達保經的需求／痛點</h4>
+<p>Vivian 協理的團隊專注於高資產客戶，面臨以下挑戰：<br>▸ <strong>知識傳承與複製困難</strong>：Vivian 協理的核心痛點在於其個人豐富的專業知識、銷售邏輯與應對話術難以規模化複製給團隊成員。她迫切需要一個能「克隆 (Clone)」或「蒸餾 (Distill)」其專業能力的系統，讓團隊成員能隨時查詢、學習，確保服務品質的一致性。<br>▸ <strong>年輕業務員的挑戰</strong>：如品萱等年輕業務員，即使專業能力足夠，在面對高齡、高資產客戶時，仍需克服年齡與資歷帶來的信任感差距。AI 工具能協助他們快速生成專業、客製化的資料，提升專業形象與自信心，建立話語權。<br>▸ <strong>增員與人才吸引</strong>：傳統保險業的形象難以吸引高素質的年輕人才。Vivian 協理希望透過導入先進的 AI 科技，打造現代化、高效率的工作模式，吸引像品萱一樣具備學習能力與好奇心的新世代加入。<br>▸ <strong>資訊處理效率</strong>：團隊每天接收大量產業資訊，但需要耗費時間整理、消化，並轉化為能對客戶說明的內容。此外，也面臨客戶既有資料（如舊保單、法律文件）的數位化與分析需求，例如一位客戶有大量實體打卡紀錄，需數位化以處理勞資問題。</p>
+<h4>(3) 羅賓斯科技提出的 AI 家族辦公室方案</h4>
+<p>Evin 針對永達的需求，提出一系列 AI 解決方案，並以實際案例佐證：<br>▸ <strong>AI 知識庫與個人化模型（Vivian 克隆計畫）</strong>：核心方案是為 Vivian 協理建立一個專屬的 AI 知識模型。透過餵養她的書籍、演講、會議紀錄、對話腳本等資料，訓練出一個能模擬其思維與應對風格的 AI 助教。團隊成員可隨時向此 AI 提問，獲得符合 Vivian 銷售哲學的建議與話術。<br>▸ <strong>自動化內容生成與推播</strong>：AI 可每日自動爬取最新的保險、財經新聞，整理成摘要或社群媒體圖卡，供業務員發送給客戶，維持專業互動。這能解決品萱提到的「持續學習與資訊輸出」的需求，讓業務員不必再為尋找題材而煩惱。<br>▸ <strong>會議記錄與分析</strong>：透過 AI 工具，可自動將會議錄音轉為逐字稿、生成摘要、並提煉出關鍵決議 (Call to Action) 與待辦事項。這不僅提升內部會議效率，更能應用於客戶訪談，確保完整記錄客戶需求。<br>▸ <strong>OCR 文件數位化</strong>：針對實體文件（如舊保單、打卡紀錄），羅賓斯科技的 OCR（光學字元辨識）技術能快速將其轉換為數位資料，並進行結構化分析，可直接應用於解決客戶的勞資問題。<br>▸ <strong>成功案例分享</strong>：<br>    *   <strong>富易達保經</strong>：為其 2,000 多名業務員開發產險（車險、旅平險）線上平台，將報價、建議書製作到簽署流程完全數位化，大幅節省處理低利潤但高頻率產險件的時間。<br>    *   <strong>看見保經</strong>：導入 OCR 系統，自動辨識並輸入保單資料，解決了後勤人員大量手動 Key-in 的痛點。</p>
+<h4>(4) 雙方達成的共識／待議事項</h4>
+<p>*   <strong>共識</strong>：<br>▸ 雙方對合作方向高度認同，特別是「Vivian 克隆計畫」被視為最具價值的核心項目。<br>▸ 客戶的「打卡紀錄數位化」是一個明確、可立即啟動的 OCR 專案。<br>▸ 雙方對合作開設 Podcast 節目以進行軟性增員與品牌行銷，抱持高度興趣。<br>*   <strong>待議事項</strong>：<br>▸ <strong>合作模式與定價</strong>：Evin 提出可採用低門檻的「人/月」訂閱制（例如每人每月 99 或 399 元新台幣）來啟動合作，具體方案待議。<br>▸ <strong>克隆計畫範疇</strong>：需進一步定義訓練「Vivian 克隆」所需的資料範疇、投入時間與預期成效。<br>▸ <strong>Podcast 節目規劃</strong>：需討論節目定位、內容主題與執行細節。</p>
+<h4>(5) Carpost 的角色／補位</h4>
+<p>Carpost 的 Kevin 作為羅賓斯科技的合作夥伴，從自身產險業務經驗出發，驗證了保經業務員在處理大量、瑣碎產險案件上的痛點，強化了羅賓斯科技產險數位化方案的說服力。同時，Kevin 也將自身的產險業務與 Vivian 團隊對接，形成業務上的互補與合作關係。</p>
+<h4>(6) 後續工作分配</h4>
+<p>*   <strong>羅賓斯科技 (Evin)</strong>：<br>▸ 準備並提供 OCR 文件數位化方案的 Demo。<br>▸ 草擬一份包含「Vivian 克隆計畫」、內容推播、會議記錄等功能的初步合作方案與報價。<br>▸ 與 Vivian 協理共同規劃 Podcast 節目的初步構想。<br>*   <strong>永達保經 (Vivian)</strong>：<br>▸ 收集並整理可用於訓練「Vivian 克隆」的內部資料（書籍、講義等）。<br>▸ 向團隊佈達合作可能性，並收集內部對於 AI 工具的具體需求與反饋。</p>
+  </div>
+</div>
+
+<!-- Section 2: Action items -->
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 具體行動</p>
+  <h2 class="section-title">行動項清單（4 件）</h2>
+  <table class="action-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>具體行動</th>
+        <th>負責人</th>
+        <th>截止日</th>
+        <th>脈絡</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    <tr>
+      <td class="ai-num">1</td>
+      <td class="ai-item">準備並提供 OCR 文件數位化方案的 Demo，以解決客戶實體打卡紀錄的處理問題。</td>
+      <td class="ai-owner">Evin</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">會議中 Vivian 提到有客戶需要將大量實體打卡卡片數位化以處理勞資問題，Evin 表示其 OCR 技術可解決此痛點，雙方同意此為一個具體的切入點。[40:35]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">2</td>
+      <td class="ai-item">草擬一份包含「Vivian 克隆計畫」、自動化內容推播、會議記錄功能的初步合作方案與報價模式（如月費訂閱制）。</td>
+      <td class="ai-owner">Evin</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">會議圍繞著 Vivian 的知識複製需求展開，Evin 提出了多項 AI 解決方案，Vivian 表示高度興趣，需要一份正式的方案來進行後續評估。[43:12]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">3</td>
+      <td class="ai-item">收集並整理可用於訓練「Vivian 克隆」AI 模型的內部資料，如個人著作、演講稿、訓練教材等。</td>
+      <td class="ai-owner">Vivian</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">為了實現「Vivian 克隆」計畫，需要有足夠的高品質資料來訓練 AI 模型，Vivian 需盤點手邊可用的素材。[43:06]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">4</td>
+      <td class="ai-item">與 Vivian 協理共同規劃 Podcast 節目的初步構想，包含定位、目標聽眾（潛在增員對象）與內容主題。</td>
+      <td class="ai-owner">Evin, Vivian</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">雙方在會議末段討論到可以透過合作 Podcast 進行軟性增員，吸引對科技、新模式有興趣的人才，並一致認為這是個極佳的合作方向。[48:11]</td>
+    </tr>
+    
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 3: Topics chronological -->
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 議題索引</p>
+  <h2 class="section-title">9 個關鍵討論主題（依時間順序）</h2>
+  <ol class="topics-list">
+    <li>品萱的背景與加入永達的契機</li>
+<li>AI 作為吸引年輕人才加入保險業的關鍵</li>
+<li>Vivian 團隊的商業模式與主力客群</li>
+<li>羅賓斯科技為保經公司開發的 AI 解決方案案例（富易達、看見）</li>
+<li>討論為 Vivian 打造個人化 AI 知識庫（克隆計畫）的可行性</li>
+<li>OCR 技術應用於客戶實體文件數位化的需求</li>
+<li>合作開設 Podcast 進行軟性增員與品牌行銷的構想</li>
+<li>AI 系統的定價模式與合作方式討論</li>
+<li>AI 會議記錄與自動化內容生成的功能探討</li>
+  </ol>
+</div>
+
+<!-- Section 4: Verbatim transcript -->
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 逐字稿</p>
+  <h2 class="section-title">會議逐字稿（輕度 polish）</h2>
+  <div class="notice-box">
+    <strong>📌 STT 處理註記（V02 已修正 speaker 標記）</strong>
+    <ul>
+      <li><strong style="color:#D9382B">V03 修正：</strong>V02 修正 19 句 Vivian/Evin 混淆 + V03 再修 1 句 Evin/Kevin 切分（Kevin 身份補完：永達業務員+Carpost 創辦人+維修公會理事+事故車險鑑價師）</li>
+      <li>輕度 polish — 保留語意完整、去除「嗯/呃/那個/這個」等填充詞</li>
+      <li>敏感資訊（價格、合約條件、業務員機密）全部保留</li>
+      <li>低信心段（多人同時講話 / 雜音）：<li><strong>00:02</strong> — 多人同時講話、背景咳嗽聲</li>
+<li><strong>21:44</strong> — 多人同時講話、背景雜音</li></li>
+    </ul>
+  </div>
+  <div class="transcript">
+    <div class="ts-line"><span class="ts-time">00:00</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">她媽媽是知名的藝術策展人。</span></div>
+<div class="ts-line"><span class="ts-time">00:02</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">藝術經紀人。</span></div>
+<div class="ts-line"><span class="ts-time">00:04</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">藝術經紀人。</span></div>
+<div class="ts-line"><span class="ts-time">00:05</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">她也是藝術家。</span></div>
+<div class="ts-line"><span class="ts-time">00:06</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">媽媽也是。</span></div>
+<div class="ts-line"><span class="ts-time">00:07</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">她寫書法的，所以她是因爲自己興趣，所以她做了藝術策展。</span></div>
+<div class="ts-line"><span class="ts-time">00:11</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">而且我插播一下，我這邊原本有一個藝術家藝人，就是那個曾格爾，就是我介紹給她媽媽現在做經紀。所以曾格爾是又會極限爬山運動，又會畫畫。</span></div>
+<div class="ts-line"><span class="ts-time">00:23</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">喔，我知道那個女生。</span></div>
+<div class="ts-line"><span class="ts-time">00:24</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對對對，所以現在是她媽媽在做經紀，那也是我導入進來的。好，我們繼續講。</span></div>
+<div class="ts-line"><span class="ts-time">00:30</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">所以我是因為這樣的關係，跟我媽媽認識了很多的長輩，是前輩啦，各位哥哥姐姐，那其實各行各業都很有趣。所以後面就是我就覺得說，這些人脈都很好，因為各個產業領域都有，只是就是我最一開始來的時候，我就覺得說，因為我覺得這一塊，幫人家做這個財務規劃、節稅跟資產放大，對於每個人到一個家庭，甚至一個家族都很重要。</span></div>
+<div class="ts-line"><span class="ts-time">00:56</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我們可以把場景拉到更前面一點，就是我那時候帶妳去認識 Evin 跟崔老師，有用 AI 這一塊吸引你的地方，結果它原本是不吸引的，可是我跟她談到 AI 的時候，她覺得運用率比她在研究所用的還要高，對不對？所以她可以分享這一塊。</span></div>
+<div class="ts-line"><span class="ts-time">01:14</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">那再更前面就是在認識姐之前，其實我對保險完全不了解，反感，而且反感。</span></div>
+<div class="ts-line"><span class="ts-time">01:20</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">有一點反感。</span></div>
+<div class="ts-line"><span class="ts-time">01:21</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">但是因為我媽媽，所以我會被我媽媽影響，我就覺得說那這應該不是一個什麼，但是我個人是因為我是抱持比較好奇心跟學習心態的，所以我就來到這。那最一開始的時候，去年大概八月九月的時候，姐帶我去那個崔老師的這個課，我就覺得很新奇，因為當時我剛好在就是上我們老師 EMBA，他在教一些 RPA 跟一些自動化的流程。</span></div>
+<div class="ts-line"><span class="ts-time">01:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">崔老師是誰？</span></div>
+<div class="ts-line"><span class="ts-time">01:46</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">崔佩然。</span></div>
+<div class="ts-line"><span class="ts-time">01:47</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">就是你還沒有跟到，他是一個美國回來的專門教這個訓練平台的老師，然後他也是促使我們桃園那個團隊已經連續三年第一名的老師，所以他也是教我們的。他就導入 AI，最早是 Canva。</span></div>
+<div class="ts-line"><span class="ts-time">02:04</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">我就覺得蠻酷的，因為在學校其實學了各個形形色色的 AI，但是實際上要應用到產業上，因為包含我一些 EMBA 的學長姐，他們會覺得，我覺得他們上課就是為了作業，他們其實也不太知道怎麼樣跟他的產業有連結性。可是在姐這邊他帶我去上這個崔老師的課是，哇，直接跟自己的產業，而且是每一天都可以用到，我覺得那個關聯性很高。所以就像姐剛剛說到的這個 Canva，或者他教我們怎麼做數字等等之類的，我就覺得，這我看到我想要的，因為...</span></div>
+<div class="ts-line"><span class="ts-time">02:38</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">所以我們是有個進程這樣一直過來的，不是說一步就，我們是跟著直接過來的。</span></div>
+<div class="ts-line"><span class="ts-time">02:43</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">就有點像我原本我是念輔大，但是後來我想說科技大學好像是比較實作，因為它都是理論的那種，我覺得就是要應用到生活有點難，所以我才最後決定，因為後來其實我考上政大跟台科大，但我跑去念台科大研究所，我想說好像比較實作，可是我發現好像跟我想的又不太一樣，因為沒有到這麼的接地氣，還是有一點理論派，要走到實務有點難。可是在姐這邊我就看到說，太好了，那就，那當然因為本身姐自身她的專業知識都很優秀，我覺得再加上 AI 這個是很足以就是跟他一起學習。所以就加入了這裡面，那加入裡面我就發現，那原本其實從策展這邊認識的很多長輩跟一些人脈或相對高端的人脈，其實都是都用得上，只是並不知道要怎麼樣去表述。而且還有一個最大的問題是因為我年輕嘛，那而且過去大家看到我就覺得說，啊我是跟媽媽的一個小朋友，那因為我媽媽是一個比較，我媽是一個大 I 人，就 MBTI 的大 I 人，所以就是，而且我個性又比較內向，比較 i，所以我就會比較像跟在他旁邊那種小跟班。就是每一個基本上過去來說對我既定印象的一些長輩都是這樣，但是就加入姐的這個 team 後，其實蠻多長輩分享是覺得還蠻酷，就不會覺得看你還是像過去的那個你，就短短那幾個月會覺得說，其實你也是有話語權，你也是會講話，而且是你會分享你最近所學到的專業。因為姐常常跟我們講說業務最常的定位就是很多人會跳跳到銷售型，但其實我們都是，如果我們今天把自己有擺正擺回來，而且我們本來也就走在這條路上面，就是學習型的業務的話，其實就是我們每天跟人家放送不同的資訊嘛，人家就覺得可以跟你一起共同探索，很有樂趣，然後也覺得這是一個，就財務本來就是每個人...</span></div>
+<div class="ts-line"><span class="ts-time">04:34</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">人就不會一直跑去開發了，因為現在客人就討厭被開發。</span></div>
+<div class="ts-line"><span class="ts-time">04:39</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">對，就我們就也不會困擾別人，我們反而會跟別人變成一個很深度的一個連結。那這個連結就是體現在不管是像緣故的這些像媽媽這些朋友，共同認識這些長輩，跟公司，就是公司派給我們的續見的客戶，也是給我們這樣很良好的反饋，甚至他們也會很主動覺得說，我們可以再約下一次。那下一次也不見得說一定是單純在討論保單面的議題，可是他就想跟你當朋友，因為現在人與人的連結其實是很低嘛，因為每個人都很忙自己的事情，防線也高，然後其實人內心可能都很孤單，可是他就發現說，我們是這種很學習型、很熱忱型，而且又可以很多新知的這種探索下，就還蠻喜歡我們。那我覺得這也是...</span></div>
+<div class="ts-line"><span class="ts-time">05:25</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">還有他們變自信，我覺得這個是最重要最重要。他自信完畢了之後，他解決問題的能力就會大幅提升，他會找到問題。</span></div>
+<div class="ts-line"><span class="ts-time">05:33</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">我覺得這也突破了一個比較年齡的鴻溝吧，因為有些人可能覺得他小毛頭小屁孩你會點啥，可是人家聽到你講話覺得，你有東西耶，而且你在這裡面學的東西是挺好的。因為我去跟很多就是長輩分享，就像像這樣做簡報，他們還會很認真這樣子一直聽你講，你繼續講你繼續講，然後最後還會給我的反饋是，你在，你跟對老闆，跟你在這個行業真的很好，你在這個行業會發光發熱。所以我就覺得我們會，我們就是截然做出跟不同的 team 或說跟不同的同業來說，就是真的是落差很大。</span></div>
+<div class="ts-line"><span class="ts-time">06:12</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那後面的訴求就會變成客戶丟進來的東西，他的需求面會不一樣，他會走到一個比較高級，然後也是比較屬於探索型的。所以我們一直把這樣子的一個邏輯，導到我們所有的組員，就有可能會運用到你現在所謂整合性的一些東西，因為我現在還沒有聽清楚你這邊方案到底是處理哪一塊，可是我這邊比較大的就是說，第一個我這邊目標招募的人選，都是主力以 90 後為主，可是 90 後都是以業務端。如果 90 後比較年長，就像這樣，是老闆型的。所以我 team 裡面有兩種人，要不然就老闆、醫師、院長，要不然就自己是診所老闆娘，我就是這種，這種類型。另外一種就是像這樣子，屬於他們就是學習、學術，然後可以去突破他們過往的這些，對於業務人員的一些概念的東西。那他們在市場上能夠拿到競爭的能力就很強，因為他的話語權就很高，人家不會覺得說你講這個東西，保險買很多不要這樣子。所以我覺得最主要是那個定位點，在我們現在來講是備受接受。那我們就來講到說，那整個環扣裡面，我如何在今天跟你討論了之後，我們可以再把這個環扣加分，或者是怎麼樣來做。因為他現在是已經帶領一個獅子會的團隊，而且他現在又是新的會長，所以他每天都在跟這些獅子會的會長們一起學習跟開會。所以他們會有同頻的人非常非常的多，支援到他人脈圈這個部分。那我常常在講，人脈如何變錢脈，這個就是一個，這個就是我們現在比較重要的。那所以我們現在找到那個企管顧問裡面，那我覺得你可不可以大概簡單的敘述一下說，你覺得原本在承接到客人案子的時候，你覺得困難的地方跟現在有沒有因為企管顧問的這個帶領，比較進步於你的解決問題的能力有被提升這樣子？</span></div>
+<div class="ts-line"><span class="ts-time">08:21</span><span class="ts-speaker" style="color:#E85A8A">品萱</span><span class="ts-content">我覺得就是姐請這個企管顧問最棒的就是，我覺得人都會有自己的盲區。就比方說，可能我比較不會跟人家閒聊，或者是我在跟人家講話的時候會給人營造出一種氛圍感是比較可能緊張啊，或者是不像我在教課給人家。但是這個就會讓人家就是會跟可能客人或潛在客戶會有產生一個距離感。那這個點是我自己可能沒有辦法就自己自我察覺，可是企管顧問就很厲害，他就會可能經過跟你一次的訪談，然後或說跟你一次的開會，就會跟你提出來說，你可以去做這樣子的優化。那我就是因為我們已經進行了幾個月，所以他每一次講完，我們就去實踐，又去找新的客戶或者是緣故去做一個開發跟經營，他們就覺得說，就會想聽你講話，而且也不會覺得說聽你講話好像好緊張，聽老師講話。所以我就覺得他對於我個人的幫助是非常的大，就讓我知道我可能不足的地方或我必須要修正的地方，而且他是可以對我，不僅，我覺得不僅在工作上，其實在生活上也是啊，對，會讓人家不會覺得你這個人為什麼看起來好像都是那種...</span></div>
+<div class="ts-line"><span class="ts-time">09:30</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對對對。所以我這邊的主力培訓的模型啊，應該是比較像是說，他如果說個人的能力具足的時候，他其實在生活跟工作上面都可以處理好以外，而且吸引別的人。所以我這邊要的團隊的模型，比較是往這樣子來走，就是說，你是真心要發展，可是你不一定要帶著很多能力來，因為我賦能給你。那我賦能的話，當然就是要有要有 item 嘛，不能夠空口說白話。所以我們在整個教學過程裡面也引導了他們不空口說白話的過程裡面，然後就可以拿出東西來。所以他們這邊的話就是不同屬性的客人就會有一些流程，比方說我們這邊有給他們接續件的客戶，他們去了就會展示出來，給那個接續件的客戶看這個流程這樣子，對，然後或者是我們一般開發的客人，然後有哪些流程。所以這個大概就是以我們現在的主力。那你說我們真的會走到商品的這一面，當然也很重要，因為我們來講，沒有商品不會 close，也不會產生保單。所以他們可能就是在，我們現在最大的問題點就是，我還會依賴我原來的部門去做商品的整理，因為商品的彙整對我來講是季節性的，那會花很大的人力去做這件事情。那第二個，哪些商品在現在來講是適合哪些客戶的要求跟屬性，這件事情會是我們在現在這個過程裡面的一些點。那因為我自己對於保險商品的財務結構是很懂，因為我本來就是銀行圈做金融商品設計出來的。那他們的話就要再，就要再跟上。可是我覺得他們對於，現在當然就是逐步來練習的過程裡面，對於保險商品的解讀能力是很強，因為他們了解的是原理原則，然後保費、保障，然後現價，然後槓桿等等這些東西，他們，然後保單條款他們都很熟。所以他們模型，我們目前的整個 team 的模型是走這樣，所以我認為我們的做法來講是強度比較高的。對，那我們也會拉動跟其他同業的合作，就比方說你不想來永達，沒關係啊，你做不到高額，我們就合作。所以他們也很敢去要求合作，對，因為不會產生競爭，反而可以去放大這個保單的額度這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">11:56</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">謝謝你，謝謝分享，謝謝。</span></div>
+<div class="ts-line"><span class="ts-time">12:02</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你們的平台的強項，據我所知就是在產品。</span></div>
+<div class="ts-line"><span class="ts-time">12:06</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，因為我們之前有一個...</span></div>
+<div class="ts-line"><span class="ts-time">12:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">上面是有產品的一些... 我講一下我們客戶案例，你可能比較懂。我現在有一個...</span></div>
+<div class="ts-line"><span class="ts-time">12:15</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我我我大概先插播一下，你可能跟他很熟，我們有一個叫做什麼和平鴿還是什麼鴿？</span></div>
+<div class="ts-line"><span class="ts-time">12:20</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我知道。</span></div>
+<div class="ts-line"><span class="ts-time">12:21</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那叫什麼鴿啊？鴿子的鴿，你知道嗎？他他就有來推，對，他就有，不是什麼和平的，他就有來推一個保單的試算，對，大概就是目前我們所接觸到的就這樣。再來就是永達內部的保單的，商品的彙整，比較偏向，對對對。</span></div>
+<div class="ts-line"><span class="ts-time">12:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，請說。</span></div>
+<div class="ts-line"><span class="ts-time">12:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我們第一個合作的保經代是富易達，他在台中有兩千個業務員。</span></div>
+<div class="ts-line"><span class="ts-time">12:48</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">12:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那他要做的東西很簡單，就是他是壽險為主的保經，但是他看到產險的機會，但是他又不想讓他的業務員花太多時間去處理產險的這些報價、比價、文書處理等等之類的。所以我們就幫富易達去開發了一個產品，那這個產品呢可以處理的就是保單所有的流程，就是從詢價，這是一個。然後再來就是保單的 key-in。</span></div>
+<div class="ts-line"><span class="ts-time">13:22</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">有電話嗎？</span></div>
+<div class="ts-line"><span class="ts-time">13:23</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒沒事啊，這到時候再給就好了。所以詢價，然後這個比價，然後要保書，不是要保書啦，就是建議書。然後再來就是交易，跟如果後續有一些續保的通知，就把它做在一個系統裡面。</span></div>
+<div class="ts-line"><span class="ts-time">13:41</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那我可不可以請教一下，他們的產險目前是什麼產險比較多？因為目前來講，Kevin 這邊的話，跟我這邊的富邦產險那邊，其實配合的效率還不錯。</span></div>
+<div class="ts-line"><span class="ts-time">13:52</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">喔，產險幾乎一個禮拜就一件。</span></div>
+<div class="ts-line"><span class="ts-time">13:54</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，他效率很高耶，而且你報給他，他應該給你的效率都...</span></div>
+<div class="ts-line"><span class="ts-time">13:57</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對，而且我的都是，都是高單的。</span></div>
+<div class="ts-line"><span class="ts-time">14:01</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">高高高單的，對，所以我們目前，對對對，所以我們現在進行中的部分，目前是以 Kevin 這邊的產險為最主，最多。所以我要知道說他們的量是大到多大，要請你做這個系統，因為系統也有成本嘛。</span></div>
+<div class="ts-line"><span class="ts-time">14:15</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">到還好啦，我們當初，你那是商業模式嘛，我們就開發，因為我的想法是，因為富易達是我的股東，我的想法是我開發一個給你用，那 OK 之後，我要賣給其他保險公司，我不是，就是我不做，我們不太做專案的，就是如果我們要做一個東西，就是做出來之後，我要做通用型的。</span></div>
+<div class="ts-line"><span class="ts-time">14:37</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">他當時為什麼會願意當你的股東啊？</span></div>
+<div class="ts-line"><span class="ts-time">14:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他就是找了好久，就沒有人可以幫他解決產險數位化。那因為他告訴我說，產壽險有八二法則，就是說...</span></div>
+<div class="ts-line"><span class="ts-time">14:49</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對不起，我剛剛漏了那個，我說產險的部分有，他們有哪一些產是他們目前主力的獲利？</span></div>
+<div class="ts-line"><span class="ts-time">14:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">產其實大家都一樣，我遇到這麼多保經公司，通常就是車跟旅平，沒有其他。</span></div>
+<div class="ts-line"><span class="ts-time">15:01</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">喔，車跟旅平，OK，好，了解，請繼續說，好好好。</span></div>
+<div class="ts-line"><span class="ts-time">15:04</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">當初就是所有的收益 80% 來自於壽險，但是人力的服務 80% 卻來自於產險，因為產險件多，但是這個單價低，但是不能不處理，不處理客戶，這是一個你維護關係的...</span></div>
+<div class="ts-line"><span class="ts-time">15:22</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">客戶的關係，因為定期嘛，就像車險一樣。</span></div>
+<div class="ts-line"><span class="ts-time">15:24</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對啊，對啊，對啊。</span></div>
+<div class="ts-line"><span class="ts-time">15:26</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">定期一年一定會有一次的見面的機會。</span></div>
+<div class="ts-line"><span class="ts-time">15:28</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">因為他又...</span></div>
+<div class="ts-line"><span class="ts-time">15:29</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">他們現在都已經把他的服務放在我們客戶銷售的夾子裡面了。</span></div>
+<div class="ts-line"><span class="ts-time">15:34</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對，很厲害啊。</span></div>
+<div class="ts-line"><span class="ts-time">15:36</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我可以給你看。</span></div>
+<div class="ts-line"><span class="ts-time">15:37</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">因為壽險不是，不是一年就要買一次，產險是一年要買一次。</span></div>
+<div class="ts-line"><span class="ts-time">15:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">一年可能會出現好幾次。</span></div>
+<div class="ts-line"><span class="ts-time">15:44</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">高頻低價。</span></div>
+<div class="ts-line"><span class="ts-time">15:45</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，所以應該是講說像他，像他現在這個我們就把它做進去，所以如果我今天跟你談完了之後，我們還有可能在消化完畢之後，我們會把你的東西結構性的放在我們的系統裡面來，所以這樣子就會變很方便，因為客人他可能要追求的系統化的東西，取向很不一樣。好，沒關係，你繼續講，我再繼續聽。</span></div>
+<div class="ts-line"><span class="ts-time">16:07</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後，所以就幫富易達開發了一個，等於是產險裡面的車險跟旅平險，從從報價到出單，無紙化就對了。</span></div>
+<div class="ts-line"><span class="ts-time">16:19</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我可不可以請教一下，他現在一年的產險大概那個保費的金額是大概多少？啊壽險一年金額是多少？營業額是多少？</span></div>
+<div class="ts-line"><span class="ts-time">16:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">不行啦，那是他的，但是他，整年如果在產險操作超過三萬件啦，所以這個是有效益的，如果我可以把，他期待就是這三萬件再也不要麻煩他。麻煩他，他要請一個一個部隊在報價、在詢價、在 key 單，他希望這些東西都可以...</span></div>
+<div class="ts-line"><span class="ts-time">16:42</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那他這三萬件的掛單都是掛誰的名下？如果是透過你講的平台式，他根本不用 sales 啊，那他現在掛誰的？</span></div>
+<div class="ts-line"><span class="ts-time">16:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">要要要，要掛，我們做的是業務員賦能，所以我們不做去業務員化，這在台灣是不一樣，台灣網投會把業務員去掉，但...</span></div>
+<div class="ts-line"><span class="ts-time">16:57</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">因為你 AI 了就可以不要業務員了。</span></div>
+<div class="ts-line"><span class="ts-time">17:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，有的人的 AI 是要把業務員去掉嘛，那我們...</span></div>
+<div class="ts-line"><span class="ts-time">17:02</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">所以他的件也還是用業務員導入進來？</span></div>
+<div class="ts-line"><span class="ts-time">17:04</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對。是業務員開發的？</span></div>
+<div class="ts-line"><span class="ts-time">17:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">業務員開發，我只是在中間幫他節省流程。</span></div>
+<div class="ts-line"><span class="ts-time">17:08</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">不是客人的 walking 這樣子？</span></div>
+<div class="ts-line"><span class="ts-time">17:09</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">不是不是，我沒有轉介客戶。所以，懂懂懂。原本他服務一個客戶要花兩個小時吧，這樣子，那用我們的...</span></div>
+<div class="ts-line"><span class="ts-time">17:16</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">節省時啦。</span></div>
+<div class="ts-line"><span class="ts-time">17:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">省時，然後後面，後面...</span></div>
+<div class="ts-line"><span class="ts-time">17:19</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">還有省流程啦。</span></div>
+<div class="ts-line"><span class="ts-time">17:20</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">省流程，對，然後最終，業務員比較願意...</span></div>
+<div class="ts-line"><span class="ts-time">17:23</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">就比較有意願做啦，因為那麼累。</span></div>
+<div class="ts-line"><span class="ts-time">17:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對對。</span></div>
+<div class="ts-line"><span class="ts-time">17:25</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我懂。</span></div>
+<div class="ts-line"><span class="ts-time">17:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就是把這一個，對。好，那，那富易達是這樣，所以...</span></div>
+<div class="ts-line"><span class="ts-time">17:31</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">這是我當時跟 Kevin 的訴求啊。</span></div>
+<div class="ts-line"><span class="ts-time">17:32</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我說你把牌過來，我這邊的產險服務，因為我本來是掛在我自己的公司，後來他說服我，因為產壽險一定要掛一起。</span></div>
+<div class="ts-line"><span class="ts-time">17:42</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，還有就是我這邊又走高單，而且又省時。所以他現在一報來，我們那個富邦的，我覺得他配合不錯，我覺得他真的，那個 back 還不錯，效率蠻好的，而且很仔細。好好，你請繼續講。</span></div>
+<div class="ts-line"><span class="ts-time">17:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，然後這個就是，就是，旅平跟車險的一站化，投保服務這樣子。那當初在開發這個的時候，因為它牽扯到線上簽名，那我們是完全就是全部都走線上，簽名也是走線上。對，但是這個保險公司的 consent 就比較多，不是每家保險公司都同意。</span></div>
+<div class="ts-line"><span class="ts-time">18:18</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">有的真實性的問題，是吧？</span></div>
+<div class="ts-line"><span class="ts-time">18:20</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，就是有些保險公司法遵比較比較硬，那後來，但是我們跟富易達決定就是反正我們最後就是說服了一家台產，那台產他們評估，他們覺得 OK，保費方方面面，反正要要方便就好了，所以我們就從台產開始去合作這樣子。那總共...</span></div>
+<div class="ts-line"><span class="ts-time">18:37</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">所以你就會變成供應商也要進來。對啊，因為供應商要配合你們的...</span></div>
+<div class="ts-line"><span class="ts-time">18:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，我就是要去串保險公司這樣子。對對對對對。然後他也會陪我去保險公司，因為他是有單量的人，所以保險公司會，他去壓保險公司跟...</span></div>
+<div class="ts-line"><span class="ts-time">18:53</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">把他的供應鏈的嘛，對啊對啊。</span></div>
+<div class="ts-line"><span class="ts-time">18:54</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對，他是賣賣的人嘛。</span></div>
+<div class="ts-line"><span class="ts-time">18:56</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">懂懂懂，好。</span></div>
+<div class="ts-line"><span class="ts-time">18:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，然後這個是跟富易達的合作的方式。好，然後我們最近是跟那個看見，看見保經，他是不同的訴求，他是不同的訴求。</span></div>
+<div class="ts-line"><span class="ts-time">19:08</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">哪個看哪個見？</span></div>
+<div class="ts-line"><span class="ts-time">19:09</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">看見就是看到的那個看見。看見保經，那...</span></div>
+<div class="ts-line"><span class="ts-time">19:12</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">沒看見這一家，他們是什麼，主力是什麼樣，市場是怎麼樣？</span></div>
+<div class="ts-line"><span class="ts-time">19:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">都都是壽啦，就是他，我們合作都有一定規模，富易達是 2900 個業務員，應該是不小。看見保經是 1000 個業務員。</span></div>
+<div class="ts-line"><span class="ts-time">19:26</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">他是在哪個地方 base？是在台北嗎？</span></div>
+<div class="ts-line"><span class="ts-time">19:28</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他在桃園。</span></div>
+<div class="ts-line"><span class="ts-time">19:29</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">桃園啊？</span></div>
+<div class="ts-line"><span class="ts-time">19:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他在桃園，對。</span></div>
+<div class="ts-line"><span class="ts-time">19:31</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">他當時的組合成分是哪裡來的啊？是哪一家公司出來的，還是他們自己什麼人出來的？</span></div>
+<div class="ts-line"><span class="ts-time">19:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">看見應該是人壽那邊出來，原修的我不太清楚，這個我不確定不確定不確定，就是，我們不會去 deep 客戶很深啦，但是客戶有什麼需求，我幫他處理好就好。</span></div>
+<div class="ts-line"><span class="ts-time">19:50</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">處理你的部分這樣子，懂懂懂。</span></div>
+<div class="ts-line"><span class="ts-time">19:52</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對對。然後他是用了我們一個，一個視覺辨識的技術，那主要就是說，他沒有要，他沒有要全面無紙化，他要的東西比較簡單是，他的，他的後勤人員呢，現在要花很多時間在 key-in，保單可能已經都講好了，有壽險有產險，然後我們就給他一個系統，然後他以後只要把這個保單掃成 PDF，傳進來就好，然後幫他做一個後台，所以保單裡面的所有的資料我幫他抓出來，大家討論好，對，幫他存到他的後台裡面，然後準確率我們是定，我們是做到 95%，但我合約跟他定 90%。他給我更多的訓練，我就可以再定的更準這樣子。所以第一階段，那這個階段開始了，所以他覺得不錯，他又委託我們第二件事情，第二件事情是...</span></div>
+<div class="ts-line"><span class="ts-time">20:44</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">所以這一段是已經進行多久了？</span></div>
+<div class="ts-line"><span class="ts-time">20:46</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">這一段是我們是上個月簽約，然後現在就是後台的，反正有機會我請同事 demo，你也可以直接隨便抓你的行照駕照什麼，你懶得 key 的你就抓進來，然後他他是一抓進來，系統會 processing 嘛，然後我最快的話有的是幾十秒，有的一兩分鐘，那就會把...</span></div>
+<div class="ts-line"><span class="ts-time">21:10</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那這個還蠻適合我客人，那個他現在在處理人資的，因為他現在人資的部分，他有一堆打卡卡在我後面。對，這個... 他又跟我講說這個要怎麼辦，因為原本我們的律師要幫他解決人資的問題，可是他要消化那些資料，他很頭痛。</span></div>
+<div class="ts-line"><span class="ts-time">21:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可以啊，我跟他收一份一份的，所以不會太貴，應該是他複合的起的。</span></div>
+<div class="ts-line"><span class="ts-time">21:28</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">就是到時候這個的部分就變成我可以用到你了，因為他現在正在跟我頭痛這件事情，我給你看一下。還有我那天報回來，因為這家公司已經差不多 40 年了，所以我報了一坨拉庫。</span></div>
+<div class="ts-line"><span class="ts-time">21:44</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">你剛剛有講到，好像都是你這邊...</span></div>
+<div class="ts-line"><span class="ts-time">21:46</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">應該是解決的嘛，對啊，只是要...</span></div>
+<div class="ts-line"><span class="ts-time">21:48</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">就是掃就可以了。</span></div>
+<div class="ts-line"><span class="ts-time">21:51</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">21:52</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">打卡中的獎。</span></div>
+<div class="ts-line"><span class="ts-time">21:54</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">姐姐會找很多，幫我把它收斂一下。</span></div>
+<div class="ts-line"><span class="ts-time">21:57</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，你可能... 這個東西要怎麼樣變成，怎麼樣變成 data？所以你這邊的 data 轉換能力，對我來講會是一個 needs，因為我客人這邊會有很多舊資料。</span></div>
+<div class="ts-line"><span class="ts-time">22:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那通常做這件事情就是，其實 OCR 技術不困難，但是資安個資，這個才是大家，因為這些都一定有有資安個資的。那我們公司是有 ISO 27001 跟 27701，所以這個就是保險公司或者一些保經代公司，他他們都不小的規模，會願意把這些比較這個...</span></div>
+<div class="ts-line"><span class="ts-time">22:28</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我應該是這麼講，就是說，因為我的客戶只要大概接觸過我了，對我的信任程度是非常非常高，就是我介紹的就算。那我現在需要的 partner，要融進來的人，我就在講，我不用，我不要是那個最大最大最大在上面揮手的老闆，我要是真的可以實作的人。第二個，我在導入的過程裡面，聽聽聽我就知道我客人哪一趴需要這個東西，所以你現在這個地方我就產生需求了。對對對，我就產生需求，而且這個需求面有可能未來你的部分會跟我的律師結合，因為我的律師會幫我客人解決問題，那他有很多問題是需要藉由原本舊的 data，然後去消化完畢之後，產生出新的作為。對，所以，而且還有把它變成是一個電子記錄法，所以我覺得你這個部分是可以... 好，我們再往下講。</span></div>
+<div class="ts-line"><span class="ts-time">23:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，然後看見之後又產生第二個需求，就是說他想要推投資型保單，但是他現在的痛點就是總處推的投資型保單跟他的 1000 個業務員有一個 gap，就是這 1000 個業務員可能不知道總處的政策，然後就算知道之後他也沒辦法，被人家問到了，他不會講商品啦。所以這一段比較是商品...</span></div>
+<div class="ts-line"><span class="ts-time">23:47</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">等一下，那他這個總處的政策當時是，當時是誰去擬定的？還是...</span></div>
+<div class="ts-line"><span class="ts-time">23:52</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">都是他總處，但是他就是... 所以他們有個智囊團，還是他們有一個什麼...</span></div>
+<div class="ts-line"><span class="ts-time">23:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他這個規模已經 1000 個人了，所以他肯定有一個行政管理中心，所以會去跟保險公司，因為壽險就是跟保險公司談一個量嘛，要一些 bonus。但是這些 bonus...</span></div>
+<div class="ts-line"><span class="ts-time">24:07</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">他們有外獎。</span></div>
+<div class="ts-line"><span class="ts-time">24:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">有外獎。</span></div>
+<div class="ts-line"><span class="ts-time">24:09</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">但外獎是最重要的。</span></div>
+<div class="ts-line"><span class="ts-time">24:10</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我們有外獎，我們外獎很高。</span></div>
+<div class="ts-line"><span class="ts-time">24:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但是去要的時候會，你講了一個數量沒做到就不好交代，他這裡有一個 gap 這樣子。然後我們就起一個專案，所以一樣我們用爬蟲，去幫他爬台灣所有...</span></div>
+<div class="ts-line"><span class="ts-time">24:24</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，他不是講爬蟲嗎？爬蟲沒錯，請說，請繼續說。</span></div>
+<div class="ts-line"><span class="ts-time">24:27</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">這裡爬蟲也是最基本的技術，所以爬蟲只是去把保發中心所有的投資型保單，我們定調在過去五年，maybe like 500 份 1000 份 PDF，你只是把這些東西抓下來而已，這沒有，到這一段沒有難處。那我們期待的是說，以後是這樣子，這個他要我們幫他做一個機器人，做幾件，做兩件事情。一個是定期的去告訴他的業務員，投資型保單，你現在要推哪一個，做一個推播的教育訓練，這是一個。第二個是他也要確認他的業務員懂不懂，所以還要有一個問答的機器人，也就是說，他的業務員今天要推，我不知道你們那個啦，什麼金鑽 99，他也不懂，他就可能問一下金鑽 99，他就可以直接告訴他，機器人就要告訴他金鑽 99 裡面的內容、talker 是什麼。那這裡面最難處理的是兩件事情，其實處理 AI 都是在處理幻覺的事情，你怎麼能確保你的機器人不會亂講話。所以這裡面...</span></div>
+<div class="ts-line"><span class="ts-time">25:32</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">或者是正確度。</span></div>
+<div class="ts-line"><span class="ts-time">25:33</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，就要處理這兩段。那第一段就是，你必須要讓他有跡可循，所以你要告訴 AI 說你今天講的每一句話，你要告訴我出處是哪裡，所以你有問題的時候你就回到那個保單去看，那那這個 OK。第二個是，你告訴我出處在哪裡，也有可能你回答的不對。比如，我問你桃園三結義是誰，你告訴我這是從三國演義第幾頁，對不對，沒錯你告訴我在這裡，可是你告訴我的是張飛、楊凡跟胡瓜，那不對嘛，你講錯了。所以這裡面還要有一個專家去訓練說你講的東西要有一定的正確率。所以我們的工作就是幫他除了爬蟲下來，就要訓練 AI 沒有幻覺，然後最後 deliver 給他就是，他得要找他的業務員團隊進去用，測試之後有哪些覺得不準的地方要 feedback 給我，我們才可以在裡面繼續修。所以...</span></div>
+<div class="ts-line"><span class="ts-time">26:30</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">哇，那這樣子不會有有一些風險性，就是在測的過程裡面如果真的產生出來，有問題的東西怎麼辦？</span></div>
+<div class="ts-line"><span class="ts-time">26:38</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">不，大家用 AI 都要有一個，就是你們我們用 notebook AI 也都一樣。不能百分之百相信。</span></div>
+<div class="ts-line"><span class="ts-time">26:43</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他會有錯字嘛，但是他我不要他馬上，他跟小朋友一樣嘛，就是他從一個嬰兒、國小、國中，但是 AI 有一個好處是，我們教他規則之後，他不會二過，不像我們人容易又忘了、老了等等。所以...</span></div>
+<div class="ts-line"><span class="ts-time">26:58</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">好像有一個編輯啊，你知道嗎？你可以直接在每一頁編輯裡面直接去輸錯。你說 notebook AI？</span></div>
+<div class="ts-line"><span class="ts-time">27:04</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對啊對啊，這個我忘記講。然後他有些錯字、認知，你就可以直接從每一頁下去改，然後再重新生成，他就跑對的給你了。對對，這個是還蠻精準的。</span></div>
+<div class="ts-line"><span class="ts-time">27:14</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，然後，所以我們就就就有一個投資型保單的專案，然後可以的話他希望再做第三個，就是說，他不希望他的業務員花時間去做建議書，但有時候業務員去拜訪客戶很趕，所以他這時候，他有一個期待是說，那業務員只要確定是哪個產品，我們的機器人幫他產生一個網頁，客製化的，所以所以業務員就是拿著這個網頁給客戶看，你為什麼要買這個，好處是什麼。他要對標的是保險公司的 DM，但是保險公司的 DM 做得很爛。很產品化，就是... 我沒辦法拿這個去銷售，因為他不是...</span></div>
+<div class="ts-line"><span class="ts-time">27:52</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">就是開發，就是我講說拿來開發型的，可是講得很，對。</span></div>
+<div class="ts-line"><span class="ts-time">27:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對對對對，好，所以，那這這也是我第一次，我以前都做產險，我是今年比較，因為我們去年拿了國發的一些這個補助嘛，跟一些，就 AI Star 的一個獎項，所以我今年有點跨到壽險。</span></div>
+<div class="ts-line"><span class="ts-time">28:12</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">可是他這樣建議書生成的話，你不就變成業務員對於客人的 KYC 就要很準啊，因為你 KYC 越不準，他生出來的建議書怎麼會符合到客人需求？</span></div>
+<div class="ts-line"><span class="ts-time">28:24</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">還是說他業務員根本沒想法。</span></div>
+<div class="ts-line"><span class="ts-time">28:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就是告訴，其實... 只是告訴客人...</span></div>
+<div class="ts-line"><span class="ts-time">28:27</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我覺得現在 AI 不用很準，你不要給他錯誤的資訊就好，他去...</span></div>
+<div class="ts-line"><span class="ts-time">28:32</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">不是，我的意思是說那你怎麼推給客人真正他需求的的東西？</span></div>
+<div class="ts-line"><span class="ts-time">28:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，那我講車險，因為壽險我還沒做，車險我們有一個建議書嘛。</span></div>
+<div class="ts-line"><span class="ts-time">28:40</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">車險比較簡單一點啦，因為它就針對，他對啊。</span></div>
+<div class="ts-line"><span class="ts-time">28:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒有，車險有難度的喔，就是我的車險的建議書呢，我只要客戶跟我講，就是最基本客戶要跟我講車牌跟他的身分證，我就可以做客製化的建議書給他。那大家會問我怎麼做，那因為我有了車牌，我可以去監理站去爬他是幾年車，對不對，然後我有了他的身分證，我可以大概去推估他居住在哪裡，當然不一定準，因為他身分證跟他實際住的地方不一定。</span></div>
+<div class="ts-line"><span class="ts-time">29:07</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那他這個監理站的資訊是本來就公開資訊？</span></div>
+<div class="ts-line"><span class="ts-time">29:09</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">本來就公開。部分公開。</span></div>
+<div class="ts-line"><span class="ts-time">29:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒有，這是你要去處理的，你要去爬啦，要去做一些整理。就是如果沒有我們，你就是自己上網去監理站付一個費用，然後 key 東西，你可以看到一些東西，可是這些東西...</span></div>
+<div class="ts-line"><span class="ts-time">29:22</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">比較像聯徵中心這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">29:24</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">車籍資料的聯徵中心。可是你沒辦法，你看到你還要再把它 key 到你的資料庫，但是你今天用 AI 就是直接 key 車牌，它有個爬蟲自動幫你進去，再把那些資料抓出來。</span></div>
+<div class="ts-line"><span class="ts-time">29:36</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">比較像龍蝦，就是自己去。</span></div>
+<div class="ts-line"><span class="ts-time">29:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對對對對對對。龍蝦還有更多的運用，我再跟你講。</span></div>
+<div class="ts-line"><span class="ts-time">29:41</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">你們真的很強啊，佩服佩服。</span></div>
+<div class="ts-line"><span class="ts-time">29:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對，但是...</span></div>
+<div class="ts-line"><span class="ts-time">29:45</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">真的要學，很開心。</span></div>
+<div class="ts-line"><span class="ts-time">29:47</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我很開心知道這些事情。</span></div>
+<div class="ts-line"><span class="ts-time">29:48</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">29:50</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，那，所以，剛剛講到哪裡？就是養到去爬他監理站的資料。喔，對，好，然後為什麼可以做客製化？因為你至少知道，看你要跟他問什麼，所以我如果至少知道你住哪裡跟你住幾年車，我可以出某種程度的客製化給你，我就不是瞎猜了。那 AI 在出這種建議書，其實我覺得出的都蠻有水準的，那客戶看的是覺得那就是為自己...</span></div>
+<div class="ts-line"><span class="ts-time">30:16</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">比較趨近了啦。</span></div>
+<div class="ts-line"><span class="ts-time">30:17</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那你要怎麼樣再這件事情再迭代？就是如果客戶願意，業務員有能力，我們就再跟，我還有一個問卷，小小的問卷，你回答五題就好，那五題通常都是在問你對於風險的偏好、你的家庭的狀態，那如果你客戶願意回答，我就更知道了，喔原來你開車，你對風險，你最擔憂是什麼事情啊，我們保險就是在做這個風險的轉嫁跟規劃嘛。</span></div>
+<div class="ts-line"><span class="ts-time">30:43</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">或者說你這台車有沒有很多人在開。</span></div>
+<div class="ts-line"><span class="ts-time">30:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，然後你的喜好嘛，你有沒有說，像我們有，你非富邦不要，或是你非富邦一定要，這樣子，或是你就是不要買富邦，你把這些...</span></div>
+<div class="ts-line"><span class="ts-time">30:53</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">品牌的偏好就對了。</span></div>
+<div class="ts-line"><span class="ts-time">30:55</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那就五題，你就把這五題問好之後，我們就可以再更客製化的給你。那，那這個是，這個是車險，那我覺得壽險一定你會輸入，就是如果這個系統可以跟客戶的 CRM 掛在一起，我覺得更好，因為你會知道客戶過去買了多少的這個保單，他的家庭的狀況、收入的狀況，那你當然規劃起來就會就會更準嘛。</span></div>
+<div class="ts-line"><span class="ts-time">31:20</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那你們像這樣建這樣的系統的話貴嗎？</span></div>
+<div class="ts-line"><span class="ts-time">31:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">現在 AI 不貴啦。對啊，現在 AI 不貴。我跟，我們如果開始，我都，我都，初始費我們就收一點點的費用，就是我啟動一個團隊要一個，可能要一個幾十萬的費用。</span></div>
+<div class="ts-line"><span class="ts-time">31:36</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">你們現在一個 team 總共多少人啊？你們就應該講說你們全部在在運作的人，行動的人大概有多少？</span></div>
+<div class="ts-line"><span class="ts-time">31:43</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我們整個公司就八個。八個。</span></div>
+<div class="ts-line"><span class="ts-time">31:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後我們 IT 三個，我們打算再找一個四個就可以幹這些事。</span></div>
+<div class="ts-line"><span class="ts-time">31:49</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">哇，你們好精通腦喔。</span></div>
+<div class="ts-line"><span class="ts-time">31:51</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後我，我以前 IT 最多到 15 個，可是我現在此時此刻的三個人跟過去 15 個人沒有產值比較差，那就是 AI。AI 的一些...</span></div>
+<div class="ts-line"><span class="ts-time">32:04</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">如果為什麼裁員的原因嘛，對啊。</span></div>
+<div class="ts-line"><span class="ts-time">32:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，很多不需要花。</span></div>
+<div class="ts-line"><span class="ts-time">32:09</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">32:10</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，所以...</span></div>
+<div class="ts-line"><span class="ts-time">32:10</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">就像我現在在找業務也是一樣，就我們聽一聽我們就知道你是，你是不是學習型的，所以你不一定要有能力，可是你必須是學習型，你不是學習型我會把你刪掉。對，這樣就很快。因為我首先知道你的 attitude。</span></div>
+<div class="ts-line"><span class="ts-time">32:24</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">這個就很...</span></div>
+<div class="ts-line"><span class="ts-time">32:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對啊，attitude 我覺得是最重要的。</span></div>
+<div class="ts-line"><span class="ts-time">32:26</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">最重要最重要，還有你有沒有尊重你以前做的主管，我覺得很重要。</span></div>
+<div class="ts-line"><span class="ts-time">32:31</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">所以這個就是跟現在...</span></div>
+<div class="ts-line"><span class="ts-time">32:34</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，然後如果你要，我覺得那個 AI，因為我剛剛聽聽起來就是，我聽到三個，一個是會議記錄，因為這個要，就對於，我聽起來就是你們跟客戶中間有一個 call to action，或者是客戶的信賴感，這個會議記錄，我覺得是我很好，今天很好的收穫，我不知道會議記錄對你們那麼重要。但會議記錄...</span></div>
+<div class="ts-line"><span class="ts-time">32:55</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">而且那麼的指標。</span></div>
+<div class="ts-line"><span class="ts-time">32:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但是你知道我們現在，我以前有特助，我還有財務，要幫我處理董事會、股東會的事情，其實我現在都不用。我的 AI 已經訓練到就是我可以這個這個自己再處理處理這些事情。</span></div>
+<div class="ts-line"><span class="ts-time">33:12</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那他們處理的程度是什麼？第一個你們的會議是實體會議還是線上會議？</span></div>
+<div class="ts-line"><span class="ts-time">33:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我你這個一定要線上，因為我才有錄影的資料餵給 AI，然後我會手動一些...</span></div>
+<div class="ts-line"><span class="ts-time">33:22</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">所以像 LINE call in 錄影不行，他只能音訊，他不能視訊。</span></div>
+<div class="ts-line"><span class="ts-time">33:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他應該不是用 LINE call in。</span></div>
+<div class="ts-line"><span class="ts-time">33:27</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對啊，我知道你一定用更高級的。</span></div>
+<div class="ts-line"><span class="ts-time">33:29</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對對。</span></div>
+<div class="ts-line"><span class="ts-time">33:29</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我的意思是...</span></div>
+<div class="ts-line"><span class="ts-time">33:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我用 Cloud，但是 Cloud 我會自己幫你... 可是我想知道說那他處理你們的會議記錄，否財務跟你們的執行方案的部分，他可以處理到什麼？</span></div>
+<div class="ts-line"><span class="ts-time">33:40</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">喔，對啊。他可以處理到兩個，我可以對... 如果這樣子的話，我也可倒。</span></div>
+<div class="ts-line"><span class="ts-time">33:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我們董事會都是兩個小時，超久的。所以呢...</span></div>
+<div class="ts-line"><span class="ts-time">33:48</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那你們董事會會有多少人參與啊？</span></div>
+<div class="ts-line"><span class="ts-time">33:50</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我們五董一監，然後國發代表再派一個，所以通常大概就七個人。</span></div>
+<div class="ts-line"><span class="ts-time">33:55</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">你們是未來有上市打算是不是？那麼那麼堅定的，那麼堅固的一個組織啊。</span></div>
+<div class="ts-line"><span class="ts-time">34:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我覺得我們董事會是蠻，我們董事會人數都快要比我們員工，員工還多。</span></div>
+<div class="ts-line"><span class="ts-time">34:06</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對啊，我聽起來是這樣子啊，對對對對對。</span></div>
+<div class="ts-line"><span class="ts-time">34:09</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，那他通常是這樣，我覺得是他是非常好，就是我現在已經不用做，我猜你要做一些轉換啦，以前我用 notebook AI 我要轉成音訊，音訊再丟進去，再丟進來，我那個轉換過程太久，我現在就是 Google 錄影，就是 Google Drive 的連結丟給他，他幫我做兩件事情，一個是 call to action 跟摘要，你要做出來，第二個就是逐字稿，所以我如果覺得你這個講得怪怪的，我就去看你的逐字稿，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">34:44</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">逐字稿也是一個關鍵。</span></div>
+<div class="ts-line"><span class="ts-time">34:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">一個動作就完成，那你要開始去有一個固定的那個軟體，像我是，我是 Cloud，Cloud 都會跟 Telegram 串在一起，我有四個機器人。一個是處理，我一個是處理合約的，所以我現在的用人的合約還是我跟這個公司簽訂的合約，他都有一定的格式，我只要告訴機器人說我今天要簽什麼樣的合約，甲方乙方條件是什麼，合約機器人會幫我處理。</span></div>
+<div class="ts-line"><span class="ts-time">35:18</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">所以你的合約也再也不需要律師了？</span></div>
+<div class="ts-line"><span class="ts-time">35:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">重要的我還是會找他看。然後...</span></div>
+<div class="ts-line"><span class="ts-time">35:24</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我之前是用那個 Gamma，Gamma 就是...</span></div>
+<div class="ts-line"><span class="ts-time">35:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">這個都是 Cloud 的。就是 Cloud，所以我現在都是在裡面，然後機器人你，我就說你一定要把 AI 從你的大腦變成你的手腳，所以我最近在下 AI，我以前我們要找那 skill 就是說他要自己 AI 有能力，有的 AI 是財務能力，有的是合約能力。然後以前我都要去幫他想說你自己要加什麼能力，我現在就沒有了，我跟他們說你們每一天就去網路哪個地方找，找你自己最想要的能力，你要告訴我為什麼這個能力你喜歡，然後公司的好處跟成本是什麼，他們現在每天都會告訴我他想裝這個，我就說好吧你去裝吧，所以他的...</span></div>
+<div class="ts-line"><span class="ts-time">36:02</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">這個很酷耶，這可以帶到我的那個業務員訓練耶，喔這很重要耶。</span></div>
+<div class="ts-line"><span class="ts-time">36:07</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就是你要...</span></div>
+<div class="ts-line"><span class="ts-time">36:07</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">你想學什麼，然後把它放進來。</span></div>
+<div class="ts-line"><span class="ts-time">36:10</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我們有一個小小的產品是，像你如果去我的臉書，現在這些都是我告訴他說...</span></div>
+<div class="ts-line"><span class="ts-time">36:16</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我要先找你的臉書。</span></div>
+<div class="ts-line"><span class="ts-time">36:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">羅賓斯科技就就...</span></div>
+<div class="ts-line"><span class="ts-time">36:21</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">你說羅賓斯，就是你這個名字嗎？</span></div>
+<div class="ts-line"><span class="ts-time">36:23</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對對對對對對。好，你請繼續。</span></div>
+<div class="ts-line"><span class="ts-time">36:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">所以他們現在就會每一天就會發國際上最，他他自己幫我挑，他覺得最棒的五個新聞，然後呢他又考慮到說新聞太無聊，沒有沒有人願意看，所以他把它做成這種圖卡，像其中一個他就講說保險什麼感應器，就是三頁，然後一個是 action，一個是對你來講你你要自己做什麼練習，然後你看上面的這個 logo，這都他產的，他也幫我做自己公司的 logo 弄起來，所以這個就是如果你們想要跟業務員溝通，你告訴我，你們都不用再去找了，你想要每天去抓保險業最新的三個訊息，我們就讓 AI 去做，做好之後就傳給你的業務員讓他...</span></div>
+<div class="ts-line"><span class="ts-time">37:10</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那這樣成本大概要多少？</span></div>
+<div class="ts-line"><span class="ts-time">37:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒有成本啊，我一個月付 200 塊美金啊，什麼成本。</span></div>
+<div class="ts-line"><span class="ts-time">37:14</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">Cloud 就是也是一個月 200 塊美金。不是，我說那我請，我我我現在請你要幫我的員工做這些事情，我花多少錢？</span></div>
+<div class="ts-line"><span class="ts-time">37:20</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">訓練的話。請你來訓練。</span></div>
+<div class="ts-line"><span class="ts-time">37:22</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我的意思是說，你可以開一個公共平台也沒關係，我不管，whatever，就是你剛剛講的東西我想用，那我的付費是多少這樣子，應該是這麼講。</span></div>
+<div class="ts-line"><span class="ts-time">37:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我想要再收斂一下你的需求，但當然我也很想做生意啊，但是更重要是要能解決你的，所以還需要一個...</span></div>
+<div class="ts-line"><span class="ts-time">37:38</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我們是長期配合嘛，所以沒關係啊，我們就一次提，就 brainstorming。</span></div>
+<div class="ts-line"><span class="ts-time">37:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他會一直提。對對對，就像我，我是對。</span></div>
+<div class="ts-line"><span class="ts-time">37:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可以做，我們，也不會佔你平台，像有些東西真的很簡單，我們下一個指令，下一個指令就可以做到了，但就會希望說幫我們多用，幫我們一起發展這個產品，那如果 OK，幫我們，因為業界你們都有比我們更有聲量嘛，幫我們推廣到其他的。是是是是是。</span></div>
+<div class="ts-line"><span class="ts-time">38:03</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那那現在我覺得，我比較想的一個定價模式就是，我可以給，把業務員，就比如說每個業務員我們討論看看，maybe 是 99 塊一個月，還是 399，你也沒有負擔，你不用一次給我幾十萬的開發，我是不是就可以開始讓你用。</span></div>
+<div class="ts-line"><span class="ts-time">38:13</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">99 是什麼幣別啊？</span></div>
+<div class="ts-line"><span class="ts-time">38:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">台幣，我們就收一點點。對對對對對。不會一個你付不起的。不會一個是你，就是你會聯繫，考慮都不用考慮。</span></div>
+<div class="ts-line"><span class="ts-time">38:29</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">想都不想要的。</span></div>
+<div class="ts-line"><span class="ts-time">38:31</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">因為太小了嘛，太小了。</span></div>
+<div class="ts-line"><span class="ts-time">38:32</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">可能是一個月 1000 的話，一年也 12000，其實其實，好，沒關係，等下繼續。</span></div>
+<div class="ts-line"><span class="ts-time">38:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就十個人就 1000，差不多。對啊對啊對啊，但這個就是可以讓你開始去用，去用，去用一些這個 AI 怎麼去...</span></div>
+<div class="ts-line"><span class="ts-time">38:46</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那你如果，比方說我一個人跟你訂閱，那你這個東西給我，我可以離線給別人嗎？</span></div>
+<div class="ts-line"><span class="ts-time">38:51</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可以啊可以啊，沒有，我是，我們都跟公司簽約，所以跟你的話你是你是通訊處嘛。</span></div>
+<div class="ts-line"><span class="ts-time">38:56</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">團隊簽。所以是一個單位一個單位這樣子簽。</span></div>
+<div class="ts-line"><span class="ts-time">39:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，然後你登錄我們系統會有一個身份的驗證，所以你進來，進來之後我就知道這個是你的單位出來的，那用完之後我就會跟你...</span></div>
+<div class="ts-line"><span class="ts-time">39:10</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">現在應用的人有多少，的單位有多少？</span></div>
+<div class="ts-line"><span class="ts-time">39:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">現在我們就兩個，一個就是剛剛的看見保經，一個就是富易達。對對對對對。</span></div>
+<div class="ts-line"><span class="ts-time">39:17</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">還有哪些功能？你剛剛講到，就是...</span></div>
+<div class="ts-line"><span class="ts-time">39:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">剩下的就是你們，就是我，就我剛剛聽聽到的，一個是會議記錄嘛，這是一個，然後，剛剛還有員工教育訓練，這個其實跟我們在做那個投資型保單我覺得很像，只是我不知道你要 focus 在哪裡，我覺得員工，員工的教育訓練這個我覺得也可以，對，一起開發，但是你要跟我講你的痛點。</span></div>
+<div class="ts-line"><span class="ts-time">39:43</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我覺得員工的部分的話，我覺得就有兩個，一個就是賦能在於他的，他的，他的問話系統跟他的 SOP，還有就我剛剛講到的學習型的部分，他要每天去推播什麼東西給別人，這個就很有吸引力了。對，因為我們就對對對，我們就...</span></div>
+<div class="ts-line"><span class="ts-time">40:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那個 Cloud 也可以做啊。</span></div>
+<div class="ts-line"><span class="ts-time">40:03</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，我們就不會一直在...</span></div>
+<div class="ts-line"><span class="ts-time">40:04</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你可能要教你的業務員怎麼用。</span></div>
+<div class="ts-line"><span class="ts-time">40:06</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">沒有，主要是他要推什麼啊，因為訊息這麼多。對，我們現在在講嘛，對對，訊息這麼多嘛，對，可是我們這邊不會 range 那麼寬啦，我們大概就是以我們會成交跟有連結，然後又讓別人覺得我們是學習形態為主這樣子，所以這是第一點。我我覺得我們今天講完了之後，我會收斂一下我的想法，然後再跟你討論看看說，那是不是有，有，是不是有我首先運用或者是合作的機會，因為我剛剛講到光那個打卡...</span></div>
+<div class="ts-line"><span class="ts-time">40:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">OCR 就可以用了。</span></div>
+<div class="ts-line"><span class="ts-time">40:36</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對啊對啊對啊。那個就是我另外一條線是可以去導給我客戶的。那第二個部分就是說，我希望它會變成是一個有點像，有點像串流一樣的東西，這是什麼意思呢？比方說，像我們現在收到資訊，我們大概每天收到收到資訊，可是我可能這些資訊裡面，我要用在客人身上，我必須要，要不然我整理嘛，要不然就有人整理嘛，看誰去整理變成是一個串流型的，可以給客人一套說詞，是我怎麼去表達這件事情，所以我覺得那個表達...</span></div>
+<div class="ts-line"><span class="ts-time">41:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那個超重要的，因為那個就是說，你要讓 AI 是做成說，你去問，你的團隊你去問，還是剛剛品萱去問，得到的東西都一樣，然後甚至是品萱也不用跟你講，他今天去拜訪陳先生，其實你問 AI，AI 就會告訴你他拜訪了陳先生，你要把這些人的，就是你要有個共通的大腦，但是那個大腦你要花時間去訓練。</span></div>
+<div class="ts-line"><span class="ts-time">41:28</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">沒錯沒錯，現在我們永達的雲端只有定聯系統是，人的部分可以 key in 進來，變成一個等於說是記錄型的 data，可是它並沒有辦法產生出來就像你講的，我如果今天拜訪完畢之後，那你要跟他的產生的對話，如果說是在訊息類的，你要怎麼弄？你現場跟他見面，你要怎麼講？那我覺得如果這兩件事情你可以的話，哇，那以後就很簡單了，如果業務員進來的話。</span></div>
+<div class="ts-line"><span class="ts-time">41:55</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對啊，所以，所以我剛剛就聽... 就很防呆啊。</span></div>
+<div class="ts-line"><span class="ts-time">41:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就是你你這些其實都是很珍貴的 domain know-how 嘛，但是這個我猜，因為我我其實也略懂金融產品，但是我不知道現在已經走到這樣，所以我在吸收我都覺得有點困難。辛苦了。</span></div>
+<div class="ts-line"><span class="ts-time">42:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，但是你要把這些東西變成一個系統化。系統化，然後以後是誰，不用來問你，可能是問他就會得到一樣的。</span></div>
+<div class="ts-line"><span class="ts-time">42:20</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">可是我覺得我的優勢是，我對於這樣的，我對於這樣的流程，我實在太懂太懂，所以應該是講說，我可以很快速的收斂起來，我覺得，我覺得可以去運用變現的東西，因為我我我我的腦子也比較像電腦，我的腦子啦。</span></div>
+<div class="ts-line"><span class="ts-time">42:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那你要做一個事情，我們叫蒸餾，就是現在很多人會去蒸餾，比如說他，被蒸餾過的有，比如說什麼 Elon Musk，大家不覺得他很聰明，但是你你需不需要，但是你你聯絡不到他，你希望透過他以前的一些資訊做一個好像他在你旁邊，你對對對對對。那那那這個蒸餾就需要，你要餵 AI 很多的資料，過去 Elon 所有的公開的東西，你都要餵他的書，那你也可以做你自己的蒸餾。但是你平常，你就要一直跟他對話、互動，或者是要餵你的資料給他，那你就可以做出一個...</span></div>
+<div class="ts-line"><span class="ts-time">43:12</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">這個是我想要做的，因為我認為這個是在下一個階段，我會勝出的地方，因為如果有辦法把這些蒸餾，就有點像一隻 clone 我嘛，就是故事。對，要 clone 你。</span></div>
+<div class="ts-line"><span class="ts-time">43:23</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">那 clone 我就很好啊，因為而且這個 clone 又不用你長得像我，或者完全學習不用，是有一個輔助工具，是一直把我 clone 的東西從你嘴巴講出來，或者我 clone 的想法從你腦子裡面弄出來，哇，那這個就很，這個這個我就覺得很很很酷。</span></div>
+<div class="ts-line"><span class="ts-time">43:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對啊，我覺得就可以幫你做這件事情。</span></div>
+<div class="ts-line"><span class="ts-time">43:43</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">這件事情是我最大的興趣是在這裡。</span></div>
+<div class="ts-line"><span class="ts-time">43:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我也覺得這個很有趣。</span></div>
+<div class="ts-line"><span class="ts-time">43:46</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">這個很有趣。</span></div>
+<div class="ts-line"><span class="ts-time">43:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">這個我覺得我們可以看看。</span></div>
+<div class="ts-line"><span class="ts-time">43:48</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對對對，我們可以看看怎麼弄，對對對。那如果說你可以 clone 的話，因為我現在的痛點還有一個就是，比方說像 Kevin 這樣非常的忙碌，沒有，他是有任脈，然後也有接觸點，可是沒有辦法來學習的，那我就可以直接把我的學習的訊息直接 clone 給他。</span></div>
+<div class="ts-line"><span class="ts-time">44:05</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那你還要再做一個，他會不會聽是一件事啊，因為你要去 verify 這件事。</span></div>
+<div class="ts-line"><span class="ts-time">44:09</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">不是，這就變成說，我們已經把東西弄出來，那怎麼到他腦子裡啦？那我我要讓他怎麼樣用最快、最簡單、最節省時間的方式去表達，對，去表達出來，對對對。因為他可能就是，你給他一片樹葉，他就會開一朵花出來而已。那這種人最怕就辭窮嘛。那我的 clone 我覺得最大的優點就是不辭窮嘛。嗯。就源源不絕，因為我們的反應已經到這樣，那如果把這個 clone 到他身上，可是我認為那不難，因為為什麼？我們每次的接觸點跟客戶來講，大概頂多一個小時，因為我我如果沒有辦法去把那個延伸性的階段，我就把時間截斷，因為你跟我的互動時間就這麼長，所以你最多最多最多會被問倒的時間也差不多是這樣，啊我用時間去控制。你這樣懂嗎？那我們這次結束了，再約啊，再約啊再約，我變成拜訪次數多就好了，我不用一次就把你，我不用一次就把你接完了，或砍死了，因為我用次數的方式去解決掉你在 clone 的過程裡面被指導的問題。你這樣懂嗎？就把遊戲拆成十次去玩，那我每次都會產生一個點，那你總不會一直輸一直輸，不會，你不會一次幹到底就對了。懂懂懂。</span></div>
+<div class="ts-line"><span class="ts-time">45:28</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">不過你要做 clone 你要有很多的，就是可能要一些...</span></div>
+<div class="ts-line"><span class="ts-time">45:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對，這是我，這是我粗淺的想法嘛，那當然就是，我覺得有幾件事情比較重要，就是我們如何今天開完一個會之後，然後大家都可以變現很多，賺很多錢，因為賺很多錢就是要付這個錢的底氣嘛，這我的我的想法啦。我我比較擅長的是，當老闆一定要有成本觀念，你如果創業創到沒成本觀念，你這老闆也很白痴啊。第二個，你也絕對不會有錢，因為你根本對於財務結構沒有概念，對。</span></div>
+<div class="ts-line"><span class="ts-time">46:00</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">所以我會覺得說，我們的東西它可能會有一個進程、中程、遠程，可是我覺得在現在 AI 時代裡面，我們可以做，而且我可以跑比較快的，我一定有致勝的點。嗯，OK。</span></div>
+<div class="ts-line"><span class="ts-time">46:13</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，這是我的想法。因為我在我現在這邊的操盤裡面，我覺得雖然人數不是很多，可是我覺得進來的人的樣態我都很滿意。對，我都覺得很好，對啊對啊對啊。</span></div>
+<div class="ts-line"><span class="ts-time">46:28</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">因為你剛剛講，一個是，他今天是，一個是會議記錄，第二個教育訓練，那你剛剛還有說第三個，第三個你看到的是什麼？在這邊的...</span></div>
+<div class="ts-line"><span class="ts-time">46:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">靠，我突然忘了，會議記錄、教育訓練。</span></div>
+<div class="ts-line"><span class="ts-time">46:40</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">你現在可以解決他的是會議記錄，然後用 Cloud 來來做這個，來讓他們對這些，但我不知道，讓他們，讓這些夥伴...</span></div>
+<div class="ts-line"><span class="ts-time">46:52</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我們可不可以講是複製系統？是嗎？是 clone。clone 也不太像是...</span></div>
+<div class="ts-line"><span class="ts-time">46:58</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">不是，嗯... 應該是要蒸餾你嘛，你要你要做一個你，我是覺得蠻有賣點的，你的形象、你的談吐...</span></div>
+<div class="ts-line"><span class="ts-time">47:05</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">而且我有出書，所以我，而且我們公司有幫我上...</span></div>
+<div class="ts-line"><span class="ts-time">47:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你覺得可以，只是... 但是因為我不是技術背景的，所以我我每次回去，我的 CTO 就會，他會叫我不要... 對啊，他說你要答應，包山包海，但是他做會有... 對啊對啊。所以這個，我是個人覺得很有...</span></div>
+<div class="ts-line"><span class="ts-time">47:20</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，就是我，我如果，真實我們走到那個面向，我們如果要配合的話，因為我一直在想說，我到底要拍多媒體去找一個小編，然後跑一個很白痴的，還是去做一個，你知道 clone 的系統，就像你講蒸餾我。蒸餾我的話就很有賣點，那我覺得，那我覺得我可以配合的是，如果如果真的我們會走到...</span></div>
+<div class="ts-line"><span class="ts-time">47:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我覺得你說短影音也 OK，我們也可以有一個平台，我現在的，我現在想法都是...</span></div>
+<div class="ts-line"><span class="ts-time">47:43</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">因為你可以做短影音。</span></div>
+<div class="ts-line"><span class="ts-time">47:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我沒有那麼專業，但是說我本來是想要，有幾種，一種是錄我們的聲音，內容讓 AI 產，但是我們這個叫 tune，然後另外一種就是我們每週找一個議題，有可能是我自己代表科技嘛，你代表壽險。</span></div>
+<div class="ts-line"><span class="ts-time">48:02</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我太有興趣了。</span></div>
+<div class="ts-line"><span class="ts-time">48:03</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後你...</span></div>
+<div class="ts-line"><span class="ts-time">48:04</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">因為我一直在找這個。</span></div>
+<div class="ts-line"><span class="ts-time">48:05</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後你可以找人家，你有很多任脈。</span></div>
+<div class="ts-line"><span class="ts-time">48:07</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對對對。</span></div>
+<div class="ts-line"><span class="ts-time">48:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可以做一個頻道啊。</span></div>
+<div class="ts-line"><span class="ts-time">48:09</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">我們就首先先做一個頻道，對，這個是我最想要做的。</span></div>
+<div class="ts-line"><span class="ts-time">48:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你就直接往這條路走。</span></div>
+<div class="ts-line"><span class="ts-time">48:13</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">因為這樣子吸引人，這樣子吸引人，這樣子吸引人很快，因為我要找...</span></div>
+<div class="ts-line"><span class="ts-time">48:19</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我昨天也才又開了。</span></div>
+<div class="ts-line"><span class="ts-time">48:20</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我覺得你是不是要弄一個增員的啊，你是希望你要增員的嗎？</span></div>
+<div class="ts-line"><span class="ts-time">48:24</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，沒錯，就是，就是，你完全講到我的問題了。</span></div>
+<div class="ts-line"><span class="ts-time">48:28</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我昨天才又開個影片。</span></div>
+<div class="ts-line"><span class="ts-time">48:29</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對，就是就是就是。</span></div>
+<div class="ts-line"><span class="ts-time">48:31</span><span class="ts-speaker" style="color:#7C3AED">Vivian</span><span class="ts-content">對啊，我覺得這個你來弄就好了。</span></div>
+<div class="ts-line"><span class="ts-time">48:34</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">啊只是看...</span></div>
+<div class="ts-line"><span class="ts-time">48:35</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我昨天又在拍。</span></div>
+<div class="ts-line"><span class="ts-time">48:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但是因為他要增員，他他需要有兩種，一種是這種是短的，一種是有深度的，他可能都要都要有，會對他的形象比較好。</span></div>
+<div class="ts-line"><span class="ts-time">48:48</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我們等一下聊一下那個車子的這個部分。我本來待會也是，不過難得可以跟你這樣聊的話，我可能再跟你把車子也聊一下。對啊對啊對啊。然後我可能就不用再另外再約一次。好好好好。</span></div>
+<div class="ts-line"><span class="ts-time">49:02</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我可能我可以到三點半，我還可以再...</span></div>
+<div class="ts-line"><span class="ts-time">49:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可以啊可以啊。我也我也差不多。</span></div>
+<div class="ts-line"><span class="ts-time">49:07</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我再約一個。</span></div>
+<div class="ts-line ts-cont">[49:08] Vivian：</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <strong>雅韻 / Calliope 🎭 · 羅賓斯科技</strong>
+  P096 · 2026-06-15 V01 · Gemini 2.5 Pro STT · SOP/04 100% 真實會議紀錄
+</div>
+
+</div>
+</body>
+</html>
