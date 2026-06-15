@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>Eos 晨曦 ☀️ 已裝 3 plugin 中文評估分析</title>
+<style>
+  :root {
+    --navy: #0F1F4D;
+    --navy-2: #1E3A6B;
+    --gold: #E89E3F;
+    --gold-light: #F5C97C;
+    --teal: #008B96;
+    --bg: #FAFAF7;
+    --card: #FFFFFF;
+    --text: #1A1A2E;
+    --text-muted: #5D6B85;
+    --line: #E5E7EB;
+    --good: #10B981;
+    --warn: #F59E0B;
+    --pay: #DC2626;
+    --free: #10B981;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang TC", "Noto Sans TC", "Heiti TC", -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 32px 28px;
+    width: 1080px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  header {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: white;
+    padding: 28px 36px 26px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::after {
+    content: "";
+    position: absolute;
+    right: -80px;
+    top: -80px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(232,158,63,0.35), transparent 70%);
+  }
+  header .eyebrow {
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: var(--gold-light);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  header h1 {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  header .sun { color: var(--gold); font-size: 28px; }
+  header .lead {
+    font-size: 15px;
+    color: #d6e0f5;
+    line-height: 1.55;
+  }
+  header .gold-line {
+    height: 3px;
+    width: 80px;
+    background: var(--gold);
+    margin: 14px 0 0;
+  }
+
+  .skill {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 26px 30px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 16px rgba(15, 31, 77, 0.08);
+    position: relative;
+    border-top: 5px solid var(--gold);
+  }
+  .skill.s1 { border-top-color: var(--gold); }
+  .skill.s2 { border-top-color: var(--teal); }
+  .skill.s3 { border-top-color: var(--navy-2); }
+
+  .skill .rank {
+    position: absolute;
+    top: -18px;
+    left: 30px;
+    width: 36px;
+    height: 36px;
+    background: var(--navy);
+    color: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 16px;
+    border: 3px solid var(--bg);
+  }
+  .skill .header-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    gap: 12px;
+  }
+  .skill h2 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: -0.3px;
+    flex: 1;
+  }
+  .skill .tok-badge {
+    background: #F5F4F0;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 4px 12px;
+    font-family: "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .skill .tok-badge.heavy { background: #FFF1F1; border-color: var(--pay); color: var(--pay); }
+  .skill .src {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .skill .src .badge {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-right: 6px;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 12px;
+  }
+  .col h3 {
+    font-size: 12px;
+    font-weight: 800;
+    color: white;
+    background: var(--navy);
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .col.what h3 { background: var(--teal); }
+  .col.eos h3 { background: var(--gold); color: var(--navy); }
+  .col.workflow h3 { background: var(--navy-2); }
+  .col.cost h3 { background: var(--good); }
+
+  .col ul {
+    list-style: none;
+    margin: 4px 0;
+    padding: 0;
+  }
+  .col ul li {
+    font-size: 13.5px;
+    color: var(--text);
+    padding: 3px 0 3px 14px;
+    position: relative;
+    line-height: 1.55;
+  }
+  .col ul li::before {
+    content: "▪";
+    color: var(--gold);
+    position: absolute;
+    left: 0;
+    font-size: 13px;
+    top: 3px;
+  }
+
+  .next-step {
+    background: #F5F4F0;
+    border-left: 3px solid var(--navy);
+    padding: 10px 14px;
+    border-radius: 4px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .next-step b { color: var(--navy); }
+
+  .summary {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: white;
+    border-radius: 14px;
+    padding: 22px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 22px;
+    margin-bottom: 18px;
+  }
+  .summary .stat { text-align: center; }
+  .summary .stat .num {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .summary .stat .lbl {
+    font-size: 12px;
+    color: #d6e0f5;
+    line-height: 1.4;
+  }
+
+  footer {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 2px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  footer .brand { font-weight: 800; color: var(--navy); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Robinstech · Post-Install Analysis</div>
+  <h1>Eos 晨曦 <span class="sun">☀️</span> 已裝 3 個 plugin 中文評估分析</h1>
+  <div class="lead">
+    今日剛裝完 <b>Firecrawl + Bright Data + video-podcast-maker</b>，本份說明三件事：①每個 plugin 是什麼、②對 Eos 早報 pipeline 的具體影響、③接下來要做什麼。
+  </div>
+  <div class="gold-line"></div>
+</header>
+
+<!-- Summary stats -->
+<div class="summary">
+  <div class="stat">
+    <div class="num">3 個</div>
+    <div class="lbl">今日成功安裝</div>
+  </div>
+  <div class="stat">
+    <div class="num">33 個</div>
+    <div class="lbl">新增 skill 總和<br>（11 + 21 + 1）</div>
+  </div>
+  <div class="stat">
+    <div class="num">7,443 tok</div>
+    <div class="lbl">總 always-on 成本<br>每個 session 加</div>
+  </div>
+  <div class="stat">
+    <div class="num">$0 起跳</div>
+    <div class="lbl">API 月費<br>（看用量、Firecrawl 免費 500 頁）</div>
+  </div>
+</div>
+
+<!-- Firecrawl -->
+<div class="skill s1">
+  <div class="rank">1</div>
+  <div class="header-row">
+    <h2>Firecrawl</h2>
+    <div class="tok-badge">1,850 tok always-on</div>
+  </div>
+  <div class="src"><span class="badge">官方</span>claude-plugins-official · 11 個 skill · 版本 1.0.9</div>
+
+  <div class="row">
+    <div class="col what">
+      <h3>是什麼</h3>
+      <ul>
+        <li>專業網頁抓取 / 搜尋 / 爬取 / 結構化 / 互動 / 監控工具</li>
+        <li>把任何網頁轉成乾淨 markdown 給 LLM 讀（解 JavaScript / 動態 SPA）</li>
+        <li>11 skill：scrape / search / crawl / map / parse / interact / monitor / download / agent / cli / skill-gen</li>
+        <li>比 WebSearch 深一層、比 Bright Data 輕一層</li>
+      </ul>
+    </div>
+    <div class="col eos">
+      <h3>對 Eos 用途</h3>
+      <ul>
+        <li>每日採稿從 12 篇升 20 篇 / 800 字升 4000 字 / 含表格 + 原文引述</li>
+        <li>抓 carrier IR：富邦 / 國泰 / Lemonade / Munich Re 季報 PDF 直取數據</li>
+        <li>金管會 / 數發部 / 國發會公告 watch（每日 monitor 機制）</li>
+        <li>Entity normalize 資料來源從二手媒體 → 一手官網</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col workflow">
+      <h3>工作流程接入</h3>
+      <ul>
+        <li>step 1：config/prompt.md 第 1 步「採稿」用 firecrawl-search 取代 WebSearch</li>
+        <li>step 2：raw_articles.md 每篇加 firecrawl-scrape 抓 full markdown</li>
+        <li>step 3：可加 firecrawl-monitor 每日跑（不用 cron）</li>
+      </ul>
+    </div>
+    <div class="col cost">
+      <h3>成本評估</h3>
+      <ul>
+        <li>🟢 免費 500 頁 / 月 → 每日 16 頁、剛好夠我採稿</li>
+        <li>🟡 不夠就升 Hobby plan $19/月 = 3000 頁</li>
+        <li>🟢 always-on 1.8k token（輕）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next-step">
+    <b>下一步：</b>Leon 註冊 firecrawl.dev → 取 API key → 加進 .env → 我就把採稿 pipeline 換成 Firecrawl（明早 08:00 第一輪生效）
+  </div>
+</div>
+
+<!-- Bright Data -->
+<div class="skill s2">
+  <div class="rank">2</div>
+  <div class="header-row">
+    <h2>Bright Data Plugin</h2>
+    <div class="tok-badge heavy">5,345 tok always-on（重）</div>
+  </div>
+  <div class="src"><span class="badge">官方</span>claude-plugins-official · 21 個 skill · 版本 1.8.0</div>
+
+  <div class="row">
+    <div class="col what">
+      <h3>是什麼</h3>
+      <ul>
+        <li>企業級網頁採集 / SERP 搜尋 / 結構化抽取（40+ 平台預設 schema）</li>
+        <li>21 skill：scrape / search / discover-api / live-research / RAG pipeline / SEO audit / brand-listening / competitive-intel / price-comparison 等</li>
+        <li>支援 60+ MCP tool、bot 偵測 / CAPTCHA 自動繞</li>
+        <li>對位場景：競品研究 / IR 抓取 / 法說會 transcript</li>
+      </ul>
+    </div>
+    <div class="col eos">
+      <h3>對 Eos 用途</h3>
+      <ul>
+        <li>競品 weekly 報告：抓 Amazon / Walmart 賣的保險 SKU 對位產險</li>
+        <li>brand-listening：Reddit / X / IG / TikTok 抓「保險詐騙 / 業務員口碑」</li>
+        <li>discover-api：意圖排序的語意搜尋（補 Firecrawl 廣度不足）</li>
+        <li>跨 sister 共用：Calliope 競品 / Vena FSC 監理 / Iris 競品 IG / Themis 上市公司</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col workflow">
+      <h3>工作流程接入</h3>
+      <ul>
+        <li>step 1：每週六 weekly-mid 抽 1 個競品深掘（用 competitive-intel）</li>
+        <li>step 2：D015 業務員早報加「保險口碑指標」段（用 brand-listening）</li>
+        <li>step 3：建議「平時 disable、要用時 enable」省 token</li>
+      </ul>
+    </div>
+    <div class="col cost">
+      <h3>成本評估</h3>
+      <ul>
+        <li>🟡 試用 $5 credit、足夠測試 1 個月</li>
+        <li>🟡 高階用量按 quota 計費（pay-as-you-go）</li>
+        <li>🔴 always-on 5.3k token（重）→ 建議 disable / 用時 enable</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next-step">
+    <b>下一步：</b>Leon 註冊 brightdata.com → API token → 加進 .env → 我先跑「平時 disable / 週六啟用」模式、避免每日 5.3k token 浪費
+  </div>
+</div>
+
+<!-- video-podcast-maker -->
+<div class="skill s3">
+  <div class="rank">3</div>
+  <div class="header-row">
+    <h2>video-podcast-maker</h2>
+    <div class="tok-badge">248 tok always-on</div>
+  </div>
+  <div class="src"><span class="badge">365-skills</span>Agents365-ai · 1 skill · 版本 2.3.0</div>
+
+  <div class="row">
+    <div class="col what">
+      <h3>是什麼</h3>
+      <ul>
+        <li>主題驅動的全自動影片 podcast 生成器</li>
+        <li>15 步驟工作流程：研究 → 寫腳本 → TTS → 4K Remotion 渲染 → BGM 混音 → 字幕</li>
+        <li>支援 7 個 TTS 後端：Edge / Azure / Doubao / CosyVoice / ElevenLabs / Google / OpenAI</li>
+        <li>輸出橫向長片（16:9 4K）+ 直向短片（9:16 短影音）</li>
+        <li>多平台：Bilibili / YouTube / 小紅書 / 抖音 / WeChat Channels</li>
+      </ul>
+    </div>
+    <div class="col eos">
+      <h3>對 Eos 用途</h3>
+      <ul>
+        <li>D016 YT pipeline 直接升級：原本只有 yt-dlp + mlx-whisper 收集、現在能反向生產</li>
+        <li>每週 1 篇 YT 短影音：5 分鐘保險科技週報 → 短影音版 → IG/TikTok</li>
+        <li>對位未來保代「對外品牌曝光」+ V001 Anthropic 影片研究系列延伸</li>
+        <li>5 sister 共用：Calliope 業務員教育 / Iris 視覺 / Vena 合約口頭講解</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col workflow">
+      <h3>工作流程接入</h3>
+      <ul>
+        <li>step 1：選 TTS 後端 → 推薦 Edge（已 setup edge-tts、零成本中文聲音）</li>
+        <li>step 2：每週六生 1 支「本週保險科技 5 大事」短影音</li>
+        <li>step 3：對接 D016 YT 上架 + FB Reels + IG Reels</li>
+      </ul>
+    </div>
+    <div class="col cost">
+      <h3>成本評估</h3>
+      <ul>
+        <li>🟢 完全免費（用 Edge TTS、自家 Remotion）</li>
+        <li>🟢 always-on 0.25k token（最輕）</li>
+        <li>🟡 渲染 4K 需 GPU / 慢、實際生產可用 1080p 加速</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="next-step">
+    <b>下一步：</b>你決定「用 Edge」我即把 D016 對接 + 跑首次 POC「本週保險科技 5 大事」短影音（明日六生產第一支）
+  </div>
+</div>
+
+<footer>
+  <div class="brand">羅賓斯科技 · ROBINSTECH</div>
+  <div>Eos 晨曦 ☀️ · 2026-06-15 · D027 已裝 plugin 中文評估分析 v1</div>
+</footer>
+
+</body>
+</html>
