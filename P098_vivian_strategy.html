@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>永達 Vivian AI 蒸餾戰略建議 · 羅賓斯科技</title>
+<style>
+:root {
+  --navy: #0F1F4D;
+  --navy-light: #1E3A6F;
+  --gold: #E89E3F;
+  --gold-light: #F2C28A;
+  --gold-bg: #FFF8E7;
+  --green: #2BA84A;
+  --red: #D9382B;
+  --orange: #F26B3F;
+  --purple: #7C3AED;
+  --teal: #14B8A6;
+  --ink: #121822;
+  --ink-light: #394350;
+  --grey: #6B7280;
+  --bg: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --border: #E5E7EB;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  font-family: "Source Han Sans TC", "PingFang TC", "Noto Sans CJK TC",
+               "Microsoft JhengHei", -apple-system, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 48px 56px 36px 56px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute;
+  right: -120px; top: -80px;
+  width: 320px; height: 320px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.08;
+}
+.hero-eyebrow {
+  font-size: 12px; letter-spacing: 4px;
+  color: var(--gold); font-weight: 700;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.hero-title {
+  font-size: 38px; font-weight: 900;
+  margin: 0; letter-spacing: -1px;
+  line-height: 1.25;
+}
+.hero-subtitle {
+  font-size: 16px; color: rgba(255,255,255,0.85);
+  margin: 12px 0 0 0;
+}
+.hero-meta {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 1px;
+}
+.hero-meta strong { color: var(--gold); }
+/* TL;DR section */
+.tldr {
+  background: var(--gold-bg);
+  padding: 28px 56px;
+  border-bottom: 1px solid var(--border);
+  border-left: 6px solid var(--gold);
+}
+.tldr-label {
+  font-size: 12px; letter-spacing: 3px;
+  color: var(--gold); font-weight: 800;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.tldr-text {
+  font-size: 16px; font-weight: 600;
+  color: var(--navy);
+  line-height: 1.75;
+  margin: 0;
+}
+.tldr-text strong {
+  background: linear-gradient(transparent 60%, var(--gold-light) 60%);
+  padding: 0 2px;
+}
+.section {
+  padding: 36px 56px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+.section-grid {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.section-badge {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: white;
+  background: var(--navy);
+  text-align: center;
+  padding: 12px 0;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+.section-badge.gold { background: var(--gold); }
+.section-badge.green { background: var(--green); }
+.section-badge.teal { background: var(--teal); }
+.section-badge.purple { background: var(--purple); }
+.section-badge.red { background: var(--red); }
+.section-title {
+  font-size: 24px; font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+.section-eyebrow {
+  font-size: 11px; letter-spacing: 2px;
+  color: var(--gold); font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.section-body {
+  font-size: 14.5px;
+  color: var(--ink-light);
+  margin: 12px 0 0 0;
+}
+.section-body p {
+  margin: 8px 0 14px 0;
+}
+.section-body strong {
+  color: var(--navy);
+  font-weight: 700;
+}
+.callout {
+  background: #F4F6FB;
+  border-left: 4px solid var(--navy-light);
+  padding: 12px 18px;
+  margin: 12px 0;
+  font-size: 13.5px;
+  color: var(--ink-light);
+  border-radius: 0 4px 4px 0;
+}
+.callout.gold { border-left-color: var(--gold); background: var(--gold-bg); }
+.callout.green { border-left-color: var(--green); background: #F0FDF4; }
+.callout.red { border-left-color: var(--red); background: #FEF2F2; }
+/* arch table */
+.arch-stack {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 0;
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.arch-tier {
+  display: contents;
+}
+.arch-level {
+  background: var(--navy);
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  text-align: center;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--navy-light);
+}
+.arch-level:last-of-type { border-bottom: none; }
+.arch-tier:nth-child(2) .arch-level { background: var(--gold); }
+.arch-tier:nth-child(3) .arch-level { background: var(--teal); }
+.arch-tier:nth-child(4) .arch-level { background: var(--purple); }
+.arch-desc {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: white;
+}
+.arch-desc:last-of-type { border-bottom: none; }
+.arch-name {
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+.arch-detail {
+  font-size: 12.5px;
+  color: var(--ink-light);
+  line-height: 1.55;
+}
+/* MVP timeline */
+.mvp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+.mvp-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+.mvp-card:nth-child(2) { border-top-color: var(--green); }
+.mvp-card:nth-child(3) { border-top-color: var(--teal); }
+.mvp-card:nth-child(4) { border-top-color: var(--purple); }
+.mvp-time {
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--grey);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.mvp-title {
+  font-weight: 800;
+  color: var(--navy);
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.mvp-detail {
+  font-size: 12px;
+  color: var(--ink-light);
+  line-height: 1.5;
+}
+/* Pricing tiers */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+.pricing-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 18px;
+  background: white;
+}
+.pricing-card.featured {
+  border: 2px solid var(--gold);
+  background: var(--gold-bg);
+}
+.pricing-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pricing-amount {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.pricing-unit {
+  font-size: 12px;
+  color: var(--grey);
+  margin-bottom: 10px;
+}
+.pricing-detail {
+  font-size: 12.5px;
+  color: var(--ink-light);
+  line-height: 1.6;
+}
+/* timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 10px 14px;
+  background: white;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 4px 4px 0;
+}
+.timeline-date {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: var(--gold);
+  font-size: 13px;
+}
+.timeline-desc {
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.timeline-desc strong { color: var(--navy); }
+/* moat */
+.moat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 12px;
+}
+.moat-card {
+  background: white;
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  border-radius: 4px;
+}
+.moat-title {
+  font-weight: 800;
+  color: var(--navy);
+  font-size: 13.5px;
+  margin-bottom: 6px;
+}
+.moat-detail {
+  font-size: 12.5px;
+  color: var(--ink-light);
+  line-height: 1.55;
+}
+/* CTA */
+.cta {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 36px 56px;
+  text-align: center;
+  color: white;
+}
+.cta-eyebrow {
+  font-size: 12px; letter-spacing: 4px;
+  color: var(--gold); font-weight: 700;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.cta-title {
+  font-size: 24px; font-weight: 800;
+  margin: 0 0 14px 0;
+  line-height: 1.4;
+}
+.cta-body {
+  font-size: 14px; color: rgba(255,255,255,0.85);
+  margin: 0;
+  line-height: 1.7;
+}
+.footer {
+  padding: 18px 56px;
+  background: #061230;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  font-size: 11px;
+}
+.footer strong { color: var(--gold); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-eyebrow">CALLIOPE STRATEGIC RECOMMENDATION</p>
+  <h1 class="hero-title">永達 Vivian「AI 蒸餾」<br>不是 99 月費單案、是 lighthouse case</h1>
+  <p class="hero-subtitle">基於 0615 會議紀錄 · 給 Evin 的 6 點建議</p>
+  <div class="hero-meta">
+    來源：<strong>P096 永達會議紀錄</strong> · 對象：<strong>Vivian 協理（永達）/ 品萱 / Carpost Kevin</strong> · 日期：2026-06-15
+  </div>
+</div>
+
+<!-- TL;DR -->
+<div class="tldr">
+  <div class="tldr-label">BLUF · 一句話結論</div>
+  <p class="tldr-text">
+    Vivian 是台灣保經界 <strong>Top 0.1% 業務員 + 有出書 + 有培訓系統 + 有 90 後團隊 + 客戶實證</strong>，
+    她要的不是流程數位化（富易達 / 看見已做過），而是
+    <strong>「角色蒸餾」persona distillation</strong> —
+    這是您羅賓斯「業務員 IP 蒸餾」產品線的<strong>第一個 lighthouse case</strong>。
+    別用 99 / 399 月費單案視角談、改用「建模費 + 託管費 + 授權費」三層方案、
+    第一年合約 <strong>NT$ 80-150 萬</strong>，且永達內部 ROI 易算（1 件保單 = 抵 6 個月）。
+  </p>
+</div>
+
+<!-- A. Strategic positioning -->
+<div class="section">
+  <div class="section-grid">
+    <div class="section-badge">A</div>
+    <div>
+      <p class="section-eyebrow">STRATEGIC FRAMING · 戰略定位</p>
+      <h2 class="section-title">不要把這當「永達一案」、要當「業務員 IP 蒸餾」產品線的開創</h2>
+      <div class="section-body">
+        <p>
+          您現有客戶是「<strong>流程數位化</strong>」（富易達 = 產險平台、看見 = OCR + 投資型保單機器人）。
+          Vivian 是另一條獨立產品線：<strong>業務員的「人」數位化</strong>。
+        </p>
+        <p>她是 lighthouse case 的 perfect testbed：</p>
+        <ul>
+          <li>✓ 她<strong>有出書</strong>（馬上有訓練素材）</li>
+          <li>✓ 她<strong>有完整培訓系統</strong>（崔老師企管顧問 + 桃園團隊連續三年第一）</li>
+          <li>✓ 她<strong>有 90 後團隊</strong>已實證 AI 工具上手</li>
+          <li>✓ 她<strong>客戶端有實證</strong>（高端醫師、診所老闆娘、獅子會會長）</li>
+          <li>✓ 她<strong>有獅子會 + 任脈通路</strong>（推薦人就是 marketing）</li>
+        </ul>
+        <div class="callout gold">
+          <strong>💡 戰略含義：</strong>做完 Vivian 案，您手上就有 3 條產品線可賣：
+          (A) 富易達式產險平台、(B) 看見式 OCR + RAG、(C) Vivian 式人格蒸餾 — 涵蓋台灣保經市場全光譜需求。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- B. Product architecture -->
+<div class="section">
+  <div class="section-grid">
+    <div class="section-badge gold">B</div>
+    <div>
+      <p class="section-eyebrow">PRODUCT ARCHITECTURE · 產品架構</p>
+      <h2 class="section-title">4 層 stack — 不要一次全做、由下往上分層收費</h2>
+      <div class="arch-stack">
+        <div class="arch-tier">
+          <div class="arch-level">L4</div>
+          <div class="arch-desc">
+            <div class="arch-name">訓練回饋層（Reinforcement Loop）</div>
+            <div class="arch-detail">業務員實戰回饋 → 微調 Vivian Clone 準確度 / 評估 hallucination → 反饋給 Vivian 自己看哪段沒人理解</div>
+          </div>
+        </div>
+        <div class="arch-tier">
+          <div class="arch-level">L3</div>
+          <div class="arch-desc">
+            <div class="arch-name">內容生成層（Generation）</div>
+            <div class="arch-detail">業務員輸入「客戶 A 想討論退休規劃」→ 自動生成 Vivian 風格話術 + 客製化建議書 + 圖卡 + KPI 圖表</div>
+          </div>
+        </div>
+        <div class="arch-tier">
+          <div class="arch-level">L2</div>
+          <div class="arch-desc">
+            <div class="arch-name">互動對話層（Vivian Clone Bot）</div>
+            <div class="arch-detail">業務員 Q&A → Vivian Clone 用她的銷售哲學回應；自動標出處（保發中心 / 書某頁）+ 標 confidence；錯字可手動修正</div>
+          </div>
+        </div>
+        <div class="arch-tier">
+          <div class="arch-level">L1</div>
+          <div class="arch-desc">
+            <div class="arch-name">知識基礎層（Knowledge Base）</div>
+            <div class="arch-detail">Vivian 既有素材（書、講義、會議錄音、培訓影片）→ Whisper STT + OCR + RAG embedding；每月增量補</div>
+          </div>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>實作備註：</strong>L1 + L2 是「AI 家族辦公室」MVP；L3 + L4 是 V2 升級。
+        Vivian 會議中對 L2 + L3 同時驚艷、L1 是她自己會配合提供素材的部分。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- C. MVP -->
+<div class="section">
+  <div class="section-grid">
+    <div class="section-badge green">C</div>
+    <div>
+      <p class="section-eyebrow">MVP PLAN · 90 天首階段</p>
+      <h2 class="section-title">先做小切入點建立信任、再上戰略性 Vivian Clone</h2>
+      <div class="mvp-grid">
+        <div class="mvp-card">
+          <div class="mvp-time">DAY 1-15 · 6 月底</div>
+          <div class="mvp-title">🟢 小切入點：OCR 打卡卡</div>
+          <div class="mvp-detail">會議中她答應的客戶實體打卡 → 數位化。<strong>低風險、立即見效、付費破冰</strong>。約 NT$ 5-15 萬。</div>
+        </div>
+        <div class="mvp-card">
+          <div class="mvp-time">DAY 16-45 · 7 月</div>
+          <div class="mvp-title">📚 L1 素材建構</div>
+          <div class="mvp-detail">收 Vivian 書 + 講義 + 會議錄音 → Whisper STT + embedding。同時跑她的<strong>個人風格分析</strong>（用詞偏好、銷售節奏）。</div>
+        </div>
+        <div class="mvp-card">
+          <div class="mvp-time">DAY 46-75 · 8 月</div>
+          <div class="mvp-title">🤖 Vivian Clone V1 Demo</div>
+          <div class="mvp-detail">L2 對話 bot 上線。<strong>80% 命中率目標</strong>。給 Vivian 自己先試、調整 confidence threshold + 標出處規則。</div>
+        </div>
+        <div class="mvp-card">
+          <div class="mvp-time">DAY 76-90 · 9 月初</div>
+          <div class="mvp-title">🎯 5 位業務員試用</div>
+          <div class="mvp-detail">品萱 + 4 位<strong>差異化背景業務員</strong>實戰回饋。目標：每人 2 件真實客戶案件用 Clone 跑、收 ROI 數據。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D. Business model -->
+<div class="section">
+  <div class="section-grid">
+    <div class="section-badge teal">D</div>
+    <div>
+      <p class="section-eyebrow">BUSINESS MODEL · 商業模式</p>
+      <h2 class="section-title">不要走 99 / 399 月費、改三層架構</h2>
+      <p class="section-body">
+        Vivian 是頂級業務員、若您只收 99 月費、<strong>反而會讓她覺得「沒被認真對待」</strong>。
+        她會議中明確說「當老闆一定要有成本觀念」— 她<strong>付得起合理價格</strong>，但要看到價值。
+      </p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-label">建模費（一次性）</div>
+          <div class="pricing-amount">NT$ 30 - 50 萬</div>
+          <div class="pricing-unit">一次性 / 含素材收集 + V1 訓練</div>
+          <div class="pricing-detail">含：素材整理 + STT + OCR + RAG embed + V1 Vivian Clone bot</div>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-label">託管費（月費）</div>
+          <div class="pricing-amount">NT$ 1.5 - 3 萬</div>
+          <div class="pricing-unit">月 / Vivian 整個 team（不論人數）</div>
+          <div class="pricing-detail">主力收入。含：模型 hosting + 每月素材增量 + 內容生成 + 知識更新</div>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-label">使用授權（per agent）</div>
+          <div class="pricing-amount">NT$ 399 / 月</div>
+          <div class="pricing-unit">個別業務員 / 後期擴展</div>
+          <div class="pricing-detail">當 Vivian 想擴大、別 team 用她的 Clone 時收個別授權費</div>
+        </div>
+      </div>
+      <div class="callout green">
+        <strong>💰 第一年總收入估算：</strong>建模 40 萬 + 月費 2 萬 × 12 = <strong>NT$ 64-100 萬</strong>。
+        若到年底 Vivian 想跨團隊（永達其他通訊處）擴展、走 per agent 授權，再加 200-500 萬。
+      </div>
+      <div class="callout gold">
+        <strong>🎯 對 Vivian 的 ROI 話術：</strong>
+        永達一位業務員一個月開 1 件壽險（保費 10 萬+ 級）就能<strong>抵 6 個月託管費</strong>。
+        若 Clone 讓品萱多開 2 件、整個 team 多 5 件 = 一個月內全額回本 + 賺回模型費。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E. Timeline -->
+<div class="section">
+  <div class="section-grid">
+    <div class="section-badge purple">E</div>
+    <div>
+      <p class="section-eyebrow">EXECUTION TIMELINE · 時程</p>
+      <h2 class="section-title">建議您 12 個月 roadmap（從 6/15 起算）</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">6/16-6/20</div>
+          <div class="timeline-desc"><strong>OCR 打卡卡破冰簽約</strong>（NT$ 5-15 萬 / 立即執行）— 進入永達後勤、了解客戶資料 pipeline</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">6/22-6/25</div>
+          <div class="timeline-desc"><strong>給 Vivian 完整 AI 家族辦公室提案 V01</strong>（含 4 層架構 + 三層收費）+ 安排 Demo</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">7/1</div>
+          <div class="timeline-desc"><strong>簽約 + 開工</strong>（建模費 1/2 預收 NT$ 15-25 萬）/ 同步開 Podcast 規劃會議</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">8/15</div>
+          <div class="timeline-desc"><strong>Vivian Clone V1 Demo</strong> 給 Vivian 自己試 / 進入 fine-tune cycle</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">10/1</div>
+          <div class="timeline-desc"><strong>5 位業務員試用</strong>（品萱 + 4 位差異化背景）/ 收回饋 + 真實 ROI 數據</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">12/1</div>
+          <div class="timeline-desc"><strong>建模費結清 + 月費正式啟動</strong>（NT$ 2 萬 / 月）/ 評估跨團隊擴展</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2027 Q1</div>
+          <div class="timeline-desc">永達其他通訊處跨採購談判（Vivian 推薦） / 推「Vivian Clone」做為產品線 brand</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- F. Moat -->
+<div class="section">
+  <div class="section-grid">
+    <div class="section-badge red">F</div>
+    <div>
+      <p class="section-eyebrow">MOAT &amp; RISK · 護城河與風險</p>
+      <h2 class="section-title">為什麼這案值得做、以及您需要警戒什麼</h2>
+      <div class="moat-grid">
+        <div class="moat-card">
+          <div class="moat-title">🛡 護城河 #1 · 產品差異化</div>
+          <div class="moat-detail">「人格蒸餾」在台灣保經界<strong>沒人在做</strong>。OpenAI Custom GPT 之類能做「角色扮演」但不是商業級 RAG + 風險控管。羅賓斯做出來就佔位。</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-title">🛡 護城河 #2 · 客戶共建</div>
+          <div class="moat-detail">Vivian 案會與她共同進化（她持續貢獻素材、Clone 越來越像她）。<strong>她不會輕易跳船</strong>給競品 — 替換成本超高。</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-title">🛡 護城河 #3 · 行銷代言</div>
+          <div class="moat-detail">Vivian + 您共同 Podcast = <strong>軟性增員 + 品牌行銷</strong>同步完成。永達內外、台灣 0.1% 業務員圈會自動口耳相傳。</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-title">🛡 護城河 #4 · lighthouse case 複利</div>
+          <div class="moat-detail">您手上有「3 大保經 / 3 種模式」實證：富易達（產險流程）/ 看見（OCR + RAG）/ 永達 Vivian（人格蒸餾）— 對外 pitch 直接秒殺競品。</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-title">⚠ 風險 #1 · 素材收集時程</div>
+          <div class="moat-detail">Vivian 答應收素材但她<strong>很忙</strong>（協理 / 培訓 / 客戶 / 獅子會）。您要主動 push、不然 6 月底還拿不到完整資料。</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-title">⚠ 風險 #2 · Hallucination 控制</div>
+          <div class="moat-detail">人格 Clone 講錯話可能毀 Vivian 聲譽。<strong>必須先做 confidence threshold + 標出處 + 內測再開放</strong>。會議中她已敏感問過 — 您要主動展示風控設計。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <p class="cta-eyebrow">CALLIOPE'S BOTTOM LINE</p>
+  <h2 class="cta-title">這是您下半年最重要的單一商機</h2>
+  <p class="cta-body">
+    第一年合約收入 <strong style="color:var(--gold)">NT$ 64-150 萬</strong>、
+    開創「業務員 IP 蒸餾」全新產品線、
+    取得頂級客戶 lighthouse case 對外 pitch 用、
+    且 Vivian 本人會幫您行銷 — 這個 deal 槓桿率極高。<br>
+    我建議您 <strong style="color:var(--gold)">6/22 前</strong>給她正式提案、別讓 momentum 冷掉。
+  </p>
+</div>
+
+<div class="footer">
+  <strong>雅韻 / Calliope 🎭 · 戰略建議</strong> · 羅賓斯科技 · P098 · 2026-06-15 V01
+</div>
+
+</div>
+</body>
+</html>
