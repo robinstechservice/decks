@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>會議紀錄 · 羅賓斯 × 華南產險 Console 提案 · 2026-06-16</title>
+<style>
+:root {
+  --navy:#0F1F4D; --navy-light:#1E3A6F; --gold:#E89E3F; --gold-light:#F2C28A;
+  --green:#2BA84A; --rose:#E85A8A; --ink:#121822; --ink-light:#394350;
+  --grey:#6B7280; --bg:#F8FAFC; --bg-card:#FFFFFF; --border:#E5E7EB;
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:0; background:var(--bg);
+  font-family:"Source Han Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",-apple-system,sans-serif;
+  color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.65; }
+.container { max-width:1100px; margin:0 auto; }
+.hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+  padding:40px 56px 32px 56px; color:white; }
+.hero-eyebrow { font-size:12px; letter-spacing:4px; color:var(--gold);
+  font-weight:600; text-transform:uppercase; margin-bottom:12px; }
+.hero-title { font-size:30px; font-weight:800; margin:0 0 6px 0; letter-spacing:-0.5px; }
+.hero-subtitle { font-size:16px; color:rgba(255,255,255,0.85); margin:0; }
+.hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15); }
+.hero-meta-label { font-size:10px; letter-spacing:1px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:4px; }
+.hero-meta-val { font-size:14px; font-weight:600; }
+.attendees { background:var(--bg-card); padding:18px 56px;
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px; font-size:13px; }
+.attendees-label { font-weight:700; color:var(--navy); }
+.speaker-chip { display:inline-block; color:white; padding:3px 12px;
+  border-radius:100px; font-size:12px; font-weight:600; margin-right:4px; }
+.section { padding:32px 56px; background:var(--bg-card); border-bottom:1px solid var(--border); }
+.section-eyebrow { font-size:11px; letter-spacing:3px; color:var(--gold);
+  font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+.section-title { font-size:24px; font-weight:800; color:var(--navy);
+  margin:0 0 16px 0; padding-bottom:8px; border-bottom:3px solid var(--gold); display:inline-block; }
+.summary-body h3 { font-size:18px; font-weight:800; color:var(--navy);
+  margin:20px 0 8px 0; padding-left:12px; border-left:4px solid var(--gold); }
+.summary-body h4 { font-size:15px; font-weight:700; color:var(--navy-light); margin:14px 0 6px 0; }
+.summary-body p { font-size:14px; color:var(--ink-light); margin:8px 0; }
+.summary-body strong { color:var(--navy); }
+.topics-list { list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:8px; counter-reset:topic; }
+.topics-list li { background:#FFFBEB; border-left:3px solid var(--gold);
+  padding:10px 14px; font-size:13px; color:var(--ink);
+  border-radius:0 4px 4px 0; counter-increment:topic; position:relative; }
+.topics-list li::before { content:counter(topic); display:inline-block;
+  width:22px; height:22px; border-radius:100px;
+  background:var(--gold); color:white; text-align:center;
+  font-weight:700; font-size:11px; line-height:22px;
+  margin-right:8px; font-family:"Montserrat",sans-serif; }
+.action-table { width:100%; border-collapse:collapse; font-size:13px; }
+.action-table th { background:var(--navy); color:white; padding:12px 14px;
+  text-align:left; font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+.action-table td { padding:14px; border-bottom:1px solid var(--border);
+  vertical-align:top; color:var(--ink-light); }
+.ai-num { font-family:"Montserrat",sans-serif; font-weight:800;
+  color:var(--gold); font-size:20px; width:40px; }
+.ai-item { font-weight:600; color:var(--ink); width:35%; }
+.ai-owner { font-weight:700; color:var(--navy); white-space:nowrap; }
+.ai-deadline { color:var(--grey); white-space:nowrap; }
+.transcript { background:var(--bg); padding:20px 24px; max-height:700px;
+  overflow-y:auto; border-radius:4px; font-size:13px; border:1px solid var(--border); }
+.ts-line { padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.04);
+  display:flex; gap:10px; align-items:flex-start; }
+.ts-line:last-child { border-bottom:none; }
+.ts-time { font-family:"Montserrat",monospace; font-size:11px;
+  color:var(--grey); font-weight:600; flex-shrink:0; width:50px; padding-top:2px; }
+.ts-speaker { font-weight:700; flex-shrink:0; width:75px; }
+.ts-content { color:var(--ink-light); flex:1; line-height:1.6; }
+.notice-box { background:#FEF3C7; border-left:4px solid var(--gold);
+  padding:14px 18px; margin:16px 0; border-radius:0 4px 4px 0; font-size:12.5px; }
+.notice-box strong { color:var(--navy); }
+.footer { padding:18px 56px; background:var(--navy);
+  color:rgba(255,255,255,0.7); text-align:center; font-size:11px; }
+.footer strong { display:block; color:var(--gold); font-size:13px; margin-bottom:4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">羅賓斯科技 × 華南產險 — Console 站提案</h1>
+  <p class="hero-subtitle">Evin Lin × Matt（羅賓斯）× 珊珊（華南產險營業五部）</p>
+  <div class="hero-grid">
+    <div><div class="hero-meta-label">日期</div><div class="hero-meta-val">2026 年 6 月 16 日</div></div>
+    <div><div class="hero-meta-label">時長</div><div class="hero-meta-val">約 17 分鐘</div></div>
+    <div><div class="hero-meta-label">主題</div><div class="hero-meta-val">Console 站提案 Demo</div></div>
+    <div><div class="hero-meta-label">出席</div><div class="hero-meta-val">3 人</div></div>
+  </div>
+</div>
+
+<div class="attendees">
+  <span class="attendees-label">與會者：</span>
+  <span class="speaker-chip" style="background:#0F1F4D">Evin Lin</span> <span class="speaker-chip" style="background:#E89E3F">Matt</span> <span class="speaker-chip" style="background:#E85A8A">珊珊</span>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body"><h3>重點摘要</h3>
+<h4>(1) 會議目的與背景</h4>
+本次會議由羅賓斯科技（Robins Technology）向華南產險營業五部提案其 Console 後台管理系統的使用方案。羅賓斯科技由 CEO Evin Lin 與業務發展 Matt 代表，向華南產險的珊珊進行產品演示。羅賓斯科技先前已與華南產險總公司簽約，但使用率不高，因此希望透過此次會議，將其服務導入分公司層級，提升合作效益。會議旨在展示 Console 系統如何透過 AI 技術解決產險業務中的效率痛點，並探討具體的合作模式。
+<h4>(2) 羅賓斯提案核心：Console 站功能與價值主張</h4>
+Matt 主導了 Console 平台的線上演示，核心功能聚焦於兩大主軸：
+<p>1.  <strong>即時車籍與保險資料查詢</strong>：<br>▸ 使用者僅需輸入「車牌號碼」與「車主身分證字號」，系統即可即時查詢並回傳多項關鍵資料。<br>▸ <strong>車籍資料</strong>：包含廠牌代碼、詳細車型、出廠日期、領牌日期、引擎號碼等。系統能對應廠牌代碼，從保發中心的資料庫中拉取對應的詳細車型，解決同一車款有多種規格的識別問題。<br>▸ <strong>重置價格</strong>：系統會自動帶出該車型的重置價格，這是計算車體險保費的關鍵基礎，免去人工查找的麻煩。<br>▸ <strong>保險到期日</strong>：系統能同時查詢「強制險」與「任意險」的到期日，讓業務員能精準掌握客戶續保的時機，進行有效通知與推廣。</p>
+<p>2.  <strong>OCR 光學字元辨識與資料自動化 Key-in</strong>：<br>▸ 此功能旨在解決保險業務中大量文書的人工輸入痛點。使用者可將要保書的掃描檔（PDF 或圖片格式）上傳至系統。<br>▸ 系統會利用 OCR 技術自動辨識並解析文件中的所有欄位，包含要保人/被保人姓名、ID、保險公司、險種、業務員、生效日期、價格、車籍資料等，並將其結構化。<br>▸ 解析後的資料會並列顯示在原始文件旁，方便使用者核對。此功能可大幅縮短資料建檔時間、降低人為輸入錯誤率，並可處理單筆或多筆（批次）文件。</p>
+<p>羅賓斯的價值主張是透過 AI 技術賦能，將產險業務員從繁瑣的行政工作中解放出來，專注於客戶服務與銷售，從而提升整體業務效率與準確性。</p>
+<h4>(3) 華南產險營業五部的需求 / 痛點</h4>
+珊珊在會議中提出的問題，反映了華南產險在實務操作上的考量與痛點：
+▸ <strong>資料輸入的沉重負擔</strong>：珊珊明確表示，他們「每天都在 key-in」，證實了人工資料輸入是日常營運的一大痛點，對於能簡化此流程的 OCR 功能抱持興趣。
+▸ <strong>車型識別的準確性</strong>：她特別關心系統如何精準識別特定車型。由於同一車款常有多種不同配備與價格的子型號（例如 Mondeo 有七八種），這會直接影響保費估算，因此系統能否提供準確的對應至關重要。
+▸ <strong>系統整合與工作流程</strong>：珊珊關心解析後的資料如何與華南現有的系統對接。她理解到，最終理想的模式是透過 API 串接，將資料直接匯入公司內部系統，而非僅僅是匯出成 Excel 檔案再手動匯入。
+▸ <strong>對新技術的實用性評估</strong>：雖然她認同 OCR 是未來的趨勢，但也務實地提出，對於大型保險公司而言，內部可能已有相應的處理流程，因此需要實際測試來評估此功能在華南工作流程中的確切效益。
+<h4>(4) 雙方互動與技術討論</h4>
+會議互動性高，珊珊針對演示內容提出多個實務問題，羅賓斯團隊也即時提供技術說明：
+▸ <strong>車型辨識機制</strong>：Evin 解釋，目前系統是透過演算法抓取機率最高的車型，但未來計畫改進為提供一個「區間」或選項，讓使用者能更精準地選擇。資料來源主要為保發中心的公開數據。
+▸ <strong>OCR 資料匯出與 API 串接</strong>：Evin 強調，OCR 解析出的資料欄位可以客製化。客戶不需接收所有辨識出的 100 個欄位，可以透過 API 設定，只抓取他們需要的 20 個欄位，直接對接到其內部系統，實現最高效率的整合。
+▸ <strong>試用與反饋</strong>：雙方一致認為，最好的評估方式是讓珊珊親自試用。羅賓斯承諾會開設測試帳號，讓華南團隊能上傳實際文件進行測試，並根據使用體驗提供反饋。
+<h4>(5) 共識 / 待議事項</h4>
+▸ <strong>共識</strong>：
+    1.  華南產險確認了提升資料處理效率的需求。
+    2.  雙方同意後續將由羅賓斯科技提供一個測試帳號，供珊珊及其團隊進行實測評估。
+    3.  實際操作與測試是評估此方案是否符合華南需求的最佳途徑。
+▸ <strong>待議事項</strong>：
+    1.  測試帳號的具體權限與開通時間。
+    2.  若測試結果正面，後續的 API 串接規格、時程與商務合作細節。
+    3.  與華南產險協理級主管的會議時間需再行安排。
+<h4>(6) 後續行動</h4>
+1.  羅賓斯科技（Matt/Evin）將為珊珊開設 Console 平台的測試帳號。
+2.  珊珊需提供 Email 給羅賓斯科技以利開設帳號。
+3.  Evin 將透過 LINE 將 Matt 的聯絡方式提供給珊珊，建立直接溝通管道。
+4.  珊珊在取得帳號後，將進行內部測試，並向羅賓斯提供使用反饋。
+5.  Evin 將持續追蹤與華南產險協理的會議安排進度。</div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 具體行動</p>
+  <h2 class="section-title">行動項清單（5 件）</h2>
+  <table class="action-table">
+    <thead><tr><th>#</th><th>具體行動</th><th>負責人</th><th>截止日</th><th>脈絡</th></tr></thead>
+    <tbody>
+    <tr>
+      <td class="ai-num">1</td>
+      <td class="ai-item">為華南產險的珊珊開設 Console 平台的測試帳號。</td>
+      <td class="ai-owner">Matt / Evin Lin</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">雙方同意讓華南產險實際操作平台以評估其效益。 [14:23]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">2</td>
+      <td class="ai-item">將 Matt 的 LINE 聯絡資訊轉交給珊珊，以便建立後續溝通管道。</td>
+      <td class="ai-owner">Evin Lin</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">珊珊請求 Evin 協助連結，方便後續直接與 Matt 溝通技術與帳號問題。 [14:54]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">3</td>
+      <td class="ai-item">提供個人 Email 給羅賓斯科技，用於接收測試帳號資訊。</td>
+      <td class="ai-owner">珊珊</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">開設測試帳號需要珊珊的 Email 作為登入憑證。 [14:44]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">4</td>
+      <td class="ai-item">使用測試帳號對 Console 平台的車籍查詢與 OCR 功能進行實測，並整理使用反饋。</td>
+      <td class="ai-owner">珊珊</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">實際測試是評估系統是否符合華南內部工作流程的關鍵步驟。 [12:50]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">5</td>
+      <td class="ai-item">持續追蹤並安排與華南產險協理的會議。</td>
+      <td class="ai-owner">Evin Lin</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">Evin 在會議結束前提到需要追蹤之前與協理約訪的進度。 [15:17]</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 議題索引</p>
+  <h2 class="section-title">10 個關鍵討論主題</h2>
+  <ol class="topics-list"><li>會議開場與 Console 平台演示交接</li>
+<li>功能一：車牌查詢即時車籍與保險資料</li>
+<li>Matt 的產業背景與建立共通語言</li>
+<li>華南方提問：如何確保車型識別的準確性</li>
+<li>討論重置價格的資料來源（保發中心）</li>
+<li>功能二：OCR 自動化資料輸入（Key-in）展示</li>
+<li>OCR 辨識結果與欄位說明</li>
+<li>討論 OCR 資料的後續處理：篩選與 API 整合</li>
+<li>後續步驟：提供測試帳號供華南方實測</li>
+<li>會議收尾與追蹤後續高層會議安排</li></ol>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 逐字稿</p>
+  <h2 class="section-title">會議逐字稿（輕度 polish）</h2>
+  <div class="notice-box">
+    <strong>📌 STT 處理註記</strong><br>
+    輕度 polish — 保留語意完整、去除「嗯/呃/那個」等填充詞；敏感資訊（價格、保費結構、合約條件）全部保留。
+  </div>
+  <div class="transcript"><div class="ts-line"><span class="ts-time">00:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">因為總公司已經有跟我們簽約了，只是使用量不太好。</span></div>
+<div class="ts-line"><span class="ts-time">00:05</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">所以看看有沒有辦法進到分公司這裡。</span></div>
+<div class="ts-line"><span class="ts-time">00:09</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">好，那 Matt 我時間給你了，我上一下廁所。</span></div>
+<div class="ts-line"><span class="ts-time">00:11</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">00:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">OK OK，好。</span></div>
+<div class="ts-line"><span class="ts-time">00:13</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">好，珊珊麻煩你。</span></div>
+<div class="ts-line"><span class="ts-time">00:15</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">OK，珊珊你好，你看得到我的畫面嗎？它這邊有一個車牌查詢，會不會太小？要不要我放大一點？</span></div>
+<div class="ts-line"><span class="ts-time">00:23</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">會，會太小。</span></div>
+<div class="ts-line"><span class="ts-time">00:24</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">太小是不是？好。</span></div>
+<div class="ts-line"><span class="ts-time">00:25</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">對，因為我只能用手機看，因為公司的系統是不能使用的。</span></div>
+<div class="ts-line"><span class="ts-time">00:29</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">OK，沒關係，我把它放大一點。</span></div>
+<div class="ts-line"><span class="ts-time">00:34</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">我看看能不能打，因為它這是先開內部，不然我之後可以開個測試帳號給你用。</span></div>
+<div class="ts-line"><span class="ts-time">00:40</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">好，這邊你看得到嗎？</span></div>
+<div class="ts-line"><span class="ts-time">00:42</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">沒關係，我把它放，我自己把它放大看好了。</span></div>
+<div class="ts-line"><span class="ts-time">00:45</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">怕你那邊... 好，那我簡單介紹一下，就是我之前是在台產的法務。</span></div>
+<div class="ts-line"><span class="ts-time">00:55</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">是。</span></div>
+<div class="ts-line"><span class="ts-time">00:55</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">然後主要處理車禍理賠追償，所以在車險的折舊計算，或者是代位求償那邊是我主要負責的。</span></div>
+<div class="ts-line"><span class="ts-time">01:03</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">應該都...了解。</span></div>
+<div class="ts-line"><span class="ts-time">01:05</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">因為我不確定你們跟台產台北有沒有交流，我之前的主管是許華仁，然後他還在台產這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">01:12</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯，我們老闆可能認識啦，那可能我不太清楚，因為在台產我比較認識的是 Apple。</span></div>
+<div class="ts-line"><span class="ts-time">01:18</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">OK OK。好，沒關係，因為我想說車險啊，大家比較有共同的語言，那我就先來 show 一下，就是我們羅賓斯科技...</span></div>
+<div class="ts-line"><span class="ts-time">01:28</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">我不確定之前你有沒有看過，我現在就是只要有車牌跟車主的身分證，那其實呢，我就可以選擇說，我要去查他的車籍資料，還有就是驗車日，還是我兩個，包含保險到期日，都要去做查詢這樣子。那這個就看使用者的需求。</span></div>
+<div class="ts-line"><span class="ts-time">01:48</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">因為有一些，譬如說總公司那邊可能他兩個都需要，但是有一些合作的平台...</span></div>
+<div class="ts-line"><span class="ts-time">01:57</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">稍等。</span></div>
+<div class="ts-line"><span class="ts-time">02:02</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">我戴個耳機，剛好 Evin 也在外面。</span></div>
+<div class="ts-line"><span class="ts-time">02:07</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你要吃早餐？</span></div>
+<div class="ts-line"><span class="ts-time">02:08</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">你要吃早餐？</span></div>
+<div class="ts-line"><span class="ts-time">02:09</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">好，不好意思。就是，我現在這邊呢，我先隨便輸一個車牌號碼，待會你也可以用你的去做測試。譬如說我輸入這台我太太的用車，然後我輸入她的身分證號。</span></div>
+<div class="ts-line"><span class="ts-time">02:24</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">02:24</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">233321，好。</span></div>
+<div class="ts-line"><span class="ts-time">02:28</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">那這邊呢，假設我要查詢兩筆資料，那我就去做這個查詢的動作。</span></div>
+<div class="ts-line"><span class="ts-time">02:35</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">這邊我先縮小一下。</span></div>
+<div class="ts-line"><span class="ts-time">02:39</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">那查詢之後呢，第一個我們...看一下，它這邊有...第一個我們查詢到的就是我們透過廠牌代碼技術會打出這台車的車籍資料。</span></div>
+<div class="ts-line"><span class="ts-time">02:49</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">02:50</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">那這邊可以看得到呢，其實它的廠牌代碼對應的後面的就是車型，這邊是我們另外再去保發還有車籍的資料庫那邊去撈的。</span></div>
+<div class="ts-line"><span class="ts-time">02:59</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼。</span></div>
+<div class="ts-line"><span class="ts-time">03:00</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">因為你要...因為其實一台車它...它的款式有非常的多，你看像我這台 Mondeo 它就有...光它那一個車系其實就有七八種。</span></div>
+<div class="ts-line"><span class="ts-time">03:10</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">03:10</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">那等於我要去找到對應的車型，然後幾門、幾人座的，因為它也會影響到它的保費的估算，因為價格其實有時候一差就是十幾二十幾萬這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">03:20</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">03:22</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">那你怎麼確定是這個車型呢？</span></div>
+<div class="ts-line"><span class="ts-time">03:23</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">它帶出來的就是它的出場日期、還有領牌日期、以及它的重置價格。那一般我們的行照上其實是沒有這個重置價格的資料。可是我們在估算車體險的時候是一定要有這個價格，才能去做車體險、車險的保額的推算。</span></div>
+<div class="ts-line"><span class="ts-time">03:44</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">然後再來呢，往上一點這邊...</span></div>
+<div class="ts-line"><span class="ts-time">03:46</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">我可以不可以中間先插一下話問一下？</span></div>
+<div class="ts-line"><span class="ts-time">03:48</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">可以，你請說，你請說。</span></div>
+<div class="ts-line"><span class="ts-time">03:49</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">呃，我可不可以問一下，那天跟奕帆有聊到，你這個車型啊，因為你剛剛有講，它有可能有N個款式，所以你怎麼確定你抓的這個一定是剛剛那個款式呢？</span></div>
+<div class="ts-line"><span class="ts-time">04:02</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你們現在是很確定就是直接抓一個最近的，還是模糊去...？</span></div>
+<div class="ts-line"><span class="ts-time">04:09</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">04:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">現在是用那個...它是去對照，它抓一個它認為機率最高的。</span></div>
+<div class="ts-line"><span class="ts-time">04:20</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">OK，但是...</span></div>
+<div class="ts-line"><span class="ts-time">04:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">但是我們下個...下個...下個禮拜會把它改成一個區間，到時候可以...對對對，這個後端我們改好，然後前端應該很快，六月底我就可以上去了。</span></div>
+<div class="ts-line"><span class="ts-time">04:34</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好，那另外一個剛剛你有講嘛，它的重價應該就是抓保發的這個金額嘛，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">04:40</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，是抓保發的，對。你自己可以...等一下你...你系統稍微熟一下，然後到時候我們會開帳號給你，你自己用你那邊自己去玩。然後如果可以的話，給我們一些反饋這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">04:53</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">我了解，嗯，好，你繼續，不好意思。</span></div>
+<div class="ts-line"><span class="ts-time">04:57</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">那再來就是像車籍資料這邊，我們要在配上身分證之後才會秀出這個引擎號碼，因為我們在報車體也會需要這一組資料。</span></div>
+<div class="ts-line"><span class="ts-time">05:08</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">然後另外一個最重要的就是其實，我們客戶他其實在意的就是說到底保險什麼時候到期這件事情。那這邊呢，因為我們有了兩項資料之後，我們就可以回答出強制險的到期日跟任意險的到期日。</span></div>
+<div class="ts-line"><span class="ts-time">05:23</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯嗯嗯。</span></div>
+<div class="ts-line"><span class="ts-time">05:24</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">然後可以去做通知的動作，像我們之前給保經代的話，那這樣子對他們是有幫助的，因為他可以很快速地去知道說，如果這個客戶，他已經持有他這兩項資訊的時候，他的車險什麼時候到期。</span></div>
+<div class="ts-line"><span class="ts-time">05:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">珊珊不用到期日，他們是保險公司，他們自己就可以查得到。</span></div>
+<div class="ts-line"><span class="ts-time">05:41</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">沒關係沒關係，沒關係。</span></div>
+<div class="ts-line"><span class="ts-time">05:43</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">就把它...它...它可應用的功能，我就先把它完整做個說明這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">05:48</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好的好的，嗯。</span></div>
+<div class="ts-line"><span class="ts-time">05:49</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">期待那個珊姐可以給我們一些回饋這樣子，在你們實際的運用上面，對。</span></div>
+<div class="ts-line"><span class="ts-time">05:55</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">05:59</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">珊，這是一個功能，所以你用...我覺得你要先用過。</span></div>
+<div class="ts-line"><span class="ts-time">06:02</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">對，我也是這麼覺得，因為我會先看你們的 demo，後來到時候你開立儲存帳號，我再試試看，後來出現的結果或是怎麼樣，我再反饋給你。</span></div>
+<div class="ts-line"><span class="ts-time">06:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，然後珊我再秀一個很酷的，你也會喜歡。我現在...</span></div>
+<div class="ts-line"><span class="ts-time">06:15</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">你說，你說。</span></div>
+<div class="ts-line"><span class="ts-time">06:17</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">賣給那個保經。就是你...你...這個是...這個是一個 OCR 的功能，就是說我等一下...隨便拿一個保單。</span></div>
+<div class="ts-line"><span class="ts-time">06:29</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">06:31</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">就是我們現在有幫那個保經公司去做 key-in 的簡化，不要讓他的小姐每天都在 key-in。</span></div>
+<div class="ts-line"><span class="ts-time">06:38</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼。</span></div>
+<div class="ts-line"><span class="ts-time">06:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">所以呢，這保單如果像我做壽險，他們有的一份保單有20頁資料，要他們 key 會要他們命。所以他就幫我把保單拉進去，我就幫他把所有的資料帶出來給他，先放在我的系統，如果他自己有系統，我再...我再匯到他的系統裡面。</span></div>
+<div class="ts-line"><span class="ts-time">06:56</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼哼。</span></div>
+<div class="ts-line"><span class="ts-time">06:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">然後我不知道你 key-in 的時候你會不會有這種需求啦，你就不用整張保單都...</span></div>
+<div class="ts-line"><span class="ts-time">07:04</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">是啊，像我們現在每天都在 key 啊。因為如果說當然有一些資料可以，當然可以減少這個...這個部分，當然是很好。</span></div>
+<div class="ts-line"><span class="ts-time">07:14</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">這個會幫助到你。</span></div>
+<div class="ts-line"><span class="ts-time">07:16</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">可是，可不可以讓我看一下，這個是你們怎麼...你們匯進去它怎麼反饋出來的？</span></div>
+<div class="ts-line"><span class="ts-time">07:22</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">下面...我先隨便找幾張要保書，你稍等一下。</span></div>
+<div class="ts-line"><span class="ts-time">07:28</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">是。</span></div>
+<div class="ts-line"><span class="ts-time">07:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">其實應該去你那邊，你就直接丟你電腦的檔案進來，它就直接拉進去，然後我們在你面前再刪掉就好。</span></div>
+<div class="ts-line"><span class="ts-time">07:36</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">對，因為它會有一些客人的資料，你稍等。</span></div>
+<div class="ts-line"><span class="ts-time">07:40</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好的，你等。</span></div>
+<div class="ts-line"><span class="ts-time">07:44</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">好，我先找一下。</span></div>
+<div class="ts-line"><span class="ts-time">08:08</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">你這邊目前這樣看得到嗎？</span></div>
+<div class="ts-line"><span class="ts-time">08:11</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">只是因為他是用手機，所以...</span></div>
+<div class="ts-line"><span class="ts-time">08:14</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">珊，Matt 現在在拉 PDF，所以你們一定會有很多 PDF，只要掃描的就好，然後丟進去，一到我們系統，它就會自動幫它辨識出來。</span></div>
+<div class="ts-line"><span class="ts-time">08:24</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">喔哼。</span></div>
+<div class="ts-line"><span class="ts-time">08:26</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">你看喔，我現在先把它一個...它是一個圖片檔，PDF 檔也是可以。</span></div>
+<div class="ts-line"><span class="ts-time">08:32</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼。</span></div>
+<div class="ts-line"><span class="ts-time">08:33</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">然後它是一個要保書。</span></div>
+<div class="ts-line"><span class="ts-time">08:36</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">08:37</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">那我先上傳一下。</span></div>
+<div class="ts-line"><span class="ts-time">08:40</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">我先請它開始辨識。</span></div>
+<div class="ts-line"><span class="ts-time">08:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你看它 bar 在跑了。</span></div>
+<div class="ts-line"><span class="ts-time">08:47</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">有，我看，我再看。</span></div>
+<div class="ts-line"><span class="ts-time">08:50</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">現在正在解析了。</span></div>
+<div class="ts-line"><span class="ts-time">09:00</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">這節省人力啦，因為其實人力在登打過程中也會需要非常非常多的時間。保經的行政也是這樣，他們都有反應。</span></div>
+<div class="ts-line"><span class="ts-time">09:09</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">可能是保經啦，但是在保險公司事實上我們在前面 key 要保文件的時候呢，我們直接就可以轉到要保單的一些基本資料。</span></div>
+<div class="ts-line"><span class="ts-time">09:19</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">OK，那你你看一下，我左邊這邊，我稍微再放大一點。</span></div>
+<div class="ts-line"><span class="ts-time">09:24</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">沒關係，我可以放大。</span></div>
+<div class="ts-line"><span class="ts-time">09:25</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">好，要保書它的完整的內容，那右邊呢就是它辨識出來的 ID、要保人、還有要保人姓名以及，它是要保人被保人是同一人嘛，還是是不同人這樣子。那再來以及它的必填欄位。</span></div>
+<div class="ts-line"><span class="ts-time">09:44</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼哼。</span></div>
+<div class="ts-line"><span class="ts-time">09:44</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">譬如說保險公司，然後險種，業務員，然後號碼，這個就是生效日、到期日，價格等等。還有就是業務員的一些代碼。</span></div>
+<div class="ts-line"><span class="ts-time">09:59</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼哼。</span></div>
+<div class="ts-line"><span class="ts-time">10:00</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">然後其他就是，它基本上都辨識出來了，但是我們可以去篩選說哪些是主要我們需要的東西，請它辨識就好，那如果說不需要的，我們就可以請它排除掉。因為它其實你看它下面連我們保單上呈現的車籍資料，譬如引擎號碼，然後這個業務是哪一個通路來的，手機等等的，全部都辨識出來了，包含係數等等都辨識出來了。</span></div>
+<div class="ts-line"><span class="ts-time">10:25</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼哼。</span></div>
+<div class="ts-line"><span class="ts-time">10:26</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">對，整個過程。那其實它...因為我現在用的是單筆嘛，但它也可以做到就是多筆。</span></div>
+<div class="ts-line"><span class="ts-time">10:35</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">整個把它倒...第四是說你給他一個 file 夾，給他100份，他慢慢去變。</span></div>
+<div class="ts-line"><span class="ts-time">10:41</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">它直接幫我判讀我所需要的，不需要的我就把它刪除，最後套出來做成要保書的格式，就直接可以套列印，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">10:52</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">因為你看我右邊它這邊有一個減項有沒有？因為那個時候我們是請 CTO 把...把它功能極大化。</span></div>
+<div class="ts-line"><span class="ts-time">11:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你先聽懂，珊珊你再講一次，你剛剛的情境是什麼？</span></div>
+<div class="ts-line"><span class="ts-time">11:03</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">我大概聽得懂奕帆你講的，基本上就不管是一張 PDF 還是一整份幾百台的，我就把它丟進去嘛，丟進去之後它就會去判讀，那我在篩選我可能所需要的，不需要的我就用這個減項把它刪掉，後來再倒到保險公司的，譬如說或者是保經公司他們相關的資料文件檔，你們目前的處理法是不是這樣？</span></div>
+<div class="ts-line"><span class="ts-time">11:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">這是一種啦，但其實你不用減，你你開一個 API 過來，就是說我這裡有100個資料對不對？</span></div>
+<div class="ts-line"><span class="ts-time">11:37</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼。</span></div>
+<div class="ts-line"><span class="ts-time">11:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">裡面可能只有20個你要的，你不一定要把剩下80個刪掉，你可以開一個 API 來說你只要這20個或25個，我就把這20個、25個倒給你 就好，你不用再去做刪減的動作，很麻煩。</span></div>
+<div class="ts-line"><span class="ts-time">11:50</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">懂，但是首先如果要這樣的話，就變成是我們要先跟你們對接 API 的部分，哪些是我所需要的嘛。</span></div>
+<div class="ts-line"><span class="ts-time">11:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">通常一定要，你會比較快，那再來就是說你工程師沒有時間的話，你至少要給我就是欄位，我可以匯給你。我可以根據，比如說你你你的工程師寫了一個 Excel 格式的接口，那 Excel 呢要有20個資料，比如說第一個叫姓名，第二個叫什麼，對不對？我就把它做成那個 Excel 給你，你自己匯進去。</span></div>
+<div class="ts-line"><span class="ts-time">12:20</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">啊了解，懂。</span></div>
+<div class="ts-line"><span class="ts-time">12:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">比較笨，就是工程師省工，但是比較沒那麼有效率，就兩個匯的動作，寫 API 是最...最...最省事的。</span></div>
+<div class="ts-line"><span class="ts-time">12:31</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好，這個東西就變成說確定有的話，到時候一定會給你們對接 API 的部分到底是哪些是需要的。</span></div>
+<div class="ts-line"><span class="ts-time">12:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，對，就是你不用在你這裡做刪減，你只要告訴我...我需要的欄位是哪些？嗯。有五個的話，我就五個倒給你 就好。</span></div>
+<div class="ts-line"><span class="ts-time">12:48</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好，我了解你的意思。可能還是我要 try 一下啦，才會知道狀況。</span></div>
+<div class="ts-line"><span class="ts-time">12:53</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">我會議後之後我開測試帳號給你。</span></div>
+<div class="ts-line"><span class="ts-time">12:56</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼哼。</span></div>
+<div class="ts-line"><span class="ts-time">12:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">這樣就可以了。</span></div>
+<div class="ts-line"><span class="ts-time">12:59</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">13:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你可能開個電腦吧，你第一次讓那個 Matt 教你，因為你今天有概念了嘛。</span></div>
+<div class="ts-line"><span class="ts-time">13:06</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯，大概知道。</span></div>
+<div class="ts-line"><span class="ts-time">13:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">他之後再教你說怎麼按，就是有個親臨力比較快進入狀況。</span></div>
+<div class="ts-line"><span class="ts-time">13:14</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">我再帶你走一次這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">13:16</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好，好，我了解。</span></div>
+<div class="ts-line"><span class="ts-time">13:19</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">因為我們這個可以...你主要用兩個功能，第一個是...一個是輸入車牌，看一下那個...準不準確。看一下資料。對。</span></div>
+<div class="ts-line"><span class="ts-time">13:29</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">那第二個就是...第二個就是那個匯入，匯入 OCR 的功能，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">13:36</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯嗯嗯嗯嗯。</span></div>
+<div class="ts-line"><span class="ts-time">13:40</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">我大概了解你的，可是 OCR 的這個功能基本上在保險公司可能不一定有很大的需求，那這個東西我稍微到時候看一下。</span></div>
+<div class="ts-line"><span class="ts-time">13:54</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你聚焦在，如果你聚焦就沒差，因為這個其他人會覺得有用。你就幫我測那個...</span></div>
+<div class="ts-line"><span class="ts-time">14:01</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">但是我還是要測一下那個，因為我要看一下公司針對這個東西到底有沒有需要，畢竟這個是未來的趨勢嘛。</span></div>
+<div class="ts-line"><span class="ts-time">14:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">OK 啊 OK 啊，很好啊。</span></div>
+<div class="ts-line"><span class="ts-time">14:10</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯嗯嗯嗯。</span></div>
+<div class="ts-line"><span class="ts-time">14:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">然後我們再約一個時間再...你你再整理一下你的 feedback。</span></div>
+<div class="ts-line"><span class="ts-time">14:17</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯哼哼，好。那，想問一下你到時候那個...是想說會開一個帳號給我使用，對不對了？是不是？</span></div>
+<div class="ts-line"><span class="ts-time">14:27</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，我們可以開權限給你，到時候你可以登入。</span></div>
+<div class="ts-line"><span class="ts-time">14:31</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯嗯嗯嗯，好，那我需要給你什麼東西嗎？</span></div>
+<div class="ts-line"><span class="ts-time">14:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">Email 啊。加個 LINE。Email 好。</span></div>
+<div class="ts-line"><span class="ts-time">14:41</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">喔 Email。</span></div>
+<div class="ts-line"><span class="ts-time">14:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，我們 Email... Email 啦，你再給我 Email，因為有 Email 我就可以幫你開通一個測試帳號的權限給你，你就可以試試看。</span></div>
+<div class="ts-line"><span class="ts-time">14:50</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">呃，好，那我等一下...奕帆你再幫我把我的 LINE 連結給 Matt 好不好？那我再跟他自己對。</span></div>
+<div class="ts-line"><span class="ts-time">15:02</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">謝謝。</span></div>
+<div class="ts-line"><span class="ts-time">15:03</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯，好，那如果我有什麼問題，我再自己跟 Matt 做確認。</span></div>
+<div class="ts-line"><span class="ts-time">15:07</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">好，謝謝。珊，謝謝。</span></div>
+<div class="ts-line"><span class="ts-time">15:09</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">嗯，謝謝，謝謝，謝謝。嗯。還有什麼特別要再溝通的嗎？</span></div>
+<div class="ts-line"><span class="ts-time">15:15</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">沒有，你...你吃你吃飯。我再追他，他不知道幫我安排...</span></div>
+<div class="ts-line"><span class="ts-time">15:24</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">[聽不清] 這個沒聽到，抱歉。</span></div>
+<div class="ts-line"><span class="ts-time">15:27</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">你就是要跟我們協理約時間就對了是不是？</span></div>
+<div class="ts-line"><span class="ts-time">15:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊，你再打給我，我問他那個安排的怎麼樣。</span></div>
+<div class="ts-line"><span class="ts-time">15:33</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">好，好，好，我等一下晚點遇到他，我再跟他說，好不好？</span></div>
+<div class="ts-line"><span class="ts-time">15:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">謝謝。嗯，拜拜。</span></div>
+<div class="ts-line"><span class="ts-time">15:37</span><span class="ts-speaker" style="color:#E85A8A">珊珊</span><span class="ts-content">謝謝，謝謝。謝謝，拜拜，拜拜。</span></div>
+<div class="ts-line"><span class="ts-time">15:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">拜拜。</span></div>
+<div class="ts-line"><span class="ts-time">15:40</span><span class="ts-speaker" style="color:#E89E3F">Matt</span><span class="ts-content">拜拜。</span></div>
+<div class="ts-line"><span class="ts-time">15:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">拜拜。</span></div></div>
+</div>
+
+<div class="footer">
+  <strong>雅韻 / Calliope 🎭 · 羅賓斯科技</strong>
+  P101 · 2026-06-16 V01 · Gemini 2.5 Pro STT · SOP/04 100% 真實會議紀錄
+</div>
+
+</div>
+</body>
+</html>
