@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>會議紀錄 · Carpost × EZpretty · 2026-06-16</title>
+<style>
+:root {
+  --navy: #0F1F4D;
+  --navy-light: #1E3A6F;
+  --gold: #E89E3F;
+  --gold-light: #F2C28A;
+  --green: #2BA84A;
+  --teal: #14B8A6;
+  --purple: #7C3AED;
+  --red: #D9382B;
+  --ink: #121822;
+  --ink-light: #394350;
+  --grey: #6B7280;
+  --bg: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --border: #E5E7EB;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0; background: var(--bg);
+  font-family: "Source Han Sans TC", "PingFang TC", "Noto Sans CJK TC",
+               "Microsoft JhengHei", -apple-system, sans-serif;
+  color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.65;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 40px 56px 32px 56px; color: white;
+}
+.hero-eyebrow {
+  font-size: 12px; letter-spacing: 4px; color: var(--gold);
+  font-weight: 600; text-transform: uppercase; margin-bottom: 12px;
+}
+.hero-title {
+  font-size: 30px; font-weight: 800; margin: 0 0 6px 0; letter-spacing: -0.5px;
+}
+.hero-subtitle { font-size: 16px; color: rgba(255,255,255,0.85); margin: 0; }
+.hero-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15);
+}
+.hero-meta-label {
+  font-size: 10px; letter-spacing: 1px; color: var(--gold);
+  text-transform: uppercase; margin-bottom: 4px;
+}
+.hero-meta-val { font-size: 14px; font-weight: 600; }
+.attendees {
+  background: var(--bg-card); padding: 18px 56px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px; font-size: 13px;
+}
+.attendees-label { font-weight: 700; color: var(--navy); }
+.speaker-chip {
+  display: inline-block; color: white; padding: 3px 12px;
+  border-radius: 100px; font-size: 12px; font-weight: 600; margin-right: 4px;
+}
+.evin-context {
+  background: #FFF8E7;
+  border-left: 4px solid var(--gold);
+  padding: 20px 56px;
+  border-bottom: 1px solid var(--border);
+}
+.evin-context-eyebrow {
+  font-size: 11px; letter-spacing: 2px; color: var(--gold);
+  font-weight: 700; text-transform: uppercase; margin-bottom: 4px;
+}
+.evin-context-title {
+  font-size: 16px; font-weight: 800; color: var(--navy);
+  margin: 0 0 10px 0;
+}
+.evin-context p {
+  font-size: 13.5px; color: var(--ink-light); margin: 6px 0;
+}
+.evin-context strong { color: var(--navy); }
+.section {
+  padding: 32px 56px; background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+.section-eyebrow {
+  font-size: 11px; letter-spacing: 3px; color: var(--gold);
+  font-weight: 700; text-transform: uppercase; margin-bottom: 6px;
+}
+.section-title {
+  font-size: 24px; font-weight: 800; color: var(--navy);
+  margin: 0 0 16px 0; padding-bottom: 8px;
+  border-bottom: 3px solid var(--gold); display: inline-block;
+}
+.summary-body h3 {
+  font-size: 18px; font-weight: 800; color: var(--navy);
+  margin: 20px 0 8px 0; padding-left: 12px;
+  border-left: 4px solid var(--gold);
+}
+.summary-body p {
+  font-size: 14px; color: var(--ink-light); margin: 8px 0;
+}
+.summary-body strong { color: var(--navy); }
+.topics-list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  counter-reset: topic;
+}
+.topics-list li {
+  background: #FFFBEB; border-left: 3px solid var(--gold);
+  padding: 10px 14px; font-size: 13px; color: var(--ink);
+  border-radius: 0 4px 4px 0; counter-increment: topic; position: relative;
+}
+.topics-list li::before {
+  content: counter(topic); display: inline-block;
+  width: 22px; height: 22px; border-radius: 100px;
+  background: var(--gold); color: white; text-align: center;
+  font-weight: 700; font-size: 11px; line-height: 22px;
+  margin-right: 8px; font-family: "Montserrat", sans-serif;
+}
+.action-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.action-table th {
+  background: var(--navy); color: white; padding: 12px 14px;
+  text-align: left; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+}
+.action-table td {
+  padding: 14px; border-bottom: 1px solid var(--border);
+  vertical-align: top; color: var(--ink-light);
+}
+.ai-num {
+  font-family: "Montserrat", sans-serif; font-weight: 800;
+  color: var(--gold); font-size: 20px; width: 40px;
+}
+.ai-item { font-weight: 600; color: var(--ink); width: 35%; }
+.ai-owner { font-weight: 700; color: var(--navy); white-space: nowrap; }
+.ai-deadline { color: var(--grey); white-space: nowrap; }
+.transcript {
+  background: var(--bg); padding: 20px 24px; max-height: 700px;
+  overflow-y: auto; border-radius: 4px; font-size: 13px;
+  border: 1px solid var(--border);
+}
+.ts-line {
+  padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.04);
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.ts-line:last-child { border-bottom: none; }
+.ts-time {
+  font-family: "Montserrat", monospace; font-size: 11px;
+  color: var(--grey); font-weight: 600; flex-shrink: 0;
+  width: 50px; padding-top: 2px;
+}
+.ts-speaker { font-weight: 700; flex-shrink: 0; width: 60px; }
+.ts-content { color: var(--ink-light); flex: 1; line-height: 1.6; }
+.notice-box {
+  background: #FEF3C7; border-left: 4px solid var(--gold);
+  padding: 14px 18px; margin: 16px 0; border-radius: 0 4px 4px 0;
+  font-size: 12.5px;
+}
+.notice-box strong { color: var(--navy); }
+.footer {
+  padding: 18px 56px; background: var(--navy);
+  color: rgba(255,255,255,0.7); text-align: center; font-size: 11px;
+}
+.footer strong {
+  display: block; color: var(--gold); font-size: 13px; margin-bottom: 4px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">維修廠大聯盟 規劃會議 — Carpost × EZpretty</h1>
+  <p class="hero-subtitle">Kevin（Carpost / 新北汽保監事） × Jorden（EZpretty 負責人）</p>
+  <div class="hero-grid">
+    <div><div class="hero-meta-label">日期</div><div class="hero-meta-val">2026 年 6 月 16 日</div></div>
+    <div><div class="hero-meta-label">時長</div><div class="hero-meta-val">約 10 分鐘</div></div>
+    <div><div class="hero-meta-label">主題</div><div class="hero-meta-val">線上平台規劃</div></div>
+    <div><div class="hero-meta-label">錄音講者</div><div class="hero-meta-val">2 人（Kevin / Jorden）</div></div>
+  </div>
+</div>
+
+<div class="attendees">
+  <span class="attendees-label">錄音講者：</span>
+  <span class="speaker-chip" style="background:#14B8A6">Kevin</span> <span class="speaker-chip" style="background:#7C3AED">Jorden</span>
+</div>
+
+<div class="evin-context">
+  <p class="evin-context-eyebrow">EVIN 會前背景補充</p>
+  <h3 class="evin-context-title">羅賓斯科技 Evin 提供：三方合作完整背景</h3>
+  <p><strong>羅賓斯科技 Evin 會前背景補充</strong>（非錄音內容、Evin 提供本次合作背景）：</p>
+<p>- Kevin 兼任<strong>新北汽車保險修公會常務監事</strong>、公會約 <strong>5,000+ 間維修廠</strong>、其中 <strong>300+ 已加入公會</strong><br>- Kevin 跟<strong>富邦 / 新安 / 華南</strong>都有合作群組<br>- 公會有<strong>自強活動</strong>通路<br>- 三方合作大方向：「<strong>維修廠大聯盟</strong>」— 羅賓斯科技主導保險面（向保險公司爭取「維修廠優惠費率」）、Kevin 提供工會通路、EZpretty 提供維修廠數位化系統<br>- <strong>Evin 後續動作</strong>：拉合作群組 / 提供羅賓斯保險 DM 介紹</p>
+<p>📌 本錄音為 <strong>Kevin × Jorden 1 對 1 規劃會議</strong>（雙方先把線上平台 + 鑑價 + 跨售保險/二手車模式釐清）、Evin 未參與此段；後續 Evin 加入後會有完整三方會議。</p>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body">
+    <h3>(1) 會議目的與三方角色</h3>
+本次會議旨在探討如何將 Kevin 現有的「事故車鑑定鑑價」核心服務進行數位化轉型與商業模式擴展。會議由服務發起人 Kevin 提出構想，並與 EZpretty 負責人 Jorden 討論技術平台的可行性與建構方案。Kevin 的角色是商業模式的設計者與核心服務（事故車鑑定）的提供者。Jorden 的角色則是技術顧問與平台開發方，負責評估商業模式的技術可行性，並提出具體的系統架構與功能建議。雖然會議背景提及三方合作，但本次討論主要聚焦於 Kevin 的商業需求與 Jorden 的技術實現方案，未有 Robins Technology 的 Evin 參與。
+<h3>(2) 維修廠大聯盟商業模式設計</h3>
+Kevin 提出的核心商業模式是「以服務帶動銷售，以銷售鞏固服務」。
+- <strong>核心服務</strong>：以現有的「汽車事故鑑定鑑價」為基礎，為車禍受損的車主提供第三方報告，以利其向肇事方要求車價折損的賠償。此服務的獨立收費為新台幣 12,000 元。
+- <strong>數位平台</strong>：希望透過 Jorden 的 EZpretty 平台，建立一個線上入口，讓有需求的車主能輕易找到並預約此服務。
+- <strong>商業擴展</strong>：平台不僅是服務預約入口，更要延伸出兩大商業支線：
+  1.  <strong>保險銷售</strong>：在平台上作為保險經紀人（Broker），銷售各大保險公司的車險、壽險等產品。
+  2.  <strong>二手車買賣</strong>：建立二手車銷售模組。
+- <strong>價值主張與誘因</strong>：為了驅動保險與二手車的銷售，Kevin 提出創新的綑綁策略。凡是透過此平台購買保險或完成二手車買賣的客戶，即可免費獲贈一次未來的「事故車鑑定鑑價」服務。這個獨特的 bonus 成為平台與其他保險或二手車通路最大的差異化優勢，旨在建立客戶忠誠度與長期價值。
+<h3>(3) 保險端羅賓斯的價值主張</h3>
+本次會議未涉及 Robins Technology。關於保險業務的討論，是由 Kevin 提出作為保險經紀人的商業模式，並由 Jorden 從技術與使用者體驗角度進行分析。Jorden 建議了兩種實現方式：一種是基礎的電商模式，讓使用者自行選擇不同保險公司的產品；另一種是更先進的 AI 顧問模式，利用類似 ChatGPT 的技術，透過對話了解客戶需求，並主動推薦最合適的保險方案，以取代傳統保險業務員的諮詢功能，提升轉換率與使用者體驗。
+<h3>(4) 工會端 Kevin 提供的通路與優勢</h3>
+會議中，Kevin 的核心優勢體現在其深耕多年的「事故車鑑定鑑價」專業服務。這是整個商業模式的基石與獨特賣點。他提出的綑綁銷售策略，將此一高價值、低頻次的專業服務，轉化為推動保險與二手車等高頻次或高單價交易的強力誘因。雖然背景資料提及 Kevin 在公會的角色與人脈，但在本次對話中，他更側重於如何將自身的專業服務產品化與規模化。
+<h3>(5) 數位化端 EZpretty 提供的系統服務</h3>
+Jorden 針對 Kevin 的構想，提出了清晰的技術路徑分析：
+- <strong>保險模組</strong>：可採用兩種層次的建構方式。初期可建立一個類似「商城」的網站，陳列各家保險產品供使用者選購。長期來看，建議導入 AI 對話機器人，提供個人化的保險諮詢與推薦服務，創造更高的平台價值。
+- <strong>二手車模組</strong>：Jorden 分析了兩種模式。第一種是「多車商平台模式」，讓不同的二手車商進駐。但他直言此模式的成功關鍵在於平台需要先擁有巨大的「流量」，否則難以吸引車商，執行成本極高。第二種是「單一庫存顧問模式」，針對 Kevin 自己的二手車業務，建立一個讓潛在買家留下需求（如預算、車型偏好），再由系統或人工進行配對與客製化聯繫的流程。此模式更符合 Kevin 現階段的資源，且能與核心的鑑定服務緊密結合。
+<h3>(6) 雙方／三方達成的共識／待議事項</h3>
+- <strong>達成共識</strong>：
+  1.  雙方認可「鑑定服務 + 線上平台 + 跨售保險/二手車」的總體商業模式。
+  2.  確認以「贈送未來免費鑑定服務」作為平台獨特的行銷誘因。
+  3.  在二手車業務上，放棄多車商平台模式，優先開發針對 Kevin 自有庫存的顧問式銷售系統。
+- <strong>待議事項</strong>：
+  1.  保險平台的具體形式待定：要採用基礎的電商模式，還是投入資源開發更複雜的 AI 顧問模式。
+  2.  平台開發的詳細時程、預算與資源投入需進一步規劃。
+<h3>(7) 後續行動</h3>
+Jorden 將根據本次會議討論的內容，著手規劃一份完整的線上平台商業模式與技術方案，涵蓋使用者流程、系統架構以及不同階段的開發重點，供後續決策使用。
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 具體行動</p>
+  <h2 class="section-title">行動項清單（1 件）</h2>
+  <table class="action-table">
+    <thead><tr><th>#</th><th>具體行動</th><th>負責人</th><th>截止日</th><th>脈絡</th></tr></thead>
+    <tbody>
+    <tr>
+      <td class="ai-num">1</td>
+      <td class="ai-item">規劃「事故車鑑定鑑價」線上平台商業模式與技術方案，包含保險與二手車模組的具體實現方式。</td>
+      <td class="ai-owner">Jorden</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">會議結束時，Kevin 明確請求 Jorden 根據討論內容進行規劃，Jorden 也表示同意。此行動項是本次會議的核心結論。 [09:58]</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 議題索引</p>
+  <h2 class="section-title">7 個關鍵討論主題</h2>
+  <ol class="topics-list"><li>Kevin 提出以「事故車鑑定鑑價」為核心的商業模式構想</li>
+<li>討論將平台擴展至保險銷售的經紀人模式</li>
+<li>Jorden 建議導入 AI 顧問（ChatGPT）優化保險銷售流程</li>
+<li>分析二手車模組的兩種路徑：多車商平台 vs. 單一庫存顧問式銷售</li>
+<li>決議二手車業務聚焦於 Kevin 的自有庫存，並以顧問式服務進行</li>
+<li>確認以「贈送免費鑑定」作為平台的核心差異化誘因</li>
+<li>達成共識，由 Jorden 負責後續的平台方案規劃</li></ol>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 逐字稿</p>
+  <h2 class="section-title">會議逐字稿（輕度 polish）</h2>
+  <div class="notice-box">
+    <strong>📌 STT 處理註記</strong><br>
+    輕度 polish — 保留語意完整、去除「嗯/呃/那個/這個」等填充詞；敏感資訊全部保留；
+    本錄音 Evin 未參與發言（Kevin × Jorden 1 對 1 規劃）。
+  </div>
+  <div class="transcript"><div class="ts-line"><span class="ts-time">00:00</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">他這個錄音是 iPhone，iPhone 的。我先，我現在的模式喔，因為</span></div>
+<div class="ts-line"><span class="ts-time">00:08</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">Jorden 是這一個網路開店系統的平台。</span></div>
+<div class="ts-line"><span class="ts-time">00:13</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">你的平台的名字是叫做？</span></div>
+<div class="ts-line"><span class="ts-time">00:14</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">Easy Pretty。</span></div>
+<div class="ts-line"><span class="ts-time">00:15</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">Easy Pretty。Easy Pretty，Easy Pretty 這個平台。Jorden 是我的好朋友，我現在請他來幫我規劃我的商業模式是這樣。我現在要以我汽車鑑定鑑價的這個服務，就是專門幫事故車做鑑定鑑價，把這個車子的這一個車價折損，然後做出報告來，讓這個被撞的這台車子，可以因為我出的這一個第三方鑑定單位的這一個事故車的這一個車價折損的報告，去跟撞他的人要求這個車價的折損。</span></div>
+<div class="ts-line"><span class="ts-time">00:53</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">那我把這個平台請 Jorden 的 Easy Pretty 這個平台，幫我把它做起來。除了是我要讓這些車子被撞到的人，在線上能夠找到我，然後直接在線上請我去幫他預約，預約我去幫他做車子的這個鑑定鑑價的服務之外呢，我也希望從這個他幫我做的這個平台，衍生出保險跟二手車的商業服務的模式。</span></div>
+<div class="ts-line"><span class="ts-time">01:28</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">譬如說，今天跟我買這個保險的人，跟我買保險的人，我就送他這一個未來萬一他發生事故了，我幫他做汽車鑑定鑑價，然後出報告，就不用錢。他只要在這個平台上面跟我買保險，我就送他這一個汽車鑑定鑑價，不用錢。就是萬一他將來遇到事故的話，我幫他出鑑定報告不用錢。</span></div>
+<div class="ts-line"><span class="ts-time">01:56</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">或者是，他是跟我買二手車，他跟我買二手車或是賣二手車，我未來就送他這一個他發生了事故的話，我幫他出鑑定鑑價的報告，不用錢。我現在的這一個商業模式是這個樣子。</span></div>
+<div class="ts-line"><span class="ts-time">02:16</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">OK，好，那那我接下來就是，我是 Jorden，然後 Easy Pretty 的創辦人。那剛剛講的方式有賣保險或者是賣二手車，然後這兩個商品底下的鑑定，如果說有事故的話，鑑定鑑價這部分是免費的。</span></div>
+<div class="ts-line"><span class="ts-time">02:44</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">OK，所以就...</span></div>
+<div class="ts-line"><span class="ts-time">02:47</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">如果他不是透過買保險或二手車的買賣來的話，他的這一個汽車事故的鑑定鑑價，然後出報告，出鑑定報告的費用是 12,000 塊。</span></div>
+<div class="ts-line"><span class="ts-time">03:04</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">OK。那所以當當這個賣保險的時候，賣了一份保險的時候，這個保險一定還會回到原廠的保險嘛，所以原廠的保險可能是富邦啊...</span></div>
+<div class="ts-line"><span class="ts-time">03:17</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">富邦啊這些嘛，對對對。</span></div>
+<div class="ts-line"><span class="ts-time">03:18</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，所以我們是變成是富邦或是各大產險的...</span></div>
+<div class="ts-line"><span class="ts-time">03:24</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我們是保經，我們等於就是保經了。</span></div>
+<div class="ts-line"><span class="ts-time">03:25</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，就是一個 broker 這樣子的一個方式。</span></div>
+<div class="ts-line"><span class="ts-time">03:27</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">我們等於是保險經紀人。</span></div>
+<div class="ts-line"><span class="ts-time">03:29</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，保險經紀人。所以當這個有人進來買的，買保險的時候，我們所賺取的佣金會是保險公司給我們的佣金。</span></div>
+<div class="ts-line"><span class="ts-time">03:44</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">03:45</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，那這一塊的利益會比較大？</span></div>
+<div class="ts-line"><span class="ts-time">03:49</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">呃... 或是比較輕鬆？</span></div>
+<div class="ts-line"><span class="ts-time">03:53</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">量會比較大，可是你說金額會不會比較大？不一定，要看他的保額是多少。</span></div>
+<div class="ts-line"><span class="ts-time">03:58</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">03:59</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">所以這樣子的一個方式，我先就保險的部分啊，就保險的部分的話，就會變變成說，他可以用一個，用一個其實是那個商城的網站，其實就可以了。商城的方式，但前面可能會有一個 landing page，一般啦現在的方式，前面都會有個 landing page，然後中間會有一個熱銷商品。</span></div>
+<div class="ts-line"><span class="ts-time">04:26</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，那熱銷商品點過去，可能會有...我想像的可能會有不同的保險。</span></div>
+<div class="ts-line"><span class="ts-time">04:33</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，那消費者就可以在上面去選擇他的保險，然後付費。</span></div>
+<div class="ts-line"><span class="ts-time">04:42</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">就這樣。那進一步的要不要分，喔這是富邦的保險，這是南山的保險，這是什麼中國人壽的保險。</span></div>
+<div class="ts-line"><span class="ts-time">04:54</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">啊如果不要的話，其實就是反正就是一個保險，那至於保險是哪一個，哪一個承接的公司，那在後面再去...去看是要自動化的丟過去，還是人為的方式去選擇比較好的這個合作的這個保險公司。大概這樣。</span></div>
+<div class="ts-line"><span class="ts-time">05:18</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">好，這個部分我們可能要再...</span></div>
+<div class="ts-line"><span class="ts-time">05:23</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">這個大概就是這一個保險的一個商業模式啦。</span></div>
+<div class="ts-line"><span class="ts-time">05:30</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">那如果保險也不限於車險，還有壽險。</span></div>
+<div class="ts-line"><span class="ts-time">05:34</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">可以啊可以啊可以啊可以啊。那只是差別你要不要有分不同的公司。</span></div>
+<div class="ts-line"><span class="ts-time">05:41</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">因為可能我會希望是比較大家的，卡大間欸，我比較有傾向跟這樣的公司購買。</span></div>
+<div class="ts-line"><span class="ts-time">05:53</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對。所以壽險可能有很多都一樣的，但是要不要分不同的原廠的名字，要不要掛進來，如果不要就是可能產險，可能 ABC，然後 DEF 的，然後壽險可能是這樣子，這樣就結束了。然後上面就是選，選完之後就是購買。</span></div>
+<div class="ts-line"><span class="ts-time">06:17</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，但這個中間啊，買保險的這個中間啊，數位化的過程當中，如果要在更精準的，為什麼會有保險經紀人？就是他會跟你講講講講很多分析給你聽。對，那你要不要透過 ChatGPT，他問，然後去給他一個比較合適的。這樣可能就會很不一樣。</span></div>
+<div class="ts-line"><span class="ts-time">06:43</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">好，你幫我規劃看怎麼做。</span></div>
+<div class="ts-line"><span class="ts-time">06:45</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，那如果是 ChatGPT 去談這個的話，當然我覺得很人性化啦。對，因為你可以根據我的需求完了之後，喔 OK 你應該選三號這個保險。</span></div>
+<div class="ts-line"><span class="ts-time">06:58</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">07:00</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，這樣就會有更有說服力，原因他會跟你講，三號這個保險比較符合你搭搭搭搭搭搭。對，那這個就是把人，之前的保險經紀人，這個人，要解說這些事情，把它取消掉。</span></div>
+<div class="ts-line"><span class="ts-time">07:18</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">那你如果沒有 ChatGPT 就直接看規格。</span></div>
+<div class="ts-line"><span class="ts-time">07:22</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">那那那那就比較，比較弱了。</span></div>
+<div class="ts-line"><span class="ts-time">07:24</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">就就比較硬一點啦，很乾。就像是我們買，買 notebook，當如果我不懂的時候，我是不是會很希望有人來跟我講？</span></div>
+<div class="ts-line"><span class="ts-time">07:34</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">07:35</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，就是有經驗的人來跟我講，以免我買錯。類似這樣子的意思。</span></div>
+<div class="ts-line"><span class="ts-time">07:41</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">好。那我請教，那二手車我要怎麼綁進來？</span></div>
+<div class="ts-line"><span class="ts-time">07:46</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">那二手車其實其實是，其實是類似的啦，就是因為現在是關的嘛，如果後面把它打開的時候...</span></div>
+<div class="ts-line"><span class="ts-time">07:55</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">如果沒打開呢？我去整合了別間，台灣的別間車商的...</span></div>
+<div class="ts-line"><span class="ts-time">07:58</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">那個...當然也可以，那這也可以，但就是原來你的二手車再重做一遍。對，那他每一個人都可以進來，那這個平台就會使用到我們現在比較偏向是我們 Easy Pretty 的主要的服務平台，就不是商城。對，原因是因為每一個人都進來，都會是要有一個地方做生意。</span></div>
+<div class="ts-line"><span class="ts-time">08:34</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">08:35</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對。比如說 A 這個二手車，B、C、D、E 這樣子，他每一個都有個帳號密碼，可以把自己的掛上去。對，然後他們就可以在上面賣。對，那他們為什麼要在這邊賣，不在他們原來的地方賣？唯一的的利基就是因為你這邊有流量。</span></div>
+<div class="ts-line"><span class="ts-time">08:56</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">那不行，那他們不一定會聽我的。</span></div>
+<div class="ts-line"><span class="ts-time">08:59</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">09:00</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">所以我還是從國外爬。</span></div>
+<div class="ts-line"><span class="ts-time">09:02</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，所以我的意思是說，如果你講說要讓他們放到你們這邊的話，那個成本會很高。</span></div>
+<div class="ts-line"><span class="ts-time">09:08</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對，那那沒辦法。</span></div>
+<div class="ts-line"><span class="ts-time">09:09</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對。那如果說是，我這是我剛為什麼說會是是你現在既有的二手車的這個東西，如果是的話，那一樣的，這中間就會有一個 conversation，這個 conversation 就是說，那我的消費者，我的需求是什麼，我可能寫一寫。OK，那所以我寫完之後，我能夠對應到下面是哪一台車，或是哪些車。</span></div>
+<div class="ts-line"><span class="ts-time">09:38</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">那如果二手車就變成只是他留下他的需求，然後我再來跟他客製化的聯繫。</span></div>
+<div class="ts-line"><span class="ts-time">09:45</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，但是這個過程當中還有一個，一個 bonus 就是說，你這邊買如果後面有什麼樣事故，我可以幫你做鑑定，不用錢。</span></div>
+<div class="ts-line"><span class="ts-time">09:52</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">09:53</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">對，這個是他的 bonus 嘛，就跟別人的差異化。</span></div>
+<div class="ts-line"><span class="ts-time">09:55</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">09:56</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">大概是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">09:58</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">好，那就請你幫我做規劃吧。</span></div>
+<div class="ts-line"><span class="ts-time">10:01</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">10:02</span><span class="ts-speaker" style="color:#14B8A6">Kevin</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">10:03</span><span class="ts-speaker" style="color:#7C3AED">Jorden</span><span class="ts-content">好。</span></div></div>
+</div>
+
+<div class="footer">
+  <strong>雅韻 / Calliope 🎭 · 羅賓斯科技</strong>
+  P100 · 2026-06-16 V01 · Gemini 2.5 Pro STT · SOP/04 100% 真實會議紀錄
+</div>
+
+</div>
+</body>
+</html>
