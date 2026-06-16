@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>P088 V01 Evin 字體規律逆向工程 · 雅韻 / Calliope</title>
+<style>
+:root {
+  --navy: #0F1F4D;
+  --navy-light: #1E3A6F;
+  --gold: #E89E3F;
+  --gold-light: #FFF8E7;
+  --green: #2BA84A;
+  --red: #D9382B;
+  --orange: #F26B3F;
+  --ink: #121822;
+  --ink-light: #394350;
+  --grey: #6B7280;
+  --bg: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --border: #E5E7EB;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  font-family: "Source Han Sans TC", "PingFang TC", "Noto Sans CJK TC",
+               "Microsoft JhengHei", -apple-system, sans-serif;
+  color: var(--ink); -webkit-font-smoothing: antialiased;
+  line-height: 1.65;
+}
+.container { max-width: 1080px; margin: 0 auto; }
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  padding: 40px 56px 32px 56px;
+  color: white;
+}
+.hero h1 {
+  font-size: 28px; font-weight: 900;
+  margin: 0 0 8px 0; letter-spacing: -0.5px;
+}
+.hero p {
+  font-size: 14px; color: var(--gold);
+  letter-spacing: 2px; text-transform: uppercase;
+}
+.section {
+  padding: 28px 56px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+.section h2 {
+  font-size: 22px; font-weight: 800;
+  color: var(--navy); margin: 0 0 14px 0;
+  padding-bottom: 6px;
+  border-bottom: 3px solid var(--gold);
+  display: inline-block;
+}
+.section-eyebrow {
+  font-size: 11px; letter-spacing: 3px;
+  color: var(--gold); font-weight: 700;
+  text-transform: uppercase; margin-bottom: 4px;
+}
+table.histo {
+  width: 100%; border-collapse: collapse;
+  font-size: 13px;
+}
+table.histo th {
+  background: var(--navy); color: white;
+  padding: 10px 12px;
+  text-align: left;
+}
+table.histo td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.size-cell {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  color: var(--gold);
+  width: 70px;
+}
+.bar {
+  background: var(--gold);
+  height: 18px; border-radius: 3px;
+  display: inline-block; vertical-align: middle;
+}
+.bar-cell { width: 220px; }
+.count-cell {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: var(--navy);
+  width: 60px;
+}
+.role-cell { color: var(--ink-light); }
+.evin-stated {
+  background: var(--gold-light);
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  padding: 18px 22px;
+  margin: 12px 0;
+}
+.evin-stated-title {
+  font-size: 16px; font-weight: 800;
+  color: var(--navy); margin-bottom: 8px;
+}
+.evin-stated-content {
+  font-size: 14px; color: var(--ink);
+}
+.evin-stated-content strong {
+  color: var(--gold); font-weight: 800;
+}
+.canonical {
+  background: var(--navy);
+  color: white;
+  border-radius: 6px;
+  padding: 22px 26px;
+  margin-top: 12px;
+}
+.canonical-title {
+  font-size: 14px; letter-spacing: 2px;
+  color: var(--gold); font-weight: 700;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.tier {
+  display: grid;
+  grid-template-columns: 80px 1fr 200px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  align-items: baseline;
+  gap: 16px;
+}
+.tier:last-child { border-bottom: none; }
+.tier-size {
+  font-family: "Montserrat", sans-serif;
+  font-size: 28px; font-weight: 900;
+  color: var(--gold);
+}
+.tier-size.large { font-size: 42px; }
+.tier-size.huge { font-size: 56px; }
+.tier-role {
+  font-size: 16px; font-weight: 700;
+  color: white;
+}
+.tier-detail {
+  font-size: 12px; color: rgba(255,255,255,0.7);
+}
+.proposal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+}
+.proposal-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--gold);
+  border-radius: 4px;
+  padding: 14px 18px;
+}
+.proposal-card.green { border-left-color: var(--green); }
+.proposal-card.orange { border-left-color: var(--orange); }
+.proposal-card h3 {
+  font-size: 14px; font-weight: 800;
+  color: var(--navy);
+  margin: 0 0 6px 0;
+}
+.proposal-card p {
+  font-size: 13px; color: var(--ink-light);
+  margin: 0;
+}
+.callout {
+  background: #FFF5E6;
+  border-left: 4px solid var(--orange);
+  padding: 14px 18px;
+  border-radius: 0 4px 4px 0;
+  margin: 14px 0;
+  font-size: 13.5px;
+  color: var(--ink-light);
+}
+.callout strong { color: var(--orange); }
+.footer {
+  padding: 16px 56px;
+  background: var(--navy);
+  color: rgba(255,255,255,0.7);
+  text-align: center; font-size: 11px;
+}
+.footer strong {
+  display: block; color: var(--gold);
+  font-size: 13px; margin-bottom: 3px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p>CALLIOPE · REVERSE ENGINEER</p>
+  <h1>🎭 P088 V01 Evin 字體規律解析</h1>
+  <p style="margin-top:10px; color:rgba(255,255,255,0.7); letter-spacing:0; text-transform:none;">
+    從您手調的 18 頁 PPTX、提取所有 text 字體分佈、整理成 canonical 字體系統
+  </p>
+</div>
+
+<!-- Evin stated -->
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 您給的指令</p>
+  <h2>您講的字體 3 層</h2>
+  <div class="evin-stated">
+    <div class="evin-stated-title">📋 Evin 訊息（2026-06-17 00:06）</div>
+    <div class="evin-stated-content">
+      <strong>字體三層：20、18、16</strong>。特別需 highlight <strong>40</strong>。<br><br>
+      → 解讀：body 內容區的三層字級為 <strong>20 / 18 / 16</strong>；重要數據 / 強調用 <strong>40pt highlight</strong>。
+    </div>
+  </div>
+</div>
+
+<!-- Full distribution -->
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 全 deck 字體分佈統計（455 個 text run）</p>
+  <h2>實際使用統計</h2>
+  <table class="histo">
+    <thead><tr><th>字級</th><th>使用次數</th><th>分佈</th><th>主要用途</th></tr></thead>
+    <tbody>
+
+    <tr>
+      <td class="size-cell">16 pt</td>
+      <td class="count-cell">115</td>
+      <td class="bar-cell"><span class="bar" style="width:200px"></span></td>
+      <td class="role-cell">body / 主要內容</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">20 pt</td>
+      <td class="count-cell">59</td>
+      <td class="bar-cell"><span class="bar" style="width:102px"></span></td>
+      <td class="role-cell">段落標題 / 副重點</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">12 pt</td>
+      <td class="count-cell">48</td>
+      <td class="bar-cell"><span class="bar" style="width:83px"></span></td>
+      <td class="role-cell">細項 / 小註</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">14 pt</td>
+      <td class="count-cell">46</td>
+      <td class="bar-cell"><span class="bar" style="width:80px"></span></td>
+      <td class="role-cell">頁碼</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">10 pt</td>
+      <td class="count-cell">37</td>
+      <td class="bar-cell"><span class="bar" style="width:64px"></span></td>
+      <td class="role-cell">footer</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">13 pt</td>
+      <td class="count-cell">33</td>
+      <td class="bar-cell"><span class="bar" style="width:57px"></span></td>
+      <td class="role-cell">subtitle 副標</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">26 pt</td>
+      <td class="count-cell">16</td>
+      <td class="bar-cell"><span class="bar" style="width:27px"></span></td>
+      <td class="role-cell">頁面標題</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">22 pt</td>
+      <td class="count-cell">11</td>
+      <td class="bar-cell"><span class="bar" style="width:19px"></span></td>
+      <td class="role-cell">cover sub / P18 願景</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">36 pt</td>
+      <td class="count-cell">11</td>
+      <td class="bar-cell"><span class="bar" style="width:19px"></span></td>
+      <td class="role-cell">highlight 數據（中）</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">18 pt</td>
+      <td class="count-cell">9</td>
+      <td class="bar-cell"><span class="bar" style="width:15px"></span></td>
+      <td class="role-cell">段落小標</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">11 pt</td>
+      <td class="count-cell">8</td>
+      <td class="bar-cell"><span class="bar" style="width:13px"></span></td>
+      <td class="role-cell">細註</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">17 pt</td>
+      <td class="count-cell">6</td>
+      <td class="bar-cell"><span class="bar" style="width:10px"></span></td>
+      <td class="role-cell">客戶 case 標題</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">32 pt</td>
+      <td class="count-cell">5</td>
+      <td class="bar-cell"><span class="bar" style="width:8px"></span></td>
+      <td class="role-cell">KPI 中</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">44 pt</td>
+      <td class="count-cell">5</td>
+      <td class="bar-cell"><span class="bar" style="width:8px"></span></td>
+      <td class="role-cell">mission / vision 大字</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">42 pt</td>
+      <td class="count-cell">3</td>
+      <td class="bar-cell"><span class="bar" style="width:5px"></span></td>
+      <td class="role-cell">三大商品 KPI</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">30 pt</td>
+      <td class="count-cell">3</td>
+      <td class="bar-cell"><span class="bar" style="width:5px"></span></td>
+      <td class="role-cell">(A)(B)(C) 字母</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">24 pt</td>
+      <td class="count-cell">2</td>
+      <td class="bar-cell"><span class="bar" style="width:3px"></span></td>
+      <td class="role-cell">ISO 副標</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">80 pt</td>
+      <td class="count-cell">2</td>
+      <td class="bar-cell"><span class="bar" style="width:3px"></span></td>
+      <td class="role-cell">P01 封面標題</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">28 pt</td>
+      <td class="count-cell">1</td>
+      <td class="bar-cell"><span class="bar" style="width:1px"></span></td>
+      <td class="role-cell">cover 副</td>
+    </tr>
+    
+    <tr>
+      <td class="size-cell">110 pt</td>
+      <td class="count-cell">1</td>
+      <td class="bar-cell"><span class="bar" style="width:1px"></span></td>
+      <td class="role-cell">特殊大字</td>
+    </tr>
+    
+    </tbody>
+  </table>
+  <div class="callout">
+    <strong>觀察：</strong>
+    您手調版實際用了 20 個不同字級、最頻繁 5 個是 <strong>16 / 20 / 12 / 14 / 10</strong>。
+    您講的 3 層（20/18/16）剛好排在前 2、3、9 名（body 區）；highlight 40pt 對應實際 <strong>36-44pt</strong> 區間。
+  </div>
+</div>
+
+<!-- Canonical -->
+<div class="section">
+  <p class="section-eyebrow">PART 03 · CANONICAL · 我提議寫入 Calliope skill</p>
+  <h2>羅賓斯對外簡報字體系統 v1（CRT-Font-v1）</h2>
+  <div class="canonical">
+    <div class="canonical-title">📐 6 層字體系統 — 按您 20/18/16 + 40 + 既有 cover/meta 規律</div>
+    <div class="tier">
+      <div class="tier-size huge">80</div>
+      <div>
+        <div class="tier-role">L0 · 封面巨字</div>
+        <div class="tier-detail">P01 公司名 / P18 願景 BLUF</div>
+      </div>
+      <div class="tier-detail">"羅賓斯科技" / "與我們一起打造保險的未來"</div>
+    </div>
+    <div class="tier">
+      <div class="tier-size large">40</div>
+      <div>
+        <div class="tier-role">L1 · HIGHLIGHT（您指定）</div>
+        <div class="tier-detail">KPI 大字 / 使命金句 / 強調數字</div>
+      </div>
+      <div class="tier-detail">"100K+" / "10 小時" / "80%" / "三方分潤"</div>
+    </div>
+    <div class="tier">
+      <div class="tier-size" style="font-size:32px">26</div>
+      <div>
+        <div class="tier-role">L2 · 頁面標題</div>
+        <div class="tier-detail">每頁的主 title（page_header）</div>
+      </div>
+      <div class="tier-detail">"領導團隊" / "成長軌跡" / "三大商品"</div>
+    </div>
+    <div class="tier">
+      <div class="tier-size" style="font-size:26px">20</div>
+      <div>
+        <div class="tier-role">L3 · 段落主標題（您 Tier 1）</div>
+        <div class="tier-detail">頁內主要敘述 / KPI 副 / 區塊標題</div>
+      </div>
+      <div class="tier-detail">"100K+ 累積保單成交" / 區塊大標</div>
+    </div>
+    <div class="tier">
+      <div class="tier-size" style="font-size:24px">18</div>
+      <div>
+        <div class="tier-role">L4 · 段落小標題（您 Tier 2）</div>
+        <div class="tier-detail">大 bullet / 內容子標 / 重要描述</div>
+      </div>
+      <div class="tier-detail">"我們的使命" / "三大支柱"</div>
+    </div>
+    <div class="tier">
+      <div class="tier-size" style="font-size:22px">16</div>
+      <div>
+        <div class="tier-role">L5 · BODY（您 Tier 3 / 您的閱讀底線）</div>
+        <div class="tier-detail">所有主要 body text / 細項 bullet / 描述</div>
+      </div>
+      <div class="tier-detail">您 ≥16pt 是 main read tier</div>
+    </div>
+    <div class="tier">
+      <div class="tier-size" style="font-size:20px">13</div>
+      <div>
+        <div class="tier-role">L6 · subtitle 副標</div>
+        <div class="tier-detail">頁面標題下方的補充說明</div>
+      </div>
+      <div class="tier-detail">"從台灣汽車保險科技起家、深耕..."</div>
+    </div>
+    <div class="tier">
+      <div class="tier-size" style="font-size:20px">10</div>
+      <div>
+        <div class="tier-role">L7 · footer / 頁碼</div>
+        <div class="tier-detail">公司全稱 / 頁碼 / URL</div>
+      </div>
+      <div class="tier-detail">底部一行 footer + N/M 頁碼</div>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>說明：</strong>
+    L0 + L1 + L2 是「強調 / 標題」layer、L3-L5 是「body 三層」（你的指令）、L6-L7 是「meta」。
+    這 8 層覆蓋 P088 V01 的所有字級配置；之後產 deck 都套這個系統、不再隨意挑 12 / 14 / 17 / 22 等中間值。
+  </div>
+</div>
+
+<!-- Proposals -->
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 寫入 CALLIOPE SKILL 提案</p>
+  <h2>4 個 enforcement rules</h2>
+  <div class="proposal-grid">
+    <div class="proposal-card">
+      <h3>① 嚴格 8 級字 lock</h3>
+      <p>所有對外 deck 字體只用 <strong>80 / 40 / 26 / 20 / 18 / 16 / 13 / 10</strong> 八個值。不再用中間值（11/12/14/17 等）。</p>
+    </div>
+    <div class="proposal-card green">
+      <h3>② Body 區強制 ≥16pt</h3>
+      <p>P3 之後的 body text 一律 16pt 起跳、不能再小。例外只有 footer (10) + 頁碼 (10)。</p>
+    </div>
+    <div class="proposal-card orange">
+      <h3>③ Highlight 40 必須有色 + 粗體</h3>
+      <p>40pt highlight 永遠搭 <strong>金色 + 粗體</strong>、視覺一定要 pop 出來。不能是普通字。</p>
+    </div>
+    <div class="proposal-card">
+      <h3>④ 頁面標題 26 + subtitle 13</h3>
+      <p>每頁 page_header：主標 26pt 白底 navy 條 + subtitle 13pt 金色。</p>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>實作：</strong>
+    我會把這 8 級寫進 <code>shared/sop/03_deck_font_standard.md v2</code> + 更新 Calliope build script 的 font size constants（不再隨意挑數字）。同步 share 給 4 sister 對外簡報共用。
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <strong>雅韻 / Calliope 🎭 · P088 V01 Evin 字體規律逆向工程</strong>
+  P104 · 2026-06-17 V01 · 羅賓斯科技
+</div>
+
+</div>
+</body>
+</html>
