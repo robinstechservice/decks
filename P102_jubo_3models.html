@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>會議紀錄 · 羅賓斯 × 華南產險 Console 提案 · 2026-06-16</title>
+<style>
+:root {
+  --navy:#0F1F4D; --navy-light:#1E3A6F; --gold:#E89E3F; --gold-light:#F2C28A;
+  --green:#2BA84A; --rose:#E85A8A; --ink:#121822; --ink-light:#394350;
+  --grey:#6B7280; --bg:#F8FAFC; --bg-card:#FFFFFF; --border:#E5E7EB;
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:0; background:var(--bg);
+  font-family:"Source Han Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",-apple-system,sans-serif;
+  color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.65; }
+.container { max-width:1100px; margin:0 auto; }
+.hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+  padding:40px 56px 32px 56px; color:white; }
+.hero-eyebrow { font-size:12px; letter-spacing:4px; color:var(--gold);
+  font-weight:600; text-transform:uppercase; margin-bottom:12px; }
+.hero-title { font-size:30px; font-weight:800; margin:0 0 6px 0; letter-spacing:-0.5px; }
+.hero-subtitle { font-size:16px; color:rgba(255,255,255,0.85); margin:0; }
+.hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15); }
+.hero-meta-label { font-size:10px; letter-spacing:1px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:4px; }
+.hero-meta-val { font-size:14px; font-weight:600; }
+.attendees { background:var(--bg-card); padding:18px 56px;
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px; font-size:13px; }
+.attendees-label { font-weight:700; color:var(--navy); }
+.speaker-chip { display:inline-block; color:white; padding:3px 12px;
+  border-radius:100px; font-size:12px; font-weight:600; margin-right:4px; }
+.section { padding:32px 56px; background:var(--bg-card); border-bottom:1px solid var(--border); }
+.section-eyebrow { font-size:11px; letter-spacing:3px; color:var(--gold);
+  font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+.section-title { font-size:24px; font-weight:800; color:var(--navy);
+  margin:0 0 16px 0; padding-bottom:8px; border-bottom:3px solid var(--gold); display:inline-block; }
+.summary-body h3 { font-size:18px; font-weight:800; color:var(--navy);
+  margin:20px 0 8px 0; padding-left:12px; border-left:4px solid var(--gold); }
+.summary-body h4 { font-size:15px; font-weight:700; color:var(--navy-light); margin:14px 0 6px 0; }
+.summary-body p { font-size:14px; color:var(--ink-light); margin:8px 0; }
+.summary-body strong { color:var(--navy); }
+.topics-list { list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:8px; counter-reset:topic; }
+.topics-list li { background:#FFFBEB; border-left:3px solid var(--gold);
+  padding:10px 14px; font-size:13px; color:var(--ink);
+  border-radius:0 4px 4px 0; counter-increment:topic; position:relative; }
+.topics-list li::before { content:counter(topic); display:inline-block;
+  width:22px; height:22px; border-radius:100px;
+  background:var(--gold); color:white; text-align:center;
+  font-weight:700; font-size:11px; line-height:22px;
+  margin-right:8px; font-family:"Montserrat",sans-serif; }
+.action-table { width:100%; border-collapse:collapse; font-size:13px; }
+.action-table th { background:var(--navy); color:white; padding:12px 14px;
+  text-align:left; font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+.action-table td { padding:14px; border-bottom:1px solid var(--border);
+  vertical-align:top; color:var(--ink-light); }
+.ai-num { font-family:"Montserrat",sans-serif; font-weight:800;
+  color:var(--gold); font-size:20px; width:40px; }
+.ai-item { font-weight:600; color:var(--ink); width:35%; }
+.ai-owner { font-weight:700; color:var(--navy); white-space:nowrap; }
+.ai-deadline { color:var(--grey); white-space:nowrap; }
+.transcript { background:var(--bg); padding:20px 24px; max-height:700px;
+  overflow-y:auto; border-radius:4px; font-size:13px; border:1px solid var(--border); }
+.ts-line { padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.04);
+  display:flex; gap:10px; align-items:flex-start; }
+.ts-line:last-child { border-bottom:none; }
+.ts-time { font-family:"Montserrat",monospace; font-size:11px;
+  color:var(--grey); font-weight:600; flex-shrink:0; width:50px; padding-top:2px; }
+.ts-speaker { font-weight:700; flex-shrink:0; width:75px; }
+.ts-content { color:var(--ink-light); flex:1; line-height:1.6; }
+.notice-box { background:#FEF3C7; border-left:4px solid var(--gold);
+  padding:14px 18px; margin:16px 0; border-radius:0 4px 4px 0; font-size:12.5px; }
+.notice-box strong { color:var(--navy); }
+.footer { padding:18px 56px; background:var(--navy);
+  color:rgba(255,255,255,0.7); text-align:center; font-size:11px; }
+.footer strong { display:block; color:var(--gold); font-size:13px; margin-bottom:4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">羅賓斯集團 × 巨擘保經 — 3 合作模式討論</h1>
+  <p class="hero-subtitle">Evin / Matt / Ray（羅賓斯）+ Jimmy（萬登）× 曾總（巨擘保經）</p>
+  <div class="hero-grid">
+    <div><div class="hero-meta-label">日期</div><div class="hero-meta-val">2026 年 6 月 16 日</div></div>
+    <div><div class="hero-meta-label">時長</div><div class="hero-meta-val">約 53 分鐘</div></div>
+    <div><div class="hero-meta-label">主題</div><div class="hero-meta-val">3 合作模式</div></div>
+    <div><div class="hero-meta-label">出席</div><div class="hero-meta-val">5 人</div></div>
+  </div>
+</div>
+
+<div class="attendees">
+  <span class="attendees-label">與會者：</span>
+  <span class="speaker-chip" style="background:#0F1F4D">Evin Lin</span> <span class="speaker-chip" style="background:#7C3AED">曾總</span> <span class="speaker-chip" style="background:#14B8A6">Ray</span> <span class="speaker-chip" style="background:#E89E3F">Matt</span>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body"><h3>會議摘要</h3>
+<p>此會議旨在探討羅賓斯科技集團與巨擘保經之間的潛在合作模式，主要圍繞三大議題：補習班履約責任險的市場開發、羅賓斯 Console 站系統的推廣應用，以及 AI 技術導入巨擘保經的可能性。會議由羅賓斯科技 CEO 林奕帆（Evin Lin）主導，巨擘保經曾總分享其在特殊保險領域的深入見解與過往經驗，羅賓斯團隊則展示了其技術實力。</p>
+<h4>(1) 會議目的與與會者角色</h4>
+<p>- <strong>會議目的</strong>：探索雙方在保險產品銷售、技術平台應用與市場開發上的三種合作模式，尋求共贏機會。<br>- <strong>與會者角色</strong>：<br>  - <strong>羅賓斯科技 (Evin Lin, Matt, Ray)</strong>：作為技術提供方與合作發起者，Evin 主導策略討論，Matt 負責 Console 系統的實際演示，Ray 則關注法規與技術細節。<br>  - <strong>巨擘保經 (曾總)</strong>：作為潛在的合作夥伴與保險領域專家，曾總提供了補習班履約責任險的市場現況、銷售策略、佣金結構，並分享了過往創辦補習班媒合平台的經驗。</p>
+<h4>(2) 議題1：補習班履約責任險討論</h4>
+<p>這是會議的核心議題，討論深入且具體。</p>
+<p>- <strong>市場概況與潛力</strong>：曾總指出，此險種為政府強制規定，針對文理、才藝、綜合三類補習班。雖然是強制險，但市場上仍有大量補習班（估計約 8,000 家）未投保，主要靠教育局稽查驅動購買。此市場具備「肉粽型」開發潛力，即鎖定連鎖品牌（如三葉鋼琴、東海），一次可開發數十家分店，效率極高。此外，續保率極高，因補習班老師普遍守規矩，是穩定的業務來源。</p>
+<p>- <strong>產品與銷售痛點</strong>：保費約 15,000 元，但不投保的罰款為 30,000 元，提供了強力的銷售誘因。銷售關鍵在於稽查壓力，許多業者都是在被評鑑或稽查時才緊急投保。羅賓斯方認為，這可以透過「威脅」（告知罰則）與「利誘」（提供額外價值）並行的方式進行推廣。</p>
+<p>- <strong>佣金與合作模式</strong>：目前市場上主要由明台產險與和泰產險提供此商品。明台產險給的佣金高達 30-35%，而和泰產險約 18-20%。曾總的巨擘保經與明台有良好合作關係，能拿到較高的佣金。雙方討論了合作模式，包括由羅賓斯旗下的萬登保代取得代理權，或由巨擘保經與羅賓斯共同開發市場，利潤分成。曾總對合作持開放態度，表示無論是掛在萬登或共同開發，重點在於如何有效執行。</p>
+<h4>(3) 議題2：Console 站推廣</h4>
+<p>羅賓斯科技的 Matt 實際演示了 Console 系統，展示其技術如何賦能保險業務。</p>
+<p>- <strong>核心功能</strong>：<br>  1.  <strong>OCR 保單辨識</strong>：上傳保單照片（JPG）或 PDF，系統能自動辨識並抓取要保人、被保人、車籍資料、保費、險種等關鍵資訊，大幅節省人工登打時間。辨識準確率高達 95% 以上。<br>  2.  <strong>車籍與保險資料查詢</strong>：僅需輸入車牌號碼與車主身分證字號，即可查詢到車輛的詳細資料（如廠牌、型號、出廠年份）以及強制險與任意險的到期日。這讓業務員能提前掌握客戶續保時機。<br>  3.  <strong>多家保險公司即時報價</strong>：系統已串接富邦、新安、台產等多家保險公司 API，可即時取得車險報價，方便業務員為客戶比較方案。</p>
+<p>- <strong>應用場景</strong>：此系統不僅適用於保經代公司，也適用於修配廠等通路。修配廠可利用此系統查詢客戶車險到期日，主動提醒並提供續保服務，增加客戶黏性與額外收入。對保經公司而言，能顯著提升行政效率與業務開發能力。</p>
+<h4>(4) 議題3：AI 導入巨擘保經（延伸討論：補習班媒合平台）</h4>
+<p>雖然未直接討論 AI 導入巨擘的具體方案，但曾總分享了他過去創辦「Poshare 幫（波洗幫）」平台的經驗，該平台模式與 AI 數據應用高度相關。</p>
+<p>- <strong>Poshare 幫商業模式</strong>：此平台類似補習班界的 Booking.com 或 Agoda，旨在媒合補習班的「閒置座位」與有短期需求的家長/學生。補習班將剩餘名額上架，提供高額佣金（約學費的 50%），平台再將部分佣金以折扣形式回饋給家長（如打 7-8 折），創造三贏。平台也建立了評價機制。</p>
+<p>- <strong>執行挑戰與失敗原因</strong>：前期投入 450 萬，成功讓數百家補習班上架商品。但後續因內部股東意見不合、資金未能到位，以及來不及推廣至家長端，導致項目中止。然而，前端（補習班端）的需求已獲驗證。</p>
+<p>- <strong>潛在機會</strong>：Evin 認為這個模式非常有潛力，可以與履約責任險的推廣結合。業務員在銷售保險時，可以將此平台作為「利誘」的附加價值，幫助補習班招生，從而提高保險的成交率。這也為未來 AI 數據分析與精準媒合奠定了基礎。</p>
+<h4>(5) 雙方共識與待議事項</h4>
+<p>- <strong>共識</strong>：<br>  1.  補習班履約責任險市場值得投入，雙方應尋找最有效率的合作方式。<br>  2.  羅賓斯的 Console 技術能有效解決保險業務的行政痛點，具有推廣價值。<br>  3.  曾總的「Poshare 幫」平台概念具備市場潛力，可作為未來合作的延伸方向。</p>
+<p>- <strong>待議事項</strong>：<br>  1.  確定履約責任險的合作主體與分潤機制（由萬登主導或雙方共營）。<br>  2.  評估重啟或合作開發補習班媒合平台的可行性與資源投入。<br>  3.  討論巨擘保經導入 Console 系統的具體方案與時程。</p>
+<h4>(6) 後續行動</h4>
+<p>雙方同意先從履約責任險的合作開始，並建立溝通管道。後續將由 Evin 建立通訊群組，並由曾總提供相關法規公文，以便羅賓斯團隊進行深入研究，再擬定具體的合作計畫。</p></div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 具體行動</p>
+  <h2 class="section-title">行動項清單（3 件）</h2>
+  <table class="action-table">
+    <thead><tr><th>#</th><th>具體行動</th><th>負責人</th><th>截止日</th><th>脈絡</th></tr></thead>
+    <tbody>
+    <tr>
+      <td class="ai-num">1</td>
+      <td class="ai-item">提供補習班履約責任險相關的政府公文。</td>
+      <td class="ai-owner">曾總</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">為讓羅賓斯團隊了解此險種的法律強制性與具體規定，以便規劃銷售策略。[03:48]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">2</td>
+      <td class="ai-item">建立三方（羅賓斯、巨擘、萬登）溝通群組。</td>
+      <td class="ai-owner">Evin Lin</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">方便後續討論與資料傳遞。[52:29]</td>
+    </tr>
+    
+
+    <tr>
+      <td class="ai-num">3</td>
+      <td class="ai-item">收到公文後進行研究，評估市場切入點與法規細節。</td>
+      <td class="ai-owner">Ray</td>
+      <td class="ai-deadline">未定</td>
+      <td class="ai-context">深入了解產品的法律基礎，作為合作方案的依據。[52:40]</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 議題索引</p>
+  <h2 class="section-title">11 個關鍵討論主題</h2>
+  <ol class="topics-list"><li>補習班履約責任險市場概況與分類</li>
+<li>強制險的銷售策略與痛點（稽查驅動）</li>
+<li>佣金結構比較（明台 vs. 和泰）與合作模式探討</li>
+<li>曾總分享過去創辦補習班媒合平台「Poshare 幫」的經驗</li>
+<li>將媒合平台與保險銷售結合的潛在綜效</li>
+<li>羅賓斯 Console 站功能演示：OCR 保單辨識</li>
+<li>Console 站功能演示：車籍資料與保險到期日查詢</li>
+<li>Console 站功能演示：多家產險公司即時報價</li>
+<li>討論 Console 系統的收費模式與推廣策略</li>
+<li>探討如何透過家長會等渠道開發客戶</li>
+<li>總結合作步驟：先從履約責任險切入，再逐步深化</li></ol>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 逐字稿</p>
+  <h2 class="section-title">會議逐字稿（輕度 polish）</h2>
+  <div class="notice-box">
+    <strong>📌 STT 處理註記</strong><br>
+    輕度 polish — 保留語意完整、去除「嗯/呃/那個」等填充詞；敏感資訊（價格、保費結構、合約條件）全部保留。
+  </div>
+  <div class="transcript"><div class="ts-line"><span class="ts-time">00:00</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">及我們的升學。</span></div>
+<div class="ts-line"><span class="ts-time">00:02</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">但是，哦。</span></div>
+<div class="ts-line"><span class="ts-time">00:07</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">好，那這個險種分為三個標的，一個就是文理補習班，就是我們一般認知的升學補習班。</span></div>
+<div class="ts-line"><span class="ts-time">00:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">00:17</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">一種就是才藝補習班，學舞的啊、學鋼琴的啦、學樂器的，那才藝補習班。另外一個叫綜合補習班。</span></div>
+<div class="ts-line"><span class="ts-time">00:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">00:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">00:25</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">它總一個分類，那它的學費以才藝的最貴，文理的最便宜。</span></div>
+<div class="ts-line"><span class="ts-time">00:31</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">那到目前為止，我們都做的是，我我比較喜歡開發肉粽型的。</span></div>
+<div class="ts-line"><span class="ts-time">00:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">00:38</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我只要找一個，比如說找三葉鋼琴，我找東海，我找那個連鎖的，它一串拉出來就 20 家、30 家，我就可以少跑 18 間了。</span></div>
+<div class="ts-line"><span class="ts-time">00:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">00:48</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">所以我我現在手頭上客戶幾乎都是連鎖的。要嘛就是，剛好周邊親戚朋友附近，業務員附近，或是我路過經過，問他說你們有沒有買履約保證保險？他說為什麼？為什麼要買這個？</span></div>
+<div class="ts-line"><span class="ts-time">01:01</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">這樣做了應該五年、六年、七年，做了幾年。它一直維持著不錯的續繳，而且這個因為補教業的老師...那些沒買的會不會就不買了？我覺得不，就等到我們去打針去刺教育局，叫業務員去盯，他就會買。他們有時候被評鑑的時候，有個哪個筋，你們怎麼沒有買履約保證保險？哦要買，就馬上來，就當天可不可以發單？我說當然不可能。</span></div>
+<div class="ts-line"><span class="ts-time">01:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">我們現在是要跟議員配合嗎？</span></div>
+<div class="ts-line"><span class="ts-time">01:32</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我們從頭到尾都沒有耍賤招。做生意如果夠賤的話，生意可以多做一點錢，就是議員只要在議會有沒有，問教育局啊，最好有一個公共事務，那個補習班倒了。</span></div>
+<div class="ts-line"><span class="ts-time">01:43</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">倒掉然後錢拿不回來。</span></div>
+<div class="ts-line"><span class="ts-time">01:44</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">就講說，那我們我們這個轄下的這些補習班，如果倒了，請問一下我們縣府怎麼處理？</span></div>
+<div class="ts-line"><span class="ts-time">01:52</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">可是你不是跟我說這已經是強制一定要買的嗎？</span></div>
+<div class="ts-line"><span class="ts-time">01:54</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">它是強制啊，他們就沒有去買啊。</span></div>
+<div class="ts-line"><span class="ts-time">01:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">因為沒有稽查。</span></div>
+<div class="ts-line"><span class="ts-time">01:57</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對啊，賭啊。</span></div>
+<div class="ts-line"><span class="ts-time">01:58</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">02:00</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">而且不買會罰錢喔。買的保費我剛才講是好像一萬五左右，不買一次罰三萬。</span></div>
+<div class="ts-line"><span class="ts-time">02:07</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">02:08</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">你看我我光拿到，我可以給你這一份公文，教育部的公文，你拿這份，拿給補習班寄給他，我們甚至有一個高職生直接打電話到補習班去，你們沒有買會被稽核。他他跑到那個這個保險局去檢舉，講我們。我說真的沒講錯啊，你沒買會被罰。他說可是他感覺他是被勒索。</span></div>
+<div class="ts-line"><span class="ts-time">02:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對對對。</span></div>
+<div class="ts-line"><span class="ts-time">02:26</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">那業務員，他是，就不能這樣子。他他還自己寫信，他爸爸還將軍喔，寫信給金管會說我辭職，可是我對金管會超失望。他說我們在做對的事情，結果...我說補教業他的感受是他好像就是沒交功課的小孩，還在還在這個耍脾氣。</span></div>
+<div class="ts-line"><span class="ts-time">02:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">被勒索。</span></div>
+<div class="ts-line"><span class="ts-time">02:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">懂。</span></div>
+<div class="ts-line"><span class="ts-time">02:48</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">那個因為那個小孩子也太正義凜然，他說你本來就要買啊，你沒買我告訴你，你會被罰錢，你竟然說我勒索你、恐嚇。</span></div>
+<div class="ts-line"><span class="ts-time">02:55</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">所以這個部分我就我有關懷他啦，因為第一個我覺得，一張 case 好像二三十趴佣金，兩三千，他賺一千我賺兩千，可是我不希望人家買的人感受不好。所以我稍微安撫他，他才講說，他說叔叔我可以不要做，可是我覺得這事情一定要一定要講清楚。就寫信給金管會，就以後就辭職。</span></div>
+<div class="ts-line"><span class="ts-time">03:17</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">所以我覺得這個部分我們可以想想怎麼操作啦，你用極端的也是種方法。跟認識的議員，只要找台北就好，台北我認識，我連戴錫欽這些議長我都很熟啊，以前就是我博愛國小他當會長，我是接他下一任的會長。</span></div>
+<div class="ts-line"><span class="ts-time">03:34</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">Ray 你你對這個有沒有什麼想要再多了解的？</span></div>
+<div class="ts-line"><span class="ts-time">03:38</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">補習班履約責任險。</span></div>
+<div class="ts-line"><span class="ts-time">03:42</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">嗯...我比較想知道它正式的法條是哪一條，正式的。</span></div>
+<div class="ts-line"><span class="ts-time">03:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">他有公文啦，等下曾大哥寄，把公文給我們。</span></div>
+<div class="ts-line"><span class="ts-time">03:50</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">03:51</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">這個去你你好像也查得到，Google 都查得到。你再看一下，就是短期...</span></div>
+<div class="ts-line"><span class="ts-time">03:57</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">它叫什麼？因為我我目前是查不到。</span></div>
+<div class="ts-line"><span class="ts-time">04:00</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">短期補教補習班履約保證保險。</span></div>
+<div class="ts-line"><span class="ts-time">04:05</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我可以把公文再找給你啦。</span></div>
+<div class="ts-line"><span class="ts-time">04:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">他有公文，因為我們想要看到那個確實是有罰款，然後三萬，還有限期改善，都有。</span></div>
+<div class="ts-line"><span class="ts-time">04:13</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我我找給你。就一次嘛，你來一次三萬不買，再來再三萬。</span></div>
+<div class="ts-line"><span class="ts-time">04:17</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">他沒有講連續啦。</span></div>
+<div class="ts-line"><span class="ts-time">04:18</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我可以我查給你。</span></div>
+<div class="ts-line"><span class="ts-time">04:21</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">哦，罰款。</span></div>
+<div class="ts-line"><span class="ts-time">04:33</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">然後你說這個你打算怎麼做？假設我們找一個人，你幫他教育訓練，就讓他去跑。</span></div>
+<div class="ts-line"><span class="ts-time">04:39</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">04:40</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">然後他可以讓萬登保代來代理？</span></div>
+<div class="ts-line"><span class="ts-time">04:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你可以幫我們協調這件事嗎？</span></div>
+<div class="ts-line"><span class="ts-time">04:44</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">代理是...？</span></div>
+<div class="ts-line"><span class="ts-time">04:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">就是保險公司單是發給萬登保代啊。</span></div>
+<div class="ts-line"><span class="ts-time">04:48</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">沒有問題啊，你你目前我們沒有鎖死。我們當初，當初明台是鎖死我們，所以他給我們佣金最高，你們應該拿得到我們的佣金高。</span></div>
+<div class="ts-line"><span class="ts-time">04:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">哦，我們要跟你們一樣啦。</span></div>
+<div class="ts-line"><span class="ts-time">04:58</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我們拿到 35%。</span></div>
+<div class="ts-line"><span class="ts-time">05:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">不錯耶。</span></div>
+<div class="ts-line"><span class="ts-time">05:01</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">05:02</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">那個...一萬五 35% 3500，比車險多了。</span></div>
+<div class="ts-line"><span class="ts-time">05:06</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對啊，而且...我到現在保證續保，因為補習班老師超超守規矩的。</span></div>
+<div class="ts-line"><span class="ts-time">05:07</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">車險要賣兩萬。</span></div>
+<div class="ts-line"><span class="ts-time">05:13</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">05:13</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對他來講，他他這類的功課他就會做啊，他要交功課啊。</span></div>
+<div class="ts-line"><span class="ts-time">05:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">05:17</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">可是我們做過很多寵物險，那個續保率之差的，理賠的也很慘，續保也很慘。所以我一樣做這種所謂有續繳、自動續繳的補教業。</span></div>
+<div class="ts-line"><span class="ts-time">05:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">哦。</span></div>
+<div class="ts-line"><span class="ts-time">05:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">他可以自動續繳嗎？</span></div>
+<div class="ts-line"><span class="ts-time">05:27</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">沒有，就是但是你發給他，他會馬上...對對對，不會這邊跟你畫芭樂票。</span></div>
+<div class="ts-line"><span class="ts-time">05:32</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">我把這個檔案丟掉傳給你。</span></div>
+<div class="ts-line"><span class="ts-time">05:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">Ray 我有看到有一個公文，我等一下曾大哥，那個曾總傳給我，我再傳給你。</span></div>
+<div class="ts-line"><span class="ts-time">05:43</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">好好好。</span></div>
+<div class="ts-line"><span class="ts-time">05:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">好，那接下來討論那個合作的方式，就是曾總可以安排萬登去拿到這個代理權，應該可以協調？</span></div>
+<div class="ts-line"><span class="ts-time">06:00</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">安排，我我我我我可以找看看啦。但我我我會想說原來巨擘也可以啊，因為我現在我還是巨擘的，我也是業務啊。我們應該講我們怎麼去做啦。</span></div>
+<div class="ts-line"><span class="ts-time">06:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">06:11</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我沒有說把市場全部就切出來了。</span></div>
+<div class="ts-line"><span class="ts-time">06:14</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，懂我懂我。</span></div>
+<div class="ts-line"><span class="ts-time">06:14</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">因為我我也是業務的角色啊。</span></div>
+<div class="ts-line"><span class="ts-time">06:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">那那你覺得怎麼怎麼做？</span></div>
+<div class="ts-line"><span class="ts-time">06:17</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對，我們我們要談談看我們怎麼合作的方式會比較好。</span></div>
+<div class="ts-line"><span class="ts-time">06:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">06:22</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">因為，假設我也不知道這個用你們現在的 AI 或是用你們的程式能不能協助讓補教業能夠上這個平台，查也沒有什麼...</span></div>
+<div class="ts-line"><span class="ts-time">06:33</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">這個羅賓斯是後台 CRM 系統，你等下看一下就知道了，我那個系統做得超好。</span></div>
+<div class="ts-line"><span class="ts-time">06:37</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">06:39</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">你說要一起去開發，我覺得現在保險公司只有明台給我的佣金比較高，和泰好像給到，如果沒有記錯好像 20% 還是 18%。</span></div>
+<div class="ts-line"><span class="ts-time">06:46</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">06:47</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我說我給你的 case 你還給...要跟他講說，真的我們，後來我覺得我們的合約沒有拿得很好，我們不是拿分公司合約，也不是拿總公司合約。可是因為那天那個小高講說，要拿合約要拿分公司的，因為分公司，我們保經如果保代給他業績佔他的比例很高，他就巴著我們不放。可是我發現我們好像變他的業務員，我們變成和泰那個比如說台北分公司的業務，還要經手，不是直接。像我們，我覺得我們保經代應該直接對總公司，不要對分公司，我我的邏輯啦。</span></div>
+<div class="ts-line"><span class="ts-time">06:55</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">07:05</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">07:19</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">後來我覺得我們盡量假設客戶沒有在意保費，我們就賣他明台的，因為佣金我可以拿比較高。假設他買的甚至他嫌高、嫌貴，或是我們再給他和泰的。</span></div>
+<div class="ts-line"><span class="ts-time">07:28</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">07:35</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我現在，現在出這種保單只有兩家而已喔，就是只有明台跟和泰。</span></div>
+<div class="ts-line"><span class="ts-time">07:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">我覺得這沒問題，現在是怎麼跟你，你你心目中想要我們怎麼...？</span></div>
+<div class="ts-line"><span class="ts-time">07:42</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我我我是開放，我看怎麼談，大家都可以合作的方式啦。</span></div>
+<div class="ts-line"><span class="ts-time">07:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，那但是因為我自己有保代啦，站在我們公司的立場...聽我...我跟你分潤也可以啊，掛你那邊沒問題啊。可是我主要講說用什麼方式，我我來教你都可以，因為我覺得這個東西其實市場閒置...需要。</span></div>
+<div class="ts-line"><span class="ts-time">07:51</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">07:53</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">08:01</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">08:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你說什麼？</span></div>
+<div class="ts-line"><span class="ts-time">08:02</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">你說什麼？</span></div>
+<div class="ts-line"><span class="ts-time">08:02</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">我沒有沒有沒有，我在回答，我在回答話。</span></div>
+<div class="ts-line"><span class="ts-time">08:05</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你在回答？回答我們嗎？</span></div>
+<div class="ts-line"><span class="ts-time">08:07</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">不是不是不是不是不是。旁邊旁邊旁邊。</span></div>
+<div class="ts-line"><span class="ts-time">08:10</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">喔好好好。</span></div>
+<div class="ts-line"><span class="ts-time">08:11</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">Sorry sorry。</span></div>
+<div class="ts-line"><span class="ts-time">08:12</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">因為這個 case，我剛才講說他份額還還蠻大的，而且因為為什麼，沒有被開發的還很大。如果你開發到了，這是強制喔，這不像很多什麼...</span></div>
+<div class="ts-line"><span class="ts-time">08:23</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，所以我才覺得可以玩。</span></div>
+<div class="ts-line"><span class="ts-time">08:24</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對啊，這是強制喔。</span></div>
+<div class="ts-line"><span class="ts-time">08:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊，一張一萬，八千家就八千萬，我覺得是個不錯的生意啊。</span></div>
+<div class="ts-line"><span class="ts-time">08:29</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">08:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊，不用做到滿，做做兩三成就好。</span></div>
+<div class="ts-line"><span class="ts-time">08:32</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">做兩三成就有不錯的報酬啦。</span></div>
+<div class="ts-line"><span class="ts-time">08:34</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">三千萬我覺得就不錯了。</span></div>
+<div class="ts-line"><span class="ts-time">08:35</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">08:36</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">而且每年都可以喔，續保率非常高。</span></div>
+<div class="ts-line"><span class="ts-time">08:40</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，那...這個還是要聽一下你你想要怎麼，我們代理，然後比如說我跟保險公司拿到錢，我分分一些部分給你這樣子？</span></div>
+<div class="ts-line"><span class="ts-time">08:50</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對啊對啊，我可以這樣方式啊。因為你你們掛在你們這邊，我就覺得我又不是你們的業代，你用什麼方式分潤。那或者是我們共同開發還是什麼，因為這個產業我我已經琢磨比較長的時間了。那當然掛在巨擘，我我現在跟巨擘的關係，我是拿 80%。</span></div>
+<div class="ts-line"><span class="ts-time">09:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">09:09</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">巨擘公司拿 20%。</span></div>
+<div class="ts-line"><span class="ts-time">09:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">但是你給...你給巨擘 80% 是都...？</span></div>
+<div class="ts-line"><span class="ts-time">09:14</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我給巨擘 20%，我拿 80%。</span></div>
+<div class="ts-line"><span class="ts-time">09:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">有沒有可能你可以把這個掛到我們這裡來？我們這個一定比巨擘好。</span></div>
+<div class="ts-line"><span class="ts-time">09:20</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">可是我新的巨擘可以決定啊，我舊的公司發覺我怎麼業績都跑掉了。</span></div>
+<div class="ts-line"><span class="ts-time">09:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你怕說你慢慢...但是，舊的你就不要動嘛，但是新的你可以...對，但你你你開發你可以掛進來，那你跟因為那個萬登是他他在處理的，你跟他討論一個...一個...對啊，我覺得...掛件 80% 是行情，沒有什麼。對對，沒有沒有，那假設我們今天不是用我原來的，就是我們，你們去開發或是我們共同去開發的，看怎麼來談合作都可以。</span></div>
+<div class="ts-line"><span class="ts-time">09:30</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">09:38</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">09:53</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊。你說不管掛到萬登這邊，那接下來你們公司拿多少，那其他是我們...？</span></div>
+<div class="ts-line"><span class="ts-time">09:58</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">那你你你如果要掛到我們這裡，你去跑的當然算你，但是你不會都是你跑嘛，我們一定會請業務員嘛，如果我們請自己的業務員，那那 80% 就是他的啊。</span></div>
+<div class="ts-line"><span class="ts-time">10:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">10:09</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對不對？應該是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">10:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你說我們現在巨擘？</span></div>
+<div class="ts-line"><span class="ts-time">10:12</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">不是，就是你現在的意思是你舊的不動嘛。</span></div>
+<div class="ts-line"><span class="ts-time">10:15</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">我舊的現在我我還沒有想要動，因為我覺得人家就在巨擘啦。</span></div>
+<div class="ts-line"><span class="ts-time">10:19</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">完全理解。然後新的你不是要一起去開發嗎？</span></div>
+<div class="ts-line"><span class="ts-time">10:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">新的當然會開發。對，但你你的開發...新的開發其實我我是很隨性的開發，我並沒有說今天我要開發十個，那他並不在我的工作的 list，可是找到好的工具，找到好的夥伴，我們可以一起做這一件事情。</span></div>
+<div class="ts-line"><span class="ts-time">10:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">10:38</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">比如說好，今天一拿到，那我們一起來做這一件事情，我可以把時間跟我過去的經驗，我們一起來做，而且我在議會還有一些人脈。我我用其他方法，可是以前我從來沒用過，因為我避免說賺一點點錢還得罪人。</span></div>
+<div class="ts-line"><span class="ts-time">10:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">10:55</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">我我我我對這人和我還蠻小心的。</span></div>
+<div class="ts-line"><span class="ts-time">10:59</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">那 Ray 這個你要幫忙梳理一下，現在看起來是我們一起去做一個新的...就是曾總應該不會動他舊的這個一千家的補習班，但是因為還市場還有這個八千多家，所以這八千多家可以一起開發。</span></div>
+<div class="ts-line"><span class="ts-time">11:15</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">當然可以啊。</span></div>
+<div class="ts-line"><span class="ts-time">11:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">那...但是裡面的那些機制要怎麼設立？就是曾總的角色是什麼？然後分到多少錢這樣子？</span></div>
+<div class="ts-line"><span class="ts-time">11:28</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">假設你們你們業務員做的，其實我我就當作就是你們業務去開發的，我只是當初教你們的嘛，就是我給你們一個的方式，或是用顧問的方式。可是如果我們一起去開發的，比如說我因為...你你你你去打一個連鎖的，那這個當然算你的啦。</span></div>
+<div class="ts-line"><span class="ts-time">11:42</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">你就至少有 80 嘛，剩下剩下 20，還是你 85，剩下 15 我們自己去處理，你至少比...比...有點誘因嘛。</span></div>
+<div class="ts-line"><span class="ts-time">11:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">11:51</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">對啊。那假設要一起做的也可以啊，比如說我們認識誰認識誰，我們一起去做，扣掉公司，假設扣掉公司 15%，我們還可以 half 都沒有問題。</span></div>
+<div class="ts-line"><span class="ts-time">12:00</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">12:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">你做就是...等於說每一張它的佣金公司實拿大概 3500 對不對？</span></div>
+<div class="ts-line"><span class="ts-time">12:05</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">實拿...沒有，他要有辦法拿到明台的代理，因為明台代理 35% 比較多。15000 的 35% 對不對？</span></div>
+<div class="ts-line"><span class="ts-time">12:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">15000 的 35%，那但是如果一樣是和泰的就是 15000 的 18% 這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">12:20</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">18 到 22，我忘記了，好像如果沒有記錯。那明台好多啦，那做一張等於做兩張了。</span></div>
+<div class="ts-line"><span class="ts-time">12:24</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">12:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">因為價格沒什麼差，是不是？</span></div>
+<div class="ts-line"><span class="ts-time">12:29</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">還是有，明台的價格比較貴。後來和泰才灌出來，他就便宜個 200 塊。但是佣金明台多兩倍。明台就 30 幾趴，他給到 18 還是 22，我忘記了。</span></div>
+<div class="ts-line"><span class="ts-time">12:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊，那差很多，幾乎...那我幾乎一定會先出明台，因為...那誰要和泰？</span></div>
+<div class="ts-line"><span class="ts-time">12:46</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">和泰就是有有有有...緊急的，或者是嫌貴的，或是要買十送一的那一種的。</span></div>
+<div class="ts-line"><span class="ts-time">12:54</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">哦，和泰的...和泰可以統包，他比如說像他這次有 20 家，他可以算兩家。</span></div>
+<div class="ts-line"><span class="ts-time">13:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">這次有 20 家送兩家是什麼意思？</span></div>
+<div class="ts-line"><span class="ts-time">13:02</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">這是...我辦的是那種聯合的補習班，全台灣的那種分支機構。他他們總公司就會講，比如說三葉鋼琴啊，這些就講說，那我們有 25 家，你要不要送...人家同業，後來我們可能窗口答應得很快啊，就講說，好那你們十家送一家。結果明台說不行，他就不是退佣。退佣。那我們就是少你的佣金啊。對啊。那和泰可以不用扣我們佣金，直接給。他廢話，因為他給的佣金比較少，他已經預留了。他不認為他比較少，他認為說他們保費便宜，可是他保費便宜那個結構根本就不如佣金的結構啊。</span></div>
+<div class="ts-line"><span class="ts-time">13:13</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">13:23</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">13:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">好啦，反正有兩家，然後曾總可以協助我們用萬登...看你們怎麼做啦，看你們要怎麼做。我覺得是教你們業務還是你們用什麼系統完成，來去來去推播給補教業。</span></div>
+<div class="ts-line"><span class="ts-time">13:50</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊，你只要告訴我系統你的想法，我們應該高機率是做得出來。因為這很簡，我覺得這還蠻單純的。</span></div>
+<div class="ts-line"><span class="ts-time">13:56</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">你聽起來就是 CRM，沒有...對啊。</span></div>
+<div class="ts-line"><span class="ts-time">14:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">Ray 你 OK 嗎？接下來我要請那個曾總講一下補習班的平台，他上次跟我講一個，他們做了一個平台，蠻有趣的。</span></div>
+<div class="ts-line"><span class="ts-time">14:08</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">14:09</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">可以，我這邊 OK 了，這邊這邊可以了，剛剛那邊可以了，那邊感覺可以玩一下。</span></div>
+<div class="ts-line"><span class="ts-time">14:14</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">好，那接下來有一個更有趣的，我請曾總敘述一下。</span></div>
+<div class="ts-line"><span class="ts-time">14:17</span><span class="ts-speaker" style="color:#7C3AED">曾總</span><span class="ts-content">好，我在兩年前，兩三年前做一個平台是補教業跟家長之間的平台，我們的公司那時候叫做 Poshare 幫。Poshare 幫，那就是台語的「補習班」啦。那我們做的就是類似旅遊業的叫做 Booking.com 或是 Agoda，讓補教業他閒置的位置、閒置的教室的不足額的學生，把他這個額度放在我們的平台上。那平台上，因為他們閒置也是閒置著，那他給我們的這種所謂的推薦的費用是學費的 50%。你沒收到也沒有，多的是多收到的對不對？那我們就在這過程中，我們派了二三十個員工去台北市的補教業簽了很多，因為你一開始要說明，我們是什麼樣的公司，是免費讓你上架，要跟補教業取得這些資訊，上架到我們的平台。那在上架之前，我們也花了錢寫了這個程式。他寫的程式也找了二三十個在補教業找了這個，我沒有記錯幾百家補習班上了我們的架。那第二階段我們一年後，我們 450 萬花完了，我們在募資的時候，我們的就發現裡面的員工有手腳不乾淨，他們就覺得不能做的事情就不能做，而且他們好像不願意出錢去募資，我就斷然說那我就退股，就不玩。那其實我們後面要做的是讓家長也知道這個平台，知道說如果與其你的小孩子到處去跟著同學亂亂混，或是你自己跑到補習班絕對沒有折扣，你透過我們的平台，因為我們跟補教業要到 50% 的佣金以上。那我們上架給家長 20%、30%，我相信家長，因為第一個我們有評價，補習班的做的資料都在我們上面。那還有我們可以分區，大安區、信義區、什麼中正區分類，我們把它做好這樣的分類，家長可以在比較有，在家裡隨時都可以去找，而不是聽小朋友講他要去哪裡補。那這個中間的平台是讓補習班上來，讓家長後面也上來找，這中間我們的這個做的是補教業的空位的這個這個這個平台。那很可惜我們就做到前端，就是補教業的東西上，可是我們來不及做到叫家長加入我們的會員，來上面找，就就不到兩年，一年半就就解散。那這個部分補教業，我我跟大家講，因為我們收了這幾家沒有人不要，因為對他來講閒置也是閒置的啊，他找一位小姐把他...因為他不會怕破壞行情嗎？以後家長就等著買補折的就好，他就沒有人要...他不會，他會他會固定開放幾個名額而已啦。他不是全面開放啊，他給我們十個名額、二十個名額。但有人就在那邊等。對啊。很多補教，如果很知名的，他基本上他也不怕招生，家長拿著椅子門口排，你還記得嗎？那種南陽街很多這種。你招不到學生的，你幫他招一個，他就可以活下來的機會。你懂我講意思？你閒置的永遠永遠閒置著。OK OK OK。這個部分我們不擔心說我們把它找很多，找很多他還是，補教業再怎麼講，他們的成本是很低的啦。對。那之前我們還跟一個叫力宇教育做線上數位教育的。他們就是在疫情期間其實有機會翻身，後來不知道有沒有成功，就是所有人在家裡，所有人在家裡上網，不是在家裡上網，在我們我們有三階段，第一個開 Poshare 幫，就是媒合平台。第二個我們開了叫做 Poshare pay，會。分期。第三個我們叫做...叫做...我們我們開了一個類似網咖，放了 50 台電腦，讓數位電腦的人放在我們，讓小朋友下課直接到我們這邊看線上訓練，因為裡面有一個老師在教你，後面還有一個助教在後面。這類似現在所謂的數位教室，我們那叫什麼窩啊？課後窩。就是下課了，你不一定要去補習班，因為你聽不懂，老師就一直講下去。可是如果你在我們課後窩上數位的，你不懂可以停下來，可以重新看。我們當初做教育，我們做了三個階段，可是事後都因為合作的人不對，我們就覺得能閃就趕快閃。</span></div>
+<div class="ts-line"><span class="ts-time">18:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">Ray 我是覺得那個補習班媒合可能有一些搞頭，原因是因為如果我今天，就是如果我今天可以幫補習班介紹客戶，介紹學生，先姑且不論有沒有賺錢，他大概保險也離不開我們，因為我我幫他有額外的這個業績收入。還有公共意外險可以做。所以我那時候是在想這件事情。</span></div>
+<div class="ts-line"><span class="ts-time">19:12</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">但你你有什麼想法嗎？</span></div>
+<div class="ts-line"><span class="ts-time">19:17</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">我...補習班嗎？</span></div>
+<div class="ts-line"><span class="ts-time">19:20</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，補習班。就是他有點就是，我覺得如果以 Ray 有，他幹一個這個平台，應該不會太難。那他那個平台就等於在幫...他有點像，他他在幫補習班賣賣不出去的位置啊。這樣子。還有飯店賣不出去的房間一樣意思啊。</span></div>
+<div class="ts-line"><span class="ts-time">19:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">嗯。然後曾總已經證明補習班有這個需求，只是他來不及證明客戶...家長客戶有沒有，客戶願不願意付費，他這一段還沒證明。</span></div>
+<div class="ts-line"><span class="ts-time">19:51</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">嗯。我們請補習班上架他的商品，包含那個講那個歷史的那個叫什麼那個...呂捷。呂捷都是我們的客人。</span></div>
+<div class="ts-line"><span class="ts-time">19:58</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">呂捷啊。</span></div>
+<div class="ts-line"><span class="ts-time">20:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對，那我覺得好處是說，如果今天我們業務去推履約責任保險，第一個是威脅他嘛，第二個也可以鼓勵他說你買我們的保險，我就讓你上架。然後上架你有一個好處，你多一個管道，我這邊有比如說台北市的隨便一萬個家長都有機會去消耗你原本賣不出去的課程。增加的位置。我覺得這樣，這是一貫的啦，這樣，是一致的。</span></div>
+<div class="ts-line"><span class="ts-time">20:31</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">這個要思考一下，因為補習班的客群他們跟一般消費品的客群比較不一樣。沒有，他們客群以前想過了，他們就是去主打這個高中、國中的媽媽們這樣子。是不是？你是主打...我們是升學。因為你升學的部分，其實家長都會覺得好像小朋友跟人家一窩的去，他也沒有評鑑過，學費一直繳。對，你也不知道你的小孩去的那個補習班的評價是什麼。那我們我們有這個平台，就可以把老師、把課程、還有這個家長的回饋，這個所以使用者的回饋，家長是可以透過網上，他任何時間可以上網，他可以去評估這補教業的的評價是什麼。</span></div>
+<div class="ts-line"><span class="ts-time">20:48</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">21:19</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">可是你怎麼去找到這些家長？我覺得這難的地方。我們現在先做前面那一段嘛，可是我們到學校下課，我們到學校校門口，像中永和，那學校下課都多少學生，你只要發...發傳單。發傳單告訴他，你這邊免費註冊，來這邊找補習班打八折。所以你會有一個人地啊，你去...一定要有，他一定要有。一開始一定要有這些，因為不然他們我們沒有知名度，我們沒有做線上廣告。那時候世貿展，那時候我們到處，那時候補教展，我們都嘛常來。哦。他們是要地推啦，前前端要地推，但是補習班...我覺得可以講個故事，誘誘誘使補習班來跟我們買保險啦，應該是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">21:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對啊對啊對啊。</span></div>
+<div class="ts-line"><span class="ts-time">22:02</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">22:05</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">我覺得如果要地推給學生，我現在在思考的點是學生會不會拿給家長？一般來說，從我小時候自己的經驗來說啦...下課很多家長在啊，就很多家長來接，我們是發給家長，我們不是發給學生的。</span></div>
+<div class="ts-line"><span class="ts-time">22:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin Lin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">22:21</span><span class="ts-speaker" style="color:#14B8A6">Ray</span><span class="ts-content">國高中欸。是嗎？國高中比較...國高中好像不一定會有家長。對啊。國小要補習啊。那你就只能國小而已啊。國小要補，要補才藝、學藝、那個什麼課後輔導啊。對，國高中可能...課後輔導班如果用所謂的這種才藝班用所謂的有空堂，然後讓你可以優惠，然後打折來上課的話，我覺得會有商機，但我覺得商機比較大的會是後面那個國高中這一塊，但是國高中這一塊你去發傳單給學生或是給家長，我覺得他的效益沒那麼大。高明。我覺得這個可以可以搞，這個要搞家長會。我們過去我們，我們過去有辦過說明会。叫家長不是馬上決定，我們在禮拜六、禮拜什麼時候，我辦一個我們的所謂的這個這個說明會，讓他上來免費，我們還送他什麼東西有沒有，讓他知道說，我們這禮拜有辦一個說明會，讓你以後小朋友去補習，有多一個選擇的機會。沒有，這個東西其實各種方式都可以試啦，只是我們前面只做到補習班上架，而且我們後來這個資訊賣給已經賣給其他家公司了。對。那家長端那個我們已經開始推，可是我們沒有沒有趕上來，所以...就是我覺得 Ray 會擔心，因為我們的資源也有限，所以不...就是除非這件事情是跟我們保險業務相關的，我們可以投入啦，但是現在如果看起來，我覺得可能也不是我們擅長的，比如說去找家長來加入我們，我們沒有這個...這個要從家長會裡面去...對，這個可能，我我也，Ray 我我也覺得，我覺得概念很好，但我們能不能有能力做到，打個問號。但是補習班保險是可以。我覺得，我覺得應該是要從補習班去對接到家長來下手，就是說，現在家長普遍所遇到的問題是，他們真的不知道小孩要去哪邊補習這件事嗎？因為就我...對啊，同學一起去就去了對不對？對，就我父母從前啦，幫我去做補習班的時候，他們也都是聽過聽信就是身邊其他家長推薦啊，或是看到哪一個老師說啊這個學，這個補習班還不錯。那父母他們真正的痛點難道真的是不知道去哪邊補習嗎？好像反而是說，小孩補習了，補的進度到哪裡，他們跟補習班中間有一個資訊的落差，這反而是我認為可以著手的地方，如果你真的要去接觸到家長這件事情的話。其實我剛好可能你們的小孩已經還沒有到去補習這個年紀了。我小朋友以前讀新雅國中，我們只知道繳學費而已，學費帶回來就，因為他說我跟同學一起一起去哪裡，也的確是在我們家附近生意也很好，看起來，可是我覺得我兒子補習的效果沒有很好。是因為家長在這上面好像有去就好了。可是假設家長多了一份可以有有有有資訊可以看，有折扣可以拿，那個學費講真的不便宜，那學費一次繳都兩三萬塊。兩三萬打個八折就少了多少錢？就五千塊了。我我我們做的就是有一點好像就是我切大塊的來，再切小塊的給你，我賺中間那一塊。那補習，我我甚至跟你講，有的補習班啊，第一年，我如果沒有記錯，好像可以全部給你。反正我閒置也是閒置啊，你找來啊，我給你，第二年的都算他們的。因為我們本來就要第二年。了解。就是我理解啦，反正聽起來，其實 Ray 有這個經驗，但是我覺得他一定知道難度在哪，他他第一個新創就是幫業務員找客戶，把客戶給業務員，就可以跟業務員要超多錢的，你把客戶給...佣金都給你也沒問題啊。所以我覺得他他一定有這個經驗，只是我們現在是從保險賽道轉到補習班，那個...是吧 Ray，那個難度，我覺得這個我們再評估一下。是難度一定有差啦，對啊，然後再來就是...資源，還有資源的問題。對，然後再來就是我們要怎麼接觸到家長，接觸到家長唯一的方式也是要透過補習班。那我們保險要搭配補習班這件事情，反而是我們能夠幫補習班創造什麼？創造增加，創造客戶這是第一點啦。然後第二點當然是說創造他跟父母之間的溝通橋樑，這可能是比較重要的，就是像剛剛曾總你說的嘛，你也覺得小孩補習的這個效果好像不是很好，也不知道到底補到哪裡去了，那補習班他們的出席行蹤狀況，你小孩實際上也沒有去，你自己都不知道。那現在補習班好像有出缺勤的...應該有啦，有那種廣播，報了要逼一下，家長就知道你來了，幾點來。我覺得這個他們應該都有做啦，應該不是太大的問題。嗯嗯嗯。我覺得這個可以...我覺得可以...這個大概理解了，我們就先在這裡，我覺得補習班是個好，但我們再評估看看。這個後面還要再做的事情，人力還蠻多的。對，看是履責，履責我覺得倒是可以。這邊如果你講說家長，我覺得不一定要透過補習班，因為補習班就是我們，你不能跟他要人，又跟他要要...對啊，他...對對對對對。你可以從學校的家長會開始。我覺得是這樣，但你就要花時間去打通這個啊，學校家長會要怎麼打通？他有協會、會長協會之類的，因為我剛好以前我也是會長，所以...對啊，但是你要有人去啊，不然你做這件事情，你打通，我們就...可以耶，你的人脈可比...繼明是，我覺得很多扶輪社，那上上面頭部都是什麼...什麼家長會的。他有什麼台北市家長會會長，夠大了喔，可是我不敢答應的是因為我太多事情了，我現在在做，在做的是基因檢測的這個事情，我開始在跑寵物醫院，我在跑這些，我太多事情了。對啊，所以你看這個就是我們剛剛講的資源的問題啊，如果你也沒時間，我們我們也都是在打保險這一條。就是這個東西好，但是我們沒有那個資源去做，就就先緩一下。就緩一下，看有新的人力或者新的商機再來再談整一下。對啊，所以我覺得初期就是先從保險。你保險做到普及了，因為我們一開始是推保險，我們就發現他的生意都不好了，他都想關了。那我就好，我幫你招生，那怎麼招生？反正你閒置也閒置，我我招到學生你分我多少錢？也有人講說第一年都給你，第二年我們就不能再跟我們要了。我想說第一年拿了就好了，也有的講說那我們第一年跟你一人一半。所以我們就是因為賣保險看到補教業的問題，我們想再想幫他。他要講學生繳不起錢，我們又去找有金主去借那第三方，類似那種信貸有沒有，來我借你錢，3% 6% 9%。因為有的人是補的是學那種才藝啦，那種補什麼社會青年下去補去就業啦，去補考試的，他沒有錢，那我們借你錢去補習。我們就是因為賣了保險以後，你貼近了這個這個產業，你就看到這個產業的問題。對啊，了解，知道。好。那等一下等那個 Matt，Matt 來介紹一下那個 Console 站。對啊，我覺得還是先接觸補習班試試看，就是履約責任保險這件事情先做看，然後做了之後再去進一步深化啦，跟補習班的關係再進一步深化，看他們實際需求是什麼，我們再往下一步推進，因為這幾年實在變得很快，那科技演變的速度也很快，那可能家長的需求，我們跟補習班的需求，我們在推這個推動過程中可以再做了解，我覺得會比較好一點。對，是。嗯。就不要同步同步要發這麼多的的線路啦。對對對，我們會...下次就...你邊走邊修正，商機還有...比較比較保險。對啊，因為我們現在其實都是走這種大題小作的方式，就是一個很大的主題，然後一個小地方小地方慢慢發展，那發展起來後續再往大方向去出發，會比較好一點。對。嗯。欸，Console 站繼明應該也熟，我找繼明來 demo。Matt，那個 Ray 你跟曾總繼續聊，繼續討論，我把 Matt 拉進來。你剛好這個 Ray，你有小朋友在補習嗎？欸，沒有，我以前補習啦，我以前補習，我還沒有小朋友。你還沒有小朋友，因為我小朋友都大學畢業，都退伍了。真的喔？都已經二十幾歲了。我現在 32 歲，還沒有小朋友。那你在加 20 年也差不多啊，我我我快 60 了啦，差不多啊。我再努力一點可能就會有了。他是不方便露鏡頭，他也是保險科技的那個顏值擔當，很帥。你好，你好。我是 Matt，我是我們的那個 BD。好，所以我覺得我們分批啦，假設你有接觸到補教業這一塊，因為我覺得我們很清楚這個市場有七八千間，而且現在家長也比較捨得花錢，因為可能少子化以後。那他補教業收的費用沒有少，可是對補習班來講，他們這個部分假設你沒有去開發或是沒有被稽核，他也不會主動買。所以當然這個又是所謂的強制喔，所以我覺得到只要你有琢磨在這裡，不管推這個從法字面去推，我相信都會出現成效，我覺得很多方法啦。當然我們覺得把這市場拿出來再重新整理過，我我們剛才跟一帆說大概不要說做到五成了，你做兩三成，一張保單就就有一萬多塊了，兩三成就有了三千家了，就就有三四千萬的保費了。而且保證續保喔，這個保險公司也很愛，因為都沒有出險過。所以變化少的保險我就很喜歡做。對啊，你你進了這個，其實還可以賣他身邊的那什麼公共責任險都可以賣。對啊。補習班都要買啊。我是覺得最好有機會有資源，反正這一先從保險開始啦，之後可以做到媒合。買賣人頭的生意我覺得也很好賺的。我沒有發給你在那個萬登保代裡面。現在那個 LINE 裡面。這種你要？欸，對不起，你叫我自翔就好，叫我 Matt。我給你保險。他其實有太多身份了。我有三種身份，所以現在有點...也幹太多了。斜槓。有有有，我新聞版面都還有看到。我把那個...你在萬登保經對不對？對，萬登那個，我有發一個連結啊。Ray 我現在請 Matt 來秀一下 Console，你也可以...你也可以補充一下說我們當初去...我們最近去兩個保經都會用 Console，一個是遠見，一千個對不對？然後再來是那個永達。永達。永達他有一個...他是總公司...對，我是認識...他有一個 AI 的財富...AI 的...好像是這個...家族辦公室。他們新成立的。對對對，也是在他那一棟裡面，其中一層。他們叫 AI 家族辦公室。對。現在什麼都要跟 AI 連在一起。那你你進去我我這裡就會被踢出。Ray 你聽...聽得到嗎 Ray？聽得到聽得到，你剛剛那個回音好大，現在沒有了。一千個...欸，為什麼那麼小聲？欸，你 Ray，OK 嗎？聽得到？OK OK。OK 好，好。這個的話是我們的內部的 Console 系統，然後左邊這邊，我像像我早上，我舉例我早上展示給那個華南的，就是我們有一個保單管理的系統。華南場。我們要叫華南。對。主要，因為他們主要是會用到第一個像是我們建保單的時候，因為他們行政需要打超級多的保單，那我們其實做了一個 OCR 辨識的功能。放進去，自動...後台就會去...來這張後續用就可以去...我這個 JPG 就可以了。對。我現在直接辨識一個給你看。那這是一個報價。然後像有報價。那你看哦，它其實...像這邊，這邊的話...我左邊這邊其實就是它這張保單的要保書，以及它的這個車主的資料，那右邊之後就是辨識出來的資料，有它的 ID、姓名、要被保人...保單的...那因為我們採的是全面辨識，所以基本上上面有的幾乎都辨識出來，包括生效到期日還有保費，然後像業務員相關的資料以及這個車籍資料，還有車主的資料，像引擎號碼等等的這些...那這個是保單辨識的部分。然後再來左邊是我們去查詢車輛，譬如說像以曾總你可以提供一下你的車牌給我嗎？我直接幫你做查詢。B J Y...B J Y...9918...9918...U1200...U1200...23767...23767...那我們可以去同時查詢兩項資料，就第一個是這台車的車籍資料，包含車型、重置價格、車款等等，還有它的驗車時間，那以及它的保險什麼時候會去到期，只要加上身分證。稍後立即...待會待會...給你看一下...拍賣...楊...馬上就知道好不好，如果你覺得覺得他做一個回饋機制，如果你錯你馬上反應...這個是告訴我們的工程師說，如果你用了，你覺得用的不順暢的，趕快跟我們講。曾總就確定，可是是...這個是什麼...學長不錯。然後出廠年月 2017...排氣量 197...領牌日...我這是我爸的車，應該是不會差太遠，可能應該也是...不會啊，13 年 30...他是胖，他是胖。因為我爸已經已經 90 歲了，然後是...給他開的。後來就給我...下也告訴你...然後你看...這邊啊，其實有這個到期日，如果是要主動開發的話，你有整批的客戶名單，你就可以做大量開發、大量...你看到他 2 月 24 就可以發報價了，別人都還不知道，他自己都不知道保險快到期了，你可以發一個月...這個資料都可以吃。對，然後你報價我再幫你跑保險公司...所以你看你只要 key 身分證跟車牌...車牌跟身分證。你就可以發...必較是體驗很好，大部分就是這一段 key in 做的很不錯，這個後面 key 出就順了。不是你一上線你這樣...保發中心...給你上...保發...我要串...亞護沒賣...可以就是兩方...他怕你想要現在買哪一家？他想買哪家保險？那個除非要去那個要透過窗口。但是其實那個保發中心應該可以提供資訊。可以，但是他只提供給保險公司，保險公司不給我們。對。關係第三人他比較不提供給家長。保險公司，因為保險公司要給...那我們運用場景就會很多，因為像我們現在，你看喔，像業務員，你可以主動去通知嘛。那再來就是修配廠，其實我們修配廠也可以做這樣的通知，因為修配廠你看喔，他客戶假設他修了十年，其實有一兩萬台車子，但是他的回客率不見得那麼高，他可以透過去通知客戶說你的車險的驗車時間跟車險什麼時候到期，讓客戶覺得說，其實你還蠻貼心的，那既然我都要回去驗車了，我去你那邊你幫我看一下車子的狀況這樣子，就是他是很合理可以去開口。對啊，所以那再下一步就是其實就是取得報價。像這邊的取得報價，我們就會需要多一個身分證號，像我以我太太的車子為例。那姓名這邊不用填。好，那取得報價的時候，其實就需要剛剛的那兩項資料，我打給保險公司，讓他回傳報價回來。那取得報價這邊其實也是修配廠一直在跟我們問的，因為他如果說不用透過我，不然他正常流程是，我今天去修車廠，那你再去給窗口，如果保經代就是這樣子。可是如果說他在第一線，他就可以告訴客人說你現在有兩個方案，譬如富邦跟台產。對啊。你看喔，台產、新安喔、富邦。他比較快，不好意思，我們是串...我們是跟保險公司把它串...他適用爬的。所以後來被被關起來了。那你看這個其實對於我們下一階段就是要保書再產出其實就更...因為你有了報價，你下一段就是他要保，你就印出來給他簽。他的前面的積分...你進去，不是這個...他跑的過程，保險公司 API，保險公司 API 也去算他的建議...那些到...我們先把方案先寫固定是因為，假設說這個使用者他是不要變，他只要快，那我們就給他這樣子。可是如果他要變，那我們後面再調整。看使用者他的希望是什麼。然後這邊，因為其實都直接串保險公司核保了，所以不會有這個送出去他沒辦法保的問題，這邊他已經算過，已經跑過一輪，所以如果說他的係數過高，在這邊是跳不出來的。他就會他就會先打。目前三家。這邊第一個台產...新安、富邦。當然這個是車險我們不...我們很多人不喜歡新安，我很多人...到現場，話很多啊。這一點是真的。他理賠的時候比較...他人來很快，但是他理賠比較多會跟你...他那個...他處理方式很多...他處理方式...但是富邦保費就比較貴。因為我們以前理賠啦，法務其實都一樣，就是說富邦因為它的理賠給的權限比較高，譬如說可能我今天新安、華南，我可能一個三萬塊超過我就要報備主管，但可能你富邦十萬塊底下你自己決定。所以說他小金額他不需要我還要說我幫你問看公司，他不用。對啊，不然你看他看理賠出去打電話問半天，對啊，有時候只是外面抽根菸回來，他其實都是他在決定的，有一些是真的他要問，他就要還要去問理賠主管這樣子。對啊。那我們我們是...但是是...但是是...我們用的...不然兩個東西收費，一個是辨識收費，然後你辨識如果要收費，我其實不管你是車險、旅平、責任，你只要掃成檔案，我一份就跟你說十塊，就進來這樣子。那你掃進來之後呢，你可以再告訴我你想要什麼分析，可以再用 AI 幫你...那那是一種...保單管理嘛，或者你把它想成 CRM 或保單管理這樣。然後第二種是比較針對車，車險或產險，那我解決一個問題是我不想要讓客戶每次都等那麼久，我想要讓他即時，我不要讓他 key 那麼多資料，所以我們就設計說那兩個資料你一定不會忘，車牌一定記得住，不一定...就把它記下來給我們之後，我就告訴你車籍的資料，如果你願意再告訴你報價都行。然後我們還有做一個也很酷的，就是...我還有一個是...保單...要解決一個問題就是說，我不想要讓業務員每次去銷售客戶好像也是，客戶的感覺都不是客製化，你就是準備好三個要讓我...對，可是你你現在可以...就是...然後你...所以我就建議你 A 方案，A 方案會為什麼...我還要多工啊，比如說我現在一百個業務員我都只要出一個報價單給老闆...先抓一個公司比較...做大。就可能那個行情大概是這樣，因為其實以保經來講，如果他是產壽險都有做的，就是產險開發、壽險開發，所以說他產險一定是花最少力，那會做產險也不見得是每個業務員，一定是可能某定的那些，那做車險的也不見得是每個業務員一定都會想要去做的，如果他可能投資型啊、儲蓄險他做久，他車險搞不好是很小，那有做的，那他當然一定的量他會拉，可是我看的是說，你一家保經裡面可能有二十個是這樣的業務員，但是我一百家保經，我就有兩千個這樣的業務員。對，他的使用頻率就會很高。那你現在...他目前用的是...他請他都是...這樣。OK。你可能要再...我剛好要...那...對我我想要讓你知道的...就就是叫我們會有在...然後我可以再跟曾總這邊聊一下。嗯，OK OK。好，謝謝。這個可以關掉。對我先...我等下到那個群組，把你跟曾總，然後我把那個教育局發...可以可以把公文先讓我看一下，謝謝謝謝。可以可以，我先發，是總的。那那個 Ray 我這邊就先關掉了喔。好，OK，感激。好，OK 喔，好，拜拜。喂。</span></div></div>
+</div>
+
+<div class="footer">
+  <strong>雅韻 / Calliope 🎭 · 羅賓斯科技</strong>
+  P102 · 2026-06-16 V01 · Gemini 2.5 Pro STT · SOP/04 100% 真實會議紀錄
+</div>
+
+</div>
+</body>
+</html>
