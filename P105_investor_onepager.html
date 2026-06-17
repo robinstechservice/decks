@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>羅賓斯科技 投資人 1-pager</title>
+<title>羅賓斯科技 投資人 1-pager · A</title>
 <style>
 :root {
   --navy: #0A1E3F;
@@ -16,91 +16,72 @@
   --ink-light: #394350;
   --grey: #6B7280;
   --bg: #F8FAFC;
-  --bg-card: #FFFFFF;
 }
 @page { size: A4 portrait; margin: 0; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
   width: 210mm; height: 297mm;
+  max-height: 297mm;
+  overflow: hidden;
   font-family: "Source Han Sans TC", "PingFang TC", "Noto Sans CJK TC",
                "Microsoft JhengHei", -apple-system, sans-serif;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   background: white;
-  font-size: 16pt;
-  line-height: 1.4;
+  font-size: 14pt;
+  line-height: 1.35;
   display: flex;
   flex-direction: column;
+  page-break-inside: avoid;
 }
-
-/* ========== HERO ========== */
 .hero {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
   color: white;
-  padding: 10mm 14mm 8mm 14mm;
+  padding: 8mm 14mm 6mm 14mm;
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
 }
 .hero::before {
-  content: "";
-  position: absolute;
+  content: ""; position: absolute;
   right: -80px; top: -50px;
   width: 240px; height: 240px;
   background: var(--gold);
-  border-radius: 50%;
-  opacity: 0.1;
+  border-radius: 50%; opacity: 0.1;
 }
 .brand {
-  font-size: 11pt;
-  letter-spacing: 4px;
-  color: var(--gold);
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 3mm;
+  font-size: 12pt; letter-spacing: 3px;
+  color: var(--gold); font-weight: 700;
+  text-transform: uppercase; margin-bottom: 2mm;
 }
 .title {
-  font-size: 36pt;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  line-height: 1.05;
-  margin-bottom: 3mm;
+  font-size: 30pt; font-weight: 900;
+  letter-spacing: -1px; line-height: 1.05;
+  margin-bottom: 2mm;
 }
 .subtitle {
-  font-size: 18pt;
-  color: var(--gold);
-  font-weight: 700;
-  letter-spacing: 0;
-  margin-bottom: 5mm;
+  font-size: 16pt; color: var(--gold);
+  font-weight: 700; margin-bottom: 3mm;
 }
 .tagline {
-  font-size: 16pt;
-  font-weight: 600;
+  font-size: 14pt; font-weight: 600;
   color: rgba(255,255,255,0.92);
   border-left: 4px solid var(--gold);
-  padding-left: 5mm;
-  line-height: 1.5;
+  padding-left: 4mm; line-height: 1.4;
 }
 .tagline strong { color: var(--gold); }
-
-/* ========== SECTIONS ========== */
 .section {
-  padding: 6mm 14mm;
+  padding: 4mm 14mm;
   flex-shrink: 0;
 }
-.section.tight { padding: 4mm 14mm; }
 .section-title {
-  font-size: 16pt;
-  font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 4mm;
-  padding-bottom: 1.5mm;
+  font-size: 16pt; font-weight: 800;
+  color: var(--navy); margin-bottom: 3mm;
+  padding-bottom: 1mm;
   border-bottom: 2px solid var(--gold);
   display: inline-block;
 }
-
-/* ========== 3 products ========== */
-.three-prod {
+.prods {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4mm;
@@ -108,212 +89,139 @@ html, body {
 .prod {
   background: var(--bg);
   border-top: 4px solid var(--gold);
-  padding: 4mm 4mm;
-  border-radius: 1mm;
+  padding: 4mm 4mm; border-radius: 1mm;
+  display: flex; flex-direction: column;
 }
 .prod-tag {
   font-family: "Montserrat", sans-serif;
-  font-size: 26pt;
-  font-weight: 900;
-  color: var(--gold);
-  line-height: 1;
+  font-size: 18pt;
+  font-weight: 900; color: var(--gold); line-height: 1;
 }
 .prod-name {
-  font-weight: 800;
-  color: var(--navy);
+  font-weight: 800; color: var(--navy);
   font-size: 16pt;
-  margin: 2mm 0 1.5mm 0;
+  margin: 2mm 0 2mm 0; line-height: 1.2;
 }
-.prod-stat {
-  font-size: 16pt;
-  color: var(--ink-light);
-  line-height: 1.45;
-}
-
-/* ========== KPIs ========== */
-.kpi-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 4mm;
-}
-.kpi {
-  background: var(--navy);
-  color: white;
-  padding: 5mm 3mm;
-  text-align: center;
-  border-radius: 1mm;
-  border-left: 4px solid var(--gold);
-}
-.kpi-num {
+.prod-kpi {
   font-family: "Montserrat", sans-serif;
   font-size: 22pt;
-  font-weight: 900;
-  color: var(--gold);
-  line-height: 1.05;
+  font-weight: 900; color: var(--navy); line-height: 1;
 }
-.kpi-label {
-  font-size: 16pt;
-  color: rgba(255,255,255,0.92);
-  margin-top: 2mm;
-  line-height: 1.3;
-  font-weight: 600;
+.prod-kpi-label {
+  font-size: 14pt; color: var(--ink-light);
+  font-weight: 700; margin-top: 1mm; margin-bottom: 2mm;
 }
-
-/* ========== Fund A 輪 ========== */
+.prod-stat {
+  font-size: 14pt; color: var(--ink-light);
+  line-height: 1.35; margin-top: auto;
+}
 .fund-box {
   background: linear-gradient(135deg, var(--gold) 0%, #C4972C 100%);
-  color: var(--navy);
-  padding: 6mm 8mm;
+  color: var(--navy); padding: 5mm 6mm;
   border-radius: 1mm;
   display: grid;
   grid-template-columns: 1fr 1.3fr;
-  gap: 6mm;
-  align-items: center;
+  gap: 5mm; align-items: center;
 }
 .fund-amount {
   font-family: "Montserrat", sans-serif;
-  font-size: 32pt;
-  font-weight: 900;
-  line-height: 1;
+  font-size: 28pt;
+  font-weight: 900; line-height: 1;
 }
 .fund-split {
-  font-size: 18pt;
-  font-weight: 800;
-  margin-top: 2mm;
+  font-size: 16pt;
+  font-weight: 800; margin-top: 2mm;
 }
 .fund-detail {
-  font-size: 16pt;
-  font-weight: 600;
-  line-height: 1.4;
+  font-size: 14pt; font-weight: 600; line-height: 1.4;
 }
 .fund-detail strong { color: var(--navy); font-weight: 800; }
 .fund-detail .small {
-  font-size: 16pt;
-  color: var(--navy-light);
-  font-weight: 600;
-  margin-top: 2mm;
-  display: block;
+  font-size: 14pt; color: var(--navy-light);
+  font-weight: 600; margin-top: 2mm; display: block;
 }
-
-/* ========== Asks ========== */
 .ask-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4mm;
+  gap: 3mm;
 }
 .ask-card {
   background: var(--bg);
   border-left: 4px solid var(--gold);
-  padding: 4mm 5mm;
-  border-radius: 0 1mm 1mm 0;
+  padding: 3mm 4mm; border-radius: 0 1mm 1mm 0;
 }
 .ask-card.green { border-left-color: var(--green); }
 .ask-card.rose { border-left-color: var(--rose); }
 .ask-card.teal { border-left-color: var(--teal); }
 .ask-title {
-  font-weight: 800;
-  color: var(--navy);
-  font-size: 16pt;
-  margin-bottom: 1.5mm;
+  font-weight: 800; color: var(--navy);
+  font-size: 14pt; margin-bottom: 1.5mm;
 }
 .ask-detail {
   color: var(--ink-light);
-  font-size: 16pt;
-  line-height: 1.45;
+  font-size: 14pt; line-height: 1.35;
 }
-
-/* ========== CTA ========== */
 .cta {
-  background: var(--navy);
-  color: white;
-  padding: 6mm 14mm;
+  background: var(--navy); color: white;
+  padding: 5mm 14mm;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4mm;
-  align-items: center;
-  flex-shrink: 0;
-  margin-top: auto;
+  gap: 4mm; align-items: center;
+  flex-shrink: 0; margin-top: auto;
 }
 .cta-call {
-  color: var(--gold);
-  font-weight: 800;
-  font-size: 18pt;
-  line-height: 1.3;
+  color: var(--gold); font-weight: 800;
+  font-size: 16pt; line-height: 1.3;
 }
 .cta-contact { text-align: right; }
-.cta-contact strong {
-  color: var(--gold);
-  font-size: 16pt;
-}
+.cta-contact strong { color: var(--gold); font-size: 14pt; }
 .cta-contact small {
   display: block;
   color: rgba(255,255,255,0.85);
-  font-size: 16pt;
-  margin-top: 2mm;
+  font-size: 14pt; margin-top: 1mm;
   font-weight: 600;
 }
 </style>
 </head>
 <body>
 
-<!-- ============ HERO ============ -->
 <div class="hero">
-  <p class="brand">羅賓斯科技 · ROBINSTECH · 投資人 1-PAGER</p>
+  <p class="brand">羅賓斯科技 · ROBINSTECH · 投資人 1-PAGER [A]</p>
   <h1 class="title">業務員的 AI 軍火庫</h1>
   <p class="subtitle">賦能、不替代 · 場景保險 × SaaS × API 中台</p>
   <p class="tagline">
-    台灣<strong>唯一</strong>三模式齊備的 AI 保險科技公司 ·
-    <strong>2025 數發部 GenAI Stars 金質獎</strong> · ISO 27001+27701 雙認證 ·
-    服務台灣前 30 大保險經紀人公司 · 深耕東南亞 2 國
+    台灣<strong>唯一</strong>三模式齊備 AI 保險科技公司 ·
+    <strong>2025 數發部 GenAI Stars 金質獎</strong> · ISO 27001+27701 雙認證 · 服務台灣前 30 大保險經紀人公司
   </p>
 </div>
 
-<!-- ============ 三大商品 + 4 KPI ============ -->
 <div class="section">
   <h3 class="section-title">三大產品 · 已商業化有實際營收</h3>
-  <div class="three-prod">
+  <div class="prods">
     <div class="prod">
       <div class="prod-tag">A</div>
-      <div class="prod-name">場景保險</div>
+      <div class="prod-name">場景保險（嵌入式）</div>
+      <div class="prod-kpi">100K+</div>
+      <div class="prod-kpi-label">累積保單</div>
       <div class="prod-stat">機票結帳附加率 30%<br>保險保修大聯盟</div>
     </div>
     <div class="prod">
       <div class="prod-tag">B</div>
       <div class="prod-name">業務員賦能 SaaS</div>
-      <div class="prod-stat">3,000 位業務員<br>週省 10 hr · 業績 +80%</div>
+      <div class="prod-kpi">3,000</div>
+      <div class="prod-kpi-label">業務員 SaaS 用戶</div>
+      <div class="prod-stat">週省 10 hr · 業績 +80%<br>Top 30 保經</div>
     </div>
     <div class="prod">
       <div class="prod-tag">C</div>
       <div class="prod-name">API 中台</div>
-      <div class="prod-stat">ISO 27001 + 27701<br>保單 / OCR / 車籍 / 理賠</div>
+      <div class="prod-kpi">NT$5億</div>
+      <div class="prod-kpi-label">累積保費</div>
+      <div class="prod-stat">ISO 27001+27701<br>保單 / OCR / 車籍</div>
     </div>
   </div>
 </div>
 
-<!-- ============ KPI ============ -->
-<div class="section tight">
-  <h3 class="section-title">營運實證 KPI</h3>
-  <div class="kpi-row">
-    <div class="kpi">
-      <div class="kpi-num">100K+</div>
-      <div class="kpi-label">累積保單</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-num">NT$5億</div>
-      <div class="kpi-label">累積保費</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-num">14 家</div>
-      <div class="kpi-label">產險合作</div>
-    </div>
-    <div class="kpi">
-      <div class="kpi-num">3,000</div>
-      <div class="kpi-label">業務員<br>SaaS 用戶</div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ A 輪募資 ============ -->
 <div class="section">
   <h3 class="section-title">A 輪募資 · 2026 Q4 closing</h3>
   <div class="fund-box">
@@ -328,30 +236,30 @@ html, body {
   </div>
 </div>
 
-<!-- ============ 4 asks ============ -->
+
 <div class="section">
   <h3 class="section-title">為什麼投資羅賓斯</h3>
   <div class="ask-grid">
     <div class="ask-card">
-      <div class="ask-title">獨家定位 + 唯一獎項背書</div>
-      <div class="ask-detail">業界唯一：三模式齊備 + 雙 ISO + GenAI 金質獎；augment 不替代 agent。</div>
+      <div class="ask-title">獨家定位 + 唯一獎項</div>
+      <div class="ask-detail">三模式齊備 + 雙 ISO + GenAI 金獎</div>
     </div>
     <div class="ask-card green">
       <div class="ask-title">已商業化 · 有實際營收</div>
-      <div class="ask-detail">三大商品全部出單；14 家產險 + 100K+ 保單 + NT$ 5 億累積保費。</div>
+      <div class="ask-detail">14 產險 + 100K+ 保單 + NT$ 5 億</div>
     </div>
     <div class="ask-card teal">
       <div class="ask-title">SEA 戰略卡位</div>
-      <div class="ask-detail">柬埔寨 Blue Ocean 100% 收購 + Newa / PTM / BYD；越南 2027 進場；新加坡 Dew Touch 已上線。</div>
+      <div class="ask-detail">柬埔寨 100% + 新加坡 + 越南 2027</div>
     </div>
     <div class="ask-card rose">
       <div class="ask-title">A 輪稀釋極低</div>
-      <div class="ask-detail">只需 NT$ 6,000 萬（含數發部 4,000 萬非稀釋）；估值 2-2.5 億 + 數發部 51% 自配。</div>
+      <div class="ask-detail">數發部 4,000 萬非稀釋；估值 2-2.5 億</div>
     </div>
   </div>
 </div>
 
-<!-- ============ CTA ============ -->
+
 <div class="cta">
   <div class="cta-call">與我們一起重新定義<br>保險業的數位前線</div>
   <div class="cta-contact">
