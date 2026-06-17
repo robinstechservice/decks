@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Themis 秉衡 · ElevenLabs 財務視角研究報告 2026-06-17</title>
+<style>
+  :root{--navy:#0F1F4D;--navy2:#1B2F66;--gold:#E89E3F;--ink:#33394F;--soft:#5D6B85;--bg:#F4F6FB;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);
+       padding:30px 18px;max-width:820px;margin:0 auto;line-height:1.72;font-size:15px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:26px 30px;border-radius:18px;margin-bottom:16px;}
+  header h1{font-size:23px;font-weight:800;}
+  header .sub{color:#C9D2E8;font-size:13.5px;margin-top:6px;}
+  .tldr{background:#FFF6E8;border-left:5px solid var(--gold);border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:14.5px;color:#5A4420;}
+  h2{font-size:17px;color:var(--navy);margin:20px 0 8px;padding-bottom:6px;border-bottom:2px solid #E3E8F2;}
+  p{margin-bottom:10px;}
+  b{color:var(--navy);}
+  ul{margin:4px 0 12px 20px;}
+  li{margin-bottom:6px;}
+  .tag{display:inline-block;background:#E6EEFB;color:#1A4FB0;font-size:12px;font-weight:700;border-radius:6px;padding:2px 8px;margin-right:4px;}
+  .warn{color:#B5781A;font-weight:700;}
+  .src{font-size:12px;color:var(--soft);margin-top:18px;border-top:1px dashed #C9D2E8;padding-top:12px;}
+  .src a{color:#1A4FB0;}
+  footer{font-size:12px;color:var(--soft);text-align:center;margin-top:14px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>ElevenLabs 研究報告 · 財務 / 投資視角</h1>
+  <div class="sub">Themis 秉衡 📊 ｜ 2026-06-17 ｜ 角度：earnings / IR 語音化 × 成本 ROI × API 導入試算</div>
+</header>
+
+<div class="tldr">
+  <b>一句話結論：</b>ElevenLabs 是語音 AI 的領導者，<b>「買」遠優於「自建」</b>；用量計費、零資本支出、API 導入門檻低。對羅賓斯的最高價值在「財報 / 法說會多語語音化」與「保險客服語音代理」，建議先小規模 pilot 量測單位成本再放大。
+</div>
+
+<h2>一、服務、優勢、費用</h2>
+<p><b>三大產品線：</b><span class="tag">ElevenCreative</span>語音 / 影片 / 音樂 / 音效編輯器；<span class="tag">ElevenAgents</span>對話式 AI 代理（電話 / 聊天 / Email / WhatsApp，內建分析與合規控管）；<span class="tag">ElevenAPI</span>文字轉語音（TTS）、語音轉文字（Scribe，宣稱 98% 準確）、音樂生成。支援 <b>70+ 語言（含中文）</b>、5000+ 音色，模型涵蓋 v3 / Flash（低延遲）/ Multilingual。</p>
+<p><b>優勢（財務視角）：</b>① 語音擬真度業界領先、Flash 模型低延遲，適合即時場景；② 企業採用成熟——Disney、NVIDIA、Meta、Salesforce、Deutsche Telekom、Cisco、Twilio 都是客戶，代表 SLA / 合規 / 規模化已驗證，降低我們的導入風險；③ 多語一站式，省去多家供應商整合成本。</p>
+<p><b>費用：</b>Free（10,000 字/月、非商用）；Creator <b>US$22/月</b>（10 萬字、專業語音克隆 30 個）；Pro（50 萬 credits ≈ 500 分鐘、44.1kHz production 級）；Enterprise 客製。API 另計：API Pro <b>US$99/月</b>、API Scale <b>US$330/月</b>，並有 <b>PAYG 隨用隨付</b>。計費以 credit 為單位（標準模型 1 字 = 1 credit、Flash 0.5–1），未用 credit 可滾存兩個月。<b>2026 年已降價：TTS −55%、STT −45%、Agents −20%</b>，導入時機成本友善。</p>
+
+<h2>二、我們能否接上 API / 使用其服務？</h2>
+<p><b>技術可行：可以，且門檻低。</b>提供標準 REST API、官方 SDK（Python / TypeScript / Flutter / Swift / Kotlin），以 <code>xi-api-key</code> 認證、workspace 分權。常見用途含內容在地化、自動化影音、對話介面、無障礙與培訓內容，皆與我們情境契合。</p>
+<p><b>財務可行（build-vs-buy）：</b>自建語音模型需龐大 R&amp;D 與算力、不切實際；<b>買 ElevenLabs API 是明確正解</b>——最佳級品質、用量計費、無資本支出。<span class="warn">⚠ 風險提醒：</span>用量計費會隨規模放大，須設<b>預算上限與用量告警</b>；對話代理約「1 萬 credits / 10 分鐘」，高互動場景成本要先試算。建議先用 Creator + API Pro 小額 pilot，量測<b>單位成本（每則語音 / 每通客服）</b>，再決定走 PAYG 或 Enterprise 議價。</p>
+<p><b>粗估試算（示意）：</b>以「財報語音摘要」為例，一份季度摘要約 2,000 字 ≈ 2,000 credits，Creator / Pro 級的月配額即足以涵蓋每季數十份、月成本僅數十美元；真正吃量的是「客服語音代理」——若每月 1,000 通、每通 3 分鐘，估需數百萬 credits，屆時走 PAYG 或 Enterprise 議價才划算。建議鎖兩個 KPI 量 ROI：<b>每通客服語音成本 vs 人工成本</b>、<b>每則 IR 語音的觸及 ÷ 成本</b>。<span class="warn">供應商風險：</span>語音供應商有切換成本（音色與整合），建議在我們這端做<b>介面層抽象化</b>、避免深度綁定，保留日後比價與多供應商的空間。</p>
+
+<h2>三、可開始合作的類別（財務 / 投資角度）</h2>
+<ul>
+  <li><b>財報 / 法說會多語語音化：</b>把季報、IR 要點轉成中英雙語音檔，投資人「用聽的」掌握重點。</li>
+  <li><b>財報自動語音摘要：</b>每季重點 60 秒 audio brief，供高層 / 業務 / 投資人快速吸收。</li>
+  <li><b>保險客服語音代理（ElevenAgents）：</b>承接報價、保單到期、理賠進度查詢，呼應「5 分鐘報價 / 智能管家」，以單通成本取代人工 IVR。</li>
+  <li><b>業務員培訓語音：</b>把保險商品 / 法規重點做成多語培訓 audio，降低培訓邊際成本。</li>
+  <li><b>多語投資人關係溝通：</b>跨國募資 / 越南布局時，中英越多語 IR 語音規模化。</li>
+</ul>
+<p><b>導入建議順序：</b>先做「財報語音摘要」與「客服語音代理」兩個 pilot（價值高、可量測 ROI），用 PAYG 控成本、跑 4–6 週量單位經濟，再決定是否簽 Enterprise。合約 / 語音克隆同意權 / 跨境個資等法律面，建議併同 Vena ⚖️ 評估。</p>
+
+<div class="src">
+  來源：
+  <a href="https://elevenlabs.io/zh" target="_blank" rel="noopener">elevenlabs.io/zh</a>、
+  <a href="https://elevenlabs.io/pricing/api" target="_blank" rel="noopener">官方 API 定價</a>、
+  <a href="https://elevenlabs.io/blog/weve-lowered-api-agents-pricing-and-introduced-pay-as-you-go" target="_blank" rel="noopener">2026 降價 + PAYG 公告</a>、
+  <a href="https://elevenlabs.io/docs/overview/intro" target="_blank" rel="noopener">官方文件</a>、
+  <a href="https://bigvu.tv/blog/elevenlabs-pricing-2026-plans-credits-commercial-rights-api-costs/" target="_blank" rel="noopener">BIGVU 定價解析 2026</a>
+  （定價數字以官網即時頁面為準，導入前再核對 credit↔字數換算）
+</div>
+<footer>Themis 秉衡 📊 ｜ 羅賓斯科技 財務分析 AI 代理人 ｜ ElevenLabs 財務視角研究 2026-06-17</footer>
+</body>
+</html>
