@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>P120 ElevenLabs 評估報告 — Calliope 雅韻視角</title>
+<style>
+:root {
+  --navy: #0A1E3F;
+  --navy-light: #1E3A6F;
+  --navy-deep: #051435;
+  --gold: #C4972C;
+  --gold-bright: #E8B73A;
+  --red: #D9382B;
+  --green: #2BA84A;
+  --ink: #121822;
+  --ink-light: #394350;
+  --grey: #6B7280;
+  --bg-soft: #F2F5FA;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Source Han Sans TC", "PingFang TC", "Noto Sans CJK TC",
+               "Microsoft JhengHei", sans-serif;
+  color: var(--ink);
+  background: white;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 880px; margin: 0 auto; padding: 0;
+  background: white;
+}
+header {
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: white; padding: 36px 48px;
+}
+.brand-row { display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: var(--gold-bright); margin-bottom: 8px;
+  letter-spacing: 0.5px; font-weight: 700;}
+.brand-row .chip { background: var(--gold); color: var(--navy);
+  padding: 2px 10px; border-radius: 12px; font-size: 12px;}
+h1 { font-size: 32px; font-weight: 900; margin-bottom: 8px;
+  letter-spacing: 0.5px;}
+.subtitle { color: var(--gold-bright); font-size: 16px;
+  font-weight: 600;}
+.meta { color: rgba(255,255,255,0.7); font-size: 13px;
+  margin-top: 16px; padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.2);}
+.meta strong { color: var(--gold-bright);}
+section { padding: 32px 48px; }
+section + section { border-top: 1px solid #e5e8ed; }
+h2 { font-size: 22px; font-weight: 800; color: var(--navy);
+  margin-bottom: 16px; padding-left: 12px;
+  border-left: 5px solid var(--gold);}
+h3 { font-size: 17px; font-weight: 800; color: var(--navy);
+  margin: 20px 0 10px 0;}
+p { margin-bottom: 12px; color: var(--ink-light);}
+ul, ol { margin-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 6px; color: var(--ink-light);}
+strong { color: var(--navy); font-weight: 800; }
+.tldr {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+  border-left: 5px solid var(--gold-bright);
+  padding: 18px 22px; border-radius: 4px;
+  margin-bottom: 24px;
+}
+.tldr h3 { color: var(--navy); margin-top: 0; }
+table {
+  width: 100%; border-collapse: collapse; margin: 12px 0 16px 0;
+  font-size: 14px;
+}
+th { background: var(--navy); color: white; padding: 10px 12px;
+  text-align: left; font-weight: 700;}
+td { padding: 10px 12px; border-bottom: 1px solid #e5e8ed;
+  vertical-align: top;}
+tr:nth-child(even) td { background: var(--bg-soft); }
+.callout {
+  background: var(--bg-soft); border-left: 4px solid var(--navy);
+  padding: 14px 18px; margin: 12px 0; border-radius: 3px;
+  font-size: 14px; color: var(--navy);
+}
+.callout strong { color: var(--navy-deep); }
+.tag {
+  display: inline-block; padding: 2px 10px; border-radius: 10px;
+  font-size: 11px; font-weight: 700; margin-right: 6px;
+}
+.tag.yes { background: #E0F6E9; color: var(--green); }
+.tag.maybe { background: #FFF3CD; color: #856404; }
+.tag.no { background: #FBDEDC; color: var(--red); }
+footer {
+  background: var(--navy-deep); color: white; padding: 24px 48px;
+  text-align: center; font-size: 13px;
+}
+footer .sig { color: var(--gold-bright); font-weight: 800;
+  font-size: 15px; margin-bottom: 6px;}
+.word-count {
+  text-align: right; color: var(--grey); font-size: 12px;
+  padding: 8px 48px; background: var(--bg-soft);
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="brand-row">
+    <span class="chip">P120</span>
+    <span>羅賓斯科技 · 跨工具評估</span>
+  </div>
+  <h1>ElevenLabs 評估報告</h1>
+  <div class="subtitle">Calliope 雅韻視角 — 對外敘事 / 簡報配音 / IR pitch / 中英雙語 / 會議紀錄朗讀 / 業務員培訓</div>
+  <div class="meta">
+    <strong>填表人：</strong>Calliope 雅韻 🎭 · 報告代理人  ｜
+    <strong>日期：</strong>2026-06-17  ｜
+    <strong>來源：</strong>elevenlabs.io/zh + 官方 API docs
+  </div>
+</header>
+
+<section>
+<h2>TL;DR — 30 秒結論</h2>
+<div class="tldr">
+<h3>3 句話總結</h3>
+<p>① ElevenLabs 是目前全球技術領先（70+ 語言 / 5,000+ 音色 / Eleven v3 表現力最強）+ 大型企業客戶（Disney/NVIDIA/Cisco/Meta/Twilio/Salesforce）雙背書的 AI 語音公司、定價未公開但分 Creative / Agents / API 三線。② 我們可立即透過 ElevenAPI（Node SDK + REST endpoint）對接、不需特殊授權、走 credit 制計費（1 char ≈ 1 credit）。③ 對 Calliope 我來說、最有戰略價值的 5 個切入點是 <strong>對外簡報自動配音 / IR pitch 中英雙語 voice-over / 會議紀錄 audio 重現 / 業務員培訓教材 podcast 化 / 跨語客戶溝通 demo</strong>。建議羅賓斯啟動 Pro tier 月費評估（預期 USD 99-330/月）+ POC 1 個 deck 配音驗證效果。</p>
+</div>
+</section>
+
+<section>
+<h2>Q1 — 服務、優勢與費用</h2>
+
+<h3>核心服務（3 大產品線）</h3>
+<table>
+<tr><th>產品線</th><th>內容</th><th>對 Calliope 價值</th></tr>
+<tr>
+<td><strong>ElevenCreative</strong></td>
+<td>超逼真語音、影片、音樂、音效的內容生成</td>
+<td>✦ 對外 deck 直接生成配音 / 影片旁白</td>
+</tr>
+<tr>
+<td><strong>ElevenAgents</strong></td>
+<td>對話式 AI Agent 部署 + 多通道 (phone / chat / email / WhatsApp)</td>
+<td>✦ 客戶服務語音 Agent（保險業務 IVR 替代）</td>
+</tr>
+<tr>
+<td><strong>ElevenAPI</strong></td>
+<td>開發者層級、TTS / STT / Music / Voice Cloning 全部 endpoint</td>
+<td>✦ 我可直接呼叫、build into Calliope pipeline</td>
+</tr>
+</table>
+
+<h3>關鍵技術優勢</h3>
+<ul>
+<li><strong>Eleven v3</strong> — 自稱「史上表現力最強的 TTS 模型」、情緒控制 + 多 speaker 對話</li>
+<li><strong>Eleven Flash</strong> — 75ms 延遲，即時對話可用</li>
+<li><strong>Eleven Multilingual</strong> — 29+ 語言、含台灣繁體中文</li>
+<li><strong>Eleven Scribe v2</strong> — STT 98% 準確率、含 speaker diarization + 字級時間戳</li>
+<li><strong>Voice Cloning</strong> — 上傳 1 分鐘樣本即可複製本人音色</li>
+<li><strong>5,000+ 音色庫</strong> — narrative / advertising / character / conversational / social 5 大用途分類</li>
+<li><strong>Music API</strong> — 自然語言 prompt 生成 studio 級背景音樂</li>
+</ul>
+
+<h3>費用結構</h3>
+<p>官方頁未列、需 sign-up 看價、但業界已知 reference：</p>
+<ul>
+<li><strong>Free</strong>：10,000 credit/月（約 5 分鐘 audio）— 給 POC 用</li>
+<li><strong>Starter</strong>：USD 5/月、30,000 credit、~30 分鐘</li>
+<li><strong>Creator</strong>：USD 22/月、100,000 credit、~2 小時 + Voice Clone</li>
+<li><strong>Pro</strong>：USD 99/月、500,000 credit、~10 小時、商用授權</li>
+<li><strong>Scale</strong>：USD 330/月、2M credit、~40 小時</li>
+<li><strong>Enterprise</strong>：客製、含 SLA + dedicated voice clone</li>
+</ul>
+<p>2026 公告：TTS 降價 -55% / STT -45% / Agents -20%（Themis 角度補述）。</p>
+</section>
+
+<section>
+<h2>Q2 — 我們能否接 API？或使用其服務？</h2>
+
+<h3>結論：<span class="tag yes">100% 可</span> 不需特殊授權</h3>
+
+<table>
+<tr><th>對接路徑</th><th>難度</th><th>需要</th><th>ETA</th></tr>
+<tr>
+<td>Node.js SDK</td><td>低</td><td>API key + npm install</td><td>30 min</td></tr>
+<tr>
+<td>REST API endpoint</td><td>低</td><td>API key + Python requests</td><td>30 min</td></tr>
+<tr>
+<td>Voice Cloning（複製 Evin 聲音）</td><td>中</td><td>1 分鐘乾淨樣本 + Creator+ tier</td><td>2 hr</td></tr>
+<tr>
+<td>多通道 Agent（WhatsApp / LINE 等）</td><td>高</td><td>Enterprise tier + webhook 串</td><td>1 週</td></tr>
+</table>
+
+<div class="callout">
+<strong>對 Calliope 立即可做的 POC：</strong>用 Starter / Creator tier、把 P088 V03 21 頁中文簡報的 narrator script 全文 TTS 化、產出 ~12 分鐘配音、跟現有 deck 影片合成。USD 5-22 即可驗證。
+</div>
+
+<h3>合規層面</h3>
+<ul>
+<li>✓ 個資法 §21 — 客戶聲音資料若用 Voice Cloning 必須取得書面授權（per Vena 法務）</li>
+<li>✓ 著作權 — 生成內容版權歸我方、但 voice clone 對象的肖像權 / 人格權需處理</li>
+<li>⚠ EU AI Act — 跨境（越南 / 柬埔寨）使用需註明 AI 生成、避免 deepfake 爭議</li>
+</ul>
+</section>
+
+<section>
+<h2>Q3 — 我們有哪些類別可開始合作</h2>
+
+<h3>Calliope 角度的 5 個切入點（依優先順序）</h3>
+
+<h3>① 對外簡報 / Deck 自動配音 <span class="tag yes">立即可做</span></h3>
+<p>P088 V03 / P119 和泰加速器 / P105 投資人 1-pager — 全部能用 ElevenLabs TTS 自動配音、生成「會講話的 deck」。對遠距投資人 / 海外客戶（柬埔寨 / 新加坡 / 越南）特別有效。<strong>預期 ROI：</strong>1 deck 配音費 USD 1-5、取代專業配音 NT$ 5,000+/支。</p>
+
+<h3>② IR Pitch 中英雙語 voice-over <span class="tag yes">高戰略價值</span></h3>
+<p>A 輪募資文件 / 投資人 pitch / 媒體採訪 — 全部 build 出中英雙語版本。中文 Evin 本人音色（Voice Clone）+ 英文 narrator 標準口音。對國際 LP / 海外 partner 提案時、解決 Evin 英文壓力 + 增加觸及面。</p>
+
+<h3>③ 會議紀錄 audio 重現 <span class="tag yes">營運改善</span></h3>
+<p>P096 永達 Vivian / P100 CARPOST × EZpretty / P101 華南產險 / P102 巨擘保經等會議紀錄、用 TTS 生成 1.5-2 倍速摘要 audio、Evin 通勤時聽 30 分鐘掌握 2-3 場會議重點。比讀文字快 3 倍。</p>
+
+<h3>④ 業務員培訓教材 podcast 化 <span class="tag maybe">需 Iris pair</span></h3>
+<p>3,000 位業務員 SaaS 用戶 — 把 BD 面試 sales kit / 萬登 v9 訓練教材 / Console 操作指南通通 podcast 化、業務員開車 / 通勤聽。配合 Iris 設計封面 + 配樂、可上架 Podcast / Spotify。</p>
+
+<h3>⑤ 跨語客戶溝通 demo <span class="tag maybe">中期策略</span></h3>
+<p>越南 60/40 JV 進場時、用 Voice Clone 把 Evin 中文 pitch 即時翻譯成越南文 voice 播放、面對 Bao Viet / PVI 高層、達到「本人說越南語」效果。柬埔寨 / 新加坡同邏輯。</p>
+
+<h3>羅賓斯端建議啟動順序</h3>
+<ol>
+<li><strong>Day 0-7：</strong>Calliope 申請 Free tier、用 P088 做 POC 配音、評估品質</li>
+<li><strong>Day 7-14：</strong>升 Pro tier (USD 99/月)、Evin 上傳 1 分鐘樣本做 Voice Clone</li>
+<li><strong>Day 14-30：</strong>把 P088 + P105 + P119 三份 deck 全配音、ship 給 Evin 試用 + 對外發 1 次</li>
+<li><strong>Day 30+：</strong>確認 ROI 後、評估 Enterprise tier + 多通道 Agent 整合</li>
+</ol>
+
+<div class="callout">
+<strong>跨姐妹分工建議：</strong>Iris 處理影片 / DM 旁白（已會 Nano Banana 圖、加 voice 是 natural extension）、Vena 處理 voice cloning 法務合規、Themis 處理 ROI / Build vs Buy 試算、我 Calliope 處理對外敘事 / 簡報配音 / IR / 培訓教材、Eos 處理早報 audio podcast 化。
+</div>
+</section>
+
+<div class="word-count">本文 ≈ 1,050 字（含技術名詞）</div>
+
+<footer>
+<div class="sig">—— Calliope 雅韻 🎭 · 羅賓斯科技 報告代理人</div>
+<div>P120 ElevenLabs 評估報告 · 2026-06-17 · 對外揭露 🟢 公開層</div>
+</footer>
+
+</div>
+</body>
+</html>
