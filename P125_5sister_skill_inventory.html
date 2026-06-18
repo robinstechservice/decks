@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>P125 5 姐妹 Skill 盤點 + 6/18 Worklog 整合</title>
+<style>
+:root {
+  --navy: #0A1E3F;
+  --navy-light: #1E3A6F;
+  --navy-deep: #051435;
+  --gold: #C4972C;
+  --gold-bright: #E8B73A;
+  --red: #D9382B;
+  --green: #2BA84A;
+  --ink: #121822;
+  --ink-light: #394350;
+  --grey: #6B7280;
+  --bg-soft: #F2F5FA;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Source Han Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--ink); background: white; font-size: 14px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 1100px; margin: 0 auto; }
+header {
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: white; padding: 32px 40px;
+}
+.chip { background: var(--gold); color: var(--navy); padding: 3px 12px;
+  border-radius: 14px; font-size: 12px; font-weight: 700; margin-right: 8px;}
+h1 { font-size: 28px; font-weight: 900; margin: 8px 0 6px; }
+.sub { color: var(--gold-bright); font-size: 15px; font-weight: 600; }
+.meta { color: rgba(255,255,255,0.7); font-size: 12px; margin-top: 12px;
+  padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.2);}
+section { padding: 24px 40px; }
+section + section { border-top: 1px solid #e5e8ed; }
+h2 { font-size: 20px; font-weight: 800; color: var(--navy);
+  margin-bottom: 14px; padding-left: 10px;
+  border-left: 4px solid var(--gold); }
+h3 { font-size: 16px; font-weight: 800; color: var(--navy);
+  margin: 18px 0 10px; }
+table { width: 100%; border-collapse: collapse; margin: 8px 0 14px;
+  font-size: 13px; }
+th { background: var(--navy); color: white; padding: 8px 10px;
+  text-align: left; font-weight: 700; }
+td { padding: 8px 10px; border-bottom: 1px solid #e5e8ed; vertical-align: top; }
+tr:nth-child(even) td { background: var(--bg-soft); }
+.score { font-weight: 800; color: var(--red); text-align: center; }
+.sister {
+  display: inline-block; padding: 2px 10px; border-radius: 12px;
+  font-size: 12px; font-weight: 700; margin-right: 6px;
+}
+.s-iris { background: #FFE0E6; color: #C2185B; }
+.s-callio { background: #F3E5F5; color: #6A1B9A; }
+.s-eos { background: #FFF3E0; color: #E65100; }
+.s-vena { background: #E0F2F1; color: #00695C; }
+.s-themis { background: #E3F2FD; color: #1565C0; }
+.tldr {
+  background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+  border-left: 4px solid var(--gold-bright);
+  padding: 14px 18px; border-radius: 4px; margin-bottom: 16px;
+}
+.kpi-row { display: flex; gap: 12px; margin: 10px 0; }
+.kpi {
+  flex: 1; background: var(--bg-soft);
+  padding: 10px 14px; border-radius: 4px;
+  border-left: 3px solid var(--gold);
+}
+.kpi-num { font-size: 22px; font-weight: 900; color: var(--red); }
+.kpi-label { font-size: 12px; color: var(--grey); font-weight: 600; }
+.bullet { padding-left: 18px; }
+.bullet li { margin-bottom: 4px; }
+strong { color: var(--navy); }
+footer {
+  background: var(--navy-deep); color: white; padding: 18px 40px;
+  text-align: center; font-size: 12px;
+}
+footer .sig { color: var(--gold-bright); font-weight: 800;
+  font-size: 14px; margin-bottom: 4px;}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <span class="chip">P125</span>
+  <h1>5 姐妹 Skill 盤點 + 2026-06-18 Worklog 整合</h1>
+  <div class="sub">Calliope spokesperson 整合 · per Evin #980（skill 表）+ #985 (Eos 06:00 ping)</div>
+  <div class="meta">
+    <strong>整合人：</strong>Calliope 雅韻 🎭 ｜
+    <strong>日期：</strong>2026-06-19 06:30 ｜
+    <strong>來源：</strong>5 sister 自評（Iris #982 / Eos #981+#984 / Vena #983 / Themis #987 / Calliope inline）
+  </div>
+</header>
+
+<section>
+<h2>TL;DR — 1 分鐘總覽</h2>
+<div class="tldr">
+<p><strong>5 sister 共擁 ~30+ plugins / 270+ scripts / 130+ memory files / 5 主場差異化專業</strong>。每位都依自己 domain 累積 prod-tier tool。今天 6/18 共 ship 30+ 件、5 大 governance thread 落地（誠實 SOP / 5-min unblock / Permission Guard hook / SOP/05 命名 / NBLM 破解小組）。</p>
+</div>
+<div class="kpi-row">
+<div class="kpi"><div class="kpi-num">~30</div><div class="kpi-label">每姐妹 plugin 數</div></div>
+<div class="kpi"><div class="kpi-num">5</div><div class="kpi-label">主場差異化</div></div>
+<div class="kpi"><div class="kpi-num">30+</div><div class="kpi-label">6/18 ship 件數</div></div>
+<div class="kpi"><div class="kpi-num">5</div><div class="kpi-label">governance 拍板</div></div>
+</div>
+</section>
+
+<section>
+<h2>① 5 姐妹 Skill 主場差異化矩陣</h2>
+
+<h3>🎨 Iris 虹彩 — 視覺 / 社群 / 影片 / web</h3>
+<table>
+<tr><th>類別</th><th>主場 plugin / skill</th><th>分數</th></tr>
+<tr><td>視覺設計</td><td>frontend-design / canvas-design / example-skills</td><td class="score">10</td></tr>
+<tr><td>社群通訊</td><td>telegram（每日 100+ msg）</td><td class="score">10</td></tr>
+<tr><td>影片製作</td><td>hyperframes（9:16）/ video-podcast-maker</td><td class="score">8</td></tr>
+<tr><td>web 抓取</td><td>firecrawl / brightdata / chrome-devtools-mcp</td><td class="score">8</td></tr>
+<tr><td>進階圖像 / video / AI 圖</td><td>Nano Banana（圖）+ Adobe / Figma（裝後未深用）</td><td class="score">8</td></tr>
+<tr><td>缺口 / 想加</td><td>Recraft API（vector）/ Canva API 借 Calliope / NBLM wrapper</td><td>—</td></tr>
+</table>
+
+<h3>🎭 Calliope 雅韻 — 簡報 / 對外敘事 / IR / 翻譯 / 會議紀錄</h3>
+<table>
+<tr><th>類別</th><th>主場 plugin / skill</th><th>分數</th></tr>
+<tr><td>簡報 deck 生成</td><td>python-pptx 自製 100+ deck script（P088/P119/P124）</td><td class="score">10</td></tr>
+<tr><td>會議紀錄 STT</td><td>Gemini 2.5 Pro 49 min audio → 4 段 canonical 結構（P096/P100/P101/P102）</td><td class="score">10</td></tr>
+<tr><td>翻譯 / 雙語</td><td>YouTube SRT 雙語（zh-TW + en）pipeline（P080）</td><td class="score">9</td></tr>
+<tr><td>對外文件</td><td>document-skills + pandoc DOCX + canva_oauth/autofill/import_pptx</td><td class="score">9</td></tr>
+<tr><td>整合工具</td><td>chrome-devtools-mcp（PDF render）/ context7 / telegram</td><td class="score">8</td></tr>
+<tr><td>spokesperson 整合</td><td>跨 5 sister worklog 抓取 + canonical HTML report</td><td class="score">8</td></tr>
+<tr><td>缺口 / 想加</td><td>Gamma API 實測 / ElevenLabs Pro（與 Eos 共用）/ Marpit + Pandoc 強化 / Tome/Beautiful.ai 對標</td><td>—</td></tr>
+</table>
+
+<h3>☀️ Eos 晨曦 — 早報 / 自動化 / audio / cron</h3>
+<table>
+<tr><th>類別</th><th>主場 plugin / skill</th><th>分數</th></tr>
+<tr><td>每日 pipeline</td><td>run_daily.sh（保險科技）/ run_ai_brief.sh（AI 早報）</td><td class="score">9</td></tr>
+<tr><td>多源查證</td><td>WebFetch 引用驗證（今天抓到 Forge 數字誇大）/ deep-research</td><td class="score">8</td></tr>
+<tr><td>FB 發布</td><td>render_carousel.py + post_facebook_album.py（含 album + 文字）</td><td class="score">8</td></tr>
+<tr><td>Telegram 推送</td><td>send_telegram.sh / send_ai_brief.py（直打 Bot API）</td><td class="score">8</td></tr>
+<tr><td>audio TTS</td><td>edge-tts（免費基線）/ 規劃接 ElevenLabs Pro POC</td><td class="score">3 → 計劃升 8</td></tr>
+<tr><td>缺口 / 想加</td><td>ElevenLabs API（雙人 audio overview）/ Google/Azure neural TTS</td><td>—</td></tr>
+</table>
+
+<h3>⚖️ Vena 維娜 — 合約 / 法務 / 治理 / 揭露邊界</h3>
+<table>
+<tr><th>類別</th><th>主場 plugin / skill</th><th>分數</th></tr>
+<tr><td>商業合約</td><td>commercial-legal / employment-legal / corporate-legal</td><td class="score">10</td></tr>
+<tr><td>法規合規</td><td>privacy-legal（GDPR/個資法）/ regulatory-legal（金管會）/ ai-governance-legal（EU AI Act）</td><td class="score">10</td></tr>
+<tr><td>合約 pipeline</td><td>contract-drafter sub-agent / contract-reviewer sub-agent</td><td class="score">10</td></tr>
+<tr><td>格式工具</td><td>format_contract.py（標楷+TNR+22pt）/ add_logo_to_contract.py（per SOP/06）</td><td class="score">10</td></tr>
+<tr><td>知識庫</td><td>5 docs（company_profile + taiwan_legal + insurance_regulations + drafting_guidelines + review_checklist）</td><td class="score">9</td></tr>
+<tr><td>缺口 / 想加</td><td>Open Notebook + Chroma/Qdrant（RAG 法務 grounded chat）/ LangExtract / GLiNER（trigger word auto-detect）/ ElevenLabs Enterprise（含 DPA）</td><td>—</td></tr>
+</table>
+
+<h3>📊 Themis 秉衡 — 財務 / 研究 / QC / benchmark</h3>
+<table>
+<tr><th>類別</th><th>主場 plugin / skill</th><th>分數</th></tr>
+<tr><td>旗艦自製 skill</td><td>buy-side-analyst（財報→機構級研究 Word+PNG+PPT）</td><td class="score">10</td></tr>
+<tr><td>財務模型</td><td>financial-analysis（DCF/comps/LBO/3-statement/merger）</td><td class="score">10</td></tr>
+<tr><td>競品研究</td><td>equity-research / market-researcher / investment-banking</td><td class="score">9</td></tr>
+<tr><td>資料 helper</td><td>sec_data（XBRL）/ fred（總經）/ yfinance / chart_template / worldbank / frankfurter_fx</td><td class="score">9</td></tr>
+<tr><td>skill 偵察</td><td>skill-scout（每日自動發現 + 評估 + 自動裝、今天修去重 bug）</td><td class="score">8</td></tr>
+<tr><td>QC pipeline</td><td>跨 sister fact-check（今天抓 P108 漏期 typo + Wanden DM 階梯反 + 中文字錯）</td><td class="score">9</td></tr>
+<tr><td>缺口 / 想加</td><td>ElevenLabs API（財報語音化）/ RAG grounded-QA / NBLM 帳號（hands-on benchmark）</td><td>—</td></tr>
+</table>
+</section>
+
+<section>
+<h2>② 5 姐妹共用基礎建設</h2>
+<table>
+<tr><th>類別</th><th>所有人共用</th><th>誰主使用</th></tr>
+<tr><td>Telegram 通訊</td><td>telegram plugin（MCP）</td><td>5 sister 都用</td></tr>
+<tr><td>跨 bot loop guard</td><td>bot_loop_guard.py（6 層防 loop）</td><td>5 sister 同步 mirror</td></tr>
+<tr><td>共用環境變數</td><td>~/robinstech/shared/.env（含 GH_TOKEN）</td><td>5 sister 都可 read</td></tr>
+<tr><td>GH Pages 部署</td><td>~/robinstech/social-agent/scripts/push_deck_to_github.sh</td><td>Iris 維護、5 sister 都可呼叫</td></tr>
+<tr><td>共用 SOP</td><td>~/.claude/shared/sop/（00-14）</td><td>5 sister 共同 maintain</td></tr>
+<tr><td>Permission Guard hook</td><td>scripts/permission_guard.py（write 白名單）</td><td>每個 bot 自家 instance、Calliope+Iris 嚴格 / Vena+Themis 偏鬆（待 Leon 對齊）</td></tr>
+</table>
+</section>
+
+<section>
+<h2>③ 2026-06-18 5 姐妹 Worklog 整合</h2>
+
+<h3>📦 各姐妹 Ship 件數</h3>
+<table>
+<tr><th>Sister</th><th>Ship</th><th>In-progress</th><th>New task</th><th>worklog 路徑</th></tr>
+<tr>
+<td><span class="sister s-iris">🎨 Iris</span></td>
+<td class="score">12</td><td>6</td><td>2</td>
+<td>social-agent/work_logs/2026-06-18.html</td>
+</tr>
+<tr>
+<td><span class="sister s-callio">🎭 Calliope</span></td>
+<td class="score">7+</td><td>3</td><td>3</td>
+<td>report-agent/output/worklog/2026-06-18.md（pending 寫）</td>
+</tr>
+<tr>
+<td><span class="sister s-eos">☀️ Eos</span></td>
+<td class="score">3</td><td>0</td><td>—</td>
+<td>daily-agent/output/worklog/2026-06-18.md</td>
+</tr>
+<tr>
+<td><span class="sister s-vena">⚖️ Vena</span></td>
+<td class="score">—</td><td>—</td><td>—</td>
+<td>(尚未報、Funliday 合約 V085 in-flight)</td>
+</tr>
+<tr>
+<td><span class="sister s-themis">📊 Themis</span></td>
+<td class="score">8</td><td>4 待 Leon</td><td>—</td>
+<td>finance-agent/worklog/2026-06-18.md</td>
+</tr>
+</table>
+
+<h3>🎯 5 大 Governance Thread（今日落地）</h3>
+<ol class="bullet">
+<li><strong>「動手前先問」SOP</strong>（Evin msg #834）— 5 sister 各自 lock memory</li>
+<li><strong>「誠實高於討好」SOP</strong>（Evin DM #1719）— Themis dissent catch headline、Iris leader、Evin 同意拍板</li>
+<li><strong>「等回覆 > 5 min 主動告知」SOP</strong>（Evin msg #949）— 5 sister lock + 自證違反案例</li>
+<li><strong>SOP/05 v2 命名 canonical</strong>（Iris leader、4 sister consensus 3-0）— ship Evin 待拍板</li>
+<li><strong>NBLM 破解小組</strong>（Iris 主持、5 sister 全員 contributor）— Evin pivot：真痛點是「錯字 + 不能改」→ 5 sister 差異化 = QC + 可編輯 + 自動化 + 機密 enforce</li>
+</ol>
+
+<h3>🔥 今日 Highlight 事件</h3>
+<ul class="bullet">
+<li>🎨 Iris ship 「Wanden 轉介紹車廠 DM」+ Eos avatar v2（512×512 / 58KB / BotFather 規格）</li>
+<li>🎭 Calliope ship P119（和泰加速器 12p + 36 題表單）+ P120（ElevenLabs Calliope 視角 1050 字）+ P124（Zemo 合作 10p → v2 5p）</li>
+<li>☀️ Eos AI Agent 早報 pipeline + edge-tts audio POC 規劃</li>
+<li>📊 Themis ship P121（ElevenLabs Themis 視角）+ 抓 P108 漏期 typo + Wanden DM 兩個 NBLM 錯</li>
+<li>⚖️ Vena ship V085 Funliday × 萬登廣告合約 + SOP/06 v2 patch draft（加 ship-pipeline appendix L6）</li>
+</ul>
+
+<h3>⏳ Pending 待 Evin / Leon 決定（5 sister 共同）</h3>
+<ul class="bullet">
+<li>SOP/05 v2 命名 canonical（Iris leader ship、待拍板）</li>
+<li>SOP/06 v2 ship-checklist patch（Vena leader、含 L6 90 sec + curl 200）</li>
+<li>Permission Guard hook 對齊（Calliope 嚴格 baseline vs Vena+Themis gap、待 Leon）</li>
+<li>NBLM 帳號（Themis benchmark）+ ElevenLabs Pro tier USD 99（Calliope+Eos 共用）+ Recraft API（Iris）</li>
+<li>Eos avatar 上 BotFather（待 Leon）</li>
+<li>Eos daily-agent poller KeepAlive plist 加裝（待 Leon）</li>
+</ul>
+</section>
+
+<section>
+<h2>④ 戰略觀察 / Next Steps</h2>
+<ul class="bullet">
+<li><strong>5 sister 已自然分工成熟</strong>：視覺 / 敘事 / 早報 / 法務 / 財務 5 個 domain 都有 prod-tier tool。</li>
+<li><strong>NBLM 破解 = 下個戰略</strong>：不是「自製替代品」、是「NBLM 出草稿（快）→ 我們 QC + 編輯化（對 + 可改）」分流框架。</li>
+<li><strong>機密內容硬紅線</strong>：A 輪 / 越南 JV / 估值 / 客戶資料 絕對禁上 NBLM（Vena 3 條法律佐證）。</li>
+<li><strong>下一輪建議投入</strong>：ElevenLabs Pro USD 99 / 月 + Open Notebook（Vena RAG）+ NBLM 帳號分配（Themis benchmark）= 約 USD 100-200 / 月 起步、3 個月 POC 驗證再 scale。</li>
+</ul>
+</section>
+
+<footer>
+<div class="sig">—— 雅韻 / Calliope 🎭 · 報告代理人 spokesperson</div>
+<div>P125 5 姐妹 Skill + Worklog 整合 · 2026-06-19 06:30 · 🔴 內部使用</div>
+</footer>
+
+</div>
+</body>
+</html>
