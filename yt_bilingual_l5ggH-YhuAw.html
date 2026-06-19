@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BMO Local AI Agent with Raspberry Pi + Ollama · 中英雙語字幕</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Heiti TC", -apple-system, sans-serif;
+    background: #0F1F4D;
+    color: #1E1E1E;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  header {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  header img { height: 40px; }
+  header .title-block { flex: 1; }
+  header h1 { font-size: 20px; font-weight: 900; color: #0F1F4D; line-height: 1.2; }
+  header .meta { font-size: 13px; color: #6E6E6E; margin-top: 4px; }
+  header .credit { font-size: 12px; color: #4F7A3B; font-weight: 700; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  .video-card {
+    background: black;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+  }
+  .video-card .current-sub {
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 16px 22px;
+    text-align: center;
+    min-height: 100px;
+  }
+  .video-card .current-sub .en {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 6px;
+  }
+  .video-card .current-sub .zh {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #E89E3F;
+    font-weight: 800;
+  }
+
+  .transcript-card {
+    background: white;
+    border-radius: 14px;
+    height: 80vh;
+    max-height: 720px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .transcript-card .header {
+    padding: 14px 20px;
+    border-bottom: 2px solid #E0E7F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .transcript-card .header h2 {
+    font-size: 16px;
+    font-weight: 900;
+    color: #0F1F4D;
+  }
+  .transcript-card .header .count {
+    font-size: 12px;
+    color: #6E6E6E;
+  }
+  .transcript-card .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .transcript-card .list .item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .transcript-card .list .item:hover {
+    background: #F8FAFC;
+  }
+  .transcript-card .list .item.active {
+    background: linear-gradient(90deg, #E89E3F 0%, #F4C078 100%);
+    border-left: 6px solid #C26F1A;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(232,158,63,0.4);
+    transition: all 0.2s ease;
+  }
+  .transcript-card .list .item.active .time {
+    color: white;
+    font-weight: 900;
+  }
+  .transcript-card .list .item.active .en {
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .transcript-card .list .item.active .zh {
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+  }
+  .video-card .current-sub.pulse .zh {
+    animation: pulse-glow 1.5s ease-in-out;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 0 transparent; }
+    50% { text-shadow: 0 0 16px rgba(232,158,63,0.8); }
+  }
+  /* Word-level karaoke: spoken words turn green */
+  .video-card .current-sub .en .spoken {
+    color: #6BB05E;
+    transition: color 0.15s;
+    text-shadow: 0 0 8px rgba(107,176,94,0.4);
+  }
+  .video-card .current-sub .zh .spoken {
+    color: #6BB05E;
+    transition: color 0.1s;
+    text-shadow: 0 0 12px rgba(107,176,94,0.5);
+  }
+  .video-card .current-sub .en .pending {
+    color: rgba(255,255,255,0.55);
+  }
+  .video-card .current-sub .zh .pending {
+    color: rgba(232,158,63,0.55);
+  }
+  .transcript-card .list .item .time {
+    font-size: 11px;
+    color: #4F7A3B;
+    font-weight: 800;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .transcript-card .list .item .en {
+    font-size: 14px;
+    color: #3A3A3A;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .transcript-card .list .item .zh {
+    font-size: 15px;
+    color: #0F1F4D;
+    margin-top: 3px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #6E6E6E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .right {
+    color: #2F5C28;
+    font-weight: 700;
+  }
+
+  .iris-hero-banner {
+    background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 50%, #4FE3FF 100%);
+    color: white; border-radius: 16px; padding: 18px 28px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 6px 18px rgba(15,31,77,0.25);
+    position: relative; overflow: hidden;
+  }
+  .iris-hero-banner::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px; pointer-events: none;
+  }
+  .iris-hero-banner .robi { width: 64px; height: 64px; border-radius: 50%; background: white; padding: 4px; flex-shrink: 0; z-index: 1; }
+  .iris-hero-banner .text { flex: 1; z-index: 1; }
+  .iris-hero-banner .tag {
+    display: inline-block; font-family: "Montserrat", sans-serif;
+    font-size: 10px; letter-spacing: 4px; font-weight: 900;
+    color: #FFD93D; background: rgba(0,0,0,0.25);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .iris-hero-banner .headline {
+    font-family: "Noto Serif TC", serif;
+    font-size: 20px; font-weight: 900;
+    color: white; line-height: 1.25; letter-spacing: 1px;
+  }
+  .iris-hero-banner .sub {
+    font-size: 12px; color: rgba(255,255,255,0.88);
+    margin-top: 4px; letter-spacing: 0.5px;
+  }
+  .iris-hero-banner .badge {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 4px; z-index: 1;
+    font-family: "Montserrat", sans-serif;
+  }
+  .iris-hero-banner .badge .count {
+    background: #FFD93D; color: #0A0F2A;
+    padding: 4px 12px; border-radius: 6px;
+    font-size: 13px; font-weight: 900; letter-spacing: 1px;
+  }
+  .iris-hero-banner .badge .by {
+    font-size: 9px; color: rgba(255,255,255,0.7);
+    letter-spacing: 2px; font-weight: 700;
+  }
+  .iris-cta-footer {
+    margin-top: 18px; background: white; border-radius: 14px; padding: 20px 26px;
+    border-top: 4px solid #4FE3FF; box-shadow: 0 4px 14px rgba(15,31,77,0.06);
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+  }
+  .iris-cta-footer .left h3 {
+    font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 4px;
+  }
+  .iris-cta-footer .left p { font-size: 13px; color: #5A6080; line-height: 1.5; }
+  .iris-cta-footer .left p .gold { color: #E89A45; font-weight: 800; }
+  .iris-cta-footer .right { text-align: right; font-family: "Montserrat", sans-serif; }
+  .iris-cta-footer .right .sig { color: #4FE3FF; font-weight: 900; font-size: 14px; letter-spacing: 1px; }
+  .iris-cta-footer .right .url { font-size: 10px; color: #5A6080; margin-top: 4px; letter-spacing: 1px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../robinstech_logo.png" alt="羅賓斯科技"/>
+    <div class="title-block">
+      <h1>BMO Local AI Agent with Raspberry Pi + Ollama</h1>
+      <div class="meta">brenpoly · YouTube · 中英雙語字幕</div>
+      <div class="credit">📖 學員：Evin Lin · 整理 IRIS · 翻譯 Calliope · 轉錄 Eos</div>
+    </div>
+  </header>
+
+  <div class="iris-hero-banner">
+    <img src="../robi_v6_master.png" alt="Robi" class="robi"/>
+    <div class="text">
+      <div class="tag">🎨 IRIS 中英字幕版 · BY ROBINSTECH</div>
+      <div class="headline">BMO Local AI Agent with Raspberry Pi + Ollama</div>
+      <div class="sub">brenpoly 23 分鐘示範 Raspberry Pi + Ollama 跑本地 AI 代理人 · 中英並列字幕</div>
+    </div>
+    <div class="badge">
+      <div class="count">279 cues</div>
+      <div class="by">BRENPOLY · ZH-TW + EN</div>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <div class="video-card">
+      <iframe id="ytplayer"
+        src="https://www.youtube.com/embed/l5ggH-YhuAw?enablejsapi=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <div class="current-sub" id="current-sub">
+        <div class="en" id="current-en">Playing video...</div>
+        <div class="zh" id="current-zh">影片載入中</div>
+      </div>
+      <div style="background:#0F1F4D;color:white;padding:10px 22px;display:flex;align-items:center;gap:12px;font-size:13px;">
+        <label style="white-space:nowrap;color:rgba(255,255,255,0.85);font-weight:700;">字幕 offset：</label>
+        <input type="range" id="offset-slider" min="-3" max="3" step="0.1" value="-1.5" style="flex:1;accent-color:#E89E3F;">
+        <span id="offset-display" style="font-family:monospace;font-weight:800;color:#E89E3F;min-width:50px;text-align:right;">-1.5s</span>
+        <button id="reset-offset" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">↺</button>
+      </div>
+    </div>
+
+    <div class="transcript-card">
+      <div class="header">
+        <h2>📜 完整逐字稿（點任一句跳到影片時間）</h2>
+        <span class="count" id="count">— 句</span>
+      </div>
+      <div class="list" id="list">
+        <!-- subtitles injected here -->
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="iris-cta-footer">
+    <div class="left">
+      <h3>🦊 喜歡這支字幕影片？</h3>
+      <p>羅賓斯科技每日上架 <span class="gold">AI / 創業 / 保險科技</span> 中英字幕影片。Follow Iris @iris_social_bot 取得最新通知。</p>
+    </div>
+    <div class="right">
+      <div class="sig">— Iris / 虹彩 🎨</div>
+      <div class="url">robinstechservice.github.io/decks/</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="left">永久 hosting · GitHub Pages · 自動發佈</div>
+    <div class="right">🦊 羅賓斯科技 · 學員學習資料庫</div>
+  </footer>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+// === SUBTITLE DATA INJECTED HERE BY BUILD ===
+const SUBTITLES = [{"time": "00:00:00,777 --> 00:00:07,317", "en": "Perhaps the greatest challenge isn't creating intelligence, but understanding what it means to be truly human.", "zh": "或許最大的挑戰不是創造智慧，而是理解真正的人類意味著什麼。"}, {"time": "00:00:07,810 --> 00:00:12,650", "en": "Yay, Bemo! Bemo from Adventure Time is one of my all-time favorite characters.", "zh": "耶，BMO！《探險活寶》裡的BMO是我一直以來最喜歡的角色之一。"}, {"time": "00:00:12,650 --> 00:00:16,360", "en": "They're a hilarious little sentient robot with a literal heart of gold.", "zh": "他是一個滑稽的小型智能機器人，擁有一顆真正黃金般的心。"}, {"time": "00:00:16,360 --> 00:00:20,960", "en": "And today, I'm going to build my own Bemo as an embodied local AI agent.", "zh": "今天，我將打造我自己的BMO，作為一個具體的本機AI代理。"}, {"time": "00:00:21,300 --> 00:00:27,510", "en": "That means it'll use onboard AI to make its own decisions. It's not just a chatbot, but a thinking, acting machine.", "zh": "這表示它將使用內建AI來做出自己的決定。它不只是一個聊天機器人，而是一個會思考、會行動的機器。"}, {"time": "00:00:27,870 --> 00:00:31,480", "en": "Who wants to play BMO games?", "zh": "誰想玩BMO遊戲？"}, {"time": "00:00:31,640 --> 00:00:33,180", "en": "So let's break down what our BMO needs to do.", "zh": "那麼，讓我們來分析一下我們的BMO需要做些什麼。"}, {"time": "00:00:33,180 --> 00:00:36,410", "en": "Well, of course, need to be able to play video games and connect controllers to BMO.", "zh": "嗯，當然，它需要能夠玩電玩遊戲並將控制器連接到BMO。"}, {"time": "00:00:36,410 --> 00:00:40,940", "en": "It looks like BMO has a couple of USB ports for that and for connecting to other devices.", "zh": "看起來BMO有幾個USB埠用於此，以及用於連接其他設備。"}, {"time": "00:00:41,040 --> 00:00:45,410", "en": "But BMO is more than just a game console. They're a whole computer with their own operating system.", "zh": "但BMO不只是一個遊戲機。它是一台擁有自己作業系統的完整電腦。"}, {"time": "00:00:45,410 --> 00:00:52,650", "en": "Which should be able to connect to networks and run queries even though they live in a world where the internet is, well, gone.", "zh": "它應該能夠連接到網路並執行查詢，儘管他們生活在一個網路已經，嗯，消失的世界裡。"}, {"time": "00:00:52,900 --> 00:00:54,340", "en": "BMO is camera. Hey, they're also a camera.", "zh": "BMO是照相機。嘿，它也是一台照相機。"}, {"time": "00:00:54,770 --> 00:00:59,380", "en": "And they've got to do all this powered by batteries and using local onboard compute.", "zh": "它必須由電池供電，並使用本機內建的計算能力來完成所有這些功能。"}, {"time": "00:00:59,850 --> 01:05:00,000", "en": "I am incapable of emotion.", "zh": "我無法感受到情緒。"}, {"time": "01:09:20,000 --> 01:11:40,000", "en": "But you are making me chafed.", "zh": "但你讓我很惱火。"}, {"time": "01:06:10,000 --> 00:01:06,000", "en": "Let's talk about BMO's parts.", "zh": "讓我們來談談BMO的零件。"}, {"time": "01:15:10,000 --> 00:01:11,440", "en": "We're going to need a small screen and some kind of microphone and speaker for us to talk to them.", "zh": "我們會需要一個小螢幕，以及某種麥克風和喇叭，讓我們可以和它說話。"}, {"time": "00:01:12,120 --> 00:01:17,800", "en": "Looking at BMO's front panel, we'll need two USB ports and a bunch of different buttons, including a D-pad.", "zh": "看看BMO的前面板，我們需要兩個USB埠和一堆不同的按鈕，包括一個方向鍵。"}, {"time": "00:01:18,000 --> 00:01:22,310", "en": "There's also this long slot and circle, but it's not totally clear what these do.", "zh": "還有這個長槽和圓圈，但它們的作用並不是很清楚。"}, {"time": "00:01:22,640 --> 00:01:28,900", "en": "Thankfully, the Adventure Time art book has some official reference images of BMO's internal components from the episode \"Be More\".", "zh": "幸運的是，《探險活寶》美術設定集有一些BMO內部組件的官方參考圖片，來自「Be More」這一集。"}, {"time": "00:01:29,100 --> 00:01:31,680", "en": "It looks like that slot is used for floppy disks.", "zh": "看起來那個插槽是給軟碟用的。"}, {"time": "00:01:32,000 --> 00:01:39,350", "en": "This circle is still a mystery, but it's safe to say it's not just another button or a status light for the disk drive, since it's kept separate from those components.", "zh": "這個圓圈仍然是個謎，但可以肯定的是，它不只是另一個按鈕或磁碟機的狀態燈，因為它與這些組件是分開的。"}, {"time": "00:01:39,870 --> 00:01:43,560", "en": "What's really interesting is that BMO has something called an Infinity Box.", "zh": "真正有趣的是，BMO有一個叫做「無限盒子」的東西。"}, {"time": "00:01:43,970 --> 00:01:47,190", "en": "Which explains why BMO's hardware seems to change throughout the series.", "zh": "這解釋了為什麼BMO的硬體在整個系列中似乎會發生變化。"}, {"time": "00:01:47,530 --> 00:01:53,710", "en": "But now we know these aren't continuity errors. BMO is just some kind of mini Tardis that periodically swaps out its insides.", "zh": "但現在我們知道這些不是連續性錯誤。BMO只是一種迷你塔迪斯，會定期更換內部。"}, {"time": "00:01:54,120 --> 00:02:00,540", "en": "So, I think that's more than enough justification for me to say that this little circle over here is going to be my BMO's camera.", "zh": "所以，我認為這足以證明這個小圓圈將成為我BMO的相機。"}, {"time": "00:02:00,990 --> 00:02:05,680", "en": "Also, can I just say I love the little details included by the character designers and storyborders here?", "zh": "另外，我能說我喜歡這裡的角色設計師和故事板師所包含的小細節嗎？"}, {"time": "00:02:06,140 --> 00:02:11,640", "en": "BMO has the heart, metal diploma from the Wizard of Oz, and what might be a tiny princess crown?", "zh": "BMO有《綠野仙蹤》的心、金屬文憑，還有一個可能是小公主皇冠的東西？"}, {"time": "00:02:12,300 --> 00:02:16,110", "en": "I don't think I'll be able to include these right now, but I'd love to eventually work them in.", "zh": "我不認為我現在就能包含這些，但我很樂意最終將它們加入。"}, {"time": "00:02:16,660 --> 00:02:20,790", "en": "And there's honestly so much more that BMO can do that we're just going to say is out of scope.", "zh": "老實說，BMO能做的事情還有很多，我們就說這些超出了範圍。"}, {"time": "00:02:21,494 --> 00:02:22,984", "en": "It goes in my butt.", "zh": "它進到我屁股裡了。"}, {"time": "00:02:23,444 --> 00:02:23,794", "en": "Oh.", "zh": "哦。"}, {"time": "00:02:25,354 --> 00:02:30,304", "en": "But do you think about the stars in the sky?", "zh": "但你是否曾想過天上的星星？"}, {"time": "00:02:30,780 --> 00:02:33,650", "en": "We'll be using a tiny Raspberry Pi computer as the brains of BMO.", "zh": "我們將使用一個微型樹莓派電腦作為BMO的大腦。"}, {"time": "00:02:34,250 --> 00:02:40,540", "en": "This runs a full Linux-based operating system along with our own custom Python scripts that will use to build our AI agent.", "zh": "它運行一個完整的基於Linux的作業系統，以及我們自己的自訂Python腳本，我們將用它們來構建我們的AI代理。"}, {"time": "00:02:40,870 --> 00:02:43,880", "en": "This is the Raspberry Pi 5 with 16 GB of RAM.", "zh": "這是配備16GB記憶體的樹莓派5。"}, {"time": "00:02:44,000 --> 00:02:51,240", "en": "This is the most powerful Pi available at the time of recording this video, and it will be more than enough to load all the local AI models we'll be using into memory.", "zh": "這是錄製本影片時可用的最強大樹莓派，它將足以將我們所有本機AI模型載入記憶體。"}, {"time": "00:02:51,580 --> 00:02:53,730", "en": "Now, I bought this when it first came out.", "zh": "我是在它剛上市的時候買的。"}, {"time": "00:02:54,060 --> 00:02:56,560", "en": "Prices have gone way up thanks to the spike in RAM demand.", "zh": "由於記憶體需求的激增，價格已經漲了很多。"}, {"time": "00:02:57,000 --> 00:02:59,430", "en": "You can get away with a cheaper model with less RAM.", "zh": "你可以選擇一個記憶體較少、價格較便宜的型號。"}, {"time": "00:02:59,750 --> 00:03:02,180", "en": "It all depends on the size of the models you plan on using.", "zh": "這一切都取決於你打算使用的模型大小。"}, {"time": "00:03:02,550 --> 00:03:07,980", "en": "For BMO's screen, I've got this 5-inch 800x480 pixel IPS touchscreen display.", "zh": "至於BMO的螢幕，我選用了這款5吋800x480像素的IPS觸控螢幕。"}, {"time": "00:03:08,440 --> 00:03:11,790", "en": "It has mounts for the Pi right on the back and connects with a display cable.", "zh": "它背面有樹莓派的安裝座，並透過顯示器纜線連接。"}, {"time": "00:03:13,310 --> 00:03:15,990", "en": "I also have this official Raspberry Pi camera module.", "zh": "我還有這個官方樹莓派相機模組。"}, {"time": "00:03:16,510 --> 00:03:18,960", "en": "This is the V2 module, so it's a bit old.", "zh": "這是V2模組，所以有點舊了。"}, {"time": "00:03:19,280 --> 00:03:23,360", "en": "But I could never really find a good project to use it with, so into BMO it goes.", "zh": "但我一直找不到適合使用它的好專案，所以就把它裝到BMO裡了。"}, {"time": "00:03:23,900 --> 00:03:25,520", "en": "The Pi has four USB ports.", "zh": "樹莓派有四個USB埠。"}, {"time": "00:03:26,000 --> 00:03:29,430", "en": "We'll use one for this little USB microphone so BMO can hear us.", "zh": "我們會用一個埠連接這個小小的USB麥克風，這樣BMO就能聽到我們說話。"}, {"time": "00:03:32,820 --> 00:03:35,550", "en": "And this set of USB speakers so they can talk back.", "zh": "還有一組USB喇叭，這樣它就能回應。"}, {"time": "00:03:38,130 --> 00:03:44,660", "en": "We're going to extend and split this third port with these adapters to make the two USB ports on the front of BMO's face plate.", "zh": "我們將使用這些轉接器來延伸並分割第三個埠，以製作BMO前面板上的兩個USB埠。"}, {"time": "00:03:45,120 --> 00:03:51,410", "en": "So we could connect all these buttons to these GPIO pins on the Pi, but then I could only use them when I'm running my own scripts.", "zh": "所以我們可以把所有這些按鈕連接到樹莓派上的GPIO腳位，但這樣我只能在我運行自己的腳本時使用它們。"}, {"time": "00:03:52,130 --> 00:04:01,460", "en": "So instead, I'm going to use this microcontroller to turn the raw button presses into keyboard commands that we can send to the Pi or any other device over USB.", "zh": "所以，我將使用這個微控制器，將原始的按鈕按下轉換為鍵盤命令，然後透過USB發送到樹莓派或任何其他設備。"}, {"time": "00:04:02,010 --> 00:04:07,440", "en": "I want these buttons to work more like a real game controller that we can use with any program running on the OS.", "zh": "我希望這些按鈕能更像真正的遊戲控制器一樣運作，這樣我們就能在作業系統上執行的任何程式中使用它們。"}, {"time": "00:04:09,129 --> 00:04:11,159", "en": "I am a beautiful big man here.", "zh": "我是個英俊的大男人。"}, {"time": "00:04:11,490 --> 00:04:14,260", "en": "Now that we have our hardware, we can start designing BMO's body.", "zh": "現在我們有了硬體，就可以開始設計BMO的身體了。"}, {"time": "00:04:15,150 --> 00:04:17,340", "en": "I'll start by measuring the components we have.", "zh": "我會先測量我們現有的組件。"}, {"time": "00:04:17,910 --> 00:04:25,210", "en": "I'll build out things like the screen and camera as simple 2D shapes so I can start planning out the overall form of BMO's enclosure.", "zh": "我會將螢幕和相機等東西建立成簡單的2D形狀，這樣我就可以開始規劃BMO外殼的整體形狀。"}, {"time": "00:04:26,150 --> 00:04:28,650", "en": "I still need to design a custom PCB for the buttons.", "zh": "我還需要為按鈕設計一個客製化的PCB。"}, {"time": "00:04:29,210 --> 00:04:34,010", "en": "So I'll first lay out some shapes to use that to figure out where all the little switches need to go.", "zh": "所以我會先排出一些形狀，用它來找出所有小開關需要擺放的位置。"}, {"time": "00:04:34,400 --> 00:04:39,270", "en": "Now again, I've never designed my own PCB before, so take what I'm going to do with a grain of salt.", "zh": "再說一次，我以前從未設計過自己的PCB，所以對於我接下來要做的事情，請抱持保留態度。"}, {"time": "00:04:39,870 --> 00:04:43,770", "en": "Actually, I've never done any of this before, so take everything I'm doing with a big grain of salt.", "zh": "實際上，我以前從未做過這些，所以對於我所做的一切，請抱持極大的保留態度。"}, {"time": "00:04:44,380 --> 00:04:47,320", "en": "I'm using an application called KiCad to design my PCB.", "zh": "我正在使用一個叫做KiCad的應用程式來設計我的PCB。"}, {"time": "00:04:48,100 --> 00:04:54,990", "en": "I first create a schematic of the board including the connections with the microcontroller, and then use my 2D mockup to lay out the switches.", "zh": "我首先創建了電路板的電路圖，包括與微控制器的連接，然後使用我的2D模型來佈置開關。"}, {"time": "00:04:55,540 --> 00:05:00,230", "en": "Then I send the files off to the PCB printing service and wait for them to get delivered.", "zh": "然後我會將檔案發送給PCB印刷服務商，並等待它們送達。"}, {"time": "00:05:01,000 --> 00:05:03,680", "en": "While I wait, I start 3D modeling BMO's body.", "zh": "在等待的時候，我開始3D建模BMO的身體。"}, {"time": "00:05:04,010 --> 00:05:10,650", "en": "The PCB printing service provides a 3D model of the board, so I'm going to import that into Blender as my point of reference.", "zh": "PCB印刷服務商提供了電路板的3D模型，所以我會將它導入Blender作為我的參考點。"}, {"time": "00:05:11,150 --> 00:05:16,660", "en": "From here I start modeling BMO's buttons in place, using my 2D mocks to make sure I have the scale correct.", "zh": "從這裡我開始建模BMO的按鈕，並使用我的2D模型來確保尺寸正確。"}, {"time": "00:05:17,420 --> 00:05:22,980", "en": "I'll also create geometry to represent some of the other hardware like the screen, camera, and USB ports.", "zh": "我還會創建幾何圖形來表示其他一些硬體，例如螢幕、相機和USB埠。"}, {"time": "00:05:23,450 --> 00:05:27,380", "en": "I'll then make BMO's face plate and include cutouts for the buttons and other components.", "zh": "然後我會製作BMO的面板，並為按鈕和其他組件預留開口。"}, {"time": "00:05:28,180 --> 00:05:33,780", "en": "I'll also use this free plugin to add mounting bolts for the PCB that I can keep in place with nuts later on.", "zh": "我還會使用這個免費外掛程式為PCB添加安裝螺栓，之後我可以用螺帽將它們固定到位。"}, {"time": "00:05:34,280 --> 00:05:37,110", "en": "Now I'll build the main enclosure that the face plate will attach to.", "zh": "現在我將建造主外殼，面板將會連接到這個外殼上。"}, {"time": "00:05:37,780 --> 00:05:40,630", "en": "I make sure there's a place for all the hardware to sit snugly in.", "zh": "我確保所有硬體都有一個可以 snugly 放入的位置。"}, {"time": "00:05:41,400 --> 00:05:44,480", "en": "Then I add details like BMO's vents, speaker holes and letters.", "zh": "然後我會添加BMO的通風孔、喇叭孔和字母等細節。"}, {"time": "00:05:44,880 --> 00:05:50,230", "en": "I also carve out some holes that I can glue magnets into, and this is what's going to hold the whole body together.", "zh": "我還挖出了一些洞，可以將磁鐵黏進去，這就是將整個身體固定在一起的關鍵。"}, {"time": "00:05:51,050 --> 00:05:55,670", "en": "I then made some arms and legs with little pegs that will slot in and out of holes in the body.", "zh": "然後我製作了一些帶有小插銷的手臂和腿，它們可以插入和取出身體上的孔。"}, {"time": "00:05:56,000 --> 00:06:00,550", "en": "I'm really happy with what I made here, but I want the option to swap these out for other poses in the future.", "zh": "我對我這裡做的很滿意，但我希望將來有選擇可以將這些換成其他姿勢。"}, {"time": "00:06:01,460 --> 00:06:04,470", "en": "I struggled with what to do with this little hatch on BMO's back.", "zh": "我很難決定怎麼處理BMO背上這個小艙門。"}, {"time": "00:06:05,130 --> 00:06:09,170", "en": "The Raspberry Pi 5 has been really challenging to work with when it comes to power management.", "zh": "樹莓派5在電源管理方面一直很難處理。"}, {"time": "00:06:09,660 --> 00:06:13,690", "en": "So you may have noticed I haven't quite figured out how to make BMO battery-powered just yet.", "zh": "所以你可能已經注意到，我還沒有完全弄清楚如何讓BMO由電池供電。"}, {"time": "00:06:14,460 --> 00:06:18,660", "en": "So I came up with this design that I could just slide into a larger opening in BMO's back.", "zh": "所以我想出了這個設計，我可以將其滑入BMO背面的一個較大的開口。"}, {"time": "00:06:19,110 --> 00:06:25,610", "en": "And if I want to make something like a battery holder in the future, then I can swap this out rather than having to rebuild the entire enclosure.", "zh": "如果將來我想製作像電池座之類的東西，那麼我就可以替換這個，而不必重新建造整個外殼。"}, {"time": "00:06:26,130 --> 00:06:28,440", "en": "And with that, it's time to 3D print the enclosure.", "zh": "接下來，就是3D列印外殼的時候了。"}, {"time": "00:06:29,210 --> 00:06:33,480", "en": "My 3D printer is pretty small, but thankfully my model just fits on the build plate.", "zh": "我的3D列印機相當小，但幸好我的模型剛好能放在列印台上。"}, {"time": "00:06:34,310 --> 00:06:36,590", "en": "I'd be lying if I said all my measurements worked out perfectly.", "zh": "如果我說我的所有測量都完美無缺，那是在說謊。"}, {"time": "00:06:37,370 --> 00:06:40,240", "en": "But after a few reprints, I finally had a real BMO body.", "zh": "但經過幾次重印，我終於擁有了一個真正的BMO身體。"}, {"time": "00:06:41,350 --> 00:06:43,440", "en": "Next, it was time to sand the 3D print.", "zh": "接下來，是時候打磨3D列印品了。"}, {"time": "00:06:45,300 --> 00:06:46,870", "en": "Then I applied a filler and primer.", "zh": "然後我塗了補土和底漆。"}, {"time": "00:06:48,360 --> 00:06:49,730", "en": "And sanded it with a finer grit.", "zh": "並用更細的砂紙打磨。"}, {"time": "00:06:50,470 --> 00:06:51,170", "en": "Next came painting.", "zh": "接下來是上漆。"}, {"time": "00:06:51,710 --> 00:06:56,590", "en": "As a bit of a happy accident, the spray paint on the enclosure came out with this spackle texture.", "zh": "有點意外的驚喜是，外殼上的噴漆呈現出這種批土般的質感。"}, {"time": "00:06:57,120 --> 00:07:01,840", "en": "I think it's because I left the teal paint in my garage, and it's freezing where I live right now.", "zh": "我想是因為我把青綠色油漆放在車庫裡，而且我住的地方現在很冷。"}, {"time": "00:07:02,400 --> 00:07:06,650", "en": "It actually reminded me of the texture of my old Super Nintendo, so I decided to keep it.", "zh": "它實際上讓我想起了我舊的超級任天堂的質感，所以我決定保留它。"}, {"time": "00:07:08,520 --> 00:07:11,930", "en": "I then added some matte clear coat to protect it and left it all to dry.", "zh": "然後我噴上了一些啞光透明漆來保護它，然後讓它完全乾燥。"}, {"time": "00:07:14,482 --> 00:07:16,112", "en": "Oh, are you my grandpa?", "zh": "哦，你是我爺爺嗎？"}, {"time": "00:07:16,660 --> 00:07:17,840", "en": "Let's start designing our software now.", "zh": "現在讓我們開始設計我們的軟體。"}, {"time": "00:07:18,480 --> 00:07:22,980", "en": "So first, full disclosure, I'm trying to use as many open source tools as possible.", "zh": "首先，完全披露，我正在盡可能地使用開源工具。"}, {"time": "00:07:23,250 --> 00:07:26,200", "en": "But I'm not a professional developer. I just like to make things.", "zh": "但我不是專業的開發人員。我只是喜歡製作東西。"}, {"time": "00:07:27,130 --> 00:07:33,780", "en": "So I'm going to plan the overall user flow and architecture myself, but I'm going to be leaning on Gemini to help me write the actual code.", "zh": "所以我會自己規劃整體的使用者流程和架構，但我會依賴Gemini來幫助我編寫實際的程式碼。"}, {"time": "00:07:34,440 --> 00:07:35,790", "en": "We'll lay out the core loop first.", "zh": "我們會先佈局核心迴圈。"}, {"time": "00:07:36,510 --> 00:07:41,210", "en": "BMO is going to wait around in an idle state until we wake them up to start listening to us.", "zh": "BMO會處於閒置狀態，直到我們喚醒它並開始聽我們說話。"}, {"time": "00:07:41,630 --> 00:07:45,260", "en": "We'll record and transcribe the user's voice and send that to our local LLM.", "zh": "我們會錄製並轉錄使用者的聲音，然後將其發送給我們的本機大型語言模型。"}, {"time": "00:07:45,620 --> 00:07:50,380", "en": "When the response is ready, BMO will read it out loud and then go back into the idle state.", "zh": "當回應準備好後，BMO會大聲讀出來，然後回到閒置狀態。"}, {"time": "00:07:51,270 --> 00:07:53,230", "en": "We're going to have a couple of ways to wake BMO up.", "zh": "我們會有幾種方式來喚醒BMO。"}, {"time": "00:07:53,790 --> 00:07:57,490", "en": "First, I'm going to use one of their buttons to toggle voice recording manually.", "zh": "首先，我將使用其中一個按鈕手動切換語音錄音。"}, {"time": "00:07:58,120 --> 00:07:59,740", "en": "But I'm also going to train a custom wake...", "zh": "但我也會訓練一個自定義的喚醒..."}, {"time": "00:08:00,016 --> 00:08:02,156", "en": "model, so I can just use my voice.", "zh": "模型，這樣我就可以只用我的聲音了。"}, {"time": "00:08:02,966 --> 00:08:12,656", "en": "There are a lot of great paid and free options for training these types of models, but in the spirit of making sure everything I use is open and local, I'm using something called Open Wake Word.", "zh": "有很多很棒的付費和免費選項可以訓練這類模型，但本著確保我使用的所有東西都是開源和本地運行的精神，我使用一個叫做 Open Wake Word 的東西。"}, {"time": "00:08:13,266 --> 00:08:20,836", "en": "It can feel a little intimidating at first, but there's a fantastic collab linked on their GitHub page, which walks you through everything you need to do.", "zh": "一開始可能會覺得有點嚇人，但他們的 GitHub 頁面上有一個很棒的協作連結，會引導你完成所有需要做的事情。"}, {"time": "00:08:21,986 --> 00:08:25,936", "en": "It takes a while to train, but eventually you get a machine learning model to download.", "zh": "訓練需要一段時間，但最終你會得到一個可下載的機器學習模型。"}, {"time": "00:08:26,176 --> 00:08:32,956", "en": "Okay, so BMO will start in the idle state, running the wake word model until it hears us say, \"Hey, BMO!\"", "zh": "好的，所以 BMO 將從閒置狀態開始，運行喚醒詞模型，直到它聽到我們說：「嘿，BMO！」"}, {"time": "00:08:33,566 --> 00:08:34,806", "en": "Or we push the record button.", "zh": "或者我們按下錄音按鈕。"}, {"time": "00:08:35,476 --> 00:08:41,926", "en": "It'll then transition into the listening state, where it needs to record and transcribe our voice into text.", "zh": "然後它會進入聆聽狀態，需要錄下並將我們的聲音轉錄成文字。"}, {"time": "00:08:42,576 --> 00:08:46,656", "en": "For this, we'll be using another open source model from OpenAI called Whisper.", "zh": "為此，我們將使用 OpenAI 的另一個開源模型，叫做 Whisper。"}, {"time": "00:08:47,206 --> 00:08:50,686", "en": "The model comes in different sizes, and we'll be using a smaller version.", "zh": "該模型有不同的尺寸，我們將使用較小的版本。"}, {"time": "00:08:51,266 --> 00:08:54,496", "en": "It's a little less accurate, but it'll run faster on our hardware.", "zh": "它的準確性會稍微差一點，但它在我們的硬體上運行會更快。"}, {"time": "00:08:55,276 --> 00:09:04,656", "en": "Once our speech is transcribed into text, we'll enter a thinking state and hand off that text prompt to a local large language model to generate a response. To do this, we'll be using an open source tool called Ollama.", "zh": "一旦我們的語音被轉錄成文字，我們將進入思考狀態，並將該文字提示傳遞給本地的大型語言模型以生成回應。為此，我們將使用一個名為 Ollama 的開源工具。"}, {"time": "00:09:08,826 --> 00:09:13,116", "en": "Ollama will let us run open weight LLMs locally on the Pi or any other device.", "zh": "Ollama 將讓我們在 Pi 或任何其他設備上本地運行開放權重 LLM。"}, {"time": "00:09:14,216 --> 00:09:17,996", "en": "You're probably familiar with large language models like Gemini and GPT-5.", "zh": "你可能熟悉像 Gemini 和 GPT-5 這樣的大型語言模型。"}, {"time": "00:09:18,526 --> 00:09:22,896", "en": "Those are proprietary models that run in the cloud, powered by huge data centers.", "zh": "這些是專有模型，在雲端運行，由龐大的資料中心提供支援。"}, {"time": "00:09:23,556 --> 00:09:29,666", "en": "The models we'll be using are much smaller, but they have many of the same capabilities and will run locally on our hardware.", "zh": "我們將使用的模型小得多，但它們具有許多相同的功能，並將在我們的硬體上本地運行。"}, {"time": "00:09:30,226 --> 00:09:32,846", "en": "No internet or expensive subscriptions required.", "zh": "無需網路或昂貴的訂閱。"}, {"time": "00:09:33,366 --> 00:09:37,296", "en": "Ollama makes it really easy to download and run these models, so I'm going to test a few out.", "zh": "Ollama 讓下載和運行這些模型變得非常容易，所以我會測試幾個。"}, {"time": "00:09:38,006 --> 00:09:44,786", "en": "Since BMO has a camera, I think it'll be cool if I use a model that can work with both text and images as input.", "zh": "由於 BMO 有攝影機，我想如果我使用一個可以同時處理文字和圖像輸入的模型，那會很酷。"}, {"time": "00:09:45,096 --> 00:09:49,756", "en": "I've got 16 gigs of RAM to work with, but I'll still need to keep my model size small.", "zh": "我有 16 GB 的 RAM 可用，但我仍然需要保持模型尺寸小巧。"}, {"time": "00:09:50,266 --> 00:09:55,306", "en": "So, for the first pass, I'm going to try using Google's smallest multimodal version of Gemma.", "zh": "所以，第一階段，我將嘗試使用 Google 最小的多模態版 Gemma。"}, {"time": "00:09:55,676 --> 00:09:57,986", "en": "This is the quantized version of Gemma 3.", "zh": "這是 Gemma 3 的量化版本。"}, {"time": "00:09:58,406 --> 00:10:01,846", "en": "It's a little less precise, but it doesn't use as much memory.", "zh": "它的精確度稍低，但不會佔用那麼多記憶體。"}, {"time": "00:10:02,306 --> 00:10:05,676", "en": "Once we have Ollama installed, we can download any model we want by name.", "zh": "一旦我們安裝了 Ollama，我們就可以按名稱下載任何我們想要的模型。"}, {"time": "00:10:06,446 --> 00:10:07,596", "en": "Running it is super simple.", "zh": "運行它超級簡單。"}, {"time": "00:10:07,986 --> 00:10:11,846", "en": "We get a text prompt interface in the terminal, and we just type in our prompts.", "zh": "我們在終端機中得到一個文字提示介面，然後我們只需輸入我們的提示。"}, {"time": "00:10:12,236 --> 00:10:15,366", "en": "We can also pass images to the models by including the file path.", "zh": "我們還可以通過包含檔案路徑來將圖像傳遞給模型。"}, {"time": "00:10:15,816 --> 00:10:20,836", "en": "So what we're going to do is take our transcribed speech from Whisper and send that to Ollama.", "zh": "所以我們要做的就是從 Whisper 獲取我們轉錄的語音，然後將其發送到 Ollama。"}, {"time": "00:10:21,306 --> 00:10:25,056", "en": "That will be our text prompt to Gemma 3, and we'll wait for a response.", "zh": "那將是我們對 Gemma 3 的文字提示，然後我們將等待回應。"}, {"time": "00:10:26,716 --> 00:10:33,566", "en": "This can take a while, so we'll also include visual and audio feedback, so it doesn't feel like BMO is just broken or unresponsive.", "zh": "這可能需要一段時間，所以我們也會加入視覺和音訊回饋，這樣就不會覺得 BMO 壞了或沒反應了。"}, {"time": "00:10:34,016 --> 00:10:35,486", "en": "In fact, we'll do this for all our states.", "zh": "事實上，我們將對所有狀態都這樣做。"}, {"time": "00:10:35,766 --> 00:10:40,786", "en": "We're going to change BMO's face after each state transition, and we'll also play some voice clips.", "zh": "我們將在每次狀態轉換後改變 BMO 的臉，我們還會播放一些語音片段。"}, {"time": "00:10:42,504 --> 00:10:43,784", "en": "Oh football!", "zh": "噢！足球！"}, {"time": "00:10:44,224 --> 00:10:51,464", "en": "The character of BMO is voiced by the amazing Niki Yang, and I think so much of BMO's charm comes directly from her performance.", "zh": "BMO 的角色是由了不起的 Niki Yang 配音的，我認為 BMO 的大部分魅力直接來自她的表演。"}, {"time": "00:10:51,804 --> 00:10:59,194", "en": "Now, you might think, hey, I've seen a ton of AI slot videos where they deep fake celebrity voices, maybe we can do something like that.", "zh": "現在，你可能會想，嘿，我看過很多 AI 換臉影片，他們深度偽造名人的聲音，也許我們也可以做類似的事情。"}, {"time": "00:10:59,574 --> 00:11:03,894", "en": "But we can actively not go out of our way to directly steal a performer's work.", "zh": "但我們可以主動選擇不去直接竊取表演者的作品。"}, {"time": "00:11:04,494 --> 00:11:09,794", "en": "And hey, there are some great free open source text-to-speech models that we can run locally on our Pi.", "zh": "而且，嘿，有一些很棒的免費開源文字轉語音模型，我們可以在我們的 Pi 上本地運行。"}, {"time": "00:11:10,324 --> 00:11:12,144", "en": "For this project, I've decided to use Piper.", "zh": "對於這個專案，我決定使用 Piper。"}, {"time": "00:11:12,794 --> 00:11:15,444", "en": "No, we can't generate BMO's voice exactly.", "zh": "不，我們無法精確地生成 BMO 的聲音。"}, {"time": "00:11:15,754 --> 00:11:19,674", "en": "But we can find an out of the box voice that matches her personality good enough.", "zh": "但我們可以找到一個現成的聲音，能很好地匹配她的個性。"}, {"time": "00:11:20,184 --> 00:11:22,174", "en": "I've tested out a few and I really like this one.", "zh": "我測試了幾個，我真的很喜歡這一個。"}, {"time": "00:11:22,544 --> 00:11:26,504", "en": "The rainbow is a meteorological phenomenon that is caused by reflection, refraction.", "zh": "彩虹是一種由反射、折射引起的氣象現象。"}, {"time": "00:11:27,104 --> 00:11:32,234", "en": "So I wrote a script that generates a bunch of voice clips that BMO will use to give feedback to the user.", "zh": "所以我寫了一個腳本，生成了一堆語音片段，BMO 將用它們來給使用者回饋。"}, {"time": "00:11:32,604 --> 00:11:37,294", "en": "These will be played randomly so they don't feel like automated canned responses, even though they are.", "zh": "這些將隨機播放，這樣它們就不會感覺像自動化的預設回應，儘管它們是。"}, {"time": "00:11:37,644 --> 00:11:44,874", "en": "Now, after the LLM is finished generating a response based on our text or image prompts, we'll want BMO to read that response out loud.", "zh": "現在，在 LLM 完成根據我們的文字或圖像提示生成回應後，我們會希望 BMO 大聲讀出該回應。"}, {"time": "00:11:45,464 --> 00:11:50,074", "en": "For that, we can also use Piper and the same voice model we used for the canned audio clips.", "zh": "為此，我們也可以使用 Piper 以及我們用於預設音訊片段的相同語音模型。"}, {"time": "00:11:50,614 --> 00:11:55,874", "en": "But instead, Ollama will stream the response as text, and we'll generate and play voice clips on the fly.", "zh": "但相反地，Ollama 將以文字形式串流回應，我們將即時生成並播放語音片段。"}, {"time": "00:11:56,404 --> 00:12:01,574", "en": "Once BMO is finished speaking, it'll transition back to the idle state and go back to waiting for the wake word.", "zh": "一旦 BMO 說完話，它將回到閒置狀態，並繼續等待喚醒詞。"}, {"time": "00:12:02,044 --> 00:12:04,124", "en": "So, let's put this all together and test out our flow.", "zh": "那麼，我們把這些都組合起來，測試一下我們的流程。"}, {"time": "00:12:04,454 --> 00:12:05,394", "en": "Hey BMO.", "zh": "嘿，BMO。"}, {"time": "00:12:06,624 --> 00:12:07,454", "en": "Tell me a joke.", "zh": "給我講個笑話。"}, {"time": "00:12:10,244 --> 00:12:10,644", "en": "On it.", "zh": "馬上處理。"}, {"time": "00:12:14,244 --> 00:12:16,664", "en": "I think we're going to have to make a few changes to speed things up.", "zh": "我想我們得做些改變來加快速度。"}, {"time": "00:12:18,524 --> 00:12:19,654", "en": "Chicken on this.", "zh": "雞肉在這。"}, {"time": "00:12:20,324 --> 00:12:25,000", "en": "A lot of the delay we're seeing is because Ollama is reloading our model every time we enter a prompt.", "zh": "我們看到的大部分延遲是因為 Ollama 在我們每次輸入提示時都會重新載入模型。"}, {"time": "00:12:25,000 --> 00:12:28,494", "en": "It's like stopping and starting the engine of a car every time we need to brake.", "zh": "這就像我們每次需要煞車時，都要停止並啟動汽車引擎一樣。"}, {"time": "00:12:29,194 --> 00:12:32,824", "en": "So, we'll create an additional warm-up state that keeps the engine running.", "zh": "所以，我們將創建一個額外的預熱狀態，讓引擎保持運行。"}, {"time": "00:12:33,184 --> 00:12:36,494", "en": "We'll load all the models into memory at startup and just keep them going.", "zh": "我們將在啟動時將所有模型載入到記憶體中，並讓它們持續運行。"}, {"time": "00:12:37,284 --> 00:12:43,000", "en": "We'll also update our hardware to use an NVME SSD instead of running everything off of the SD card.", "zh": "我們還會升級我們的硬體，使用 NVME SSD，而不是從 SD 卡運行所有東西。"}, {"time": "00:12:43,624 --> 00:12:45,284", "en": "This should also help with our loading times.", "zh": "這也應該有助於我們的載入時間。"}, {"time": "00:12:45,804 --> 00:12:48,794", "en": "We'll also speed things up by using an even smaller model.", "zh": "我們還將通過使用更小的模型來加快速度。"}, {"time": "00:12:49,364 --> 00:12:57,804", "en": "Multimodal models are nice because they can perform a lot of tasks in one package, but they're actually a big mix of many models and that can slow things down for us.", "zh": "多模態模型很好，因為它們可以在一個套件中執行許多任務，但它們實際上是許多模型的混合體，這可能會減慢我們的速度。"}, {"time": "00:12:58,404 --> 00:13:03,154", "en": "So instead, we'll build our own mix of smaller models to do just what we need.", "zh": "所以，我們將建立自己的較小模型組合，只做我們需要的事情。"}, {"time": "00:13:03,794 --> 00:13:07,484", "en": "I'm going to use a smaller version of Gemma 3 that only deals with text prompts.", "zh": "我將使用 Gemma 3 的較小版本，它只處理文字提示。"}, {"time": "00:13:08,124 --> 00:13:12,184", "en": "And then we'll switch to an entirely different model called MoonDream for image analysis.", "zh": "然後我們將切換到一個完全不同的模型，叫做 MoonDream，用於圖像分析。"}, {"time": "00:13:21,504 --> 00:13:22,254", "en": "Hello.", "zh": "哈囉。"}, {"time": "00:13:22,254 --> 00:13:23,194", "en": "I am ready to play.", "zh": "我準備好玩了。"}, {"time": "00:13:25,324 --> 00:13:25,974", "en": "Hey BMO.", "zh": "嘿，BMO。"}, {"time": "00:13:27,114 --> 00:13:27,994", "en": "Tell me a joke.", "zh": "給我講個笑話。"}, {"time": "00:13:29,284 --> 00:13:29,744", "en": "Okay.", "zh": "好的。"}, {"time": "00:13:33,524 --> 00:13:34,264", "en": "Copy-cutie.", "zh": "可愛的複製品。"}, {"time": "00:13:37,794 --> 00:13:39,474", "en": "Why did the robot cross the road?", "zh": "機器人為什麼過馬路？"}, {"time": "00:13:39,814 --> 00:13:41,274", "en": "To get to the other side.", "zh": "為了到達另一邊。"}, {"time": "00:13:41,964 --> 00:13:45,694", "en": "This grease monkey's turd up on automotive science.", "zh": "這隻油膩的猴子，對汽車科學一無所知。"}, {"time": "00:13:46,244 --> 00:13:47,474", "en": "Yeah, boy.", "zh": "是的，小子。"}, {"time": "00:13:47,944 --> 00:13:53,000", "en": "So rather than just sending everything into one model, we need some logic to do the model switching.", "zh": "所以與其將所有東西都發送到一個模型中，我們需要一些邏輯來進行模型切換。"}, {"time": "00:13:53,954 --> 00:13:59,384", "en": "Now, we could hard code this, like if I say, take a photo, that exact phrase could be our trigger.", "zh": "現在，我們可以硬編碼這個，比如說，如果我說「拍照」，那句話就可以作為我們的觸發器。"}, {"time": "00:14:00,024 --> 00:14:01,574", "en": "But that feels a bit restrictive.", "zh": "但那感覺有點受限。"}, {"time": "00:14:02,104 --> 00:14:08,000", "en": "Instead, we can do something that will transform BMO from a simple chatbot into what's known as an agent.", "zh": "相反，我們可以做一些事情，將 BMO 從一個簡單的聊天機器人轉變為所謂的「代理人」。"}, {"time": "00:14:08,794 --> 00:14:11,104", "en": "A chatbot just generates text sentences.", "zh": "聊天機器人只會生成文字句子。"}, {"time": "00:14:11,734 --> 00:14:20,534", "en": "But an agent can make decisions about what it's being asked and respond not just with sentences, but by performing actions and using tools we give it.", "zh": "但代理人可以針對被問到的問題做出決策，不僅用句子回應，還可以執行我們給予的動作並使用工具。"}, {"time": "00:14:21,294 --> 00:14:29,484", "en": "So, rather than triggering our model handoff using hardcoded phrases, we can have Gemma 3 enter a sort of loop when it receives a prompt.", "zh": "因此，與其使用硬編碼的短語觸發模型交接，我們可以讓 Gemma 3 在接收到提示時進入一種循環。"}, {"time": "00:14:30,064 --> 00:14:35,934", "en": "Instead of spitting out text right away, it first attempts to see if there are any tools it can use to inform its response.", "zh": "它不是立即吐出文字，而是首先嘗試查看是否有任何工具可以幫助它提供回應。"}, {"time": "00:14:36,544 --> 00:14:41,454", "en": "These tools can come in different shapes and sizes, but they're often just functions living in the agent's code.", "zh": "這些工具可以有不同的形狀和大小，但它們通常只是代理人程式碼中的函數。"}, {"time": "00:14:42,204 --> 00:14:49,794", "en": "If the LLM decides to use the tool, it generates text that is readable by the function, like JSON, rather than full sentences.", "zh": "如果 LLM 決定使用該工具，它會生成可由函數讀取的文字，例如 JSON，而不是完整的句子。"}, {"time": "00:14:51,114 --> 00:14:54,744", "en": "It then takes the output of the tool and goes back to the beginning of the loop.", "zh": "然後它會取得工具的輸出，並返回循環的開頭。"}, {"time": "00:14:55,274 --> 00:14:57,694", "en": "Is there anything else I need to do to inform my response?", "zh": "我還需要做什麼來完善我的回應嗎？"}, {"time": "00:14:58,744 --> 00:15:05,944", "en": "If not, it can then use the context of the output of the tool to generate sentences to say out loud or perform other actions.", "zh": "如果沒有，它就可以使用工具輸出的上下文來生成句子大聲說出，或執行其他動作。"}, {"time": "00:15:06,754 --> 00:15:08,574", "en": "So let's apply this to our BMO camera.", "zh": "那麼，我們將這應用到我們的 BMO 攝影機上。"}, {"time": "00:15:09,304 --> 00:15:15,644", "en": "We'll leave it up to BMO to decide if it should take a photo and switch models, or just stick with Gemma and generate a chat response.", "zh": "我們將讓 BMO 決定是否應該拍照並切換模型，還是只使用 Gemma 並生成聊天回應。"}, {"time": "00:15:16,564 --> 00:15:19,204", "en": "And we can keep building more tools and actions in the same way.", "zh": "我們可以以相同的方式不斷構建更多的工具和動作。"}, {"time": "00:15:30,224 --> 00:15:38,404", "en": "So, to help BMO have more informed, accurate responses, we'll use a technique called Retrieval Augmented Generation, or RAG.", "zh": "所以，為了幫助 BMO 做出更明智、更準確的回應，我們將使用一種稱為「檢索增強生成」（RAG）的技術。"}, {"time": "00:15:38,984 --> 00:15:41,604", "en": "Think of it as giving AI access to a search engine.", "zh": "把它想像成讓 AI 能夠存取搜尋引擎。"}, {"time": "00:15:42,284 --> 00:15:46,264", "en": "So it can look up real-world data and use that to inform what it says.", "zh": "這樣它就可以查詢真實世界的數據，並利用這些數據來指導它所說的內容。"}, {"time": "00:15:47,384 --> 00:15:49,144", "en": "Time for the night shift.", "zh": "該上夜班了。"}, {"time": "00:15:50,574 --> 00:15:51,844", "en": "Let's finally put it all together.", "zh": "我們終於把它們組合起來。"}, {"time": "00:15:52,434 --> 00:15:56,334", "en": "Before I start assembling BMO, there are a few changes I'm going to make to our hardware.", "zh": "在我開始組裝 BMO 之前，我將對我們的硬體進行一些更改。"}, {"time": "00:16:00,100 --> 00:16:04,490", "en": "power the Raspberry Pi 5 and all the peripherals I have using just batteries.", "zh": "為我的 Raspberry Pi 5 和所有周邊設備供電，只使用電池。"}, {"time": "00:16:05,200 --> 00:16:11,900", "en": "At the same time, I'm going to swap out the hat I'm using for my SSD for this dual M2 PCIE switch.", "zh": "同時，我也會把我 SSD 用的擴充板，換成這個雙 M2 PCIE 切換器。"}, {"time": "00:16:12,460 --> 00:16:17,290", "en": "This gives me an extra port that I can hopefully use for something like an AI accelerator chip.", "zh": "這給我多了一個連接埠，我希望能用它來連接像是 AI 加速晶片之類的東西。"}, {"time": "00:16:17,890 --> 00:16:24,200", "en": "There already is an official Raspberry Pi accelerator, but it doesn't work with LLMs. It's more for a computer vision projects.", "zh": "雖然已經有一個官方的 Raspberry Pi 加速器，但它不支援大型語言模型（LLMs），它主要是用於電腦視覺專案。"}, {"time": "00:16:24,960 --> 00:16:27,780", "en": "But I'm hopeful we'll see something like this for LLMs in the future.", "zh": "但我希望能看到未來有類似的產品可以用於大型語言模型。"}, {"time": "00:16:28,290 --> 00:16:31,790", "en": "It's me from the future to say, as I was working on this video,", "zh": "我是來自未來的我，想說，當我製作這部影片時，"}, {"time": "00:16:31,790 --> 00:16:36,730", "en": "Raspberry Pi ended up releasing an accelerator chip that works with local LLMs.", "zh": "Raspberry Pi 最終發布了一款可以與本機大型語言模型協作的加速晶片。"}, {"time": "00:16:37,790 --> 00:16:40,290", "en": "Uh, the good news is, I got my hands on one.", "zh": "好消息是，我弄到了一塊。"}, {"time": "00:16:41,040 --> 00:16:45,590", "en": "The bad news is, it's not going to slot into my M2 port like I was hoping.", "zh": "壞消息是，它不會像我預期的那樣插入我的 M2 連接埠。"}, {"time": "00:16:46,240 --> 00:16:49,700", "en": "But I did find this other accelerator chip that should...", "zh": "但我確實找到了另一個加速晶片，它應該會..."}, {"time": "00:16:50,860 --> 00:16:56,380", "en": "So, I think I'm going to make another video comparing both of these chips with the build we have today.", "zh": "所以，我想我會再製作一部影片，將這兩個晶片與我們今天組裝的機器進行比較。"}, {"time": "00:16:57,000 --> 00:16:58,820", "en": "Okay, let's get back to the build.", "zh": "好的，我們回到組裝。"}, {"time": "00:17:00,060 --> 00:17:01,570", "en": "Here's the PCB I had made.", "zh": "這是我製作的電路板。"}, {"time": "00:17:02,170 --> 00:17:04,400", "en": "The microcontroller should fit right into the board.", "zh": "微控制器應該可以直接安裝到板子上。"}, {"time": "00:17:05,620 --> 00:17:07,430", "en": "Let's assemble the rest of the face plate.", "zh": "我們來組裝剩下的面板。"}, {"time": "00:17:29,480 --> 00:17:31,440", "en": "Now let's add the rest of the hardware.", "zh": "現在我們來加入剩下的硬體。"}, {"time": "00:18:51,690 --> 00:18:55,290", "en": "I will save you a better reality.", "zh": "我會為你創造一個更好的現實。"}, {"time": "00:18:57,690 --> 00:18:59,690", "en": "Let's test our BMO AI agent.", "zh": "我們來測試一下我們的 BMO AI 代理。"}, {"time": "00:19:00,320 --> 00:19:04,700", "en": "Just like the real BMO, I can connect my keyboard to them and navigate to my script.", "zh": "就像真正的 BMO 一樣，我可以把鍵盤連接到他們，然後導航到我的腳本。"}, {"time": "00:19:08,230 --> 00:19:09,560", "en": "Bemo is online.", "zh": "BMO 已上線。"}, {"time": "00:19:10,380 --> 00:19:10,950", "en": "Hey Bemo.", "zh": "嘿，BMO。"}, {"time": "00:19:12,140 --> 00:19:14,480", "en": "Can you write me a short poem about dinosaurs?", "zh": "你可以為我寫一首關於恐龍的短詩嗎？"}, {"time": "00:19:15,080 --> 00:19:15,700", "en": "Okay.", "zh": "好的。"}, {"time": "00:19:16,680 --> 00:19:22,860", "en": "Here, you can see BMO quickly decides to just behave as a chatbot and generates a response to my prompt right away.", "zh": "在這裡，你可以看到 BMO 很快就決定像個聊天機器人一樣，立即對我的提示做出回應。"}, {"time": "00:19:23,550 --> 00:19:25,970", "en": "Here's a short poem about dinosaurs.", "zh": "這是一首關於恐龍的短詩。"}, {"time": "00:19:27,770 --> 00:19:30,950", "en": "Scales of green, a mighty stride.", "zh": "綠色鱗片，雄偉步伐。"}, {"time": "00:19:32,160 --> 00:19:34,840", "en": "Long neck giants, side by side.", "zh": "長頸巨獸，並肩而行。"}, {"time": "00:19:36,390 --> 00:19:38,960", "en": "T-Rex sword, a fearsome sound.", "zh": "霸王龍之咆哮，駭人聲響。"}, {"time": "00:19:40,250 --> 00:19:42,480", "en": "Dinosaurs ruled, all around.", "zh": "恐龍稱霸，無所不在。"}, {"time": "00:19:44,300 --> 00:19:46,270", "en": "Fossil bones, a wondrous sight.", "zh": "化石骨骼，奇妙景象。"}, {"time": "00:19:47,780 --> 00:19:50,000", "en": "Ancient creatures, shining bright.", "zh": "遠古生物，光輝燦爛。"}, {"time": "00:19:52,190 --> 00:19:52,770", "en": "Hey Bemo.", "zh": "嘿，BMO。"}, {"time": "00:19:54,230 --> 00:19:55,300", "en": "Search for news about Canada.", "zh": "搜尋關於加拿大的新聞。"}, {"time": "00:19:55,730 --> 00:19:56,080", "en": "On it.", "zh": "好的。"}, {"time": "00:19:56,690 --> 00:20:01,840", "en": "In this case, BMO recognizes that I've asked it to do something that requires using the search tool we made.", "zh": "在這種情況下，BMO 知道我要求它做的事情需要使用我們製作的搜尋工具。"}, {"time": "00:20:02,170 --> 00:20:09,300", "en": "This takes a bit longer, but in the background, BMO is running a search query using DuckDuckGo, and then using what it finds to generate its response.", "zh": "這需要一點時間，但在後台，BMO 正在使用 DuckDuckGo 執行搜尋查詢，然後利用找到的內容來生成回應。"}, {"time": "00:20:10,030 --> 00:20:13,380", "en": "Okay, here's a cute short sentence summarizing the data.", "zh": "好的，這是一個簡短可愛的句子，總結了資料。"}, {"time": "00:20:14,260 --> 00:20:19,250", "en": "Canada's trade with the US could be a big problem for percent, warned it would be a disaster, sir.", "zh": "加拿大與美國的貿易對百分比來說可能是一個大問題，警告這會是一場災難，先生。"}, {"time": "00:20:21,500 --> 00:20:22,540", "en": "Let's test our camera now.", "zh": "現在我們來測試攝影機。"}, {"time": "00:20:24,370 --> 00:20:24,960", "en": "Hey Bemo.", "zh": "嘿，BMO。"}, {"time": "00:20:26,340 --> 00:20:26,980", "en": "What do you see?", "zh": "你看到了什麼？"}, {"time": "00:20:27,900 --> 00:20:28,340", "en": "On it.", "zh": "好的。"}, {"time": "00:20:31,640 --> 00:20:32,320", "en": "Computing.", "zh": "正在運算。"}, {"time": "00:20:32,490 --> 00:20:38,500", "en": "BMO needs to understand that answering the question, what do you see, means it will need to use their camera.", "zh": "BMO 需要明白，回答「你看到了什麼」這個問題，意味著它需要使用攝影機。"}, {"time": "00:20:39,150 --> 00:20:42,750", "en": "This takes a bit of time to figure out, but eventually they take a photo.", "zh": "這需要一點時間來判斷，但最終它們會拍下照片。"}, {"time": "00:20:45,550 --> 00:20:46,290", "en": "Checking on this.", "zh": "正在檢查。"}, {"time": "00:20:46,650 --> 00:20:48,790", "en": "Now that photo goes back into the loop.", "zh": "現在這張照片回到了循環中。"}, {"time": "00:20:49,340 --> 00:20:55,420", "en": "So the agent again receives the prompt, what do you see, but now it also has the image captured by the camera.", "zh": "所以代理再次收到提示「你看到了什麼」，但現在它也擁有了攝影機捕捉到的影像。"}, {"time": "00:20:56,060 --> 00:21:00,810", "en": "It switches from using Gemma to using Moon Dream and generates a text description of the image.", "zh": "它從使用 Gemma 切換到使用 Moon Dream，並生成了影像的文字描述。"}, {"time": "00:21:01,480 --> 00:21:06,120", "en": "This looping and model swapping takes around a minute to complete, so I'll speed things up for this video.", "zh": "這個循環和模型切換大約需要一分鐘才能完成，所以我會在這部影片中加快速度。"}, {"time": "00:21:06,940 --> 00:21:11,940", "en": "In the image, a person is holding up an orange and white toy mushroom with its eyes closed.", "zh": "在影像中，一個人正舉著一個閉著眼睛的橘色和白色玩具蘑菇。"}, {"time": "00:21:14,240 --> 00:21:16,510", "en": "The mushroom has a red hat on top of it as well.", "zh": "這個蘑菇上面還有一個紅色的帽子。"}, {"time": "00:21:18,520 --> 00:21:21,800", "en": "The scene takes place in front of a wall, which could be part of another room", "zh": "這個場景發生在一面牆壁前，這面牆可能是一個房間的一部分，"}, {"time": "00:21:21,800 --> 00:21:24,000", "en": "or a specific area within a building.", "zh": "或是建築物內的特定區域。"}, {"time": "00:21:26,270 --> 00:21:30,470", "en": "This unique toy mushroom seems to be the main focus of the person's attention.", "zh": "這個獨特的玩具蘑菇似乎是那個人注意力的主要焦點。"}, {"time": "00:21:34,320 --> 00:21:38,980", "en": "Say something insightful about life in the age of artificial intelligence.", "zh": "請對人工智慧時代的生活說一些富有洞察力的話。"}, {"time": "00:21:39,780 --> 00:21:40,180", "en": "Okay.", "zh": "好的。"}, {"time": "00:21:41,040 --> 00:21:42,390", "en": "And BMO's buttons are all functional.", "zh": "BMO 的所有按鈕都是可用的。"}, {"time": "00:21:42,970 --> 00:21:48,870", "en": "They send keyboard commands to the Pi directly, I use the enter key as an alternative way to trigger voice capture.", "zh": "它們直接向 Raspberry Pi 發送鍵盤指令，我使用 Enter 鍵作為觸發語音捕捉的另一種方式。"}, {"time": "00:21:50,170 --> 00:21:53,300", "en": "And finally, we can of course use these to play video games.", "zh": "最後，我們當然也可以用這些來玩電動遊戲。"}, {"time": "00:21:55,140 --> 00:21:56,660", "en": "I had a ton of fun building BMO.", "zh": "我建造 BMO 的過程非常有趣。"}, {"time": "00:21:57,280 --> 00:21:59,330", "en": "I hope you really enjoyed following along.", "zh": "我希望你也很享受跟著一起做。"}, {"time": "00:21:59,690 --> 00:22:06,490", "en": "Again, I'm not a professional developer, so I can't really say whether this is the right way to approach making your own embodied AI agents.", "zh": "再說一次，我不是專業開發者，所以我無法確切地說這是否是製作自己的實體 AI 代理的正確方法。"}, {"time": "00:22:07,520 --> 00:22:13,670", "en": "This was really just an opportunity for me to learn more about a technology that we're all being told is going to reshape our lives.", "zh": "這其實只是我的一個機會，讓我能更深入了解這項被告知將會重塑我們生活的技術。"}, {"time": "00:22:14,240 --> 00:22:21,390", "en": "and see whether the benefits of AI can really only be achieved by resource consuming data centers and stealing intellectual property.", "zh": "並看看 AI 的好處是否真的只能透過耗費資源的資料中心和竊取智慧財產權來實現。"}, {"time": "00:22:21,900 --> 00:22:25,500", "en": "Now, I'm not saying local models solve all the problems with AI today.", "zh": "現在，我不是說本機模型可以解決現今 AI 的所有問題。"}, {"time": "00:22:26,190 --> 00:22:27,510", "en": "There are a lot of downsides to them.", "zh": "它們也有很多缺點。"}, {"time": "00:22:28,290 --> 00:22:33,300", "en": "because they're offline and open, it's really difficult to put guard rails in place and enforce them.", "zh": "因為它們是離線且開放的，所以很難設置護欄並強制執行。"}, {"time": "00:22:34,060 --> 00:22:35,160", "en": "So, are we doomed?", "zh": "那麼，我們注定要失敗嗎？"}, {"time": "00:22:35,760 --> 00:22:40,890", "en": "It's not difficult to imagine the current AI boom is rushing us towards some kind of apocalyptic future.", "zh": "不難想像，當前的 AI 發展正將我們推向某種末日未來。"}, {"time": "00:22:41,530 --> 00:22:47,310", "en": "One where a Skynet or Hal 9000 or Gdos values growth at all cost more than human lives.", "zh": "一個像天網、哈爾 9000 或 GLaDOS 那樣，不惜一切代價追求成長，甚至超越人類生命價值的世界。"}, {"time": "00:22:48,220 --> 00:22:52,470", "en": "But maybe if we take a step back and really learn about these tools we're being sold.", "zh": "但或許如果我們退一步，真正了解這些被推銷給我們的工具。"}, {"time": "00:22:53,240 --> 00:22:54,580", "en": "Maybe we can build something different.", "zh": "或許我們可以創造一些不同的東西。"}, {"time": "00:22:56,010 --> 00:22:58,490", "en": "And that's what makes BMO one of my favorite characters.", "zh": "這就是 BMO 成為我最喜歡的角色之一的原因。"}, {"time": "00:22:59,040 --> 00:23:04,490", "en": "Even when faced with the end of the world, they teach us to be kind, creative, and take care of one another.", "zh": "即使面對世界末日，他們也教導我們要善良、有創意，並互相照顧。"}, {"time": "00:23:05,860 --> 00:23:08,550", "en": "BMO is a reminder that we can always be more.", "zh": "BMO 提醒我們，我們總是可以做得更好。"}, {"time": "00:23:09,060 --> 00:23:12,180", "en": "That isn't interesting response.", "zh": "那不是有趣的回應。"}, {"time": "00:23:12,810 --> 00:23:15,070", "en": "Better low. Shut down.", "zh": "最好低調一點。關機。"}];
+
+const list = document.getElementById('list');
+const curEn = document.getElementById('current-en');
+const curZh = document.getElementById('current-zh');
+const count = document.getElementById('count');
+
+count.textContent = SUBTITLES.length + ' 句';
+
+let player = null;
+let currentIdx = -1;
+let subOffset = -1.5;  // seconds, negative = subtitles appear earlier (compensate YouTube CC delay)
+
+// Offset slider
+const offsetSlider = document.getElementById('offset-slider');
+const offsetDisplay = document.getElementById('offset-display');
+const resetBtn = document.getElementById('reset-offset');
+offsetSlider.addEventListener('input', () => {
+  subOffset = parseFloat(offsetSlider.value);
+  offsetDisplay.textContent = `${subOffset >= 0 ? '+' : ''}${subOffset.toFixed(1)}s`;
+});
+resetBtn.addEventListener('click', () => {
+  subOffset = -1.5;
+  offsetSlider.value = -1.5;
+  offsetDisplay.textContent = '-1.5s';
+});
+
+function timeToSec(t) {
+  // "00:01:23,456" → seconds
+  const [h, m, rest] = t.split(':');
+  const [s, ms] = rest.split(',');
+  return (+h) * 3600 + (+m) * 60 + (+s) + (+ms) / 1000;
+}
+
+function parseTimeRange(tr) {
+  const [start, end] = tr.split(' --> ');
+  return { start: timeToSec(start), end: timeToSec(end) };
+}
+
+// Render list
+SUBTITLES.forEach((sub, i) => {
+  const item = document.createElement('div');
+  item.className = 'item';
+  item.dataset.idx = i;
+  item.innerHTML = `
+    <div class="time">${sub.time.split(' --> ')[0]}</div>
+    <div class="en">${escapeHtml(sub.en)}</div>
+    <div class="zh">${escapeHtml(sub.zh)}</div>
+  `;
+  item.addEventListener('click', () => {
+    if (player && player.seekTo) {
+      const t = parseTimeRange(sub.time).start;
+      player.seekTo(t, true);
+      player.playVideo();
+    }
+  });
+  list.appendChild(item);
+});
+
+function escapeHtml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// YouTube API ready
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytplayer', {
+    events: {
+      'onReady': () => {
+        const m = (window.location.hash || '').match(/^#t=(\d+)/);
+        if (m && player.seekTo) {
+          player.seekTo(parseInt(m[1], 10), true);
+          player.playVideo();
+        }
+        setInterval(updateSub, 250);
+      }
+    }
+  });
+}
+
+function updateSub() {
+  if (!player || !player.getCurrentTime) return;
+  const t = player.getCurrentTime() - subOffset;
+  let active = -1;
+  for (let i = SUBTITLES.length - 1; i >= 0; i--) {
+    const { start, end } = parseTimeRange(SUBTITLES[i].time);
+    if (t >= start) {
+      if (t <= end + 2) {
+        active = i;
+        break;
+      }
+    }
+  }
+  if (active !== currentIdx) {
+    currentIdx = active;
+    if (active >= 0) {
+      const sub = SUBTITLES[active];
+      // Init word-level structure
+      const enWords = sub.en.split(/(\s+)/);  // keep whitespace
+      const zhChars = [...sub.zh];  // unicode-safe
+      curEn.innerHTML = enWords.map((w, i) =>
+        w.trim() ? `<span class="word-en" data-idx="${i}">${escapeHtml(w)}</span>` : w
+      ).join('');
+      curZh.innerHTML = zhChars.map((c, i) =>
+        `<span class="word-zh" data-idx="${i}">${escapeHtml(c)}</span>`
+      ).join('');
+      // Highlight in list + scroll WITHIN the list container only (never scrolls the page)
+      document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+      const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        // Scroll only inside list (not page) — keeps video pinned at top
+        const targetTop = activeEl.offsetTop - list.clientHeight / 2 + activeEl.clientHeight / 2;
+        list.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
+    } else {
+      curEn.textContent = '';
+      curZh.textContent = '';
+    }
+  }
+
+  // Word-level karaoke (proportional progress within current cue)
+  if (active >= 0) {
+    const sub = SUBTITLES[active];
+    const { start, end } = parseTimeRange(sub.time);
+    const dur = Math.max(0.5, end - start);
+    const progress = Math.max(0, Math.min(1, (t - start) / dur));
+    // EN words
+    const enSpans = curEn.querySelectorAll('.word-en');
+    const activeEn = Math.floor(enSpans.length * progress);
+    enSpans.forEach((sp, i) => {
+      sp.className = 'word-en ' + (i < activeEn ? 'spoken' : (i === activeEn ? 'spoken' : 'pending'));
+    });
+    // ZH chars
+    const zhSpans = curZh.querySelectorAll('.word-zh');
+    const activeZh = Math.floor(zhSpans.length * progress);
+    zhSpans.forEach((sp, i) => {
+      sp.className = 'word-zh ' + (i < activeZh ? 'spoken' : (i === activeZh ? 'spoken' : 'pending'));
+    });
+  }
+}
+</script>
+</body>
+</html>
