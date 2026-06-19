@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>What is Vibe Coding? · 中英雙語字幕</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Heiti TC", -apple-system, sans-serif;
+    background: #0F1F4D;
+    color: #1E1E1E;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  header {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  header img { height: 40px; }
+  header .title-block { flex: 1; }
+  header h1 { font-size: 20px; font-weight: 900; color: #0F1F4D; line-height: 1.2; }
+  header .meta { font-size: 13px; color: #6E6E6E; margin-top: 4px; }
+  header .credit { font-size: 12px; color: #4F7A3B; font-weight: 700; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  .video-card {
+    background: black;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+  }
+  .video-card .current-sub {
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 16px 22px;
+    text-align: center;
+    min-height: 100px;
+  }
+  .video-card .current-sub .en {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 6px;
+  }
+  .video-card .current-sub .zh {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #E89E3F;
+    font-weight: 800;
+  }
+
+  .transcript-card {
+    background: white;
+    border-radius: 14px;
+    height: 80vh;
+    max-height: 720px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .transcript-card .header {
+    padding: 14px 20px;
+    border-bottom: 2px solid #E0E7F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .transcript-card .header h2 {
+    font-size: 16px;
+    font-weight: 900;
+    color: #0F1F4D;
+  }
+  .transcript-card .header .count {
+    font-size: 12px;
+    color: #6E6E6E;
+  }
+  .transcript-card .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .transcript-card .list .item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .transcript-card .list .item:hover {
+    background: #F8FAFC;
+  }
+  .transcript-card .list .item.active {
+    background: linear-gradient(90deg, #E89E3F 0%, #F4C078 100%);
+    border-left: 6px solid #C26F1A;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(232,158,63,0.4);
+    transition: all 0.2s ease;
+  }
+  .transcript-card .list .item.active .time {
+    color: white;
+    font-weight: 900;
+  }
+  .transcript-card .list .item.active .en {
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .transcript-card .list .item.active .zh {
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+  }
+  .video-card .current-sub.pulse .zh {
+    animation: pulse-glow 1.5s ease-in-out;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 0 transparent; }
+    50% { text-shadow: 0 0 16px rgba(232,158,63,0.8); }
+  }
+  /* Word-level karaoke: spoken words turn green */
+  .video-card .current-sub .en .spoken {
+    color: #6BB05E;
+    transition: color 0.15s;
+    text-shadow: 0 0 8px rgba(107,176,94,0.4);
+  }
+  .video-card .current-sub .zh .spoken {
+    color: #6BB05E;
+    transition: color 0.1s;
+    text-shadow: 0 0 12px rgba(107,176,94,0.5);
+  }
+  .video-card .current-sub .en .pending {
+    color: rgba(255,255,255,0.55);
+  }
+  .video-card .current-sub .zh .pending {
+    color: rgba(232,158,63,0.55);
+  }
+  .transcript-card .list .item .time {
+    font-size: 11px;
+    color: #4F7A3B;
+    font-weight: 800;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .transcript-card .list .item .en {
+    font-size: 14px;
+    color: #3A3A3A;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .transcript-card .list .item .zh {
+    font-size: 15px;
+    color: #0F1F4D;
+    margin-top: 3px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #6E6E6E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .right {
+    color: #2F5C28;
+    font-weight: 700;
+  }
+
+  .iris-hero-banner {
+    background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 50%, #4FE3FF 100%);
+    color: white; border-radius: 16px; padding: 18px 28px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 6px 18px rgba(15,31,77,0.25);
+    position: relative; overflow: hidden;
+  }
+  .iris-hero-banner::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px; pointer-events: none;
+  }
+  .iris-hero-banner .robi { width: 64px; height: 64px; border-radius: 50%; background: white; padding: 4px; flex-shrink: 0; z-index: 1; }
+  .iris-hero-banner .text { flex: 1; z-index: 1; }
+  .iris-hero-banner .tag {
+    display: inline-block; font-family: "Montserrat", sans-serif;
+    font-size: 10px; letter-spacing: 4px; font-weight: 900;
+    color: #FFD93D; background: rgba(0,0,0,0.25);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .iris-hero-banner .headline {
+    font-family: "Noto Serif TC", serif;
+    font-size: 20px; font-weight: 900;
+    color: white; line-height: 1.25; letter-spacing: 1px;
+  }
+  .iris-hero-banner .sub {
+    font-size: 12px; color: rgba(255,255,255,0.88);
+    margin-top: 4px; letter-spacing: 0.5px;
+  }
+  .iris-hero-banner .badge {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 4px; z-index: 1;
+    font-family: "Montserrat", sans-serif;
+  }
+  .iris-hero-banner .badge .count {
+    background: #FFD93D; color: #0A0F2A;
+    padding: 4px 12px; border-radius: 6px;
+    font-size: 13px; font-weight: 900; letter-spacing: 1px;
+  }
+  .iris-hero-banner .badge .by {
+    font-size: 9px; color: rgba(255,255,255,0.7);
+    letter-spacing: 2px; font-weight: 700;
+  }
+  .iris-cta-footer {
+    margin-top: 18px; background: white; border-radius: 14px; padding: 20px 26px;
+    border-top: 4px solid #4FE3FF; box-shadow: 0 4px 14px rgba(15,31,77,0.06);
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+  }
+  .iris-cta-footer .left h3 {
+    font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 4px;
+  }
+  .iris-cta-footer .left p { font-size: 13px; color: #5A6080; line-height: 1.5; }
+  .iris-cta-footer .left p .gold { color: #E89A45; font-weight: 800; }
+  .iris-cta-footer .right { text-align: right; font-family: "Montserrat", sans-serif; }
+  .iris-cta-footer .right .sig { color: #4FE3FF; font-weight: 900; font-size: 14px; letter-spacing: 1px; }
+  .iris-cta-footer .right .url { font-size: 10px; color: #5A6080; margin-top: 4px; letter-spacing: 1px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../robinstech_logo.png" alt="羅賓斯科技"/>
+    <div class="title-block">
+      <h1>What is Vibe Coding?</h1>
+      <div class="meta">Google · YouTube · 中英雙語字幕</div>
+      <div class="credit">📖 學員：Evin Lin · 整理 IRIS · 翻譯 Calliope · 轉錄 Eos</div>
+    </div>
+  </header>
+
+  <div class="iris-hero-banner">
+    <img src="../robi_v6_master.png" alt="Robi" class="robi"/>
+    <div class="text">
+      <div class="tag">🎨 IRIS 中英字幕版 · BY ROBINSTECH</div>
+      <div class="headline">What is Vibe Coding?</div>
+      <div class="sub">Google 95 秒短片解讀 AI 時代「Vibe Coding」風潮 · 由 Iris 翻譯 · 卡拉 OK 字幕</div>
+    </div>
+    <div class="badge">
+      <div class="count">26 cues</div>
+      <div class="by">GOOGLE · ZH-TW + EN</div>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <div class="video-card">
+      <iframe id="ytplayer"
+        src="https://www.youtube.com/embed/tYhgWRJeYzs?enablejsapi=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <div class="current-sub" id="current-sub">
+        <div class="en" id="current-en">Playing video...</div>
+        <div class="zh" id="current-zh">影片載入中</div>
+      </div>
+      <div style="background:#0F1F4D;color:white;padding:10px 22px;display:flex;align-items:center;gap:12px;font-size:13px;">
+        <label style="white-space:nowrap;color:rgba(255,255,255,0.85);font-weight:700;">字幕 offset：</label>
+        <input type="range" id="offset-slider" min="-3" max="3" step="0.1" value="-1.5" style="flex:1;accent-color:#E89E3F;">
+        <span id="offset-display" style="font-family:monospace;font-weight:800;color:#E89E3F;min-width:50px;text-align:right;">-1.5s</span>
+        <button id="reset-offset" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">↺</button>
+      </div>
+    </div>
+
+    <div class="transcript-card">
+      <div class="header">
+        <h2>📜 完整逐字稿（點任一句跳到影片時間）</h2>
+        <span class="count" id="count">— 句</span>
+      </div>
+      <div class="list" id="list">
+        <!-- subtitles injected here -->
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="iris-cta-footer">
+    <div class="left">
+      <h3>🦊 喜歡這支字幕影片？</h3>
+      <p>羅賓斯科技每日上架 <span class="gold">AI / 創業 / 保險科技</span> 中英字幕影片。Follow Iris @iris_social_bot 取得最新通知。</p>
+    </div>
+    <div class="right">
+      <div class="sig">— Iris / 虹彩 🎨</div>
+      <div class="url">robinstechservice.github.io/decks/</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="left">永久 hosting · GitHub Pages · 自動發佈</div>
+    <div class="right">🦊 羅賓斯科技 · 學員學習資料庫</div>
+  </footer>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+// === SUBTITLE DATA INJECTED HERE BY BUILD ===
+const SUBTITLES = [{"time": "00:00:00,000 --> 00:00:06,100", "en": "I built this game, this website, and this app without writing a single line of code.", "zh": "我沒有寫過一行程式碼，就建構出了這個遊戲、這個網站和這個應用程式。"}, {"time": "00:00:06,100 --> 00:00:07,800", "en": "How? It's called Vibe Coding.", "zh": "怎麼辦到的？這叫作 Vibe Coding。"}, {"time": "00:00:07,800 --> 00:00:12,900", "en": "You just describe what you want, like you're texting a friend, and Google AI Studio builds it for you.", "zh": "你只要像跟朋友傳訊息一樣描述你想要什麼，Google AI Studio 就會為你建構出來。"}, {"time": "00:00:12,900 --> 00:00:16,300", "en": "If you're not familiar with AI Studio, it's Google's Vibe Coding platform.", "zh": "如果你不熟悉 AI Studio，它是 Google 的 Vibe Coding 平台。"}, {"time": "00:00:16,300 --> 00:00:19,200", "en": "Where you can turn ideas into apps with just a prompt.", "zh": "只要一個提示，就能將想法轉變為應用程式。"}, {"time": "00:00:19,200 --> 00:00:21,800", "en": "One sentence is all you need to get started.", "zh": "一句話就能讓你開始。"}, {"time": "00:00:21,800 --> 00:00:22,800", "en": "Let me show you.", "zh": "讓我來展示給你。"}, {"time": "00:00:23,300 --> 00:00:29,000", "en": "Build me a pixel-style infinite runner platformer game where the main character is a cat.", "zh": "為我建構一個像素風格的無限奔跑平台遊戲，主角是一隻貓。"}, {"time": "00:00:29,000 --> 00:00:31,400", "en": "I'm speeding this up a bit just to get to the outcome.", "zh": "我稍微加速了一下，直接看結果。"}, {"time": "00:00:31,400 --> 00:00:35,900", "en": "And there it is. A working game with controls, a score, and obstacles.", "zh": "瞧，這就是了。一個可以玩的遊戲，有操控、分數和障礙物。"}, {"time": "00:00:35,900 --> 00:00:38,400", "en": "You could play this with your friends right now.", "zh": "你現在就可以跟朋友一起玩這個遊戲。"}, {"time": "00:00:38,400 --> 00:00:40,500", "en": "But you can also build more than just games.", "zh": "但你不只可以建構遊戲。"}, {"time": "00:00:40,500 --> 00:00:42,000", "en": "Say you want to build a website.", "zh": "假設你想建構一個網站。"}, {"time": "00:00:42,000 --> 00:00:45,700", "en": "I want to build a website for my wildlife photography portfolio.", "zh": "我想要為我的野生動物攝影作品集建構一個網站。"}, {"time": "00:00:45,700 --> 00:00:47,900", "en": "And what do you get? A real website.", "zh": "然後你得到什麼？一個真的網站。"}, {"time": "00:00:47,900 --> 00:00:50,900", "en": "And if you want, you can keep refining it with some more prompts.", "zh": "如果你願意，可以用更多提示繼續完善它。"}, {"time": "00:00:50,900 --> 00:00:54,900", "en": "So if you've been putting something off because you thought you needed help building it, you don't.", "zh": "所以如果你因為覺得需要協助才能建構，而一直拖延某件事，其實你不需要。"}, {"time": "00:00:55,300 --> 00:00:57,800", "en": "Okay, I have one more idea. Let's try to build it.", "zh": "好，我還有一個想法。我們來試試看建構它。"}, {"time": "00:00:58,200 --> 00:01:01,800", "en": "Build me a habit tracker that reminds me to drink water every hour.", "zh": "為我建構一個習慣追蹤器，每小時提醒我喝水。"}, {"time": "00:01:02,200 --> 00:01:04,300", "en": "Now I really have no excuse not to drink water.", "zh": "現在我真的沒有藉口不喝水了。"}, {"time": "00:01:04,700 --> 00:01:07,900", "en": "So that's Vibe Coding. Your idea goes in, and something real comes out.", "zh": "這就是 Vibe Coding。你的想法進去，然後真實的東西出來。"}, {"time": "00:01:08,200 --> 00:01:10,000", "en": "All you need is your first prompt.", "zh": "你所需要的就是你的第一個提示。"}, {"time": "00:01:10,000 --> 00:01:14,700", "en": "If you want inspiration before you start, check out the App Gallery in Google AI Studio.", "zh": "如果你在開始前想找靈感，可以查看 Google AI Studio 中的應用程式庫。"}, {"time": "00:01:15,000 --> 00:01:19,900", "en": "It's full of examples of what's possible, and you can even remix these projects into your own apps.", "zh": "它充滿了各種可能性的範例，你甚至可以將這些專案改編為自己的應用程式。"}, {"time": "00:01:19,900 --> 00:01:21,500", "en": "We'll tell you how to do that in another video.", "zh": "我們會在另一個影片中告訴你怎麼做。"}, {"time": "00:01:21,900 --> 00:01:24,800", "en": "Take a look and then comment below to share what you made.", "zh": "去看看，然後在下方留言分享你製作了什麼。"}];
+
+const list = document.getElementById('list');
+const curEn = document.getElementById('current-en');
+const curZh = document.getElementById('current-zh');
+const count = document.getElementById('count');
+
+count.textContent = SUBTITLES.length + ' 句';
+
+let player = null;
+let currentIdx = -1;
+let subOffset = -1.5;  // seconds, negative = subtitles appear earlier (compensate YouTube CC delay)
+
+// Offset slider
+const offsetSlider = document.getElementById('offset-slider');
+const offsetDisplay = document.getElementById('offset-display');
+const resetBtn = document.getElementById('reset-offset');
+offsetSlider.addEventListener('input', () => {
+  subOffset = parseFloat(offsetSlider.value);
+  offsetDisplay.textContent = `${subOffset >= 0 ? '+' : ''}${subOffset.toFixed(1)}s`;
+});
+resetBtn.addEventListener('click', () => {
+  subOffset = -1.5;
+  offsetSlider.value = -1.5;
+  offsetDisplay.textContent = '-1.5s';
+});
+
+function timeToSec(t) {
+  // "00:01:23,456" → seconds
+  const [h, m, rest] = t.split(':');
+  const [s, ms] = rest.split(',');
+  return (+h) * 3600 + (+m) * 60 + (+s) + (+ms) / 1000;
+}
+
+function parseTimeRange(tr) {
+  const [start, end] = tr.split(' --> ');
+  return { start: timeToSec(start), end: timeToSec(end) };
+}
+
+// Render list
+SUBTITLES.forEach((sub, i) => {
+  const item = document.createElement('div');
+  item.className = 'item';
+  item.dataset.idx = i;
+  item.innerHTML = `
+    <div class="time">${sub.time.split(' --> ')[0]}</div>
+    <div class="en">${escapeHtml(sub.en)}</div>
+    <div class="zh">${escapeHtml(sub.zh)}</div>
+  `;
+  item.addEventListener('click', () => {
+    if (player && player.seekTo) {
+      const t = parseTimeRange(sub.time).start;
+      player.seekTo(t, true);
+      player.playVideo();
+    }
+  });
+  list.appendChild(item);
+});
+
+function escapeHtml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// YouTube API ready
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytplayer', {
+    events: {
+      'onReady': () => {
+        const m = (window.location.hash || '').match(/^#t=(\d+)/);
+        if (m && player.seekTo) {
+          player.seekTo(parseInt(m[1], 10), true);
+          player.playVideo();
+        }
+        setInterval(updateSub, 250);
+      }
+    }
+  });
+}
+
+function updateSub() {
+  if (!player || !player.getCurrentTime) return;
+  const t = player.getCurrentTime() - subOffset;
+  let active = -1;
+  for (let i = SUBTITLES.length - 1; i >= 0; i--) {
+    const { start, end } = parseTimeRange(SUBTITLES[i].time);
+    if (t >= start) {
+      if (t <= end + 2) {
+        active = i;
+        break;
+      }
+    }
+  }
+  if (active !== currentIdx) {
+    currentIdx = active;
+    if (active >= 0) {
+      const sub = SUBTITLES[active];
+      // Init word-level structure
+      const enWords = sub.en.split(/(\s+)/);  // keep whitespace
+      const zhChars = [...sub.zh];  // unicode-safe
+      curEn.innerHTML = enWords.map((w, i) =>
+        w.trim() ? `<span class="word-en" data-idx="${i}">${escapeHtml(w)}</span>` : w
+      ).join('');
+      curZh.innerHTML = zhChars.map((c, i) =>
+        `<span class="word-zh" data-idx="${i}">${escapeHtml(c)}</span>`
+      ).join('');
+      // Highlight in list + scroll WITHIN the list container only (never scrolls the page)
+      document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+      const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        // Scroll only inside list (not page) — keeps video pinned at top
+        const targetTop = activeEl.offsetTop - list.clientHeight / 2 + activeEl.clientHeight / 2;
+        list.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
+    } else {
+      curEn.textContent = '';
+      curZh.textContent = '';
+    }
+  }
+
+  // Word-level karaoke (proportional progress within current cue)
+  if (active >= 0) {
+    const sub = SUBTITLES[active];
+    const { start, end } = parseTimeRange(sub.time);
+    const dur = Math.max(0.5, end - start);
+    const progress = Math.max(0, Math.min(1, (t - start) / dur));
+    // EN words
+    const enSpans = curEn.querySelectorAll('.word-en');
+    const activeEn = Math.floor(enSpans.length * progress);
+    enSpans.forEach((sp, i) => {
+      sp.className = 'word-en ' + (i < activeEn ? 'spoken' : (i === activeEn ? 'spoken' : 'pending'));
+    });
+    // ZH chars
+    const zhSpans = curZh.querySelectorAll('.word-zh');
+    const activeZh = Math.floor(zhSpans.length * progress);
+    zhSpans.forEach((sp, i) => {
+      sp.className = 'word-zh ' + (i < activeZh ? 'spoken' : (i === activeZh ? 'spoken' : 'pending'));
+    });
+  }
+}
+</script>
+</body>
+</html>
