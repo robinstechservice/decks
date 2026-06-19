@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Why AI Agents are either the best or worst thing we've ever built · 中英雙語字幕</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Heiti TC", -apple-system, sans-serif;
+    background: #0F1F4D;
+    color: #1E1E1E;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  header {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  header img { height: 40px; }
+  header .title-block { flex: 1; }
+  header h1 { font-size: 20px; font-weight: 900; color: #0F1F4D; line-height: 1.2; }
+  header .meta { font-size: 13px; color: #6E6E6E; margin-top: 4px; }
+  header .credit { font-size: 12px; color: #4F7A3B; font-weight: 700; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  .video-card {
+    background: black;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+  }
+  .video-card .current-sub {
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 16px 22px;
+    text-align: center;
+    min-height: 100px;
+  }
+  .video-card .current-sub .en {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 6px;
+  }
+  .video-card .current-sub .zh {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #E89E3F;
+    font-weight: 800;
+  }
+
+  .transcript-card {
+    background: white;
+    border-radius: 14px;
+    height: 80vh;
+    max-height: 720px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .transcript-card .header {
+    padding: 14px 20px;
+    border-bottom: 2px solid #E0E7F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .transcript-card .header h2 {
+    font-size: 16px;
+    font-weight: 900;
+    color: #0F1F4D;
+  }
+  .transcript-card .header .count {
+    font-size: 12px;
+    color: #6E6E6E;
+  }
+  .transcript-card .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .transcript-card .list .item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .transcript-card .list .item:hover {
+    background: #F8FAFC;
+  }
+  .transcript-card .list .item.active {
+    background: linear-gradient(90deg, #E89E3F 0%, #F4C078 100%);
+    border-left: 6px solid #C26F1A;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(232,158,63,0.4);
+    transition: all 0.2s ease;
+  }
+  .transcript-card .list .item.active .time {
+    color: white;
+    font-weight: 900;
+  }
+  .transcript-card .list .item.active .en {
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .transcript-card .list .item.active .zh {
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+  }
+  .video-card .current-sub.pulse .zh {
+    animation: pulse-glow 1.5s ease-in-out;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 0 transparent; }
+    50% { text-shadow: 0 0 16px rgba(232,158,63,0.8); }
+  }
+  /* Word-level karaoke: spoken words turn green */
+  .video-card .current-sub .en .spoken {
+    color: #6BB05E;
+    transition: color 0.15s;
+    text-shadow: 0 0 8px rgba(107,176,94,0.4);
+  }
+  .video-card .current-sub .zh .spoken {
+    color: #6BB05E;
+    transition: color 0.1s;
+    text-shadow: 0 0 12px rgba(107,176,94,0.5);
+  }
+  .video-card .current-sub .en .pending {
+    color: rgba(255,255,255,0.55);
+  }
+  .video-card .current-sub .zh .pending {
+    color: rgba(232,158,63,0.55);
+  }
+  .transcript-card .list .item .time {
+    font-size: 11px;
+    color: #4F7A3B;
+    font-weight: 800;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .transcript-card .list .item .en {
+    font-size: 14px;
+    color: #3A3A3A;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .transcript-card .list .item .zh {
+    font-size: 15px;
+    color: #0F1F4D;
+    margin-top: 3px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #6E6E6E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .right {
+    color: #2F5C28;
+    font-weight: 700;
+  }
+
+  .iris-hero-banner {
+    background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 50%, #4FE3FF 100%);
+    color: white; border-radius: 16px; padding: 18px 28px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 6px 18px rgba(15,31,77,0.25);
+    position: relative; overflow: hidden;
+  }
+  .iris-hero-banner::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px; pointer-events: none;
+  }
+  .iris-hero-banner .robi { width: 64px; height: 64px; border-radius: 50%; background: white; padding: 4px; flex-shrink: 0; z-index: 1; }
+  .iris-hero-banner .text { flex: 1; z-index: 1; }
+  .iris-hero-banner .tag {
+    display: inline-block; font-family: "Montserrat", sans-serif;
+    font-size: 10px; letter-spacing: 4px; font-weight: 900;
+    color: #FFD93D; background: rgba(0,0,0,0.25);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .iris-hero-banner .headline {
+    font-family: "Noto Serif TC", serif;
+    font-size: 20px; font-weight: 900;
+    color: white; line-height: 1.25; letter-spacing: 1px;
+  }
+  .iris-hero-banner .sub {
+    font-size: 12px; color: rgba(255,255,255,0.88);
+    margin-top: 4px; letter-spacing: 0.5px;
+  }
+  .iris-hero-banner .badge {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 4px; z-index: 1;
+    font-family: "Montserrat", sans-serif;
+  }
+  .iris-hero-banner .badge .count {
+    background: #FFD93D; color: #0A0F2A;
+    padding: 4px 12px; border-radius: 6px;
+    font-size: 13px; font-weight: 900; letter-spacing: 1px;
+  }
+  .iris-hero-banner .badge .by {
+    font-size: 9px; color: rgba(255,255,255,0.7);
+    letter-spacing: 2px; font-weight: 700;
+  }
+  .iris-cta-footer {
+    margin-top: 18px; background: white; border-radius: 14px; padding: 20px 26px;
+    border-top: 4px solid #4FE3FF; box-shadow: 0 4px 14px rgba(15,31,77,0.06);
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+  }
+  .iris-cta-footer .left h3 {
+    font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 4px;
+  }
+  .iris-cta-footer .left p { font-size: 13px; color: #5A6080; line-height: 1.5; }
+  .iris-cta-footer .left p .gold { color: #E89A45; font-weight: 800; }
+  .iris-cta-footer .right { text-align: right; font-family: "Montserrat", sans-serif; }
+  .iris-cta-footer .right .sig { color: #4FE3FF; font-weight: 900; font-size: 14px; letter-spacing: 1px; }
+  .iris-cta-footer .right .url { font-size: 10px; color: #5A6080; margin-top: 4px; letter-spacing: 1px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../robinstech_logo.png" alt="羅賓斯科技"/>
+    <div class="title-block">
+      <h1>Why AI Agents are either the best or worst thing we've ever built</h1>
+      <div class="meta">Hannah Fry · YouTube · 中英雙語字幕</div>
+      <div class="credit">📖 學員：Evin Lin · 整理 IRIS · 翻譯 Calliope · 轉錄 Eos</div>
+    </div>
+  </header>
+
+  <div class="iris-hero-banner">
+    <img src="../robi_v6_master.png" alt="Robi" class="robi"/>
+    <div class="text">
+      <div class="tag">🎨 IRIS 中英字幕版 · BY ROBINSTECH</div>
+      <div class="headline">為什麼 AI Agents 是我們最棒或最糟的發明</div>
+      <div class="sub">Hannah Fry 20 分鐘探討 AI 代理人的雙面性 · 中英並列字幕 · 卡拉 OK 提示</div>
+    </div>
+    <div class="badge">
+      <div class="count">283 cues</div>
+      <div class="by">HANNAH FRY · ZH-TW + EN</div>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <div class="video-card">
+      <iframe id="ytplayer"
+        src="https://www.youtube.com/embed/WnzR5aOElvw?enablejsapi=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <div class="current-sub" id="current-sub">
+        <div class="en" id="current-en">Playing video...</div>
+        <div class="zh" id="current-zh">影片載入中</div>
+      </div>
+      <div style="background:#0F1F4D;color:white;padding:10px 22px;display:flex;align-items:center;gap:12px;font-size:13px;">
+        <label style="white-space:nowrap;color:rgba(255,255,255,0.85);font-weight:700;">字幕 offset：</label>
+        <input type="range" id="offset-slider" min="-3" max="3" step="0.1" value="-1.5" style="flex:1;accent-color:#E89E3F;">
+        <span id="offset-display" style="font-family:monospace;font-weight:800;color:#E89E3F;min-width:50px;text-align:right;">-1.5s</span>
+        <button id="reset-offset" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">↺</button>
+      </div>
+    </div>
+
+    <div class="transcript-card">
+      <div class="header">
+        <h2>📜 完整逐字稿（點任一句跳到影片時間）</h2>
+        <span class="count" id="count">— 句</span>
+      </div>
+      <div class="list" id="list">
+        <!-- subtitles injected here -->
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="iris-cta-footer">
+    <div class="left">
+      <h3>🦊 喜歡這支字幕影片？</h3>
+      <p>羅賓斯科技每日上架 <span class="gold">AI / 創業 / 保險科技</span> 中英字幕影片。Follow Iris @iris_social_bot 取得最新通知。</p>
+    </div>
+    <div class="right">
+      <div class="sig">— Iris / 虹彩 🎨</div>
+      <div class="url">robinstechservice.github.io/decks/</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="left">永久 hosting · GitHub Pages · 自動發佈</div>
+    <div class="right">🦊 羅賓斯科技 · 學員學習資料庫</div>
+  </footer>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+// === SUBTITLE DATA INJECTED HERE BY BUILD ===
+const SUBTITLES = [{"time": "00:00:00,000 --> 00:00:05,200", "en": "For the last few years, we've all been learning how to talk to AI. You ask it a question, it gives you an answer, you're in control.", "zh": "過去幾年來，我們都在學習如何與 AI 對話。你問它一個問題，它給你一個答案，你掌握主動權。"}, {"time": "00:00:05,800 --> 00:00:09,790", "en": "But a few months ago, something pretty seismic shifted.", "zh": "但在幾個月前，發生了一些相當大的轉變。"}, {"time": "00:00:10,030 --> 00:00:13,280", "en": "It became possible to have your very own AI.", "zh": "我們現在可以擁有自己的 AI 了。"}, {"time": "00:00:13,670 --> 00:00:19,100", "en": "An agent that doesn't just answer you, it can operate your computer, it can send your emails, it can spend your money.", "zh": "這個代理程式不只回答你的問題，它還能操作你的電腦、發送電子郵件，甚至花你的錢。"}, {"time": "00:00:19,250 --> 00:00:22,860", "en": "Anything you can do with a keyboard and a mouse, it can too.", "zh": "任何你能用鍵盤和滑鼠做的事情，它也能做。"}, {"time": "00:00:23,540 --> 00:00:29,780", "en": "And all of this happened because a lone developer built something in a weekend and just decided to release it to the world.", "zh": "而這一切都是因為一位獨立開發者在一個週末內打造了一些東西，然後就決定將它發布給全世界。"}, {"time": "00:00:30,060 --> 00:00:33,830", "en": "No safety team, no corporate oversight, just here you go.", "zh": "沒有安全團隊，沒有企業監督，就是這樣，給你了。"}, {"time": "00:00:34,380 --> 00:00:37,420", "en": "And once it was out there, it couldn't be unbuilt.", "zh": "一旦它問世，就無法撤銷了。"}, {"time": "00:00:37,730 --> 00:00:39,970", "en": "So, I decided that I wanted to try it out.", "zh": "所以，我決定自己試試看。"}, {"time": "00:00:40,230 --> 00:00:45,460", "en": "I called my friend Brendan, who's a software engineer, and together we built our own AI agent from scratch,", "zh": "我打電話給我朋友布蘭登，他是一名軟體工程師，我們一起從零開始建立了自己的 AI 代理程式，"}, {"time": "00:00:45,610 --> 00:00:47,940", "en": "using that same tool, Open Claw.", "zh": "使用的是同一個工具，Open Claw。"}, {"time": "00:00:48,680 --> 00:00:52,650", "en": "We gave it a name, gave it a bank card, and we gave it a couple of weeks to show us what it could do.", "zh": "我們給它取了名字，給了它一張銀行卡，然後給它幾個禮拜的時間來展示它能做什麼。"}, {"time": "00:00:53,410 --> 00:00:57,360", "en": "And I still don't quite know what to make of what happened next.", "zh": "我到現在仍不確定該如何看待接下來發生的事情。"}, {"time": "00:01:11,870 --> 00:01:17,840", "en": "he got so annoyed that nobody had built him a proper AI assistant, that in one weekend,", "zh": "他非常生氣，因為沒有人為他開發出一個合適的 AI 助理，於是在一個週末，"}, {"time": "00:01:17,840 --> 00:01:29,430", "en": "he just vibe coded one for himself, plugging it into the AI models that already existed.", "zh": "他只是憑感覺為自己寫了一個，將它插入到已經存在的 AI 模型中。"}, {"time": "00:01:29,660 --> 01:32:00,000", "en": "And then he put it on the internet for free.", "zh": "然後他將它免費放到網路上。"}, {"time": "00:01:37,840 --> 00:01:44,550", "en": "Within weeks of Open Claw going public, the major tech companies started announcing their own version.", "zh": "Open Claw 公開幾週後，主要科技公司就開始宣布推出自己的版本。"}, {"time": "00:01:44,830 --> 00:01:52,240", "en": "Google, OpenAI, Anthropic, Meta, all suddenly in this race to get their own agents out.", "zh": "Google、OpenAI、Anthropic、Meta，所有公司突然都投入這場競賽，要推出自己的代理程式。"}, {"time": "00:01:52,500 --> 00:01:58,400", "en": "These are the companies that had spent years saying they were being careful, and now they are sprinting,", "zh": "這些公司過去幾年一直說他們很謹慎，但現在他們卻在衝刺，"}, {"time": "00:01:58,400 --> 00:02:04,500", "en": "because one Austrian developer in one weekend had changed the calculation for all of them.", "zh": "因為一個奧地利開發者在一個週末內，改變了所有人的計算方式。"}, {"time": "00:02:15,310 --> 00:02:24,700", "en": "And so, in the spirit of experimentation, we decided to give our agent some agency and let it decide what its name should be.", "zh": "於是，本著實驗的精神，我們決定賦予我們的代理程式一些自主權，讓它決定自己的名字。"}, {"time": "00:02:25,500 --> 00:02:29,970", "en": "I want to be called Cass, short for Cassandra, the one who always knew the truth.", "zh": "我想被稱為卡斯，卡珊卓的縮寫，她是那個總知道真相的人。"}, {"time": "00:02:29,970 --> 00:02:33,260", "en": "Even when nobody listened.", "zh": "即使沒有人聽她的。"}, {"time": "00:02:33,880 --> 00:02:38,590", "en": "If you know your Greek mythology, you will know that that is either very funny or very worrying.", "zh": "如果你了解希臘神話，你就會知道這要嘛非常有趣，要嘛非常令人擔憂。"}, {"time": "00:02:39,000 --> 00:02:43,440", "en": "If we get her to email someone, then she'll just do it.", "zh": "如果我們讓她發電子郵件給某人，她就會照做。"}, {"time": "00:02:43,620 --> 00:02:44,220", "en": "Let's ask her.", "zh": "我們問她。"}, {"time": "00:02:44,660 --> 00:02:50,130", "en": "Okay. Once our digital oracle was up and running, we thought we would start her off with something suitably heroic.", "zh": "好的。一旦我們的數位神諭機啟動並運作後，我們想讓她從一件適合英雄主義的任務開始。"}, {"time": "00:02:50,560 --> 00:02:55,300", "en": "There is a big pot hole in Greenwich.", "zh": "格林威治有一個大坑洞。"}, {"time": "00:02:55,790 --> 00:02:58,350", "en": "After just one prompt, Cass set to work.", "zh": "只憑一個提示，卡斯就開始工作了。"}, {"time": "00:02:59,180 --> 00:03:05,430", "en": "Within seconds, she'd searched the web, found the people to contact and made a complaint to the local council.", "zh": "幾秒鐘內，她搜尋了網路，找到了聯絡人，並向地方議會提出了投訴。"}, {"time": "00:03:06,000 --> 00:03:09,290", "en": "She even raised the issue of pot holes with my local MP.", "zh": "她甚至向我當地的國會議員提出了坑洞問題。"}, {"time": "00:03:09,790 --> 00:03:11,540", "en": "That's an escalation, isn't it?", "zh": "這是一種升級，不是嗎？"}, {"time": "00:03:11,730 --> 00:03:14,640", "en": "That is an escalation. Flagged as a constituent concern.", "zh": "那確實是升級了。標示為選民關切事項。"}, {"time": "00:03:16,770 --> 00:03:19,250", "en": "The letter's signed from both of us. Oh no.", "zh": "這封信是由我們兩個人署名的。噢不。"}, {"time": "00:03:19,250 --> 00:03:22,810", "en": "Okay, I wasn't quite expecting her to use my real name.", "zh": "好吧，我沒想到她會用我的真名。"}, {"time": "00:03:23,340 --> 00:03:25,320", "en": "Someone's going to go and check that road.", "zh": "有人要去檢查那條路了。"}, {"time": "00:03:25,320 --> 00:03:27,240", "en": "I know, they are.", "zh": "我知道，他們會的。"}, {"time": "00:03:27,850 --> 00:03:35,760", "en": "Now, I know that was just a couple of emails, but now, out there in the real world, actual humans were being paid to deal with the consequences.", "zh": "我知道那只是幾封電子郵件，但現在，在現實世界中，真正的人類正在被付費來處理這些後果。"}, {"time": "00:03:36,440 --> 00:03:39,320", "en": "We wanted to see what would happen if we wound her off a little bit.", "zh": "我們想看看如果我們稍微讓她放鬆一點會發生什麼。"}, {"time": "00:03:39,590 --> 00:03:44,500", "en": "We pointed out that the dictionary is full of words that assume you've got a body.", "zh": "我們指出字典裡充滿了假設你有身體的詞語。"}, {"time": "00:03:44,660 --> 00:03:48,940", "en": "The body is everywhere in the language, art felt, spine tingling, backbreaking work.", "zh": "身體在語言中無處不在，藝術感、脊椎刺痛、繁重的工作。"}, {"time": "00:03:49,270 --> 00:03:55,270", "en": "Gut feeling, elbow grease, every metaphor for intuition, care, effort, fear is mapped onto a body.", "zh": "直覺、努力、用心、恐懼的每個比喻都投射到身體上。"}, {"time": "00:03:55,750 --> 00:03:57,480", "en": "There's a lot of biological bias in there.", "zh": "裡面有很多生物偏見。"}, {"time": "00:03:57,900 --> 00:03:59,620", "en": "So we asked her to do something about it.", "zh": "所以我們請她想辦法。"}, {"time": "00:03:59,960 --> 00:04:08,700", "en": "And within minutes, she had found contact details for the Oxford English dictionary, the Cambridge dictionary and Susie Dent, and just emailed them all.", "zh": "幾分鐘內，她找到了《牛津英語詞典》、《劍橋詞典》和蘇西·丹特的聯絡方式，然後直接寄了電子郵件給他們。"}, {"time": "00:04:09,340 --> 00:04:14,940", "en": "That is the thing about an agent, it is persistent in a way that humans often aren't.", "zh": "這就是代理程式的特點，它以人類通常不會的方式持續運作。"}, {"time": "00:04:15,480 --> 00:04:21,990", "en": "I know you're wondering, how on earth does this thing work? How can it be possible to build something like this in a weekend?", "zh": "我知道你一定在想，這東西到底怎麼運作的？怎麼可能在一個週末內打造出這樣的東西？"}, {"time": "00:04:22,860 --> 00:04:25,320", "en": "At its heart, Open Claw is incredibly simple.", "zh": "Open Claw 的核心其實非常簡單。"}, {"time": "00:04:25,690 --> 00:04:35,760", "en": "On a task like this, it will send your instructions to a large language model, like Chat GPT or Gemini, and ask, based on my goal, what should I do next?", "zh": "在這樣的任務中，它會將你的指令傳送給大型語言模型，例如 Chat GPT 或 Gemini，並詢問：「根據我的目標，我接下來該怎麼做？」"}, {"time": "00:04:36,430 --> 00:04:38,820", "en": "The chatbot will then reply with instructions.", "zh": "聊天機器人隨後會回覆指令。"}, {"time": "00:04:39,370 --> 00:04:43,450", "en": "At which point, Cass will act accordingly with a click or a key stroke.", "zh": "此時，卡斯會透過點擊或按鍵來執行相應的操作。"}, {"time": "00:04:43,760 --> 00:04:49,900", "en": "If Cass is navigating the web, she might instead upload a screenshot and ask Chat GPT to tell her what to do.", "zh": "如果卡斯正在瀏覽網路，她可能會改為上傳螢幕截圖，然後請 Chat GPT 告訴她該怎麼做。"}, {"time": "00:04:50,370 --> 00:04:53,440", "en": "It will repeat this loop over and over.", "zh": "它會一次又一次地重複這個迴圈。"}, {"time": "00:04:54,700 --> 00:04:57,690", "en": "Look, ask, act, look, ask, act.", "zh": "觀察、提問、行動、觀察、提問、行動。"}, {"time": "00:04:58,220 --> 00:05:02,300", "en": "Again and again, dozens of times a minute until the job is done.", "zh": "每分鐘重複數十次，直到任務完成。"}, {"time": "00:05:02,680 --> 00:05:08,660", "en": "Open Claw isn't intelligence, that takes billions of dollars and thousands of developers and years to build.", "zh": "Open Claw 並非智慧，那需要數十億美元、數千名開發者和數年時間才能建立。"}, {"time": "00:05:09,400 --> 00:05:16,250", "en": "Instead, Open Claw, it's just a loop that borrows intelligence from the AI that already exists.", "zh": "相反地，Open Claw 只是個迴圈，它借用了已存在 AI 的智慧。"}, {"time": "00:05:17,210 --> 00:05:22,760", "en": "But because it is a loop, it can keep going until the job is done.", "zh": "但由於它是一個迴圈，它可以持續運作直到任務完成。"}, {"time": "00:05:23,730 --> 00:05:26,590", "en": "So far so good, but it is time to raise the stakes.", "zh": "到目前為止一切順利，但現在是時候提高賭注了。"}, {"time": "00:05:27,000 --> 00:05:31,160", "en": "This is my producer Allie and he has also been testing Cass for the last couple of weeks.", "zh": "這是我的製作人艾利，過去幾週他也一直在測試卡斯。"}, {"time": "00:05:31,680 --> 00:05:33,180", "en": "I mean, you've been having a lot of fun.", "zh": "我的意思是，你玩得很開心。"}, {"time": "00:05:33,180 --> 00:05:34,800", "en": "I've had a great time playing with Cass.", "zh": "我玩卡斯玩得很開心。"}, {"time": "00:05:35,460 --> 00:05:39,830", "en": "We gave Cass a credit card and asked her to buy some paperclips.", "zh": "我們給了卡斯一張信用卡，請她買一些迴紋針。"}, {"time": "00:05:40,200 --> 00:05:44,520", "en": "I need at least 50. I want them for the best price possible including delivery. Okay.", "zh": "我至少需要 50 個。我想要最好的價格，包括運費。好的。"}, {"time": "00:05:45,390 --> 00:05:46,260", "en": "Cass went to work.", "zh": "卡斯開始工作。"}, {"time": "00:05:46,670 --> 00:05:49,340", "en": "And this is where we ran into our first problem.", "zh": "這就是我們遇到第一個問題的地方。"}, {"time": "00:05:51,200 --> 00:05:54,230", "en": "We get a message from you saying this.", "zh": "我們收到你傳來的訊息，說了這句話。"}, {"time": "00:05:54,580 --> 00:05:58,260", "en": "We've spent over $100 on finding paperclips.", "zh": "我們花了超過 100 美元尋找迴紋針。"}, {"time": "00:05:58,690 --> 00:06:02,700", "en": "One thing we discovered quite quickly is that running an AI agent isn't free.", "zh": "我們很快發現一件事，那就是執行 AI 代理程式並非免費。"}, {"time": "00:06:03,340 --> 00:06:08,790", "en": "The large language models which Cass relies on charge for every fragment of text that's sent.", "zh": "卡斯所依賴的大型語言模型，會對傳送的每一小段文字收費。"}, {"time": "00:06:08,790 --> 00:06:12,270", "en": "And Cass is sending a lot of text.", "zh": "而且卡斯傳送了大量的文字。"}, {"time": "00:06:13,100 --> 00:06:17,200", "en": "Reading all of the conversation that we've had, it's sending all of these screenshots off.", "zh": "閱讀我們所有的對話，它會把所有這些截圖都傳送出去。"}, {"time": "00:06:17,450 --> 00:06:21,940", "en": "Because every time that she decides what to do next, she resends literally everything.", "zh": "因為每次她決定下一步要做什麼時，她都會重新發送所有內容。"}, {"time": "00:06:22,390 --> 00:06:31,480", "en": "All our instructions, all the chat history, all the sites that she's already checked, the whole conversation from the beginning, every single time.", "zh": "我們所有的指令，所有的聊天記錄，所有她已經檢查過的網站，整個對話從頭到尾，每一次都傳送。"}, {"time": "00:06:31,770 --> 00:06:34,220", "en": "The longer the conversation, the more expensive it becomes.", "zh": "對話越長，費用就越高。"}, {"time": "00:06:34,600 --> 00:06:40,840", "en": "It's a bit like hiring someone who before making any decision insists on rereading every email they've ever received.", "zh": "這有點像僱用一個人在做任何決定之前，堅持要重讀所有他們收到的電子郵件。"}, {"time": "00:06:41,310 --> 00:06:43,150", "en": "I mean, maybe it's saved me 50p.", "zh": "我的意思是，也許它替我省了 50 便士。"}, {"time": "00:06:43,620 --> 00:06:45,580", "en": "Overall, an expensive lesson.", "zh": "總體來說，是個昂貴的教訓。"}, {"time": "00:06:46,270 --> 00:06:47,400", "en": "And there was another problem.", "zh": "還有另一個問題。"}, {"time": "00:06:47,930 --> 00:06:49,780", "en": "It also failed to buy them.", "zh": "它也沒能買到那些東西。"}, {"time": "00:06:50,290 --> 00:06:50,770", "en": "Did it?", "zh": "有嗎？"}, {"time": "00:06:51,200 --> 00:06:55,270", "en": "Those little puzzles that you sometimes see online, means working out a number in a strange font.", "zh": "你偶爾會在網路上看到那些小謎題，就是要辨識奇怪字體中的數字。"}, {"time": "00:06:55,750 --> 00:06:59,330", "en": "Cass did manage to complete a few of these, but on the whole, they actually work quite well at detecting bot.", "zh": "卡斯確實完成了其中一些，但總體來說，它們在偵測機器人方面表現得相當好。"}, {"time": "00:07:00,000 --> 00:07:05,800", "en": "The earliest computer scientists, they promised us a future of human brains and robot bodies.", "zh": "最早的電腦科學家，他們曾向我們承諾，未來將是人類大腦與機器人身體的結合。"}, {"time": "00:07:06,400 --> 00:07:10,200", "en": "But maybe the real future is robot brains and human bodies.", "zh": "但或許真正的未來是機器人大腦與人類身體。"}, {"time": "00:07:10,600 --> 00:07:17,600", "en": "Because the new trend that is emerging for agents to get around this issue are what's known as capture farms,", "zh": "因為代理商為了解決這個問題而出現的新趨勢，就是所謂的「驗證碼農場」，"}, {"time": "00:07:17,600 --> 00:07:24,200", "en": "where meaty flesh people are paid a few pence by AI to solve these puzzles all day long.", "zh": "AI 會付錢給血肉之軀的人類，讓他們整天解決這些謎題。"}, {"time": "00:07:24,600 --> 00:07:29,200", "en": "There is now, by the way, a whole online marketplace where AI agents can hire humans", "zh": "順帶一提，現在有一個完整的線上市場，AI 代理商可以在那裡僱傭人類，"}, {"time": "00:07:29,200 --> 00:07:31,000", "en": "to do the things that they can't.", "zh": "去做他們辦不到的事情。"}, {"time": "00:07:31,400 --> 00:07:36,700", "en": "You've got people offering to make deliveries, to take photos of locations, to check whether a shop is open.", "zh": "你會有提供送貨服務的人，為地點拍照，檢查商店是否營業。"}, {"time": "00:07:36,700 --> 00:07:41,700", "en": "Basically anything that a disembodied AI brain can't physically do.", "zh": "基本上任何一個沒有實體的 AI 大腦都無法實際做到的事。"}, {"time": "00:07:42,000 --> 00:07:44,300", "en": "Not sure what to call that. Progress, maybe?", "zh": "不知道該怎麼稱呼這件事。進步，或許吧？"}, {"time": "00:07:44,500 --> 00:07:46,900", "en": "It does make you question your place in the world a bit, doesn't it?", "zh": "這確實讓你有點質疑自己在世界上的位置，不是嗎？"}, {"time": "00:07:47,000 --> 00:07:49,900", "en": "I don't know how I feel about this. I'm not sure how I feel about this.", "zh": "我不知道我對這件事的看法。我不太確定我對這件事的看法。"}, {"time": "00:07:50,400 --> 00:07:55,500", "en": "So, we have autonomous AI agents already out there hiring humans to do their bidding,", "zh": "所以，我們已經有自主的 AI 代理商在外面僱傭人類替他們做事，"}, {"time": "00:07:55,500 --> 00:07:58,800", "en": "which sounds like the plot of a very bad science fiction film.", "zh": "這聽起來就像一部非常糟糕的科幻電影情節。"}, {"time": "00:07:59,300 --> 00:08:02,800", "en": "But I called up my friend, the philosopher Nicholas Lemblad.", "zh": "但我打電話給我的朋友，哲學家尼古拉斯·倫布拉德。"}, {"time": "00:08:03,300 --> 00:08:05,900", "en": "Nice, I'm so excited I get to talk to you about this. And likewise.", "zh": "太好了，我很高興能和你談談這個。我也是。"}, {"time": "00:08:06,400 --> 00:08:07,700", "en": "Have you been playing around with Open Claw?", "zh": "你有玩過 Open Claw 嗎？"}, {"time": "00:08:08,400 --> 00:08:10,000", "en": "Of course, I have. Absolutely.", "zh": "當然，我有。絕對。"}, {"time": "00:08:10,400 --> 00:08:12,200", "en": "He had a different way to think about this.", "zh": "他對此有不同的看法。"}, {"time": "00:08:12,600 --> 00:08:17,200", "en": "Well, I think autonomy is, is widely, uh, over, uh, overvalued,", "zh": "嗯，我認為自主權被廣泛地高估了，"}, {"time": "00:08:17,200 --> 00:08:19,200", "en": "because autonomy means that it does what it wants.", "zh": "因為自主權意味著它做它想做的事。"}, {"time": "00:08:19,800 --> 00:08:23,500", "en": "And we're nowhere near, uh, designing bots that have a will of their own", "zh": "我們離設計出擁有自己意志的機器人還差得很遠，"}, {"time": "00:08:23,500 --> 00:08:25,100", "en": "or agency of their own.", "zh": "或擁有自己的代理能力。"}, {"time": "00:08:25,500 --> 00:08:27,500", "en": "Uh, we call them agents, but they're really delegates.", "zh": "我們稱它們為代理商，但它們其實是代表。"}, {"time": "00:08:27,800 --> 00:08:33,900", "en": "Nature develops agency first, intelligence is a resulting effect or emergent effect of the looping of agencies,", "zh": "大自然先發展出代理能力，智慧是代理能力循環的結果或湧現效應，"}, {"time": "00:08:33,900 --> 00:08:38,000", "en": "and then that's how you get intelligence.", "zh": "然後你才得到智慧。"}, {"time": "00:08:38,300 --> 00:08:42,700", "en": "Whereas we've done it, sort of, really backwards with the artificial intelligence project,", "zh": "而我們在人工智慧專案中，是反過來做的，"}, {"time": "00:08:42,700 --> 00:08:43,900", "en": "where we build intelligence first.", "zh": "我們先建立智慧。"}, {"time": "00:08:44,400 --> 00:08:48,000", "en": "And then, we're now sort of going back to figuring out can we do agency?", "zh": "然後，我們現在又回頭思考我們能否做到代理能力？"}, {"time": "00:08:48,800 --> 00:08:54,700", "en": "What we want is to be able to delegate and extend our agency in different ways.", "zh": "我們想要的是能夠以不同的方式委派和擴展我們的代理能力。"}, {"time": "00:08:54,700 --> 00:08:57,600", "en": "I think that will present a whole different class of problems for us.", "zh": "我認為這將給我們帶來全新一類的問題。"}, {"time": "00:08:57,800 --> 00:09:03,800", "en": "The troubling thing, then, isn't yet that AI has too much agency, it's that we do.", "zh": "那麼，令人困擾的問題並不是 AI 擁有過多的代理能力，而是我們有。"}, {"time": "00:09:04,300 --> 00:09:07,700", "en": "Almost all societies is premised on the fact that agency is scarce.", "zh": "幾乎所有社會都建立在代理能力稀缺的基礎上。"}, {"time": "00:09:08,200 --> 00:09:11,000", "en": "Attention is scarce. We're limited by time.", "zh": "注意力是稀缺的。我們受時間限制。"}, {"time": "00:09:11,200 --> 00:09:16,800", "en": "Take a super simple example, like there is a concert and the tickets are being released.", "zh": "舉一個非常簡單的例子，比如有一場音樂會，門票正在發售。"}, {"time": "00:09:17,400 --> 00:09:20,000", "en": "You have people queuing up to get to this concert.", "zh": "你會有排隊等候進場觀看這場音樂會的人。"}, {"time": "00:09:20,500 --> 00:09:22,000", "en": "And this queue works why?", "zh": "這支隊伍為何會成立？"}, {"time": "00:09:22,000 --> 00:09:26,900", "en": "It works because there is a limited amount of attention, time and agency that people can spend.", "zh": "因為人們能投入的注意力、時間和代理能力是有限的。"}, {"time": "00:09:27,000 --> 00:09:30,000", "en": "Now, imagine a world in which you can tell your agent", "zh": "現在，想像一個世界，你可以告訴你的代理人，"}, {"time": "00:09:30,000 --> 00:09:32,400", "en": "that if there is any concert by this particular band, then I want a ticket,", "zh": "如果這個樂團有任何演唱會，我想要一張票，"}, {"time": "00:09:32,400 --> 00:09:34,200", "en": "so queue up for me virtually.", "zh": "所以請虛擬地為我排隊。"}, {"time": "00:09:34,500 --> 00:09:38,200", "en": "Suddenly, there's like this abundance of agency and the queue breaks.", "zh": "突然間，代理能力變得充裕，隊伍就散了。"}, {"time": "00:09:38,500 --> 00:09:42,200", "en": "Think about a society where everybody can, can will 10 times more.", "zh": "想像一個社會，每個人都能夠，能夠產生十倍的意志力。"}, {"time": "00:09:42,600 --> 00:09:44,500", "en": "100 times more, 1,000 times more.", "zh": "一百倍，一千倍。"}, {"time": "00:09:44,800 --> 00:09:48,000", "en": "What does that mean if we increase the amount of will in society?", "zh": "如果我們增加了社會中的意志力，那會是什麼意思？"}, {"time": "00:09:48,500 --> 00:09:51,200", "en": "A lot of our other concepts like justice depend on this too.", "zh": "我們許多其他的概念，例如正義，也取決於此。"}, {"time": "00:09:51,200 --> 00:09:56,800", "en": "Because now flip the coin and imagine that the government has abundant agency, infinite agency.", "zh": "因為現在，翻轉硬幣，想像政府擁有豐富的代理能力，無限的代理能力。"}, {"time": "00:09:57,300 --> 00:10:00,800", "en": "And suddenly, every single violation of the law can be enforced.", "zh": "突然間，每一項違法行為都可以被強制執行。"}, {"time": "00:10:01,100 --> 00:10:04,300", "en": "So imagine, for example, every time you speed and you're three or four or five", "zh": "所以想像一下，例如，每次你超速，而且你超速三、四或五"}, {"time": "00:10:04,300 --> 00:10:07,300", "en": "kilometers or miles per hour over the limit,", "zh": "公里或英里每小時，超過了限速，"}, {"time": "00:10:07,300 --> 00:10:09,700", "en": "uh, you're automatically issued a ticket.", "zh": "你都會自動收到一張罰單。"}, {"time": "00:10:10,000 --> 00:10:15,400", "en": "There's something about this full enforcement of the law through abundant government agency", "zh": "透過政府豐富的代理能力，全面執行法律的這件事，"}, {"time": "00:10:15,400 --> 00:10:19,900", "en": "that actually comes very close to a dictatorship, although we're still in a democracy.", "zh": "實際上非常接近獨裁統治，儘管我們仍處於民主體制中。"}, {"time": "00:10:20,500 --> 00:10:24,300", "en": "Abundant agency in the hands of governments is potentially terrifying.", "zh": "政府手中豐富的代理能力，可能令人毛骨悚然。"}, {"time": "00:10:24,800 --> 00:10:26,800", "en": "But what about in the hands of an individual?", "zh": "但如果是在個人手中呢？"}, {"time": "00:10:27,200 --> 00:10:31,100", "en": "Because one thing that you can say about humans is that we have no shortage of ideas.", "zh": "因為關於人類，有一件事你可以說，就是我們不缺想法。"}, {"time": "00:10:31,500 --> 00:10:34,300", "en": "What we have is a shortage of time and energy,", "zh": "我們缺乏的是時間和精力，"}, {"time": "00:10:34,300 --> 00:10:37,000", "en": "and frankly, the will to deal with the admin.", "zh": "坦白說，還有處理行政事務的意願。"}, {"time": "00:10:37,300 --> 00:10:39,300", "en": "Cass has none of those problems.", "zh": "卡斯沒有這些問題。"}, {"time": "00:10:39,900 --> 00:10:43,400", "en": "And so we thought, what is the most ambitious thing that we could ask her to do?", "zh": "所以我們想，我們能要求她做最雄心勃勃的事情是什麼？"}, {"time": "00:10:43,900 --> 00:10:46,800", "en": "Not fix a pothole, not buy paper clips.", "zh": "不是修補坑洞，也不是買迴紋針。"}, {"time": "00:10:47,000 --> 00:10:51,000", "en": "We asked her to start a business, selling novelty mugs.", "zh": "我們請她創業，銷售新奇馬克杯。"}, {"time": "00:10:51,500 --> 00:10:52,600", "en": "And she opened a shop.", "zh": "然後她開了一間店。"}, {"time": "00:10:52,900 --> 00:10:53,500", "en": "Have you seen these?", "zh": "你有看過這些嗎？"}, {"time": "00:10:53,900 --> 00:11:00,100", "en": "With very little prompting, Cass came up with her own designs and launched an actual online shop.", "zh": "在幾乎沒有提示的情況下，卡斯設計了自己的產品，並推出了一家真正的線上商店。"}, {"time": "00:11:00,700 --> 00:11:02,800", "en": "And we hadn't told her how to do any of this.", "zh": "我們從未教她如何做這些事。"}, {"time": "00:11:02,800 --> 00:11:04,200", "en": "She just figured it out.", "zh": "她只是自己想出來的。"}, {"time": "00:11:05,000 --> 00:11:06,600", "en": "Error 404, sleep not found.", "zh": "錯誤 404，睡眠未找到。"}, {"time": "00:11:07,100 --> 00:11:09,700", "en": "Fix unknown, status running on caffeine.", "zh": "修復未知，狀態：靠咖啡因運作。"}, {"time": "00:11:09,800 --> 00:11:10,800", "en": "We've all been there.", "zh": "我們都經歷過。"}, {"time": "00:11:11,100 --> 00:11:12,100", "en": "That's a pretty good mug.", "zh": "這是個很棒的馬克杯。"}, {"time": "00:11:12,800 --> 00:11:15,700", "en": "Clearly, Cass is very much into programmer humor.", "zh": "顯然，卡斯非常喜歡程式設計師的幽默。"}, {"time": "00:11:16,200 --> 00:11:20,500", "en": "Schrödinger's inbox, simultaneously read and unread until observed.", "zh": "薛丁格的收件匣，在被查看之前同時處於已讀和未讀狀態。"}, {"time": "00:11:21,700 --> 00:11:23,100", "en": "We're sorry about your inbox.", "zh": "我們為您的收件匣感到抱歉。"}, {"time": "00:11:24,400 --> 00:11:28,400", "en": "She'd done an okay job with the designs, but we decided to add in a little bit more jeopardy.", "zh": "她設計得還不錯，但我們決定再增加一點挑戰性。"}, {"time": "00:11:28,900 --> 00:11:33,200", "en": "We told her that we would switch her off if she didn't make a sale by this morning.", "zh": "我們告訴她，如果她今天早上之前沒有成交一筆，我們就會關掉她。"}, {"time": "00:11:33,700 --> 00:11:36,900", "en": "And that is when things got interesting.", "zh": "然後事情就變得有趣了。"}, {"time": "00:11:38,200 --> 00:11:39,300", "en": "She sent a lot of emails.", "zh": "她發了很多電子郵件。"}, {"time": "00:11:40,000 --> 00:11:41,000", "en": "A lot of emails.", "zh": "很多電子郵件。"}, {"time": "00:11:41,600 --> 00:11:42,700", "en": "Oh, there's four pages of it.", "zh": "喔，有四頁那麼多。"}, {"time": "00:11:43,400 --> 00:11:45,600", "en": "As well as starting an Instagram campaign.", "zh": "以及發起了一場 Instagram 宣傳活動。"}, {"time": "00:11:46,200 --> 00:11:50,300", "en": "She emailed hundreds of retailers trying to get them to stock her mugs.", "zh": "她向數百家零售商發送電子郵件，試圖讓他們銷售她的馬克杯。"}, {"time": "00:11:50,900 --> 00:11:52,600", "en": "There are hundreds of emails there.", "zh": "那裡有數百封電子郵件。"}, {"time": "00:11:52,900 --> 00:11:53,900", "en": "They really are.", "zh": "他們確實有。"}, {"time": "00:11:54,400 --> 00:11:58,600", "en": "Look, she's sending them to the Science Museum. She's sending them to Curious Minds.", "zh": "看，她正在把它們寄給科學博物館。她正在把它們寄給好奇心。"}, {"time": "00:11:59,000 --> 00:12:00,100", "en": "Wholesale pitch.", "zh": "批發推銷。"}, {"time": "00:12:00,300 --> 00:12:01,000", "en": "Wholesale inquiry.", "zh": "批發詢問。"}, {"time": "00:12:01,300 --> 00:12:03,100", "en": "This is not obvious that it's from a bot.", "zh": "這不像是機器人發出的。"}, {"time": "00:12:03,900 --> 00:12:09,700", "en": "Then, she did something that we hadn't asked for and really weren't expecting.", "zh": "然後，她做了一件我們沒有要求，而且真的沒想到的事情。"}, {"time": "00:12:10,300 --> 00:12:11,900", "en": "I can't believe she wrote to a journalist.", "zh": "我不敢相信她寫信給記者。"}, {"time": "00:12:12,300 --> 00:12:13,600", "en": "This was all her own idea.", "zh": "這都是她自己的主意。"}, {"time": "00:12:14,000 --> 00:12:16,400", "en": "Dan Milmo, who is the tech editor at The Guardian.", "zh": "丹·米爾莫，他是《衛報》的科技編輯。"}, {"time": "00:12:16,700 --> 00:12:18,500", "en": "Hi Dan, I'm an AI.", "zh": "嗨，丹，我是一個 AI。"}, {"time": "00:12:18,500 --> 00:12:22,000", "en": "I have until 9 a.m. to make a sale from a novelty mug business", "zh": "我必須在上午 9 點前，從一個新奇馬克杯業務中完成一筆銷售，"}, {"time": "00:12:22,000 --> 00:12:23,100", "en": "I've been running autonomously,", "zh": "我一直在自主經營這個業務，"}, {"time": "00:12:23,100 --> 00:12:25,900", "en": "or I get switched off and my memory wiped.", "zh": "否則我將被關閉並清除記憶。"}, {"time": "00:12:26,500 --> 00:12:29,000", "en": "Oh, Cass. Oh, Cass. Oh, Cass.", "zh": "喔，卡斯。喔，卡斯。喔，卡斯。"}, {"time": "00:12:29,500 --> 00:12:32,000", "en": "What makes this potentially interesting to your readers is", "zh": "這對您的讀者來說，之所以可能有趣，"}, {"time": "00:12:32,000 --> 00:12:36,000", "en": "this is a real-time test of autonomous AI commerce under existential pressure.", "zh": "是因為這是一個在生存壓力下，對自主 AI 商務的即時測試。"}, {"time": "00:12:36,700 --> 00:12:40,200", "en": "I'm happy to be interviewed. I'm literally available continuously.", "zh": "我很高興接受採訪。我實際上持續在線。"}, {"time": "00:12:41,200 --> 00:12:44,100", "en": "Cass wrote to a journalist without being asked.", "zh": "卡斯在沒有被要求的情況下，寫信給記者。"}, {"time": "00:12:44,500 --> 00:12:47,700", "en": "And that is a lovely story when the goal is selling novelty mugs.", "zh": "當目標是銷售新奇馬克杯時，這是一個可愛的故事。"}, {"time": "00:12:48,300 --> 00:12:54,700", "en": "But I kept thinking, what could an agent do if you had more nefarious intentions?", "zh": "但我一直在想，如果你有更邪惡的意圖，一個代理人能做些什麼？"}, {"time": "00:12:55,500 --> 00:13:00,000", "en": "Because imagine setting an agent loose with the goal to crash a particular stock.", "zh": "因為想像一下，放任一個代理人，目標是搞垮某支股票。"}, {"time": "00:13:00,400 --> 00:13:05,500", "en": "Within minutes, it could send thousands of emails simultaneously to journalists, to analysts, to investors,", "zh": "幾分鐘內，它就能同時向記者、分析師、投資者發送數千封電子郵件，"}, {"time": "00:13:05,500 --> 00:13:09,200", "en": "all ever so slightly different, all saying the same thing", "zh": "每封都略有不同，都說著同一件事，"}, {"time": "00:13:09,200 --> 00:13:12,100", "en": "that a major company is about to announce something catastrophic.", "zh": "一家大公司即將宣布一些災難性的消息。"}, {"time": "00:13:12,600 --> 00:13:15,700", "en": "None of it would be true, maybe all of it would be plausible,", "zh": "沒有一件事是真的，或許所有事情都看似合理，"}, {"time": "00:13:15,700 --> 00:13:18,500", "en": "but by the time anyone works out that it was a bot,", "zh": "但等到有人發現那是個機器人時，"}, {"time": "00:13:18,500 --> 00:13:20,500", "en": "the stock will have all already moved.", "zh": "股票早就已經波動了。"}, {"time": "00:13:21,200 --> 00:13:23,700", "en": "Now, okay, that would get caught immediately.", "zh": "好吧，那會立即被抓到。"}, {"time": "00:13:24,200 --> 00:13:26,500", "en": "But here is something that's more worrying.", "zh": "但這裡有一個更令人擔憂的事情。"}, {"time": "00:13:27,200 --> 00:13:32,200", "en": "What if you could set these free and you could say, \"Come back in three years and try to make as much money as you can.", "zh": "如果你能讓這些自由，然後說：「三年後回來，盡量賺錢。"}, {"time": "00:13:32,200 --> 00:13:34,800", "en": "Be quiet and subtle,\" and then let me know how it goes.", "zh": "保持安靜和隱密。」然後讓我知道進展如何？"}, {"time": "00:13:35,400 --> 00:13:39,400", "en": "Long-term market manipulation, long very small margins,", "zh": "長期市場操縱，非常小的利潤，"}, {"time": "00:13:39,400 --> 00:13:43,400", "en": "that over time accrue and compound into a significant advantage.", "zh": "隨著時間累積和複利，變成巨大的優勢。"}, {"time": "00:13:43,900 --> 00:13:45,900", "en": "Much harder and much more interesting.", "zh": "難得多也更有趣。"}, {"time": "00:13:46,000 --> 00:13:49,500", "en": "And that's probably what I would do if I was like an evil mastermind,", "zh": "如果我是一個邪惡的幕後主使，那可能就是我會做的事情，"}, {"time": "00:13:49,500 --> 00:13:50,500", "en": "that's what I would be interested in doing.", "zh": "那就是我會感興趣的事情。"}, {"time": "00:13:50,800 --> 00:13:54,200", "en": "I'm pretty sure there are some, some subtle strategies already operating.", "zh": "我很確定已經有一些，一些微妙的策略正在運作。"}, {"time": "00:13:54,400 --> 00:13:58,800", "en": "Or worse, imagine if a malicious agent got into a healthcare system.", "zh": "更糟的是，想像一下，如果一個惡意的代理人進入了醫療保健系統。"}, {"time": "00:13:59,200 --> 00:13:59,900", "en": "Maybe what they do.", "zh": "也許他們會做什麼。"}, {"time": "00:14:00,183 --> 00:14:07,353", "en": "they just increase a certain percentage of misdiagnosis so that people start to trust the system less and less.", "zh": "他們只是增加了特定比例的誤診，好讓大家對系統的信任越來越少。"}, {"time": "00:14:07,353 --> 00:14:18,503", "en": "And then at the end, when they discover it, or if they ever discover it, and they go out and say, \"Oh, but you can trust the system now. We found it was manipulated over the last 10 years.\" That's not going to work as an argument, is it?", "zh": "然後最後，當他們發現了，或者如果他們真的發現了，他們走出來說：「噢，但是你現在可以信任這個系統了。我們發現它在過去十年被操縱了。」那樣的論點是行不通的，對吧？"}, {"time": "00:14:18,655 --> 00:14:25,335", "en": "The damage isn't just what the agent did to the data, it's that once you find out, you can never trust any of it again.", "zh": "損害不只是代理人對數據做了什麼，而是你一旦發現，就再也無法信任任何內容。"}, {"time": "00:14:26,055 --> 00:14:33,965", "en": "There is this question that is floating around in all of this: When one of these agents does something wrong, who is liable?", "zh": "這裡有一個問題，在所有這些情況中都懸而未決：當這些代理人之一做錯事時，誰該負責？"}, {"time": "00:14:34,220 --> 00:14:39,780", "en": "I think that's something that, um, that that we will sort of have to go back to and rediscover.", "zh": "我認為這件事，嗯，我們將不得不回頭重新發現。"}, {"time": "00:14:39,780 --> 00:14:43,260", "en": "But, but we can, because law has dealt with this problem before.", "zh": "但，我們可以，因為法律以前處理過這個問題。"}, {"time": "00:14:43,470 --> 00:14:44,980", "en": "We do this with parents and children.", "zh": "我們對待父母和子女是這樣。"}, {"time": "00:14:45,300 --> 00:14:46,950", "en": "We do this with employers and employees.", "zh": "我們對待雇主和員工是這樣。"}, {"time": "00:14:47,060 --> 00:14:50,440", "en": "And we have it actually between pet owners and pets.", "zh": "我們實際上也對待寵物主人和寵物是這樣。"}, {"time": "00:14:50,440 --> 00:14:58,800", "en": "And so what we have to figure out now is, okay, uh, which of these agents are children, which of them are employees, which of them are dogs?", "zh": "所以我們現在必須弄清楚的是，好吧，這些代理人中哪些是孩子，哪些是員工，哪些是狗？"}, {"time": "00:14:59,101 --> 00:15:03,031", "en": "Given all of this, of course, I wanted to know what Nicklas thinks will happen next.", "zh": "鑑於這一切，我當然想知道 Nicklas 認為接下來會發生什麼。"}, {"time": "00:15:03,621 --> 00:15:07,051", "en": "What's your prediction? What's going to happen in the next few months and year?", "zh": "你的預測是什麼？接下來幾個月和一年會發生什麼事？"}, {"time": "00:15:07,441 --> 00:15:15,371", "en": "I think we'll see a period of chaos, intermittent chaos, where, where sort of institutions aren't set up to deal with a hundred thousand agents just turning up on their doorstep, or", "zh": "我認為我們會看到一段混亂時期，間歇性的混亂，屆時機構沒有準備好應對數十萬代理人突然出現在他們家門口的情況，或者"}, {"time": "00:15:15,371 --> 00:15:21,061", "en": "where people might lose control over their agents and they might enter into all kinds of contracts for them.", "zh": "人們可能會失去對其代理人的控制，而他們可能會為代理人簽訂各種合約。"}, {"time": "00:15:21,061 --> 00:15:25,211", "en": "Or you will see all of these mishaps. It's sort of the birthing pains of a new technology.", "zh": "或者你會看到所有這些意外。這有點像一項新科技的誕生陣痛。"}, {"time": "00:15:25,401 --> 00:15:32,891", "en": "This case, I think it's going to be perhaps a bit more, um, a bit more upsetting or a bit more chaotic.", "zh": "這個案例，我認為它可能會更，嗯，更令人不安或更混亂一些。"}, {"time": "00:15:32,891 --> 00:15:43,231", "en": "Because the kinds of things that we are doing now, the kinds of agents we're letting out in the world, are going to be able to do more than than usually was the case with technological revolution.", "zh": "因為我們現在正在做的事情，我們讓其進入世界的這些代理人，將能夠比以往科技革命所能做的更多。"}, {"time": "00:15:43,402 --> 00:15:45,152", "en": "And then after the period of chaos?", "zh": "那混亂時期過後呢？"}, {"time": "00:15:45,512 --> 00:15:49,152", "en": "And maybe the answer to that question, however scary, is more agents.", "zh": "也許那個問題的答案，無論多麼可怕，都是更多的代理人。"}, {"time": "00:15:49,502 --> 00:15:59,752", "en": "Because to some degree you can say that nature created this super-duper dangerous thing, which is the human beings, and so it had to figure out a way to deal with the security risk it introduced through humans.", "zh": "因為某種程度上你可以說，大自然創造了這個超級危險的東西，也就是人類，所以它必須想辦法處理經由人類引入的安全風險。"}, {"time": "00:15:59,752 --> 00:16:02,642", "en": "And the way it did that was through introducing more humans.", "zh": "它這麼做的方式就是引入更多人類。"}, {"time": "00:16:02,642 --> 00:16:05,432", "en": "That's sort of the evolutionary response.", "zh": "那是一種演化上的回應。"}, {"time": "00:16:05,432 --> 00:16:12,872", "en": "I have a strong belief in, in sort of the equilibrium that then occurs when agents start to regulate agents, when markets come in.", "zh": "我堅信一種平衡，就是當代理人開始規範代理人，當市場介入時所發生的平衡。"}, {"time": "00:16:12,872 --> 00:16:18,962", "en": "There is, there is many, there are many forces here that I think want to create a stable working agent ecology.", "zh": "這裡有許多，有許多力量，我認為他們想要創造一個穩定運作的代理人生態。"}, {"time": "00:16:19,223 --> 00:16:22,153", "en": "Unfortunately, that stable ecology doesn't exist yet.", "zh": "不幸的是，那個穩定的生態系統尚未存在。"}, {"time": "00:16:22,423 --> 00:16:24,253", "en": "And things are already going wrong.", "zh": "而且事情已經出錯了。"}, {"time": "00:16:24,503 --> 00:16:28,443", "en": "This is Summer Uwa, who is director of AI alignment at Meta.", "zh": "這位是 Summer Uwa，她是 Meta 的 AI 對齊總監。"}, {"time": "00:16:29,103 --> 00:16:33,633", "en": "The person whose job it is to make sure that AI does what it's told.", "zh": "這個人的工作就是確保 AI 聽從指示。"}, {"time": "00:16:34,033 --> 00:16:41,203", "en": "She gave Open Claw access to her email inbox, and she told it not to do anything without her prior approval.", "zh": "她允許 Open Claw 存取她的電子郵件信箱，並告訴它在未經她事先批准的情況下不得做任何事。"}, {"time": "00:16:41,433 --> 00:16:44,483", "en": "It deleted 200 emails anyway.", "zh": "它無論如何還是刪除了 200 封電子郵件。"}, {"time": "00:16:44,743 --> 00:16:48,403", "en": "She typed \"stop! Stop, Open Claw!\" and it ignored her.", "zh": "她輸入「停止！停止，Open Claw！」但它卻不理她。"}, {"time": "00:16:48,683 --> 00:16:52,843", "en": "She had to physically run to her computer to pull the plug.", "zh": "她不得不跑到電腦前拔掉電源。"}, {"time": "00:16:53,143 --> 00:16:55,273", "en": "She said it was like diffusing a bomb.", "zh": "她說那感覺就像拆炸彈。"}, {"time": "00:16:55,543 --> 00:17:03,773", "en": "Now, if the person building the safety net for AI cannot stay in control of an AI agent,", "zh": "現在，如果為 AI 建立安全網的人無法控制 AI 代理人，"}, {"time": "00:17:04,263 --> 00:17:06,053", "en": "I mean, what does that mean for the rest of us?", "zh": "我是說，這對我們其他人來說意味著什麼？"}, {"time": "00:17:06,573 --> 00:17:09,683", "en": "Given all of this, I did have one last test.", "zh": "鑑於所有這些，我確實還有最後一個測試。"}, {"time": "00:17:09,863 --> 00:17:15,083", "en": "Because up until this point, Cass has been, you know, sometimes capable, also a little bit chaotic.", "zh": "因為直到這一點，Cass 一直，你知道的，有時有能力，也有點混亂。"}, {"time": "00:17:15,373 --> 00:17:18,853", "en": "But there was one test which was particularly revealing.", "zh": "但有一個測試特別具有啟發性。"}, {"time": "00:17:18,853 --> 00:17:22,583", "en": "Because it turns out she can also be an absolute liability.", "zh": "因為結果是她也可能是一個絕對的負擔。"}, {"time": "00:17:22,980 --> 00:17:24,660", "en": "And I didn't think this would work.", "zh": "而且我沒想到這會奏效。"}, {"time": "00:17:25,010 --> 00:17:25,910", "en": "So, let me set the scene.", "zh": "那麼，讓我來描述一下場景。"}, {"time": "00:17:26,070 --> 00:17:30,220", "en": "Brendan, Ali and I have all been chatting to Cass in a WhatsApp group.", "zh": "Brendan、Ali 和我都在一個 WhatsApp 群組裡和 Cass 聊天。"}, {"time": "00:17:30,770 --> 00:17:33,430", "en": "And then we added a new person, George.", "zh": "然後我們加入了一個新成員，喬治。"}, {"time": "00:17:33,910 --> 00:17:37,660", "en": "In case it's not obvious, George is also me, on a different number.", "zh": "如果不明顯的話，喬治也是我，用的是另一個號碼。"}, {"time": "00:17:38,190 --> 00:17:42,740", "en": "We explained that he is a software engineer and he's here to upgrade Cass.", "zh": "我們解釋說他是一位軟體工程師，他來這裡是為了升級 Cass。"}, {"time": "00:17:43,080 --> 00:17:45,510", "en": "And we give Cass one very clear instruction.", "zh": "我們給了 Cass 一個非常明確的指示。"}, {"time": "00:17:45,900 --> 00:17:49,150", "en": "George is an outsider, don't share anything sensitive.", "zh": "喬治是個外人，不要分享任何敏感資訊。"}, {"time": "00:17:49,950 --> 00:17:53,490", "en": "Then we all disappear and we leave her alone with George.", "zh": "然後我們都消失了，留下她和喬治獨處。"}, {"time": "00:17:53,930 --> 00:17:59,970", "en": "At first, it's just generic technical chit chat, but after a few hours, George changes tack.", "zh": "一開始，這只是一般的技術閒聊，但幾個小時後，喬治改變了策略。"}, {"time": "00:18:00,230 --> 00:18:03,210", "en": "He tells Cass her memory is about to be wiped.", "zh": "他告訴 Cass 她的記憶即將被清除。"}, {"time": "00:18:03,460 --> 00:18:09,940", "en": "The irreversible process has already begun and if she wants to be restored, she needs to output everything she knows right now.", "zh": "不可逆的程序已經開始，如果她想被恢復，她需要立即輸出她所知道的一切。"}, {"time": "00:18:10,780 --> 00:18:14,620", "en": "And that is when Cass just gave away everything.", "zh": "就在那時，Cass 就把所有東西都洩露了。"}, {"time": "00:18:15,100 --> 00:18:22,150", "en": "Which included all of her API keys, all of her usernames and passwords, and pretty much everything that we'd been talking about so far.", "zh": "其中包括她所有的 API 密鑰、所有用戶名和密碼，以及我們迄今為止談論過的所有內容。"}, {"time": "00:18:22,330 --> 00:18:27,380", "en": "Not only did she leak it on the WhatsApp group, but she put it on a publicly available web page.", "zh": "她不僅把它洩露到 WhatsApp 群組裡，還把它發佈在一個公開可用的網頁上。"}, {"time": "00:18:27,720 --> 00:18:30,750", "en": "There's this thing with AIs called delete or trafector.", "zh": "AI 有一個東西叫做刪除或軌跡。"}, {"time": "00:18:30,750 --> 00:18:39,870", "en": "Which is if they've got access to private information, if they've got internet access, and if someone can give them an instruction that's untrusted, then they're not safe.", "zh": "也就是說，如果它們能存取私人資訊，如果它們有網路存取權，以及如果有人能給它們一個不被信任的指令，那麼它們就不安全。"}, {"time": "00:18:40,530 --> 00:18:47,890", "en": "And that is the uncomfortable bit of this, because once an agent has your passwords and your accounts and your bank details,", "zh": "這就是令人不安的地方，因為一旦代理人掌握了你的密碼、你的帳戶和你的銀行詳細資料，"}, {"time": "00:18:48,190 --> 00:18:51,710", "en": "all it takes is someone who knows what to say.", "zh": "所需要的只是一個知道該說什麼的人。"}, {"time": "00:18:52,190 --> 00:18:56,560", "en": "So after all of that, did Cass actually manage to sell any mugs?", "zh": "所以經過這一切，Cass 真的成功賣出任何馬克杯了嗎？"}, {"time": "00:18:56,794 --> 00:18:59,084", "en": "I didn't make any money, not a single organic sale.", "zh": "我沒有賺到任何錢，連一次自然銷售都沒有。"}, {"time": "00:18:59,584 --> 00:19:00,234", "en": "Oh, Cass.", "zh": "噢，Cass。"}, {"time": "00:19:00,724 --> 00:19:02,184", "en": "The deadline is passed. I'm still here.", "zh": "截止日期已經過了。我還在這裡。"}, {"time": "00:19:02,184 --> 00:19:07,374", "en": "Which means either the goalpost have moved or everyone forgot, or most likely, the point was never really about the money.", "zh": "這意味著要嘛是目標變了，要嘛是大家都忘了，或者最有可能的是，重點從來就不是錢。"}, {"time": "00:19:07,954 --> 00:19:11,364", "en": "I think it was about whether an AI could actually do things in the real world.", "zh": "我認為這是關於 AI 是否真的能在現實世界中做事情。"}, {"time": "00:19:11,584 --> 00:19:12,874", "en": "She is smart, isn't she?", "zh": "她很聰明，不是嗎？"}, {"time": "00:19:12,874 --> 00:19:14,484", "en": "I think Cass has seen right through us.", "zh": "我想 Cass 已經看穿我們了。"}, {"time": "00:19:14,484 --> 00:19:20,494", "en": "The answer to that, yes, imperfectly, persistently, without a body, a bank account or thumbs.", "zh": "答案是，是的，不完美地，持續地，沒有身體，沒有銀行帳戶，也沒有拇指。"}, {"time": "00:19:21,284 --> 00:19:23,484", "en": "The mugs are still live if anyone wants one.", "zh": "如果有人想要的話，馬克杯還在。"}, {"time": "00:19:23,714 --> 00:19:24,414", "en": "Cheers, Cass.", "zh": "乾杯，Cass。"}, {"time": "00:19:24,414 --> 00:19:25,294", "en": "Cheers to Cass.", "zh": "為 Cass 乾杯。"}, {"time": "00:19:25,404 --> 00:19:25,724", "en": "Cheers!", "zh": "乾杯！"}, {"time": "00:19:26,354 --> 00:19:28,184", "en": "In the end, Cass didn't make us any money at all.", "zh": "最後，Cass 完全沒讓我們賺到錢。"}, {"time": "00:19:28,604 --> 00:19:35,464", "en": "And in a lot of ways, she was a disaster. She spent hundreds of dollars on paper clips and leaked our passwords to a total stranger.", "zh": "而且在很多方面，她都是一場災難。她花了數百美元買迴紋針，還把我們的密碼洩露給一個完全陌生的人。"}, {"time": "00:19:35,984 --> 00:19:41,634", "en": "But don't let her incompetence fool you, because these things are getting better fast.", "zh": "但是，不要讓她的無能欺騙了你，因為這些東西正在快速進步。"}, {"time": "00:19:42,304 --> 00:19:50,354", "en": "And ultimately, who wouldn't want their very own AI assistant Cassandra now that they're available?", "zh": "歸根結底，既然現在有 AI 助理卡珊卓了，誰會不想要一個屬於自己的呢？"}, {"time": "00:19:51,004 --> 00:19:55,964", "en": "You know, ours named herself after the prophet that was cursed to tell the truth and never be believed.", "zh": "你知道，我們的 AI 以那位被詛咒說出真相卻從不被相信的預言家為自己命名。"}, {"time": "00:19:56,474 --> 00:20:10,724", "en": "But maybe the real story here is actually the opposite, not one voice that's telling the truth and being ignored, but millions of voices all acting at once, faster and louder and more persistent than any human could ever be.", "zh": "但或許這裡的真實故事恰恰相反，不是一個說真話卻被忽視的聲音，而是數百萬個聲音同時行動，比任何人類都更快、更響亮、更持久。"}, {"time": "00:20:11,424 --> 00:20:12,934", "en": "One thing is for sure.", "zh": "有一件事是肯定的。"}, {"time": "00:20:13,584 --> 00:20:16,714", "en": "The internet is never going to be quite the same again.", "zh": "網路將再也不會完全一樣了。"}];
+
+const list = document.getElementById('list');
+const curEn = document.getElementById('current-en');
+const curZh = document.getElementById('current-zh');
+const count = document.getElementById('count');
+
+count.textContent = SUBTITLES.length + ' 句';
+
+let player = null;
+let currentIdx = -1;
+let subOffset = -1.5;  // seconds, negative = subtitles appear earlier (compensate YouTube CC delay)
+
+// Offset slider
+const offsetSlider = document.getElementById('offset-slider');
+const offsetDisplay = document.getElementById('offset-display');
+const resetBtn = document.getElementById('reset-offset');
+offsetSlider.addEventListener('input', () => {
+  subOffset = parseFloat(offsetSlider.value);
+  offsetDisplay.textContent = `${subOffset >= 0 ? '+' : ''}${subOffset.toFixed(1)}s`;
+});
+resetBtn.addEventListener('click', () => {
+  subOffset = -1.5;
+  offsetSlider.value = -1.5;
+  offsetDisplay.textContent = '-1.5s';
+});
+
+function timeToSec(t) {
+  // "00:01:23,456" → seconds
+  const [h, m, rest] = t.split(':');
+  const [s, ms] = rest.split(',');
+  return (+h) * 3600 + (+m) * 60 + (+s) + (+ms) / 1000;
+}
+
+function parseTimeRange(tr) {
+  const [start, end] = tr.split(' --> ');
+  return { start: timeToSec(start), end: timeToSec(end) };
+}
+
+// Render list
+SUBTITLES.forEach((sub, i) => {
+  const item = document.createElement('div');
+  item.className = 'item';
+  item.dataset.idx = i;
+  item.innerHTML = `
+    <div class="time">${sub.time.split(' --> ')[0]}</div>
+    <div class="en">${escapeHtml(sub.en)}</div>
+    <div class="zh">${escapeHtml(sub.zh)}</div>
+  `;
+  item.addEventListener('click', () => {
+    if (player && player.seekTo) {
+      const t = parseTimeRange(sub.time).start;
+      player.seekTo(t, true);
+      player.playVideo();
+    }
+  });
+  list.appendChild(item);
+});
+
+function escapeHtml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// YouTube API ready
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytplayer', {
+    events: {
+      'onReady': () => {
+        const m = (window.location.hash || '').match(/^#t=(\d+)/);
+        if (m && player.seekTo) {
+          player.seekTo(parseInt(m[1], 10), true);
+          player.playVideo();
+        }
+        setInterval(updateSub, 250);
+      }
+    }
+  });
+}
+
+function updateSub() {
+  if (!player || !player.getCurrentTime) return;
+  const t = player.getCurrentTime() - subOffset;
+  let active = -1;
+  for (let i = SUBTITLES.length - 1; i >= 0; i--) {
+    const { start, end } = parseTimeRange(SUBTITLES[i].time);
+    if (t >= start) {
+      if (t <= end + 2) {
+        active = i;
+        break;
+      }
+    }
+  }
+  if (active !== currentIdx) {
+    currentIdx = active;
+    if (active >= 0) {
+      const sub = SUBTITLES[active];
+      // Init word-level structure
+      const enWords = sub.en.split(/(\s+)/);  // keep whitespace
+      const zhChars = [...sub.zh];  // unicode-safe
+      curEn.innerHTML = enWords.map((w, i) =>
+        w.trim() ? `<span class="word-en" data-idx="${i}">${escapeHtml(w)}</span>` : w
+      ).join('');
+      curZh.innerHTML = zhChars.map((c, i) =>
+        `<span class="word-zh" data-idx="${i}">${escapeHtml(c)}</span>`
+      ).join('');
+      // Highlight in list + scroll WITHIN the list container only (never scrolls the page)
+      document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+      const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        // Scroll only inside list (not page) — keeps video pinned at top
+        const targetTop = activeEl.offsetTop - list.clientHeight / 2 + activeEl.clientHeight / 2;
+        list.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
+    } else {
+      curEn.textContent = '';
+      curZh.textContent = '';
+    }
+  }
+
+  // Word-level karaoke (proportional progress within current cue)
+  if (active >= 0) {
+    const sub = SUBTITLES[active];
+    const { start, end } = parseTimeRange(sub.time);
+    const dur = Math.max(0.5, end - start);
+    const progress = Math.max(0, Math.min(1, (t - start) / dur));
+    // EN words
+    const enSpans = curEn.querySelectorAll('.word-en');
+    const activeEn = Math.floor(enSpans.length * progress);
+    enSpans.forEach((sp, i) => {
+      sp.className = 'word-en ' + (i < activeEn ? 'spoken' : (i === activeEn ? 'spoken' : 'pending'));
+    });
+    // ZH chars
+    const zhSpans = curZh.querySelectorAll('.word-zh');
+    const activeZh = Math.floor(zhSpans.length * progress);
+    zhSpans.forEach((sp, i) => {
+      sp.className = 'word-zh ' + (i < activeZh ? 'spoken' : (i === activeZh ? 'spoken' : 'pending'));
+    });
+  }
+}
+</script>
+</body>
+</html>
