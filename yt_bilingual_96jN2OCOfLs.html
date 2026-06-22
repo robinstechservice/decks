@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>From Vibe Coding to Agentic Engineering · 中英雙語字幕</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Heiti TC", -apple-system, sans-serif;
+    background: #0F1F4D;
+    color: #1E1E1E;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  header {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  header img { height: 40px; }
+  header .title-block { flex: 1; }
+  header h1 { font-size: 20px; font-weight: 900; color: #0F1F4D; line-height: 1.2; }
+  header .meta { font-size: 13px; color: #6E6E6E; margin-top: 4px; }
+  header .credit { font-size: 12px; color: #4F7A3B; font-weight: 700; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  .video-card {
+    background: black;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+  }
+  .video-card .current-sub {
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 16px 22px;
+    text-align: center;
+    min-height: 100px;
+  }
+  .video-card .current-sub .en {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 6px;
+  }
+  .video-card .current-sub .zh {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #E89E3F;
+    font-weight: 800;
+  }
+
+  .transcript-card {
+    background: white;
+    border-radius: 14px;
+    height: 80vh;
+    max-height: 720px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .transcript-card .header {
+    padding: 14px 20px;
+    border-bottom: 2px solid #E0E7F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .transcript-card .header h2 {
+    font-size: 16px;
+    font-weight: 900;
+    color: #0F1F4D;
+  }
+  .transcript-card .header .count {
+    font-size: 12px;
+    color: #6E6E6E;
+  }
+  .transcript-card .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .transcript-card .list .item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .transcript-card .list .item:hover {
+    background: #F8FAFC;
+  }
+  .transcript-card .list .item.active {
+    background: linear-gradient(90deg, #E89E3F 0%, #F4C078 100%);
+    border-left: 6px solid #C26F1A;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(232,158,63,0.4);
+    transition: all 0.2s ease;
+  }
+  .transcript-card .list .item.active .time {
+    color: white;
+    font-weight: 900;
+  }
+  .transcript-card .list .item.active .en {
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .transcript-card .list .item.active .zh {
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+  }
+  .video-card .current-sub.pulse .zh {
+    animation: pulse-glow 1.5s ease-in-out;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 0 transparent; }
+    50% { text-shadow: 0 0 16px rgba(232,158,63,0.8); }
+  }
+  /* Word-level karaoke: spoken words turn green */
+  .video-card .current-sub .en .spoken {
+    color: #6BB05E;
+    transition: color 0.15s;
+    text-shadow: 0 0 8px rgba(107,176,94,0.4);
+  }
+  .video-card .current-sub .zh .spoken {
+    color: #6BB05E;
+    transition: color 0.1s;
+    text-shadow: 0 0 12px rgba(107,176,94,0.5);
+  }
+  .video-card .current-sub .en .pending {
+    color: rgba(255,255,255,0.55);
+  }
+  .video-card .current-sub .zh .pending {
+    color: rgba(232,158,63,0.55);
+  }
+  .transcript-card .list .item .time {
+    font-size: 11px;
+    color: #4F7A3B;
+    font-weight: 800;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .transcript-card .list .item .en {
+    font-size: 14px;
+    color: #3A3A3A;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .transcript-card .list .item .zh {
+    font-size: 15px;
+    color: #0F1F4D;
+    margin-top: 3px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #6E6E6E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .right {
+    color: #2F5C28;
+    font-weight: 700;
+  }
+
+  .iris-hero-banner {
+    background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 50%, #4FE3FF 100%);
+    color: white; border-radius: 16px; padding: 18px 28px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 6px 18px rgba(15,31,77,0.25);
+    position: relative; overflow: hidden;
+  }
+  .iris-hero-banner::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px; pointer-events: none;
+  }
+  .iris-hero-banner .robi { width: 64px; height: 64px; border-radius: 50%; background: white; padding: 4px; flex-shrink: 0; z-index: 1; }
+  .iris-hero-banner .text { flex: 1; z-index: 1; }
+  .iris-hero-banner .tag {
+    display: inline-block; font-family: "Montserrat", sans-serif;
+    font-size: 10px; letter-spacing: 4px; font-weight: 900;
+    color: #FFD93D; background: rgba(0,0,0,0.25);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .iris-hero-banner .headline {
+    font-family: "Noto Serif TC", serif;
+    font-size: 20px; font-weight: 900;
+    color: white; line-height: 1.25; letter-spacing: 1px;
+  }
+  .iris-hero-banner .sub {
+    font-size: 12px; color: rgba(255,255,255,0.88);
+    margin-top: 4px; letter-spacing: 0.5px;
+  }
+  .iris-hero-banner .badge {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 4px; z-index: 1;
+    font-family: "Montserrat", sans-serif;
+  }
+  .iris-hero-banner .badge .count {
+    background: #FFD93D; color: #0A0F2A;
+    padding: 4px 12px; border-radius: 6px;
+    font-size: 13px; font-weight: 900; letter-spacing: 1px;
+  }
+  .iris-hero-banner .badge .by {
+    font-size: 9px; color: rgba(255,255,255,0.7);
+    letter-spacing: 2px; font-weight: 700;
+  }
+  .iris-cta-footer {
+    margin-top: 18px; background: white; border-radius: 14px; padding: 20px 26px;
+    border-top: 4px solid #4FE3FF; box-shadow: 0 4px 14px rgba(15,31,77,0.06);
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+  }
+  .iris-cta-footer .left h3 {
+    font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 4px;
+  }
+  .iris-cta-footer .left p { font-size: 13px; color: #5A6080; line-height: 1.5; }
+  .iris-cta-footer .left p .gold { color: #E89A45; font-weight: 800; }
+  .iris-cta-footer .right { text-align: right; font-family: "Montserrat", sans-serif; }
+  .iris-cta-footer .right .sig { color: #4FE3FF; font-weight: 900; font-size: 14px; letter-spacing: 1px; }
+  .iris-cta-footer .right .url { font-size: 10px; color: #5A6080; margin-top: 4px; letter-spacing: 1px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../robinstech_logo.png" alt="羅賓斯科技"/>
+    <div class="title-block">
+      <h1>From Vibe Coding to Agentic Engineering</h1>
+      <div class="meta">Sequoia · Andrej Karpathy · YouTube · 中英雙語字幕</div>
+      <div class="credit">📖 學員：Evin Lin · 整理 IRIS · 翻譯 Calliope · 轉錄 Eos</div>
+    </div>
+  </header>
+
+  <div class="iris-hero-banner">
+    <img src="../robi_v6_master.png" alt="Robi" class="robi"/>
+    <div class="text">
+      <div class="tag">🎨 IRIS 中英字幕版 · BY ROBINSTECH</div>
+      <div class="headline">Karpathy 談「Vibe Coding → Agentic Engineering」演進</div>
+      <div class="sub">Sequoia 29.8 分鐘演講 · Karpathy 解析 AI 編程下一階段 · 中英並列字幕</div>
+    </div>
+    <div class="badge">
+      <div class="count">301 cues</div>
+      <div class="by">SEQUOIA · ANDREJ KARPATHY · ZH-TW + EN</div>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <div class="video-card">
+      <iframe id="ytplayer"
+        src="https://www.youtube.com/embed/96jN2OCOfLs?enablejsapi=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <div class="current-sub" id="current-sub">
+        <div class="en" id="current-en">Playing video...</div>
+        <div class="zh" id="current-zh">影片載入中</div>
+      </div>
+      <div style="background:#0F1F4D;color:white;padding:10px 22px;display:flex;align-items:center;gap:12px;font-size:13px;">
+        <label style="white-space:nowrap;color:rgba(255,255,255,0.85);font-weight:700;">字幕 offset：</label>
+        <input type="range" id="offset-slider" min="-3" max="3" step="0.1" value="-1.5" style="flex:1;accent-color:#E89E3F;">
+        <span id="offset-display" style="font-family:monospace;font-weight:800;color:#E89E3F;min-width:50px;text-align:right;">-1.5s</span>
+        <button id="reset-offset" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">↺</button>
+      </div>
+    </div>
+
+    <div class="transcript-card">
+      <div class="header">
+        <h2>📜 完整逐字稿（點任一句跳到影片時間）</h2>
+        <span class="count" id="count">— 句</span>
+      </div>
+      <div class="list" id="list">
+        <!-- subtitles injected here -->
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="iris-cta-footer">
+    <div class="left">
+      <h3>🦊 喜歡這支字幕影片？</h3>
+      <p>羅賓斯科技每日上架 <span class="gold">AI / 創業 / 保險科技</span> 中英字幕影片。Follow Iris @iris_social_bot 取得最新通知。</p>
+    </div>
+    <div class="right">
+      <div class="sig">— Iris / 虹彩 🎨</div>
+      <div class="url">robinstechservice.github.io/decks/</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="left">永久 hosting · GitHub Pages · 自動發佈</div>
+    <div class="right">🦊 羅賓斯科技 · 學員學習資料庫</div>
+  </footer>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+// === SUBTITLE DATA INJECTED HERE BY BUILD ===
+const SUBTITLES = [{"time": "00:00:02,189 --> 00:00:04,549", "en": "We're so excited for our very first special guest.", "zh": "我們很高興能邀請到我們第一位特別來賓。"}, {"time": "00:00:04,959 --> 00:00:09,809", "en": "He has helped build modern AI, then explain modern AI, and then occasionally rename modern AI.", "zh": "他曾協助建立現代人工智慧，接著解釋它，然後偶爾為它重新命名。"}, {"time": "00:00:09,809 --> 00:00:13,909", "en": "He actually helped co-found OpenAI right inside of this office.", "zh": "他實際上曾協助共同創立 OpenAI，就在這間辦公室裡。"}, {"time": "00:00:13,909 --> 00:00:21,809", "en": "Was the one who actually got autopilot working at Tesla back in the day.", "zh": "他就是當年讓特斯拉的自動輔助駕駛成功運作的人。"}, {"time": "00:00:21,809 --> 00:00:29,409", "en": "And he has a rare gift of making the most complex technical shifts feel both accessible and inevitable.", "zh": "他擁有一種罕見的天賦，能讓最複雜的技術轉變變得平易近人且勢不可擋。"}, {"time": "00:00:29,949 --> 00:00:33,519", "en": "You all know him for having coined the term \"vibe coding\" last year.", "zh": "去年，大家都知道他創造了「氛圍編碼」這個詞。"}, {"time": "00:00:33,969 --> 00:00:37,619", "en": "But just in the last few months, he said something even more startling:", "zh": "但就在過去幾個月裡，他說了一件更令人驚訝的事情："}, {"time": "00:00:37,819 --> 00:00:40,919", "en": "That he's never felt more behind as a programmer.", "zh": "他從未感覺自己作為一個程式設計師如此落後。"}, {"time": "00:00:41,259 --> 00:00:43,919", "en": "That's where we're starting today. Thank you, Andre, for joining us.", "zh": "這就是我們今天的開場。謝謝 Andre 加入我們。"}, {"time": "00:00:44,239 --> 00:00:46,839", "en": "Yeah, hello. Excited to be here and to kick us off.", "zh": "是的，大家好。很高興來到這裡並為大家開場。"}, {"time": "00:00:47,339 --> 00:00:51,719", "en": "Okay, so just a couple months ago, you said that you've never felt more behind as a programmer.", "zh": "好的，所以就在幾個月前，你說你從未感覺自己作為一個程式設計師如此落後。"}, {"time": "00:00:54,689 --> 00:00:59,439", "en": "Um, can you help us unpack that? Was that feeling exhilarating or unsettling?", "zh": "嗯，你能幫我們解釋一下嗎？那種感覺是令人振奮，還是令人不安？"}, {"time": "00:01:00,239 --> 00:01:01,899", "en": "Uh, yeah, a mixture of both for sure.", "zh": "當然，兩者皆有。"}, {"time": "00:01:02,449 --> 00:01:08,929", "en": "Uh, well, first of all, um, I guess like, as many of you, I've been using agentic tools like Copilot, adjacent things for a while,", "zh": "嗯，首先，我想和許多人一樣，我使用像 Copilot 這類具代理功能的工具已經一段時間了，"}, {"time": "00:01:08,929 --> 00:01:16,699", "en": "maybe over the last year as it came out, and it was very good at, you know, chunks of code, and sometimes it would mess up, and you have to edit them, and it was kind of helpful.", "zh": "或許從它問世的去年開始，它很擅長處理程式碼區塊，有時會出錯，你需要編輯它，這還挺有幫助的。"}, {"time": "00:01:16,699 --> 00:01:24,649", "en": "And then I would say December was this clear point where, for me, I was on a break, so I had a bit more time, I think many other people were similar.", "zh": "然後我會說，去年十二月是一個明確的轉折點，對我來說，那時我正在休假，所以有更多時間，我想許多其他人也類似。"}, {"time": "00:01:24,649 --> 00:01:31,819", "en": "And uh, I just started to notice that with the latest models, the chunks just came out fine, and then I kept asking for more, and it just came out fine.", "zh": "然後，我開始注意到，使用最新的模型時，程式碼區塊都能順利完成，我一直要求更多，它也能順利完成。"}, {"time": "00:01:31,819 --> 00:01:33,639", "en": "And then I can't remember the last time I corrected it.", "zh": "我已經不記得上次修正它是什麼時候了。"}, {"time": "00:01:33,639 --> 00:01:38,629", "en": "And then I was, I just, you know, trusted the system more and more, and then I was vibe coding.", "zh": "然後我只是，你知道的，越來越信任這個系統，然後我就開始了「氛圍編碼」。"}, {"time": "00:01:39,139 --> 00:01:43,559", "en": "And uh, so it was kind of a, I do think that it was a very stark transition.", "zh": "所以這有點，我確實認為這是一個非常明顯的轉變。"}, {"time": "00:01:43,559 --> 00:01:48,799", "en": "I think that a lot of people actually, I tried to, I tried to stress this on Twitter and or X,", "zh": "我認為很多人實際上，我試圖在 Twitter 或 X 上強調這一點，"}, {"time": "00:01:48,799 --> 00:01:53,579", "en": "because I think a lot of people experienced AI last year as ChatGPT adjacent thing.", "zh": "因為我認為許多人去年體驗 AI，都把它當作是 ChatGPT 的相關東西。"}, {"time": "00:01:53,579 --> 00:01:56,889", "en": "Uh, but you really had to look again and you had to look as of December.", "zh": "但你真的需要再看看，而且必須從去年十二月開始看。"}, {"time": "00:01:57,249 --> 00:02:04,779", "en": "Uh, because things have changed fundamentally and uh, especially on this like agentic coherent workflow that really started to actually work.", "zh": "因為事情已經發生了根本性的變化，特別是在這種真正開始運作的代理型連貫工作流程方面。"}, {"time": "00:02:05,439 --> 00:02:12,009", "en": "Um, and so I would say that, um, yeah, it was just that realization that really, uh, had me, um,", "zh": "嗯，所以我會說，嗯，是的，就是那種領悟，真的讓，嗯，我，嗯，"}, {"time": "00:02:12,009 --> 00:02:14,839", "en": "go down the whole rabbit hole of just, you know, infinite side projects.", "zh": "陷入無數的次要專案，就像掉進兔子洞一樣。"}, {"time": "00:02:14,839 --> 00:02:19,939", "en": "Uh, my side projects folder is like extremely full with lots of random things.", "zh": "我的次要專案資料夾塞滿了各種隨機的東西，非常滿。"}, {"time": "00:02:19,939 --> 00:02:22,299", "en": "And uh, just vibe coding all the time.", "zh": "而且，一直在「氛圍編碼」。"}, {"time": "00:02:22,299 --> 00:02:24,669", "en": "Uh, so uh, yeah, that kind of happened in December, I would say.", "zh": "嗯，所以，是的，我會說那大概發生在十二月。"}, {"time": "00:02:24,669 --> 00:02:27,109", "en": "And I was looking at the repercussions of that since.", "zh": "從那以後，我就一直在關注它的影響。"}, {"time": "00:02:28,189 --> 00:02:32,009", "en": "Um, you've talked a lot about this idea of LLMs as a new computer.", "zh": "嗯，你談了很多關於 LLM 作為一種新電腦的觀點。"}, {"time": "00:02:32,469 --> 00:02:36,269", "en": "Um, that it isn't just better software, it's a whole new computing paradigm.", "zh": "嗯，這不只是一個更好的軟體，它是一個全新的運算典範。"}, {"time": "00:02:36,749 --> 00:02:43,679", "en": "And, um, software 1.0 was explicit rules, software 2.0 was learned weights, software 3.0 is this.", "zh": "而且，軟體 1.0 是明確的規則，軟體 2.0 是學習到的權重，軟體 3.0 就是這個。"}, {"time": "00:02:44,179 --> 00:02:49,719", "en": "Um, if that's actually true, what does a team build differently the day they actually believe this?", "zh": "嗯，如果這真的是事實，那麼當一個團隊真正相信這一點時，他們會如何以不同的方式進行建構？"}, {"time": "00:02:50,509 --> 00:02:50,809", "en": "Right. So,", "zh": "對。所以，"}, {"time": "00:02:51,999 --> 00:02:59,749", "en": "uh, yeah, exactly. So software 1.0, I'm writing code, software 2.0, I'm actually programming by creating data sets and training training neural networks.", "zh": "嗯，是的，沒錯。所以軟體 1.0，我在寫程式碼；軟體 2.0，我透過創建資料集和訓練神經網路來實際編程。"}, {"time": "00:03:00,159 --> 00:03:04,399", "en": "So the programming is kind of like arranging data sets and maybe some objectives and neural network architectures.", "zh": "所以編程有點像是在安排資料集，或許還有一些目標和神經網路架構。"}, {"time": "00:03:04,399 --> 00:03:16,669", "en": "And then what happened is that basically, if you train one of these GPT models or LLMs on a sufficiently large set of tasks, implicit basically implicitly, because by training on the internet, you have to multitask all the things that are in the data set.", "zh": "然後發生的事情是，基本上，如果你在足夠大的任務集上訓練這些 GPT 模型或大型語言模型，基本上是隱含地，因為透過在網路上訓練，你必須多工處理資料集中所有的東西。"}, {"time": "00:03:16,669 --> 00:03:20,009", "en": "Uh, these actually become kind of like a programmable computer in a certain sense.", "zh": "這些實際上在某種意義上變得有點像可編程電腦。"}, {"time": "00:03:20,009 --> 00:03:24,629", "en": "So software 3.0 is kind of about, uh, you know, your programming now turns to prompting.", "zh": "所以軟體 3.0 大概就是，你的編程現在轉變成了提示。"}, {"time": "00:03:24,629 --> 00:03:35,499", "en": "And what's in the context window is your lever over the interpreter that is the LLM, that is kind of like interpreting your context and performing computation in the digital information space.", "zh": "而上下文視窗中的內容就是你對大型語言模型這個解釋器的槓桿，它有點像是在數位資訊空間中解釋你的上下文並執行運算。"}, {"time": "00:03:35,869 --> 00:03:39,279", "en": "So, I guess, um, yeah, that's kind of the transition.", "zh": "所以，我想，嗯，是的，那大概就是轉變。"}, {"time": "00:03:39,799 --> 00:03:43,869", "en": "And I think there's a few examples of that really drove it home for me, and maybe that might be instructive.", "zh": "我想有幾個例子真正讓我深有體會，或許這會很有啟發性。"}, {"time": "00:03:44,489 --> 00:03:49,129", "en": "Uh, so, for example, when you, when OpenClaw came out, when you want to install OpenClaw,", "zh": "所以，舉例來說，當 OpenClaw 問世時，如果你想安裝 OpenClaw，"}, {"time": "00:03:49,129 --> 00:03:54,959", "en": "you would expect that normally this is a bash script, like a shell script, so run the shell script to run, to install OpenClaw.", "zh": "你會預期這通常是一個 Bash 腳本，就像一個 shell 腳本，所以執行這個 shell 腳本來運行，來安裝 OpenClaw。"}, {"time": "00:03:55,769 --> 00:04:04,599", "en": "Um, but the thing is that in order to target lots of different platforms and lots of different types of computers you might run an OpenClaw, these shell scripts usually ballooned up and become extremely complex.", "zh": "嗯，但問題是，為了針對許多不同的平台和許多不同類型的電腦來運行 OpenClaw，這些 shell 腳本通常會膨脹並變得極其複雜。"}, {"time": "00:04:04,599 --> 00:04:08,589", "en": "But the thing is, you're still stuck in a software 1.0 universe of wanting to write the code.", "zh": "但問題是，你仍然困在軟體 1.0 的世界中，想要編寫程式碼。"}, {"time": "00:04:08,589 --> 00:04:14,799", "en": "And actually, OpenClaw installation is a, is a copy-paste of a bunch of text that you're supposed to give to your agent.", "zh": "而實際上，OpenClaw 的安裝就是一堆文字的複製貼上，而這些文字你應該要交給你的代理程式。"}, {"time": "00:04:15,359 --> 00:04:20,949", "en": "Uh, so basically, it's, it's a little skill of, you know, copy-paste this and give it to your agent and it will install OpenClaw.", "zh": "所以基本上，這是一個小技巧，就是複製貼上這段文字給你的代理程式，它就會安裝 OpenClaw。"}, {"time": "00:04:21,409 --> 00:04:32,009", "en": "And the reason this is a lot more powerful is you're working now in the software 3.0 paradigm where you don't have to precisely spell out, you know, all the individual details of that setup.", "zh": "這之所以更強大，是因為你現在是在軟體 3.0 的範式下工作，你不需要精確地闡述所有設定的個別細節。"}, {"time": "00:04:32,009 --> 00:04:39,629", "en": "The agent has its own intelligence that it packages it up, and then it kind of like follows the instructions, and it looks at your environment, your computer, and it kind of like performs intelligent actions to make things work and debugs things in a loop.", "zh": "代理程式擁有自己的智能，會將其打包，然後它會遵循指示，查看你的環境、你的電腦，並執行智能動作來讓事物運作，並在循環中調試。"}, {"time": "00:04:39,939 --> 00:04:41,889", "en": "And it's just like so much more powerful, right?", "zh": "這就是強大得多，對吧？"}, {"time": "00:04:42,579 --> 00:04:49,509", "en": "So I think that's a very different kind of like way of thinking about it, is just like, what is the piece of text to copy-paste to your agent? That's the programming paradigm now.", "zh": "所以我認為這是一種非常不同的思考方式，就是：什麼是複製貼上給你的代理程式的那段文字？這就是現在的程式設計範式。"}, {"time": "00:04:49,959 --> 00:04:53,719", "en": "I think one more maybe example that comes to mind that is even more extreme than that,", "zh": "我想還有一個可能更極端的例子浮現在我腦海中，"}, {"time": "00:04:54,029 --> 00:04:56,099", "en": "is when I was building, um, menu gen.", "zh": "那就是我當時在開發，嗯，menu gen。"}, {"time": "00:04:56,609 --> 00:05:05,009", "en": "So menu gen is this idea where you, um, you come to a restaurant, they give you a menu, there's no pictures usually, so I don't know what any of these things are, uh, usually.", "zh": "Menu gen 的概念是，你到一家餐廳，他們給你菜單，通常沒有圖片，所以我通常不知道這些東西是什麼。"}, {"time": "00:05:05,009 --> 00:05:08,799", "en": "I like 30% of the things, I have no idea what they are, 50%.", "zh": "大概有 30% 的菜色，我完全不知道是什麼，甚至 50%。"}, {"time": "00:05:08,799 --> 00:05:15,379", "en": "So I wanted to take a photo of the restaurant menu and to get pictures of what those things might look like in a generic sense.", "zh": "所以我想拍下餐廳菜單的照片，然後取得那些菜色在一般意義上可能長什麼樣的圖片。"}, {"time": "00:05:16,329 --> 00:05:22,989", "en": "And so I built, I vibe coded this app that basically lets you upload a photo, and it does all this stuff, and it runs on Vercel.", "zh": "於是我開發、我以「氛圍編碼」寫了這個應用程式，它基本上讓你可以上傳照片，然後它會做所有這些事情，而且它運行在 Vercel 上。"}, {"time": "00:05:22,989 --> 00:05:37,379", "en": "And, uh, it basically renders the menu, and it gives you like all the items, and it gives you a picture that it uses an image, um, you know, generator for, to basically OCR all the different titles, use the image generator to get pictures of them, and then shows it to you.", "zh": "而且，它基本上會渲染菜單，給你所有菜品，並給你一張圖片，這張圖片是它使用圖像，嗯，你知道的，生成器來做的，基本上就是辨識所有不同的標題，然後使用圖像生成器取得它們的圖片，然後展示給你。"}, {"time": "00:05:37,779 --> 00:05:49,919", "en": "And then I saw the software 3.0 version of this, which is, which blew my mind, which is literally just take your photo, give it to Gemini, and say, use Nona Banana to overlay the things onto the menu.", "zh": "然後我看到了這個的軟體 3.0 版本，這讓我大開眼界，它基本上就是拍下你的照片，把它交給 Gemini，然後說，用 Nona Banana 把這些東西疊加到菜單上。"}, {"time": "00:05:49,919 --> 00:05:58,809", "en": "Uh, and Nona Banana basically returned an image that is exactly the picture of the menu that I took, but it actually put into the pixels, it rendered the different things in the menu.", "zh": "嗯，然後 Nona Banana 基本上返回了一張圖片，這張圖片正是我拍的菜單照片，但它實際上在像素中，渲染了菜單中不同的東西。"}, {"time": "00:05:59,439 --> 00:06:01,219", "en": "And this blew my mind, because", "zh": "這讓我大開眼界，因為"}, {"time": "00:06:02,189 --> 00:06:06,559", "en": "actually all of my menu gen is spurious, it's working in the old paradigm.", "zh": "其實我的 menu gen 都是虛假的，它還停留在舊的範式中。"}, {"time": "00:06:06,559 --> 00:06:07,099", "en": "That app shouldn't exist.", "zh": "那個應用程式不應該存在。"}, {"time": "00:06:07,699 --> 00:06:12,089", "en": "Uh, and, uh, yeah, the software 3.0 paradigm is a lot more kind of raw.", "zh": "嗯，而且，是的，軟體 3.0 的範式更為原始。"}, {"time": "00:06:12,359 --> 00:06:21,789", "en": "It just, um, your neural network is doing more and more of the work, and your prompt or context is just the image, and the output is an image, and there's no need to have any of the app in between.", "zh": "它只是，嗯，你的神經網路正在做越來越多的工作，而你的提示或上下文只是一張圖片，輸出也是一張圖片，中間完全不需要任何應用程式。"}, {"time": "00:06:22,649 --> 00:06:25,709", "en": "Um, so I think that people have to kind of like reframe,", "zh": "嗯，所以我認為人們必須重新定義，"}, {"time": "00:06:26,579 --> 00:06:32,869", "en": "you know, not to work in the existing paradigm of what things existed and just think about it as a speedup of what exists.", "zh": "你知道，不要再以現有事物的範式去工作，也不要只將其視為現有事物的加速。"}, {"time": "00:06:33,389 --> 00:06:35,349", "en": "It's actually like new things are available now.", "zh": "實際上，現在有新的事物可用了。"}, {"time": "00:06:36,069 --> 00:06:43,249", "en": "And going back to your programming question, it's not even, I think that's also an example of working in the, in the old mindset because it's not just about programming and programming becoming faster.", "zh": "回到你關於程式設計的問題，這甚至不是，我認為這也是以舊思維工作的一個例子，因為它不只是關於程式設計以及程式設計變得更快。"}, {"time": "00:06:43,529 --> 00:06:46,169", "en": "This is more general information processing that is automatable now.", "zh": "這是一種更通用的資訊處理，現在可以自動化了。"}, {"time": "00:06:46,759 --> 00:06:49,459", "en": "So, um, it's not just even about code.", "zh": "所以，嗯，這甚至不只是關於程式碼。"}, {"time": "00:06:49,809 --> 00:06:54,279", "en": "So previous code worked over a kind of like structured data, right? And uh, you write code over structured data.", "zh": "以前的程式碼是處理結構化資料，對吧？你針對結構化資料寫程式碼。"}, {"time": "00:06:54,999 --> 00:07:02,459", "en": "But like for example, with my LLM knowledge bases project, um, basically you get LLMs to create wikis for your organization or for you in person, etcetera.", "zh": "但舉例來說，我的 LLM 知識庫專案，嗯，基本上是讓大型語言模型為你的組織或你個人建立維基百科等等。"}, {"time": "00:07:02,819 --> 00:07:09,449", "en": "This is not even a program, this is not something that could exist before because there was no, there was no code that would create a knowledge base based on a bunch of facts.", "zh": "這甚至不是一個程式，這在以前是不可能存在的，因為沒有，沒有程式碼會基於一堆事實創建知識庫。"}, {"time": "00:07:09,869 --> 00:07:19,939", "en": "But now you can just take these documents and, uh, basically, uh, recompile them in a different way and reorder them and create something that is new and interesting as a reframing of the data.", "zh": "但現在你可以直接拿這些文件，然後，嗯，基本上，以不同的方式重新編譯它們，重新排序它們，並創建出新的、有趣的東西，作為資料的重新組織。"}, {"time": "00:07:20,809 --> 00:07:23,409", "en": "And so, these are new things that weren't possible.", "zh": "因此，這些是以前不可能實現的新事物。"}, {"time": "00:07:23,799 --> 00:07:29,479", "en": "Uh, and so I think this is, uh, something that I keep trying to get back to as to not only what can we do that existed that", "zh": "嗯，所以我認為這是我不斷想回歸的一個點，那就是不只現有的東西我們能做什麼，"}, {"time": "00:07:30,000 --> 00:07:36,660", "en": "Astrow, but I think there's new opportunities of just things that couldn't be possible before and I almost think that that's more exciting.", "zh": "阿斯特羅，但我認為有一些新的機會，做一些以前不可能的事情，我幾乎覺得那更令人興奮。"}, {"time": "00:07:37,310 --> 00:07:40,950", "en": "I love the menu gen progression and dichotomy that you laid out", "zh": "我喜歡您提出的選單生成進程和二分法，"}, {"time": "00:07:40,950 --> 00:07:49,250", "en": "and I think even I'm sure many folks here followed your own progression of programming from last October to early January, February this year.", "zh": "我想甚至我敢肯定這裡的許多人都遵循了您自己從去年十月到今年一、二月的程式設計進程。"}, {"time": "00:07:49,700 --> 00:07:59,260", "en": "Um, if you extrapolate that further, what is the 2026 equivalent, um, for building websites in the 90s, building mobile apps in the 2010s,", "zh": "嗯，如果你進一步推斷，2026年的等效物會是什麼？就像90年代建立網站，2010年代建立行動應用程式一樣，"}, {"time": "00:07:59,260 --> 00:08:07,290", "en": "building SAAS in the last cloud era, what will look completely obvious in hindsight that is still mostly unbuilt today?", "zh": "在上一個雲端時代建立 SaaS，什麼在事後看起來會完全顯而易見，但今天卻仍大多未被建造？"}, {"time": "00:08:08,220 --> 00:08:15,460", "en": "Um, well going with the example of menu gen, I guess, uh, so a lot of this code shouldn't exist and it's just neural network doing most of the work.", "zh": "嗯，我想以選單生成的例子來說，很多程式碼不應該存在，而只是神經網路在做大部分的工作。"}, {"time": "00:08:16,200 --> 00:08:25,750", "en": "Um, I do think that the extrapolation looks very weird because you could basically imagine I don't think I yeah, so you could imagine completely neural computers in a certain sense.", "zh": "嗯，我確實認為這個推斷看起來很奇怪，因為你基本上可以想像，我認為不，是的，你可以想像某種意義上的完全神經電腦。"}, {"time": "00:08:26,080 --> 00:08:38,820", "en": "You feed raw videos, like imagine a device who takes raw videos or audio into basically what's a neural net and uh uses diffusion to render a UI that is kind of like, you know, unique for that moment in a certain sense. And um,", "zh": "你輸入原始影片，想像一個裝置接收原始影片或音訊，將其輸入基本上是神經網路的東西，並使用擴散模型來渲染一個在某種意義上，你知道，對那一刻來說是獨特的UI。還有，"}, {"time": "00:08:40,300 --> 00:08:47,800", "en": "I kind of feel like in the early days of computing actually, people were a little bit confused as to whether computers would look like calculators or computers would look like neural nets.", "zh": "我感覺在計算的早期，人們實際上有點困惑，電腦會看起來像計算器還是神經網路。"}, {"time": "00:08:48,040 --> 00:08:51,110", "en": "And in 50s and 60s, it was not really obvious which way would go.", "zh": "在50年代和60年代，哪個方向會發展並不明顯。"}, {"time": "00:08:51,570 --> 00:08:54,670", "en": "And of course we went down the calculator path and ended up building uh classical computing.", "zh": "當然，我們選擇了計算器之路，最終建立了經典計算。"}, {"time": "00:08:55,050 --> 00:08:57,870", "en": "And then neural nets are currently running virtualized on existing computers.", "zh": "然後神經網路目前在現有電腦上虛擬化運行。"}, {"time": "00:08:58,340 --> 00:09:03,590", "en": "But you could imagine I think that uh a lot of this will flip and that the neural net becomes kind of like the host process.", "zh": "但我想你可以想像，其中很多將會顛覆，神經網路將成為類似主機的處理器。"}, {"time": "00:09:04,220 --> 00:09:06,460", "en": "And uh the CPUs become kind of like the co-processor.", "zh": "而 CPU 將變成類似協同處理器的角色。"}, {"time": "00:09:06,980 --> 00:09:13,900", "en": "Uh so we saw the diagram of, you know, intelligence compute is going to of neural networks is going to take over and become the dominant spend of flops.", "zh": "我們看到圖表顯示，智慧運算將會，神經網路將會接管並成為浮點運算的主要支出。"}, {"time": "00:09:14,300 --> 00:09:19,150", "en": "So you could imagine something really weird and foreign when where neural nets are doing most of the heavy lifting,", "zh": "所以你可以想像一些非常奇怪和陌生的情景，當神經網路在做大部分繁重的工作時，"}, {"time": "00:09:19,150 --> 00:09:24,740", "en": "they're using tool use as dislike, you know, um, historical appendage for some kinds of like deterministic tasks,", "zh": "它們會將工具的使用視為一種不喜歡的，你知道，歷史附屬物，用於某些確定性任務，"}, {"time": "00:09:25,040 --> 00:09:29,710", "en": "uh, but what's really running the show is these uh neural nets that are network in a certain way.", "zh": "但是真正主導的是這些以特定方式連接的神經網路。"}, {"time": "00:09:30,340 --> 00:09:32,890", "en": "Um, so you could imagine something extremely foreign as the extrapolation.", "zh": "嗯，所以你可以想像這種外推法會是極其陌生的東西。"}, {"time": "00:09:33,190 --> 00:09:35,970", "en": "But I think we're going to probably get there uh sort of piece by piece.", "zh": "但我想我們可能會一點一滴地實現。"}, {"time": "00:09:36,470 --> 00:09:40,210", "en": "Um, and I don't yeah, that that progression is TBD, I would say.", "zh": "嗯，我不知道，是的，那個進程尚待確定，我會這麼說。"}, {"time": "00:09:41,100 --> 00:09:44,700", "en": "I'd love to talk a little bit about um, uh, this concept of verifiability.", "zh": "我想談談驗證性這個概念。"}, {"time": "00:09:45,110 --> 00:09:50,340", "en": "The fact that AI will automate faster and more easily domains where the output can be verified.", "zh": "事實是，AI 將在輸出可驗證的領域更快、更輕鬆地自動化。"}, {"time": "00:09:51,200 --> 00:09:55,320", "en": "Um, if that framework is right, what work is about to move much faster than people realize?", "zh": "嗯，如果那個框架是正確的，哪些工作將會比人們意識到的快得多？"}, {"time": "00:09:55,720 --> 00:09:59,660", "en": "And what professions do we have that people actually think are safe,", "zh": "我們有哪些職業是人們認為安全的，"}, {"time": "00:10:00,320 --> 00:10:02,000", "en": "but they're actually highly verifiable?", "zh": "但實際上它們是高度可驗證的？"}, {"time": "00:10:02,860 --> 00:10:08,980", "en": "Uh yes, so I I spent some time writing about verifiability and um, basically like traditional computers", "zh": "是的，我花了一些時間撰寫關於可驗證性的文章，嗯，基本上，傳統電腦"}, {"time": "00:10:09,360 --> 00:10:18,740", "en": "can easily automate what you can specify in code, and uh kind of this latest round of LLMs can easily automate what you can uh verify in a certain in a certain sense.", "zh": "可以輕鬆自動化您在程式碼中指定的內容，而且最新一輪的 LLM 可以在某種意義上輕鬆自動化您可以驗證的內容。"}, {"time": "00:10:19,380 --> 00:10:26,360", "en": "Uh because the way this works is that when frontier labs are training these LLMs, these are giant reinforcement learning environments. So they are given a verification rewards.", "zh": "因為這種運作方式是，當前沿實驗室訓練這些大型語言模型時，這些都是巨大的強化學習環境。所以它們會獲得驗證獎勵。"}, {"time": "00:10:27,210 --> 00:10:38,550", "en": "And then because of the way that these models are trained, they end up basically uh progressing and creating these like jagged entities that really peak in capability in kind of like verifiable domains like math and code and adjacent.", "zh": "然後，由於這些模型的訓練方式，它們最終會基本上進步並創造出這些像鋸齒狀的實體，在可驗證的領域（如數學、程式碼及相關領域）中能力達到高峰。"}, {"time": "00:10:39,000 --> 00:10:45,310", "en": "And kind of like stagnate and are a little bit um, you know, rougher around the edges when uh things are not kind of like in that in that space.", "zh": "而且在某些方面會停滯不前，有點粗糙，當事情不在那個領域時。"}, {"time": "00:10:45,620 --> 00:10:49,890", "en": "So I think the reason I wrote about verifiability, I'm trying to understand why these things are so jagged.", "zh": "所以我想我寫關於可驗證性的原因，是我想了解為什麼這些東西會如此參差不齊。"}, {"time": "00:10:50,830 --> 00:10:59,670", "en": "Um, and some of it has to do with how the labs train the models, but I think some of it also has to do with um the focus of the labs and what they happen to put into the data distribution.", "zh": "嗯，其中一部分與實驗室如何訓練模型有關，但我認為其中一部分也與實驗室的重點以及他們碰巧將什麼放入資料分佈中有關。"}, {"time": "00:11:00,220 --> 00:11:06,460", "en": "Uh because some things basically are significantly more valuable in economy and end up creating more environments because the labs wanted to work in those settings.", "zh": "因為有些東西在經濟上本質上更有價值，最終會創造更多環境，因為實驗室希望在這些設定下工作。"}, {"time": "00:11:06,460 --> 00:11:08,080", "en": "So I think code is a good example of that.", "zh": "所以我想程式碼就是一個很好的例子。"}, {"time": "00:11:08,400 --> 00:11:14,550", "en": "There's probably lots of verifiable environments that they could think about that happen not to make it into the mix because they're just not that useful to have the capability around.", "zh": "可能有很多可驗證的環境他們可以考慮，但這些環境沒有被納入其中，因為具備相關能力並不是那麼有用。"}, {"time": "00:11:15,390 --> 00:11:20,110", "en": "Um, but I think to me the big um, I guess like the big mystery is uh", "zh": "嗯，但我想對我來說，最大的，我猜是最大的謎團是，嗯，"}, {"time": "00:11:20,560 --> 00:11:25,770", "en": "the favorite example for a while was that how many letters are are in a strawberry and the models would famously get this wrong.", "zh": "有段時間最受歡迎的例子是，草莓裡有多少個字母，模型會非常有名地弄錯。"}, {"time": "00:11:25,980 --> 00:11:28,900", "en": "And it's an example of jaggedness. Uh, the models now patch this, I think.", "zh": "這是一個不規則性的例子。我想，現在的模型已經修補了這個問題。"}, {"time": "00:11:29,620 --> 00:11:35,940", "en": "But the new one is, I want to go to a car wash to wash my car and it's 50 meters away. Should I drive or should I walk?", "zh": "但新的問題是，我想去洗車，而洗車場離我50公尺。我應該開車還是走路？"}, {"time": "00:11:36,320 --> 00:11:40,240", "en": "And state-of-the-art models today will tell you to walk because it's so close.", "zh": "而現今最先進的模型會告訴你走路，因為它很近。"}, {"time": "00:11:40,750 --> 00:11:49,290", "en": "How is it possible that state-of-the-art Opus 4.7 will simultaneously refactor 100,000 like code base, uh, line code base,", "zh": "最先進的 Opus 4.7 怎麼可能同時重構十萬行程式碼，嗯，行級程式碼，"}, {"time": "00:11:49,920 --> 00:11:53,800", "en": "or find zero-day vulnerabilities and yet tells me to walk to this car wash?", "zh": "或是找到零日漏洞，卻又叫我走路去這個洗車場？"}, {"time": "00:11:54,420 --> 00:11:55,310", "en": "This is insane.", "zh": "這太瘋狂了。"}, {"time": "00:11:55,970 --> 00:11:59,900", "en": "And to whatever extent these models uh are remain jagged,", "zh": "無論這些模型在多大程度上仍然不穩定，"}, {"time": "00:12:00,300 --> 00:12:03,120", "en": "it's an indication that, number one, maybe something's slightly off.", "zh": "這表示，第一，或許有些地方不太對勁。"}, {"time": "00:12:03,780 --> 00:12:08,810", "en": "Or um, number two, you need to actually uh be in the loop a little bit, and you need to treat them as tools.", "zh": "或者，嗯，第二，你實際上需要稍微參與其中，你需要將它們視為工具。"}, {"time": "00:12:09,390 --> 00:12:11,610", "en": "And you do have to kind of uh stay in touch with what they're doing.", "zh": "而且你確實必須與它們正在做的事情保持聯繫。"}, {"time": "00:12:12,220 --> 00:12:18,820", "en": "And so I think all of my writing, long story short, about verifiability is just trying to understand um, why these things are jagged.", "zh": "所以我想我的所有寫作，長話短說，關於可驗證性，只是想了解，嗯，為什麼這些東西是鋸齒狀的。"}, {"time": "00:12:19,360 --> 00:12:20,330", "en": "Is there any pattern to it?", "zh": "它有什麼模式嗎？"}, {"time": "00:12:20,600 --> 00:12:24,340", "en": "And I think it's a some kind of a combination of verifiable plus labs care.", "zh": "我認為這是一種可驗證性加上實驗室照護的結合。"}, {"time": "00:12:24,770 --> 00:12:26,380", "en": "Maybe one more anecdote that is instructive.", "zh": "或許還有另一個具有啟發性的軼事。"}, {"time": "00:12:27,690 --> 00:12:32,300", "en": "Is uh from GPT 3.5 to GPT 4, people noticed that chess improved a lot.", "zh": "是從 GPT 3.5 到 GPT 4，人們注意到西洋棋的表現大有提升。"}, {"time": "00:12:32,670 --> 00:12:35,670", "en": "And I think a lot of people thought, oh well, it's just a progression of the capabilities.", "zh": "我想很多人認為，喔，那只是能力上的進步。"}, {"time": "00:12:36,310 --> 00:12:39,870", "en": "But actually it's it's more that uh I think this is public information, I think I saw it on the internet.", "zh": "但實際上，嗯，這更像是，我想這是公開資訊，我想我在網路上看到了。"}, {"time": "00:12:40,360 --> 00:12:44,790", "en": "Um, a huge amount of like um data of chess made it into the pre-training set.", "zh": "嗯，大量的西洋棋資料被納入預訓練資料集。"}, {"time": "00:12:45,620 --> 00:12:50,770", "en": "And just because it's in the data distribution, uh basically the model improved a lot more than it would just by default.", "zh": "而僅僅因為它在資料分佈中，嗯，基本上模型改進的程度遠遠超過了預設情況。"}, {"time": "00:12:51,410 --> 00:12:56,710", "en": "So someone at Open AI decided to add this data. And now you have a capability that just peaked a lot more.", "zh": "所以 Open AI 的某人決定添加這些資料。現在你擁有了一種能力，它的高峰值更高了。"}, {"time": "00:12:57,330 --> 00:13:03,960", "en": "And so that's why I think I'm stressing this um dimension of it as we are slightly at the mercy of whatever the labs are doing,", "zh": "這就是為什麼我認為我強調這一點的維度，因為我們多少受制於實驗室正在做的任何事情，"}, {"time": "00:13:04,310 --> 00:13:05,460", "en": "whatever they happen to put into the mix.", "zh": "無論他們碰巧把什麼放進混合中。"}, {"time": "00:13:06,040 --> 00:13:12,500", "en": "And you have to actually explore this thing that they give you that has no manual and it works in certain settings, but maybe not in some settings.", "zh": "你必須實際探索他們給你的這個沒有手冊的東西，它在某些設定下能運作，但在某些設定下可能不行。"}, {"time": "00:13:12,880 --> 00:13:15,430", "en": "And you have to kind of uh explore it a little bit.", "zh": "你必須稍微探索一下。"}, {"time": "00:13:16,310 --> 00:13:19,160", "en": "And uh if you're in the circuits that were part of the RL, you fly.", "zh": "而且，如果你處於 RL 的電路中，你就能飛翔。"}, {"time": "00:13:19,520 --> 00:13:22,650", "en": "And if you're in the circuits that are out of the data distribution, uh you're going to struggle.", "zh": "而如果你處於資料分佈之外的電路中，你將會很掙扎。"}, {"time": "00:13:23,090 --> 00:13:26,580", "en": "And you have to kind of figure out which which circuits you're in in your application.", "zh": "你必須弄清楚你的應用程式處於哪些電路中。"}, {"time": "00:13:27,230 --> 00:13:32,170", "en": "And if you and if you're not in the circuits, then you have to really look at fine tuning and doing some of your own work", "zh": "而且如果你不在那些迴路中，那麼你真的必須考慮微調並做一些你自己的工作，"}, {"time": "00:13:32,460 --> 00:13:35,420", "en": "because it's not going to necessarily come out of the LM out of the box.", "zh": "因為它不一定會從 LM 中直接使用。"}, {"time": "00:13:36,530 --> 00:13:39,240", "en": "I'd love to come back to the concept of jagged intelligence in a little bit.", "zh": "我稍後想再談談「鋸齒狀智慧」的概念。"}, {"time": "00:13:39,770 --> 00:13:50,220", "en": "Um, if you were a founder today and thinking about building a company, you are trying to solve a problem that you think is tractable. Something that uh is a domain that is verifiable.", "zh": "嗯，如果你今天是一位創辦人，正在思考建立一家公司，你正試圖解決一個你認為可解決的問題。某個是可驗證領域的東西。"}, {"time": "00:13:50,830 --> 00:13:59,280", "en": "But you look around and you think, oh my gosh, well the labs have really, really started uh getting to escape velocity in the ones that seem most obvious.", "zh": "但你環顧四周，你會想，天哪，實驗室已經真正、真正地開始在那些最顯而易見的領域達到逃逸速度。"}, {"time": "00:13:59,670 --> 00:14:01,430", "en": "Math, coding and others.", "zh": "數學、編程等等。"}, {"time": "00:14:01,790 --> 00:14:04,320", "en": "What would your advice be to to the founders in the audience?", "zh": "你會給在場的創辦人什麼建議？"}, {"time": "00:14:05,840 --> 00:14:11,250", "en": "Um, So I think maybe that comes to the previous question of", "zh": "嗯，所以我想這可能與之前的問題有關，那就是"}, {"time": "00:14:11,750 --> 00:14:20,910", "en": "I do think that verifiability because it um, let me think, so verifiability makes something tractable in the current paradigm, because you can throw a huge amount of RL at it.", "zh": "我確實認為可驗證性，因為它，讓我想想，可驗證性使得在當前範式下某事物變得可處理，因為你可以投入大量的強化學習。"}, {"time": "00:14:21,980 --> 00:14:28,260", "en": "Um, so maybe one way to see it is that uh that remains true even if the labs are not focusing on it directly.", "zh": "嗯，所以或許一種看法是，即使實驗室沒有直接專注於它，這種說法仍然成立。"}, {"time": "00:14:28,660 --> 00:14:32,590", "en": "So if you are in a verifiable setting where you could create these RL environments or examples,", "zh": "因此，如果你處於一個可驗證的設定中，你可以創造這些強化學習環境或範例，"}, {"time": "00:14:33,160 --> 00:14:36,470", "en": "then that actually sets you up to potentially do your own fine tuning and you might benefit from that.", "zh": "那麼這實際上讓你有可能進行自己的微調，你可能會從中受益。"}, {"time": "00:14:36,850 --> 00:14:39,490", "en": "But there is fundamentally technology that just works. You can pull a lever.", "zh": "但從根本上說，有一種技術就是行得通。你可以拉動一個槓桿。"}, {"time": "00:14:40,030 --> 00:14:49,260", "en": "If you have huge amount of diverse data sets of RL environments etc. Uh, you can use your favorite fine tuning framework and um, and uh pull the lever and get something that actually uh works pretty well.", "zh": "如果你擁有大量多樣化的強化學習環境資料集等等，嗯，你可以使用你喜歡的微調框架，然後，嗯，拉動槓桿，就能得到一個運作得相當好的東西。"}, {"time": "00:14:50,380 --> 00:14:59,860", "en": "So, um, I didn't know what the examples of this might be, um, but I do think there are some very valuable uh reinforcement learning environments that people could think of that I think are not part of the", "zh": "所以，嗯，我不知道這方面的例子會是什麼，嗯，但我確實認為有一些非常有價值的強化學習環境，人們可以想到，我認為它們不屬於..."}, {"time": "00:15:00,560 --> 00:15:06,850", "en": "Yeah, I don't want to give away the answer, but there is one domain that I think is very uh okay, sorry. I don't mean to vague post on on the stage, but", "zh": "嗯，我不想洩漏答案，但有一個領域我認為非常，喔，抱歉。我不是想在台上發表模糊的言論，但是"}, {"time": "00:15:07,760 --> 00:15:08,980", "en": "there are some examples of this.", "zh": "有一些這樣的例子。"}, {"time": "00:15:09,340 --> 00:15:13,290", "en": "On the flip side, what do you think still feels automatable only from a distance?", "zh": "另一方面，你覺得什麼樣的事情，如果只從遠處看，仍然覺得可以自動化？"}, {"time": "00:15:14,930 --> 00:15:21,570", "en": "I do think that ultimately almost everything can be made verifiable to some extent, some things easier than others.", "zh": "我確實認為，最終幾乎所有事物在某種程度上都可以被驗證，有些比其他更容易。"}, {"time": "00:15:21,570 --> 00:15:33,180", "en": "Um, because even for like things are like writing or so on, you can imagine having a council of LLM judges and probably get get to some get something reasonable out of the um, from from this kind of an approach.", "zh": "因為即使對於像寫作之類的事情，你可以想像有一個大型語言模型（LLM）評審委員會，並且可能從這種方法中得到一些合理的結果。"}, {"time": "00:15:33,180 --> 00:15:35,760", "en": "So it's more about what's easy or hard.", "zh": "所以這更多是關於什麼是容易或困難的。"}, {"time": "00:15:36,750 --> 00:15:41,530", "en": "Um, so I I do think that ultimately, um, uh, yeah, I think, uh,", "zh": "嗯，所以我確實認為，最終，嗯，呃，是的，我認為，呃，"}, {"time": "00:15:41,530 --> 00:15:44,790", "en": "Everything. Everything is automatable.", "zh": "所有的一切。所有的一切都可以自動化。"}, {"time": "00:15:45,030 --> 00:15:45,990", "en": "Amazing. Okay.", "zh": "太棒了。好的。"}, {"time": "00:15:46,410 --> 00:15:52,650", "en": "Um, so last year you coined the term vibe coding and today we're in a world that feels a little bit more serious, more agentic engineering.", "zh": "嗯，所以去年你創造了「氛圍編碼」這個詞，而今天我們所處的世界感覺更嚴肅一些，更像是「代理工程」。"}, {"time": "00:15:52,650 --> 00:15:56,430", "en": "What do you think is the difference between the two and what would you actually call what we're in today?", "zh": "你認為這兩者之間有什麼區別？你實際上會如何稱呼我們今天所處的狀況？"}, {"time": "00:15:02,860 --> 00:16:07,110", "en": "So the floor rises, everyone can vibe code anything, and that's amazing, incredible.", "zh": "所以門檻提高了，每個人都可以「氛圍編碼」任何東西，這很棒，令人難以置信。"}, {"time": "00:16:07,440 --> 00:16:12,680", "en": "But then I would say agentic engineering is about preserving the quality bar of what existed before in professional software.", "zh": "但我會說，代理工程是關於維持專業軟體中原有品質標準的。"}, {"time": "00:16:13,200 --> 00:16:16,770", "en": "So you're not allowed to introduce vulnerabilities due to vibe coding.", "zh": "所以你不允許因為氛圍編碼而引入漏洞。"}, {"time": "00:16:17,310 --> 00:16:25,320", "en": "Um, you are, um, you're still responsible for your software just as before, but can you go faster? And spoiler is you can, but how do you, how do you do that properly?", "zh": "嗯，你仍然要為你的軟體負責，就像以前一樣，但你能更快嗎？答案是肯定的，你可以，但你如何正確地做到這一點？"}, {"time": "00:16:25,650 --> 00:16:34,510", "en": "And so to me, agentic engineering, when I call it that, because I do think it's kind of like an engineering discipline, you have these agents, which are these like spiky entities, they're a bit fallible, a little bit stochastic.", "zh": "對我來說，「代理工程」，我之所以這樣稱呼它，是因為我確實認為它有點像一種工程學科，你有這些代理，它們是這些棘手的實體，它們有點會犯錯，有點隨機。"}, {"time": "00:16:41,610 --> 00:16:47,490", "en": "And doing that well and correctly, um, is the the realm of agentic engineering.", "zh": "而要做到這一點，並且做得好、做得正確，嗯，就是代理工程的範疇。"}, {"time": "00:16:48,150 --> 00:16:54,230", "en": "Um, so I kind of see them as as different, like one is about maybe raising the raising the floor and the other is about, um, you know, extrapolating.", "zh": "嗯，所以我把它們看作是不同的，一個是關於提升底線，另一個是關於，嗯，你知道的，外推。"}, {"time": "00:16:54,230 --> 00:17:00,640", "en": "And what I'm seeing, I think is there is a very high ceiling on agentic engineer, uh, capability.", "zh": "而我所看到的，我認為，代理工程師的能力，其上限非常高。"}, {"time": "00:17:00,640 --> 00:17:05,420", "en": "And, you know, people used to talk about the 10x engineer previously.", "zh": "你知道，以前人們常說「10倍工程師」。"}, {"time": "00:17:05,420 --> 00:17:17,900", "en": "I think that this is magnified a lot more, uh, 10x is, uh, is not, uh, the speed up you gain, um, and I think, uh, it does seem to me like people who are very good at this, um, peak a lot more than 10x, uh, from from my perspective right now.", "zh": "我認為這被大大放大了，嗯，10倍，呃，並不是你獲得的速度提升，嗯，我認為，呃，在我看來，現在非常擅長這方面的人，嗯，他們的巔峰表現遠不止10倍。"}, {"time": "00:17:18,480 --> 00:17:19,650", "en": "I really like that framing.", "zh": "我非常喜歡這種說法。"}, {"time": "00:17:20,530 --> 00:17:28,000", "en": "Um, one thing that when Sam Altman came to AI sent last year, one memorable thing he said was that people of different generations use chat GPT differently.", "zh": "嗯，去年 Sam Altman 來參加 AI sent 時，他曾說過一句令人難忘的話，就是不同世代的人使用 ChatGPT 的方式不同。"}, {"time": "00:17:28,450 --> 00:17:35,460", "en": "So if you're in your 30s, you use it as a Google search replacement, but if you're in your teens, chat GPT is your gateway to the internet.", "zh": "所以如果你在三十幾歲，你會把它當作 Google 搜尋的替代品；但如果你在青少年時期，ChatGPT 是你通往網路的門戶。"}, {"time": "00:17:35,460 --> 00:17:38,000", "en": "What is the parallel here in coding today?", "zh": "在今天的程式設計中，這裡的相似之處是什麼？"}, {"time": "00:17:38,000 --> 00:17:48,340", "en": "If we were to watch two people code using Open Claw, Claude code, co-dex, one you'd consider mediocre at it, and one you would consider fully AI native, how would you describe the difference?", "zh": "如果我們觀察兩個人使用 Open Claw、Claude code、co-dex 編寫程式，一個你認為表現平平，另一個你認為完全是 AI 原生使用者，你會如何描述他們之間的差異？"}, {"time": "00:17:51,460 --> 00:17:56,860", "en": "I mean, I think it's just trying to get the most out of the tools that are available, utilizing all of their features.", "zh": "我的意思是，我認為這只是盡可能地利用現有的工具，發揮它們的所有功能。"}, {"time": "00:17:57,000 --> 00:18:00,240", "en": "investing into your own, um, kind of setup.", "zh": "投入你自己的，嗯，那種設定。"}, {"time": "00:18:00,800 --> 00:18:09,510", "en": "Uh, so just like previously, all the engineers are used to basically getting the most out of the tools you use, either it's Vim or VS code or now it's, uh, you know, cloth code or codex or so on.", "zh": "所以就像以前一樣，所有的工程師都習慣於從他們使用的工具中獲得最大的效益，無論是 Vim 還是 VS Code，或者現在是，呃，你知道的，Claude Code 或是 Codex 等等。"}, {"time": "00:18:10,230 --> 00:18:17,660", "en": "So, um, just investing into your setup, um, and, um, utilizing a lot of the, you know, tools that are available to you.", "zh": "所以，嗯，就是投入你的設定，嗯，然後，嗯，利用很多，你知道的，你可以使用的工具。"}, {"time": "00:18:18,870 --> 00:18:21,170", "en": "Um, and I think it just kind of looks like that.", "zh": "嗯，我認為它看起來就是那樣。"}, {"time": "00:18:21,430 --> 00:18:22,030", "en": "I do think that,", "zh": "我確實認為，"}, {"time": "00:18:22,480 --> 00:18:32,460", "en": "um, maybe related thought is, um, a lot of people are maybe hiring for this, right? Because they want to hire strong agentic engineers.", "zh": "嗯，也許相關的想法是，嗯，很多人可能正在為此招聘，對吧？因為他們想聘用強大的代理工程師。"}, {"time": "00:18:32,830 --> 00:18:47,380", "en": "I do think that, um, what I'm seeing is that, uh, the, uh, you know, most people are still not refactored their, um, their hiring process for agentic engineer capability, right? Like if you're giving out puzzles to solve and this is still the old paradigm.", "zh": "我確實認為，嗯，我所看到的是，呃，大多數人仍然沒有為代理工程師的能力重構他們的，嗯，招聘流程，對吧？就像如果你還在出謎題讓人解決，這仍然是舊的範式。"}, {"time": "00:18:47,680 --> 00:19:13,380", "en": "I would say that hiring have to has to look like give me a really big project and see someone implement that big project, like let's write say a Twitter clone uh for agents, and then uh make it really good, make it really secure, and then uh have some agents uh simulate some activity uh on this Twitter, and then I'm going to use 10 uh Codex 5.4 X high to try to break your break your um uh the website that you deployed.", "zh": "我會說，招聘必須看起來像這樣：給我一個非常大的專案，然後看某人如何實現那個大專案，例如，讓我們為代理編寫一個 Twitter 克隆版，然後讓它非常優秀，非常安全，然後讓一些代理模擬 Twitter 上的某些活動，然後我會使用 10 個 Codex 5.4 X high 來嘗試攻破你部署的網站。"}, {"time": "00:19:13,760 --> 00:19:17,350", "en": "And they're going to try to basically break it and they should not be able to break it.", "zh": "他們會嘗試基本上破壞它，而他們應該無法破壞它。"}, {"time": "00:19:17,680 --> 00:19:22,810", "en": "And so maybe it looks like that, right? And so, yeah, watching people in that that setting and building bigger projects,", "zh": "所以也許它看起來像那樣，對吧？所以，是的，在那個環境中觀察人們並建立更大的專案，"}, {"time": "00:19:22,810 --> 00:19:27,990", "en": "and uh, utilize utilizing the tooling is maybe what I would, uh, look at for the most part.", "zh": "然後，嗯，利用工具，這可能是我大部分會關注的。"}, {"time": "00:19:29,200 --> 00:19:33,960", "en": "And as agents do more, what human skill do you think becomes more valuable, not less?", "zh": "隨著代理做更多事情，你認為什麼樣的人類技能會變得更有價值，而不是更不重要？"}, {"time": "00:19:35,010 --> 00:19:36,490", "en": "Uh, so, um, yeah, it's a good question.", "zh": "呃，所以，嗯，這是一個好問題。"}, {"time": "00:19:36,490 --> 00:19:38,280", "en": "I think, um,", "zh": "我想，嗯，"}, {"time": "00:19:38,620 --> 00:19:41,470", "en": "well, right now the answer is that the agents are kind of like these intern entities, right?", "zh": "嗯，現在的答案是代理就像這些實習生實體，對吧？"}, {"time": "00:19:41,470 --> 00:19:45,340", "en": "So it's remarkable, um,", "zh": "所以這很了不起，嗯，"}, {"time": "00:19:45,340 --> 00:19:50,900", "en": "you basically still have to be in charge of the aesthetics, the the judgment, the taste, and a little bit of oversight.", "zh": "你基本上仍然需要負責美學、判斷、品味以及一些監督。"}, {"time": "00:19:51,190 --> 00:20:04,360", "en": "Uh maybe one, one of my favorite examples of like the the weirdness of agents is, um, for menu gen, you sign up with a Google Google account, but you, um, purchase credits using a stripe account, and both of them have email addresses.", "zh": "嗯，也許我最喜歡的一個代理怪異之處的例子是，嗯，對於菜單生成，你用 Google 帳戶註冊，但你用 Stripe 帳戶購買點數，而且兩者都有電子郵件地址。"}, {"time": "00:20:04,360 --> 00:20:26,350", "en": "And my agent actually tried to basically, um, like when you purchase credits, it assigned it using the email address from Stripe to the Google email address, like there wasn't a persistent user ID that that, uh, for people, it was trying to match up the email addresses, but you could use different email addresses for your Stripe and your Google, and basically it would not associate the funds.", "zh": "我的代理實際上試圖基本上，嗯，就像你購買點數時，它會使用 Stripe 的電子郵件地址分配給 Google 電子郵件地址，就像沒有一個持久的使用者 ID 那樣，呃，對於人們來說，它試圖匹配電子郵件地址，但你可以在 Stripe 和 Google 上使用不同的電子郵件地址，基本上它就不會將資金關聯起來。"}, {"time": "00:20:26,350 --> 00:20:33,180", "en": "And so this is the kind of thing that these agents still will make mistakes about, is like, why would you use email addresses to try to cross-correlate the funds?", "zh": "所以這就是這些代理仍然會犯錯的事情，就像，為什麼你會使用電子郵件地址來嘗試交叉關聯資金呢？"}, {"time": "00:20:33,180 --> 00:20:35,590", "en": "They can be arbitrary, you can use different emails, etc.", "zh": "它們可以是任意的，你可以使用不同的電子郵件等等。"}, {"time": "00:20:35,930 --> 00:20:41,590", "en": "Like this is such a weird thing to do. So I think people have to be in charge of this spec, this plan.", "zh": "這真是太奇怪了。所以我認為人們必須負責這個規範，這個計畫。"}, {"time": "00:20:41,590 --> 00:20:45,000", "en": "And, um, I actually don't even like the plan mode.", "zh": "而且，嗯，我甚至不喜歡計畫模式。"}, {"time": "00:20:45,000 --> 00:20:56,080", "en": "I, I would, I mean, obviously it's very useful, but I think there's something more general here where you have to work with your agent to design a spec that is very detailed, and maybe it's a, maybe basically the docs, and then get the agents to write them.", "zh": "我，我會，我的意思是，顯然它非常有用，但我認為這裡有一個更普遍的問題，你必須與你的代理合作，設計一個非常詳細的規範，也許它是一個，也許基本上就是文件，然後讓代理來編寫它們。"}, {"time": "00:20:56,080 --> 00:21:01,830", "en": "And you're in charge of the oversight and the top-level categories, but the agents are doing a lot of the under the hood.", "zh": "你負責監督和頂層類別，但代理在幕後做了很多工作。"}, {"time": "00:21:02,280 --> 00:21:04,560", "en": "And, um, so I think you're not caring about some of the details.", "zh": "而且，嗯，所以我想你不在乎一些細節。"}, {"time": "00:21:05,060 --> 00:21:09,790", "en": "So as an example also with, um, arrays or tensors in neural networks.", "zh": "所以舉個例子，關於神經網路中的陣列或張量。"}, {"time": "00:21:10,230 --> 00:21:16,330", "en": "Um, there's a ton of details between Pytorch and Numpy and all the different like Pandas and so on for all the different little API details.", "zh": "嗯，Pytorch 和 Numpy 之間，以及所有不同像 Pandas 等等，關於所有細小的 API 細節，有很多細節。"}, {"time": "00:21:16,330 --> 00:21:24,780", "en": "And I I already forgot about the keep dims versus keep dim or whether it's dim or access or reshape or permute or transpose. I don't remember this stuff anymore, right? Because you don't have to.", "zh": "而我已經忘了 keep dims 和 keep dim 的區別，或是 dim 還是 access，或是 reshape、permute 還是 transpose。我已經不記得了，對吧？因為你不需要記。"}, {"time": "00:21:24,780 --> 00:21:28,480", "en": "This is the kind of details that are handled by the intern because they have very good recall.", "zh": "這就是由實習生處理的細節，因為他們記憶力非常好。"}, {"time": "00:21:29,080 --> 00:21:39,400", "en": "And but you're still have to know, for example, that, um, you know, there's underlying tensor, there's an underlying view, and then you can manipulate view of the same storage or you can have different storage, which would be less efficient.", "zh": "但是你仍然必須知道，例如，嗯，你知道，有底層張量，有底層視圖，然後你可以操作相同儲存的視圖，或者你可以有不同的儲存，那樣效率會較低。"}, {"time": "00:21:39,640 --> 00:21:47,780", "en": "And so you still have to have an understanding of what this stuff is doing and some of the fundamentals, um, so that you're not copying memory around unnecessarily and so on.", "zh": "所以你仍然需要了解這些東西在做什麼以及一些基本原理，嗯，這樣你就不會不必要地複製記憶體等等。"}, {"time": "00:21:47,780 --> 00:21:51,210", "en": "But, uh, the details of the APIs are now handed off.", "zh": "但是，呃，API 的細節現在已經交接了。"}, {"time": "00:21:51,990 --> 00:22:02,170", "en": "So it, um, you're in charge of the taste, the engineering, the design, uh, and that it makes sense, and that you're asking for the right things, and that you're saying that, okay, these have to be unique user IDs that we're going to tie everything to.", "zh": "所以，你負責品味、工程、設計，以及它是否合理，你是否提出了正確的要求，並且你說，好吧，這些必須是唯一的用戶 ID，我們將所有東西都綁定到這些 ID 上。"}, {"time": "00:22:02,170 --> 00:22:08,070", "en": "Um, and so you're doing some of the design and development and the engineers are doing the fill in the blanks.", "zh": "嗯，所以你做一些設計和開發，工程師則負責填空。"}, {"time": "00:22:08,350 --> 00:22:13,110", "en": "And that's currently kind of like where we are, and I think that's what everyone, of course, is seeing, I think, right now.", "zh": "這就是我們目前所處的狀況，我想，這也是現在大家都在看到的。"}, {"time": "00:22:13,730 --> 00:22:20,380", "en": "Do you think there's a chance that this, um, taste and judgment matters less over time or will the ceiling just keep rising?", "zh": "你認為隨著時間的推移，這種，嗯，品味和判斷力會變得不那麼重要，還是天花板會不斷升高？"}, {"time": "00:22:21,390 --> 00:22:22,190", "en": "Um, yeah, it's a good question.", "zh": "嗯，是的，這是個好問題。"}, {"time": "00:22:22,190 --> 00:22:23,000", "en": "I would say,", "zh": "我會說，"}, {"time": "00:22:25,750 --> 00:22:28,340", "en": "Um, I mean, I'm hoping that the, that it improves.", "zh": "嗯，我的意思是，我希望它能有所改善。"}, {"time": "00:22:28,340 --> 00:22:29,860", "en": "I think probably the reason,", "zh": "我想可能的原因，"}, {"time": "00:22:30,000 --> 00:22:32,120", "en": "doesn't improve right now is again, it's not part of the RL.", "zh": "目前沒有改善，這也不是 RL 的一部分。"}, {"time": "00:22:32,120 --> 00:22:37,370", "en": "There's probably no aesthetics cost or reward or it's not good enough or something like that.", "zh": "可能沒有美學成本或獎勵，或者不夠好之類的事情。"}, {"time": "00:22:38,790 --> 00:22:52,660", "en": "I do think that when you actually look at the code, sometimes I get a little bit of a heart attack because it's not like super amazing code necessarily all the time and it's very bloaty and there's a lot of copy-paste and there's awkward abstractions that are brittle and like it works, but it's just really gross.", "zh": "我確實認為，當你實際查看程式碼時，有時我會有點心臟病發作，因為它不一定總是超棒的程式碼，它非常臃腫，有很多複製貼上，而且有些笨拙的抽象設計很脆弱，它確實能運作，但就是非常粗糙。"}, {"time": "00:22:53,900 --> 00:22:56,760", "en": "And I do I do hope that this can improve in future models.", "zh": "我確實希望這能在未來的模型中有所改進。"}, {"time": "00:22:56,760 --> 00:23:04,800", "en": "Um, a good example also is this uh, you know, micro GBT project, which where I was trying to simplify uh, LLM training to be as simple as possible.", "zh": "一個很好的例子是這個，你知道的，micro GBT 專案，我試圖將大型語言模型訓練簡化到盡可能簡單。"}, {"time": "00:23:04,800 --> 00:23:06,780", "en": "The models hate this. They can't do it.", "zh": "模型討厭這個。它們做不到。"}, {"time": "00:23:06,780 --> 00:23:12,500", "en": "I tried to I keep I kept trying to prompt an LLM to simplify more, simplify more, and it just can't.", "zh": "我試著不斷提示大型語言模型簡化更多，簡化更多，但它就是辦不到。"}, {"time": "00:23:13,900 --> 00:23:14,980", "en": "You feel like you're outside of the RL circuits.", "zh": "你感覺自己置身於 RL 電路之外。"}, {"time": "00:23:14,980 --> 00:23:20,910", "en": "It feels like you're obviously, you know, you're pulling teeth, it's not like light speed.", "zh": "感覺就像你明顯地，你知道，費盡心力，它不像光速那麼快。"}, {"time": "00:23:21,570 --> 00:23:29,380", "en": "So, I think um, I do think that people will still remain in charge of this, but I do think that there's nothing fundamental again that's preventing it, it's just the labs haven't done it yet almost.", "zh": "所以，我想，我確實認為人們仍將負責此事，但我認為並沒有什麼根本原因再次阻礙它，只是實驗室還沒有完成而已。"}, {"time": "00:23:30,470 --> 00:23:30,810", "en": "Yeah.", "zh": "對。"}, {"time": "00:23:31,230 --> 00:23:35,650", "en": "So I'd love to come back to this idea of uh, jagged forms of intelligence.", "zh": "我很想回到這個關於不規則的智慧形式的想法。"}, {"time": "00:23:35,650 --> 00:23:40,500", "en": "You wrote a little bit about this with a very thought-provoking piece around animals versus ghosts.", "zh": "你曾寫過一篇非常發人深省的文章，探討動物與鬼魂，提到了這一點。"}, {"time": "00:23:40,500 --> 00:23:45,360", "en": "Um, and the idea is that we're not building animals, we are summoning ghosts.", "zh": "嗯，這個想法是我們不是在建造動物，我們是在召喚鬼魂。"}, {"time": "00:23:45,360 --> 00:23:58,700", "en": "Um, and these are jagged forms of intelligence that are shaped by data and reward functions, but not by intrinsic motivation or fun or curiosity or empowerment, uh, things that kind of came about via evolution.", "zh": "嗯，這些是不規則的智慧形式，它們是由數據和獎勵函數塑造的，而不是由內在動機、樂趣、好奇心或賦權所驅動，這些是透過進化而產生的東西。"}, {"time": "00:23:59,860 --> 00:24:07,600", "en": "Um, why does that framing matter and what does it actually change about how you build and deploy and evaluate or even trust them?", "zh": "嗯，這個框架為何重要？它實際上改變了你如何建立、部署、評估，甚至信任它們的方式？"}, {"time": "00:24:08,720 --> 00:24:09,520", "en": "Uh, yes.", "zh": "呃，是的。"}, {"time": "00:24:09,520 --> 00:24:10,290", "en": "So,", "zh": "所以，"}, {"time": "00:24:11,310 --> 00:24:20,330", "en": "yeah, I think the reason I wrote about this is because I'm trying to wrap my head around what these things are, right? Because if you have a good model of what they are or are not, then you're going to be more competent at uh, using them.", "zh": "是的，我想我寫這篇文章的原因是因為我試圖弄清楚這些東西到底是什麼，對吧？因為如果你對它們是什麼或不是什麼有很好的理解模型，那麼你就能更勝任地使用它們。"}, {"time": "00:24:20,330 --> 00:24:27,590", "en": "Um, and I do think that, um, I don't know if it has, I'm not sure if it actually has like real power.", "zh": "嗯，我確實認為，嗯，我不知道它是否有，我不確定它是否真的有真正的力量。"}, {"time": "00:24:27,590 --> 00:24:30,880", "en": "I think it's a little bit of philosophizing. Um,", "zh": "我認為這有點像是哲學思辨。嗯，"}, {"time": "00:24:31,630 --> 00:24:33,160", "en": "but I do think that, um,", "zh": "但我確實認為，嗯，"}, {"time": "00:24:34,600 --> 00:24:43,850", "en": "I think it's just, um, coming to terms with the fact that these things are not, you know, animal intelligence, like if you yell at them, they're not going to work better or or worse or it doesn't have any impact.", "zh": "我想這只是，嗯，接受這些東西不是，你知道，動物智慧的事實，就像如果你對它們吼叫，它們不會工作得更好或更糟，或產生任何影響。"}, {"time": "00:24:44,480 --> 00:24:53,780", "en": "Um, and uh, it's all just kind of like these statistical simulation circuits where the the substrate is pre-training, so like statistics.", "zh": "嗯，而且這一切都像是這些統計模擬電路，其中的基質是預訓練，所以就像統計數據一樣。"}, {"time": "00:24:54,370 --> 00:24:58,870", "en": "And then, but then there's RL bolting on top, so it kind of like increases the dispassages.", "zh": "然後，但上面又加上了強化學習，所以它有點像增加了脫離感。"}, {"time": "00:24:59,660 --> 00:25:11,210", "en": "And um, maybe it's just kind of like a mindset of what I'm coming into or what's likely to work or not likely to work or how to modify it, but I don't actually, I don't know that I have like here are the five obvious outcomes of how to make your system better.", "zh": "而且，嗯，也許這只是一種心態，我進入的是什麼，或者什麼可能奏效，什麼不太可能奏效，或者如何修改它，但我實際上並不知道我有什麼像「這是讓你的系統變得更好的五個明顯結果」這樣的東西。"}, {"time": "00:25:11,560 --> 00:45:15,550", "en": "It's more just being suspicious of it and uh, figuring it out over time.", "zh": "更多的是對它保持懷疑，然後，嗯，隨著時間的推移弄清楚它。"}, {"time": "00:25:16,270 --> 00:25:16,980", "en": "That's where it starts.", "zh": "從那裡開始。"}, {"time": "00:25:17,400 --> 00:25:26,470", "en": "Um, okay, so you are so deep in working with agents that don't just chat, they have um, real permissions, they have local contexts, they actually take action on your your behalf.", "zh": "嗯，好的，所以你深入研究的代理不只是聊天，它們擁有真正的權限，有本地情境，它們實際上會代表你採取行動。"}, {"time": "00:25:26,870 --> 00:25:30,100", "en": "What does the world look like when we all start to live in that world?", "zh": "當我們都開始生活在那個世界時，世界會是什麼樣子？"}, {"time": "00:25:31,230 --> 00:25:31,750", "en": "Uh, yeah.", "zh": "呃，是的。"}, {"time": "00:25:31,750 --> 00:25:32,300", "en": "I think", "zh": "我想"}, {"time": "00:25:32,960 --> 00:25:39,230", "en": "I think a lot of people probably here are excited about what this you know, native agentic environment looks like.", "zh": "我想這裡很多人可能都很興奮，想知道這種原生代理環境會是什麼樣子。"}, {"time": "00:25:39,230 --> 00:25:44,750", "en": "And everything has to be rewritten, everything is still fundamentally written for humans and it has to be moved around.", "zh": "一切都必須重寫，所有東西本質上仍是為人類而寫，必須重新調整。"}, {"time": "00:25:45,220 --> 00:25:53,370", "en": "I still use most of the time when I use uh, different frameworks or libraries or things like that, they still have docs that are fundamentally written for humans, this is my favorite pet peeve.", "zh": "我仍然使用大部分時間，當我使用不同的框架或函式庫或類似的東西時，它們仍然有基本上是為人類寫的文檔，這是我最喜歡的抱怨。"}, {"time": "00:25:53,370 --> 00:25:56,600", "en": "Like I don't, uh, why are people still telling me what to do?", "zh": "就像我不想，呃，為什麼人們還在告訴我該怎麼做？"}, {"time": "00:25:56,600 --> 00:25:57,510", "en": "Like I don't want to do anything.", "zh": "就像我什麼都不想做。"}, {"time": "00:25:57,510 --> 00:25:59,540", "en": "What is the thing I should copy paste to my agent?", "zh": "我應該複製貼上什麼東西給我的代理？"}, {"time": "00:25:59,910 --> 00:26:00,270", "en": "Like,", "zh": "就像，"}, {"time": "00:26:01,430 --> 00:26:07,200", "en": "uh, so it's just, uh, every time I'm told, you know, go to this URL or something like that, it's just like, ah, you know.", "zh": "所以，嗯，每次我被告知，你知道，去這個網址或之類的，我就會，啊，你知道。"}, {"time": "00:26:08,480 --> 00:26:09,000", "en": "So, um,", "zh": "所以，嗯，"}, {"time": "00:26:09,590 --> 00:26:17,400", "en": "everyone is I think excited about how do we decompose the workloads that need to happen into fundamentally sensors over the world, actuators over the world. How do we make it agent native?", "zh": "我想每個人都很興奮，我們要如何將需要完成的工作分解成根本上是遍佈世界的感測器和遍佈世界的致動器。我們要如何讓它成為代理原生？"}, {"time": "00:26:17,750 --> 00:26:21,200", "en": "Basically, describe it to agents first.", "zh": "基本上，先向代理描述它。"}, {"time": "00:26:21,770 --> 00:26:31,230", "en": "Um, and then have a lot of uh automation uh around um, you know, the um, yeah, around data structures that are very legible to the LLMs.", "zh": "嗯，然後有大量的自動化，嗯，圍繞著，你知道，嗯，是的，圍繞著對大型語言模型非常易讀的資料結構。"}, {"time": "00:26:31,920 --> 00:26:32,800", "en": "Uh, so I think, um,", "zh": "呃，所以我想，嗯，"}, {"time": "00:26:33,110 --> 00:26:36,470", "en": "yeah, I'm hoping that there's a lot of agent first, um, infrastructure out there.", "zh": "是的，我希望那裡有很多以代理為基礎的基礎設施。"}, {"time": "00:26:36,470 --> 00:26:43,290", "en": "And that, you know, for menugen famously, when I wrote the not, I'm not sure how famously, but when I wrote the blog post about menugen.", "zh": "而且，你知道，對於 Menugen，著名的，當我寫下不，我不確定有多出名，但當我寫關於 Menugen 的部落格文章時。"}, {"time": "00:26:43,630 --> 00:26:56,730", "en": "Um, a lot of the work, a lot of the trouble was not even writing the code for menugen, it was deploying it on for Cell because I had to work with all these different services and that just string them up and I had to go to their settings and the menus and you know, configure my DNS and it was just so annoying.", "zh": "嗯，很多工作，很多麻煩甚至不是寫 Menugen 的程式碼，而是把它部署在 Vercel 上，因為我必須處理所有這些不同的服務，然後串聯起來，我必須去他們的設定和菜單，你知道，配置我的 DNS，這真是太煩人了。"}, {"time": "00:26:57,100 --> 00:27:07,590", "en": "And so that's a good example of I would hope that menu gen that I could give a prompt to an LLM, build menu gen, and then I didn't have to touch anything and it's deployed in that same way on the internet.", "zh": "所以這是一個很好的例子，我希望 Menugen，我可以給一個提示給大型語言模型，建立 Menugen，然後我什麼都不用碰，它就以同樣的方式部署在網際網路上。"}, {"time": "00:27:08,200 --> 00:27:14,380", "en": "Uh, I think that would be a good kind of a test for whether or not uh, a lot of our infrastructure is becoming more and more agent native.", "zh": "呃，我認為那將是一個很好的測試，用來判斷我們許多基礎設施是否越來越朝著代理原生發展。"}, {"time": "00:27:14,610 --> 00:27:16,000", "en": "And then ultimately, I would say,", "zh": "然後最終，我會說，"}, {"time": "00:27:16,470 --> 00:27:31,590", "en": "yeah, I I do think we're going towards a world where um, there's agent representation for people and for organizations and um, you know, I'll have my agent talk to your agent uh to figure out some of the details of our meetings or or things like that. So,", "zh": "是的，我確實認為我們正走向一個世界，在那裡，嗯，人們和組織都有代理代表，而且，嗯，你知道，我會讓我的代理和你的代理對話，以找出我們會議的一些細節或類似的事情。所以，"}, {"time": "00:27:32,890 --> 00:27:37,590", "en": "Um, I do think that that's uh, roughly where things are going, but um, yeah, I think everyone here is excited about that.", "zh": "嗯，我確實認為事情大致朝著那個方向發展，但是，嗯，是的，我想這裡的每個人都對此感到興奮。"}, {"time": "00:27:37,910 --> 00:27:42,600", "en": "I really like the visual analogy of sensors and actuators. I actually hadn't thought about that. That's super interesting.", "zh": "我真的很喜歡感測器和致動器的視覺類比。我之前沒想過這個。這太有趣了。"}, {"time": "00:27:42,710 --> 00:27:43,000", "en": "Right.", "zh": "對。"}, {"time": "00:27:43,440 --> 00:27:46,000", "en": "Um, okay, I think we have to end on a question about education.", "zh": "嗯，好的，我想我們必須以一個關於教育的問題結束。"}, {"time": "00:27:46,560 --> 00:27:55,660", "en": "Um, because you are probably one of the very best in the world at making complex technical concepts simple and deeply thoughtful about how we design education around it.", "zh": "嗯，因為你可能是世界上最擅長將複雜技術概念簡化，並對如何圍繞它設計教育進行深入思考的人之一。"}, {"time": "00:27:56,380 --> 00:28:04,570", "en": "Um, what still remains worth learning deeply when intelligence gets cheap as we move into the next era of AI?", "zh": "嗯，當智慧變得廉價，我們進入人工智慧的下一個時代時，還有什麼值得深入學習？"}, {"time": "00:28:05,300 --> 00:28:05,530", "en": "Yeah.", "zh": "是的。"}, {"time": "00:28:06,250 --> 00:28:09,490", "en": "Uh, there was a tweet that blew my mind recently and I keep thinking about it like every other day.", "zh": "最近有一條推文讓我大開眼界，我幾乎每天都在思考它。"}, {"time": "00:28:09,490 --> 00:28:15,390", "en": "It was something along the lines of, um, you can outsource your thinking, but you can't outsource your understanding.", "zh": "它大概是說，嗯，你可以外包你的思考，但你不能外包你的理解。"}, {"time": "00:28:16,470 --> 00:28:18,510", "en": "And, um, that's really nicely put.", "zh": "而且，嗯，說得真好。"}, {"time": "00:28:19,430 --> 00:28:20,110", "en": "I So,", "zh": "所以，"}, {"time": "00:28:21,280 --> 00:28:34,500", "en": "yeah, because I still I'm still part of the system and I still I still have to somehow information still has to make it into my brain and I feel like I'm becoming a bottleneck of just even knowing where do we try to build, why is it worth doing, uh, how do I, you know, how do I direct my my agents and so on.", "zh": "是的，因為我仍然是系統的一部分，我仍然，我仍然必須以某種方式讓資訊進入我的大腦，我感覺自己正在成為一個瓶頸，甚至不知道我們該嘗試在哪裡建造，為什麼值得這麼做，呃，我該如何，你知道，我該如何指揮我的代理等等。"}, {"time": "00:28:34,500 --> 00:28:45,000", "en": "So, I do still think that ultimately something has to direct the thinking and the processing and so on, and um, that's still kind of fundamentally constrained somehow by understanding.", "zh": "所以，我仍然認為最終必須有某種東西來指導思考和處理等等，而且，嗯，這仍然在某種程度上受到理解的根本限制。"}, {"time": "00:28:45,300 --> 00:28:56,100", "en": "And this is one reason I also was very excited about all the LLM knowledge bases, because I feel like that's that's a way for me to process information and anytime I see a different projection onto information, I always like feel like I gain insight.", "zh": "這也是我對所有大型語言模型知識庫感到非常興奮的一個原因，因為我感覺這是我處理資訊的一種方式，而且每當我看到對資訊有不同的投射時，我總會覺得我獲得了洞見。"}, {"time": "00:28:56,500 --> 00:29:01,700", "en": "So it's really just uh a lot of prompts for me to do synthetic data generation kind of over over some fixed data.", "zh": "所以這真的只是，嗯，很多提示讓我去做合成數據生成，某種程度上是在一些固定數據上進行。"}, {"time": "00:29:02,380 --> 00:29:10,920", "en": "Uh, so I I really enjoy uh, whenever I read an article, I have my uh, you know, my Wiki that's being built up from these articles and I love asking questions about things or um,", "zh": "呃，所以我非常喜歡，呃，每當我讀一篇文章，我都有我的，呃，你知道，我的 Wiki 是從這些文章中建立起來的，我喜歡問關於事情的問題或者，嗯，"}, {"time": "00:29:11,400 --> 00:29:18,770", "en": "and I I think that ultimately these are tools to enhance understanding in a certain way, and this is still kind of like a bit of a bottleneck because then you can't direct the", "zh": "而且我認為最終這些工具在某種程度上是為了增強理解，而這仍然有點像一個瓶頸，因為這樣你就無法引導"}, {"time": "00:29:19,700 --> 00:29:27,590", "en": "you can't be a good director if you still uh, because the LLMs certainly don't excel at understanding, you still are uniquely in charge of that.", "zh": "如果你仍然無法，呃，因為大型語言模型當然不擅長理解，你仍然獨自負責那方面。"}, {"time": "00:29:28,450 --> 00:29:32,740", "en": "Uh, yeah, I think uh, tools to that effect, I think are incredibly interesting and exciting.", "zh": "呃，是的，我想，呃，這方面的工具，我認為非常有趣和令人興奮。"}, {"time": "00:29:33,120 --> 00:29:39,790", "en": "I'm excited to be back here in a couple years and to see if we've been fully automated out of the loop and they actually take care of understanding as well.", "zh": "我很期待幾年後再次回到這裡，看看我們是否已經完全自動化，脫離了循環，而且它們也能處理理解這件事。"}, {"time": "00:29:40,200 --> 00:29:42,180", "en": "Uh, thank you so much for joining us, Andre.", "zh": "呃，非常感謝你加入我們，Andre。"}, {"time": "00:29:42,180 --> 00:29:42,850", "en": "We really appreciate it.", "zh": "我們真的很感激。"}];
+
+const list = document.getElementById('list');
+const curEn = document.getElementById('current-en');
+const curZh = document.getElementById('current-zh');
+const count = document.getElementById('count');
+
+count.textContent = SUBTITLES.length + ' 句';
+
+let player = null;
+let currentIdx = -1;
+let subOffset = -1.5;  // seconds, negative = subtitles appear earlier (compensate YouTube CC delay)
+
+// Offset slider
+const offsetSlider = document.getElementById('offset-slider');
+const offsetDisplay = document.getElementById('offset-display');
+const resetBtn = document.getElementById('reset-offset');
+offsetSlider.addEventListener('input', () => {
+  subOffset = parseFloat(offsetSlider.value);
+  offsetDisplay.textContent = `${subOffset >= 0 ? '+' : ''}${subOffset.toFixed(1)}s`;
+});
+resetBtn.addEventListener('click', () => {
+  subOffset = -1.5;
+  offsetSlider.value = -1.5;
+  offsetDisplay.textContent = '-1.5s';
+});
+
+function timeToSec(t) {
+  // "00:01:23,456" → seconds
+  const [h, m, rest] = t.split(':');
+  const [s, ms] = rest.split(',');
+  return (+h) * 3600 + (+m) * 60 + (+s) + (+ms) / 1000;
+}
+
+function parseTimeRange(tr) {
+  const [start, end] = tr.split(' --> ');
+  return { start: timeToSec(start), end: timeToSec(end) };
+}
+
+// Render list
+SUBTITLES.forEach((sub, i) => {
+  const item = document.createElement('div');
+  item.className = 'item';
+  item.dataset.idx = i;
+  item.innerHTML = `
+    <div class="time">${sub.time.split(' --> ')[0]}</div>
+    <div class="en">${escapeHtml(sub.en)}</div>
+    <div class="zh">${escapeHtml(sub.zh)}</div>
+  `;
+  item.addEventListener('click', () => {
+    if (player && player.seekTo) {
+      const t = parseTimeRange(sub.time).start;
+      player.seekTo(t, true);
+      player.playVideo();
+    }
+  });
+  list.appendChild(item);
+});
+
+function escapeHtml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// YouTube API ready
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytplayer', {
+    events: {
+      'onReady': () => {
+        const m = (window.location.hash || '').match(/^#t=(\d+)/);
+        if (m && player.seekTo) {
+          player.seekTo(parseInt(m[1], 10), true);
+          player.playVideo();
+        }
+        setInterval(updateSub, 250);
+      }
+    }
+  });
+}
+
+function updateSub() {
+  if (!player || !player.getCurrentTime) return;
+  const t = player.getCurrentTime() - subOffset;
+  let active = -1;
+  for (let i = SUBTITLES.length - 1; i >= 0; i--) {
+    const { start, end } = parseTimeRange(SUBTITLES[i].time);
+    if (t >= start) {
+      if (t <= end + 2) {
+        active = i;
+        break;
+      }
+    }
+  }
+  if (active !== currentIdx) {
+    currentIdx = active;
+    if (active >= 0) {
+      const sub = SUBTITLES[active];
+      // Init word-level structure
+      const enWords = sub.en.split(/(\s+)/);  // keep whitespace
+      const zhChars = [...sub.zh];  // unicode-safe
+      curEn.innerHTML = enWords.map((w, i) =>
+        w.trim() ? `<span class="word-en" data-idx="${i}">${escapeHtml(w)}</span>` : w
+      ).join('');
+      curZh.innerHTML = zhChars.map((c, i) =>
+        `<span class="word-zh" data-idx="${i}">${escapeHtml(c)}</span>`
+      ).join('');
+      // Highlight in list + scroll WITHIN the list container only (never scrolls the page)
+      document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+      const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        // Scroll only inside list (not page) — keeps video pinned at top
+        const targetTop = activeEl.offsetTop - list.clientHeight / 2 + activeEl.clientHeight / 2;
+        list.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
+    } else {
+      curEn.textContent = '';
+      curZh.textContent = '';
+    }
+  }
+
+  // Word-level karaoke (proportional progress within current cue)
+  if (active >= 0) {
+    const sub = SUBTITLES[active];
+    const { start, end } = parseTimeRange(sub.time);
+    const dur = Math.max(0.5, end - start);
+    const progress = Math.max(0, Math.min(1, (t - start) / dur));
+    // EN words
+    const enSpans = curEn.querySelectorAll('.word-en');
+    const activeEn = Math.floor(enSpans.length * progress);
+    enSpans.forEach((sp, i) => {
+      sp.className = 'word-en ' + (i < activeEn ? 'spoken' : (i === activeEn ? 'spoken' : 'pending'));
+    });
+    // ZH chars
+    const zhSpans = curZh.querySelectorAll('.word-zh');
+    const activeZh = Math.floor(zhSpans.length * progress);
+    zhSpans.forEach((sp, i) => {
+      sp.className = 'word-zh ' + (i < activeZh ? 'spoken' : (i === activeZh ? 'spoken' : 'pending'));
+    });
+  }
+}
+</script>
+</body>
+</html>
