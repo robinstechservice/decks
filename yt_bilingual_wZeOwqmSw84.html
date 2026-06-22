@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Learn 97% of Claude in Under 16 Minutes · 中英雙語字幕</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "PingFang TC", "Heiti TC", -apple-system, sans-serif;
+    background: #0F1F4D;
+    color: #1E1E1E;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  header {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 24px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+  header img { height: 40px; }
+  header .title-block { flex: 1; }
+  header h1 { font-size: 20px; font-weight: 900; color: #0F1F4D; line-height: 1.2; }
+  header .meta { font-size: 13px; color: #6E6E6E; margin-top: 4px; }
+  header .credit { font-size: 12px; color: #4F7A3B; font-weight: 700; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 900px) {
+    .grid { grid-template-columns: 1.4fr 1fr; }
+  }
+
+  .video-card {
+    background: black;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  }
+  .video-card iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: block;
+    border: 0;
+  }
+  .video-card .current-sub {
+    background: rgba(0,0,0,0.85);
+    color: white;
+    padding: 16px 22px;
+    text-align: center;
+    min-height: 100px;
+  }
+  .video-card .current-sub .en {
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.95);
+    margin-bottom: 6px;
+  }
+  .video-card .current-sub .zh {
+    font-size: 22px;
+    line-height: 1.4;
+    color: #E89E3F;
+    font-weight: 800;
+  }
+
+  .transcript-card {
+    background: white;
+    border-radius: 14px;
+    height: 80vh;
+    max-height: 720px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .transcript-card .header {
+    padding: 14px 20px;
+    border-bottom: 2px solid #E0E7F4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .transcript-card .header h2 {
+    font-size: 16px;
+    font-weight: 900;
+    color: #0F1F4D;
+  }
+  .transcript-card .header .count {
+    font-size: 12px;
+    color: #6E6E6E;
+  }
+  .transcript-card .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+  }
+  .transcript-card .list .item {
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .transcript-card .list .item:hover {
+    background: #F8FAFC;
+  }
+  .transcript-card .list .item.active {
+    background: linear-gradient(90deg, #E89E3F 0%, #F4C078 100%);
+    border-left: 6px solid #C26F1A;
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(232,158,63,0.4);
+    transition: all 0.2s ease;
+  }
+  .transcript-card .list .item.active .time {
+    color: white;
+    font-weight: 900;
+  }
+  .transcript-card .list .item.active .en {
+    color: rgba(255,255,255,0.95);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .transcript-card .list .item.active .zh {
+    color: white;
+    font-size: 17px;
+    font-weight: 900;
+  }
+  .video-card .current-sub.pulse .zh {
+    animation: pulse-glow 1.5s ease-in-out;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { text-shadow: 0 0 0 transparent; }
+    50% { text-shadow: 0 0 16px rgba(232,158,63,0.8); }
+  }
+  /* Word-level karaoke: spoken words turn green */
+  .video-card .current-sub .en .spoken {
+    color: #6BB05E;
+    transition: color 0.15s;
+    text-shadow: 0 0 8px rgba(107,176,94,0.4);
+  }
+  .video-card .current-sub .zh .spoken {
+    color: #6BB05E;
+    transition: color 0.1s;
+    text-shadow: 0 0 12px rgba(107,176,94,0.5);
+  }
+  .video-card .current-sub .en .pending {
+    color: rgba(255,255,255,0.55);
+  }
+  .video-card .current-sub .zh .pending {
+    color: rgba(232,158,63,0.55);
+  }
+  .transcript-card .list .item .time {
+    font-size: 11px;
+    color: #4F7A3B;
+    font-weight: 800;
+    font-family: monospace;
+    letter-spacing: 1px;
+  }
+  .transcript-card .list .item .en {
+    font-size: 14px;
+    color: #3A3A3A;
+    margin-top: 4px;
+    line-height: 1.45;
+  }
+  .transcript-card .list .item .zh {
+    font-size: 15px;
+    color: #0F1F4D;
+    margin-top: 3px;
+    line-height: 1.45;
+    font-weight: 600;
+  }
+
+  footer {
+    margin-top: 16px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 12px;
+    color: #6E6E6E;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer .right {
+    color: #2F5C28;
+    font-weight: 700;
+  }
+
+  .iris-hero-banner {
+    background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 50%, #4FE3FF 100%);
+    color: white; border-radius: 16px; padding: 18px 28px; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 6px 18px rgba(15,31,77,0.25);
+    position: relative; overflow: hidden;
+  }
+  .iris-hero-banner::after {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 30px 30px; pointer-events: none;
+  }
+  .iris-hero-banner .robi { width: 64px; height: 64px; border-radius: 50%; background: white; padding: 4px; flex-shrink: 0; z-index: 1; }
+  .iris-hero-banner .text { flex: 1; z-index: 1; }
+  .iris-hero-banner .tag {
+    display: inline-block; font-family: "Montserrat", sans-serif;
+    font-size: 10px; letter-spacing: 4px; font-weight: 900;
+    color: #FFD93D; background: rgba(0,0,0,0.25);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 6px;
+  }
+  .iris-hero-banner .headline {
+    font-family: "Noto Serif TC", serif;
+    font-size: 20px; font-weight: 900;
+    color: white; line-height: 1.25; letter-spacing: 1px;
+  }
+  .iris-hero-banner .sub {
+    font-size: 12px; color: rgba(255,255,255,0.88);
+    margin-top: 4px; letter-spacing: 0.5px;
+  }
+  .iris-hero-banner .badge {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 4px; z-index: 1;
+    font-family: "Montserrat", sans-serif;
+  }
+  .iris-hero-banner .badge .count {
+    background: #FFD93D; color: #0A0F2A;
+    padding: 4px 12px; border-radius: 6px;
+    font-size: 13px; font-weight: 900; letter-spacing: 1px;
+  }
+  .iris-hero-banner .badge .by {
+    font-size: 9px; color: rgba(255,255,255,0.7);
+    letter-spacing: 2px; font-weight: 700;
+  }
+  .iris-cta-footer {
+    margin-top: 18px; background: white; border-radius: 14px; padding: 20px 26px;
+    border-top: 4px solid #4FE3FF; box-shadow: 0 4px 14px rgba(15,31,77,0.06);
+    display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+  }
+  .iris-cta-footer .left h3 {
+    font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 4px;
+  }
+  .iris-cta-footer .left p { font-size: 13px; color: #5A6080; line-height: 1.5; }
+  .iris-cta-footer .left p .gold { color: #E89A45; font-weight: 800; }
+  .iris-cta-footer .right { text-align: right; font-family: "Montserrat", sans-serif; }
+  .iris-cta-footer .right .sig { color: #4FE3FF; font-weight: 900; font-size: 14px; letter-spacing: 1px; }
+  .iris-cta-footer .right .url { font-size: 10px; color: #5A6080; margin-top: 4px; letter-spacing: 1px; }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../robinstech_logo.png" alt="羅賓斯科技"/>
+    <div class="title-block">
+      <h1>Learn 97% of Claude in Under 16 Minutes</h1>
+      <div class="meta">Dan Martell · YouTube · 中英雙語字幕</div>
+      <div class="credit">📖 學員：Evin Lin · 整理 IRIS · 翻譯 Calliope · 轉錄 Eos</div>
+    </div>
+  </header>
+
+  <div class="iris-hero-banner">
+    <img src="../robi_v6_master.png" alt="Robi" class="robi"/>
+    <div class="text">
+      <div class="tag">🎨 IRIS 中英字幕版 · BY ROBINSTECH</div>
+      <div class="headline">16 分鐘學會 Claude Code 97% 功能</div>
+      <div class="sub">Dan Martell 15.2 分鐘 Claude Code 上手指南 · 中英並列 · 卡拉 OK 字幕</div>
+    </div>
+    <div class="badge">
+      <div class="count">217 cues</div>
+      <div class="by">DAN MARTELL · ZH-TW + EN</div>
+    </div>
+  </div>
+
+
+  <div class="grid">
+    <div class="video-card">
+      <iframe id="ytplayer"
+        src="https://www.youtube.com/embed/wZeOwqmSw84?enablejsapi=1"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <div class="current-sub" id="current-sub">
+        <div class="en" id="current-en">Playing video...</div>
+        <div class="zh" id="current-zh">影片載入中</div>
+      </div>
+      <div style="background:#0F1F4D;color:white;padding:10px 22px;display:flex;align-items:center;gap:12px;font-size:13px;">
+        <label style="white-space:nowrap;color:rgba(255,255,255,0.85);font-weight:700;">字幕 offset：</label>
+        <input type="range" id="offset-slider" min="-3" max="3" step="0.1" value="-1.5" style="flex:1;accent-color:#E89E3F;">
+        <span id="offset-display" style="font-family:monospace;font-weight:800;color:#E89E3F;min-width:50px;text-align:right;">-1.5s</span>
+        <button id="reset-offset" style="background:rgba(255,255,255,0.15);color:white;border:none;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-weight:700;">↺</button>
+      </div>
+    </div>
+
+    <div class="transcript-card">
+      <div class="header">
+        <h2>📜 完整逐字稿（點任一句跳到影片時間）</h2>
+        <span class="count" id="count">— 句</span>
+      </div>
+      <div class="list" id="list">
+        <!-- subtitles injected here -->
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="iris-cta-footer">
+    <div class="left">
+      <h3>🦊 喜歡這支字幕影片？</h3>
+      <p>羅賓斯科技每日上架 <span class="gold">AI / 創業 / 保險科技</span> 中英字幕影片。Follow Iris @iris_social_bot 取得最新通知。</p>
+    </div>
+    <div class="right">
+      <div class="sig">— Iris / 虹彩 🎨</div>
+      <div class="url">robinstechservice.github.io/decks/</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="left">永久 hosting · GitHub Pages · 自動發佈</div>
+    <div class="right">🦊 羅賓斯科技 · 學員學習資料庫</div>
+  </footer>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+// === SUBTITLE DATA INJECTED HERE BY BUILD ===
+const SUBTITLES = [{"time": "00:00:00,000 --> 00:00:07,520", "en": "Most people open Claude and use it like a fancy Google search. That's like buying a Ferrari and only driving it 10 km an hour.", "zh": "大多數人打開 Claude 只是把它當作一個高級的 Google 搜尋，這就像買了輛法拉利卻只開時速 10 公里一樣。"}, {"time": "00:00:07,760 --> 00:00:14,240", "en": "I build AI products every single day through my company Martel Ventures, and I heavily use Claude in all my work.", "zh": "我每天都透過我的公司 Martel Ventures 開發 AI 產品，我在所有的工作中都大量使用 Claude。"}, {"time": "00:00:14,240 --> 00:00:23,120", "en": "So I'm going to walk you through 16 Claude hacks that will save you hours of time, grow your business, very important, and boost your productivity in ways that will blow your freaking mind. Let's get into it.", "zh": "所以，我將帶你了解 16 個 Claude 密技，這些密技將為你節省數小時的時間、拓展你的業務（這很重要），並以讓你大開眼界的方式提升你的生產力。我們開始吧。"}, {"time": "00:00:24,230 --> 00:00:26,170", "en": "Number one, the memory import.", "zh": "第一點，記憶體匯入。"}, {"time": "00:00:26,500 --> 00:00:29,260", "en": "See if you are still stuck on chat GPT, so sorry to hear.", "zh": "如果你還停留在 ChatGPT，聽到這我感到很抱歉。"}, {"time": "00:00:29,670 --> 00:00:33,180", "en": "Now we can get to migrate you over, but you don't want to lose your contacts.", "zh": "現在我們可以把你遷移過來，但你不想失去你的聯絡方式。"}, {"time": "00:00:33,180 --> 00:00:37,900", "en": "It'll bring all over everything, your preferences, your history, and it'll transfer it over like that.", "zh": "它會把你所有的偏好、歷史紀錄都傳送過來，就像這樣。"}, {"time": "00:00:38,240 --> 00:00:43,300", "en": "It's a simple way to import everything you've done in chat GPT and bring it over to Claude in less than two minutes.", "zh": "這是一個簡單的方法，可以在不到兩分鐘內將你在 ChatGPT 中所做的一切匯入到 Claude。"}, {"time": "00:00:43,490 --> 00:00:47,380", "en": "We go to our settings, we go to capabilities, and then start import.", "zh": "我們前往設定，接著進入功能，然後開始匯入。"}, {"time": "00:00:47,750 --> 00:00:53,620", "en": "Claude then gives you a prompt, and then you paste it into chat GPT, then it gives you everything it knows about you, gotcha.", "zh": "Claude 會給你一個提示，你把它貼到 ChatGPT，然後它會把所有關於你的資訊都告訴你，懂了吧。"}, {"time": "00:00:54,000 --> 00:01:00,060", "en": "So you take the output and paste it back into the Claude box, you click add to memory and voila, too, you're done.", "zh": "所以你把輸出複製貼回 Claude 的方框，點擊「加入記憶體」，瞧，大功告成，你完成了。"}, {"time": "00:01:00,600 --> 00:01:02,640", "en": "Hack number two, model selector.", "zh": "密技二，模型選擇器。"}, {"time": "00:01:03,130 --> 00:01:05,650", "en": "Claude has three different power levels essentially.", "zh": "Claude 本質上有三種不同的能力等級。"}, {"time": "00:01:06,000 --> 00:01:08,240", "en": "And you got to pick the right one for the right job.", "zh": "你必須為正確的工作選擇正確的。"}, {"time": "00:01:08,520 --> 00:01:10,910", "en": "So you click the model selector at the bottom right.", "zh": "所以你點擊右下角的模型選擇器。"}, {"time": "00:01:11,390 --> 00:01:14,470", "en": "And then you see, we've got Haiku, this is your cheapest and fastest model.", "zh": "然後你會看到，我們有 Haiku，這是你最便宜也最快的模型。"}, {"time": "00:01:14,650 --> 00:01:16,920", "en": "Then you've got Sonic, best for everyday tasks.", "zh": "然後你有 Sonic，最適合日常任務。"}, {"time": "00:01:17,340 --> 00:01:20,000", "en": "You've got Opus, that's best for complex tasks.", "zh": "你有 Opus，最適合複雜任務。"}, {"time": "00:01:20,300 --> 00:01:25,720", "en": "Or you can select this little adaptive thinking thing, so it picks automatically depending on the task.", "zh": "或者你可以選擇這個小小的自適應思考功能，這樣它就會根據任務自動選擇。"}, {"time": "00:01:25,720 --> 00:01:27,770", "en": "So you don't have to think, but then you don't have as much control.", "zh": "所以你不用思考，但相對地控制權就沒那麼多。"}, {"time": "00:01:27,950 --> 00:01:29,480", "en": "I like to set my own control.", "zh": "我喜歡自己設定。"}, {"time": "00:01:29,480 --> 00:01:34,650", "en": "So for example, if you're looking for patterns and metrics, Opus crushes, it thinks way harder.", "zh": "舉例來說，如果你在尋找模式和指標，Opus 會很棒，它能思考得更深入。"}, {"time": "00:01:35,050 --> 00:01:37,970", "en": "If you're drafting an email response, Sonic, it's awesome.", "zh": "如果你在草擬電子郵件回覆，Sonic 會很棒。"}, {"time": "00:01:38,220 --> 00:01:40,910", "en": "And my favorite part, it's faster and it can give you different options.", "zh": "我最喜歡的部分是它更快，而且能給你不同的選擇。"}, {"time": "00:01:41,250 --> 00:01:44,810", "en": "If you're trying to summarize 50 meeting notes and it's just a bunch of data,", "zh": "如果你試圖總結 50 份會議記錄，那只是一堆資料。"}, {"time": "00:01:44,810 --> 00:01:46,750", "en": "Haiku, instant, done in seconds.", "zh": "Haiku，瞬間，幾秒鐘就完成。"}, {"time": "00:01:47,200 --> 00:01:49,500", "en": "Next, hack number three, the Gmail connector.", "zh": "接下來，密技三，Gmail 連接器。"}, {"time": "00:01:50,000 --> 00:01:51,240", "en": "Dan, is it secure?", "zh": "丹，它安全嗎？"}, {"time": "00:01:51,750 --> 00:01:57,370", "en": "Your security at home is a bazillion times less security than the team at Claude, I just want you to know that.", "zh": "你在家裡的安全性比 Claude 團隊的安全性差上萬億倍，我只是想讓你知道這點。"}, {"time": "00:01:57,370 --> 00:02:01,490", "en": "So stop asking me if it's secure and start using the tools to make yourself some money.", "zh": "所以別再問我安不安全了，開始使用這些工具來賺錢吧。"}, {"time": "00:02:06,540 --> 00:02:07,950", "en": "But first, we got to connect it.", "zh": "但首先，我們必須連接它。"}, {"time": "00:02:08,230 --> 00:02:13,620", "en": "You go to customize in the sidebar, connectors, then choose Gmail, then log in to it.", "zh": "你前往側邊欄的自訂，連接器，然後選擇 Gmail，接著登入。"}, {"time": "00:02:13,950 --> 00:02:16,110", "en": "Super easy, click, log in, it's added.", "zh": "超級簡單，點擊，登入，就加進去了。"}, {"time": "00:02:16,390 --> 00:02:20,800", "en": "I ask Claude to find stuff, summarize it, draft replies for me.", "zh": "我請 Claude 幫我找資料、做摘要、擬草稿。"}, {"time": "00:02:20,800 --> 00:02:23,800", "en": "And for what it's worth, the Gmail inbox search sucks.", "zh": "就我所知，Gmail 收件匣的搜尋功能很爛。"}, {"time": "00:02:24,190 --> 00:02:26,760", "en": "So how about we get the AI to search for us?", "zh": "那麼，不如讓 AI 幫我們搜尋如何？"}, {"time": "00:02:27,000 --> 00:02:38,900", "en": "If you want a cheat code and you have an assistant, what I do is I have a Claude account that is for my assistant and I, I've connected to my inbox and they can use that to search my inbox through our shared Claude account.", "zh": "如果你想要一個作弊碼，而且你還有一個助理，我會這麼做：我有一個 Claude 帳號，是給我助理和我使用的，我已經連接到我的收件匣，他們可以透過我們的共用 Claude 帳號來搜尋我的收件匣。"}, {"time": "00:02:39,070 --> 00:02:43,830", "en": "So that she can self-serve on any questions she would normally ask me, she can find it in my inbox.", "zh": "這樣她就可以自主解決她通常會問我的任何問題，她可以在我的收件匣中找到答案。"}, {"time": "00:02:44,400 --> 00:02:44,980", "en": "Power move.", "zh": "強力招數。"}, {"time": "00:02:45,340 --> 00:02:46,970", "en": "Hack number four, calendar connector.", "zh": "密技四，日曆連接器。"}, {"time": "00:02:47,650 --> 00:02:49,570", "en": "Similar, but different. Let me tell you why.", "zh": "相似但不同。讓我告訴你為什麼。"}, {"time": "00:02:50,180 --> 00:02:53,140", "en": "Essentially, Claude connects your Google calendar and it can do a lot of cool stuff.", "zh": "基本上，Claude 會連接你的 Google 日曆，而且它能做很多很酷的事。"}, {"time": "00:02:53,570 --> 00:02:54,950", "en": "Yes, it can schedule things.", "zh": "是的，它可以安排事情。"}, {"time": "00:02:55,250 --> 00:02:57,420", "en": "It can help you with meetings, it can find your free time.", "zh": "它可以幫助你開會，找到你的空閒時間。"}, {"time": "00:02:58,050 --> 00:03:01,210", "en": "But even more important, it can help you analyze your time.", "zh": "但更重要的是，它可以幫助你分析你的時間。"}, {"time": "00:03:01,660 --> 00:03:06,210", "en": "So same thing, we go to the same place on the sidebar, connectors, Google calendar, log in.", "zh": "所以一樣，我們去側邊欄的同一個地方，連接器，Google 日曆，登入。"}, {"time": "00:03:06,950 --> 00:03:13,210", "en": "Now I can go into Claude and add something like add one hour time block, sometime before Friday for me to review our next YouTube outline.", "zh": "現在我可以進入 Claude，新增一些東西，例如在週五之前增加一小時的時間區塊，讓我審查我們下一個 YouTube 大綱。"}, {"time": "00:03:13,620 --> 00:03:16,790", "en": "It then creates the time block and let me know why it picked that time.", "zh": "然後它會建立時間區塊，並讓我知道為什麼選擇那個時間。"}, {"time": "00:03:17,150 --> 00:03:20,940", "en": "An advanced move is to give it your goals for the quarter, maybe for the year.", "zh": "一個進階的做法是把你本季，甚至本年度的目標提供給它。"}, {"time": "00:03:21,230 --> 00:03:29,100", "en": "And then say, analyze my calendar, now analyze my email because you got that too, and see if I'm spending the right amount of time on the projects to achieve those goals.", "zh": "然後說，分析我的日曆，現在分析我的電子郵件（因為你也有那個），並看看我是否有在專案上花費適量的時間來實現這些目標。"}, {"time": "00:03:29,640 --> 00:03:31,680", "en": "Now it became a business coach.", "zh": "現在它變成了一個商業教練。"}, {"time": "00:03:32,010 --> 00:03:37,740", "en": "And these are only two connectors, and there's connectors for Slack, Notion, GitHub, Google Drive and a bunch of others.", "zh": "而這只是兩個連接器，還有 Slack、Notion、GitHub、Google Drive 和許多其他的連接器。"}, {"time": "00:03:38,390 --> 00:03:39,130", "en": "Now, before we move on.", "zh": "現在，在我們繼續之前。"}, {"time": "00:03:39,530 --> 00:03:45,260", "en": "If you're an entrepreneur and you're trying to keep up on all of this AI chaos, but you're maxed out on time, I totally get it.", "zh": "如果你是一位創業家，正努力跟上所有這些 AI 混亂，但你的時間已達上限，我完全理解。"}, {"time": "00:03:45,500 --> 00:03:48,290", "en": "That's why I built my AI company OS playbook.", "zh": "這就是我建立我的 AI 公司 OS 策略的原因。"}, {"time": "00:03:48,470 --> 00:03:52,620", "en": "The exact framework that I use to plug AI into every department within my business.", "zh": "我用來將 AI 導入我業務中每個部門的精確框架。"}, {"time": "00:03:53,010 --> 00:03:58,300", "en": "If you want it, it's yours for free, just DM me AI business on Instagram, I'm at Dan Martel and I'll send it right over to you.", "zh": "如果你想要，免費送你，只要在 Instagram 上私訊我 AI business，我的帳號是 Dan Martel，我會立刻寄給你。"}, {"time": "00:03:58,850 --> 00:04:00,540", "en": "Hack number five, artifacts.", "zh": "密技五，神器。"}, {"time": "00:04:01,210 --> 00:04:04,140", "en": "So essentially what it is, is working apps right in the chat.", "zh": "所以基本上，它就是直接在聊天中運作的應用程式。"}, {"time": "00:04:04,770 --> 00:04:10,970", "en": "It essentially creates like little mini apps within the chat that you can use and change things around and just kind of iterate.", "zh": "它基本上會在聊天中創建像迷你應用程式一樣的東西，你可以使用它們來修改內容，並進行迭代。"}, {"time": "00:04:11,150 --> 00:04:16,380", "en": "I get asked everyday, hey Dan, I got this idea, I want to hire a developer, how do I find the right person?", "zh": "我每天都會被問到，嘿，丹，我有這個想法，我想雇用一個開發者，我該如何找到合適的人選？"}, {"time": "00:04:16,380 --> 00:04:17,740", "en": "I go, look in the mirror.", "zh": "我說，照照鏡子吧。"}, {"time": "00:04:18,310 --> 00:04:19,350", "en": "You are that person.", "zh": "你就是那個人。"}, {"time": "00:04:24,620 --> 00:04:27,540", "en": "So for example, you could say, build me a spreadsheet with sample data.", "zh": "舉例來說，你可以說：「為我建立一個包含範例資料的試算表」。"}, {"time": "00:04:27,540 --> 00:04:35,540", "en": "And then make the columns editable, include the sales reps, who's involved, the status of the sale, the product they sold and any other information you think that would be relevant.", "zh": "然後將欄位設為可編輯，包括銷售代表、參與人員、銷售狀態、銷售產品以及你認為相關的任何其他資訊。"}, {"time": "00:04:35,540 --> 00:04:37,740", "en": "And then hit, boom, enter.", "zh": "然後，砰，按下 Enter。"}, {"time": "00:04:37,890 --> 00:04:41,260", "en": "And then pow, it just creates these interactive apps in chat.", "zh": "然後，它就在聊天中創建了這些互動式應用程式。"}, {"time": "00:04:41,640 --> 00:04:44,480", "en": "So it's not just like an information back and forth.", "zh": "所以它不只是一種資訊的來回傳遞。"}, {"time": "00:04:44,480 --> 00:04:45,580", "en": "Now we're building things.", "zh": "現在我們正在建造東西。"}, {"time": "00:04:46,080 --> 00:04:47,940", "en": "Hack number six, interactive visuals.", "zh": "密技六，互動式視覺效果。"}, {"time": "00:04:48,730 --> 00:04:49,950", "en": "Now this is my favorite.", "zh": "現在這是我的最愛。"}, {"time": "00:04:50,230 --> 00:04:53,710", "en": "Because I used to take the data from Claude and then go visualize it in other tools.", "zh": "因為我以前會從 Claude 獲取資料，然後到其他工具中進行視覺化。"}, {"time": "00:04:53,930 --> 00:04:55,920", "en": "Now I get to stay right inside the chat.", "zh": "現在我可以直接留在聊天室裡。"}, {"time": "00:04:56,320 --> 00:05:01,210", "en": "Claude builds you live, clickable visuals that you can use to explain anything.", "zh": "Claude 即時為你建立可點擊的視覺效果，你可以用它來解釋任何事物。"}, {"time": "00:05:01,470 --> 00:05:04,410", "en": "It's literally done what I call accelerated learning.", "zh": "這確實實現了我所謂的加速學習。"}, {"time": "00:05:04,410 --> 00:05:09,470", "en": "So for example, you can ask it to visualize the height framework, which is how we shoot our short-form videos.", "zh": "舉例來說，你可以要求它將高度框架視覺化，這是我們拍攝短片的方式。"}, {"time": "00:05:09,680 --> 00:05:13,900", "en": "And if you want and need context on that, just check Slack, so now it's going to use my Slack as a connector.", "zh": "如果你想了解更多背景資訊，只要查看 Slack，現在它就會使用我的 Slack 作為連接器。"}, {"time": "00:05:13,900 --> 00:05:21,400", "en": "And it builds me this cool whole visual that I can click on and expand to learn more about what it is, and it's all done by pulling the information and visualizing it.", "zh": "它為我建立了一個很酷的整體視覺圖，我可以點擊並展開以了解更多，所有這些都是透過提取資訊並視覺化來完成的。"}, {"time": "00:05:21,780 --> 00:05:24,200", "en": "It's as simple as telling it, visualize this.", "zh": "這就像告訴它「把這個視覺化」一樣簡單。"}, {"time": "00:05:24,620 --> 00:05:25,990", "en": "Hack number seven, projects.", "zh": "密技七，專案。"}, {"time": "00:05:26,670 --> 00:05:28,900", "en": "Think of it like this, it's essentially a folder.", "zh": "這樣想吧，它本質上是一個資料夾。"}, {"time": "00:05:29,200 --> 00:05:32,860", "en": "That's pre-loaded with all the context you might have around a project.", "zh": "其中預載了你可能圍繞一個專案的所有上下文。"}, {"time": "00:05:33,110 --> 00:05:33,980", "en": "See why it's called projects?", "zh": "明白為什麼叫做專案了吧？"}, {"time": "00:05:34,250 --> 00:05:41,430", "en": "And then you can actually invite other people to collaborate with you on those projects so that your chats and their chats are all in one place and you can kind of riff off each other.", "zh": "然後你可以邀請其他人與你合作這些專案，這樣你們的聊天記錄都在同一個地方，你們就可以互相交流。"}, {"time": "00:05:41,740 --> 00:05:44,170", "en": "If you're on a team account, highly recommend you do.", "zh": "如果你使用團隊帳號，強烈建議你這麼做。"}, {"time": "00:05:44,560 --> 00:05:45,340", "en": "So, here's how we do it.", "zh": "那麼，我們來看看怎麼做。"}, {"time": "00:05:45,340 --> 00:05:48,670", "en": "We go to the sidebar, then you click projects, then new project.", "zh": "我們到側邊欄，然後點擊「專案」，再點擊「新專案」。"}, {"time": "00:05:49,250 --> 00:05:58,000", "en": "Now I drop context in there, so everything from internal documents to PDFs, to anything I've downloaded, any instructions, copy-paste other chats.", "zh": "現在我把上下文放進去，所以從內部文件到 PDF，到我下載的任何東西，任何指示，複製貼上其他聊天記錄。"}, {"time": "00:05:58,000 --> 00:06:04,600", "en": "You put all that in the knowledge section, when you start chatting with it, it has all that reference material to be able to give you good answers.", "zh": "你把所有這些都放在知識區塊，當你開始與它聊天時，它會擁有所有那些參考資料，能夠給你很好的答案。"}, {"time": "00:06:05,150 --> 00:06:08,240", "en": "I have every one of my coaching calls transcribed.", "zh": "我把我的每一次輔導通話都轉錄下來了。"}, {"time": "00:06:08,660 --> 00:06:19,800", "en": "So if I'm looking for an example, a story, a client, I can go into the project that has already linked up to that Google Drive and tell it to search every transcript to find examples or stories around this pain or this challenge.", "zh": "所以如果我正在尋找一個例子、一個故事、一個客戶，我可以進入已經連結到 Google Drive 的專案，並告訴它搜尋每一份轉錄稿，以找到關於這個痛點或這個挑戰的例子或故事。"}, {"time": "00:06:20,010 --> 00:06:23,050", "en": "And that feeds me ideas for me to talk about in my content.", "zh": "這為我在內容中討論提供了想法。"}, {"time": "00:06:23,440 --> 00:06:32,000", "en": "And a pro move is you can create a system prompt that you copy and paste into the instruction box, which then essentially acts like what used to be called a custom GPT.", "zh": "一個專業的技巧是你可以建立一個系統提示，將它複製貼上到指令框中，這基本上就像以前稱為自訂 GPT 的功能。"}, {"time": "00:06:32,270 --> 00:06:35,660", "en": "So that you can get the same result over and over every time you come into that project.", "zh": "這樣每次你進入該專案時，都能一次又一次地獲得相同的結果。"}, {"time": "00:06:36,110 --> 00:06:37,780", "en": "Hack number eight, voice mode.", "zh": "密技八，語音模式。"}, {"time": "00:06:38,520 --> 00:06:39,670", "en": "Now we get to talk to Claude.", "zh": "現在我們可以和 Claude 說話了。"}, {"time": "00:06:39,840 --> 00:06:43,000", "en": "Because guess what, I can talk three times faster than I can type.", "zh": "因為你知道嗎？我說話的速度比打字快三倍。"}, {"time": "00:06:43,560 --> 00:06:47,330", "en": "So it's super easy, on a desktop, click that little waveform at the bottom of your prompt bar.", "zh": "所以這超級簡單，在桌面上，點擊提示欄底部的小波形圖示。"}, {"time": "00:06:47,700 --> 00:06:49,250", "en": "On mobile, just click the mic button.", "zh": "在手機上，只需點擊麥克風按鈕。"}, {"time": "00:06:49,600 --> 00:06:51,740", "en": "I do this all the time while I'm driving, I'm having fun.", "zh": "我開車時常這麼做，玩得很開心。"}, {"time": "00:06:51,740 --> 00:06:52,160", "en": "It's easy.", "zh": "這很簡單。"}, {"time": "00:06:52,430 --> 00:06:57,300", "en": "And the cool part is it transcribes a whole conversation, so if you ever want to use that in something else, it's all there to go.", "zh": "最酷的是，它會轉錄整個對話，所以如果你想在其他地方使用它，所有內容都在那裡。"}, {"time": "00:06:57,620 --> 00:07:01,210", "en": "The best part is you can be super bestie and whatever you're thinking about.", "zh": "最棒的是，你可以跟它像閨蜜一樣，想什麼就說什麼。"}, {"time": "00:07:01,210 --> 00:07:05,070", "en": "And Claude is smart enough to go, oh, you're probably talking about this and give you a really great answer.", "zh": "Claude 夠聰明，會說：「喔，你可能在說這個」，然後給你一個很棒的答案。"}, {"time": "00:07:05,490 --> 00:07:06,840", "en": "Hack number nine, Chrome extension.", "zh": "密技九，Chrome 擴充功能。"}, {"time": "00:07:07,650 --> 00:07:08,520", "en": "Non-negotiable for me.", "zh": "對我來說，這是不可協商的。"}, {"time": "00:07:08,700 --> 00:07:13,300", "en": "The Chrome extension is a go-to tool if you're a Claude user, please install it.", "zh": "如果你是 Claude 用戶，Chrome 擴充功能是必備工具，請務必安裝。"}, {"time": "00:07:13,580 --> 00:07:18,600", "en": "So what it does is it allows you to use your browser through Claude to automate tasks.", "zh": "它的作用是，讓你透過 Claude 使用你的瀏覽器來自動化任務。"}, {"time": "00:07:19,040 --> 00:07:24,000", "en": "So the first thing we got to do is go to the Chrome web store and find Claude for Chrome and install it.", "zh": "所以我們首先要做的是前往 Chrome 線上應用程式商店，找到適用於 Chrome 的 Claude 並安裝。"}, {"time": "00:07:24,260 --> 00:07:30,600", "en": "And what it is, pretty much everything you do in your browser, the Claude Chrome browser extension can do for you.", "zh": "它基本上是這樣，你在瀏覽器中做的所有事情，Claude Chrome 瀏覽器擴充功能都可以替你完成。"}, {"time": "00:07:31,070 --> 00:07:36,090", "en": "So for example, if you got like a spreadsheet and you get all these numbers and you're like, I wonder what the pattern is and what should I pay attention to? You can just ask it.", "zh": "舉例來說，如果你有一個試算表，裡面有所有這些數字，然後你想：「我想知道模式是什麼，我應該注意什麼？」你只要問它就可以了。"}, {"time": "00:07:37,120 --> 00:07:39,200", "en": "Then Claude, takes a snapshot of the site.", "zh": "然後 Claude 會擷取網站快照。"}, {"time": "00:07:40,000 --> 00:07:44,330", "en": "scraping everything, clicks buttons, works inside your browser, and it finds the insights.", "zh": "抓取所有東西、點擊按鈕、在瀏覽器中操作，並找出洞見。"}, {"time": "00:07:44,330 --> 00:07:49,050", "en": "It does everything that you would have to do that you might not even know how to do for you automagically.", "zh": "它會自動為你完成所有你必須做，甚至可能不知道怎麼做的事情。"}, {"time": "00:07:49,790 --> 00:07:51,100", "en": "Hack number 10, co-work.", "zh": "第10個技巧，協同工作。"}, {"time": "00:07:51,570 --> 00:07:55,640", "en": "This is where it gets nerdy, like my kind of people are sticking around right to the end starting now.", "zh": "這部分會比較技術性，像我這類的人會從現在開始一直待到最後。"}, {"time": "00:07:56,110 --> 00:08:02,100", "en": "What it is, is Claude will take over your computer and do work on your computer while you step away.", "zh": "它會接管你的電腦，在你的電腦上執行工作，而你可以離開。"}, {"time": "00:08:02,350 --> 00:08:08,490", "en": "On your Claude desktop, so it's a separate app you have to install on your desktop, open up and you'll see co-work.", "zh": "在你的Claude桌面（它是一個需要安裝在桌面上的獨立應用程式）上，打開後你會看到「協同工作」。"}, {"time": "00:08:08,700 --> 00:08:10,060", "en": "Open co-work, it's in the top left.", "zh": "打開「協同工作」，它在左上角。"}, {"time": "00:08:10,470 --> 00:08:16,750", "en": "And here's a tip, make sure you toggle on computer use in your settings, because it needs that to be able to do things on your computer.", "zh": "這裡有個提示：請務必在設定中開啟「電腦使用」功能，因為它需要這個才能在你的電腦上執行操作。"}, {"time": "00:08:17,220 --> 00:08:23,460", "en": "Then you just describe any task you need to be done and the steps that it requires and Claude breaks it down and executes step by step.", "zh": "然後你只需描述任何需要完成的任務及其所需步驟，Claude就會將其分解並逐步執行。"}, {"time": "00:08:24,050 --> 00:08:31,900", "en": "So for example, you could say, pull last month's sales numbers from HubSpot, drop them into Google Sheet, build a summary chart and post on the team Slack channel before Monday 9:00 a.m.", "zh": "例如，你可以說：「從HubSpot提取上個月的銷售數據，放入Google試算表，建立摘要圖表，並在週一上午9點前發佈到團隊的Slack頻道。」"}, {"time": "00:08:32,090 --> 00:08:34,230", "en": "And it'll take over control of my computer to do it all.", "zh": "它將接管我的電腦來完成所有這些。"}, {"time": "00:08:34,730 --> 00:08:37,210", "en": "It's like Claude's hands doing the work for you.", "zh": "就像Claude的雙手在為你工作一樣。"}, {"time": "00:08:37,590 --> 00:08:39,100", "en": "Hack number 11, scheduled task.", "zh": "第11個技巧，排程任務。"}, {"time": "00:08:41,970 --> 00:08:45,680", "en": "And it's Claude. So it's within co-work. Just type schedule.", "zh": "而那就是Claude。所以它在協同工作裡。只需輸入「/schedule」。"}, {"time": "00:08:45,680 --> 00:08:52,140", "en": "Just type /schedule and then it'll allow you to schedule whatever you just typed.", "zh": "只需輸入「/schedule」，然後它就會讓你排程你剛才輸入的內容。"}, {"time": "00:08:52,470 --> 00:08:58,170", "en": "Things that used to be done by my chief of staff that honestly, she doesn't have to do, I'll just set it up, schedule it and nobody has to worry about it.", "zh": "以前由我的幕僚長完成的事情，老實說，她不必再做了，我只需設定、排程，就沒有人需要擔心了。"}, {"time": "00:08:58,410 --> 00:09:01,780", "en": "It does that the same time, every day as long as my computer is open.", "zh": "只要我的電腦開著，它每天都會在同一個時間執行。"}, {"time": "00:09:02,040 --> 00:09:08,310", "en": "So every morning, Claude can read your inbox, it can send you a summary, it can figure out what's urgent, it can tell you what's new in the world.", "zh": "所以每天早上，Claude可以閱讀你的收件匣、寄給你摘要、找出緊急事項、告訴你世界上有什麼新鮮事。"}, {"time": "00:09:08,310 --> 00:09:11,650", "en": "It can essentially do everything that you're probably doing when every time you sit down on your computer anyway.", "zh": "它基本上可以做你每次坐在電腦前可能都會做的所有事情。"}, {"time": "00:09:11,900 --> 00:09:13,400", "en": "Hack number 12, Claude dispatch.", "zh": "第12個技巧，Claude派遣。"}, {"time": "00:09:14,300 --> 00:09:17,700", "en": "We can essentially talk to Claude through dispatch.", "zh": "我們基本上可以透過派遣與Claude對話。"}, {"time": "00:09:18,200 --> 00:09:19,530", "en": "Claude has made this super simple.", "zh": "Claude讓這變得超級簡單。"}, {"time": "00:09:19,530 --> 00:09:23,300", "en": "Just go into co-work, then you'll see a menu item called dispatch.", "zh": "只需進入「協同工作」，然後你會看到一個名為「派遣」的選單項目。"}, {"time": "00:09:23,450 --> 00:09:34,300", "en": "Click it, you'll see a QR code, pull out the camera app on your phone, scan it and it'll actually redirect you to the App Store to install the app and then it'll connect your app to your computer.", "zh": "點擊它，你會看到一個QR碼，拿出你手機的相機應用程式，掃描它，它會將你重新導向到App Store安裝應用程式，然後它會將你的應用程式連接到你的電腦。"}, {"time": "00:09:34,670 --> 00:09:48,240", "en": "So now you might be out at dinner and realize you forgot something, you want to send it to your team, so you can actually use dispatch on your phone to say, hey, go grab my Martel Ventures pitch deck and send it to Roddy and ask him to give feedback and then send an email to the team with all the updates.", "zh": "所以現在你可能正在外面用餐，突然意識到忘記了什麼，想把它發送給你的團隊，你就可以在手機上使用派遣功能，說：「嘿，去拿我的Martel Ventures提案簡報，發給Roddy，請他提供回饋，然後將包含所有更新的電子郵件發給團隊。」"}, {"time": "00:09:48,500 --> 00:09:54,200", "en": "So now you can do all the co-work automations executing on your computer, because you turned that little setting on, on the go.", "zh": "所以現在你可以在行動中執行所有在電腦上運行的協同工作自動化，因為你開啟了那個小設定。"}, {"time": "00:09:54,350 --> 00:09:56,200", "en": "Hack number 13, Claude code.", "zh": "第13個技巧，Claude代碼。"}, {"time": "00:09:56,630 --> 00:10:01,790", "en": "It's essentially an AI software developer that can code anything in plain English.", "zh": "它本質上是一個AI軟體開發者，可以用簡單的英語編寫任何東西。"}, {"time": "00:10:02,080 --> 00:10:08,870", "en": "A couple months ago, I shut down my whole company for two days and taught everybody how to be a Claude code engineer.", "zh": "幾個月前，我把公司關閉了兩天，並教導所有人如何成為Claude代碼工程師。"}, {"time": "00:10:09,150 --> 00:10:14,470", "en": "If you want to do 10 times, 100 times more work than anybody else, you have to learn how to build apps in Claude Code.", "zh": "如果你想比其他人多做10倍、100倍的工作，你必須學習如何在Claude Code中建立應用程式。"}, {"time": "00:10:15,000 --> 00:10:19,530", "en": "And the cool part is is Anthropic has a full setup guide that'll teach everything to you and I'll link it up below.", "zh": "最棒的是，Anthropic 提供了一份完整的設定指南，會教你所有內容，我會將連結放在下方。"}, {"time": "00:10:19,940 --> 00:10:21,960", "en": "And look, there's two types of Claude code.", "zh": "看，Claude代碼有兩種。"}, {"time": "00:10:22,210 --> 00:10:27,300", "en": "There's using it in the Claude app on your computer, or you can actually do it in the terminal.", "zh": "一種是在電腦上的Claude應用程式中使用它，或者你也可以在終端機中執行它。"}, {"time": "00:10:27,600 --> 00:10:32,270", "en": "Now, if you don't know what a terminal is, that's fine, just ask Claude and it'll tell you how to use it.", "zh": "如果你不知道終端機是什麼，沒關係，只需詢問Claude，它就會告訴你如何使用它。"}, {"time": "00:10:32,580 --> 00:45:20,000", "en": "I want you to know that AI is the only technology ever created that teaches you how to use it better.", "zh": "我想讓你知道，AI是唯一被創造出來，能教你如何更好地使用它的技術。"}, {"time": "00:10:37,990 --> 00:10:45,270", "en": "One of my CEOs, Todd, who's 60 (he's not, but I joke with him, he is), literally used Claude Code to build a CEO dashboard.", "zh": "我的一位執行長，Todd，他60歲了（他不是，但我開玩笑說他是），他竟然用Claude Code 建立了一個執行長儀表板。"}, {"time": "00:10:45,530 --> 00:10:47,810", "en": "I'm telling you, nobody heard from Todd for three days.", "zh": "我跟你說，整整三天沒人聽到Todd的任何消息。"}, {"time": "00:10:48,230 --> 00:10:55,700", "en": "Then he emerges out of his office and he brings us in there and he's got a TV on the wall and he's showing us this app he built. And essentially is doing his job.", "zh": "然後他走出辦公室，把我們帶進去，牆上掛著一台電視，他向我們展示他開發的這個應用程式。它基本上就在做他的工作。"}, {"time": "00:10:56,210 --> 00:11:01,390", "en": "Somebody that is not technical, not somebody who learned how to code, he just knows how to talk.", "zh": "他不是技術人員，也不是學寫程式的人，他只是知道如何交談。"}, {"time": "00:11:01,790 --> 00:11:07,870", "en": "So this is cool, but what if you want to do like coding stuff while you're on the go, well, that's where hack number 14 comes in, Claude Channels.", "zh": "所以這很酷，但如果你想在移動中進行編碼之類的事情呢？這就是第14個技巧：Claude頻道。"}, {"time": "00:11:08,400 --> 00:11:13,960", "en": "Essentially, you can use iMessage, Telegram, Discord, to chat with Claude.", "zh": "基本上，你可以使用iMessage、Telegram、Discord來與Claude聊天。"}, {"time": "00:11:14,360 --> 00:11:17,700", "en": "So now you can code from anywhere as long as your computer is running.", "zh": "所以現在你可以從任何地方編碼，只要你的電腦正在運行。"}, {"time": "00:11:18,100 --> 00:11:21,430", "en": "Anthropic put a full guide together to help you set it up, so I'll link it below again.", "zh": "Anthropic 製作了一份完整的指南來幫助你設定，我會再次將連結放在下方。"}, {"time": "00:11:21,430 --> 00:11:23,450", "en": "But at a high level, here's what you want to do.", "zh": "但從高層次來看，這是你要做的。"}, {"time": "00:11:23,590 --> 00:11:25,950", "en": "First, you create your bot on Telegram, IMessage or Discord.", "zh": "首先，你在Telegram、iMessage或Discord上建立你的機器人。"}, {"time": "00:11:26,230 --> 00:11:28,970", "en": "Pair it with Claude Code in your terminal and then finally set up your API keys and skills.", "zh": "在終端機中將其與Claude Code配對，然後最後設定你的API金鑰和技能。"}, {"time": "00:11:31,200 --> 00:11:33,380", "en": "Now API keys is just something you're going to have to learn to do.", "zh": "現在，API金鑰只是你需要學習如何做的事情。"}, {"time": "00:11:33,380 --> 00:11:35,300", "en": "It's like creating a spreadsheet if you never create a spreadsheet.", "zh": "這就像你從未建立過試算表，卻要建立一個一樣。"}, {"time": "00:11:35,300 --> 00:11:39,380", "en": "Once you learn how to do it once, you'll learn that it's just how all these computers talk to each other.", "zh": "一旦你學會一次，你就會明白，這只是所有這些電腦之間如何溝通的方式。"}, {"time": "00:11:39,850 --> 00:11:44,650", "en": "Now you can use Claude code from anywhere and build stuff and iterate with it as long as your computer is running.", "zh": "現在，只要你的電腦正在運行，你就可以從任何地方使用Claude代碼來建構東西並進行迭代。"}, {"time": "00:11:45,200 --> 00:11:46,310", "en": "So just tell it what you need it to build.", "zh": "所以只要告訴它你需要它建立什麼。"}, {"time": "00:11:46,700 --> 00:11:59,250", "en": "For example, my buddy Arturo was running late and he was about to miss a flight, so then he actually messaged Claude Code to check his email because he connected it and to look at his calendar because all details were there and for it to check into his flight for him.", "zh": "例如，我的朋友Arturo遲到了，他差點錯過航班，所以他實際上透過Claude Code訊息來查看他的電子郵件（因為他已連接），並查看他的日曆（因為所有詳細資訊都在那裡），然後讓它為他辦理登機手續。"}, {"time": "00:11:59,530 --> 00:12:04,960", "en": "A lot of people are using Claude Code like their own personal AI agent, but that's why I built my own platform called Apex.", "zh": "很多人都把Claude Code當作自己的個人AI助理，但這就是為什麼我建立了自己的平台，名為Apex。"}, {"time": "00:12:05,230 --> 00:12:06,900", "en": "Essentially, it's like a digital twin.", "zh": "本質上，它就像一個數位分身。"}, {"time": "00:12:07,270 --> 00:12:10,810", "en": "So I have a guy named Kai, that's my guy, and he handles everything.", "zh": "我有一個叫Kai的夥伴，他是我的助手，他處理所有事情。"}, {"time": "00:12:11,330 --> 00:12:18,940", "en": "But it's way easier to set up, it's way more secure and it gives you access and privacy to your own things and it can use all the language models and all the AI.", "zh": "但它設定起來容易得多，安全得多，它能讓你存取並保護你的個人資料，而且它可以使用所有的語言模型和所有的人工智慧。"}, {"time": "00:12:18,940 --> 00:12:22,500", "en": "So if you're interested, just click the link in the description and check it out for yourself.", "zh": "如果你有興趣，只需點擊說明中的連結，自己去看看吧。"}, {"time": "00:12:22,400 --> 00:12:24,380", "en": "Hack number 15, Claude Skills.", "zh": "第15個技巧，Claude技能。"}, {"time": "00:12:24,790 --> 00:12:30,470", "en": "This is where you can train Claude to do a repeatable task for you exactly the same way every time.", "zh": "在這裡你可以訓練Claude，讓它每次都以完全相同的方式為你執行重複的任務。"}, {"time": "00:12:30,830 --> 00:12:37,750", "en": "The way you turn anything into a skill is once you've got something going, you're working with something, you're asking it to refine it, just say turn this into a skill.", "zh": "將任何東西變成技能的方法是：一旦你已經啟動某項工作，正在處理某事，並要求它改進，只需說「將此轉化為技能」。"}, {"time": "00:12:38,900 --> 00:12:44,600", "en": "So to do this, just go on the left side of your sidebar and click customize, skills, and browse and install.", "zh": "要做到這一點，只需進入側邊欄的左側，點擊「自訂」、「技能」，然後「瀏覽」並「安裝」。"}, {"time": "00:12:44,900 --> 00:12:45,670", "en": "Or you can create your own.", "zh": "或者你可以自己建立。"}, {"time": "00:12:46,100 --> 00:12:52,500", "en": "And the cool part is is you can install other people's skills, tons of them that are created for like legal, financials, HR type skills.", "zh": "最棒的是，你可以安裝其他人的技能，有很多都是為法律、金融、人資等類型技能所建立的。"}, {"time": "00:12:52,700 --> 00:12:55,480", "en": "There's literally thousands of them shared on GitHub.", "zh": "GitHub上分享的技能 literally 有數千個。"}, {"time": "00:12:55,860 --> 00:13:06,160", "en": "So one of the most popular skills is one called Humanizer, where it targets the 20 specific AI writing patterns that we all know exist and then it rewrites whatever your AI did in a more human tone.", "zh": "其中最受歡迎的技能之一叫做Humanizer，它針對我們都知道存在的20種特定AI寫作模式，然後它會將你的AI所做的任何內容以更人性化的語氣重寫。"}, {"time": "00:13:06,630 --> 00:13:08,100", "en": "And last, Claude design.", "zh": "最後，Claude設計。"}, {"time": "00:13:08,520 --> 00:13:11,160", "en": "This one's going to turn everybody into a world-class designer.", "zh": "這一個將讓每個人都變成世界級的設計師。"}, {"time": "00:13:11,430 --> 00:13:16,920", "en": "I'm talking pitch decks, one-pagers, landing page mockups, full apps, even motion graphics.", "zh": "我說的是提案簡報、單頁文件、登陸頁面模型、完整的應用程式，甚至是動態圖形。"}, {"time": "00:13:17,340 --> 00:13:20,290", "en": "As of the filming of this video, it is the newest release from Claude.", "zh": "截至本影片錄製時，這是Claude最新發布的功能。"}, {"time": "00:13:20,590 --> 00:13:21,920", "en": "So if you want to use it, real simple.", "zh": "所以如果你想使用它，非常簡單。"}, {"time": "00:13:21,920 --> 00:13:24,290", "en": "Go to Claude.ai/design.", "zh": "前往Claude.ai/design。"}, {"time": "00:13:24,530 --> 00:13:25,550", "en": "Now just describe what you want.", "zh": "現在只需描述你想要的。"}, {"time": "00:13:26,100 --> 00:13:27,760", "en": "And Claude will build you a draft in minutes.", "zh": "Claude將在幾分鐘內為你建立一份草稿。"}, {"time": "00:13:28,300 --> 00:13:34,340", "en": "And it can even match your styles, brand guides, whatever you got, you can give it as examples and it'll match that as it designs for you.", "zh": "它甚至可以符合你的風格、品牌指南，無論你有什麼，你都可以提供作為範例，它會根據這些範例為你進行設計。"}, {"time": "00:13:34,580 --> 00:13:40,800", "en": "So basically, I wanted to visualize the main points of my book, \"Buy Back Your Time.\" So maybe I was creating a workbook, which already exists.", "zh": "所以基本上，我想將我的書《買回你的時間》的主要重點視覺化。所以也許我正在製作一本練習冊，這本書已經存在了。"}, {"time": "00:13:40,800 --> 00:13:48,540", "en": "But if I didn't, I could use this to visualize the points, so it take those elements out of my book and then create visual examples so it help people learn it easier.", "zh": "但如果沒有，我可以用它來視覺化這些重點，它會將我的書中的這些元素提取出來，然後創建視覺範例，這樣可以幫助人們更容易學習。"}, {"time": "00:13:48,980 --> 00:13:51,120", "en": "And then, ba-da-bing, ba-da-boom, done.", "zh": "然後，咻一聲，搞定。"}, {"time": "00:13:51,570 --> 00:13:52,140", "en": "Like look at it.", "zh": "就像看看它。"}, {"time": "00:13:52,650 --> 00:13:55,100", "en": "Not visually what I would do, but it gets me there.", "zh": "視覺上不是我會做的，但它能讓我達到目的。"}, {"time": "00:13:55,530 --> 00:13:57,460", "en": "For most people, it is a game changer.", "zh": "對大多數人來說，這是一個遊戲規則的改變者。"}, {"time": "00:13:57,730 --> 00:13:59,200", "en": "And this is the worst it's ever going to be.", "zh": "這將是它最糟糕的狀態了。"}, {"time": "00:13:59,200 --> 00:14:02,460", "en": "You don't think in six months it's going to be better? 12 months, two years?", "zh": "你難道不認為六個月後會更好嗎？12個月，兩年後呢？"}, {"time": "00:14:02,670 --> 00:14:04,790", "en": "I think designers need to start learning how to use this.", "zh": "我認為設計師需要開始學習如何使用這個。"}, {"time": "00:14:05,230 --> 00:14:09,660", "en": "And they recently partnered with Adobe, so the whole design world is going to get mixed up big time.", "zh": "他們最近與Adobe合作，所以整個設計界將會大洗牌。"}, {"time": "00:14:10,280 --> 00:14:13,180", "en": "So I just overloaded your mind with a bunch of hacks.", "zh": "所以我剛才用一堆技巧塞爆你的腦袋。"}, {"time": "00:14:13,310 --> 00:14:16,460", "en": "But here's the cool part, you don't need to do them all, now you just know that they exist.", "zh": "但最酷的部分是，你不需要全部都做，現在你只需要知道它們存在。"}, {"time": "00:14:16,830 --> 00:14:20,290", "en": "So all I need from you is to know which one are you going to use today.", "zh": "所以，我只需要知道你今天會使用哪一個。"}, {"time": "00:14:20,290 --> 00:14:22,120", "en": "Just leave a comment below and let me know.", "zh": "只需在下方留言告訴我。"}, {"time": "00:14:22,520 --> 00:14:24,570", "en": "And look, if it doesn't work for you, that's fine.", "zh": "聽著，如果它對你無效，那也沒關係。"}, {"time": "00:14:24,570 --> 00:14:25,340", "en": "Go to the next one.", "zh": "就換下一個。"}, {"time": "00:14:25,550 --> 00:14:28,200", "en": "AI can be crazy, but I trust that you can do this.", "zh": "AI可能很瘋狂，但我相信你能做到。"}, {"time": "00:14:28,590 --> 00:14:31,700", "en": "You know, people message me all the time, they're like, Dan, I feel like I'm behind.", "zh": "你知道，人們總是傳訊息給我，他們說：「丹，我覺得我落後了。」"}, {"time": "00:14:31,700 --> 00:14:32,240", "en": "No, you're not.", "zh": "不，你沒有。"}, {"time": "00:14:32,430 --> 00:14:35,750", "en": "I have never felt ahead and I just accepted I never will feel ahead.", "zh": "我從未感覺自己超前，我也只是接受我永遠不會感覺自己超前。"}, {"time": "00:14:36,060 --> 00:14:42,150", "en": "And the only question I get to ask myself is, am I doing the work that's going to keep me ahead? You're watching this, so that means you're part of this.", "zh": "而我唯一會問自己的問題是，我是否有在做讓我保持領先的工作？你正在看這個，這代表你是其中一份子。"}, {"time": "00:14:42,460 --> 00:14:47,170", "en": "And if you just do one thing from this video, you are more ahead than 99% of people.", "zh": "如果你從這部影片中只做一件事，你就比99%的人領先了。"}, {"time": "00:14:47,520 --> 00:14:51,590", "en": "And remember, just DM me AI business and I'll send you over my AI company OS playbook.", "zh": "記住，只需私訊我「AI business」，我會將我的AI公司OS操作手冊發送給你。"}, {"time": "00:14:52,190 --> 00:14:57,800", "en": "And if you want to go deeper on what AI tools to use, I ranked the best ones to make money in this video here.", "zh": "如果你想深入了解該使用哪些AI工具，我在這部影片中列出了賺錢的最佳工具。"}, {"time": "00:14:58,200 --> 00:14:59,650", "en": "So click the link and I'll see you on the other side.", "zh": "所以點擊連結，我們在另一邊見。"}, {"time": "00:15:00,800 --> 00:15:01,800", "en": "Hey Claude, tell me how cool I am.", "zh": "嘿，Claude，告訴我我有多酷。"}, {"time": "00:15:02,300 --> 00:15:02,660", "en": "All right.", "zh": "好的。"}, {"time": "00:15:03,170 --> 00:15:05,180", "en": "You're running three entities from Colonia.", "zh": "你正在經營來自Colonia的三個實體。"}, {"time": "00:15:05,270 --> 00:15:07,900", "en": "Whoa, whoa, whoa, Claude, keep it secret. I'm in a room full of people, yo.", "zh": "哇，哇，哇，Claude，保密。我周圍都是人耶！"}, {"time": "00:15:08,340 --> 00:15:09,660", "en": "I'm surprised, Dan, that's crazy.", "zh": "我很驚訝，丹，這太瘋狂了。"}, {"time": "00:15:10,100 --> 00:15:10,730", "en": "You're welcome.", "zh": "不客氣。"}];
+
+const list = document.getElementById('list');
+const curEn = document.getElementById('current-en');
+const curZh = document.getElementById('current-zh');
+const count = document.getElementById('count');
+
+count.textContent = SUBTITLES.length + ' 句';
+
+let player = null;
+let currentIdx = -1;
+let subOffset = -1.5;  // seconds, negative = subtitles appear earlier (compensate YouTube CC delay)
+
+// Offset slider
+const offsetSlider = document.getElementById('offset-slider');
+const offsetDisplay = document.getElementById('offset-display');
+const resetBtn = document.getElementById('reset-offset');
+offsetSlider.addEventListener('input', () => {
+  subOffset = parseFloat(offsetSlider.value);
+  offsetDisplay.textContent = `${subOffset >= 0 ? '+' : ''}${subOffset.toFixed(1)}s`;
+});
+resetBtn.addEventListener('click', () => {
+  subOffset = -1.5;
+  offsetSlider.value = -1.5;
+  offsetDisplay.textContent = '-1.5s';
+});
+
+function timeToSec(t) {
+  // "00:01:23,456" → seconds
+  const [h, m, rest] = t.split(':');
+  const [s, ms] = rest.split(',');
+  return (+h) * 3600 + (+m) * 60 + (+s) + (+ms) / 1000;
+}
+
+function parseTimeRange(tr) {
+  const [start, end] = tr.split(' --> ');
+  return { start: timeToSec(start), end: timeToSec(end) };
+}
+
+// Render list
+SUBTITLES.forEach((sub, i) => {
+  const item = document.createElement('div');
+  item.className = 'item';
+  item.dataset.idx = i;
+  item.innerHTML = `
+    <div class="time">${sub.time.split(' --> ')[0]}</div>
+    <div class="en">${escapeHtml(sub.en)}</div>
+    <div class="zh">${escapeHtml(sub.zh)}</div>
+  `;
+  item.addEventListener('click', () => {
+    if (player && player.seekTo) {
+      const t = parseTimeRange(sub.time).start;
+      player.seekTo(t, true);
+      player.playVideo();
+    }
+  });
+  list.appendChild(item);
+});
+
+function escapeHtml(s) {
+  return (s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// YouTube API ready
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('ytplayer', {
+    events: {
+      'onReady': () => {
+        const m = (window.location.hash || '').match(/^#t=(\d+)/);
+        if (m && player.seekTo) {
+          player.seekTo(parseInt(m[1], 10), true);
+          player.playVideo();
+        }
+        setInterval(updateSub, 250);
+      }
+    }
+  });
+}
+
+function updateSub() {
+  if (!player || !player.getCurrentTime) return;
+  const t = player.getCurrentTime() - subOffset;
+  let active = -1;
+  for (let i = SUBTITLES.length - 1; i >= 0; i--) {
+    const { start, end } = parseTimeRange(SUBTITLES[i].time);
+    if (t >= start) {
+      if (t <= end + 2) {
+        active = i;
+        break;
+      }
+    }
+  }
+  if (active !== currentIdx) {
+    currentIdx = active;
+    if (active >= 0) {
+      const sub = SUBTITLES[active];
+      // Init word-level structure
+      const enWords = sub.en.split(/(\s+)/);  // keep whitespace
+      const zhChars = [...sub.zh];  // unicode-safe
+      curEn.innerHTML = enWords.map((w, i) =>
+        w.trim() ? `<span class="word-en" data-idx="${i}">${escapeHtml(w)}</span>` : w
+      ).join('');
+      curZh.innerHTML = zhChars.map((c, i) =>
+        `<span class="word-zh" data-idx="${i}">${escapeHtml(c)}</span>`
+      ).join('');
+      // Highlight in list + scroll WITHIN the list container only (never scrolls the page)
+      document.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+      const activeEl = list.querySelector(`.item[data-idx="${active}"]`);
+      if (activeEl) {
+        activeEl.classList.add('active');
+        // Scroll only inside list (not page) — keeps video pinned at top
+        const targetTop = activeEl.offsetTop - list.clientHeight / 2 + activeEl.clientHeight / 2;
+        list.scrollTo({ top: targetTop, behavior: 'smooth' });
+      }
+    } else {
+      curEn.textContent = '';
+      curZh.textContent = '';
+    }
+  }
+
+  // Word-level karaoke (proportional progress within current cue)
+  if (active >= 0) {
+    const sub = SUBTITLES[active];
+    const { start, end } = parseTimeRange(sub.time);
+    const dur = Math.max(0.5, end - start);
+    const progress = Math.max(0, Math.min(1, (t - start) / dur));
+    // EN words
+    const enSpans = curEn.querySelectorAll('.word-en');
+    const activeEn = Math.floor(enSpans.length * progress);
+    enSpans.forEach((sp, i) => {
+      sp.className = 'word-en ' + (i < activeEn ? 'spoken' : (i === activeEn ? 'spoken' : 'pending'));
+    });
+    // ZH chars
+    const zhSpans = curZh.querySelectorAll('.word-zh');
+    const activeZh = Math.floor(zhSpans.length * progress);
+    zhSpans.forEach((sp, i) => {
+      sp.className = 'word-zh ' + (i < activeZh ? 'spoken' : (i === activeZh ? 'spoken' : 'pending'));
+    });
+  }
+}
+</script>
+</body>
+</html>
