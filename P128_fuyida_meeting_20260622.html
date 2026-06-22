@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>P128 富易達保經 × 羅賓斯科技 會議紀錄 2026-06-22</title>
+<style>
+:root {
+  --navy: #0A1E3F; --navy-deep: #051435;
+  --gold: #C4972C; --gold-bright: #E8B73A;
+  --red: #D9382B; --ink: #121822; --ink-light: #394350;
+  --grey: #6B7280; --bg: #F8FAFC; --bg-soft: #F2F5FA;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Source Han Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--ink); background: white; font-size: 15px; line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+.page { max-width: 1000px; margin: 0 auto; }
+header {
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: white; padding: 32px 40px;
+}
+.chip { background: var(--gold); color: var(--navy); padding: 3px 12px;
+  border-radius: 14px; font-size: 12px; font-weight: 700; margin-right: 8px;}
+h1 { font-size: 30px; font-weight: 900; margin: 10px 0 6px; }
+.sub { color: var(--gold-bright); font-size: 16px; font-weight: 600; }
+.meta-bar { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.2);}
+.meta-bar strong { color: var(--gold-bright); }
+section { padding: 28px 40px; }
+section + section { border-top: 1px solid #e5e8ed; }
+h2 { font-size: 22px; font-weight: 800; color: var(--navy);
+  margin-bottom: 16px; padding-left: 12px;
+  border-left: 5px solid var(--gold); }
+h3 { font-size: 18px; font-weight: 800; color: var(--navy);
+  margin: 20px 0 10px; }
+p { margin-bottom: 12px; color: var(--ink-light); }
+ul { margin-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 8px; color: var(--ink-light); }
+strong { color: var(--navy); font-weight: 800; }
+code { background: var(--bg-soft); padding: 2px 6px;
+  border-radius: 3px; font-family: ui-monospace, monospace;
+  color: var(--red); font-size: 13px; }
+.transcript { background: var(--bg-soft); padding: 20px;
+  border-radius: 4px; max-height: 700px; overflow-y: auto; }
+.transcript .line { display: flex; gap: 10px; padding: 4px 0;
+  font-size: 13px; }
+.transcript .time { color: var(--grey); font-family: ui-monospace, monospace;
+  font-weight: 600; min-width: 50px; }
+.transcript .speaker { font-weight: 700; min-width: 70px; }
+.transcript .text { color: var(--ink); flex: 1; }
+.transcript .meta { font-size: 12px; color: var(--grey); padding: 4px 0; }
+.tldr { background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+  border-left: 4px solid var(--gold-bright);
+  padding: 16px 20px; border-radius: 4px; margin-bottom: 18px;}
+hr { border: 0; border-top: 1px solid #e5e8ed; margin: 18px 0; }
+footer { background: var(--navy-deep); color: white; padding: 20px 40px;
+  text-align: center; font-size: 13px; }
+footer .sig { color: var(--gold-bright); font-weight: 800;
+  font-size: 14px; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <span class="chip">P128</span>
+  <h1>富易達保經 × 羅賓斯科技 系統 demo 會議紀錄</h1>
+  <div class="sub">2026-06-22 · 羅賓斯 Console + SaaS 雙系統爭取採用</div>
+  <div class="meta-bar">
+    <strong>與會：</strong>羅賓斯 Evin (CEO) / Leon (CTO) / Matt (BD) / Ray (PM)
+    ｜ 富易達 張志成 (總經理)
+    <br>
+    <strong>時長：</strong>1 小時 24 分 ｜
+    <strong>整理：</strong>Calliope 雅韻 🎭（Gemini 2.5 Pro STT 4 chunks 並行）
+    ｜ <strong>tier：</strong>🔴 內部商業條件
+  </div>
+</header>
+
+<section>
+<div class="tldr">
+<strong>TL;DR — 3 句話總覽</strong>
+<p>富易達總經理張志成肯定 OCR 技術價值（解決行政 5-10 min/件 Key-in 痛點），但 SaaS 車險報價 demo 連 2 次失敗讓他對穩定性嚴重存疑。羅賓斯承諾先完成遠見保經導入做標竿、車險功能修穩定後再給富易達 SaaS 測試帳號；張總明確要求 SaaS 必須同時含旅平險 + 車險才能對業務員產生推動力。雙方達成「Console（OCR）先行、SaaS 待穩」共識。</p>
+</div>
+</section>
+
+<p>好的，這是一份根據您提供的逐字稿產出的 3 段結構化會議紀錄。</p>
+<hr>
+<section><h2>1. 具體行動（Action Items）</h2>
+<ul>
+<li><strong>[Ray/Leon/Matt]</strong> 立即推進與遠見保經的 Console (OCR) 導入專案，包含產出符合「創識」系統的 Excel 格式、建立帳號與安排教育訓練，為富易達的導入建立成功案例。（Deadline: 下週上線）</li>
+<li><strong>[Leon]</strong> 穩定 SaaS 系統的車險報價功能，徹底解決與後端供應商及台產的 API 串接問題，確保 demo 與測試時 100% 可用。（Deadline: 2-3 週內）</li>
+<li><strong>[Matt/Leon]</strong> 提供 Console (OCR) 測試帳號給張總，讓他先行體驗保單辨識功能，以爭取 SaaS 系統的修復時間。（Deadline: 會後立即處理）</li>
+<li><strong>[Leon/開發團隊]</strong> 根據張總回饋，優化 SaaS 旅平險投保流程 UI，將需求訪談書（業報書）欄位設定為符合多數情境的預設值，以加速業務員操作。（Deadline: 提供測試帳號前完成）</li>
+<li><strong>[Evin]</strong> 待車險功能穩定後，安排與台產（朱文錦）的會議，並邀請張總參與，共同爭取將旅平險與車險一同在 SaaS 平台上線至正式環境。</li>
+</ul>
+<section><h2>2. 議題索引（Topic Index）</h2>
+<ul>
+<li><code>[00:56-06:09]</code> Console 功能一：以一份 20 頁含手寫字跡的壽險保單，展示 OCR 保單辨識與資料結構化擷取功能。</li>
+<li><code>[06:10-09:58]</code> 張總質疑 OCR 95% 信心指數的計算方式，並與富邦人壽的雙人 Key-in 流程比較，確認此系統是「輔助檢視」而非完全取代人工。</li>
+<li><code>[10:04-12:27]</code> Console 功能二：展示長代碼系統，透過車牌與身分證查詢車籍與保險到期日，作為業務員再行銷的「敲門磚」。</li>
+<li><code>[16:28-26:47]</code> 討論 OCR 如何與富易達現有的「創識」系統整合，張總建議羅賓斯直接與創識等三大系統商合作，將技術植入以擴大市場。</li>
+<li><code>[27:56-33:59]</code> Evin 闡述羅賓斯的長遠目標是成為「業務員賦能平台」，並以已簽約的遠見保經作為成功案例，爭取富易達成為首批標竿客戶。</li>
+<li><code>[34:04-40:55]</code> 確認初期導入 OCR 將採「匯出 Excel 再上傳創識」模式，以降低資安疑慮與整合成本；SaaS 車險報價再次 demo 失敗，張總表示對穩定性存疑。</li>
+<li><code>[41:14-51:24]</code> Demo 新版 SaaS 旅平險投保流程，強調業務員與客戶端操作簡化，張總建議將需求訪談書（業報書）內容預設為通用選項以加速流程。</li>
+<li><code>[51:25-59:56]</code> 展示客戶簽名、付款、與富易達後台簡核的完整線上流程，並討論簡核自動化的技術可行性。</li>
+<li><code>[60:01-65:50]</code> 張總明確表示，SaaS 系統重啟時，必須同時提供旅平險與車險功能，否則對業務員吸引力不足；並要求提供測試帳號供他與 Lana 親身體驗。</li>
+<li><code>[70:15-84:00]</code> (羅賓斯內部複盤) 團隊決議暫不提供不穩定的 SaaS 測試帳號，先提供 Console 帳號轉移焦點，並將穩定車險功能與完成遠見保經導入列為最高優先級。</li>
+</ul>
+<section><h2>3. 摘要（Executive Summary）</h2>
+<h3>一、Console 站 demo 重點</h3>
+<p>羅賓斯科技向富易達保經總經理張志成展示了 Console 業務員賦能後台的三大核心功能：</p>
+<p>1.  <strong>保單管理 (OCR)</strong>：現場以一份 20 頁、包含印刷體與手寫字跡的壽險保單進行測試，系統在約一分鐘內完成辨識並抓取出要/被保人姓名、身分證號等關鍵欄位。此功能旨在解決保經公司行政人員每日需耗費大量時間手動 Key-in 新契約的痛點（約 5-10 分鐘/件），將其縮短至數秒。系統會提供一組「信心指數」（如 95%），作為輔助檢視的參考。最終產出的資料可匯出為符合富易達現有「創識」系統格式的 Excel 檔，實現快速上傳。</p>
+<p>2.  <strong>長代碼系統</strong>：此為輕量化查詢工具，業務員輸入客戶車牌與身分證字號，即可查詢車籍資料、強制險與任意險到期日。此功能採「以量計價」模式（車籍 5 元、保險 5 元），旨在成為業務員聯繫既有客戶、進行再行銷的有效「敲門磚」。</p>
+<p>3.  <strong>車險報價</strong>：此功能串接台產、富邦等保險公司，提供即時報價。然而，在會議中的兩次現場 demo（一次由 Leon 操作，一次應張總要求用其個資測試）均告失敗，未能成功拉取報價資料，引發張總對系統穩定性的嚴重關切。</p>
+<h3>二、SaaS 報價系統 demo 重點</h3>
+<p>團隊展示了針對富易達客製化的新版 SaaS 投保系統，以「旅平險」流程為例，強調三大優化：</p>
+<p>1.  <strong>業務員流程整合</strong>：將過去紙本填寫的「業報書」（需求分析報告）完整數位化，整合於投保流程中。</p>
+<p>2.  <strong>客戶體驗簡化</strong>：大幅簡化客戶端的操作，客戶收到連結後，僅需「3 次下一步、2 次打勾」，即可完成資料確認、條款閱讀並進入簽名付款頁面，流程可在數秒內完成。</p>
+<p>3.  <strong>後台簡核機制</strong>：系統建置了符合富易達內部流程的線上簡核功能。案件在客戶付款、業務員簽署後，會進入富易達的簡核後台，由指定人員（如法遵或行政人員）進行最終審核、蓋上簡核章後，才正式送往保險公司。此機制確保了案件的合規性與正確性。</p>
+<p>儘管流程展示順暢，張總仍提出具體優化建議，例如將業報書中多數客戶選擇相同的選項（如投保目的為「保障」）設定為預設值，以進一步提升業務員的操作效率。</p>
+<h3>三、富易達端 fit 評估與痛點討論</h3>
+<p>張總肯定羅賓斯的技術方向，並深入探討其在富易達的應用場景與挑戰：</p>
+<p>1.  <strong>核心痛點確認</strong>：張總證實，富易達在全台 20 個據點約有 25-30 位行政人員，每月處理高達 7,000 件的產險單，其中新契約的 Key-in 作業是巨大的時間與人力成本。因此，OCR 技術確實切中要害，具備高度商業價值。</p>
+<p>2.  <strong>系統整合是關鍵</strong>：富易達深度依賴「創識」作為核心營運系統，任何外部工具都必須與之無縫整合。張總對資料安全性（個資保護、ISO 認證）與系統串接的穩定性表達了高度關切。會議雙方同意，初期最務實的合作方式是透過「Excel 匯出/匯入」，待系統穩定且案件量提升後，再考慮投資進行 API 的即時串接。</p>
+<p>3.  <strong>商業模式建議</strong>：張總提出具前瞻性的策略建議，認為羅賓斯不應只單獨與保經公司合作，而應直接與「創識」、「飛數」、「保經科技」等三大保經系統服務商洽談，將 OCR 技術作為模組植入其系統中。此 B2B2B 模式能快速擴大市場覆蓋率，並解決各家保經公司的共同痛點。</p>
+<p>4.  <strong>穩定性壓倒一切</strong>：張總在會議中反覆強調，他無法接受讓自己的同仁使用不穩定的系統，並以「我不是白老鼠」表達其立場。車險報價功能的兩次 demo 失敗，嚴重影響了他對羅賓斯產品成熟度的信心。</p>
+<h3>四、商業條件與下一步</h3>
+<p>會議最終確立了雙方合作的推進框架與前提條件：</p>
+<p>1.  <strong>Console (OCR)先行</strong>：有鑑於遠見保經（同為創識系統用戶）已簽約導入 Console，張總希望先觀察其成效。羅賓斯承諾先提供 Console 測試帳號給張總，讓他親自體驗其穩定性與效益，並待遠見保經的導入專案順利運行後，再與富易達正式討論導入事宜。</p>
+<p>2.  <strong>SaaS 上線條件</strong>：張總明確指出，SaaS 系統若要對富易達業務員產生足夠的推動力，<strong>必須同時包含「旅平險」與「車險」兩大功能</strong>。僅有旅平險的方案，他將難以向內部交代與推廣。</p>
+<p>3.  <strong>測試與驗收</strong>：羅賓斯承諾在系統（特別是車險報價）達到穩定狀態後，會提供測試帳號給張總與其核心同仁（Lana），讓他們親自完整操作一次流程，以收集最真實的回饋。</p>
+<p>4.  <strong>推動保險公司</strong>：待羅賓斯內部技術問題解決後，下一步將是偕同張總，共同與台產的窗口（朱文錦）溝通，強力要求將車險與旅平險功能同步上線至正式環境，以滿足富易達的業務需求。</p>
+
+</section>
+
+<section>
+<h2>4. 完整逐字稿（84 分鐘 · STT 100% 真實版）</h2>
+<div class="transcript">
+<div class="line"><span class="time">00:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">的會議，對。</span></div>
+<div class="line"><span class="time">00:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那個，Leon 也很厲害，我們的</span></div>
+<div class="line"><span class="time">00:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">side project 是</span></div>
+<div class="line"><span class="time">00:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">養了一些小龍蝦，我們現在公司會議記錄、法務那些</span></div>
+<div class="line"><span class="time">00:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">龍蝦的東西都是 Leon 協助我們做的。</span></div>
+<div class="line"><span class="time">00:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯，好好。</span></div>
+<div class="line"><span class="time">00:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後還有一個叫 Ray。</span></div>
+<div class="line"><span class="time">00:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">Ray 是，因為呢</span></div>
+<div class="line"><span class="time">00:15</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們現在公司非常的小，然後</span></div>
+<div class="line"><span class="time">00:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">資源非常有限，所以 Ray 是我們的專案</span></div>
+<div class="line"><span class="time">00:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個，呃，是一個專案經理，</span></div>
+<div class="line"><span class="time">00:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所有的這個時間、資源的配置</span></div>
+<div class="line"><span class="time">00:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">都讓 Ray 來，來協助。</span></div>
+<div class="line"><span class="time">00:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那為什麼 Ray 可以這樣？Ray 也很厲害啊，Ray</span></div>
+<div class="line"><span class="time">00:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">已經是個成功的</span></div>
+<div class="line"><span class="time">00:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個新創出場了，等等。</span></div>
+<div class="line"><span class="time">00:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，所以</span></div>
+<div class="line"><span class="time">00:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們接下來呢，</span></div>
+<div class="line"><span class="time">00:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個就是我們現在目前團隊的組成啦。</span></div>
+<div class="line"><span class="time">00:42</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以等一下就跟你報告</span></div>
+<div class="line"><span class="time">00:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">一個小時的時間我們就跟你報告兩個，兩個系統，啊你邊看</span></div>
+<div class="line"><span class="time">00:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">邊有問題，你都可以隨時</span></div>
+<div class="line"><span class="time">00:50</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個提出來，我們都會把它記錄下來。</span></div>
+<div class="line"><span class="time">00:53</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">00:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。好，那第一個時間我給那個 Leon。</span></div>
+<div class="line"><span class="time">00:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們秀一下那個 console 站。</span></div>
+<div class="line"><span class="time">00:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，</span></div>
+<div class="line"><span class="time">00:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那張總就由我這邊來 demo 給你看。</span></div>
+<div class="line"><span class="time">01:02</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯，好。</span></div>
+<div class="line"><span class="time">01:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">01:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，張總有看到我螢幕嗎？</span></div>
+<div class="line"><span class="time">01:08</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">有。</span></div>
+<div class="line"><span class="time">01:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">有看到一個長條圖吧？這邊。</span></div>
+<div class="line"><span class="time">01:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">有，藍色的。</span></div>
+<div class="line"><span class="time">01:13</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那我這邊，對，沒錯。那我這邊就開始了，你現在看到的是一個測試的一個公司啦，那我們是，哦，console 嘛，那我們這邊簡單講就是我們把羅賓斯科技</span></div>
+<div class="line"><span class="time">01:24</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">裡面的最厲害的一些功能，我們集中在這邊，那往後這邊也會持續的發展。</span></div>
+<div class="line"><span class="time">01:29</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那我們現在有三大功能，</span></div>
+<div class="line"><span class="time">01:31</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">第一大功能是保單管理，然後第二個功能是長代碼系統，然後第三個是車險報價，那我就依序講下來。</span></div>
+<div class="line"><span class="time">01:39</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那第一個是車單那個，呃，車，那個保單管理的部分，那</span></div>
+<div class="line"><span class="time">01:43</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">保單管理像張總這邊因為業務員這邊每天有好幾百份的保單嘛。</span></div>
+<div class="line"><span class="time">01:48</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那這些保單你們現在要會進來裡面都要經過業務員的登打嘛，那會需要人工登打，然後要做紀錄，然後做歸納、分類，然後要看是哪個保險公司啦，然後佣金啦等等這些，那這些很繁雜嘛，然後還可能 key 錯。</span></div>
+<div class="line"><span class="time">02:06</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那我們現在很簡單，我們在這個保單管理這邊有一個匯入保單的功能，那</span></div>
+<div class="line"><span class="time">02:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你只要從這邊點擊，那我這邊有準備了一份保單，那我們現場來辨識給那個張總這邊看。</span></div>
+<div class="line"><span class="time">02:17</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那我們直接挑一個最難的，那這個是我們同仁裡面的他自己的一份保單啦，大家直接貢獻出來給我們做快速辨識這樣子。</span></div>
+<div class="line"><span class="time">02:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個你可以，打岔一下，歹勢。這個你可以看到裡面有手寫，</span></div>
+<div class="line"><span class="time">02:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後也有</span></div>
+<div class="line"><span class="time">02:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個打的，所以這個就是很標準的受險的保單。</span></div>
+<div class="line"><span class="time">02:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那等一下你要看它辨識手寫跟，你就看它的辨識效果，我們這個手寫跟</span></div>
+<div class="line"><span class="time">02:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">引印的這個效果其實是都還不錯的。</span></div>
+<div class="line"><span class="time">02:43</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">啊這是 Matt 的保單啦，所以 Matt</span></div>
+<div class="line"><span class="time">02:44</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">我們經過當事人的同意。</span></div>
+<div class="line"><span class="time">02:46</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以</span></div>
+<div class="line"><span class="time">02:46</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">把它拿來做 demo 給你看這樣。</span></div>
+<div class="line"><span class="time">02:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">02:49</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">感謝，直接測試授權。</span></div>
+<div class="line"><span class="time">02:51</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，沒錯，我們第一個就先最，試來，試受險來試試看，那我們就直接點擊，</span></div>
+<div class="line"><span class="time">02:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那這邊就可以開始，按開始辨識，那這邊就開始針，針對整個保單做資源辨識，那剛剛那一份保單大概是 20 頁左右，那我們等下來看一下大概花多少時間，現在是 37 分。</span></div>
+<div class="line"><span class="time">03:09</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，像張總，對，這邊的話應該</span></div>
+<div class="line"><span class="time">03:12</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">我們一般保單</span></div>
+<div class="line"><span class="time">03:13</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">只要投保之後啊，一般都會有行政人員在做登打的作業，那以</span></div>
+<div class="line"><span class="time">03:18</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">富易達這邊來說，應該每一個，每一天都會有上百件的保單需要進來，我想問張總在這邊應該有固定的登打人員，或是有行政人員固定每天都要把這些資料輸進去，對不對？</span></div>
+<div class="line"><span class="time">03:30</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">沒錯。</span></div>
+<div class="line"><span class="time">03:31</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對啊，那像他們可能輸一張就需要五到十分鐘，甚至有些有建告啊，或是有得沒的，更多的內容，他們還要輸入的時候，其實他們需要花費大量的工時，他們會降低我們的行政成本，或，增加我們的行政成本，甚至是</span></div>
+<div class="line"><span class="time">03:45</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">會要我們人工登打的時候會有輸錯，那這邊它其實就已經跑完了，欸，這好像可以開了喔。</span></div>
+<div class="line"><span class="time">03:51</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，可以開了。</span></div>
+<div class="line"><span class="time">03:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，</span></div>
+<div class="line"><span class="time">03:53</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">感謝 Ray 補充嘛。哦，這邊當總你會擔心說，欸，那如果資源辨識如果辨識錯怎麼辦？那也不用擔心，我們這邊第一階段上傳完成，然後辨識完成之後，我們還會進到下一個介面，那下一個介面就是可以，它會把它抽取出來的結果全部告訴業務員，那業務員你可以手動稍微再去看過，看裡面的你認為的有沒有東西填錯，你可以馬上做更新這樣。</span></div>
+<div class="line"><span class="time">04:17</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那</span></div>
+<div class="line"><span class="time">04:18</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我們這邊還會有一個函數啦，那這基本上就是我們的那個，資源辨識我們給自己的信心程度，那 95%，那 95% 基本上都是最高了，就是我們認為，資源辨識我們認為沒有，沒有問題。</span></div>
+<div class="line"><span class="time">04:31</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，那我們這邊就可以看，快速來看一下裡面的辨識的結果有沒有一樣。</span></div>
+<div class="line"><span class="time">04:36</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那第一個它，這邊它直接提取出來有要保人跟被保人，那我們先看要保人，要保人是游智翔，</span></div>
+<div class="line"><span class="time">04:42</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">游智翔，然後身分證號是 G122127374，G122127374。</span></div>
+<div class="line"><span class="time">04:50</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">然後我們看一下被保人哦，那游允通，然後 B125</span></div>
+<div class="line"><span class="time">04:55</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">然後 589933，所以基本上辨識都有辨識完成，那</span></div>
+<div class="line"><span class="time">05:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">呃</span></div>
+<div class="line"><span class="time">05:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我們這個系統蠻支援蠻廣泛的，所有的類型從企業險、火險這種竊盜險到車險到受險，我們都可以做辨識。</span></div>
+<div class="line"><span class="time">05:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那當然我們，我們還是有把一些必填欄位，常見的一些把它拉出來，那其他的比較次要的東西，我們就會拉在一個比較是一個其他欄位的部分。</span></div>
+<div class="line"><span class="time">05:22</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那這邊業務員可以自己去做更新。OK，那沒問題之後我們就直接按確認。</span></div>
+<div class="line"><span class="time">05:26</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">等下，這樣，欸，這邊，這邊，這樣你這邊張總你看一下喔，我們剛剛那邊會有一個信心程度的分析，那從信心程度這邊來看，其實我們也是來加速所有建檔人員他們在處理這些資料正確率的一個協助，</span></div>
+<div class="line"><span class="time">05:41</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">他們只需要看到說，欸，信心程度如果偏低，他們就可以去再重新檢視一下。那我們在做這份，這份系統的時候啊，你可以說，欸，我們現在要把這些檔案建到不管是創識的系統啊，保經科技的系統啊，我們都可以把它匯出成一個符合他們需要的格式的 Excel，讓你可以一次性的上傳，所以我們把所有一般行政人員可能要登打五分鐘甚至十分鐘的作業縮短成你剛剛看到的只要幾秒鐘的時間。</span></div>
+<div class="line"><span class="time">06:09</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">06:10</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">06:10</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我問一下喔。</span></div>
+<div class="line"><span class="time">06:11</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">06:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">來。</span></div>
+<div class="line"><span class="time">06:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為</span></div>
+<div class="line"><span class="time">06:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你 95% 怎麼算出來的？就是說，你怎麼知道是 95%？</span></div>
+<div class="line"><span class="time">06:18</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">它怎麼知道是 95？</span></div>
+<div class="line"><span class="time">06:19</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">06:19</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這個是一個 range，那我們會針對直接拿結果去跟，結果去跟他現在最後面比對出來，我們再比對一次，看，看有沒有相似的，相似的程度有多高啊。</span></div>
+<div class="line"><span class="time">06:32</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">06:32</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">所以，我們會有一個好幾個 range 啊，那這個偏低的話可能就是在 70、60% 以下，我們就可能是偏低，就會請業務員特別注意。</span></div>
+<div class="line"><span class="time">06:42</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">06:42</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">06:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">欸，正哥我覺得這個是這樣，你記得以前我們做過，就是，</span></div>
+<div class="line"><span class="time">06:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個當然是信心指數，那 Leon 講的比較，比較</span></div>
+<div class="line"><span class="time">06:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">呃</span></div>
+<div class="line"><span class="time">06:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">客，比較謙虛啦，事實上他要去 tune 這個</span></div>
+<div class="line"><span class="time">06:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">信心指數要，其實是要花工去 tune 的。</span></div>
+<div class="line"><span class="time">06:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">06:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，那，那最終呢，我覺得</span></div>
+<div class="line"><span class="time">07:02</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">正哥如果你願意做的話，到時候我們就來 before after 就好了，就是我可以定義一張保單有 100 個欄位好了，我隨便說，那這 100 個欄位呢，我們可以去看說抓出來用人工來對，比如說你找你的人，我找我的人，然後我們來看這 100 個會對幾個。</span></div>
+<div class="line"><span class="time">07:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">其實我覺得目前看起來不太容易有錯，你看它那個手寫，</span></div>
+<div class="line"><span class="time">07:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">像游智翔是手寫的，它的辨識度都會</span></div>
+<div class="line"><span class="time">07:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我覺得都挺不錯的。</span></div>
+<div class="line"><span class="time">07:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是我，整體來講我覺得這個</span></div>
+<div class="line"><span class="time">07:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">呃，要商用化跟要解決現在保經代遇到</span></div>
+<div class="line"><span class="time">07:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個 key in 的問題應該是沒什麼太大問題這樣。</span></div>
+<div class="line"><span class="time">07:37</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，像現階段這套系統啊，我們在跟遠見保經他們已經有再進一步的合作，遠見保經他們已經有購置這套系統進去，來協助他們的行政人員去做登打的作業，因為真的可以降低很多的時間。</span></div>
+<div class="line"><span class="time">07:51</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為喔，之前我一次去參觀富邦人壽的</span></div>
+<div class="line"><span class="time">07:55</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">key in 部隊，</span></div>
+<div class="line"><span class="time">07:57</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">就是說他們任何的要保文件，</span></div>
+<div class="line"><span class="time">07:59</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">它就是會有兩個</span></div>
+<div class="line"><span class="time">08:02</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">key in 人員在那邊 key，然後兩，兩份 key 完之後互相比較交叉，</span></div>
+<div class="line"><span class="time">08:06</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">確保正確性。</span></div>
+<div class="line"><span class="time">08:08</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那這個</span></div>
+<div class="line"><span class="time">08:10</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這樣就比較沒有太大問題，但是你這個</span></div>
+<div class="line"><span class="time">08:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">辨識率，我為什麼說 95%，你自己判斷的嘛，你自己就設定那 95%，你對自己的信心指數是你一開始就給他一個參數，我們的</span></div>
+<div class="line"><span class="time">08:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">辨識系統就是 95%，不會動了，就 95%。還是說，沒有，它每一次會有不同的辨識度，讓我們</span></div>
+<div class="line"><span class="time">08:28</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">怎麼講，嗯，</span></div>
+<div class="line"><span class="time">08:30</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這個</span></div>
+<div class="line"><span class="time">08:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">掃描，掃完要一點時，掃，掃描本來就要花時間了，對不對？</span></div>
+<div class="line"><span class="time">08:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">08:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">然後掃完之後，我們就會把掃描檔放在一個位置，固定的位置，然後之後呢，</span></div>
+<div class="line"><span class="time">08:42</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">其實它應該是建檔完之後</span></div>
+<div class="line"><span class="time">08:45</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">才去掃描。</span></div>
+<div class="line"><span class="time">08:47</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">然後掃描它會自動歸位，</span></div>
+<div class="line"><span class="time">08:49</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">用那個類似，創識是用那個類似條碼，我點這個地方，然後它就自動歸位了。然後欄位當然，到時候你們這個看怎麼把它</span></div>
+<div class="line"><span class="time">08:59</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">上傳能夠放正確的欄位，然後最後行政人員做檢視，它不做 key in 的，它做檢視。</span></div>
+<div class="line"><span class="time">09:07</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">等於它還是要看。</span></div>
+<div class="line"><span class="time">09:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">09:08</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">09:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對對對，沒錯沒錯，你的理解是對的。</span></div>
+<div class="line"><span class="time">09:10</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他要看，不可能弄進去就沒事了。</span></div>
+<div class="line"><span class="time">09:13</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">09:13</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">張總你剛剛講的問題其實是正確的，沒有錯。那你剛剛講到信心指數 95% 這件事情啊，95% 其實並不是我們直接去給它的。那你現在看到 95% 是因為我們的 AI 判斷說它目前這些資料它的正確率都達到 95% 以上。像我們前陣子啊，有一些手寫，它的字真的是比較醜一點，它的信心指數就會掉到黃色 65% 或是 70%，那這時候我們就會進一步地去做檢視的動作，</span></div>
+<div class="line"><span class="time">09:41</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">因為它會額外提醒我們說，欸，哪些欄位我們要特別去注意它。那這個信心指數除了說是，要讓我們能夠知道哪些我們要特別注意，也是為了方便加速這些行政人員、同仁他們可以檢視的過程裡面更快注意到錯誤的欄位。</span></div>
+<div class="line"><span class="time">09:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">OK，好，繼續。</span></div>
+<div class="line"><span class="time">10:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">10:01</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，那</span></div>
+<div class="line"><span class="time">10:02</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">Sorry。</span></div>
+<div class="line"><span class="time">10:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那保單管理大概就到這邊，</span></div>
+<div class="line"><span class="time">10:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那接下來的話就是介紹長代碼的系統，那，這邊之前那個，那個，那個張總在 SaaS 的裡面其實也有這樣的一個功能，只是我們現在更快速的把它提取出來，然後變成的是也是更輕量的計配方式，我們現在是以量計價，就是你有用幾個，我們才計幾次價錢這樣子。</span></div>
+<div class="line"><span class="time">10:27</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那，等我一下喔，我這邊拉一下，欸？</span></div>
+<div class="line"><span class="time">10:30</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等我一下，</span></div>
+<div class="line"><span class="time">10:31</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我拉我太太。</span></div>
+<div class="line"><span class="time">10:33</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，我這邊的話就直接，我們用</span></div>
+<div class="line"><span class="time">10:36</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我，我自己太太的資料，然後你只要勾選你要車籍還是保險，那，你勾兩個的話就是 10 塊錢，那如果勾車籍的話就是五塊錢，那我們就直接搜尋，然後它就會去針對跟監理站和保發中心的資料核對，然後去拉出車籍資料來跟車子價格，</span></div>
+<div class="line"><span class="time">10:55</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">然後還有，保，強制險跟任意險的到期日，那強制險到期日跟任意險到期日這邊之後拉出來，業務員就可以去做一些再行銷啦等等的行為這樣子。</span></div>
+<div class="line"><span class="time">11:06</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那也可以去通知客戶。</span></div>
+<div class="line"><span class="time">11:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">欸 Leon 你，你這邊先停一下。正哥這個是，如果你的，嗯</span></div>
+<div class="line"><span class="time">11:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個功能呢，其實 SaaS 裡面也有，只是 SaaS 要，它的目標是協助業務員完成整段交易。</span></div>
+<div class="line"><span class="time">11:20</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那我們現在把這個功能單獨拉出來放到 console 站裡面是考量說有些業務員他 maybe 不一定這時候要完成整張單的建立，他有可能只是想知道</span></div>
+<div class="line"><span class="time">11:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個</span></div>
+<div class="line"><span class="time">11:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我的客戶什麼時候保險到期，</span></div>
+<div class="line"><span class="time">11:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">或是他的更多的這些車籍資料，這個功能他就可以單獨來做使用這樣子。</span></div>
+<div class="line"><span class="time">11:42</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">11:44</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，像志成哥，張總你前面有看到說就是我們有做一個保費的統計嘛，那除了做保費統計之外，我們剛剛所掃描的這些保單啊，它也會匯到統一的這個要保人的資訊裡面，那匯到統一要保人資訊之後，其實我們的系統啊，它未來進一步就可以去判斷說哪些人他的時間有一段，有一段時間都沒有在跟我們的業務員去做聯繫或是在做投保了，那什麼東西可以拿來做敲門磚？每年都一定會使用到的，很明顯的就是我們的車險，那車險它快到期的時候，我們業務員就可以用這樣的方式去提醒我們的客戶他該投保了，那它就會變成我們另外一個敲門磚，那是一個跟客戶再行銷的契機。</span></div>
+<div class="line"><span class="time">12:27</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">12:31</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，那長代碼這邊看張總還有什麼問題嗎？沒有的話我們就繼續下一個車險報價。</span></div>
+<div class="line"><span class="time">12:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">12:37</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，那車險報價這部分就是也是同 SaaS 的功能，只是我們把它變得更快速了，那我們就只需要輸入車險，車牌、身分證字號跟出生年月日，它就可以自己即時去拿到那個，我們應該是，現在是主要是兩間保險公司，第一間台產，第二間是富邦，那</span></div>
+<div class="line"><span class="time">12:55</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我這邊登打一下資料。</span></div>
+<div class="line"><span class="time">12:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那這個帳戶餘額，公司的帳上錢包餘額 9799 是公司付的費用，然後每報價一份 10 塊錢就會扣掉，剩餘的錢，這樣子，是嗎？</span></div>
+<div class="line"><span class="time">13:10</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">是，沒錯。</span></div>
+<div class="line"><span class="time">13:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">13:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">就是公司付費，業務同仁使用。</span></div>
+<div class="line"><span class="time">13:14</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，沒有錯，沒有錯。</span></div>
+<div class="line"><span class="time">13:16</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯，這樣公平性好像不太公平，如果用的多的人，</span></div>
+<div class="line"><span class="time">13:21</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">公司幫那個人買單。</span></div>
+<div class="line"><span class="time">13:23</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那個人假設沒有出件，那我公司一直幫你買單，</span></div>
+<div class="line"><span class="time">13:26</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這樣好像有點怪怪的。</span></div>
+<div class="line"><span class="time">13:29</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，那這個商業模式的部分啊，我覺得後續我們可以討論要怎麼樣讓大家可以有更好的操作模式。</span></div>
+<div class="line"><span class="time">13:37</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">13:37</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">[聽不清]</span></div>
+<div class="line"><span class="time">13:40</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">欸，可以跑出來了。</span></div>
+<div class="line"><span class="time">13:43</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等我一下喔，我這邊沒有跑出來。</span></div>
+<div class="line"><span class="time">13:46</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">[聽不清]</span></div>
+<div class="line"><span class="time">13:48</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">欸？</span></div>
+<div class="line"><span class="time">13:49</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">糟糕。</span></div>
+<div class="line"><span class="time">13:51</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">9800314</span></div>
+<div class="line"><span class="time">13:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">車籍資料。</span></div>
+<div class="line"><span class="time">13:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等一下。</span></div>
+<div class="line"><span class="time">13:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">13:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">為什麼，為什麼沒有出來？</span></div>
+<div class="line"><span class="time">14:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">等一下我用我的。</span></div>
+<div class="line"><span class="time">14:02</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這個，這裡資料沒有出來。</span></div>
+<div class="line"><span class="time">14:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等一下喔，我換一筆。</span></div>
+<div class="line"><span class="time">14:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒關係，你們，你們邊用。</span></div>
+<div class="line"><span class="time">14:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">14:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是，呃，等一下你在 SaaS 也會再看到，只是說現在 SaaS 我們</span></div>
+<div class="line"><span class="time">14:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">目標是交易嘛，那目前願意</span></div>
+<div class="line"><span class="time">14:15</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是整個</span></div>
+<div class="line"><span class="time">14:17</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">從報價到出單都可以支援我們在線上完成的就是台產。</span></div>
+<div class="line"><span class="time">14:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以，呃，這裡跟 SaaS 最大的差異就是</span></div>
+<div class="line"><span class="time">14:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">保險公司的加速會會不一樣，這，</span></div>
+<div class="line"><span class="time">14:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個 console 站做的是報價，也就是說，呃，我們提供業務員價格之後呢，接下來如果業務員要</span></div>
+<div class="line"><span class="time">14:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">讓客戶去做一些出單的動作的話，他還是要走原本的這個線下的體系，我這裡只是很快速的跟保險公司拉一個價格給他這樣。</span></div>
+<div class="line"><span class="time">14:48</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">14:49</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我是不知道說業務同仁願不願意花這個錢去</span></div>
+<div class="line"><span class="time">14:52</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">在這個平台付費報價，因為過去他報價是不用花任何一塊錢，保險公司會，為了做他業績，他會很</span></div>
+<div class="line"><span class="time">15:01</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">幫業務同仁做報價是免費的，就現在來這邊，當然是可能比較快，不用等，但是卻要付費，這個可能，這個，這個觀念，這個過程要，要，要再</span></div>
+<div class="line"><span class="time">15:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">要再，要再培養。</span></div>
+<div class="line"><span class="time">15:15</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">15:15</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒事這個就讓他選嘛，那，那我也跟你報告說主要會有收費用就是因為裡面，你看他剛剛輸入的</span></div>
+<div class="line"><span class="time">15:23</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">資訊不多嘛，就是車牌跟車主的身分證，那因為這兩段有部分我們是去監理站拿，所以我本來就要給監理站一個過路費。</span></div>
+<div class="line"><span class="time">15:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">15:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那如果，如果今天業務員他自己</span></div>
+<div class="line"><span class="time">15:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">願意拿著這個客戶的行照慢慢登，他是不是就不用過監理站，不用被他，不用付那個過路費，他，他基本上我們也不用跟他收錢，因為，等於是</span></div>
+<div class="line"><span class="time">15:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們跟保險公司串好，順，順勢提供給他這樣。</span></div>
+<div class="line"><span class="time">15:52</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">15:53</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">15:57</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我這邊突然暫時打不出來，</span></div>
+<div class="line"><span class="time">16:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">看我們另外一個系統可以給</span></div>
+<div class="line"><span class="time">16:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒事沒事沒事，這個 OK 啦，反正這個就是我們串，串保險公司的報價，所以</span></div>
+<div class="line"><span class="time">16:05</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">一樣，一樣同 SaaS 那邊。</span></div>
+<div class="line"><span class="time">16:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">16:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">16:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那，</span></div>
+<div class="line"><span class="time">16:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那我再切圖給你。</span></div>
+<div class="line"><span class="time">16:10</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">16:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那正哥主要就是這三個，你</span></div>
+<div class="line"><span class="time">16:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你覺得像比如說 OCR 啦，保單管理啦，</span></div>
+<div class="line"><span class="time">16:17</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後這個長代碼啦這樣的服務，有沒有</span></div>
+<div class="line"><span class="time">16:21</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">有沒有哪一個是我們有可能在往下再</span></div>
+<div class="line"><span class="time">16:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">再進行下去的？跟富易達這邊。</span></div>
+<div class="line"><span class="time">16:28</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我先講一下喔，</span></div>
+<div class="line"><span class="time">16:29</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">保單管理呢，</span></div>
+<div class="line"><span class="time">16:32</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">是每一家公司都有。</span></div>
+<div class="line"><span class="time">16:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">16:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你，你不可能交給外面的公司就是管理啊，因為我要管理我線上的所有保單，</span></div>
+<div class="line"><span class="time">16:39</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">每一家的那個客管系統裡面都會有。</span></div>
+<div class="line"><span class="time">16:43</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那</span></div>
+<div class="line"><span class="time">16:44</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你又去開發一套客管系統，我不知道這兩個的</span></div>
+<div class="line"><span class="time">16:48</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">呃</span></div>
+<div class="line"><span class="time">16:49</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">要做哪個市場，因為</span></div>
+<div class="line"><span class="time">16:51</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我，我在我的</span></div>
+<div class="line"><span class="time">16:52</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">富易達的創識系統裡面就有，就有可以查詢所有客戶的</span></div>
+<div class="line"><span class="time">16:57</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">保單啦。</span></div>
+<div class="line"><span class="time">16:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">16:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你現在去</span></div>
+<div class="line"><span class="time">17:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你現在是</span></div>
+<div class="line"><span class="time">17:01</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你，你要做的東西是</span></div>
+<div class="line"><span class="time">17:02</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我既有的東西，本來就每一家公司都有客戶管理系統啊。</span></div>
+<div class="line"><span class="time">17:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我懂我懂。</span></div>
+<div class="line"><span class="time">17:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們的想法是這樣啦，就是說，呃，可以理解每一家保險公司，每一家保經代都已經有既有習慣的系統，對不對？</span></div>
+<div class="line"><span class="time">17:17</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">17:17</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是有有一段目前還沒被滿足嘛，就是 key 單這一段，因為 key 單要花很多</span></div>
+<div class="line"><span class="time">17:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個行政人員的時間。</span></div>
+<div class="line"><span class="time">17:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那，我們這，我們的這個系統基本上就是解決 key 單而已，那你 key 單我要有個地方放嘛，所以你暫時會先放在我的保單管理系統裡，但是你可以，比如說，我們跟創識講好，最終你還是要回到</span></div>
+<div class="line"><span class="time">17:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">創識那邊去嘛，我們看透過 API 的串接或怎麼樣，這個東西還是會到</span></div>
+<div class="line"><span class="time">17:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">會，會回去你創識的那個系統裡面。</span></div>
+<div class="line"><span class="time">17:48</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">欸 Leon 可以麻煩幫我打開一下剛剛那 OCR 那一塊嗎？謝謝。</span></div>
+<div class="line"><span class="time">17:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">17:57</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好，欸，張總，像我想先詢問一下，目前以富易達來說，每天會有多少人員在進行 key 單？他們大概需要花多少時間？您有了解，您大概能知道大概多少時間嗎？</span></div>
+<div class="line"><span class="time">18:09</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我們有 20 個點，</span></div>
+<div class="line"><span class="time">18:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">每一天至少有</span></div>
+<div class="line"><span class="time">18:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">25 位，有些點是兩個人，有些三個人。</span></div>
+<div class="line"><span class="time">18:17</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">18:18</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯，應該有</span></div>
+<div class="line"><span class="time">18:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">大概</span></div>
+<div class="line"><span class="time">18:22</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">30</span></div>
+<div class="line"><span class="time">18:23</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">25 到</span></div>
+<div class="line"><span class="time">18:25</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">30 左右的人在 key 吧。</span></div>
+<div class="line"><span class="time">18:28</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這個是</span></div>
+<div class="line"><span class="time">18:29</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">每一個櫃檯，行政櫃檯。</span></div>
+<div class="line"><span class="time">18:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">18:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那，</span></div>
+<div class="line"><span class="time">18:33</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他們</span></div>
+<div class="line"><span class="time">18:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為一個月的量，</span></div>
+<div class="line"><span class="time">18:37</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">產險的量，</span></div>
+<div class="line"><span class="time">18:38</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我不知道強制險跟任意險是不是算兩件啦，就是產險的量，一個月大概 7000 多件。</span></div>
+<div class="line"><span class="time">18:46</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">7000 多件，大大小小長之上不太一樣齁。那</span></div>
+<div class="line"><span class="time">18:51</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">當然產險應該是</span></div>
+<div class="line"><span class="time">18:53</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">佔用蠻多行政的時間啦，但是</span></div>
+<div class="line"><span class="time">18:57</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">張總不好意思，我這邊打斷一下，因為它這個系統啊，</span></div>
+<div class="line"><span class="time">18:59</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">你剛剛看到的，我們不單單只有產險，受險一樣可以滿足你。</span></div>
+<div class="line"><span class="time">19:05</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對，問題就來了，就是說齁，</span></div>
+<div class="line"><span class="time">19:07</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">產，因為受險不用常常</span></div>
+<div class="line"><span class="time">19:09</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">受險是</span></div>
+<div class="line"><span class="time">19:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">保了就一直續保了嘛，除非是新契約或是契變、理賠，要 key 很多資料嘛。</span></div>
+<div class="line"><span class="time">19:19</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">19:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那</span></div>
+<div class="line"><span class="time">19:22</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對於新契約來講，</span></div>
+<div class="line"><span class="time">19:24</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">呃，</span></div>
+<div class="line"><span class="time">19:25</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他從來沒有建檔過，然後</span></div>
+<div class="line"><span class="time">19:27</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">要重新建檔，花一些時間。</span></div>
+<div class="line"><span class="time">19:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那產險沒有這個問題，產險它如果是</span></div>
+<div class="line"><span class="time">19:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">產險是每年續約嘛，</span></div>
+<div class="line"><span class="time">19:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">件數會多是因為一直疊專案一直疊一直疊，那舊保單可能</span></div>
+<div class="line"><span class="time">19:41</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">假設是六，一個月 6000 件，只有 1000 件是新契約好了。</span></div>
+<div class="line"><span class="time">19:45</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那就契約它本來就</span></div>
+<div class="line"><span class="time">19:47</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">客戶資料本來就已經建檔，只是要改一個保單號碼，改個年期，就這樣結束了。</span></div>
+<div class="line"><span class="time">19:53</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">保費，改一下就結束了。</span></div>
+<div class="line"><span class="time">19:56</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那你去掃整份新的保單，</span></div>
+<div class="line"><span class="time">19:59</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">21:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">結束。</span></div>
+<div class="line"><span class="time">21:01</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">三個東西改完了。</span></div>
+<div class="line"><span class="time">21:03</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這個可能</span></div>
+<div class="line"><span class="time">21:05</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">呃</span></div>
+<div class="line"><span class="time">21:07</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">跟你判讀一整份</span></div>
+<div class="line"><span class="time">21:09</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">的邏輯看起來不太一樣，除非是全新的。</span></div>
+<div class="line"><span class="time">21:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">產險這張單子是全新的，當然我要吃進去所有的東西，</span></div>
+<div class="line"><span class="time">21:17</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">然後幫我建檔在正確的欄位裡面。</span></div>
+<div class="line"><span class="time">21:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，那明年我就不用建了，明年我就叫舊資料出來改就好了。</span></div>
+<div class="line"><span class="time">21:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯，我覺得是 focus 在新的，舊的我覺得就尊重</span></div>
+<div class="line"><span class="time">21:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">既有的那個窗口吧，怎麼處理，這個</span></div>
+<div class="line"><span class="time">21:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有為了要技術而技術啦。</span></div>
+<div class="line"><span class="time">21:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是如果今天是，用新的契約會</span></div>
+<div class="line"><span class="time">21:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">花太多行政人員的工的話，那，那這個技術是為了這件事情</span></div>
+<div class="line"><span class="time">21:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">去提供服務的。</span></div>
+<div class="line"><span class="time">21:45</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">21:47</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">21:48</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">21:48</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">新契約是有誘因的。</span></div>
+<div class="line"><span class="time">21:50</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，例如說我過去待過的保險經紀公司，</span></div>
+<div class="line"><span class="time">21:54</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">他們在星期約件的處理上面，尤其是醫療險、癌症險這些，還有重大傷病險，</span></div>
+<div class="line"><span class="time">21:59</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">他們銷售的還算蠻多的，那他們銷售過程之後就會有像剛剛張總您說的，會有建檔人員去做 key-in 的動作，</span></div>
+<div class="line"><span class="time">22:08</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">那他們那時候就有說，有需要這個需求。</span></div>
+<div class="line"><span class="time">22:11</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">例如說我們現在合作的元健保經，他們也是</span></div>
+<div class="line"><span class="time">22:15</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">當他們有癌症啊，或是這些壽險的新契約件進入的時候，他們就要想辦法去讓他們的行政人員不要花費這麼多的時間成本在裡面。</span></div>
+<div class="line"><span class="time">22:25</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">甚至是他們可能有照會的時候，也是可以直接掃描，一鍵掃描之後，然後</span></div>
+<div class="line"><span class="time">22:31</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">按照創時他們所需求的格式，匯出成 Excel 檔，再上傳到創時裡面，這樣子就可以大幅的縮減他們的業務人員，呃行政人員的成本。</span></div>
+<div class="line"><span class="time">22:41</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">那他們其實有去估算啦，他們每天的單子啊，</span></div>
+<div class="line"><span class="time">22:46</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">以一個月來說，至少會有兩千件新的商品，</span></div>
+<div class="line"><span class="time">22:50</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">就是新的投保，至少會有兩千個新的投保，那兩千個以他們每一個單子，新像剛剛看到的星期約，可能要花五分鐘去建檔，</span></div>
+<div class="line"><span class="time">22:59</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">那他們這樣子話就需要花到一萬分鐘的時間，所以我們是在去解決他們這一萬分鐘的問題，他們還是一間比較小間的元健保經，跟如果跟富易達比起來，如果富易達能夠</span></div>
+<div class="line"><span class="time">23:11</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">用這樣的系統的話，我相信能夠節約的每個月絕對不是一萬，甚至是十萬個分鐘時間。</span></div>
+<div class="line"><span class="time">23:17</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">23:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，欸，志成哥，它它這個情境應該是說，我們沒有，我們不會預先跟保經收費啦，</span></div>
+<div class="line"><span class="time">23:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">至少在第，第一個，你們都是 Tier 1 的使用者，所以</span></div>
+<div class="line"><span class="time">23:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">應該是，我們想要把這功能讓您的行政同仁都知道，現在</span></div>
+<div class="line"><span class="time">23:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">羅賓斯有提供富易達這種 OCR 辨識的功能，那你們的行政要自己去判斷，就是他，當然他改一個字的，他，他可能自己上舊系統改還比較快，還要不用等那個一分鐘資料在處理。</span></div>
+<div class="line"><span class="time">23:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是一定也會有一些是，</span></div>
+<div class="line"><span class="time">23:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他他真的會需要用到這個功能的，那他每次使用，我們再討論好怎麼跟</span></div>
+<div class="line"><span class="time">23:57</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">富易達的總公司，或者是你想要去跟分公司收費。</span></div>
+<div class="line"><span class="time">24:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這一段我們可以再討論。</span></div>
+<div class="line"><span class="time">24:02</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">24:03</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">總之就是這個功能要先，</span></div>
+<div class="line"><span class="time">24:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是要先達到一定的這個正確率啦，然後接下來就是看各個行政窗口他們自己去判斷，</span></div>
+<div class="line"><span class="time">24:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">是不是要使用這個功能這樣。</span></div>
+<div class="line"><span class="time">24:17</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這個很好啊。</span></div>
+<div class="line"><span class="time">24:17</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那，那</span></div>
+<div class="line"><span class="time">24:19</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，那我們的功能用的是</span></div>
+<div class="line"><span class="time">24:20</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是你看得那麼簡單，所以其實只要</span></div>
+<div class="line"><span class="time">24:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你，你的行政，我們給他，</span></div>
+<div class="line"><span class="time">24:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是，那個叫什麼？</span></div>
+<div class="line"><span class="time">24:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">辨識這個行政是你，你公司的人，做做這個人員的辨識，</span></div>
+<div class="line"><span class="time">24:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">接下來他只要打開這個網站，資料夾</span></div>
+<div class="line"><span class="time">24:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">保進去，</span></div>
+<div class="line"><span class="time">24:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就</span></div>
+<div class="line"><span class="time">24:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那個，就就跑出來了這樣。然後接下來你只要再告訴我說</span></div>
+<div class="line"><span class="time">24:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">哪些資料你想要再我，我們幫忙匯給創時，我們可以再討論這一段。</span></div>
+<div class="line"><span class="time">24:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那你的行政就會變成以後每天打開 console 掃描、匯入，隔天你的創時系統的這個母檔，就會把這些匯入的資料全部在創時系統裡面都顯現了。</span></div>
+<div class="line"><span class="time">25:03</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我想一個東西喔，看可不可行啦齁，嗯哼哼。</span></div>
+<div class="line"><span class="time">25:06</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">就是說</span></div>
+<div class="line"><span class="time">25:08</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">市場上從業人員確實有這個需求，就是說兩個，</span></div>
+<div class="line"><span class="time">25:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">一個是行政櫃台要要 key 很多端，很多資料，這個確實是很，很大的痛點，如果可以結合</span></div>
+<div class="line"><span class="time">25:21</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他們的</span></div>
+<div class="line"><span class="time">25:22</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">系統廠商，</span></div>
+<div class="line"><span class="time">25:24</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">其實我覺得這個應該是系統廠商要去開發出來。</span></div>
+<div class="line"><span class="time">25:28</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">但是現在是你們自己</span></div>
+<div class="line"><span class="time">25:30</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">不是，AI 技術你們先做出這個東西來。</span></div>
+<div class="line"><span class="time">25:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那有沒有可能跟系統廠商合作？</span></div>
+<div class="line"><span class="time">25:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你只要跟三大系統廠商談好了，我把這個技術植入到你們這邊來，</span></div>
+<div class="line"><span class="time">25:41</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你我跟你收一個類似手續費，你再轉嫁給那個廠商就好了。</span></div>
+<div class="line"><span class="time">25:45</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">譬如說，創時他可能沒有時間去研究這一塊，但是你們研究好了，飛數、保經科技都需要這個東西啊，每一家公，每一家系統公司都需要這個工具嘛。</span></div>
+<div class="line"><span class="time">25:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你就跟他合作，然後你就</span></div>
+<div class="line"><span class="time">26:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">把收技術費嘛，那你就是</span></div>
+<div class="line"><span class="time">26:03</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">每一間看多少，就是收費，然後這個轉嫁給，給經濟公司去負擔嘛，那經濟公司本來行政這麼多人，現在可以不用請那麼多人啦，省下來啦，好。</span></div>
+<div class="line"><span class="time">26:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這是一個，對我們來講是最簡單的，因為</span></div>
+<div class="line"><span class="time">26:16</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我的系統廠商，他每個欄位他最清楚，然後他</span></div>
+<div class="line"><span class="time">26:19</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他有各自安全的問題，那我如果能夠開發一個東西把它植入在裡面，</span></div>
+<div class="line"><span class="time">26:24</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這是有專利的或什麼的，你就是，我賣你這個專利，我收你專利費，</span></div>
+<div class="line"><span class="time">26:28</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">然後</span></div>
+<div class="line"><span class="time">26:30</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我每個我的廠商都會用得到，那量很大嘛。</span></div>
+<div class="line"><span class="time">26:33</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">26:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他可能服務的廠商跟</span></div>
+<div class="line"><span class="time">26:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">是，是好幾十家，然後每一家都好幾萬的客戶資料要建檔，而且長長久久，</span></div>
+<div class="line"><span class="time">26:43</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">不會斷的，</span></div>
+<div class="line"><span class="time">26:44</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這個生意很做很大。</span></div>
+<div class="line"><span class="time">26:46</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">26:47</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這是第一個。</span></div>
+<div class="line"><span class="time">26:48</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">第二個，</span></div>
+<div class="line"><span class="time">26:50</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我們的保單健診軟體，</span></div>
+<div class="line"><span class="time">26:52</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">不管是幸運草，不管是是創，那個什麼</span></div>
+<div class="line"><span class="time">26:57</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">字</span></div>
+<div class="line"><span class="time">26:57</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">字什麼？</span></div>
+<div class="line"><span class="time">26:58</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">欸</span></div>
+<div class="line"><span class="time">26:59</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">保險家</span></div>
+<div class="line"><span class="time">27:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對，保險家。</span></div>
+<div class="line"><span class="time">27:01</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">保險家，或是說像我們的那個華陀，</span></div>
+<div class="line"><span class="time">27:03</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">華陀 2.0。</span></div>
+<div class="line"><span class="time">27:05</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我們每次保單客戶的保單拍一拍拿回來，我們就自己要在這邊建。</span></div>
+<div class="line"><span class="time">27:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對不對？</span></div>
+<div class="line"><span class="time">27:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那它就是拍完，</span></div>
+<div class="line"><span class="time">27:15</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">圖檔丟上去，</span></div>
+<div class="line"><span class="time">27:17</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">有一個中間有個軟體串接完，啪就上傳到</span></div>
+<div class="line"><span class="time">27:21</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">到到那些系統公司的欄位去了。我們都不用建啊，我們只要確認就好了。</span></div>
+<div class="line"><span class="time">27:27</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那其實有人開發出這個東西啦，叫</span></div>
+<div class="line"><span class="time">27:30</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">像那個奇力旺其實</span></div>
+<div class="line"><span class="time">27:32</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他有一套自己的健診系統，那也有開發掃描系統。</span></div>
+<div class="line"><span class="time">27:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那很多公司都開始在做這一塊，就是說業務同仁不要做這種 key-in 的動作，太浪費時間了，AI</span></div>
+<div class="line"><span class="time">27:43</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">可以幫你判斷數，這個數值，然後放放放放到固定的欄位去。</span></div>
+<div class="line"><span class="time">27:49</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這才是</span></div>
+<div class="line"><span class="time">27:50</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">人，不應該做這麼</span></div>
+<div class="line"><span class="time">27:53</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">沒有價值的事情這樣子。</span></div>
+<div class="line"><span class="time">27:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">欸，志成哥，我補充一下，我我覺得非常認同，然後</span></div>
+<div class="line"><span class="time">28:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">呃，但是它有一些</span></div>
+<div class="line"><span class="time">28:02</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">本質上的不，不一樣啦，第一個就是說，這是兩家公司各自開發的產品，那你知道站在羅賓斯角度，</span></div>
+<div class="line"><span class="time">28:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我我跟誰合作我都願意啊，</span></div>
+<div class="line"><span class="time">28:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是今天是創始願不願意，這是一個，因為畢竟這是兩家公司，</span></div>
+<div class="line"><span class="time">28:15</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我覺得那是本質上商業模式的不同。</span></div>
+<div class="line"><span class="time">28:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後再來是，我我分析我們兩家商業模式給你聽，你看有沒有道理。我覺得，我覺得以系統廠商來講，他要的是穩定，他，他其實是在幫</span></div>
+<div class="line"><span class="time">28:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">經代公司去做</span></div>
+<div class="line"><span class="time">28:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他就是他就是在做一些保單的管理啦、保險公司的這些資料等等，可是你知道羅賓斯一直要做的，我我其實不是只想做 OCR，我這個 console 未來是可以擴充的，它應該</span></div>
+<div class="line"><span class="time">28:41</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">現階段是幫你省一些時間做辨識，可是我，我們其實在跟那個</span></div>
+<div class="line"><span class="time">28:47</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">遠遠見，還有再溝通說，欸我接下來也要變成那個業務員的大腦，比如說，遠見現在想要做投資型保單好了，可是投資型保單要讓客戶去了解，要讓業務員去了解，</span></div>
+<div class="line"><span class="time">29:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">哇，他這裡有一個很大的痛點，每次上面的在，總公司在教，下面的跟不上，</span></div>
+<div class="line"><span class="time">29:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以你這時候應該在，在我們裡面呢，我們就還要再做這種，</span></div>
+<div class="line"><span class="time">29:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你把它想成教育訓練啦，但是是用 AI 在做，在做這些這些，類似的這些教育訓練。</span></div>
+<div class="line"><span class="time">29:21</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後再來就是說，</span></div>
+<div class="line"><span class="time">29:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們還有跟另外一家是，</span></div>
+<div class="line"><span class="time">29:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">欸，志成哥因為你是股東，我都跟你講我最近的進展。另外一家是那個永達，永達保經的那個</span></div>
+<div class="line"><span class="time">29:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他們的，那個叫什麼？財富管理處，他要我們幫他開發一個東西叫做會議記錄，因為他們</span></div>
+<div class="line"><span class="time">29:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">現在的會議記錄都都只會，他說會議記錄很重要，</span></div>
+<div class="line"><span class="time">29:41</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是他，他就說他如果每次跟客戶，像我等下跟你開完會，我就把會議記錄整理成，我們應應待辦的事項啦，然後逐字稿那些都弄出來，他覺得這件事情對他的業務員也會有幫助的。</span></div>
+<div class="line"><span class="time">29:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那我們就要幫他去開發</span></div>
+<div class="line"><span class="time">29:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個怎麼樣讓他使用會議記錄用的最順，所以我要講這些讓你理解就是說，</span></div>
+<div class="line"><span class="time">30:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">呃，OCR、保單管理，這是我的一個起步，我希望用這個東西，因為</span></div>
+<div class="line"><span class="time">30:10</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你看你一聽你就知道，比我以前講 SaaS 容易多了，所以我很容易</span></div>
+<div class="line"><span class="time">30:15</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">用這個事情去打入各個保經代，有個開始合作的機會，但是我接下來不沒有只是想做 OCR，我還想做得更多的是，</span></div>
+<div class="line"><span class="time">30:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">業務員賦能的工具這樣子。</span></div>
+<div class="line"><span class="time">30:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那，那這個商業模式跟那個</span></div>
+<div class="line"><span class="time">30:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那個</span></div>
+<div class="line"><span class="time">30:31</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那一家叫什麼？</span></div>
+<div class="line"><span class="time">30:33</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">志成哥你現在的那一家廠商</span></div>
+<div class="line"><span class="time">30:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">創始</span></div>
+<div class="line"><span class="time">30:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">創始就不一定合啊，因為創始可能只想要好好把</span></div>
+<div class="line"><span class="time">30:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個保單管理這個事情，或者是</span></div>
+<div class="line"><span class="time">30:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">保經代公司的後台系統，他他可能 focus 是在在這一段。</span></div>
+<div class="line"><span class="time">30:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以我說這個兩家公司的商業模式不同，</span></div>
+<div class="line"><span class="time">30:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">不不太容易整，但是我們，我個人認為如果創始願意整，我們是很，我們是 open mind 的這樣子。</span></div>
+<div class="line"><span class="time">30:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但我覺得不容易啊。</span></div>
+<div class="line"><span class="time">31:00</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">張總，我想再補充一下，就是像剛剛前面我想先問一下喔，張總你們目前自己業務人員在使用的 CRM 應該都是自己去外面購買的，對不對？</span></div>
+<div class="line"><span class="time">31:10</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">31:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">各各有各自的習慣的軟體。</span></div>
+<div class="line"><span class="time">31:14</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">沒錯，那這樣子對公司來說，雖然還不錯，我們不用去額外幫他們做付費，可是對公司來說有一個很大的風險就是，我們的客戶永遠掌握在業務人員手上，如果當公司可以同時擁有業務，也可以擁有客戶的時候，那公司才是最大的得利者喔。</span></div>
+<div class="line"><span class="time">31:32</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">如果你看一下我們的儀表板這邊。</span></div>
+<div class="line"><span class="time">31:34</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">欸。</span></div>
+<div class="line"><span class="time">31:36</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">欸。</span></div>
+<div class="line"><span class="time">31:37</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">Leon，麻煩一下。</span></div>
+<div class="line"><span class="time">31:40</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">幫我點一下儀表板。</span></div>
+<div class="line"><span class="time">31:42</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，等一下，那我換一個。</span></div>
+<div class="line"><span class="time">31:48</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，那</span></div>
+<div class="line"><span class="time">31:50</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">像儀表板的部分，我相信創始他們一定也會展現出說，我今年度用佣金多少、業績多少。</span></div>
+<div class="line"><span class="time">31:59</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">但其實我們在做這套系統 OCR 的時候，它其實是同時之間幫我們的業務人員可以匯入到他自己的客戶管理裡面去的。</span></div>
+<div class="line"><span class="time">32:08</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">所以</span></div>
+<div class="line"><span class="time">32:09</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">客戶、業務員可以掌握自己的客戶，同時公司也可以掌，掌握說我們現在業務有哪些客戶。</span></div>
+<div class="line"><span class="time">32:16</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">那，我們再回到剛剛張總您所說的，創始他們有沒有意願跟我們合作這件事情，其實我們現在剛開始，我們是用一個很大的題目去小作的方式，就叫大題小作，我們讓每一個小項目一步一步去開發，所以我們先把今天的重點著重在 OCR 這塊跟張總您報告，最主要原因就是因為我們現在跟</span></div>
+<div class="line"><span class="time">32:37</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">遠見有合作，</span></div>
+<div class="line"><span class="time">32:38</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">跟如果接下來跟富易達這邊也採用了這套系統，</span></div>
+<div class="line"><span class="time">32:42</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">我們有更多的實戰案例，</span></div>
+<div class="line"><span class="time">32:44</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">那當然我們去跟這些系統廠商做合作的時候也會更加的順利，不然系統廠商會問我們說，啊你們都沒有跟別人合作，我為什麼要直接跟你合作？我們有實戰案例的時候，系統廠商不能夠把我們棄之不顧喔，</span></div>
+<div class="line"><span class="time">32:56</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">他們必須滿足你們的需求來跟我們合作，這也是我們未來可以突破的。</span></div>
+<div class="line"><span class="time">33:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">遠見，遠見有開始用了嗎？就是說它有，有導入了嗎？有在</span></div>
+<div class="line"><span class="time">33:07</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">在他們第一線櫃台有在用嗎？</span></div>
+<div class="line"><span class="time">33:08</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，遠見的合約已經簽完了，我們預計是在下周的時候就會全面上線，</span></div>
+<div class="line"><span class="time">33:15</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">因為我們已經把正式合約簽完了，已經簽完正式合約了。</span></div>
+<div class="line"><span class="time">33:19</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">欸。</span></div>
+<div class="line"><span class="time">33:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">所以你溝通的對象也是省見哥就對了？</span></div>
+<div class="line"><span class="time">33:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">不是省見，那是看見。</span></div>
+<div class="line"><span class="time">33:25</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">喔那看見喔？</span></div>
+<div class="line"><span class="time">33:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">33:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">看見是另外，遠見是另外，他他認識你，</span></div>
+<div class="line"><span class="time">33:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那個 Lewis 說他認識你，我我有稍微交流一下說我們在</span></div>
+<div class="line"><span class="time">33:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">數位保險的一些客戶，服務的客戶啦，這樣。</span></div>
+<div class="line"><span class="time">33:38</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗨嗨。</span></div>
+<div class="line"><span class="time">33:40</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，叫曹敬業啊，曹總。</span></div>
+<div class="line"><span class="time">33:42</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">曹敬業我知道，嗨。</span></div>
+<div class="line"><span class="time">33:43</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對對對，就他們，他們開始在使用。</span></div>
+<div class="line"><span class="time">33:46</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">33:49</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，所以我們也希望富易達這邊張總你們也可以是我們首批客戶之一，這樣子我們也，如果真的像剛剛張總您所說的，</span></div>
+<div class="line"><span class="time">33:57</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那</span></div>
+<div class="line"><span class="time">33:59</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">羅賓斯可以快速地去跟其他的這些保險保險軟體合作的話。</span></div>
+<div class="line"><span class="time">34:04</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我先，我先了解一下合作模式啦齁，</span></div>
+<div class="line"><span class="time">34:07</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為我的背後的系統公司叫創時，</span></div>
+<div class="line"><span class="time">34:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">創時很要求客，就是個資的安全性，</span></div>
+<div class="line"><span class="time">34:15</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你任何人要跟他接，他一定要先看你你們的規格有沒有到那邊，你們的</span></div>
+<div class="line"><span class="time">34:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對客戶的這個保護的資安的系統是不是夠強，如果你不夠強他，不願意冒這個風險跟你們接，你懂我意思嗎？</span></div>
+<div class="line"><span class="time">34:29</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">懂。</span></div>
+<div class="line"><span class="time">34:30</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">喔沒錯沒錯，張總您說的對，張總您說的對，</span></div>
+<div class="line"><span class="time">34:33</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">這塊的話</span></div>
+<div class="line"><span class="time">34:33</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">ISO 認證嗎？他自己有嗎？</span></div>
+<div class="line"><span class="time">34:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">有，就是說，</span></div>
+<div class="line"><span class="time">34:37</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">現在都是幾乎每個科技廠商你要來接都一定要有 ISO 認證啦，要不然人家對你是不放心的。</span></div>
+<div class="line"><span class="time">34:44</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，沒錯沒錯沒錯，所以我們跟遠見他們的第一步合作方式並不是直接用 API 串接的方法，我們第一步合作的方式是產出創始他們需要的 Excel 檔，</span></div>
+<div class="line"><span class="time">34:56</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">等於說我們把檔案丟上去之後，可能等個一分鐘，所有資料產出來，我們把我們要的資料全部選完匯到 Excel，再直接上傳到創始那邊，總共流程不用十分鐘。</span></div>
+<div class="line"><span class="time">35:08</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我意思是說，創時要做什麼事情嗎？創時那邊？</span></div>
+<div class="line"><span class="time">35:12</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">喔，他們只需要開一個可以匯入 Excel 給遠見他們可以匯入 Excel 的地方，這樣就可以了。</span></div>
+<div class="line"><span class="time">35:19</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">他們不需要做任何事。</span></div>
+<div class="line"><span class="time">35:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">所以創時還沒幫他們做就對了，還沒幫他們開發這個對接的 Excel 的格式。</span></div>
+<div class="line"><span class="time">35:26</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">他們本來就已經有這個格式了，本來就已經有了。</span></div>
+<div class="line"><span class="time">35:29</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">喔喔喔，OK。</span></div>
+<div class="line"><span class="time">35:30</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，本來就有了。</span></div>
+<div class="line"><span class="time">35:32</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">35:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">所以</span></div>
+<div class="line"><span class="time">35:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我如果要跟你們合作，就是我要跟</span></div>
+<div class="line"><span class="time">35:38</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">跟創時要一個就是 Excel 的格式，就是到時候你們做完了，這個 Excel 格式，就我按一個按鍵它就上傳，然後就都都放到固定的位置去了。</span></div>
+<div class="line"><span class="time">35:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">35:50</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，沒錯。</span></div>
+<div class="line"><span class="time">35:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就這麼簡單。</span></div>
+<div class="line"><span class="time">35:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這，這個是過，過渡啦，就是因為這個方式比較沒有雙方太大的 effort，</span></div>
+<div class="line"><span class="time">35:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">它比較沒有 effort 啦，然後也比較不會有資安，就是上上傳檔案而已，</span></div>
+<div class="line"><span class="time">36:02</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是如果你之後量比較大，因為你每天要下載、上傳也是個工，</span></div>
+<div class="line"><span class="time">36:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以到到第二步就可以是 API 的串接，比較即時，你今天少了，</span></div>
+<div class="line"><span class="time">36:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">創時的檔案就有了。</span></div>
+<div class="line"><span class="time">36:16</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那如果你今天是用 Excel 的話，你可能還要等 Excel，可能是每天晚上什麼樣，某個人要去上傳啊等等，他它還是會有一些時間差，就沒有辦法做即時。</span></div>
+<div class="line"><span class="time">36:26</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對，最後還是要做即時啦。</span></div>
+<div class="line"><span class="time">36:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對對對對對對對，最好是你掃完你，你的系統就，也不要晚個一兩天。</span></div>
+<div class="line"><span class="time">36:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">因為有時候建即時你你核心查不到，你會有服務上面的一些</span></div>
+<div class="line"><span class="time">36:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">要跟客戶交代的地方這樣。</span></div>
+<div class="line"><span class="time">36:40</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對，這個有讓我想到我們待會要講的那個 SaaS，就是說，我如果是已經用 SaaS 投保理賠申請，它是不是可以直接我的創始的那個客戶資料裡面就可以看到這個客戶已經歸檔好了。</span></div>
+<div class="line"><span class="time">36:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">啊那就是要找創始再來，那就是，我們就是在討論這一段，就是你現在用</span></div>
+<div class="line"><span class="time">37:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">用我們的這個 SaaS 呢，我現在做了一個後台是給富易達專用的，所以你所有的資料在富易達這個後台都找得到，但是如果你現在要匯到創始的話，還是要跟創始溝通一段，</span></div>
+<div class="line"><span class="time">37:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">看是它要開 Excel 給我，我我就是我每天固定 Excel，還是你比較想要用 API？</span></div>
+<div class="line"><span class="time">37:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那如果是 API</span></div>
+<div class="line"><span class="time">37:19</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">初期，初期還不知道好不好用，</span></div>
+<div class="line"><span class="time">37:22</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那就用 Excel 就好。</span></div>
+<div class="line"><span class="time">37:23</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">用 Excel 先處理，處理到一段時間覺得，欸，還 OK，這個看起來量慢慢出來了，可能需要對接的，這時候再來花錢做對 API 對接就好。</span></div>
+<div class="line"><span class="time">37:33</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，那就是 Excel 的話就，那那就變成說你 Excel 要上傳過去，你創時那邊才會看得到，這樣。</span></div>
+<div class="line"><span class="time">37:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">37:40</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好啊。</span></div>
+<div class="line"><span class="time">37:43</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">37:44</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">37:46</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那等一下，我那我剛剛補充一下，就是剛剛車險那邊沒有打出來，我現在換另外一個環境，也是 demo 給張總看一下，那就是從 SaaS 那邊，那這邊比較不一樣就是多了一個富邦產險的，那業務員他的情境就是他只要輸入車牌，然後身分證字號、出生年月日，姓名可以選填，那按一下點擊之後，我們就會直接出現</span></div>
+<div class="line"><span class="time">38:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">在台灣產跟富邦的</span></div>
+<div class="line"><span class="time">38:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你用我的試試看嘛，你，你，你到你，測試到底這個開發成功了沒有，你剛才第一次測就不成功，讓我，讓我很沒信心啊。</span></div>
+<div class="line"><span class="time">38:20</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">不好意思，這個這這個部分因為還有不是那麼的穩定啦，所以這個部分我可能再再</span></div>
+<div class="line"><span class="time">38:25</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">沒有沒有，你要跟我秀，你，我是你的客戶，你要秀給我看，你第一次就秀不成功，表示你之前沒有做測試，測試了幾百件之後，哦都很穩定的，你來跟我報告。我不是白老鼠，你來就跟我講第一次測試，你就 demo 就是不成功的，我靠，這去，你已經開發好了沒有啊，我們我們就會，你請不要，要我跟你測試多久，你才會才會弄弄好。給我們的感覺就是這樣子嘛。</span></div>
+<div class="line"><span class="time">38:49</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為這部分都是還是跟保險公司那邊串接，實在</span></div>
+<div class="line"><span class="time">38:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">Leon，沒事啦，我覺得志成哥講得對。</span></div>
+<div class="line"><span class="time">38:55</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，你現在用我的，你，你沒得測試嘛，你馬上用我的測試，我看你，你的功能到哪裡？</span></div>
+<div class="line"><span class="time">39:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等我試試看，再麻煩。</span></div>
+<div class="line"><span class="time">39:02</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">VFG</span></div>
+<div class="line"><span class="time">39:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">V</span></div>
+<div class="line"><span class="time">39:04</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">IB 的 V</span></div>
+<div class="line"><span class="time">39:05</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">VFG</span></div>
+<div class="line"><span class="time">39:06</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">V，IB 的 V，FG dash</span></div>
+<div class="line"><span class="time">39:09</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">5137</span></div>
+<div class="line"><span class="time">39:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">5137</span></div>
+<div class="line"><span class="time">39:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">39:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">L</span></div>
+<div class="line"><span class="time">39:14</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我可能點個 VPN 等一下</span></div>
+<div class="line"><span class="time">39:15</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">1211</span></div>
+<div class="line"><span class="time">39:17</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">1211</span></div>
+<div class="line"><span class="time">39:18</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">50694</span></div>
+<div class="line"><span class="time">39:20</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">50694</span></div>
+<div class="line"><span class="time">39:24</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">1972</span></div>
+<div class="line"><span class="time">39:26</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">1972</span></div>
+<div class="line"><span class="time">39:29</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">0712</span></div>
+<div class="line"><span class="time">39:31</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">0719，再說一次，1972</span></div>
+<div class="line"><span class="time">39:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">0712</span></div>
+<div class="line"><span class="time">39:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">dash，中間還有一個橫線，再選你的格式是這樣子。</span></div>
+<div class="line"><span class="time">39:39</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你要 dash</span></div>
+<div class="line"><span class="time">39:40</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">dash</span></div>
+<div class="line"><span class="time">39:41</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你打錯了</span></div>
+<div class="line"><span class="time">39:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">39:46</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那等一下，我可能要連個 VPN，等我一下喔。</span></div>
+<div class="line"><span class="time">39:49</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">還要跳到什麼地方去喔？</span></div>
+<div class="line"><span class="time">39:51</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">哦，因為我不是在，我是，現在這個環境是另外一個測試環境的。</span></div>
+<div class="line"><span class="time">39:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為那個正常環境現在在那邊，就是如，那個剛剛張總看的時候，就是比較不穩定，所以我現在換另外一個環境，等我一下喔。</span></div>
+<div class="line"><span class="time">40:03</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">是，總我跟您報告一下喔，他其實不是要別的環境啦，我們是開啟 VPN，這其實是資安的一環，就我們為了，因為這些都是個資，所以為了說不要讓這些資料有機會外洩，所以我們會強制他一定要開啟 VPN</span></div>
+<div class="line"><span class="time">40:17</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">到我們公司的內網，才有辦法去做這些這些事情。</span></div>
+<div class="line"><span class="time">40:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">什麼是 VPN？</span></div>
+<div class="line"><span class="time">40:23</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">喔，例如說，假設我們會，我們公司有一個專屬的電腦代號跟序號，我們要能夠有這樣的帳號密碼，在我們電腦裡面先登入，</span></div>
+<div class="line"><span class="time">40:33</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">符合它所，我們公司內部所要求的格式跟環境，這個電腦要符合我們公司內部要求的格式跟環境，它才有辦法去做使用。</span></div>
+<div class="line"><span class="time">40:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">總我這邊打不出來，那這部分我再之後再準備，看有沒有機會再跟您報告，然後這部分的話可能等之後等，等下 SaaS 那邊也可以展示給您看。</span></div>
+<div class="line"><span class="time">40:53</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">40:54</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">40:55</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">看起來這個是還沒有開發完成。</span></div>
+<div class="line"><span class="time">40:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，這邊還沒有到很完整，不好意思。</span></div>
+<div class="line"><span class="time">40:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，下一個。</span></div>
+<div class="line"><span class="time">40:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">41:02</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你先把，先幫我個資先清掉。</span></div>
+<div class="line"><span class="time">41:05</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好沒問題。</span></div>
+<div class="line"><span class="time">41:08</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">刪掉了。</span></div>
+<div class="line"><span class="time">41:09</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">41:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，繼續。</span></div>
+<div class="line"><span class="time">41:14</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">欸你運氣不錯，我之前測了幾百台。</span></div>
+<div class="line"><span class="time">41:17</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">然後</span></div>
+<div class="line"><span class="time">41:19</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">有時候，有時候那個保險公司就是</span></div>
+<div class="line"><span class="time">41:22</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">欸志成哥我分享一下我 SaaS 這邊的畫面，大概跟你報告一下就是 SaaS 的改版狀況。</span></div>
+<div class="line"><span class="time">41:28</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">41:30</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">那我 SaaS 這邊就是先跟你說一下，之前因為我有跟拉娜還有您這邊確認一下要修改的部分，然後確認沒有問題之後再去做修正，主要就是三大點。</span></div>
+<div class="line"><span class="time">41:43</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">第一個就是說，</span></div>
+<div class="line"><span class="time">41:45</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">整個業務員操作流程，</span></div>
+<div class="line"><span class="time">41:48</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">它變得更加便利，然後</span></div>
+<div class="line"><span class="time">41:51</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">過往我們是</span></div>
+<div class="line"><span class="time">41:53</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">業報書是還沒有放進去，我們現在已經把它放進去，那待會我會做操作。</span></div>
+<div class="line"><span class="time">41:57</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">所以之後的業務員，因為過往我們保經送</span></div>
+<div class="line"><span class="time">42:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">業務員還要在那邊寫業報，你還要勾啊，你還要填。</span></div>
+<div class="line"><span class="time">42:03</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">42:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">其實都是文字還有很多紙本。</span></div>
+<div class="line"><span class="time">42:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那整個都數位化之後，他就不會再有紙本的問題，跟我們之前 SaaS 送件一樣，不會有紙本的問題。好，那第二個就是說，因為之前你有操作到保護端，那客戶端因為他有很多東西要去做確認，那業務員也有給我們回饋，所以這部分我們大幅去減少保護他要操作的流程。</span></div>
+<div class="line"><span class="time">42:28</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">42:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">讓他整個變得很簡便，只要去確認資料沒有問題就是下一步，下一步，然後簽名這樣子。</span></div>
+<div class="line"><span class="time">42:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對，對。</span></div>
+<div class="line"><span class="time">42:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那最後一個就是簡核系統，因為過往我們就是後台這邊，我們也會給保經代公司這邊去確認說，簡核人員能不能看到所有的案件，然後確認沒有問題之後，業務員簽名，到簡核，全部都線上。</span></div>
+<div class="line"><span class="time">42:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那如果說客戶資料有漏填，業務員有需要更正的，我們再推薦往下一階去，這些都沒有問題。</span></div>
+<div class="line"><span class="time">43:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">待會我也會呈現給你看。然後全部完成之後就送出。</span></div>
+<div class="line"><span class="time">43:03</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我比較傾向那個漏填是一開始就要鎖住，不能到後面再來再來處理漏填這件事情。</span></div>
+<div class="line"><span class="time">43:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">哦，填，填資料基本上都會填，但比較常發生是說客戶簽名，有時候簽得太草。或者是說他簽錯了這種的，那業務員一定會看到，看到他就要去跟客戶講說你這個簽名的部分我要退給你重簽這樣子，不然你到時候到保險公司他一定還是會退。所以有這個卡控機制這樣子。</span></div>
+<div class="line"><span class="time">43:31</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那不然，因為因為如果沒有這個機制，變成我東西還要寄回去給他，那他再寄回來這樣子，就很麻煩。</span></div>
+<div class="line"><span class="time">43:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">OK，好。</span></div>
+<div class="line"><span class="time">43:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那主要是這樣子，OK。</span></div>
+<div class="line"><span class="time">43:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那我​​就直接做操作了喔，這是一個旅平險，那我們假設出發時間我就先抓個一天，以我自己當</span></div>
+<div class="line"><span class="time">43:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">當這個測試。</span></div>
+<div class="line"><span class="time">43:49</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">現在還是要兩天喔？還是沒有辦法優化？</span></div>
+<div class="line"><span class="time">43:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">還是要多一點。</span></div>
+<div class="line"><span class="time">43:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">43:53</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">要多一點。</span></div>
+<div class="line"><span class="time">43:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">現在T+2，現在T+2。</span></div>
+<div class="line"><span class="time">43:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">T+2。</span></div>
+<div class="line"><span class="time">44:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">就是兩天啊，就是兩天。</span></div>
+<div class="line"><span class="time">44:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">兩天兩天。</span></div>
+<div class="line"><span class="time">44:03</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那先給張總看一下就是這個跟之前一樣就是說會有快速報價直接串台產的 API 的部分，好。那第一個呢，就是我們有串到台產的方案了，然後點開之後呢，就會有它的詳細方案，那像旅平險、旅不便等等的內容都在這邊，那業務員確認沒問題就點選選擇。選擇了之後呢，就進入確認。</span></div>
+<div class="line"><span class="time">44:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那再來我們就確認要保人的資料，因為這個之前已經有建過一次單的，基本上資料都會記憶在裡面，不用再做登打的動作。</span></div>
+<div class="line"><span class="time">44:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我建議一下喔。</span></div>
+<div class="line"><span class="time">44:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嘿。</span></div>
+<div class="line"><span class="time">44:38</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">是否是原住民那個位置吼。</span></div>
+<div class="line"><span class="time">44:41</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嘿。</span></div>
+<div class="line"><span class="time">44:42</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你你要反過來思維。原住民的人是少。</span></div>
+<div class="line"><span class="time">44:46</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">44:46</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對不對，你就把它停留在否。</span></div>
+<div class="line"><span class="time">44:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">44:50</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對不對，是不是會比較簡單一點。</span></div>
+<div class="line"><span class="time">44:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就預設否嘛，這沒問題啊。</span></div>
+<div class="line"><span class="time">44:53</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對，因為你不會大部分原住民是少的嘛，所以你把它停留在大部分人都是同同一個東西，你要，你在設計邏輯的時候你一定要考慮這個東西，你懂意思嗎？</span></div>
+<div class="line"><span class="time">45:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嘿。</span></div>
+<div class="line"><span class="time">45:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們，我們所有的等一下調整的細節啊，都會，之前都有跟Lana先確認過，那如果有需要再微調的，有沒有，再改這些都沒有問題。</span></div>
+<div class="line"><span class="time">45:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">45:15</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等一下，等一下等一下，我補充一下。這個，你有看到左上角是富易達的標誌了嗎？</span></div>
+<div class="line"><span class="time">45:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">有。</span></div>
+<div class="line"><span class="time">45:20</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，所以呢，這個結構跟以前完全不一樣，就是說，現在是你做主，我是你的科技廠商。所以你等一下看的所有東西，比如說，等一下呢，會有一段是進業報書，那現在業報書我們，我們是用最嚴格的標準，就是說什麼東西我都不能帶入。好，但是如果你等一下看完業報書，你你判斷是，啊這個業報書每個人填的都一樣啊，你想要把所有的東西都帶進去，你就下一聲指令，我下一版就幫你把業報書所有的都帶進來。我們為了你去客製化的，所以，但現在是做一個最完整的，就是當初跟您跟 Nana 都討論過，就是，我們就是做這個流程就對了。但是可以再更優化這樣，好，好，我補充到這裡。</span></div>
+<div class="line"><span class="time">46:06</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。OK，那這邊呢就是 KYC 的部分。</span></div>
+<div class="line"><span class="time">46:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">點寫完之後就會進入我們書面分析報告。那過往呢我們就是要紙本填寫嘛，那現在因為最完整的部分，我們還是先讓它保留是需要逐題確認。</span></div>
+<div class="line"><span class="time">46:23</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是這個都可以改。</span></div>
+<div class="line"><span class="time">46:25</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對，有些東西就是不用選了，你知道嗎，我舉例喔。</span></div>
+<div class="line"><span class="time">46:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我要舉例，我上一點點。</span></div>
+<div class="line"><span class="time">46:29</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">上一點點，往上。</span></div>
+<div class="line"><span class="time">46:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">其實，好，我上。</span></div>
+<div class="line"><span class="time">46:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">這邊，你說往下一點點。</span></div>
+<div class="line"><span class="time">46:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">46:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">下面一點，好。只是投保的目的是什麼？絕對是保障嘛，這個就不用，不用填，就把它填好，浪費我們的時間，這個去拖過是放屁。</span></div>
+<div class="line"><span class="time">46:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">預設預設就可以了。</span></div>
+<div class="line"><span class="time">46:47</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。是否指定保險公司，你就寫否，因為客戶不會那麼複雜去指定保險公司嘛。那，是否已有，這個就，這個第三個就需要勾選，這個沒問題。好，往下。</span></div>
+<div class="line"><span class="time">46:59</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">跟，跟志成哥報告一下，其實我之前有跟 Lana 討論說，還是我全部都幫你預設一個，就是最常選。</span></div>
+<div class="line"><span class="time">47:08</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">旅平險我覺得可以。</span></div>
+<div class="line"><span class="time">47:08</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">我之前有跟她聊過。</span></div>
+<div class="line"><span class="time">47:09</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">志成哥，你內部要跟 Nana 講好啊，不然。</span></div>
+<div class="line"><span class="time">47:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">47:13</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為，因為會有行蹤。</span></div>
+<div class="line"><span class="time">47:15</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為你就是預定這個模式，那如果它不一樣，你再去點選就好了。</span></div>
+<div class="line"><span class="time">47:19</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對對。</span></div>
+<div class="line"><span class="time">47:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你懂我意思嗎，這樣最快啊，你就公版就是這樣子，你不用，如果你沒有異常，你沒有特別不一樣，你就就承認它就好了。啊如果你要不一樣，你再去修正它嘛，就好了啊，不是很簡單嗎？</span></div>
+<div class="line"><span class="time">42:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，志成哥，我們身為科技廠商一定幫你做到你要的，啊但是你內部你到時候會再給，沒問題啦，上線前，對對對，Nana 那邊，他是你的法尊吧，他可能也要覺得這個 OK 啦。</span></div>
+<div class="line"><span class="time">47:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">47:46</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">因為那個時候也有跟 Lana 跟那個法尊討論，那當然角色是比較嚴謹嘛，一定會有擔心說合不合規的問題。</span></div>
+<div class="line"><span class="time">47:54</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">47:54</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">那顧慮是正常的。那所以後來討論的版本就是說，那我們就在這些欄位的部分，好吧，那我們就先做讓業務員去做自行填選的動作。那如果現在討論完，可以去做前面其實已經選擇過的那些方案去做登錄，直接做套入的動作，那就會輕鬆很多這樣子。</span></div>
+<div class="line"><span class="time">48:16</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對啊。因為你就說，你的欄位都停留在那種大部分，90% 客戶都是這樣選的。嗯，是。那那個就是已經停留在這邊，那你除非你很特殊的客戶，你要點不同的，你還是可以讓你點，但是我一開始幫你預設好就是這些欄位了。</span></div>
+<div class="line"><span class="time">48:33</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊，我覺得志成哥講的是對的，因為早期那些沒辦法預設，是因為考量到如果點的人是客戶，我們事實上不好引導客戶或者是支援客戶。可是，可是現在這個角色是業務員。</span></div>
+<div class="line"><span class="time">48:45</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">可是因為是業務員在點啊。</span></div>
+<div class="line"><span class="time">48:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊，你業務員就自己，等於是 B 端的，我覺得這裡是可以幫他做一些 default 啦，我個人認為，但志成哥你還是要跟那個 Nana 討論一下。</span></div>
+<div class="line"><span class="time">48:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">48:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">48:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">49:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那稍微小跳掉。</span></div>
+<div class="line"><span class="time">49:02</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">所以這邊都都是業務員在填他的業報書，就覺得很繁瑣，到時候我們都把它做成，呃，就是套裝式的這樣，要改再讓他去改。</span></div>
+<div class="line"><span class="time">49:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">第一步先做到就是省紙，然後省紙之後就是怎麼樣變得更快。</span></div>
+<div class="line"><span class="time">49:18</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">保險公司要，要，要選啦，現在是只有一家就是可以把它就是內定成，就是幫你設定就是台產就好了。</span></div>
+<div class="line"><span class="time">49:26</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，其實業報書那面，裡面的內容我也是，Matt 秀給我看，我覺得怎麼那麼囉唆啦。</span></div>
+<div class="line"><span class="time">49:32</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">很多啊，因為它還有個資，你還有個資同意啊，等等的，有很多需要去做填寫的動作。</span></div>
+<div class="line"><span class="time">49:38</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">以前確實也都是業務員自己填的，那我覺得我們現在把它做成 default 也有個好處，跟業務員交代的時候至少這一段也幫他省了嘛，都做成制式格式的，他也不要再像以前那樣做一張就要勾一張，其實是蠻花他的時間的。</span></div>
+<div class="line"><span class="time">49:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那像這邊沒有完成之後我們就進入保護端的這個</span></div>
+<div class="line"><span class="time">49:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，那志成哥，剛剛都是業務員，所以業務員已經結束了，現在就是要讓你看說，剛剛 Matt 第一個講的，業務員勾的過程裡面，第一個 call 的到保險公司的價格了，第二個所有業務員要做東西現在都做到系統了。好，那業務員之後就變成客戶要去確認跟簽名這一段。</span></div>
+<div class="line"><span class="time">50:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">現在就是客戶端。</span></div>
+<div class="line"><span class="time">50:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那這邊呢，就是剛剛客戶，業務員去幫客戶所建的保費的方案，還有就是客戶的資料。那以前呢，這邊其實是展開的，那客戶就要去確認很多它的資料對不對，其實是很繁瑣，後來我們把它全部都簡化了。客戶只要一直往下滑，然後該打勾的條款去進行打勾，一直下一步，一直下一步其實就可以了。就會讓它整個過程變得非常的簡單。</span></div>
+<div class="line"><span class="time">50:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，然後再來就是進入簽名了。你看我剛剛這樣進到簽名不到五秒。</span></div>
+<div class="line"><span class="time">51:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等一下，等一下，那要讓志成哥知道，志成哥，數據化就是，剛剛看起來客戶收到連結之後，點了三次下一步，跟兩次的打勾的這個確認已讀的內容，這已經是我們可以做到最最最簡化了。那你看一看這個有沒有符合以客戶的角色來看，會不會還是你覺得 loading 太重，我們再想辦法。</span></div>
+<div class="line"><span class="time">51:23</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">再調整這樣子。</span></div>
+<div class="line"><span class="time">51:24</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。三次下一步跟兩次打勾，接下來就進行簽名跟付款。</span></div>
+<div class="line"><span class="time">51:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">51:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那待會我就進入簽名的流程。</span></div>
+<div class="line"><span class="time">51:39</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">志成哥你有感覺到有差異嗎？你以前也弄過客戶端。</span></div>
+<div class="line"><span class="time">51:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">想聽看看你的。</span></div>
+<div class="line"><span class="time">51:46</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">51:47</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有我先。</span></div>
+<div class="line"><span class="time">51:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，志成哥之前是操作過。我先隨便簽一下。</span></div>
+<div class="line"><span class="time">51:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">快速走這個簽名流程。</span></div>
+<div class="line"><span class="time">51:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">52:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那簽完之後呢，我們就可以看到下面有這個套印簽名的部分。好，然後沒有問題我們就是完成簽名就把它送出，然後直接前往付款。</span></div>
+<div class="line"><span class="time">52:11</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你只有簽要保人而已，被保險人還沒有，還沒簽欸。</span></div>
+<div class="line"><span class="time">52:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">喔我跟你說，有，剛剛有簽兩個了。我跟你講一下為什麼那邊沒有秀，因為這個我們有跟台產確認過，台產只要是要被保人同意人的狀況，他們是可以接受這樣子呈現的簽名方式，他們這樣就能送件，這個我們有問過台產。</span></div>
+<div class="line"><span class="time">52:32</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">52:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那再來就是其實就是付費流程的啦。那我這邊先一樣是把它走完，志成哥看一下。</span></div>
+<div class="line"><span class="time">52:44</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">所以客戶端就是到這裡結束，等一下就是進管理層端。</span></div>
+<div class="line"><span class="time">52:50</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，我這邊先把這張單送出，那這樣我那個簡核，後後台的簡核人員才看得到。業務員跟簡核人員才看得到。</span></div>
+<div class="line"><span class="time">53:08</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">還有檢查碼，什麼是檢查碼？</span></div>
+<div class="line"><span class="time">53:10</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是信用卡後面會有一個三碼。</span></div>
+<div class="line"><span class="time">53:11</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。客戶客戶填的時候都需要。</span></div>
+<div class="line"><span class="time">53:13</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那你後面把它備註一下括弧，信用卡背面那三碼。不然客戶有時候搞不清楚什麼是檢查碼。</span></div>
+<div class="line"><span class="time">53:20</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">可以可以。</span></div>
+<div class="line"><span class="time">53:20</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">現在有刷卡的人幾乎都，幾乎都會知道。</span></div>
+<div class="line"><span class="time">53:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。比較怕的是那種會把那個檢查碼拍給別人看的。</span></div>
+<div class="line"><span class="time">53:29</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嘿。</span></div>
+<div class="line"><span class="time">53:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那這邊已經看得到就是完成投保了嘛，那這張單呢，其實現在就已經進入到後台這邊了，後台系統，那這邊我來呈現一下。後台這邊呢，這個就是簡核人員他會看到的一個畫面，像志成哥你看喔，我這邊一個訂單號碼跟剛剛產出的這個保單的號碼，那要保人就是我自己，身分證、電話、台產，送件時間剛剛四點二十五分。待業務簽署，我點進去，業務員簽署，這邊呢，就是給業務員簽名送件的部分，那過往我們是不是要保書上我還要一個一個去簽，現在都不用了，我整批都線上。所以客戶，業務員只要一件一件進去做簽核的動作就可以了。</span></div>
+<div class="line"><span class="time">54:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，那我現在業務員也簽完了喔。</span></div>
+<div class="line"><span class="time">54:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，我送出。好，那再來你看送出完之後有沒有，右邊會有一個簡核的兩個字，我點進去。</span></div>
+<div class="line"><span class="time">54:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">剛才那個簡核是誰在簡核？</span></div>
+<div class="line"><span class="time">54:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">簡核就是，總，總部。</span></div>
+<div class="line"><span class="time">54:40</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為總部會有那個，以前不是要蓋那個簽署人章嗎？</span></div>
+<div class="line"><span class="time">54:44</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">簡核章。</span></div>
+<div class="line"><span class="time">54:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，沒錯沒錯。</span></div>
+<div class="line"><span class="time">54:46</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那是要保人，應該是業務員要先簽完名才會到後台的總公司去簡核啊。</span></div>
+<div class="line"><span class="time">54:53</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對對對，他流程是這樣，只是他一起做了。</span></div>
+<div class="line"><span class="time">54:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">剛剛是順的。</span></div>
+<div class="line"><span class="time">54:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他剛剛不是有一個畫畫押的那個簽名，那個代表的是業務員的角色。然後一送出之後呢，接下來有一個簡核人員，應該就是 Nana 的角色，會把它打開，把簡核章放上去，然後到這裡。</span></div>
+<div class="line"><span class="time">55:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我之前問 Nana，他是說現在行政是有四個人員在各別去簡核那個整個公司的案件。所以到時候就會有這四個人員可以進入系統去簽核各式各樣的送出的案件。那簡核人員呢，他這邊就有一個簡核按鈕，那確認沒有問題就是簡核送出，如果說有需要退件的原因，譬如業務員他的簽名可能簽錯了，或者怎麼樣，我們就可以進行退件，避免把錯誤的件送出。好，那如果沒有問題呢，我就是確定簡核。</span></div>
+<div class="line"><span class="time">55:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，簡核沒有問題之後呢，因為這是測試環境它沒有真正送，但實際上呢，只要我這邊變成待傳送至保險公司，其實它就是已經準備等待發送出去了這樣子，然後保險公司那邊會接收，然後告知我們說件他們有收到了這樣子。大概整個的旅平險投保流程，還有後面簽核流程大概就是這樣子。</span></div>
+<div class="line"><span class="time">56:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">56:14</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我想說這種東西到保險公司，保險公司要看什麼東西啊，上面不線下都簡核完畢了，他保險公司還要看什麼？</span></div>
+<div class="line"><span class="time">56:21</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，要看啦，他只是假裝他要看，事實上久了，你你跟他做比如說你每天給他個五十、一百件，到一定的量之後，然後這時候朱文錦就會幫我們去跟台產講說，靠，你根本也沒在看，你你你乾脆就，因為他現在跟我們要 48 小時就是他說，欸他這個也要看啊，萬一簽錯了怎麼辦啊？我們一直跟他講說不會啦，都用系統簡核了，不可能錯的。所以需要他，跟他再磨一下啦，磨，磨的對象是磨他的核，核保單位。他核保單位看久了這些件都沒問題，接下來我們就要跟他講說，其實你根本也沒在看，那幹嘛要 48 小時，要不要 24，要不要 12，要不要 2，這樣。</span></div>
+<div class="line"><span class="time">57:08</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">其實 T+2 就是因為這樣，因為他們之前內部就是說，欸那你，你要多兩天給我們看一下。但如果其實他們都是系統審，他們判斷完沒有問題了，整個核保的流程其實都可以透過系統，就像網投那樣，搞不好一兩個小時內就送出就搞定了這樣，其實是不需要人工的。</span></div>
+<div class="line"><span class="time">57:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那志成哥我這邊稍微秀一下這個車險的報價。</span></div>
+<div class="line"><span class="time">57:37</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">沒有沒有沒有沒有，Matt 不用不用不用。</span></div>
+<div class="line"><span class="time">57:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">喔好。</span></div>
+<div class="line"><span class="time">57:38</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">先讓志成哥在這裡看，我我想聽一下他的有沒有要給我們一些 feedback。</span></div>
+<div class="line"><span class="time">57:43</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他剛 feedback 你有記起來嗎？</span></div>
+<div class="line"><span class="time">57:45</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">有有有。</span></div>
+<div class="line"><span class="time">57:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他有一些什麼信用卡要，要預設要的部分，然後還有那個信用卡減碼的提示。</span></div>
+<div class="line"><span class="time">57:51</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對對對。</span></div>
+<div class="line"><span class="time">57:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">57:56</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">呃，就是說，以前，還要簡核章，之前是沒有簡核章嘛，所以他，他送出去他就認為他完成了，現在是他送到總公司，要總公司的人審過了，嗯，然後，嗯，但等於是不確定，你懂我意思嗎，就是說，如果我去安達的 EC 平台去操作，我只要操作完，我很篤定是事情完成了。結果現在不是，我，也不是啦，就他安達操作完，你還要列印出來，然後送櫃檯。</span></div>
+<div class="line"><span class="time">58:41</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。其實這樣才完成。</span></div>
+<div class="line"><span class="time">58:43</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">其實簡核章是，</span></div>
+<div class="line"><span class="time">58:44</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那 Matt 我來講。那個，其實簡核是那個 Nana 那時候提的啦，當然志成哥理解，我因為對我來講，我也覺得業務員簽名簡核章應該都要做到自動化。那我跟你說，一樣，這個這個你要跟 Nana 討論，技術上我們都可以做。我跟你講技術上怎麼做，你，你客戶簽完名之後送出去，我押你的業務員在這張單送出去之後的五分鐘，押業務員，業務員再過五分鐘我再押簡核章，技術上不會有這些問題。但是你的法尊一樣回到 Nana，他能不能接受這樣的自動化？那當初是 Nana 覺得，他，他放心，他要有人按，他才覺得比較放心，才把這些事情做給他。</span></div>
+<div class="line"><span class="time">59:35</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">59:38</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">59:39</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，志成哥，這個一樣要你，就是我我就再再重申一次，技術上你想做的，我認為以現在至少在做旅平車險，你要做的應該都沒問題。但就是你你們內部想要怎麼做，我們可以來協助你們。</span></div>
+<div class="line"><span class="time">59:56</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，了解。</span></div>
+<div class="line"><span class="time">59:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，往下吧。</span></div>
+<div class="line"><span class="time">60:01</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那，旅，因為現在是這樣子，旅平是，我們當初跟朱文錦討論是旅平先上，接下來才是串車。所以如果志成哥你覺得這個旅平 OK 之後，接下來我，我要趕快去跟朱文錦講一個期待的時間，然後要要讓他趕快推上線。那這裡我就需要你幫我，就是，可能要，我們再去跟朱文錦開個會，說現在整個流程我們都已經 standby 了，保經也都準備好了，旅遊旺季也都來了，接下來就趕快讓正式機可以，可以，可以實際上去報價啦、出單啦，等等。</span></div>
+<div class="line"><span class="time">60:46</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">60:51</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好，那，那接下來我就安排那個囉，旅旅，旅平囉，我們先把旅平弄好吧，然後你，你比較會想要我們先把旅平弄好，還是旅平跟車一起，因為，因為車也要，車我們內部的測試也沒問題了，現在都是在台產那一段，我們要把它上到正式，這一段需要你幫忙再幫我們畫蝦一下，叫他正式那段可以趕快，趕快讓我們上線。</span></div>
+<div class="line"><span class="time">61:19</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">不是啊，剛才你們都還沒好啊，我剛才去測試了兩台車子，你們測試了一台，我測試了一台，兩個都沒有好，你怎麼去跟台產講說你們好了？</span></div>
+<div class="line"><span class="time">61:29</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，所以我說我們要不要先旅平？我們先把旅平。</span></div>
+<div class="line"><span class="time">61:33</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我的，我的困擾是這樣子喔，我停了那麼久，突然要上線了，只有一個東西叫做旅平好了，而且只有一家叫台產。那也沒有增加新的東西，只是多了那個什麼，叫做，呃，分析報告書上去。那，你至少車險以前不能用，現在上線的時候車險可以用了，是不是，我跟同仁講我比較有個具體。</span></div>
+<div class="line"><span class="time">62:01</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">懂，懂懂懂。好，那就是我讓車，那，那，那我們就一次要去跟朱文錦講的時候，因為朱文錦當初自己跟我們說旅，他也有他的排程啦，所以本來他的排程也是希望旅平再來車，那我們要跟他講說沒有，我們希望兩邊都要一起上，這個是我們，我們，我們這一邊的期待這樣子。</span></div>
+<div class="line"><span class="time">62:22</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。對啊，你不會只有說一個東西就像我同仁開始宣導，宣導，喔，用力宣導完，只有一個功能，旅平，啊旅平就不是大家主力業績啊，那時候我還是鼓勵大家，全公司動用來，你們分配責任額，你們要幾件幾件去把它ㄍㄧㄥ出來，那現在要上線了，重新上線了，再做一次這個動作只為了一個旅平險，大家罵死我了，啊你老闆你在幹什麼？你你你幫我們這些人這樣 run。</span></div>
+<div class="line"><span class="time">62:51</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嘿。好，了解，好，那我知道，那就是要安排一下車險。</span></div>
+<div class="line"><span class="time">62:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">然後你那個你明顯可以讓我</span></div>
+<div class="line"><span class="time">63:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">的嗎？</span></div>
+<div class="line"><span class="time">63:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">是，它是可以在正式環境操作的嗎？</span></div>
+<div class="line"><span class="time">63:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">它是在測試，測試環境操作。</span></div>
+<div class="line"><span class="time">63:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">現在是在測試環境操作。</span></div>
+<div class="line"><span class="time">63:10</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那所以是還不能不能串那個</span></div>
+<div class="line"><span class="time">63:12</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">串那個台產的系統齁？</span></div>
+<div class="line"><span class="time">63:16</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有啦，台產都有了，只是他要把它轉到正式機這裡啦，要去</span></div>
+<div class="line"><span class="time">63:21</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">呃，就是，就是我剛剛講的，要你陪我去壓一下他們，說我們現在要轉到正式了。</span></div>
+<div class="line"><span class="time">63:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">63:30</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為齁，我剛才這樣 run 一次，我是沒有自己 run 一次，我不知道</span></div>
+<div class="line"><span class="time">63:33</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我沒有辦法回饋很真實的東西，就是說</span></div>
+<div class="line"><span class="time">63:37</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為你要讓我</span></div>
+<div class="line"><span class="time">63:38</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">run 一次</span></div>
+<div class="line"><span class="time">63:40</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">要不然測試系統我可以 run 嗎？我譬如說，我測試系統我</span></div>
+<div class="line"><span class="time">63:44</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我就 run 一次整個流程，我跑一次我才知道，你們修改完到底是客戶體驗是什麼？</span></div>
+<div class="line"><span class="time">63:50</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">AU 遠的體驗是什麼？</span></div>
+<div class="line"><span class="time">63:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">欸測試可以吧？那個</span></div>
+<div class="line"><span class="time">63:53</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">再開測試帳號給那個</span></div>
+<div class="line"><span class="time">63:55</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">張總。</span></div>
+<div class="line"><span class="time">63:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">是是，我</span></div>
+<div class="line"><span class="time">63:57</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">非要 VPN 喔？</span></div>
+<div class="line"><span class="time">63:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">可以啊可以啊，就在，連同 mail 一起寄給那個志成哥，我會協助他去做開，開通就可以了。</span></div>
+<div class="line"><span class="time">64:06</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">可以。</span></div>
+<div class="line"><span class="time">64:10</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">志成哥，我後面幫你申請一個測試帳號，啊到時候你就直接走一次，你就自己知道說旅平險的整個流程這樣子。</span></div>
+<div class="line"><span class="time">64:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">64:18</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">64:19</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你，你也給那個 Lala 測試一次，我不要只有我測試。</span></div>
+<div class="line"><span class="time">64:23</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">Lala 也讓她，讓她自己 run 一次，我先叫她 run 一次，我自己再 run 一次，大概知道問題點會在哪裡。</span></div>
+<div class="line"><span class="time">64:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好喔，OK。</span></div>
+<div class="line"><span class="time">64:31</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">64:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">謝謝你看著。</span></div>
+<div class="line"><span class="time">64:39</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">分享。</span></div>
+<div class="line"><span class="time">64:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">64:42</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好的，那會後整理一下那個測試帳號給，給給志成哥吧，我們那個富易達的群組應該還在嘛，對不對？</span></div>
+<div class="line"><span class="time">64:49</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，我同時幫他們</span></div>
+<div class="line"><span class="time">64:50</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">申請測試帳號就可以了。</span></div>
+<div class="line"><span class="time">64:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，OK。</span></div>
+<div class="line"><span class="time">64:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後 SaaS 是這樣，然後</span></div>
+<div class="line"><span class="time">64:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那個志成哥，console，console 站的部分再看看那個 OCR 怎麼，怎麼可以開始往下，你你再讓我知道。</span></div>
+<div class="line"><span class="time">65:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">65:06</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那個</span></div>
+<div class="line"><span class="time">65:07</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你，你要不要先跟遠見那邊已經簽好約了，讓它先測一下，先把一些問題先丟給你，不要每次都我第一個測，啊我我都一直當白老鼠，啊沒有人要來當第一個幫你測試，讓你比較完整再來跟我們講。</span></div>
+<div class="line"><span class="time">65:20</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">我同仁，沒有辦法每次承受我都是當第一個白老鼠。</span></div>
+<div class="line"><span class="time">65:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">了解了解，好，好，那我，那我先問</span></div>
+<div class="line"><span class="time">65:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你遠見他本身，欸不對，遠見看見，遠見，遠見跟看見他們這兩家應該是比較願意接受這種新的東西。</span></div>
+<div class="line"><span class="time">65:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">65:36</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">啊如果他們 OK 了，我們又重複都是用同一套創始系統，那就很快。</span></div>
+<div class="line"><span class="time">65:41</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為有些東西他們也事先溝通好了，所以我也變快了。</span></div>
+<div class="line"><span class="time">65:45</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">啊當然他們遇到困難需要我一起去溝通創始，我也可以幫忙，這個沒有問題。</span></div>
+<div class="line"><span class="time">65:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好的。</span></div>
+<div class="line"><span class="time">65:50</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">65:50</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，收到這個意見。</span></div>
+<div class="line"><span class="time">65:51</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對啊，我測旅平險，他測了車險，就是公平吧，講講測試一個項目嘛，齁。</span></div>
+<div class="line"><span class="time">65:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有啦，他是 OCR 啦，你是旅平跟車都要啦，你旅平跟車。</span></div>
+<div class="line"><span class="time">66:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">66:01</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">張總對於 OCR 這個應該算是，也算是蠻看好的嘛，也算是真的會對你有幫助的。</span></div>
+<div class="line"><span class="time">66:07</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對啦，我覺得這個是對的，因為本來就是</span></div>
+<div class="line"><span class="time">66:09</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">行政人員太多的 key-in 的東西，如果可以用科技解決，我是很樂意見到，而且這個是每一家公司的痛點，應該是說很多行業都會用到這個工具啦，不是只有保險業。</span></div>
+<div class="line"><span class="time">66:22</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">像船銷他們很多會員系統啊，什麼會員都都需要建嘛，啊如果東西可以掃描完就可以處理了，那</span></div>
+<div class="line"><span class="time">66:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">那人應該做更有價值的事情啊。</span></div>
+<div class="line"><span class="time">66:34</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">是是是是。</span></div>
+<div class="line"><span class="time">66:36</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好，那這部分，那我們跟遠見他們這邊可能會盡快進行一個月到兩個月的測試，那如果當我們把測試的這個準確率啊，就是他們幾乎不用更改的時候，再馬上來跟張總您這邊報告，那我們趕快也把這套系統也導入進去，更多人為。</span></div>
+<div class="line"><span class="time">66:51</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">當然當然，我們會很期待啦，坦白講，你們開發這個一定有有商機，只是說</span></div>
+<div class="line"><span class="time">66:57</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">因為我還沒去知道怎麼把它綁在一起，啊</span></div>
+<div class="line"><span class="time">67:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">如果用 Excel 這種方式，初期先用也不是說不行，也是可以 run run 看，對啊。</span></div>
+<div class="line"><span class="time">67:05</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">67:06</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">67:07</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好啊。</span></div>
+<div class="line"><span class="time">67:08</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">如果張總有興趣的話，我們也可以先開一個測試帳號讓你自己來玩玩看。</span></div>
+<div class="line"><span class="time">67:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，你直接自己拉幾個保單進來，看看看，看一下，也可以，你就玩啦，玩玩，給你一個，因為你看那個上面都有點數嘛，我們可以開一個一百點、五百點給你，啊你你慢慢測。</span></div>
+<div class="line"><span class="time">67:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你就感受到這種</span></div>
+<div class="line"><span class="time">67:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">用用匯入就可以完全百分百。</span></div>
+<div class="line"><span class="time">67:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">你說我用手機拍客戶的那個保單資料？</span></div>
+<div class="line"><span class="time">67:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對對對對對。</span></div>
+<div class="line"><span class="time">67:34</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">用手機拍喔？啊丟進去。</span></div>
+<div class="line"><span class="time">67:37</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">等於是掃描的概念了嘛，這等於手機拍跟掃描是意思是一樣的啊。</span></div>
+<div class="line"><span class="time">67:41</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，已經是。</span></div>
+<div class="line"><span class="time">67:42</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">掃描的品質，掃描的品質比較好啦，你手機拍會晃啊，會怎麼樣。</span></div>
+<div class="line"><span class="time">67:46</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯哼。</span></div>
+<div class="line"><span class="time">67:47</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">掃描是最好的，但我們測手機拍其實也可以，但就是怕你</span></div>
+<div class="line"><span class="time">67:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">糊到不行，那個神仙來，我們人都看不出來。</span></div>
+<div class="line"><span class="time">67:55</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">不會啦，手機現在解析度都很高。</span></div>
+<div class="line"><span class="time">67:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，對對對對對。</span></div>
+<div class="line"><span class="time">67:59</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">張總應該不會特別刁難我們，把它晃一下。</span></div>
+<div class="line"><span class="time">68:02</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">不會啦不會啦不會啦。</span></div>
+<div class="line"><span class="time">68:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有人要做這種事情吧。</span></div>
+<div class="line"><span class="time">68:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那現在就兩件事啊，一個是那個開一個 console 的測試站給張總玩看看。</span></div>
+<div class="line"><span class="time">68:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後，然後那個</span></div>
+<div class="line"><span class="time">68:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">同步開。</span></div>
+<div class="line"><span class="time">68:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">SaaS 的，對，SaaS 的測，</span></div>
+<div class="line"><span class="time">68:16</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">同步開。</span></div>
+<div class="line"><span class="time">68:16</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">測試帳號，對，這個也要開給，開給張總去測試一下，這樣OK嗎？</span></div>
+<div class="line"><span class="time">68:21</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">68:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那 Matt 這個就留給你跟後後續 follow，留給你跟張總這裡，你在協助一下。</span></div>
+<div class="line"><span class="time">68:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">可以可以。</span></div>
+<div class="line"><span class="time">68:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">68:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，志成哥謝了，謝謝謝謝。</span></div>
+<div class="line"><span class="time">68:31</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">Matt 的身體好，有沒有比較好啊？</span></div>
+<div class="line"><span class="time">68:33</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">有有有，感謝那個</span></div>
+<div class="line"><span class="time">68:35</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">恢復了好一點可以歸隊了，所以那個亦帆，亦帆去年的時候問我了，我才可以趕快回來這樣子。</span></div>
+<div class="line"><span class="time">68:43</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對啊，因為我們大家對你是有信任度的，你如果再回來宣傳，是應該有比較好的效果啦。</span></div>
+<div class="line"><span class="time">68:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">有欸，志成哥你知道你們還有多少業務可能，我覺得已經不是保險了，什麼事可能都會找 Matt 了。</span></div>
+<div class="line"><span class="time">68:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">有那個信賴感啦。</span></div>
+<div class="line"><span class="time">68:57</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對啦，有信任度。</span></div>
+<div class="line"><span class="time">68:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">私底下都會請。</span></div>
+<div class="line"><span class="time">68:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">他服務也很好。</span></div>
+<div class="line"><span class="time">69:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">大家都滿意，所以如果我推動新的東西，有熟悉的人來推，來溝通，效果一定相對是比較好。</span></div>
+<div class="line"><span class="time">69:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">是，一定一定。</span></div>
+<div class="line"><span class="time">69:08</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">欸，欸志成哥我給你一個回饋喔，其實我在去年啊，我記得過那波旅平險的時候，有業務員跟我分享，就是因為那個助理算是單位的行政成本嘛，我記得那個時候也是有一些單位助理是加班時間不少對不對？</span></div>
+<div class="line"><span class="time">69:23</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">69:23</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">因為要來 key 單。</span></div>
+<div class="line"><span class="time">69:24</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">然後</span></div>
+<div class="line"><span class="time">69:26</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">導入 OCR 其實如剛討論，就是重點就是去減化整個人事的這個壓力，除了輸入以外，還有如果不需要去支付那麼多的加班費，反而來使用 OCR，我想那個負擔會輕很多，不管是對單位主管或對總公司來說這樣子。</span></div>
+<div class="line"><span class="time">69:43</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">嗯，這都是可行的啊，這可行啊。</span></div>
+<div class="line"><span class="time">69:44</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">小回饋，小回饋。</span></div>
+<div class="line"><span class="time">69:46</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">不是啊，就是我們要穩定啦，志成哥沒有講，就是我們穩了他一定支持啦。</span></div>
+<div class="line"><span class="time">69:50</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">69:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但就是要讓他，但我覺得 OCR 應該很接近了，所以這個 Ray 你再看一下，看見導入差不多，我覺得</span></div>
+<div class="line"><span class="time">69:58</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，加快速度。</span></div>
+<div class="line"><span class="time">69:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，對啊。</span></div>
+<div class="line"><span class="time">70:00</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，OK。</span></div>
+<div class="line"><span class="time">70:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，志成哥謝謝，那我們後續再給你會議記錄，謝謝。</span></div>
+<div class="line"><span class="time">70:03</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，沒問題，好。</span></div>
+<div class="line"><span class="time">70:04</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">麻煩各位把會議記錄給我，我我趕快往前走齁，OK？</span></div>
+<div class="line"><span class="time">70:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">是的是的，謝謝謝謝。</span></div>
+<div class="line"><span class="time">70:10</span> <span class="speaker" style="color:#C2185B">張志成</span> <span class="text">好，掰掰。</span></div>
+<div class="line"><span class="time">70:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">掰掰。</span></div>
+<div class="line"><span class="time">70:12</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">掰掰掰掰掰掰。</span></div>
+<div class="line"><span class="time">70:12</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">掰掰。</span></div>
+<div class="line"><span class="time">70:15</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">唉，你們都還在，所以</span></div>
+<div class="line"><span class="time">70:18</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">還在。</span></div>
+<div class="line"><span class="time">70:19</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">好消息。</span></div>
+<div class="line"><span class="time">70:19</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有啊，我覺得他剛剛快要，快要斃命了好不好？</span></div>
+<div class="line"><span class="time">70:24</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊，但沒有啊。</span></div>
+<div class="line"><span class="time">70:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那個那個。</span></div>
+<div class="line"><span class="time">70:27</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">我我我有十分鐘的時間，因為我三點鐘要開會，我先講，基本上我覺得</span></div>
+<div class="line"><span class="time">70:33</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">SaaS。</span></div>
+<div class="line"><span class="time">70:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我覺得不能給他直接測欸。</span></div>
+<div class="line"><span class="time">70:36</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，SaaS。</span></div>
+<div class="line"><span class="time">70:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">給他直接測我們就爆了，你要等到</span></div>
+<div class="line"><span class="time">70:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">至少你要等到那個，那個叫什麼，夜報書全部都已經內建了，不然你你那些空格給他填，他弄一下他就翻臉了。</span></div>
+<div class="line"><span class="time">70:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">70:49</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯，我想想看喔，那你，那你，你要先約他去談嗎？談的過程中，我還可以叫 IT 趕快去修改。</span></div>
+<div class="line"><span class="time">70:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為你</span></div>
+<div class="line"><span class="time">71:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你跟他去產險談，應該也是要一些時間。</span></div>
+<div class="line"><span class="time">71:03</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這段時間還可以叫那個</span></div>
+<div class="line"><span class="time">71:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有，Ray 你覺得呢？我覺得現在直接給他測試帳號，張總一測應該就爆了。</span></div>
+<div class="line"><span class="time">71:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他應該蠻不爽的。</span></div>
+<div class="line"><span class="time">71:11</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">現在絕對不能給他測試帳號，我要跟大家提醒這件事情，絕對絕對不能給他測試帳號。</span></div>
+<div class="line"><span class="time">71:19</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">欸欸那，欸等下，但但我要跟你講一件事喔，就其實我們今天預計啊，還沒要交給他之前有沒有，我預計是這個時候要完成我們內部的測試，其實我內部測試已經完成了，我還是要把這整套流程提給他們。</span></div>
+<div class="line"><span class="time">71:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有啦沒有沒有沒有，我覺得 Ray 是對的，你們剛剛其實都有在看，張總其實很忌諱一個，你只要有一個，不管是是什麼，他摳不到的，他就不玩了。</span></div>
+<div class="line"><span class="time">71:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">不是啊他剛為什麼摳不到？你看我們剛剛摳得到的現在摳不到，我也不知道。</span></div>
+<div class="line"><span class="time">71:48</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">剛剛摳不到這個原因，我們現在不去深究這件事情，這個是後續 Leon 要去找出的原因，解決辦法的東西。</span></div>
+<div class="line"><span class="time">71:57</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">但現階段我們要確認，不管我們流程有沒有變，我們要先確認這套流程，它所有輸入資料，不管輸入什麼，他輸入錯了，要告訴他哪邊錯，這是第一件事情，他輸入沒錯，就要跑出資料來。</span></div>
+<div class="line"><span class="time">72:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">72:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是我覺得這個 Leon 可能沒辦法，因為他現在都覺得這個是骨幹在處理的，我覺得他</span></div>
+<div class="line"><span class="time">72:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">有難處啦，這樣。</span></div>
+<div class="line"><span class="time">72:23</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">骨幹也有點推給他。</span></div>
+<div class="line"><span class="time">72:25</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為骨幹都說，那你自己去看那個故障碼，你去對啊。</span></div>
+<div class="line"><span class="time">72:29</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，他們，我們需要去跟骨幹溝通一件事情，他們要告訴我們每個故障代碼分別代表什麼，還有哪些地方有問題。</span></div>
+<div class="line"><span class="time">72:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他現在就會說是，是前一版的，叫我們自己去看，他自己也不知道啦。</span></div>
+<div class="line"><span class="time">72:42</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">因為他也是中間接受的。</span></div>
+<div class="line"><span class="time">72:44</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他有一個，有一個表，他都會，他那個表應該是 Loki 有，因為上一次我問他說這個故障碼是什麼意思，他說那你叫 Loki 去，叫 Leon 去看那個表，找出對應的那個故障</span></div>
+<div class="line"><span class="time">72:55</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好，沒有關係，我們，我們現在不深究要怎麼處理，我們就先講現在這件事情，我們要後續要怎麼做。第一個是他剛要測試帳號。</span></div>
+<div class="line"><span class="time">73:04</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">絕對不能給。</span></div>
+<div class="line"><span class="time">73:06</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">那那好，那你叫我後面怎麼回？你要給我一個講法。</span></div>
+<div class="line"><span class="time">73:10</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">或者是 Evan，你要跟張總，對啊。</span></div>
+<div class="line"><span class="time">73:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有啊，你可以先給 console 的啊，先讓他玩啊，轉移他的注意力。</span></div>
+<div class="line"><span class="time">73:16</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，先給 console 讓他玩，先轉移他注意力。</span></div>
+<div class="line"><span class="time">73:19</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">喔這個 OK，這個我拿 mail 就好了，對。</span></div>
+<div class="line"><span class="time">73:21</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">73:22</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這個東西先轉移他注意力比較重要，所以我最後才會說要開測試站給他。</span></div>
+<div class="line"><span class="time">73:27</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">73:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，但是你也不能轉移太久，你看他</span></div>
+<div class="line"><span class="time">73:32</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">沒辦法轉移太久啦，兩週三週最多了。</span></div>
+<div class="line"><span class="time">73:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，我覺得無法再拖，他他會</span></div>
+<div class="line"><span class="time">73:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是這兩週三週我們要做到什麼？這個就要，這個要優先欸，我覺得這個要拿拿過來做優先了。</span></div>
+<div class="line"><span class="time">73:45</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯對，這個可能要改成優先了喔。</span></div>
+<div class="line"><span class="time">73:48</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">可是我們下禮拜，這一週已經跟遠見簽完約了嘛，這個也要盡快進行。</span></div>
+<div class="line"><span class="time">73:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊，遠見要開始去導入了，這個要，可不可以請 Ray 約個</span></div>
+<div class="line"><span class="time">73:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他把它線上的所有行政約約過來，然後我們讓</span></div>
+<div class="line"><span class="time">74:06</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">我們可以拉線上會議，但是</span></div>
+<div class="line"><span class="time">74:09</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">但是 Leon 要先處理，要先處理遠見那邊的事，就是要先開遠見的帳號，然後還要能夠先匯出，就是</span></div>
+<div class="line"><span class="time">74:17</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">要先把這個帳號裡面只 for 遠見他們要使用的</span></div>
+<div class="line"><span class="time">74:22</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">的功能而已。</span></div>
+<div class="line"><span class="time">74:24</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">只 for 遠見要使用的，你說下面那些都把它關掉喔？只留 D part？</span></div>
+<div class="line"><span class="time">74:32</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對對對對。</span></div>
+<div class="line"><span class="time">74:32</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">可以啊，測試帳號可以這樣開，只要開，就是它有分三大區塊，你可以只開 OCR。</span></div>
+<div class="line"><span class="time">74:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他可以開模組啦，他可以開模組。</span></div>
+<div class="line"><span class="time">74:39</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好，然後他弄完這個之後，我們還要協助遠見去跟創始對接。</span></div>
+<div class="line"><span class="time">74:47</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">剛剛那些東西是我隨口胡亂的。</span></div>
+<div class="line"><span class="time">74:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你說哪一些？</span></div>
+<div class="line"><span class="time">74:52</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">Excel 那些。</span></div>
+<div class="line"><span class="time">74:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">從頭到尾？</span></div>
+<div class="line"><span class="time">74:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有 Excel 是真的啊，就我所知是這樣做，就我所知是這樣做，但是還沒有確認一定是這樣做。</span></div>
+<div class="line"><span class="time">75:04</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">75:06</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">75:07</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">所以接下來就是要讓 Leon 把它轉成創始要的 Excel。</span></div>
+<div class="line"><span class="time">75:11</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這件事情要先做。</span></div>
+<div class="line"><span class="time">75:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">要解決這一段。</span></div>
+<div class="line"><span class="time">75:12</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，這段做完之後，我們先跑兩個禮拜，然後 console 給他玩先，然後兩個禮拜之後如果成效好，我們就直接丟給他，先把他注意力轉移掉，然後再去跟骨幹溝通。</span></div>
+<div class="line"><span class="time">75:26</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">他 Leon 要先做完這些才有辦法讓 Leon 的時間去跟骨幹去做溝通。</span></div>
+<div class="line"><span class="time">75:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有欸，可是我覺得現在 SaaS</span></div>
+<div class="line"><span class="time">75:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">SaaS 要怎麼收尾啊？感覺收不了尾，因為這裡還有保險公司欸。</span></div>
+<div class="line"><span class="time">75:41</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">就是就是</span></div>
+<div class="line"><span class="time">75:43</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">保險公司？</span></div>
+<div class="line"><span class="time">75:44</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">你還有保險公司那個台產正式機啊，你你現在都不知道他們能報到什麼會出什麼狀況。</span></div>
+<div class="line"><span class="time">75:52</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">串都有可能爆掉。</span></div>
+<div class="line"><span class="time">75:54</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">摳不到什麼都有可能。</span></div>
+<div class="line"><span class="time">75:56</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，我覺得先跟骨幹那邊的溝通完之後才有辦法去跟保險公司做，因為 Leon 現在的無力點應該是他不知道錯在哪邊，但骨幹也沒辦法去告訴他。</span></div>
+<div class="line"><span class="time">76:08</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他知道啊，他知道，我那天有問，Leon 說他願意進去看那個表。</span></div>
+<div class="line"><span class="time">76:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">76:13</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">之前蠻不願意的，現在他，他其實可以進去看那張大表。</span></div>
+<div class="line"><span class="time">76:17</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">76:18</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">76:19</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">還是他跟你講的不一樣？</span></div>
+<div class="line"><span class="time">76:22</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他他他</span></div>
+<div class="line"><span class="time">76:24</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他，他是可以進去看的喔。我一直以為</span></div>
+<div class="line"><span class="time">76:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他可以看那個大表啊，只是他他覺得他也不懂，叫他看，他也無力啊。</span></div>
+<div class="line"><span class="time">76:31</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">喔是喔，那，他也不懂。</span></div>
+<div class="line"><span class="time">76:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">因為不是他做的啊。</span></div>
+<div class="line"><span class="time">76:37</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對啊，因為不是他做的，你要他去重新的去讀別人的程式碼，或是別人的結構。</span></div>
+<div class="line"><span class="time">76:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">假設 Leon 兩個禮拜全力幹這個他有辦法嗎？這個</span></div>
+<div class="line"><span class="time">76:49</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這個要問，這個要問，這個要問 Leon。</span></div>
+<div class="line"><span class="time">76:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">76:54</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個要問他，對啊，但是，我現在 SaaS 交不出來啊，這樣看起來</span></div>
+<div class="line"><span class="time">76:59</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">他 SaaS 最晚什麼時候要？</span></div>
+<div class="line"><span class="time">77:02</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">本來是說五月</span></div>
+<div class="line"><span class="time">77:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那那個時候是說五月，後來又延到六月，其實就是今天啦，其實今天已經算也是延了這樣子。</span></div>
+<div class="line"><span class="time">77:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">現在就是兩個啦，一個是 SaaS 旅平險上正式機，這是第一個，你一定要讓他上到正式機，再來就是流程必須要簡化，內內，他剛剛講的那些再給他看的時候全部都要簡化到他要的狀況，狀態。</span></div>
+<div class="line"><span class="time">77:27</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">旅平險可以啊，旅平險可以的。</span></div>
+<div class="line"><span class="time">77:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊，看起來是前端，對看起來是前端頁面的問題，應該我覺得是做得出來的。</span></div>
+<div class="line"><span class="time">77:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，我覺得旅平，然後但是他現在不要走旅平啊，你剛剛有聽到嗎？他說走旅平他不好交代啊，還要車，所以，所以車也要推到正式機。</span></div>
+<div class="line"><span class="time">77:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但是車</span></div>
+<div class="line"><span class="time">77:50</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">車禍不是之前就可以正式機嗎？第三責任險跟強制是可以的啊。</span></div>
+<div class="line"><span class="time">77:55</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">都沒用，我們也剛剛看就沒有啊，你現在講這些沒用就沒有。</span></div>
+<div class="line"><span class="time">77:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那就是剛剛突然故障啊，不知道什麼原因的。</span></div>
+<div class="line"><span class="time">78:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊不能每次都剛突然故障啊，我們這怎麼做生意啊？每一個老闆來，來一個死一個欸。</span></div>
+<div class="line"><span class="time">78:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">真的沒有人會再聽我們什麼保險公司的問題，我覺得是接受不了的。</span></div>
+<div class="line"><span class="time">78:12</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">我我我這個我真的沒辦法幫上忙，你看我那麼常去做操作，有什麼狀況我</span></div>
+<div class="line"><span class="time">78:17</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">OK，這個，這個就先不討論了，因為這個在做的我們所有人都沒辦法協助到，只有，只有請 Leon</span></div>
+<div class="line"><span class="time">78:25</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">做這樣的事情。</span></div>
+<div class="line"><span class="time">78:26</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那那 Evin，應該是還可以再多爭取一些時間吧？因為之前其實我們只是跟張總談到旅平的正式機上線，那如果現在要再多車險的話，是不是可以再跟他爭取一些時間。</span></div>
+<div class="line"><span class="time">78:39</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">你都可以爭取啊，但重點是我們爭取時間到了，我們交不交得出來？我覺得今天已經算非常勉強，搞不好在他心中都不是一個合格的</span></div>
+<div class="line"><span class="time">78:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">78:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">78:54</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">他不會不給時間啦，只是我們弄出來的品質如果都是像這樣。</span></div>
+<div class="line"><span class="time">78:58</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">79:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他今天已經有點在修理 Leon 了。</span></div>
+<div class="line"><span class="time">79:03</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">79:07</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">他就是在修理他的。</span></div>
+<div class="line"><span class="time">79:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊，但 Leon 不知道，Leon 想要秀嘛，秀出來的東西摳不到，人家連聽都不聽欸。</span></div>
+<div class="line"><span class="time">79:14</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他剛他剛 Leon 現在還在線上？</span></div>
+<div class="line"><span class="time">79:16</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他不在線上了。</span></div>
+<div class="line"><span class="time">79:17</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後又又拿人家的車又再不行，哦</span></div>
+<div class="line"><span class="time">79:21</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">哦對啦。</span></div>
+<div class="line"><span class="time">79:25</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">那，我們內部怎麼辦？我們內部先討，現在怎麼做？</span></div>
+<div class="line"><span class="time">79:30</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">[聽不清]。</span></div>
+<div class="line"><span class="time">79:34</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這個我覺得只能等 Leon</span></div>
+<div class="line"><span class="time">79:36</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">他想辦法欸。</span></div>
+<div class="line"><span class="time">79:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那</span></div>
+<div class="line"><span class="time">79:40</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這個我也是就，這個我也是救不了，因為我不知道到底他到底出了什麼狀況，如果 Leon 都不知道問題在哪，沒有人可以解決他。</span></div>
+<div class="line"><span class="time">79:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">79:51</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">因為每次聽到都是他不知道，或是誰誰誰要提供。</span></div>
+<div class="line"><span class="time">79:56</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對啊，那如果都是這樣子，就沒辦法去做協助的動作。</span></div>
+<div class="line"><span class="time">80:03</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">80:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以這個應該拉，我靠，那要怎麼辦？我去協調骨幹，拉一組</span></div>
+<div class="line"><span class="time">80:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他拉一個 PM 給我們。</span></div>
+<div class="line"><span class="time">80:14</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">他要有人來做協助，對。</span></div>
+<div class="line"><span class="time">80:18</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">80:20</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但骨幹上次又說是台產的問題。</span></div>
+<div class="line"><span class="time">80:23</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對啊，我覺得這裡每次都是羅生門，我覺得已經受夠了。</span></div>
+<div class="line"><span class="time">80:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對不對？怎麼可能要找一個問題，A 說是 B，B 說是 A，就就沒完沒了。</span></div>
+<div class="line"><span class="time">80:33</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">然後台產又說我們有提供資料。</span></div>
+<div class="line"><span class="time">80:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">80:36</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">啊幹。</span></div>
+<div class="line"><span class="time">80:38</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這要怎麼玩？</span></div>
+<div class="line"><span class="time">80:39</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這個要怎麼玩？</span></div>
+<div class="line"><span class="time">80:41</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">80:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這要怎麼處理？</span></div>
+<div class="line"><span class="time">80:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">先找 Leon，然後再，欸，Leon 本來就會跟台產約個會議啊，這個是今天早上有做的結論，好像只能</span></div>
+<div class="line"><span class="time">80:55</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">等一下，這個我們先跳過吧，因為我剩五分鐘了，我等一下要開會，我三點鐘。</span></div>
+<div class="line"><span class="time">80:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">喔好，那你要講什麼？</span></div>
+<div class="line"><span class="time">81:01</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後再來就是</span></div>
+<div class="line"><span class="time">81:02</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">OCR 應該是 OK 啦，應該沒問題。</span></div>
+<div class="line"><span class="time">81:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">81:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你就開帳號給他玩吧。</span></div>
+<div class="line"><span class="time">81:09</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">對，mail給我mail就可以。</span></div>
+<div class="line"><span class="time">81:10</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">沒關係，沒事，那我來處理就好。</span></div>
+<div class="line"><span class="time">81:13</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯嗯嗯嗯嗯。</span></div>
+<div class="line"><span class="time">81:15</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這個推成功應該有機會啦，這個至少有說服他一個啊，沒有全掛，沒有全掛就還好。</span></div>
+<div class="line"><span class="time">81:22</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">有啊，你剛剛說服到我。</span></div>
+<div class="line"><span class="time">81:25</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">真的是後面才說服的，超你媽的。</span></div>
+<div class="line"><span class="time">81:27</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">正常正常，只是他要先看那個，因為他之前有 SaaS 的經驗，所以他一直要叫那個遠見說，那他們先試試看。</span></div>
+<div class="line"><span class="time">81:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">81:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">81:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我覺得遠見 OK 還可以找看見了，看見吳老師也說 OK。</span></div>
+<div class="line"><span class="time">81:42</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">81:43</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">81:45</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">還是我們就先把遠見弄好？我覺得應該是先把遠見弄好啦，之後再再看怎麼擴展。</span></div>
+<div class="line"><span class="time">81:50</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">早點去定。</span></div>
+<div class="line"><span class="time">81:50</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">那個定律應該也可以啊。</span></div>
+<div class="line"><span class="time">81:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，遠見先弄好。</span></div>
+<div class="line"><span class="time">81:53</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">遠見最優先弄好。</span></div>
+<div class="line"><span class="time">81:56</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">81:56</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">所以，欸，他們合約遠見合約簽了嗎？</span></div>
+<div class="line"><span class="time">81:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">82:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我等下問一下，應該已經過去了。</span></div>
+<div class="line"><span class="time">82:02</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好，這個追一下，然後追完，下禮拜就趕快，請 Leon 可能要請個時間過去。</span></div>
+<div class="line"><span class="time">82:10</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">82:12</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">欸。</span></div>
+<div class="line"><span class="time">82:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有啊，簽好之後不就是約約一個三方的會議，看接下來怎麼進行，還是 Leon 要</span></div>
+<div class="line"><span class="time">82:19</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">Leon 要</span></div>
+<div class="line"><span class="time">82:20</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">Leon 我覺得應該是要 Leon 跟遠見那個老闆 Rex 要有一個線上會議，稍微聊一下吧。</span></div>
+<div class="line"><span class="time">82:28</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">82:29</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">接下來要怎麼做？</span></div>
+<div class="line"><span class="time">82:32</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">然後再來還需要有人開一個線上教學，去教他們所有行政人員。</span></div>
+<div class="line"><span class="time">82:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊對啊對啊對啊對啊。</span></div>
+<div class="line"><span class="time">82:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個讓 Leon</span></div>
+<div class="line"><span class="time">82:42</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這個我安排一下，我把所有分工弄好，再跟大家講。</span></div>
+<div class="line"><span class="time">82:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">OK 好。</span></div>
+<div class="line"><span class="time">82:45</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">我跟大家說，那我們一樣下週盡快讓他上線。</span></div>
+<div class="line"><span class="time">82:49</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這一週合約完成，然後下週盡快上線。</span></div>
+<div class="line"><span class="time">82:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有，合約你，合約我覺得已經寄過去了，我等下再問一下，你可能明天就要稍微要講一下這件事情，可以的話這禮拜</span></div>
+<div class="line"><span class="time">83:00</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">這禮拜不可能啦，這禮拜絕對不可能，因為人家也要拉時間，人家時間也要確認啊。</span></div>
+<div class="line"><span class="time">83:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">喔。</span></div>
+<div class="line"><span class="time">83:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">喔，OK，我的意思是說你先把分工拉出來吧。</span></div>
+<div class="line"><span class="time">83:10</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">明天分工可以啦，分工可以，分工已經很確認啦，分工已經很確認啦，沒有問題。</span></div>
+<div class="line"><span class="time">83:16</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">對，Leon 把程式，把這些資料弄一弄，然後要符合創建的，也準備一下。</span></div>
+<div class="line"><span class="time">83:25</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">83:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">喔。</span></div>
+<div class="line"><span class="time">83:27</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">然後 Matt 要準備線上教學。</span></div>
+<div class="line"><span class="time">83:30</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">使用教學。</span></div>
+<div class="line"><span class="time">83:33</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">大概就這樣。</span></div>
+<div class="line"><span class="time">83:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">83:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯，好，那就先這樣，齁，你去開會吧。</span></div>
+<div class="line"><span class="time">83:38</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">83:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯，好，大家掰掰。</span></div>
+<div class="line"><span class="time">83:40</span> <span class="speaker" style="color:#6A1B9A">Ray</span> <span class="text">好，好，掰掰掰掰。</span></div>
+<div class="line"><span class="time">83:41</span> <span class="speaker" style="color:#E65100">Matt</span> <span class="text">掰掰。</span></div>
+<div class="line"><span class="time">83:42</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">掰掰掰掰。</span></div>
+</div>
+</section>
+
+<footer>
+<div class="sig">—— Calliope 雅韻 🎭 · 羅賓斯科技 報告代理人</div>
+<div>P128 富易達 6/22 會議紀錄 · STT: Gemini 2.5 Pro · 4 段 canonical 順序 per SOP</div>
+</footer>
+
+</div>
+</body>
+</html>
