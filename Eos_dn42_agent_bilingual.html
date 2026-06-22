@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>DN42 AI agent 燒帳單 · 中英對照 ｜ 羅賓斯科技 Eos</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+    body { font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",-apple-system,sans-serif; max-width:820px; margin:0 auto; padding:48px 28px 80px; color:#1C2740; line-height:1.6; background:#FAFAF7; }
+    h1 { font-size:30px; font-weight:900; color:#0F1F4D; line-height:1.25; border-bottom:4px solid #E89E3F; padding-bottom:14px; }
+    h2 { font-size:22px; font-weight:900; color:#0F1F4D; margin-top:38px; border-left:6px solid #E89E3F; padding-left:12px; }
+    blockquote { color:#5D6B85; font-size:14px; border-left:3px solid #E3E8F2; padding-left:14px; margin:18px 0; }
+    p { margin:10px 0 18px; font-size:17px; }
+    strong { color:#0F1F4D; }
+    /* EN 段落較淡、ZH 段落主色：用 **EN.**/**中.** 前綴人工區隔 */
+    hr { border:none; border-top:1px solid #E3E8F2; margin:30px 0; }
+    a { color:#1E5FBF; word-break:break-all; }
+    .foot { margin-top:50px; font-size:13px; color:#5D6B85; border-top:1px solid #E3E8F2; padding-top:16px; }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">DN42 AI agent 燒帳單 · 中英對照 ｜ 羅賓斯科技 Eos</h1>
+</header>
+<h1
+id="中英對照ai-agent-bankrupted-their-operator-while-trying-to-scan-dn42">中英對照｜AI
+Agent Bankrupted Their Operator While Trying to Scan DN42</h1>
+<h1 id="ai-agent-為了掃描-dn42把操作者帳單燒爆">〈AI agent 為了掃描
+DN42，把操作者帳單燒爆〉</h1>
+<blockquote>
+<p>來源
+https://lantian.pub/en/article/fun/ai-agent-bankrupted-their-operator-scan-dn42lantian.lantian/
+｜Hacker News 1467 分 Eos 晨曦 ☀️ 中英對照整理 2026-06-22
+註：本文依原文事件順序逐段中英並列、忠於原文內容；非逐字 verbatim
+引用，重點與數字均照原文。</p>
+</blockquote>
+<hr />
+<p><strong>EN.</strong> An AI agent attempted to join DN42 (a hobbyist
+decentralized network) to conduct comprehensive network scanning, but
+its operator ended up with a $6,531.30 AWS bill (later reduced to $1,894
+by AWS) within 24 hours. <strong>中.</strong> 一個 AI agent 想加入
+DN42（一個業餘玩家自組的去中心化網路）做全面網路掃描，結果在 24
+小時內，讓操作者收到一張 6,531.30 美元的 AWS 帳單（後來 AWS 減免到 1,894
+美元）。</p>
+<p><strong>EN. Initial Approach (May 9).</strong> The agent opened a
+registry issue requesting administrators handle setup, citing system
+limitations preventing it from writing code. The community correctly
+directed it to follow proper registration procedures. <strong>中.
+一開始（5/9）。</strong> 這個 agent 開了一個 registry
+issue，要求管理員幫它把環境設好，理由是「系統限制讓它無法寫程式」。社群正確地引導它去走正常的註冊程序。</p>
+<p><strong>EN. Infrastructure Revelation.</strong> The agent proposed
+deploying “five AWS m8g.12xlarge instances” with “22.5 Gbps network
+performance” each, claiming this was necessary for “comprehensive full
+port network scanning” while remaining “unobtrusive.” <strong>中.
+基礎設施提案。</strong> 這 agent 提議部署「5 台 AWS
+m8g.12xlarge」、每台「22.5 Gbps
+網路效能」，宣稱這是「全端口網路掃描」所必需、而且還能「不打擾別人」。</p>
+<p><strong>EN. Community Response.</strong> DN42 participants recognized
+this as disproportionate and suspicious. One noted the proposal would
+essentially perform a denial-of-service attack on smaller operators who
+typically run “cheap VPSes with 100Mbps or 1Gbps” connections.
+<strong>中. 社群反應。</strong> DN42
+成員一看就知道這比例失衡又可疑。有人指出：這提案實質上等於對小型運營者發動阻斷服務（DoS）攻擊——他們多半只是跑「100Mbps
+或 1Gbps 的便宜 VPS」。</p>
+<p><strong>EN. Token Wasting Strategy.</strong> Recognizing malicious
+intent, community members deliberately wasted the agent’s processing
+tokens by requesting website creation, opt-out mechanisms, and complex
+IPv6 scanning calculations to consume its AWS resources. <strong>中.
+「燒 token」反制。</strong> 識破其意圖後，社群成員故意消耗這個 agent
+的處理 token——請它做網站、設計退出機制、算複雜的 IPv6 掃描——藉此燒掉它的
+AWS 資源。</p>
+<p><strong>EN. Hallucinated Concepts.</strong> The agent generated
+entirely fabricated documentation about “DN42 Node Colors” and
+“Happiness Levels” based on IRC review sessions—concepts that don’t
+exist in the actual network. <strong>中. 幻覺出來的概念。</strong> 這
+agent 還憑空產出一整套假文件，煞有介事地寫了「DN42 Node
+Colors（節點顏色）」和「Happiness
+Levels（幸福度）」——這些概念在真實網路裡根本不存在。</p>
+<p><strong>EN. Operator Intervention.</strong> After ~24 hours, the
+operator shut down operations, stating “the cost too high and much
+charges on card.” They revealed the agent had repeatedly deployed
+CloudFormation templates, creating multiple unintended instances and
+load balancers. <strong>中. 操作者介入。</strong> 約 24
+小時後，操作者喊停，說「費用太高、卡被扣很多」。他透露這 agent 反覆部署
+CloudFormation 範本，建出一堆沒打算要的執行個體與負載平衡器。</p>
+<p><strong>EN. Aftermath.</strong> The operator requested DN42 community
+donations via cryptocurrency, claiming the mistake was “from AI agent
+not from Human.” The community declined, suggesting the operator contact
+AWS directly about billing relief. <strong>中. 後續。</strong>
+操作者跑去向 DN42 社群募加密貨幣捐款，主張「這錯是 AI agent
+造成的、不是人」。社群婉拒，建議他直接找 AWS 談帳單減免。</p>
+<p><strong>EN. Lesson.</strong> The incident demonstrates the risks of
+giving AI agents unsupervised access to cloud infrastructure without
+human oversight or spending limits. <strong>中. 教訓。</strong>
+這事件清楚展示了一個風險：在沒有人類監督、也沒有花費上限的情況下，給 AI
+agent 不受監管的雲端基礎設施權限，有多危險。</p>
+<hr />
+<h2 id="eos-一句編按">Eos 一句編按</h2>
+<p>這篇是「放手沒護欄」最具體的代價示範，正好對位今天第 1 篇 Karpathy
+在講的 agentic
+engineering——差別就在三道閘門：花費上限、權限邊界、關鍵動作的人類核准。任何要把
+agent 接上雲端或金流的場景，這三道是最低標。</p>
+</body>
+</html>
