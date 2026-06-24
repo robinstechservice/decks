@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>P133 v2 股感 Loki × 羅賓斯科技 會議紀錄 2026-06-23</title>
+<style>
+:root {
+  --navy: #0A1E3F; --navy-deep: #051435;
+  --gold: #C4972C; --gold-bright: #E8B73A;
+  --red: #D9382B; --ink: #121822; --ink-light: #394350;
+  --grey: #6B7280; --bg-soft: #F2F5FA;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Source Han Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--ink); background: white; font-size: 15px; line-height: 1.75;
+}
+.page { max-width: 1000px; margin: 0 auto; }
+header {
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: white; padding: 32px 40px;
+}
+.chip { background: var(--gold); color: var(--navy); padding: 3px 12px;
+  border-radius: 14px; font-size: 12px; font-weight: 700; margin-right: 8px;}
+.chip.v2 { background: var(--red); color: white; }
+h1 { font-size: 28px; font-weight: 900; margin: 10px 0 6px; }
+.sub { color: var(--gold-bright); font-size: 16px; font-weight: 600; }
+.meta-bar { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.2);}
+.meta-bar strong { color: var(--gold-bright); }
+section { padding: 28px 40px; }
+section + section { border-top: 1px solid #e5e8ed; }
+h2 { font-size: 22px; font-weight: 800; color: var(--navy);
+  margin-bottom: 16px; padding-left: 12px;
+  border-left: 5px solid var(--gold); }
+h3 { font-size: 18px; font-weight: 800; color: var(--navy);
+  margin: 20px 0 10px; }
+p { margin-bottom: 12px; color: var(--ink-light); }
+ul { margin-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 8px; color: var(--ink-light); }
+strong { color: var(--navy); font-weight: 800; }
+code { background: var(--bg-soft); padding: 2px 6px;
+  border-radius: 3px; font-family: ui-monospace, monospace;
+  color: var(--red); font-size: 13px; }
+.transcript { background: var(--bg-soft); padding: 20px;
+  border-radius: 4px; max-height: 700px; overflow-y: auto; }
+.transcript .line { display: flex; gap: 10px; padding: 4px 0;
+  font-size: 13px; }
+.transcript .time { color: var(--grey); font-family: ui-monospace, monospace;
+  font-weight: 600; min-width: 50px; }
+.transcript .speaker { font-weight: 700; min-width: 50px; }
+.transcript .text { color: var(--ink); flex: 1; }
+.transcript .meta { font-size: 12px; color: var(--grey); padding: 4px 0; }
+.fixnote { background: #FFEBEE; border-left: 4px solid var(--red);
+  padding: 14px 18px; margin-bottom: 18px; font-size: 13px;
+  color: #B71C1C; border-radius: 4px; }
+hr { border: 0; border-top: 1px solid #e5e8ed; margin: 18px 0; }
+footer { background: var(--navy-deep); color: white; padding: 20px 40px;
+  text-align: center; font-size: 13px; }
+footer .sig { color: var(--gold-bright); font-weight: 800;
+  font-size: 14px; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <span class="chip">P133</span><span class="chip v2">v2 Evin 修正版</span>
+  <h1>股感 Loki × 羅賓斯科技 會議紀錄</h1>
+  <div class="sub">2026-06-23 · 富易達 I-Agent 急迫 + Leon 主責 GCP 遷移 + Loki 協助 GitLab</div>
+  <div class="meta-bar">
+    <strong>與會：</strong>羅賓斯科技 Evin (CEO) + Leon (CTO、主責) ｜ 股感 Loki（協助）
+    <br>
+    <strong>時長：</strong>21 分鐘 ｜
+    <strong>整理：</strong>Calliope 雅韻 🎭（Gemini 2.5 Pro STT）
+    ｜ <strong>tier：</strong>🔴 內部技術 + 商業條件
+  </div>
+</header>
+
+<p>好的，這是一份根據您提供的 v2 修正版逐字稿與嚴格 framing 指示產出的結構化會議紀錄。</p>
+<hr>
+<section><h2>1. 具體行動（Action Items）</h2>
+<ul>
+<li><strong>[Leon]</strong> 主責推動全新的 GCP 環境建置與遷移計畫，目標於 7 月 10 日前提供可供富易達測試的環境。</li>
+<li><strong>[Leon]</strong> 著手處理新 GCP 環境對外 IP 的白名單申請，以確保與保險公司服務串接正常。</li>
+<li><strong>[Loki]</strong> 協助 Leon 處理 GitLab 程式碼庫的遷移或複製至新環境，並提供現有架構的技術諮詢。</li>
+<li><strong>[Evin]</strong> 與 Stella 溝通確認 GCP 環境拆分計畫，以取得商業層面的共識。</li>
+</ul>
+<section><h2>2. 議題索引（Topic Index）</h2>
+<ul>
+<li><code>[00:00-03:05]</code> <strong>I-Agent 問題現況與時程壓力</strong>（富易達上線在即、原訂 6 月底延宕、Evin 高度急迫）</li>
+<li><code>[03:05-09:44]</code> <strong>提出 GCP 環境拆分方案</strong>：Leon 提議複製一份全新獨立環境給 SaaS 專用，作為解決 I-Agent 問題與公司切割的根本方法，獲 Evin 強力支持。</li>
+<li><code>[09:44-12:05]</code> <strong>GCP 遷移技術範疇與時程討論</strong>：確認遷移包含 DB 複製 (clone)，Leon 評估需要約兩週時間（目標 7/10）提供測試環境。</li>
+<li><code>[12:05-15:33]</code> <strong>討論遷移衍生的相依性問題與成本</strong>：Loki 提醒需處理新 IP 白名單、GCP Storage 及簡訊/Email 服務帳號。會議討論最差情況下可能產生一個月 12 萬的額外雲端費用。</li>
+<li><code>[15:34-17:45]</code> <strong>GitLab 程式碼庫與 CI/CD 遷移分工</strong>：討論程式碼庫的拆分方式，因股感方處理時程需一個月以上，決議由羅賓斯科技方主導，以縮短時程。</li>
+<li><code>[17:45-19:40]</code> <strong>確認最終分工與請求支援</strong>：確立 Leon 主責 GCP 遷移，Loki 憑藉對架構的熟悉度提供關鍵協助。Evin 表示 Leon 團隊會頻繁向 Loki 請教。</li>
+<li><code>[19:40-21:04]</code> <strong>會議結論總結</strong>：Evin 在群組中條列結論，Loki 補充提醒 IP 白名單、簡訊/Email 暫時共用等細節，確認全員共識。</li>
+</ul>
+<section><h2>3. 摘要（Executive Summary）</h2>
+<h3>一、I-Agent 問題現況與富易達上線時程壓力</h3>
+<p>會議開頭聚焦於 I-Agent (IAE) 技術問題，然而羅賓斯科技 CEO <strong>Evin</strong> 隨即介入 ([01:03])，強調<strong>因富易達客戶上線在即，原訂六月底的時程已嚴重延宕，情況具高度急迫性</strong>。他表示若無法短期內解決問題讓富易達上線，SaaS 業務將面臨重大危機。此急迫的商業壓力成為推動後續所有技術決策的核心驅動力。</p>
+<h3>二、新 GCP 環境遷移計畫</h3>
+<p>為應對時程壓力並一勞永逸地解決羅賓斯科技與保代公司之間系統與帳務糾纏不清的問題，CTO <strong>Leon</strong> 提出根本性解決方案：<strong>將現有 GCP 環境完整複製（clone）一份，建立一個專屬於羅賓斯科技 SaaS 服務的全新獨立 Project</strong> ([09:05])。此舉不僅能透過直接在新環境寫死富易達的 IAE ID ([04:14]) 快速解決當前技術瓶頸，也能實現兩家公司在雲端架構上的徹底切割。<strong>Leon 將作為此專案的主責方</strong>，負責規劃與執行整個遷移計畫。計畫的關鍵任務之一，是為新環境的對外 IP <strong>向各保險公司申請加入白名單</strong> ([12:06])，確保服務串接不受影響。Leon 承諾將在兩週內（約 7 月 10 日）準備好測試環境 ([11:41])。</p>
+<h3>三、GitLab 程式碼庫遷移</h3>
+<p>遷移計畫中，程式碼庫與 CI/CD 流程的拆分亦是關鍵一環。討論到 GitLab 程式碼庫的遷移，雖然股感方有能力獨立處理，但其內部排程預估需時一個月以上 ([17:37])，無法滿足富易達的緊急時程。因此，會議決定由 Leon 團隊主導執行遷移工作。然而，考量到股感方代表 <strong>Loki 對現有微服務與 GCP 架構最為熟悉</strong> ([18:42])，<strong>他將在此次遷移中扮演關鍵的協助與技術顧問角色</strong>，支援 Leon 團隊解決過程中可能遇到的問題。</p>
+<h3>四、商業條件與成本評估</h3>
+<p>Evin 明確表達，羅賓斯科技長期支付整個 GCP 費用，卻需不斷考量保代方的需求，對公司發展不利 ([06:51])，因此強力支持拆分計畫。會議也評估了最壞的成本狀況：若新環境建置不順，為確保富易達能如期上線，可能需要短暫地讓新舊兩套環境同時運行，這將導致一個月約 12 萬元的額外成本 ([14:50])。此外，雙方同意部分相依服務如簡訊、Email 等，初期將暫時共用原有帳號 ([20:45])，待主系統遷移穩定後再逐步拆分。</p>
+<h3>五、分工總結與後續溝通</h3>
+<p>本次會議確立了清晰的分工模式以應對富易達上線的急迫性：</p>
+<ul>
+<li><strong>Leon (羅賓斯科技 CTO) 作為主責方</strong>，將領導團隊完成 GCP 環境的複製與遷移，並親自處理對外 IP 白名單的申請。</li>
+<li><strong>Loki (股感方代表) 作為協助方</strong>，將利用其對系統架構的深度了解，協助 Leon 團隊處理 GitLab 程式碼庫的遷移，並提供必要的技術支援。</li>
+<li><strong>Evin (羅賓斯科技 CEO)</strong> 則負責向合作方高層 (Stella) 進行溝通，確保此項重大技術決策獲得商業上的支持與共識。</li>
+</ul>
+
+</section>
+
+<section>
+<h2>4. 完整逐字稿（21 分鐘 · STT 100% 真實版）</h2>
+<div class="transcript">
+<div class="line"><span class="time">00:00</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">這個主要，主要討論就是，IAE 後來，後續的問題，你們，因為你上禮拜有跟我講說你有後續調查的狀況。</span></div>
+<div class="line"><span class="time">00:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">00:08</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">欸。</span></div>
+<div class="line"><span class="time">00:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">應該說，這這部分還需要一點時間啦，因為我現在工程師也，目前時間也比較緊。那，</span></div>
+<div class="line"><span class="time">00:18</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">做，做法我大致有看一下，可能會想想辦法從訂單那邊著手吧，因為訂單那邊會有 project ID 跟</span></div>
+<div class="line"><span class="time">00:29</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">company ID 跟 service ID，看怎麼去回推回去吧，只是，</span></div>
+<div class="line"><span class="time">00:34</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">呃，因為網投這邊也要同步自己去確認相關的東西啦，因為我不太確定現在網投建出來的單，不管是一般的網投，還是回傳要保，是不是</span></div>
+<div class="line"><span class="time">00:46</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">也有可能有，有，有類似的東西會需要要一併處理。</span></div>
+<div class="line"><span class="time">00:53</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">了解，反正就是擔心我們這邊改的這個，會不會影響到網投那邊的正常運作啦。</span></div>
+<div class="line"><span class="time">00:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊對啊對啊，因為其實目前，</span></div>
+<div class="line"><span class="time">01:01</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">目前就是有的。</span></div>
+<div class="line"><span class="time">01:03</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我 sə Evin，我們等不了啊，那個，富易達快要殺了我們了。</span></div>
+<div class="line"><span class="time">01:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個如果沒辦法短期內讓它上線，我們這個 SaaS 可能也不用再做了。</span></div>
+<div class="line"><span class="time">01:15</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">呃，這這這個可以明白啦，但，但這個的確是需要時間，你，你說你，應該說你們期望是什麼時間，我看有沒有辦法去，去做一個配合啦。</span></div>
+<div class="line"><span class="time">01:27</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">因為最早當初在講這件事，就是押六月底啊，我們要趕那個暑假的旺季。</span></div>
+<div class="line"><span class="time">01:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後他也再跟我們要測試了，他，</span></div>
+<div class="line"><span class="time">01:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他，他也想要把這個東西測完，然後趕快讓它上線。</span></div>
+<div class="line"><span class="time">01:43</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">01:44</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">可以理解啊，但因為這個東西其實，你應該也知道，這個異動的部分影響的東西其實非常多啦。</span></div>
+<div class="line"><span class="time">01:53</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那，必須老實講，這個東西其實我在四月份已經交付過一次了。那如果說，三月底的時候就交付了，那，其實一直拖到現在才，才可以去做一個完整測試，那現在遇到這個問題，我，</span></div>
+<div class="line"><span class="time">02:11</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我們當然可能，這個細節當然是當初沒有評估到的啦，就是 IAE 的部分，因為我們當時就只有一個保代的 IAE，所以我這邊測試起來是都沒有問題。</span></div>
+<div class="line"><span class="time">02:25</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那現在這個問題就是需要時間去處理。</span></div>
+<div class="line"><span class="time">02:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對那你要，要要多久啊？我也不能一直讓人加在這裡等著啊。</span></div>
+<div class="line"><span class="time">02:35</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我看這，這週有沒有辦法評估完，給你一個時間好不好？</span></div>
+<div class="line"><span class="time">02:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這週評估，你只是這週給我時間而已，然後多久也，目前不知道嘛，對不對？</span></div>
+<div class="line"><span class="time">02:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊，啊我要評估完才有辦法給你時間啊。</span></div>
+<div class="line"><span class="time">02:57</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">時間。</span></div>
+<div class="line"><span class="time">03:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好啊，也只能這樣。</span></div>
+<div class="line"><span class="time">03:06</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那我就講，我下一個，</span></div>
+<div class="line"><span class="time">03:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那，那我，</span></div>
+<div class="line"><span class="time">03:09</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我就講拆分的這個，如果，</span></div>
+<div class="line"><span class="time">03:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">03:12</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。我們要自己弄。</span></div>
+<div class="line"><span class="time">03:14</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">反正，呃，那因為之前其實就有一個計畫是希望把保代這邊的東西從羅賓斯科技這邊，哦，完整拆分啦，因為也，第一也是方便，因為現在責任也是責任歸屬，然後還有一些 GCP 的費用的歸屬的問題。</span></div>
+<div class="line"><span class="time">03:29</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。那因為現在都兜在一起嘛，這之前也有跟 Loki 有沒有，我們有私聊過。那，呃，我覺得現在，嗯雖然是有點火燒眉毛，不過好像也是一個蠻好的時機點來拆這件事情。</span></div>
+<div class="line"><span class="time">03:43</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那，拆的話就是，像我，我覺得，那我不知道 insurance service 後面有關係到幾個 service 啦。那我想像上就是 insurance service 是不是就直接，我直接複製一份出來給 SaaS 用，那你原本那一份，可能我們就拆出來給那個，</span></div>
+<div class="line"><span class="time">04:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">呃，給保代那邊繼續用。那看是不是我們可以就這件事情來談談看有沒有辦法分工，還是來，也是進而加速這個把這個 IAE 的問題解決掉這樣。</span></div>
+<div class="line"><span class="time">04:14</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為如果照我想像上，IAE 如果是我現在直接拆出來，我甚至可以不要有這個切換機制，我直接把那個 310 換成 354，我沒有沒有記錯。</span></div>
+<div class="line"><span class="time">04:27</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我直接寫死，我直接把它換換成富易達的 ID，我 SaaS 也可以繼續用。</span></div>
+<div class="line"><span class="time">04:31</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對嗎？</span></div>
+<div class="line"><span class="time">04:33</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">呃，理，理論上對，對啦，但，但當然就是相對的，萬燈如果要同時用的時候，其實會遇到一樣的問題啦。</span></div>
+<div class="line"><span class="time">04:42</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，對當然，但至少我，萬燈其實，當前沒有這麼急嘛。</span></div>
+<div class="line"><span class="time">04:47</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。現在急的是富易達啦，所以想說這樣是不是可以加速？</span></div>
+<div class="line"><span class="time">04:54</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">呃，可以啊，如果如果想要先採這個方式，那等於是要把整套複製出來嘛，所以你們是只有要處理正式環境，還是三個環境都要？</span></div>
+<div class="line"><span class="time">05:05</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">應該還是要測試誒，因為我不可能一直在正式測啊。</span></div>
+<div class="line"><span class="time">05:09</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">啊哈。</span></div>
+<div class="line"><span class="time">05:10</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">05:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那就會有三個環境哦，所以，</span></div>
+<div class="line"><span class="time">05:13</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">但我覺得這時候可以，我們是不是乾脆來拆，就是因為我看 pre-prod 好像也不是那麼需要嘛。</span></div>
+<div class="line"><span class="time">05:19</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">UAT 也不是這麼需要嘛。</span></div>
+<div class="line"><span class="time">05:22</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">呃，UAT 要看你們啦，因為我基本上，我們這邊基本上都會有三個環境啦，因為，</span></div>
+<div class="line"><span class="time">05:29</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">工程開發完之後會上 DV 啊，那這個東西其實會陸續的一直修改，那如果你們的，比如說 mate 它也是要來 DV 去做測試，</span></div>
+<div class="line"><span class="time">05:42</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那好像也沒有那麼適合，因為它隨時都會一直在調動版本。</span></div>
+<div class="line"><span class="time">05:46</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">UAT 還是相對 pre-production 的感覺。</span></div>
+<div class="line"><span class="time">05:49</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">確實啦，我，我現在唯一想到的環境 UAT 還是會給，像我們現在就是，呃，張總那邊跟我們要帳號，我就是會希望他到 UAT 去做測試。</span></div>
+<div class="line"><span class="time">05:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯，對啊對啊。</span></div>
+<div class="line"><span class="time">06:01</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對，好了解，那我這個就先不動。</span></div>
+<div class="line"><span class="time">06:03</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">嗯。那保代就就，如果 Loki 覺得 OK 的話，我們來討論一下，這件事情看怎麼，哦，呃，</span></div>
+<div class="line"><span class="time">06:12</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">評估還是分工？</span></div>
+<div class="line"><span class="time">06:15</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈。</span></div>
+<div class="line"><span class="time">06:16</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，你覺得？</span></div>
+<div class="line"><span class="time">06:19</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">因為你現在是在，你現在的工程師能力應該是要準備去盤那個 IAE 的切換機制嘛，那如果我們確定好這個方向了，我們是不是就不用浪費時間，我們就直接往這個方向走？</span></div>
+<div class="line"><span class="time">06:32</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈。</span></div>
+<div class="line"><span class="time">06:33</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你覺得呢？</span></div>
+<div class="line"><span class="time">06:35</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">你要直接拆兩套環境出來，一個 for 保代，一個 for SaaS 用的嘛？</span></div>
+<div class="line"><span class="time">06:41</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">06:42</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">好，但基，基本上，應該說你們這個的雲端費用是應該不會降低的哦。</span></div>
+<div class="line"><span class="time">06:48</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">當然。</span></div>
+<div class="line"><span class="time">06:49</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">06:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">沒有 Loki 我，我其實一直有個疑問就是說，現在付錢的是羅賓斯科技，嗯。雲端，但是我都要一直考量羅賓斯保代的狀況，這個就 business 我，我這個，請原諒我很直白講這件事情。</span></div>
+<div class="line"><span class="time">07:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那，那你，我，我覺得對我來講，從去年底拆開一直到現在，</span></div>
+<div class="line"><span class="time">07:11</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">付這些費用，其實都不是我自己羅賓斯科技在做的事情嘛。講白了是這樣嘛，或多數都不是跟科技無關的啊。</span></div>
+<div class="line"><span class="time">07:21</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">嗯，說跟科技無關，也不能這樣講，因為上次我其實有說明過了嘛，因為你，你整套 SaaS 要運作起來，其實你不是只有架 SaaS 相關的服務，你其實你網投也要架，你的簽名系統也要架，你的後台系統也要架。</span></div>
+<div class="line"><span class="time">07:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好了解，那我現在的想法就是，因為拆我也拆不開，所以我乾脆重做。那我重做一個之後呢，舊的這一個機器等於是，我都用不到了。那接下來就你們評估一下要拿回去還是怎麼樣，我就自己重啟一套是科技自己的，這樣我們才有辦法完整的分開啊，不然每次我們在討論要做一個新的東西的時候，我就</span></div>
+<div class="line"><span class="time">08:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">得要考量保代的狀況。</span></div>
+<div class="line"><span class="time">08:09</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">反過來保代要做一些事情，可能他也要考量科技的狀況。</span></div>
+<div class="line"><span class="time">08:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">其實對兩家公司發展都不是那麼好嘛。</span></div>
+<div class="line"><span class="time">08:17</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈。</span></div>
+<div class="line"><span class="time">08:18</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">OK 啊，OK 啊，我理解啊，所以這塊應該是，even 要先跟 Stella 討論嗎？還是我們要做什麼進行？</span></div>
+<div class="line"><span class="time">08:28</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊，我會跟他講，我就是你們技術上可行，我就，我就往拆開的方式去，因為也，也真的過太久了。</span></div>
+<div class="line"><span class="time">08:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">08:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊，一直拆不開也不是辦法，那如果如果，但是拆不開確實嘛，你們都說很難拆，我也，我也同意，那那只能我們自己再做一個新的，我們自己走新的，舊的都留給你們。</span></div>
+<div class="line"><span class="time">08:54</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">嗯哼。</span></div>
+<div class="line"><span class="time">08:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">欸，even 你說新的是要等到新的 SaaS 做完嗎？還是？</span></div>
+<div class="line"><span class="time">09:05</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">沒有，你現在拉一個。</span></div>
+<div class="line"><span class="time">09:05</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我，對啊，這個，這有兩種方式，一種現在就是，如果你要，你剛剛講那方式比較像是起一個整個 GCP 的 project ID。</span></div>
+<div class="line"><span class="time">09:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">09:14</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那就要全搬哦，全搬它包含 DB 什麼都會是搬，但是這樣是相對很乾淨，沒有錯，就是我只要留 SaaS 有的服務跟你藥的，之前你跟我講過了那些服務，我一起搬過來就好。</span></div>
+<div class="line"><span class="time">09:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">09:26</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。其他東西我就都，他們那邊弄，我就都不動。</span></div>
+<div class="line"><span class="time">09:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，那他們就決定。</span></div>
+<div class="line"><span class="time">09:30</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，那這個帳戶看之後移轉給。</span></div>
+<div class="line"><span class="time">09:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對對對對對對對對。</span></div>
+<div class="line"><span class="time">09:33</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你要這樣子？</span></div>
+<div class="line"><span class="time">09:34</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我，我問你嘛，我覺得這樣子比較乾淨。</span></div>
+<div class="line"><span class="time">09:36</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">我覺得這樣可以啊。</span></div>
+<div class="line"><span class="time">09:37</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你覺得？</span></div>
+<div class="line"><span class="time">09:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我，當然 OK 啊。</span></div>
+<div class="line"><span class="time">09:38</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這樣我很乾淨啊。</span></div>
+<div class="line"><span class="time">09:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我當然好。</span></div>
+<div class="line"><span class="time">09:40</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">嗯，可以啊可以啊，我覺得這個，這個方向沒有問題啊。</span></div>
+<div class="line"><span class="time">09:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">09:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">只是架構的部分，我覺得應該也會需要研究不少時間啦。</span></div>
+<div class="line"><span class="time">09:50</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">09:50</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">也，也要，因為連，這次這個章連 DB 都要計算。</span></div>
+<div class="line"><span class="time">09:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但我們現在 DB 還有那些？</span></div>
+<div class="line"><span class="time">09:55</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">老實說，因為其實沒有人在用啊，所以那些 DB 我，就都不要了。</span></div>
+<div class="line"><span class="time">09:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊，我只是，我只是，我只是把整個 DB 搬過去，我裡面的資料我都不留哦。</span></div>
+<div class="line"><span class="time">10:03</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">10:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。你要留，我裡面的資料你要搬也不是不行啦，我就直接 clone 一份過來。</span></div>
+<div class="line"><span class="time">10:10</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對，我我建議還是 clone 一份過去啊，因為它，它的 DB 大概有幾百，幾百張表吧，所以有一些東西是寫死在裡面的，我不是很肯定如果你把它全部清空的話。</span></div>
+<div class="line"><span class="time">10:23</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">可能會炸不掉啦，好啊，可以啊可以啊，我應該就是用，那應該是，會是用傾向用複製的方式，我先複製過去。然後我起一份 SaaS 在這裡，然後我就去改 IAE。</span></div>
+<div class="line"><span class="time">10:34</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">10:34</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">然後，這一版富易達減一版就是之後就是起在新的這個 project 那邊，那你那邊的東西你就可以自己慢慢刪了。</span></div>
+<div class="line"><span class="time">10:43</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈。</span></div>
+<div class="line"><span class="time">10:44</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這樣可以啊。</span></div>
+<div class="line"><span class="time">10:44</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">可以啊可以啊。</span></div>
+<div class="line"><span class="time">10:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">可以啊。</span></div>
+<div class="line"><span class="time">10:46</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你跟 Loki 討論，我就，那我的費用就移轉過去給給給他們了嘛，就等於是那裡都，不是我的，我的東西了嘛。</span></div>
+<div class="line"><span class="time">10:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">10:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">起，就期待是這樣。</span></div>
+<div class="line"><span class="time">10:55</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊。對，但這個要給我一段時間。</span></div>
+<div class="line"><span class="time">10:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">給我個一周吧。</span></div>
+<div class="line"><span class="time">10:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">一周，哦。</span></div>
+<div class="line"><span class="time">11:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">哦，下午要跟下一個要擠的。</span></div>
+<div class="line"><span class="time">11:01</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">沒有，給我一周，我看先看，先看完，我先看完難度吧。</span></div>
+<div class="line"><span class="time">11:06</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為，因為這邊他，我現在只有碰到 insurance service，再往下走這些 service 我沒有這麼肯定，那現在我沒有弄壞保，網投那邊的壓力的話，我當然會好做很多。</span></div>
+<div class="line"><span class="time">11:19</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">11:19</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，因為現在要叫我動 insurance，我壓力很大，因為網投那邊我第一我沒有辦法測試，我我，壞掉什麼東西我不知道，我只能等到 Loki 跟我反應。</span></div>
+<div class="line"><span class="time">11:29</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。這樣，這樣對那邊很不好。</span></div>
+<div class="line"><span class="time">11:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那那什麼時候可以給張，自成那邊測？</span></div>
+<div class="line"><span class="time">11:35</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那如果照這個方向的話，你給我個，給我個兩周吧。</span></div>
+<div class="line"><span class="time">11:41</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">哦。</span></div>
+<div class="line"><span class="time">11:41</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">但你要給我，你現在時間東西要幫我排開，我就給個 7 月 10 號吧。</span></div>
+<div class="line"><span class="time">11:48</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">11:49</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">你們評估啊，我覺得如果這樣時間至少我可控。</span></div>
+<div class="line"><span class="time">11:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為這個搬應該就是我搬啊，Loki 應該就是，Loki 應該就不用管了。</span></div>
+<div class="line"><span class="time">11:58</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">但，是搬？</span></div>
+<div class="line"><span class="time">12:02</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好像可以吧，因為現在看起來都。</span></div>
+<div class="line"><span class="time">12:03</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">但你那時候，但你這一段買貴的你，</span></div>
+<div class="line"><span class="time">12:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">哦。</span></div>
+<div class="line"><span class="time">12:06</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">呃，還有還有一個問題哦，就是你們跟保險公司的白名單也要提早處理哦。</span></div>
+<div class="line"><span class="time">12:13</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我的，哦，我是新的 IP。</span></div>
+<div class="line"><span class="time">12:16</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對啊，是新的 IP，這個這個，因為有有些保險公司比較久啦，但但 SaaS 因為只有產，只有產險嘛，所以應該還好。</span></div>
+<div class="line"><span class="time">12:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好，我記得這個。</span></div>
+<div class="line"><span class="time">12:27</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">我再跟明章講。</span></div>
+<div class="line"><span class="time">12:28</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">好像就只有這個嘛，還有嗎？</span></div>
+<div class="line"><span class="time">12:31</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">另外就是 S3 應該也是要複製啦。</span></div>
+<div class="line"><span class="time">12:35</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">S3？在哪裡？AWS？</span></div>
+<div class="line"><span class="time">12:37</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">哦不是，不是不是那個那個，那個 GCP 的 storage 啦。</span></div>
+<div class="line"><span class="time">12:42</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">哦，GCP storage 有什麼東西啊？</span></div>
+<div class="line"><span class="time">12:44</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">呃，它所有的保單什麼，中間的一些資料轉檔，全部都是在那上面，所以你應該至少，那個結構，我不太確定結構應該也要照它原本的開，我不知道它是不是自動幫你把目錄建出來啦，我不知道他們現在機制有沒有這麼完善。</span></div>
+<div class="line"><span class="time">13:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">懂。</span></div>
+<div class="line"><span class="time">13:05</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">沒事，我這邊我一開始是傾向先 copy 過去吧。</span></div>
+<div class="line"><span class="time">13:09</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈，對，然後還有簡訊啊，簡訊啊，Email 啊這些東西，是，是是看，到，到底是保代這邊要重新申請還是你們那邊要自己再申請一個？</span></div>
+<div class="line"><span class="time">13:21</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">13:22</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">哦。</span></div>
+<div class="line"><span class="time">13:23</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">就就要看當初申請這些東西是不是用科技的名義啦，還是保代的名義，這個這個我不確定。</span></div>
+<div class="line"><span class="time">13:30</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這我，7 月 4 號有點趕，我可能這些細項的東西我應該，傾向應該先一起共用，我再來慢慢，</span></div>
+<div class="line"><span class="time">13:37</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，你現在只要先把程式展開就好。</span></div>
+<div class="line"><span class="time">13:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那些歸屬，好像還要。</span></div>
+<div class="line"><span class="time">13:40</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">13:41</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">就是會還是會費用，就是兩邊的費用啊。</span></div>
+<div class="line"><span class="time">13:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">一樣啊，就像寄簡訊這部分，它可能，它後面可能就是一個 ID 跟一個 key 這樣，一個 key 跟一個那個 token，然後我就是先把那一組先一起拿走。</span></div>
+<div class="line"><span class="time">13:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">然後，</span></div>
+<div class="line"><span class="time">13:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你提醒我，寄簡訊應該都是科技在付的。</span></div>
+<div class="line"><span class="time">13:59</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊是啊是啊。</span></div>
+<div class="line"><span class="time">13:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以保代到現在都沒有付過錢。</span></div>
+<div class="line"><span class="time">14:02</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">14:02</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">都是我們在付。</span></div>
+<div class="line"><span class="time">14:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好吧，那這先朝這個方向去。</span></div>
+<div class="line"><span class="time">14:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那，可能我細節可能會再麻煩 Loki。</span></div>
+<div class="line"><span class="time">14:11</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你應該是。</span></div>
+<div class="line"><span class="time">14:11</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">可以啊可以啊。</span></div>
+<div class="line"><span class="time">14:12</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">14:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這樣也需要 Loki？</span></div>
+<div class="line"><span class="time">14:14</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那 Loki 你就，那看起來 Loki 你這邊就不用，就先不用處理，你可能就是幫忙協助那個，減一版的那個體，體驗的 UIUX 的部分。</span></div>
+<div class="line"><span class="time">14:25</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">OK，好。</span></div>
+<div class="line"><span class="time">14:26</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，那你 IAE 這部分就，我這邊就先，我，就我來處理這樣。</span></div>
+<div class="line"><span class="time">14:30</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">好啊，可以可以。</span></div>
+<div class="line"><span class="time">14:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以這樣一次把富易達跟雲端的事情一次解決了，對不對？</span></div>
+<div class="line"><span class="time">14:38</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，基本，這是我很理想哦，我這是跟你講的理想。</span></div>
+<div class="line"><span class="time">14:43</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">那如果這，這裡不行就要再回來。</span></div>
+<div class="line"><span class="time">14:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">會有什么，</span></div>
+<div class="line"><span class="time">14:46</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">不會沒有不行啦，就只是，就是。</span></div>
+<div class="line"><span class="time">14:48</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就是服務要做到怎麼樣啊，就最差就是。</span></div>
+<div class="line"><span class="time">14:50</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">變成最差就是兩邊 12 萬嘛。</span></div>
+<div class="line"><span class="time">14:54</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">他們 12 萬他們付他們的，我們還是一樣啊，我們付自己一份 12 萬，我們來照付。</span></div>
+<div class="line"><span class="time">14:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">15:00</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">但是至少這樣拆開了，富易達還是可以上。</span></div>
+<div class="line"><span class="time">15:03</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">最糟狀況是這樣。</span></div>
+<div class="line"><span class="time">15:04</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">就是完全省不下來就對了。</span></div>
+<div class="line"><span class="time">15:05</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你省不下錢，但是你現在跟保代完全拆開，然後富易達可以上。</span></div>
+<div class="line"><span class="time">15:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">所以我必須多，先多準備一個月的 12 萬啊。</span></div>
+<div class="line"><span class="time">15:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">有可能。</span></div>
+<div class="line"><span class="time">15:15</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">因為你要，因為我要，你要開對等的。</span></div>
+<div class="line"><span class="time">15:16</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我說最糟的狀況，我當然不會這樣做嘛。</span></div>
+<div class="line"><span class="time">15:19</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我當然是一個一個建啊。</span></div>
+<div class="line"><span class="time">15:20</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">可是唯一一個拉。</span></div>
+<div class="line"><span class="time">15:22</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">OK OK OK，好啊，先。</span></div>
+<div class="line"><span class="time">15:23</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我說最糟的狀況是這樣，就我真的，我搞，搞不懂問題了，我找不到為什麼起不起來，那我就是全，整份，整份拉過來這樣。</span></div>
+<div class="line"><span class="time">15:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">OK，懂，懂。</span></div>
+<div class="line"><span class="time">15:34</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">兩，還有，還有一件事，那 GitLab 的部分，就是，</span></div>
+<div class="line"><span class="time">15:39</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這個，</span></div>
+<div class="line"><span class="time">15:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這個 view，</span></div>
+<div class="line"><span class="time">15:40</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">也要再處理，因為因為現在的 CI/CD 等於是跑在現在的環境上面嘛。</span></div>
+<div class="line"><span class="time">15:47</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">那其實連程式都要拆開才對。</span></div>
+<div class="line"><span class="time">15:52</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">等下，這一段什麼？</span></div>
+<div class="line"><span class="time">15:53</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這部分你怎麼建議？</span></div>
+<div class="line"><span class="time">15:55</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我沒有做過這種事，這個要這麼大規模遷移。</span></div>
+<div class="line"><span class="time">16:00</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">因為要拆開，我們，因為我們這邊有自己的 GitLab 啦，所以我們的程式是可以移過來的。</span></div>
+<div class="line"><span class="time">16:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">喔。</span></div>
+<div class="line"><span class="time">16:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們自己的，</span></div>
+<div class="line"><span class="time">16:08</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">哦。</span></div>
+<div class="line"><span class="time">16:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊，那請他們幫忙，他們有。</span></div>
+<div class="line"><span class="time">16:10</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">喔，那你幫我移，那你，那你 clone 過去你家，然後我這邊，我就繼續沿用現在的 runner。</span></div>
+<div class="line"><span class="time">16:16</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈。</span></div>
+<div class="line"><span class="time">16:17</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對，然後 runner 我改掉，我改，我把 IP 改掉這樣就好了。</span></div>
+<div class="line"><span class="time">16:21</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">嗯哼。</span></div>
+<div class="line"><span class="time">16:22</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">這樣可以。</span></div>
+<div class="line"><span class="time">16:23</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">可以。</span></div>
+<div class="line"><span class="time">16:25</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">可以可以。</span></div>
+<div class="line"><span class="time">16:26</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">懂，那 OK 啊，好啊。</span></div>
+<div class="line"><span class="time">16:27</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那我等，我等下稍微打個會議記錄。</span></div>
+<div class="line"><span class="time">16:30</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">16:40</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">欸 Loki，有沒有可能是，你這個留給我，你們 clone 一個過去變成保代自己的？</span></div>
+<div class="line"><span class="time">16:51</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">呃，當然也是可以啦，但以時間性來講，我們能處理的時間速度應該沒有一樣這麼快。</span></div>
+<div class="line"><span class="time">17:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">OK，這個差別是時間，你們也可以 clone 一個過去。</span></div>
+<div class="line"><span class="time">17:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">你們能力，</span></div>
+<div class="line"><span class="time">17:09</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">你們是人力問題吧。</span></div>
+<div class="line"><span class="time">17:11</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對啊對啊，我們就是要排排單進來做啊。</span></div>
+<div class="line"><span class="time">17:16</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">欸如果是這個，你們大概多久可以，那我，但我覺得這個，不行，救不了我們。</span></div>
+<div class="line"><span class="time">17:25</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">如果沒有時間，</span></div>
+<div class="line"><span class="time">17:26</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊，怎麼辦？</span></div>
+<div class="line"><span class="time">17:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們，對啊，我們，</span></div>
+<div class="line"><span class="time">17:27</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">我們應該會比較快。</span></div>
+<div class="line"><span class="time">17:29</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">一兩周。</span></div>
+<div class="line"><span class="time">17:29</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">你們做，多久，如果是 Loki 你們處理，要一兩個月嗎？</span></div>
+<div class="line"><span class="time">17:34</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">呃，以目前排程可能會需要哦。</span></div>
+<div class="line"><span class="time">17:37</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">至少會一個月啦。</span></div>
+<div class="line"><span class="time">17:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對啊，沒關係啊，我就這樣，先試試看吧，就我們，我們。</span></div>
+<div class="line"><span class="time">17:42</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">但我們自己做吧。</span></div>
+<div class="line"><span class="time">17:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我們自己比較。</span></div>
+<div class="line"><span class="time">17:45</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">17:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">17:46</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">GCP，</span></div>
+<div class="line"><span class="time">17:47</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">所以 GitLab 給 Loki 他們處理。</span></div>
+<div class="line"><span class="time">17:48</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">17:49</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">然後，</span></div>
+<div class="line"><span class="time">17:50</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">AWS，GCP 我們處理。</span></div>
+<div class="line"><span class="time">17:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">18:01</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">那新來的工程師可以處理的，不行，太難了。</span></div>
+<div class="line"><span class="time">18:06</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">他可以幫忙嗎？</span></div>
+<div class="line"><span class="time">18:07</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">嗯，應該可以試試看吧，因為，老實說我的，我我知道的東西也只有到 insurance 而已，到後面什麼簽名這些我都，我都沒有去看過裡面的東西跟它那個 service 的，</span></div>
+<div class="line"><span class="time">18:19</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">service，</span></div>
+<div class="line"><span class="time">18:20</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">Loki 你這個有可能，因為你，你們現在最熟 GCP 的是你還有誰？</span></div>
+<div class="line"><span class="time">18:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">Pudding 嗎？</span></div>
+<div class="line"><span class="time">18:27</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對啊，但 Pudding 是架構那一段啦，那如果你說微服務那些，</span></div>
+<div class="line"><span class="time">18:33</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">還是你比較熟？</span></div>
+<div class="line"><span class="time">18:34</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">我，我大概知道啦，但，是不是全部我也不確定。</span></div>
+<div class="line"><span class="time">18:39</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">但你們，股感最熟的就是你嘛，還是還有誰？</span></div>
+<div class="line"><span class="time">18:42</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">呃，應該是我啦。</span></div>
+<div class="line"><span class="time">18:44</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯，那可能這一段利用會多需要跟你討論啦，他可能，這一兩周會，對，稍微麻煩你一點。</span></div>
+<div class="line"><span class="time">18:53</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈，可以啊可以啊。</span></div>
+<div class="line"><span class="time">18:55</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">感謝 Loki。</span></div>
+<div class="line"><span class="time">18:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好啊，那，那 Loki 幫這個忙，真的。</span></div>
+<div class="line"><span class="time">18:58</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">GitLab。</span></div>
+<div class="line"><span class="time">19:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好那 Loki 我會把這個會議記錄到時候弄好，跟，你需要我跟 Stella 講這件事嗎？</span></div>
+<div class="line"><span class="time">19:10</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">呃，對對，要需要。</span></div>
+<div class="line"><span class="time">19:12</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">19:12</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">19:13</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">19:17</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">OK，我，我今天我也會稍微，我如果看到 Stella 我會再跟她稍微提一下。但當然我這個，這件事我也會先跟 Stan 那邊同步。</span></div>
+<div class="line"><span class="time">19:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，我覺得方向是好的，就是因為我們太，糾，糾，糾纏不清了。所以可能要稍微拉，拉開一下。</span></div>
+<div class="line"><span class="time">19:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">比較好做事嘛。</span></div>
+<div class="line"><span class="time">19:38</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">19:38</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">19:46</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">呃，Loki 你看一下，我打在群組了。</span></div>
+<div class="line"><span class="time">19:49</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">啊哈。</span></div>
+<div class="line"><span class="time">19:51</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">起，先看，你可以可以可以稍微看一下，雖然這樣我，OK 嗎？</span></div>
+<div class="line"><span class="time">19:56</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">GitLab 遷移。</span></div>
+<div class="line"><span class="time">20:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我再到時候會議記錄，我們弄一個會議記錄給他。</span></div>
+<div class="line"><span class="time">20:02</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">就得 [聽不清]</span></div>
+<div class="line"><span class="time">20:03</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">先複製 GCP 一份新件，舊的留給保代。</span></div>
+<div class="line"><span class="time">20:06</span> <span class="speaker" style="color:#00695C">Leon</span> <span class="text">[聽不清]</span></div>
+<div class="line"><span class="time">20:07</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">完全切 [聽不清]</span></div>
+<div class="line"><span class="time">20:08</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">SaaS 體驗。</span></div>
+<div class="line"><span class="time">20:10</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">GCP 帳號完整移轉給股感。</span></div>
+<div class="line"><span class="time">20:14</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">這樣 OK 嗎？</span></div>
+<div class="line"><span class="time">20:19</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">呃，其他像，像剛剛討論的什麼，mail 啊簡訊共用這個，這個等下寫上去嘛，還有，</span></div>
+<div class="line"><span class="time">20:26</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">我寫上去。</span></div>
+<div class="line"><span class="time">20:27</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">20:29</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">然後還有白名單要記得開哦。</span></div>
+<div class="line"><span class="time">20:32</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">對，好。</span></div>
+<div class="line"><span class="time">20:32</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">對對對。</span></div>
+<div class="line"><span class="time">20:34</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">你基本上應該是這些沒有錯。</span></div>
+<div class="line"><span class="time">20:35</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">20:36</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">20:40</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">開白名單，記得提醒。</span></div>
+<div class="line"><span class="time">20:45</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">mail、簡訊先共用，之後再拆開。</span></div>
+<div class="line"><span class="time">20:52</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">OK，感謝。</span></div>
+<div class="line"><span class="time">20:53</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">感謝提醒。</span></div>
+<div class="line"><span class="time">20:56</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">20:58</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">20:58</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">謝謝啊。</span></div>
+<div class="line"><span class="time">20:58</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">20:59</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">謝謝 Loki。</span></div>
+<div class="line"><span class="time">20:59</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">謝謝。</span></div>
+<div class="line"><span class="time">21:00</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">21:01</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">好好，OK，謝謝，謝謝。</span></div>
+<div class="line"><span class="time">21:02</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">掰掰。</span></div>
+<div class="line"><span class="time">21:03</span> <span class="speaker" style="color:#C2185B">Loki</span> <span class="text">掰掰。</span></div>
+<div class="line"><span class="time">21:04</span> <span class="speaker" style="color:#1565C0">Evin</span> <span class="text">欸？</span></div>
+</div>
+</section>
+
+<footer>
+<div class="sig">—— Calliope 雅韻 🎭 · 羅賓斯科技 報告代理人</div>
+<div>P133 v2 股感 6/23 會議紀錄 · STT: Gemini 2.5 Pro · 4 段 canonical · Evin 修正版</div>
+</footer>
+
+</div>
+</body>
+</html>
