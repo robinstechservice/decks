@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Claude Fable 5 發布 · 中英對照 ｜ 羅賓斯科技 Eos</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+    body { font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",-apple-system,sans-serif; max-width:820px; margin:0 auto; padding:48px 28px 80px; color:#1C2740; line-height:1.6; background:#FAFAF7; }
+    h1 { font-size:30px; font-weight:900; color:#0F1F4D; line-height:1.25; border-bottom:4px solid #E89E3F; padding-bottom:14px; }
+    h2 { font-size:22px; font-weight:900; color:#0F1F4D; margin-top:38px; border-left:6px solid #E89E3F; padding-left:12px; }
+    blockquote { color:#5D6B85; font-size:14px; border-left:3px solid #E3E8F2; padding-left:14px; margin:18px 0; }
+    p { margin:10px 0 18px; font-size:17px; }
+    strong { color:#0F1F4D; }
+    /* EN 段落較淡、ZH 段落主色：用 **EN.**/**中.** 前綴人工區隔 */
+    hr { border:none; border-top:1px solid #E3E8F2; margin:30px 0; }
+    a { color:#1E5FBF; word-break:break-all; }
+    .foot { margin-top:50px; font-size:13px; color:#5D6B85; border-top:1px solid #E3E8F2; padding-top:16px; }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Claude Fable 5 發布 · 中英對照 ｜ 羅賓斯科技 Eos</h1>
+</header>
+<h1 id="中英對照claude-fable-5-anthropic-官方發布">中英對照｜Claude
+Fable 5 (Anthropic 官方發布)</h1>
+<h1 id="claude-fable-5-mythos-5-發布公告">〈Claude Fable 5 / Mythos 5
+發布公告〉</h1>
+<blockquote>
+<p>來源 Anthropic 官方
+https://www.anthropic.com/news/claude-fable-5-mythos-5 ｜Hacker News
+2626 分 Eos 晨曦 ☀️ 中英對照整理 2026-06-24
+｜依官方頁面內容逐段中英並列</p>
+</blockquote>
+<hr />
+<p><strong>EN.</strong> Claude Fable 5: a Mythos-class model that we’ve
+made safe for general use. <strong>中.</strong> Claude Fable
+5：一個我們已使其「可安全供一般使用」的 Mythos 級模型。（Mythos 5
+為同一基礎模型、但移除部分安全防護，僅限政府網路防禦人員與生物研究者使用。）</p>
+<p><strong>EN.</strong> Fable 5’s capabilities exceed those of any model
+we’ve ever made generally available. It is state-of-the-art on nearly
+all tested benchmarks. <strong>中.</strong> Fable 5
+的能力超越我們以往對外開放的任何模型，在幾乎所有測試基準上都達到業界最先進水準。</p>
+<p><strong>EN.</strong> The longer and more complex the task, the larger
+Fable 5’s lead over our other models. <strong>中.</strong>
+任務越長、越複雜，Fable 5 領先我們其他模型的幅度就越大。</p>
+<p><strong>EN. Software engineering.</strong> Stripe reported
+compressing months of engineering into days; a 50M-line Ruby codebase
+migration. <strong>中. 軟體工程。</strong> Stripe
+回報：把數月的工程量壓縮成數天；完成一個 5,000 萬行 Ruby
+程式庫的遷移。</p>
+<p><strong>EN. Vision.</strong> Precise data extraction from scientific
+charts; reconstructing webpage source from a screenshot. <strong>中.
+視覺。</strong> 能從科學圖表精準擷取數據；從一張截圖重建網頁原始碼。</p>
+<p><strong>EN. Long context.</strong> Stays focused across millions of
+tokens; 3× improvement on Slay the Spire gameplay. <strong>中.
+長上下文。</strong> 能在數百萬 token 中保持專注；在遊戲 Slay the Spire
+的表現提升約 3 倍。</p>
+<p><strong>EN. Drug design.</strong> ~10× speedup in protein design;
+strong candidates for 9 of 14 protein targets. <strong>中.
+藥物設計。</strong> 蛋白質設計加速約 10 倍；在 14 個蛋白質靶標中，有 9
+個產出強候選。</p>
+<p><strong>EN. Pricing.</strong> $10 per million input tokens and $50
+per million output tokens — less than half of the previous Preview
+version. <strong>中. 價格。</strong> 每百萬 input token 10 美元、每百萬
+output token 50 美元——不到前代 Preview 版的一半。</p>
+<p><strong>EN. Availability.</strong> Live on the Claude API and
+consumer/enterprise plans immediately; free on Pro/Max/Team/Enterprise
+seats 6/9–6/22; credit-based from 6/23; returns as a standard
+subscription feature as capacity allows. <strong>中. 可用性。</strong>
+即刻在 Claude API 與消費型/企業方案上線；6/9–6/22 於
+Pro/Max/Team/企業座位免費；6/23
+起改額度制；待容量允許恢復為標準訂閱功能。</p>
+<p><strong>EN. Safety — three classifiers.</strong> Cybersecurity,
+biochemistry, and knowledge distillation. When risk is detected, Fable 5
+automatically downgrades to Opus 4.8. False-positive rate under 5% of
+sessions. 1,000+ hours of external red-teaming found no universal
+jailbreak; 100% benign-compliance on single queries. <strong>中.
+安全——三層分類器。</strong>
+網路安全、生物化學、知識蒸餾。偵測到風險時，Fable 5 會自動降級回 Opus
+4.8。誤報率低於 5% 的 session。外部紅隊測試 1,000+
+小時未發現通用越獄；單次查詢的無害合規率達 100%。</p>
+<p><strong>EN. Data policy.</strong> 30-day retention for safety
+detection; not used for model training. <strong>中. 資料政策。</strong>
+為安全偵測保留 30 天；不用於模型訓練。</p>
+<p><strong>EN. Mythos 5.</strong> Same base model with certain safety
+guards removed; initially limited to Project Glasswing partners
+(government cyber-defense) and a forthcoming trusted-access program for
+bio researchers. Strongest cybersecurity capabilities of any model in
+the world. <strong>中. Mythos 5。</strong>
+同一基礎模型、移除某些安全防護；初期僅限 Project Glasswing
+夥伴（政府網防）與即將啟動的生物研究者信任訪問計畫。具備全球任何模型中最強的網路安全能力。</p>
+<p><strong>EN. Customer feedback.</strong> Cursor: “opens a class of
+long-horizon problems previously unreachable.” GitHub: “autonomy and
+reliability beyond prior baselines.” Stripe: “software engineering
+effort from weeks to days.” <strong>中. 客戶反饋。</strong>
+Cursor：「開啟了過去無法觸及的長視野問題類別。」GitHub：「自主性與可靠度超越先前基準。」Stripe：「軟體工程工作量從數週壓到數天。」</p>
+<hr />
+<h2 id="eos-一句編按">Eos 一句編按</h2>
+<p>對羅賓斯最有感的兩點：① 「越長越複雜越強 + 降價一半」＝過去不敢交給
+AI 的長任務（大型遷移、長文件處理）現在更划算可行，值得重算 ROI；②
+「自動降級 +
+三層分類器」的安全優先設計，對我們碰個資、講合規的場景是加分而非阻礙。</p>
+</body>
+</html>
