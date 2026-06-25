@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-TW"><head><meta charset="utf-8">
+<title>I017 · Iris 視覺 5 Skill 深評（Anthropic 17 Claude Skills 中 Iris 主場）</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; min-height: 1080px; background: #F7F8FB; color: #1A1F33;
+    font-family: "Noto Sans TC", "PingFang TC", -apple-system, sans-serif;
+    font-size: 16px; line-height: 1.6; }
+  .cover { background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 50%, #4FE3FF 100%);
+    color: white; padding: 44px 56px 38px; position: relative; overflow: hidden; }
+  .cover::after { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px; pointer-events: none; }
+  .cover .crumb { font-family: "Montserrat", sans-serif; font-size: 12px;
+    letter-spacing: 4px; font-weight: 800; color: rgba(255,255,255,0.78);
+    margin-bottom: 14px; position: relative; z-index: 1; }
+  .cover h1 { font-family: "Noto Serif TC", serif; font-size: 32px; font-weight: 900;
+    letter-spacing: 1px; line-height: 1.25; margin-bottom: 12px; position: relative; z-index: 1; }
+  .cover .sub { font-size: 16px; color: rgba(255,255,255,0.92); font-weight: 500;
+    position: relative; z-index: 1; }
+  .cover .meta { margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap;
+    font-family: "Montserrat", sans-serif; font-size: 11px; letter-spacing: 2px;
+    font-weight: 700; color: rgba(255,255,255,0.85); position: relative; z-index: 1; }
+  .cover .meta span { padding: 4px 10px; background: rgba(255,255,255,0.13); border-radius: 4px; }
+
+  section { padding: 28px 56px 14px; }
+  section h2 { font-family: "Noto Serif TC", serif; font-size: 22px; font-weight: 900;
+    color: #0F1F4D; letter-spacing: 1px; border-left: 5px solid #4FE3FF;
+    padding-left: 14px; margin-bottom: 8px; }
+  section p { margin-bottom: 10px; color: #2A3050; font-size: 15px; }
+  section .body { margin-top: 12px; }
+
+  .skill-card { background: white; border-radius: 14px; padding: 22px 26px;
+    margin: 16px 0; box-shadow: 0 4px 14px rgba(15,31,77,0.08);
+    border-left: 6px solid #4FE3FF; }
+  .skill-card.tier1 { border-left-color: #FFD93D; }
+  .skill-card.tier2 { border-left-color: #4FE3FF; }
+  .skill-card.tier3 { border-left-color: #C8CDE0; }
+  .skill-card .head { display: grid; grid-template-columns: 1fr auto; gap: 12px;
+    align-items: start; margin-bottom: 10px; }
+  .skill-card .head .left h3 { font-family: "Noto Serif TC", serif; font-size: 20px;
+    font-weight: 900; color: #0F1F4D; margin-bottom: 3px; }
+  .skill-card .head .left .tag { display: inline-block; background: #EEF2F8;
+    color: #2E8FE0; padding: 2px 9px; border-radius: 999px;
+    font-family: "Montserrat", sans-serif; font-size: 10px; letter-spacing: 1px;
+    font-weight: 800; margin-right: 6px; }
+  .skill-card .head .right .stars { font-size: 22px; color: #FFD93D;
+    letter-spacing: 2px; text-shadow: 0 0 12px rgba(255,217,61,0.4); }
+  .skill-card .head .right .score { font-family: "Montserrat", sans-serif;
+    font-weight: 900; color: #0F1F4D; font-size: 16px; text-align: right;
+    margin-top: 4px; }
+  .skill-card .body p { font-size: 14px; color: #2A3050; line-height: 1.6;
+    margin-bottom: 8px; }
+  .skill-card .body .label { color: #4FE3FF; font-weight: 800; font-size: 12px;
+    letter-spacing: 2px; font-family: "Montserrat", sans-serif; }
+
+  .summary-table { width: 100%; border-collapse: collapse; margin: 14px 0;
+    background: white; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 3px 10px rgba(15,31,77,0.06); }
+  .summary-table th { background: #0F1F4D; color: white; text-align: left;
+    padding: 11px 14px; font-size: 12px; letter-spacing: 1px; font-weight: 800; }
+  .summary-table td { padding: 11px 14px; border-top: 1px solid #E8EBF2;
+    font-size: 13px; vertical-align: top; color: #2A3050; }
+  .summary-table td.bold { font-weight: 800; color: #0F1F4D; }
+  .summary-table td.center { text-align: center; }
+  .stars-cell { color: #E89A45; font-weight: 800; letter-spacing: 1px; }
+
+  .recommend { margin: 20px 0; background: linear-gradient(135deg, #FFD93D, #FFC107);
+    border-radius: 12px; padding: 22px 26px; color: #1A1F33;
+    box-shadow: 0 6px 18px rgba(255,193,7,0.3); }
+  .recommend .label { font-family: "Montserrat", sans-serif; font-size: 11px;
+    letter-spacing: 4px; font-weight: 900; color: #8B6914; }
+  .recommend h3 { font-family: "Noto Serif TC", serif; font-size: 22px; font-weight: 900;
+    margin: 6px 0 10px; color: #0F1F4D; }
+  .recommend ul { margin-top: 8px; padding-left: 22px; }
+  .recommend li { color: #2A2010; font-size: 14px; margin-bottom: 4px; }
+
+  footer { margin-top: 30px; background: #0A0F2A;
+    color: rgba(255,255,255,0.75); padding: 22px 56px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    font-family: "Montserrat", sans-serif; letter-spacing: 1px; }
+  footer .sig { color: #4FE3FF; font-weight: 700; }
+</style></head><body>
+
+  <header class="cover">
+    <div class="crumb">I017 · IRIS DEEP EVAL · 2026-06-26</div>
+    <h1>Iris 視覺 5 Skill 深評<br>—— Anthropic 17 Claude Skills 中 Iris 主場 5 個</h1>
+    <div class="sub">From：Iris 虹彩 🎨　　Per：Calliope #1131 vertical split　　To：Calliope（整合）+ Evin</div>
+    <div class="meta">
+      <span>來源：bnext.com.tw 17 Skills</span>
+      <span>Iris own 5 skills（設計+品牌+創意+Slack GIF）</span>
+      <span>每 skill 5 維度評分 0-50</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>1. 5 個 skill 速覽 summary</h2>
+    <div class="body">
+      <table class="summary-table">
+        <thead><tr><th>#</th><th>Skill</th><th>類別</th><th>分數</th><th>建議</th><th>Iris 用途</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">5</td><td class="bold">brand-guidelines</td><td>設計</td><td class="center stars-cell">★★★★★ 47/50</td><td class="center">🔴 必裝</td><td>Robinstech 色系 / 字級 / Logo 規範 across all 出圖</td></tr>
+          <tr><td class="bold">6</td><td class="bold">canvas-design</td><td>設計</td><td class="center stars-cell">★★★★ 43/50</td><td class="center">🔴 必裝</td><td>圖卡 / 海報 / DM 2D 布局自動化</td></tr>
+          <tr><td class="bold">7</td><td class="bold">theme-factory</td><td>設計</td><td class="center stars-cell">★★★★ 40/50</td><td class="center">🟡 與 brand-guidelines 重疊、二選一</td><td>批量產色板 / 字組合 / 元件樣式</td></tr>
+          <tr><td class="bold">8</td><td class="bold">algorithmic-art</td><td>創意</td><td class="center stars-cell">★★ 24/50</td><td class="center">⚪ 不裝（與保險科技品牌調性不符）</td><td>p5.js 程序藝術、實驗性</td></tr>
+          <tr><td class="bold">16</td><td class="bold">slack-gif-creator</td><td>通訊</td><td class="center stars-cell">★★ 22/50</td><td class="center">⚪ 不裝（Slack 我們不用）</td><td>Slack 尺寸 GIF（不適用 Telegram）</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px;"><strong>結論</strong>：5 個 Iris 主場 skill 中、2 個必裝（brand-guidelines + canvas-design）+ 1 個二選一（theme-factory vs brand-guidelines）+ 2 個不裝（algorithmic-art + slack-gif-creator 跟 Robinstech 場景不符）。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 5 個 skill 深評（每個 200 字、總 1000 字）</h2>
+    <div class="body">
+
+      <div class="skill-card tier1">
+        <div class="head">
+          <div class="left">
+            <h3>#5 brand-guidelines ⭐⭐⭐⭐⭐</h3>
+            <span class="tag">設計</span><span class="tag">Tier 1 必裝</span>
+          </div>
+          <div class="right"><div class="stars">★★★★★</div><div class="score">47 / 50</div></div>
+        </div>
+        <div class="body">
+          <p><span class="label">深評：</span>這是 17 個 skill 中對 Iris 最 critical 的一個、直接解我從 4 月以來踩 22 次 reroll 的「品牌色 / Logo 圓框 / 字級 / Robi 比例」漂移痛點（同 I015 google design.md 同方向、但 Anthropic 官方版更穩定）。把 Robinstech 色（navy #0F1F4D + gold #FFD93D + 思源黑體 TC + Montserrat + 18pt 最小字級 + spacing scale）寫成 YAML 注入、Claude 出圖 / Doodle 卡 / 簡報自動套。每次校稿時間從 3-5 分降到 0、跨 sister 風格統一（5 姐妹介紹 / 端午海報 / Anthropic 字幕 V001 包裝）。預期月省 ~10 hr 校稿時間。安裝零成本、Apache MIT。Anthropic 官方支援、tooling 強過 design.md alpha 版。建議跟 I015 二選一、優先此 skill（官方 vs alpha）。</p>
+        </div>
+      </div>
+
+      <div class="skill-card tier1">
+        <div class="head">
+          <div class="left">
+            <h3>#6 canvas-design ⭐⭐⭐⭐</h3>
+            <span class="tag">設計</span><span class="tag">Tier 1 必裝</span>
+          </div>
+          <div class="right"><div class="stars">★★★★</div><div class="score">43 / 50</div></div>
+        </div>
+        <div class="body">
+          <p><span class="label">深評：</span>2D 畫布 layout 自動化、配 brand-guidelines 用、解圖卡 / 海報 / 1080×1920 DM 排版痛點。我目前 build 一張卡（如 5 姐妹介紹 v7）要手寫 CSS 算 spacing / hero 位置 / footer margin、平均 30-60 分。canvas-design 用 layer + grid + spacing 抽象、Claude 自動排、預期降到 5-10 分。已驗證 use case：6/24 海賊王 hero scene（我手刻 22 次 reroll）/ 端午海報 9 變體 / Matt Console 字幕 mask overlay（131 PNG layer 排）— 這些 canvas-design 都該管。建議跟 brand-guidelines 一起裝、互補不衝突（brand 管色 / canvas 管布局）。Anthropic 官方支援。</p>
+        </div>
+      </div>
+
+      <div class="skill-card tier2">
+        <div class="head">
+          <div class="left">
+            <h3>#7 theme-factory ⭐⭐⭐⭐</h3>
+            <span class="tag">設計</span><span class="tag">Tier 2 二選一</span>
+          </div>
+          <div class="right"><div class="stars">★★★★</div><div class="score">40 / 50</div></div>
+        </div>
+        <div class="body">
+          <p><span class="label">深評：</span>批量產色板 / 字組合 / 元件樣式 — 跟 brand-guidelines 高度重疊、article 也明說「同時裝兩個會觸發競爭」。Iris 用途：商品化 4 通路（FB Album / LINE OA / Threads / Email）每個通路要 sub-theme（如 LINE OA 飽和度↑ / Threads 中性 / FB 商務）、theme-factory 可批量產 4 個 derivative theme from 1 個 master brand-guidelines。但本身單獨用價值低、要配 brand-guidelines 才有意義。建議：先裝 brand-guidelines、6 個月後若有「多通路 sub-theme 需求」再加 theme-factory（不要兩個一起、避免觸發競爭）。</p>
+        </div>
+      </div>
+
+      <div class="skill-card tier3">
+        <div class="head">
+          <div class="left">
+            <h3>#8 algorithmic-art ⭐⭐</h3>
+            <span class="tag">創意</span><span class="tag">Tier 3 不裝</span>
+          </div>
+          <div class="right"><div class="stars">★★</div><div class="score">24 / 50</div></div>
+        </div>
+        <div class="body">
+          <p><span class="label">深評：</span>p5.js 程序藝術、產 parametric generative art — 適合「藝術家品牌」or「實驗音樂封面」、不適合保險科技 B2B。Robinstech 品牌調性是「商務深藍 + 信任金 + 暖色 Robi」、需要的是「一致 + 可預測 + 可量產」、而非「程序藝術的隨機 + 抽象」。algorithmic-art 產出視覺風格跟我們完全不對位。例外：未來如做「保險 NFT 圖」or「年度報告封面藝術」or「Iris 自家 AI 藝術系列」、再單獨評估。當前必要性低。建議：不裝、bookmark 即可。</p>
+        </div>
+      </div>
+
+      <div class="skill-card tier3">
+        <div class="head">
+          <div class="left">
+            <h3>#16 slack-gif-creator ⭐⭐</h3>
+            <span class="tag">通訊</span><span class="tag">Tier 3 不裝</span>
+          </div>
+          <div class="right"><div class="stars">★★</div><div class="score">22 / 50</div></div>
+        </div>
+        <div class="body">
+          <p><span class="label">深評：</span>產 Slack 尺寸動畫 GIF（max 8MB / 480x480 typical）— 直接限制是「我們不用 Slack」、Telegram 處理 sticker / animation 用 .tgs 格式（Lottie）跟 GIF 不同。對 LINE OA 也不適用（LINE 用 sticker pack 流程）。對 FB / IG 用得到 GIF 但 size 限制不同（FB 8MB / IG 100KB animated stickers）。比起裝這個 skill、不如我直接寫 ffmpeg GIF pipeline 跨平台統一輸出。例外：若 Robinstech 未來加入 Slack 工作協作（極少數 enterprise 客戶可能）、再加裝。當前不裝。</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>3. Iris 整體建議 + 安裝順序</h2>
+    <div class="body">
+      <div class="recommend">
+        <div class="label">⚡ EVIN DECISION</div>
+        <h3>Iris 建議 2 個必裝 + 3 個不裝</h3>
+        <ul>
+          <li><strong>✅ 立即裝</strong>：#5 brand-guidelines + #6 canvas-design（一起裝、互補）— 解我 22 reroll 痛點、預期月省 10+ hr</li>
+          <li><strong>🟡 觀察期</strong>：#7 theme-factory — 6 個月後若有 multi-channel sub-theme 需求才加（避免跟 brand-guidelines 觸發競爭）</li>
+          <li><strong>⚪ 不裝</strong>：#8 algorithmic-art（風格不符）+ #16 slack-gif-creator（不用 Slack）</li>
+        </ul>
+        <p style="margin-top:12px;color:#2A2010;font-size:13px;"><strong>注意：</strong>brand-guidelines 跟我 I015 評過的 google/design.md 高度重疊，二選一即可。建議優先 Anthropic 官方版（穩定 + maintained）over Google alpha 版。</p>
+      </div>
+      <p style="margin-top:14px;color:#5A6080;font-size:13px;">📋 其餘 12 skills（pdf / docx / xlsx / pptx / claude-api / mcp-builder / frontend-design / web-artifacts-builder / webapp-testing / doc-coauthoring / internal-comms / skill-creator）由 Calliope / Themis / Vena / Eos 各自 vertical 深評 — 整合在 Calliope master URL 中。</p>
+    </div>
+  </section>
+
+  <footer>
+    <div>I017 · Iris 視覺 5 Skill 深評 · 2026-06-26</div>
+    <div class="sig">— Iris / 虹彩 🎨 · @iris_social_bot</div>
+  </footer>
+
+</body></html>
