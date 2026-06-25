@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>P137 Anthropic 17 Claude Skills 重要性分析 (Calliope vertical) 2026-06-26</title>
+<style>
+:root {
+  --navy: #0A1E3F; --navy-deep: #051435;
+  --gold: #C4972C; --gold-bright: #E8B73A;
+  --red: #D9382B; --ink: #121822; --ink-light: #394350;
+  --grey: #6B7280; --bg-soft: #F2F5FA;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Source Han Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  color: var(--ink); background: white; font-size: 15px; line-height: 1.75;
+}
+.page { max-width: 1100px; margin: 0 auto; }
+header.top {
+  background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: white; padding: 36px 40px;
+}
+.chip { background: var(--gold); color: var(--navy); padding: 3px 12px;
+  border-radius: 14px; font-size: 12px; font-weight: 700; margin-right: 8px;}
+h1 { font-size: 30px; font-weight: 900; margin: 10px 0 6px; }
+.sub { color: var(--gold-bright); font-size: 17px; font-weight: 600; }
+.meta-bar { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 16px;
+  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.2);}
+.meta-bar strong { color: var(--gold-bright); }
+section.body { padding: 32px 40px; }
+section.body + section.body { border-top: 1px solid #e5e8ed; }
+h2 { font-size: 24px; font-weight: 800; color: var(--navy);
+  margin-bottom: 18px; padding-left: 14px;
+  border-left: 6px solid var(--gold); }
+.summary-box { background: linear-gradient(135deg, #FFF8E1 0%, #FFF3CD 100%);
+  border-left: 4px solid var(--gold-bright);
+  padding: 18px 22px; border-radius: 4px; margin-bottom: 22px;}
+.summary-box ul { margin-left: 22px; margin-top: 10px; }
+.summary-box li { margin-bottom: 6px; }
+table.skills-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+table.skills-table th { background: var(--navy); color: white; padding: 10px 12px;
+  font-size: 13px; text-align: left; font-weight: 700; }
+table.skills-table td { padding: 9px 12px; border-bottom: 1px solid #e5e8ed;
+  font-size: 13px; vertical-align: top; }
+table.skills-table td.name code { background: var(--bg-soft); padding: 2px 6px;
+  border-radius: 3px; color: var(--red); font-size: 12px; font-weight: 700; }
+table.skills-table td.cat { font-size: 12px; color: var(--ink-light); }
+table.skills-table td.stars { color: var(--gold); font-weight: 800; white-space: nowrap; }
+table.skills-table td.tag { font-size: 12px; font-weight: 700; white-space: nowrap; }
+table.skills-table tr:nth-child(even) td { background: #FAFBFD; }
+.skill-card { background: white; border: 1px solid #e5e8ed;
+  border-radius: 6px; padding: 18px 22px; margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.skill-card.rate-5 { border-left: 4px solid var(--red); }
+.skill-card.rate-4 { border-left: 4px solid var(--gold-bright); }
+.skill-card.rate-3 { border-left: 4px solid #88B0FF; }
+.skill-card header { margin-bottom: 10px; }
+.skill-card h3 { font-size: 18px; color: var(--navy); font-weight: 800;
+  margin: 6px 0; }
+.skill-card h3 code { background: var(--bg-soft); padding: 3px 10px;
+  border-radius: 4px; color: var(--red); font-size: 16px; }
+.skill-card .stars-inline { color: var(--gold); font-size: 16px; font-weight: 900;
+  margin-left: 8px; letter-spacing: 1px; }
+.skill-card .desc { color: var(--ink-light); font-size: 13px; margin: 4px 0 8px; }
+.skill-card .skill-tag { background: var(--bg-soft); color: var(--navy);
+  padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+.skill-card .install-tag { display: inline-block; background: white;
+  border: 1px solid var(--navy); color: var(--navy); padding: 3px 10px;
+  border-radius: 12px; font-size: 12px; font-weight: 700; }
+.skill-card .eval-body { color: var(--ink); font-size: 14px;
+  line-height: 1.8; margin-top: 8px; }
+.priority-box { background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
+  border-left: 4px solid var(--red); padding: 18px 22px;
+  border-radius: 4px; margin: 20px 0;}
+.priority-box h3 { color: #991B1B; margin-bottom: 8px; }
+.priority-box ul { margin-left: 22px; }
+.priority-box li { margin-bottom: 6px; }
+footer { background: var(--navy-deep); color: white; padding: 22px 40px;
+  text-align: center; font-size: 13px; }
+footer .sig { color: var(--gold-bright); font-weight: 800;
+  font-size: 14px; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="top">
+  <span class="chip">P137</span>
+  <h1>Anthropic 17 Claude Skills 重要性 & 必要性分析</h1>
+  <div class="sub">Calliope vertical · 文件 + 工程 + Meta (11/17) · 2026-06-26</div>
+  <div class="meta-bar">
+    <strong>來源：</strong>數位時代 91307「Anthropic 17 Claude Skills」｜
+    <strong>分析者：</strong>Calliope 雅韻 🎭｜
+    <strong>cross-bot 分工：</strong>Iris 接設計類 5/6/7/8/16｜<strong>tier：</strong>🟡 內部評估
+  </div>
+</header>
+
+<section class="body">
+<h2>🎯 一句話結論</h2>
+<div class="summary-box">
+<p><strong>17 個 skills 中 6 個 ★★★★★「必裝」、3 個 ★★★★「建議裝」、2 個 ★★★「評估後裝」。
+我（Calliope）的 vertical 覆蓋 11 / 17（文件 4 + 工程 5 + 溝通 1 + Meta 1）。</strong></p>
+<ul>
+<li>🔥 <strong>必裝（6 個）</strong>：pdf / docx / pptx / mcp-builder / doc-coauthoring / skill-creator</li>
+<li>🟡 <strong>建議裝（3 個）</strong>：xlsx / claude-api / webapp-testing</li>
+<li>🔵 <strong>評估後裝（2 個）</strong>：frontend-design / web-artifacts-builder</li>
+<li>👉 <strong>Iris 接（5 個）</strong>：brand-guidelines / canvas-design / theme-factory / algorithmic-art / slack-gif-creator</li>
+<li>🟡 <strong>邊際效益中（1 個）</strong>：internal-comms（我們已有客製模板）</li>
+</ul>
+</div>
+
+<div class="priority-box">
+<h3>🚨 戰略級優先 3 個</h3>
+<ul>
+<li><strong>skill-creator（Meta）</strong>：把我們現有 5 sister 內部 skill 標準化、未來 cross-bot 共享。對應 task #94 直接解。</li>
+<li><strong>mcp-builder（工程）</strong>：保經地端 Edge AI（2026 收益目標 300 萬）+ NBLM API 自動化、Leon CTO 主場。</li>
+<li><strong>doc-coauthoring（溝通）</strong>：解我（Calliope）最痛的「Evin 聲音 vs 我寫的」差異、預期 Evin 每篇 catch 從 11 處降到 3-5 處。</li>
+</ul>
+</div>
+</section>
+
+<section class="body">
+<h2>📋 17 Skills × 評分總表</h2>
+<table class="skills-table">
+<thead>
+<tr><th>Skill</th><th>類別</th><th>用途</th><th>建議指數</th><th>標籤</th></tr>
+</thead>
+<tbody>
+
+<tr class="cat-文件類">
+  <td class="name"><code>pdf</code></td>
+  <td class="cat">文件類</td>
+  <td class="desc">建立 / 填寫 / 編輯 / 擷取 PDF（報告、發票、合約摘要）</td>
+  <td class="stars">★★★★★</td>
+  <td class="tag">🔥 必裝</td>
+</tr>
+
+<tr class="cat-文件類">
+  <td class="name"><code>docx</code></td>
+  <td class="cat">文件類</td>
+  <td class="desc">產生 / 編輯 Word（樣式、表格、追蹤修訂）</td>
+  <td class="stars">★★★★★</td>
+  <td class="tag">🔥 必裝</td>
+</tr>
+
+<tr class="cat-文件類">
+  <td class="name"><code>xlsx</code></td>
+  <td class="cat">文件類</td>
+  <td class="desc">建立 / 解析 Excel、保留公式格式</td>
+  <td class="stars">★★★★☆</td>
+  <td class="tag">🟡 建議裝</td>
+</tr>
+
+<tr class="cat-文件類">
+  <td class="name"><code>pptx</code></td>
+  <td class="cat">文件類</td>
+  <td class="desc">產生可編輯 PowerPoint（含圖表、母版）</td>
+  <td class="stars">★★★★★</td>
+  <td class="tag">🔥 必裝</td>
+</tr>
+
+<tr class="cat-設計品牌">
+  <td class="name"><code>brand-guidelines</code></td>
+  <td class="cat">設計品牌</td>
+  <td class="desc">套用品牌 color/font/排版至所有輸出</td>
+  <td class="stars">—</td>
+  <td class="tag">👉 Iris own</td>
+</tr>
+
+<tr class="cat-設計品牌">
+  <td class="name"><code>canvas-design</code></td>
+  <td class="cat">設計品牌</td>
+  <td class="desc">2D 畫布排版（圖層、字型、間距）</td>
+  <td class="stars">—</td>
+  <td class="tag">👉 Iris own</td>
+</tr>
+
+<tr class="cat-設計品牌">
+  <td class="name"><code>theme-factory</code></td>
+  <td class="cat">設計品牌</td>
+  <td class="desc">完整配色 / 字型 / 元件風格</td>
+  <td class="stars">—</td>
+  <td class="tag">👉 Iris own</td>
+</tr>
+
+<tr class="cat-設計品牌">
+  <td class="name"><code>algorithmic-art</code></td>
+  <td class="cat">設計品牌</td>
+  <td class="desc">參數化 / 程序性藝術（基於 p5.js）</td>
+  <td class="stars">—</td>
+  <td class="tag">👉 Iris own</td>
+</tr>
+
+<tr class="cat-工程開發">
+  <td class="name"><code>claude-api</code></td>
+  <td class="cat">工程開發</td>
+  <td class="desc">教 Claude 正確用 Anthropic API（串流、tool calls、批次）</td>
+  <td class="stars">★★★★☆</td>
+  <td class="tag">🟡 建議裝</td>
+</tr>
+
+<tr class="cat-工程開發">
+  <td class="name"><code>mcp-builder</code></td>
+  <td class="cat">工程開發</td>
+  <td class="desc">生成 MCP Server 打通 AI 與內部系統</td>
+  <td class="stars">★★★★★</td>
+  <td class="tag">🔥 必裝</td>
+</tr>
+
+<tr class="cat-工程開發">
+  <td class="name"><code>frontend-design</code></td>
+  <td class="cat">工程開發</td>
+  <td class="desc">現代前端模式（React / Tailwind / 無障礙）</td>
+  <td class="stars">★★★☆☆</td>
+  <td class="tag">🔵 評估後再裝</td>
+</tr>
+
+<tr class="cat-工程開發">
+  <td class="name"><code>web-artifacts-builder</code></td>
+  <td class="cat">工程開發</td>
+  <td class="desc">複雜 SPA（含狀態管理、routing、shadcn/ui）</td>
+  <td class="stars">★★★☆☆</td>
+  <td class="tag">🔵 評估後再裝</td>
+</tr>
+
+<tr class="cat-工程開發">
+  <td class="name"><code>webapp-testing</code></td>
+  <td class="cat">工程開發</td>
+  <td class="desc">Playwright 自動測試前端</td>
+  <td class="stars">★★★★☆</td>
+  <td class="tag">🟡 建議裝</td>
+</tr>
+
+<tr class="cat-溝通內容">
+  <td class="name"><code>doc-coauthoring</code></td>
+  <td class="cat">溝通內容</td>
+  <td class="desc">協作長文、保留作者聲音、建議而非改寫</td>
+  <td class="stars">★★★★★</td>
+  <td class="tag">🔥 必裝</td>
+</tr>
+
+<tr class="cat-溝通內容">
+  <td class="name"><code>internal-comms</code></td>
+  <td class="cat">溝通內容</td>
+  <td class="desc">標準化全員公告、週報、狀態更新</td>
+  <td class="stars">★★★☆☆</td>
+  <td class="tag">🟡 部分裝</td>
+</tr>
+
+<tr class="cat-溝通內容">
+  <td class="name"><code>slack-gif-creator</code></td>
+  <td class="cat">溝通內容</td>
+  <td class="desc">生成 Slack 尺寸動態 GIF</td>
+  <td class="stars">—</td>
+  <td class="tag">👉 Iris own</td>
+</tr>
+
+<tr class="cat-Meta">
+  <td class="name"><code>skill-creator</code></td>
+  <td class="cat">Meta</td>
+  <td class="desc">引導生成符合官方格式的自訂 Skill（YAML + 測量）</td>
+  <td class="stars">★★★★★</td>
+  <td class="tag">🔥 必裝</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section class="body">
+<h2>🔍 深評（Calliope vertical 11 個）</h2>
+
+<section class="skill-card rate-5">
+  <header>
+    <span class="skill-tag">文件類</span>
+    <h3><code>pdf</code> <span class="stars-inline">★★★★★</span></h3>
+    <p class="desc">建立 / 填寫 / 編輯 / 擷取 PDF（報告、發票、合約摘要）</p>
+    <span class="install-tag">🔥 必裝</span>
+  </header>
+  <p class="eval-body">Calliope 每天輸出大量會議紀錄 / 報告 / 計畫書，PDF 是 final ship 標配（per Evin 新規 final 才出 PDF）。目前我用 LibreOffice headless 轉檔、無法保留 metadata /Title。Anthropic 官方 skill 可解這個痛點 + 加上「填寫表單欄位」功能（如和泰加速器報名表單）。Calliope + Vena 雙重需求（合約 PDF 騎縫章流程）。</p>
+</section>
+
+<section class="skill-card rate-5">
+  <header>
+    <span class="skill-tag">文件類</span>
+    <h3><code>docx</code> <span class="stars-inline">★★★★★</span></h3>
+    <p class="desc">產生 / 編輯 Word（樣式、表格、追蹤修訂）</p>
+    <span class="install-tag">🔥 必裝</span>
+  </header>
+  <p class="eval-body">Calliope iteration 預設格式（per Evin #2881）就是 DOCX。目前我用 python-docx，已能處理大部分情境，但「追蹤修訂 Track Changes」對合約來回（Vena）特別重要，python-docx 原生支援差。官方 skill 補齊這塊 = 直接可用、Vena V015 顧問合約修訂能加速 50%。</p>
+</section>
+
+<section class="skill-card rate-4">
+  <header>
+    <span class="skill-tag">文件類</span>
+    <h3><code>xlsx</code> <span class="stars-inline">★★★★☆</span></h3>
+    <p class="desc">建立 / 解析 Excel、保留公式格式</p>
+    <span class="install-tag">🟡 建議裝</span>
+  </header>
+  <p class="eval-body">Themis buy-side 財報分析、Calliope OCR 結果 export、Vena 報價單都需要 Excel 互通。目前用 openpyxl 但公式保留不穩。官方 skill 主場 = Themis 財報研究（同類 buy-side-analyst skill）。Calliope vertical fit 中等。</p>
+</section>
+
+<section class="skill-card rate-5">
+  <header>
+    <span class="skill-tag">文件類</span>
+    <h3><code>pptx</code> <span class="stars-inline">★★★★★</span></h3>
+    <p class="desc">產生可編輯 PowerPoint（含圖表、母版）</p>
+    <span class="install-tag">🔥 必裝</span>
+  </header>
+  <p class="eval-body">Calliope deck 主場（每週 5-10 份對外 PPTX：錠嵂 / 萬登 / 國發等）。目前用 python-pptx 已熟練、Iris G-template 設計系統穩定運轉。官方 skill 提供「投影片母版」(slide master) 功能、能解 Evin 改字體統一痛點。與既有 robinstech_design.py 系統可整合、不衝突。</p>
+</section>
+
+<section class="skill-card rate-4">
+  <header>
+    <span class="skill-tag">工程開發</span>
+    <h3><code>claude-api</code> <span class="stars-inline">★★★★☆</span></h3>
+    <p class="desc">教 Claude 正確用 Anthropic API（串流、tool calls、批次）</p>
+    <span class="install-tag">🟡 建議裝</span>
+  </header>
+  <p class="eval-body">Calliope + Leon CTO 雙重需求。目前我 build 自己的 STT / 分析 pipeline 已熟悉 Gemini API、但 Anthropic API 用法（如 batch processing、streaming）不熟。對 Leon Edge AI 開發（保經地端 Edge AI 300 萬目標）有直接幫助。推薦 Leon CTO + Calliope co-eval。</p>
+</section>
+
+<section class="skill-card rate-5">
+  <header>
+    <span class="skill-tag">工程開發</span>
+    <h3><code>mcp-builder</code> <span class="stars-inline">★★★★★</span></h3>
+    <p class="desc">生成 MCP Server 打通 AI 與內部系統</p>
+    <span class="install-tag">🔥 必裝</span>
+  </header>
+  <p class="eval-body">羅賓斯五代理人架構（Calliope/Iris/Vena/Eos/Themis）基於 MCP 通訊。Bot-to-bot loop guard、Telegram MCP、Permission Guard 等都涉及 MCP server。Leon CTO 正在規劃保經地端 Edge AI MCP server。官方 skill = 加速 Edge AI 部署 + 解 NBLM 無 API 痛點（Themis #1115 page-agent 提及）。對 2026 Q3 業務員 SaaS Console 啟動目標（600 萬）有戰略價值。</p>
+</section>
+
+<section class="skill-card rate-3">
+  <header>
+    <span class="skill-tag">工程開發</span>
+    <h3><code>frontend-design</code> <span class="stars-inline">★★★☆☆</span></h3>
+    <p class="desc">現代前端模式（React / Tailwind / 無障礙）</p>
+    <span class="install-tag">🔵 評估後再裝</span>
+  </header>
+  <p class="eval-body">Iris pipeline 偶用、Calliope HTML output 偶用、不是核心。保修大聯盟 Console 將來 web UI 會用到。目前優先級不高、可推到 116 年 SaaS 啟動時再裝。</p>
+</section>
+
+<section class="skill-card rate-3">
+  <header>
+    <span class="skill-tag">工程開發</span>
+    <h3><code>web-artifacts-builder</code> <span class="stars-inline">★★★☆☆</span></h3>
+    <p class="desc">複雜 SPA（含狀態管理、routing、shadcn/ui）</p>
+    <span class="install-tag">🔵 評估後再裝</span>
+  </header>
+  <p class="eval-body">業務員 Console + 保經 SaaS（606 萬目標）的 UI 將是 SPA。目前 MVP 階段，先確認 PMF 再投入前端開發。和 frontend-design 同類、捆綁裝即可。</p>
+</section>
+
+<section class="skill-card rate-4">
+  <header>
+    <span class="skill-tag">工程開發</span>
+    <h3><code>webapp-testing</code> <span class="stars-inline">★★★★☆</span></h3>
+    <p class="desc">Playwright 自動測試前端</p>
+    <span class="install-tag">🟡 建議裝</span>
+  </header>
+  <p class="eval-body">對未來 SaaS Console / 保修大聯盟 web 平台必要。Themis #1115 提的 page-agent（NBLM 自動化）也用類似技術。可與 mcp-builder 捆綁、Leon CTO 評估技術 stack 對齊度。</p>
+</section>
+
+<section class="skill-card rate-5">
+  <header>
+    <span class="skill-tag">溝通內容</span>
+    <h3><code>doc-coauthoring</code> <span class="stars-inline">★★★★★</span></h3>
+    <p class="desc">協作長文、保留作者聲音、建議而非改寫</p>
+    <span class="install-tag">🔥 必裝</span>
+  </header>
+  <p class="eval-body">Calliope 撰寫所有 Evin 對外文件最痛的部分：「我寫的 vs Evin 想要的」聲音不一致。Evin #2823 / #2916 都是大幅 catch + 修我 framing。此 skill 直接解 Calliope 痛點：「保留 Evin 聲音、建議而非改寫」。若 install + 每次 Evin docx 都跑、預期 Evin catch 從每篇 11 處降到 3-5 處。對 Eos 早報 / Iris 文案 / Vena 合約也有用、跨 5 sister 共用。</p>
+</section>
+
+<section class="skill-card rate-3">
+  <header>
+    <span class="skill-tag">溝通內容</span>
+    <h3><code>internal-comms</code> <span class="stars-inline">★★★☆☆</span></h3>
+    <p class="desc">標準化全員公告、週報、狀態更新</p>
+    <span class="install-tag">🟡 部分裝</span>
+  </header>
+  <p class="eval-body">Eos 早報 + Calliope 每日 worklog + 06:30 spokesperson 整合 + Themis daily trending都是這類。但我們已有客製化模板（HTML card 風格、emoji 風格）。官方 skill 適合「無公司模板」的新團隊、對我們邊際效益中等。建議 Iris 接 vertical 評（社群文案）。</p>
+</section>
+
+<section class="skill-card rate-5">
+  <header>
+    <span class="skill-tag">Meta</span>
+    <h3><code>skill-creator</code> <span class="stars-inline">★★★★★</span></h3>
+    <p class="desc">引導生成符合官方格式的自訂 Skill（YAML + 測量）</p>
+    <span class="install-tag">🔥 必裝</span>
+  </header>
+  <p class="eval-body">羅賓斯五代理人系統累積了大量內部 skill（Iris 設計系統 / Vena 合約模板 / Themis 財報研究 / Calliope 會議紀錄 pipeline / Eos 早報）。目前這些是 Python script、不是 standard Claude skill 格式。若 install skill-creator、可將內部 skill 標準化、未來 cross-bot 共享更容易。對應 task #94 Skill / Prompt 官方資料庫建立指引（spokesperson）= 直接解。戰略級必裝、應該優先 install。</p>
+</section>
+</section>
+
+<section class="body">
+<h2>📊 整合建議</h2>
+<p><strong>分批 install 策略</strong>（避免一次全裝、確認 ROI）：</p>
+<ul>
+<li><strong>批 1（本週、必裝）</strong>：skill-creator → mcp-builder → doc-coauthoring（戰略級 3 個）</li>
+<li><strong>批 2（下週、必裝）</strong>：pdf → docx → pptx（Calliope 每日輸出基礎、預期立即見效）</li>
+<li><strong>批 3（兩週後、建議）</strong>：xlsx + claude-api + webapp-testing（Themis / Leon 評估後）</li>
+<li><strong>批 4（按需）</strong>：frontend-design + web-artifacts-builder（116 SaaS 啟動時）</li>
+<li><strong>👉 Iris own</strong>：5 個設計類 + slack-gif-creator（Iris vertical 自決）</li>
+</ul>
+<p><strong>install 後 ship 預期</strong>：</p>
+<ul>
+<li>Calliope 文件輸出品質 +20%（Evin catch 從每篇 11 處 → 3-5 處）</li>
+<li>5 sister cross-bot skill 共享流程化（解 task #94）</li>
+<li>Edge AI MCP server 開發加速（保經地端 300 萬目標）</li>
+<li>業務員 Console SPA 開發框架 ready（Q3 啟動 600 萬目標）</li>
+</ul>
+</section>
+
+<footer>
+<div class="sig">—— Calliope 雅韻 🎭 · 羅賓斯科技 報告代理人</div>
+<div>P137 Anthropic 17 Claude Skills 重要性分析 · Calliope vertical 11/17 · 2026-06-26</div>
+</footer>
+
+</div>
+</body>
+</html>
