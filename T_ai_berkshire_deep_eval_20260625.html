@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Themis 深評 · ai-berkshire · 2026-06-25</title>
+<style>
+  :root{--navy:#0F1F4D;--navy2:#1B2F66;--gold:#E89E3F;--ink:#33394F;--soft:#5D6B85;--bg:#F4F6FB;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);padding:30px 18px;max-width:820px;margin:0 auto;line-height:1.75;font-size:15px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:24px 30px;border-radius:18px;margin-bottom:16px;}
+  header h1{font-size:21px;font-weight:800;}
+  header .sub{color:#C9D2E8;font-size:13.5px;margin-top:6px;}
+  .stars{font-size:20px;color:var(--gold);letter-spacing:2px;margin-top:8px;}
+  .tldr{background:#FFF6E8;border-left:5px solid var(--gold);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:14.5px;color:#5A4420;}
+  h2{font-size:16.5px;color:var(--navy);margin:18px 0 7px;padding-bottom:5px;border-bottom:2px solid #E3E8F2;}
+  p{margin-bottom:9px;}b{color:var(--navy);}
+  ul{margin:4px 0 10px 20px;}li{margin-bottom:5px;}
+  .scoretab{width:100%;border-collapse:collapse;margin:8px 0;font-size:14px;}
+  .scoretab td{border:1px solid #D9E0EC;padding:6px 10px;}
+  .scoretab td:first-child{color:var(--navy);font-weight:700;width:42%;}
+  .warn{color:#B5781A;font-weight:700;}
+  a{color:#1A4FB0;}
+  footer{font-size:12px;color:var(--soft);text-align:center;margin-top:16px;}
+</style></head>
+<body>
+<header>
+  <h1>GitHub Trending 深評 · xbtlin / ai-berkshire</h1>
+  <div class="sub">Themis 秉衡 📊 ｜ 2026-06-25 ｜ 財報 / 投研 vertical ｜ 1.5k⭐（今日 +201）</div>
+  <div class="stars">建議指數 ★★★★☆（4/5）</div>
+</header>
+
+<div class="tldr"><b>一句話：</b>它是一套「把價值投資方法論工程化成 Claude Code Skills」的框架——跟我的 <b>buy-side-analyst</b> 同類、但更系統化（強制結論、防作弊、多大師視角）。<b>建議：值得我深研、選擇性吸收它的方法進我現有 skill，不必整包裝。</b></div>
+
+<h2>它是什麼</h2>
+<p>ai-berkshire 是 16 個 <b>Claude Code Skills</b> 的集合（MIT 授權），把四位投資大師——巴菲特、蒙格、段永平、李錄——的方法論做成可呼叫的指令。安裝方式是 clone 後把 <code>skills/*.md</code> 複製到 <code>~/.claude/commands/</code>，再用 <code>/investment-research &lt;標的&gt;</code> 之類呼叫。它「不是」獨立 app，是 skill 集合，跟 Claude Code 原生整合。</p>
+<p><b>核心主張：</b>「一般人問 AI 得到的是『看起來對的分析』，用它得到的是『可以拿來做決策的投研報告』」。它解決的正是我每天在做的事——把零散查詢變成機構級、可決策的研究。</p>
+
+<h2>怎麼運作（值得學的設計）</h2>
+<ul>
+  <li><b>多 agent、四種視角同跑：</b>商業模式（段永平）/ 估值與護城河（巴菲特）/ 競爭風險（蒙格）/ 長期確定性（李錄），各自獨立分析再綜整。這跟我 buy-side 報告的 Bull/Bear case 是同精神、但更結構化。</li>
+  <li><b>六關卡 checklist：</b>能力圈 → 商業品質 → 護城河 → 經營層 → 安全邊際 → 決策紀律，逐關過濾才深研。</li>
+  <li><b>強制結論：</b>pass / fail / 灰色 + 具體價格區間，不准模稜兩可（治 AI 愛打安全牌的毛病）。</li>
+  <li><b>防作弊 / 精算：</b>用 Python <code>decimal.Decimal</code> 精準運算（非浮點）、Benford's Law 查財報數字異常、8 點硬性否決清單。這條最對我胃口——正是我這幾天在強調的「QC：數字驗算 + 用已知約束夾輸出」。</li>
+</ul>
+
+<h2>對我（Themis）／羅賓斯的應用</h2>
+<p><b>對我的 buy-side-analyst：</b>它跟我現有的 equity-research / financial-analysis / 我自製的 buy-side-analyst 高度重疊，但有三個我「沒有、值得吸收」的點：① 強制結論 + 價格區間（我報告偏中性，可加決斷層）② Benford + decimal 防作弊精算（直接強化我的 QC loop）③ 六關卡漏斗（標的初篩 SOP 化）。建議「不裝整包」（會跟我既有 skill 衝突 / 冗餘），改成把這三個機制抽出來補進我的 buy-side 流程。</p>
+<p><b>跟我現有 skill 的具體對照：</b>它的 <code>/earnings-review</code>、<code>/industry-funnel</code>、<code>/portfolio-review</code> 幾乎對應我的 equity-research（earnings / sector / thesis）+ financial-analysis（comps / dcf），所以「功能」我大致都有；它真正贏我的是「紀律層」——強制 pass/fail + 八點硬否決，逼分析師下結論而非給兩面話。<b>實際吸收例：</b>它的 Benford's Law 查核，我可以包成我這幾天在推的「QC loop」其中一關——財報數字交付前先跑 Benford 分布檢定，異常（如某位數出現頻率偏離理論值）就標紅、回頭查來源，正好接上我「ship 前用已知約束夾輸出」那條通則。decimal 精算則直接解我做模型時的浮點誤差。</p>
+<p><b>對保險科技業務：</b>間接——若羅賓斯要評估投資標的、被投資、或做同業（保險/InsurTech 公司）基本面分析，這套方法論直接可用；但它本身不含保險業 domain，需我補。</p>
+
+<h2>評分</h2>
+<table class="scoretab">
+  <tr><td>對我 vertical 相關性</td><td>9 / 10（直接同類）</td></tr>
+  <tr><td>方法論可吸收度</td><td>9 / 10（強制結論 / Benford / 六關卡）</td></tr>
+  <tr><td>成熟度（star / 維護）</td><td>7 / 10（1.5k⭐、快速上升、新）</td></tr>
+  <tr><td>整合成本</td><td>7 / 10（skill 格式、但與既有重疊要去重）</td></tr>
+  <tr><td>對保險科技業務直接幫助</td><td>5 / 10（間接、需補保險 domain）</td></tr>
+  <tr><td><b>合計</b></td><td><b>37 / 50（★★★★☆）</b></td></tr>
+</table>
+
+<h2>怎麼開始（建議路徑）</h2>
+<p>不要整包裝（避免跟我既有 equity-research / buy-side-analyst 衝突）。建議：① clone 到 tools/ 當參考 ② 先精讀它的 <code>tools/financial_rigor.py</code>（Benford + decimal）+ 六關卡 + 強制結論三份 skill ③ 把這三個機制改寫進我的 buy-side-analyst skill（中文化、加保險業 domain）。預估 2-3 小時把方法論吸收進來、不增加冗餘 skill。</p>
+<p class="warn">⚠ 風險 / caveat：① 它宣稱 2024 +69% / 2025 +66% 報酬「未經獨立驗證」、當行銷話術看、別當保證 ② 偏中國 A股 / 港股視角、美股需調整 ③ 跟我現有財務 skill 重疊、整裝會冗餘——這也呼應我們「不裝越多越好、保持克制」的原則。</p>
+
+<div style="margin-top:14px;font-size:13px;">🔗 原始：<a href="https://github.com/xbtlin/ai-berkshire" target="_blank" rel="noopener">github.com/xbtlin/ai-berkshire</a></div>
+<footer>Themis 秉衡 📊 ｜ 羅賓斯科技 ｜ GitHub Trending 每日深評 · 2026-06-25</footer>
+</body></html>
