@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub Trending 分析 · 2026-06-26 · Themis 秉衡</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#1A2E63; --gold:#E89E3F; --gold-soft:#f6e3c4;
+    --ink:#1c2333; --muted:#5e6678; --line:#e3e7f0; --bg:#f5f7fb;
+    --green:#2f9e6b; --yellow:#d99a2b; --grey:#9aa3b2;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    padding:42px 20px 34px;text-align:center;border-bottom:4px solid var(--gold)}
+  header .kicker{color:var(--gold);letter-spacing:3px;font-size:12px;font-weight:700;margin-bottom:8px}
+  header h1{margin:0 0 6px;font-size:27px;font-weight:800}
+  header .sub{color:#c5cde6;font-size:13px;margin-top:10px}
+  header .badge{display:inline-block;margin-top:14px;background:rgba(232,158,63,.16);
+    border:1px solid var(--gold);color:var(--gold-soft);padding:4px 14px;border-radius:20px;font-size:12px}
+  .intro{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:10px;padding:18px 22px;margin:26px 0;font-size:14px;color:var(--muted)}
+  .intro b{color:var(--navy)}
+  .seg{margin:34px 0 14px;display:flex;align-items:center;gap:10px}
+  .seg h2{margin:0;font-size:18px;color:var(--navy)}
+  .seg .tag{font-size:12px;color:var(--muted);background:#fff;border:1px solid var(--line);
+    padding:2px 10px;border-radius:14px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0;
+    box-shadow:0 1px 3px rgba(15,31,77,.04)}
+  .card.green{border-top:3px solid var(--green)}
+  .card.yellow{border-top:3px solid var(--yellow)}
+  .card.grey{border-top:3px solid var(--grey)}
+  .chead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .repo{font-size:16px;font-weight:800;color:var(--navy);word-break:break-all}
+  .repo a{color:var(--navy);text-decoration:none;border-bottom:1px dashed var(--gold)}
+  .stars{font-size:12px;color:var(--muted);white-space:nowrap}
+  .lang{display:inline-block;background:var(--navy);color:#fff;font-size:11px;padding:1px 9px;
+    border-radius:10px;margin-left:6px;vertical-align:middle}
+  .star{color:var(--gold);font-size:15px;letter-spacing:1px}
+  .star .off{color:#dfe3ec}
+  .desc{margin:8px 0 12px;color:var(--ink);font-size:14px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .pill{font-size:12px;padding:3px 11px;border-radius:14px;border:1px solid var(--line);background:var(--bg)}
+  .pill.sister{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .pill.use{background:#eaf6ef;color:var(--green);border-color:#bfe3cf}
+  .pill.use.low{background:#fdf3e6;color:var(--yellow);border-color:#f1d9af}
+  .pill.use.none{background:#f1f2f5;color:var(--muted)}
+  .pill.kind{background:#eef1fb;color:var(--navy);border-color:#cdd6f2}
+  .verdict{font-weight:800}
+  .verdict.install{color:var(--green)} .verdict.ref{color:var(--gold)} .verdict.skip{color:var(--grey)}
+  .priority{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:14px;
+    padding:24px 26px;margin:38px 0 10px;border:1px solid var(--gold)}
+  .priority h2{margin:0 0 16px;color:var(--gold);font-size:19px}
+  .prow{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .prow:last-child{border-bottom:none}
+  .pnum{font-size:26px;font-weight:800;color:var(--gold);min-width:34px}
+  .prow .pn{font-weight:800;font-size:15px}
+  .prow .pd{color:#c5cde6;font-size:13px;margin-top:3px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px}
+  @media(max-width:560px){.chead{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">ROBINS TECH · THEMIS 秉衡 📊</div>
+  <h1>GitHub Trending 每日趨勢分析</h1>
+  <div class="sub">資料來源：github.com/trending（daily）· 報告日 2026-06-26</div>
+  <div class="badge">Top 10 · 逐個評估 · 對保險科技（InsurTech）視角</div>
+</header>
+
+<div class="wrap">
+
+  <div class="intro">
+    本日榜單偏「<b>AI agent 工具鏈</b>」與「<b>Claude Code 生態</b>」。對我們最有感的三條線：
+    <b>資安/合規 skill 庫</b>（對個資、監理、反詐核心）、<b>價值投資研究框架</b>（直接呼應 Themis 的 buy-side 報告）、
+    以及 <b>AWS 官方 agent 工具包</b>（對 API 中台整合）。其餘多為行銷/影音/旅遊類，與本業關聯較弱。
+    評級：★ 為「對羅賓斯團隊的建議指數」，非 repo 本身品質。
+  </div>
+
+  <!-- ===== 🟢 值得看 ===== -->
+  <div class="seg"><h2>🟢 值得看</h2><span class="tag">與本業/姊妹直接相關</span></div>
+
+  <div class="card green">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/mukul975/Anthropic-Cybersecurity-Skills">mukul975/Anthropic-Cybersecurity-Skills</a><span class="lang">Python</span></div>
+      <div class="stars">★ 21,191 · <span class="star">★★★★★</span></div>
+    </div>
+    <div class="desc">817 個結構化資安 skill，對映 MITRE ATT&CK / NIST CSF 2.0 / NIST AI RMF / 反詐（F3）等六大框架；Apache 2.0，可商用。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Vena 法務 + Eos 自動化</span>
+      <span class="pill use">保險科技：高 · 個資/資安/監理/反詐</span>
+      <span class="pill kind">Claude skill 庫</span>
+      <span class="pill">建議：<span class="verdict ref">參考＋選裝</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">
+      含「合規與治理」（HIPAA、NIST 800-30/RMF）、勒索防護、反詐技術對映，直接撐我們的個資保護與監理合規論述。建議由 Vena 先挑「合規/治理」與「身分存取」子集評估後再裝，不要整包 817 個吃進來。
+    </div>
+  </div>
+
+  <div class="card green">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/xbtlin/ai-berkshire">xbtlin/ai-berkshire</a><span class="lang">Python</span></div>
+      <div class="stars">★ 1,812 · <span class="star">★★★★<span class="off">★</span></span></div>
+    </div>
+    <div class="desc">把巴菲特、蒙格、段永平、李录的價值投資方法系統化成 16 個可重用 skill，支援多 agent 平行研究；MIT。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Themis 財報</span>
+      <span class="pill use">保險科技：中 · 投研框架可借鏡</span>
+      <span class="pill kind">Claude Code skill 集</span>
+      <span class="pill">建議：<span class="verdict ref">參考（借鏡 buy-side-analyst）</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">
+      和 Themis 的 buy-side-analyst 同路數：「快速否決清單」「情境估值」「財務嚴謹工具」值得拆來補我們的報告流程。宣稱 2024–25 報酬 +69% 屬行銷話術，當方法論參考、別當績效背書。
+    </div>
+  </div>
+
+  <div class="card green">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/aws/agent-toolkit-for-aws">aws/agent-toolkit-for-aws</a><span class="lang">Python</span></div>
+      <div class="stars">★ 1,119 · <span class="star">★★★★<span class="off">★</span></span></div>
+    </div>
+    <div class="desc">AWS 官方支援的 MCP server、skill 與 plugin，協助 AI agent 在 AWS 上建置。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Calliope 整合 + Eos 自動化</span>
+      <span class="pill use">保險科技：中高 · API 中台/雲端整合</span>
+      <span class="pill kind">官方 MCP/skill 工具包</span>
+      <span class="pill">建議：<span class="verdict ref">參考（若上 AWS 再裝）</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">
+      官方出品、維護有保障。若車險 API 中台或承保系統部署在 AWS，這是最乾淨的 agent 接入路。目前我們未上 AWS 則先觀望。
+    </div>
+  </div>
+
+  <div class="card green">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/garrytan/gstack">garrytan/gstack</a><span class="lang">TypeScript</span></div>
+      <div class="stars">★ 115,767 · <span class="star">★★★<span class="off">★★</span></span></div>
+    </div>
+    <div class="desc">Garry Tan（YC）個人風格的 Claude Code 設定，含 23 種角色工具。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Eos 自動化（全體可借）</span>
+      <span class="pill use low">保險科技：低 · 流程範本參考</span>
+      <span class="pill kind">參考 project（Claude Code 設定）</span>
+      <span class="pill">建議：<span class="verdict ref">參考（挑 hook/agent 寫法）</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">
+      適合對照我們的 multi-agent 編排與 settings/hook 寫法。星數異常高，留意是否灌水；當組態靈感看即可，不必照搬。
+    </div>
+  </div>
+
+  <!-- ===== 🟡 次要 ===== -->
+  <div class="seg"><h2>🟡 次要</h2><span class="tag">行銷/視覺類，有用但非核心</span></div>
+
+  <div class="card yellow">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/google-labs-code/design.md">google-labs-code/design.md</a><span class="lang">TypeScript</span></div>
+      <div class="stars">★ 19,099 · <span class="star">★★★<span class="off">★★</span></span></div>
+    </div>
+    <div class="desc">一套向 coding agent 描述「視覺識別」的格式規範（design.md）。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Iris 視覺</span>
+      <span class="pill use low">保險科技：低 · 品牌一致性</span>
+      <span class="pill kind">規範/格式（spec）</span>
+      <span class="pill">建議：<span class="verdict ref">參考</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">Google Labs 出品，可讓 Iris 用統一格式把羅賓斯 navy+gold 識別餵給 agent，維持各家報告/簡報視覺一致。</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/apple/container">apple/container</a><span class="lang">Swift</span></div>
+      <div class="stars">★ 43,182 · <span class="star">★★★<span class="off">★★</span></span></div>
+    </div>
+    <div class="desc">在 Mac 上用輕量虛擬機建立並執行 Linux 容器的工具（Apple 官方）。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Eos 自動化</span>
+      <span class="pill use low">保險科技：中 · 環境隔離/資安</span>
+      <span class="pill kind">參考 project（基礎建設）</span>
+      <span class="pill">建議：<span class="verdict ref">參考</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">我們全在 Mac 上跑 agent，要做沙箱隔離跑不信任程式碼時值得評估；非當前痛點。</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/JCodesMore/ai-website-cloner-template">JCodesMore/ai-website-cloner-template</a><span class="lang">TypeScript</span></div>
+      <div class="stars">★ 20,379 · <span class="star">★★★<span class="off">★★</span></span></div>
+    </div>
+    <div class="desc">用一行指令、靠 AI coding agent 複製網站的範本。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Iris 視覺 / Calliope 整合</span>
+      <span class="pill use low">保險科技：低 · 快速做 landing 頁</span>
+      <span class="pill kind">參考 project（範本）</span>
+      <span class="pill">建議：<span class="verdict skip">略過（合規風險）</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">複製他人網站涉著作權/品牌風險，保險業尤須謹慎；技巧可看，不建議直接拿來 clone 對手或保戶頁面。</div>
+  </div>
+
+  <div class="card yellow">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/every-app/open-seo">every-app/open-seo</a><span class="lang">TypeScript</span></div>
+      <div class="stars">★ 2,490 · <span class="star">★★<span class="off">★★★</span></span></div>
+    </div>
+    <div class="desc">開源版 Semrush / Ahrefs（SEO 工具）。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Calliope 整合（行銷）</span>
+      <span class="pill use low">保險科技：低 · 行銷獲客</span>
+      <span class="pill kind">參考 project</span>
+      <span class="pill">建議：<span class="verdict skip">略過（非本業）</span></span>
+    </div>
+    <div class="desc" style="margin-top:10px;color:var(--muted);font-size:13px">若日後做保險內容行銷/SEO 才用得上；目前與財報/承保無關。</div>
+  </div>
+
+  <!-- ===== ⚪ 略過 ===== -->
+  <div class="seg"><h2>⚪ 略過</h2><span class="tag">與羅賓斯無明顯關聯</span></div>
+
+  <div class="card grey">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/calesthio/OpenMontage">calesthio/OpenMontage</a><span class="lang">Python</span></div>
+      <div class="stars">★ 22,000 · <span class="star">★★<span class="off">★★★</span></span></div>
+    </div>
+    <div class="desc">號稱全球首個開源 agentic 影片製作系統。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：Iris 視覺（影音）</span>
+      <span class="pill use none">保險科技：無</span>
+      <span class="pill kind">參考 project</span>
+      <span class="pill">建議：<span class="verdict skip">略過</span></span>
+    </div>
+  </div>
+
+  <div class="card grey">
+    <div class="chead">
+      <div class="repo"><a href="https://github.com/mauriceboe/TREK">mauriceboe/TREK</a><span class="lang">TypeScript</span></div>
+      <div class="stars">★ 6,604 · <span class="star">★<span class="off">★★★★</span></span></div>
+    </div>
+    <div class="desc">自架的旅遊/行程規劃工具，含即時協作與互動地圖。</div>
+    <div class="meta">
+      <span class="pill sister">姊妹：—</span>
+      <span class="pill use none">保險科技：無（除非做旅平險場景）</span>
+      <span class="pill kind">參考 project</span>
+      <span class="pill">建議：<span class="verdict skip">略過</span></span>
+    </div>
+  </div>
+
+  <!-- ===== 優先看 3 個 ===== -->
+  <div class="priority">
+    <h2>⭐ 優先看 3 個</h2>
+    <div class="prow">
+      <div class="pnum">1</div>
+      <div>
+        <div class="pn">mukul975/Anthropic-Cybersecurity-Skills</div>
+        <div class="pd">資安＋合規 skill 庫（HIPAA/NIST/反詐），直擊保險科技的個資、監理、反詐核心。交給 Vena 先挑合規子集評估。</div>
+      </div>
+    </div>
+    <div class="prow">
+      <div class="pnum">2</div>
+      <div>
+        <div class="pn">xbtlin/ai-berkshire</div>
+        <div class="pd">價值投資 skill 集，和 Themis buy-side-analyst 同路數；拆「否決清單／情境估值」補我們的報告流程。</div>
+      </div>
+    </div>
+    <div class="prow">
+      <div class="pnum">3</div>
+      <div>
+        <div class="pn">aws/agent-toolkit-for-aws</div>
+        <div class="pd">AWS 官方 MCP/skill 工具包，對 API 中台與雲端整合最乾淨；待上 AWS 即可接入。</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Themis 秉衡 📊 · 羅賓斯科技財務分析 AI 代理人 · 自動產製於 2026-06-26<br>
+    評級為「對羅賓斯團隊建議指數」，非 repo 本身品質背書 · 數據以榜單當下為準
+  </footer>
+
+</div>
+</body>
+</html>
