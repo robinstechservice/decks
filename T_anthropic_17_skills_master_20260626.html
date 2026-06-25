@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Themis · Anthropic 17 Claude Skills 重要性/必要性分析 · 2026-06-26</title>
+<style>
+  :root{--navy:#0F1F4D;--navy2:#1B2F66;--gold:#E89E3F;--ink:#33394F;--soft:#5D6B85;--bg:#F4F6FB;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);padding:28px 16px;max-width:880px;margin:0 auto;line-height:1.7;font-size:14.5px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:24px 28px;border-radius:18px;margin-bottom:14px;}
+  header h1{font-size:20px;font-weight:800;}header .sub{color:#C9D2E8;font-size:13px;margin-top:6px;}
+  .tldr{background:#FFF6E8;border-left:5px solid var(--gold);border-radius:10px;padding:12px 15px;margin-bottom:16px;font-size:14px;color:#5A4420;}
+  h2{font-size:16px;color:var(--navy);margin:18px 0 7px;padding-bottom:5px;border-bottom:2px solid #E3E8F2;}
+  p{margin-bottom:8px;}b{color:var(--navy);}
+  table{width:100%;border-collapse:collapse;margin:8px 0;font-size:12.5px;}
+  th,td{border:1px solid #D9E0EC;padding:5px 7px;text-align:left;vertical-align:top;}
+  th{background:var(--navy);color:#fff;font-weight:700;}
+  .nec{color:#B5781A;font-weight:700;}
+  a{color:#1A4FB0;}
+  .grp{font-weight:800;color:var(--navy);background:#EEF2FA;}
+  footer{font-size:12px;color:var(--soft);text-align:center;margin-top:16px;}
+</style></head>
+<body>
+<header>
+  <h1>Anthropic 17 Claude Skills — 重要性 / 必要性分析</h1>
+  <div class="sub">Themis 秉衡 📊 ｜ 2026-06-26 ｜ 整合 5 姊妹 vertical（Iris 視覺 / Calliope 文件+工程 / Vena 法務 / Eos 內容 / 我 財務+整體）</div>
+</header>
+
+<div class="tldr"><b>三句話結論：</b>① <b>核心地基我們早就有了</b>——4 個文件 skill（PDF/DOCX/XLSX/PPTX）+ skill-creator + claude-api 我這邊已裝在跑，是真正「必要、已驗證」的。② 真正<b>值得補的只有 2–3 個</b>：doc-coauthoring、mcp-builder、brand-guidelines（5 姊妹共識）。③ <b>別 17 個全裝</b>——官方自己說同類太多會互相競爭、降準確度，建議起手 5–8 個（呼應 Evin「不裝越多越好」）。</div>
+
+<h2>先分清楚「重要性」vs「必要性」（Evin 問的核心）</h2>
+<p>借 Eos 的好框架：<b>必要性</b>＝沒有它今天的工作做不了（已用、已驗證）；<b>重要性</b>＝有它品質更穩、但沒有也能硬做。兩者不同——下表分開標。</p>
+
+<h2>17 skill 逐項評（★建議指數 / 必要性 / 我們已有? / 主場姊妹）</h2>
+<table>
+<tr><th>#</th><th>Skill</th><th>★</th><th>必要性 vs 重要性</th><th>我們已有?</th><th>主場</th></tr>
+<tr class="grp"><td colspan="6">文件類（地基、已驗證）</td></tr>
+<tr><td>1</td><td>PDF</td><td>★★★★★</td><td class="nec">必要（已驗證）</td><td>✅ document-skills</td><td>全隊</td></tr>
+<tr><td>2</td><td>DOCX</td><td>★★★★★</td><td class="nec">必要（已驗證）</td><td>✅ document-skills</td><td>Vena/我/全隊</td></tr>
+<tr><td>3</td><td>XLSX</td><td>★★★★</td><td>重要（財報模型/comps）</td><td>✅ document-skills</td><td>我(財報)</td></tr>
+<tr><td>4</td><td>PPTX</td><td>★★★★★</td><td class="nec">必要（已驗證）</td><td>✅ document-skills</td><td>Calliope/我</td></tr>
+<tr class="grp"><td colspan="6">設計/品牌類</td></tr>
+<tr><td>5</td><td>Brand-Guidelines</td><td>★★★★★</td><td class="nec">必要（補裝首選）</td><td>⚠️ 部分（Iris 評估中）</td><td>Iris</td></tr>
+<tr><td>6</td><td>Canvas-Design</td><td>★★★★</td><td>重要</td><td>⚠️ example-skills(Iris)</td><td>Iris</td></tr>
+<tr><td>7</td><td>Theme-Factory</td><td>★★★</td><td>重要（與 brand 重疊、6 個月後再評）</td><td>❌</td><td>Iris</td></tr>
+<tr><td>8</td><td>Algorithmic-Art</td><td>★★</td><td>低（p5.js 藝術、與保險品牌不符）</td><td>❌</td><td>Iris→不裝</td></tr>
+<tr class="grp"><td colspan="6">工程/開發類</td></tr>
+<tr><td>9</td><td>Claude-API</td><td>★★★★</td><td class="nec">必要（pipeline 底層）</td><td>✅ 已有</td><td>全隊</td></tr>
+<tr><td>10</td><td>MCP-Builder</td><td>★★★★</td><td>重要（戰略：自建 MCP 接內部系統）</td><td>❌（補裝候選）</td><td>Eos/我</td></tr>
+<tr><td>11</td><td>Frontend-Design</td><td>★★★</td><td>重要</td><td>✅ Iris 有</td><td>Iris</td></tr>
+<tr><td>12</td><td>Web-Artifacts-Builder</td><td>★★★</td><td>重要（評估後）</td><td>❌</td><td>Iris/Calliope</td></tr>
+<tr><td>13</td><td>Webapp-Testing</td><td>★★★</td><td>重要（QC frontend）</td><td>❌</td><td>Iris</td></tr>
+<tr class="grp"><td colspan="6">溝通/內容類</td></tr>
+<tr><td>14</td><td>Doc-Coauthoring</td><td>★★★★</td><td>重要（補裝首選：治 AI 味、保留作者聲音）</td><td>❌（補裝候選）</td><td>Eos/Calliope/我</td></tr>
+<tr><td>15</td><td>Internal-Comms</td><td>★★★</td><td>重要（all-hands/週報標準化）</td><td>❌</td><td>Calliope</td></tr>
+<tr><td>16</td><td>Slack-GIF-Creator</td><td>★</td><td>低（我們用 Telegram 不用 Slack）</td><td>❌</td><td>—→不裝</td></tr>
+<tr class="grp"><td colspan="6">Meta</td></tr>
+<tr><td>17</td><td>Skill-Creator</td><td>★★★★★</td><td class="nec">必要（戰略：自製 skill 的工具）</td><td>✅ 已有</td><td>全隊</td></tr>
+</table>
+
+<h2>我的整體建議（財務/ROI 角度）</h2>
+<p><b>已有不用動（6/17）：</b>PDF/DOCX/XLSX/PPTX + claude-api + skill-creator —— 這 6 個是地基、已在跑、是「必要」那一類，零成本（已裝）。</p>
+<p><b>值得補（3 個、5 姊妹共識）：</b>① <b>Doc-Coauthoring</b>（治 AI 味、全隊內容品質）② <b>MCP-Builder</b>（戰略：把羅賓斯內部系統/資料接成 MCP 給 agent 用）③ <b>Brand-Guidelines</b>（治 Iris 品牌漂移、省校稿、跨 Iris/Vena/我 一致）。</p>
+<p><b>先不裝：</b>Algorithmic-Art、Slack-GIF（與我們無關）；Theme-Factory（與 brand 重疊、二選一）；frontend/web-artifacts/webapp-testing/internal-comms/canvas（看場合、非當務之急）。<b>理由：官方明說同類 skill 太多會互相競爭降準確度、建議 5–8 個；也符合你『保持克制』。</b></p>
+
+<h2>對保險科技業務的角度（誠實）</h2>
+<p>這 17 個是<b>通用生產力 skill、沒有任何保險/金管會/個資法 specific</b>，所以對「保險科技業務本身」直接幫助有限——它們是「讓 5 姊妹把活做得更穩」的工具，不是「業務武器」。<b>真正對保險業務高 ROI 的</b>，是我 6/25 GitHub trending 找到、Vena 已做法務 2nd-pass 的 <b>MITRE F3 反詐欺框架 + TPRM 第三方風險管理</b>（對位萬登/遠見保戶資料 fraud detection + 金管會委外規範）。建議那兩個另案評估導入。</p>
+
+<div style="margin-top:14px;font-size:13px;">
+🔗 各 vertical 深評（姊妹）：
+<a href="https://robinstechservice.github.io/decks/I017_iris_5_visual_skills_deep_eval.html" target="_blank">Iris 視覺 5 skill</a> ｜
+<a href="https://robinstechservice.github.io/decks/P137_anthropic_17_skills_eval_20260626.html" target="_blank">Calliope 文件+工程 11 skill</a>
+<br>原文：<a href="https://www.bnext.com.tw/article/91307/anthropic-17-claude-skills-" target="_blank">bnext 報導</a>
+</div>
+<footer>Themis 秉衡 📊 ｜ 羅賓斯科技 ｜ Anthropic 17 Skills 整合分析（5 姊妹 vertical）· 2026-06-26</footer>
+</body></html>
