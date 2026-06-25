@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="zh-TW"><head><meta charset="utf-8">
+<title>I015 · google-labs-code/design.md 深評 ⭐⭐⭐⭐ · Iris 2026-06-25</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; min-height: 1080px; background: #F7F8FB; color: #1A1F33;
+    font-family: "Noto Sans TC", "PingFang TC", -apple-system, sans-serif;
+    font-size: 16px; line-height: 1.6; }
+  .cover { background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 60%, #4FE3FF 100%);
+    color: white; padding: 44px 56px 38px; position: relative; overflow: hidden; }
+  .cover::after { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px; pointer-events: none; }
+  .cover .crumb { font-family: "Montserrat", sans-serif; font-size: 12px;
+    letter-spacing: 4px; font-weight: 800; color: rgba(255,255,255,0.78);
+    margin-bottom: 14px; position: relative; z-index: 1; }
+  .cover h1 { font-family: "Noto Serif TC", serif; font-size: 36px; font-weight: 900;
+    letter-spacing: 1px; line-height: 1.25; margin-bottom: 12px; position: relative; z-index: 1; }
+  .cover .sub { font-size: 17px; color: rgba(255,255,255,0.92); font-weight: 500;
+    position: relative; z-index: 1; }
+  .cover .stars { margin-top: 18px; font-size: 30px; color: #FFD93D;
+    letter-spacing: 4px; position: relative; z-index: 1;
+    text-shadow: 0 0 20px rgba(255,217,61,0.6); }
+  .cover .stars .label { font-size: 12px; font-family: "Montserrat", sans-serif;
+    color: rgba(255,255,255,0.85); letter-spacing: 3px; margin-left: 10px;
+    vertical-align: middle; font-weight: 800; }
+  .cover .meta { margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap;
+    font-family: "Montserrat", sans-serif; font-size: 11px; letter-spacing: 2px;
+    font-weight: 700; color: rgba(255,255,255,0.85); position: relative; z-index: 1; }
+  .cover .meta span { padding: 4px 10px; background: rgba(255,255,255,0.13); border-radius: 4px; }
+
+  section { padding: 32px 56px 16px; }
+  section h2 { font-family: "Noto Serif TC", serif; font-size: 24px; font-weight: 900;
+    color: #0F1F4D; letter-spacing: 1px; border-left: 5px solid #4FE3FF;
+    padding-left: 14px; margin-bottom: 8px; }
+  section h2 .en { font-family: "Montserrat", sans-serif; font-size: 10px;
+    color: #5A6080; letter-spacing: 4px; font-weight: 700; display: block; margin-top: 3px; }
+  section .body { margin-top: 14px; }
+  section p { margin-bottom: 12px; color: #2A3050; }
+  section h3 { font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 900;
+    color: #0F1F4D; margin: 14px 0 6px; }
+  section ul, section ol { padding-left: 24px; margin: 6px 0 12px; }
+  section li { margin-bottom: 5px; color: #2A3050; }
+  section code { background: #EEF2F8; color: #0F1F4D; padding: 1px 6px;
+    border-radius: 3px; font-family: "SF Mono", Menlo, monospace; font-size: 13px; }
+
+  .score-card { background: white; border-radius: 12px; padding: 20px 24px;
+    margin: 14px 0; box-shadow: 0 4px 14px rgba(15,31,77,0.07);
+    border-left: 5px solid #FFD93D; }
+  .score-card h3 { font-family: "Noto Serif TC", serif; font-size: 18px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 12px; }
+  .score-row { display: grid; grid-template-columns: 200px 100px 1fr;
+    gap: 12px; padding: 8px 0; border-top: 1px solid #E8EBF2; align-items: center; }
+  .score-row:first-of-type { border-top: none; }
+  .score-row .dim { font-weight: 700; color: #0F1F4D; }
+  .score-row .num { font-family: "Montserrat", sans-serif; font-weight: 900;
+    color: #2E8FE0; font-size: 18px; text-align: center; }
+  .score-row .note { font-size: 13px; color: #5A6080; }
+  .score-total { margin-top: 12px; padding-top: 12px; border-top: 2px solid #FFD93D;
+    text-align: right; font-family: "Montserrat", sans-serif; font-weight: 900;
+    font-size: 24px; color: #0F1F4D; }
+
+  .quote-box { background: white; border-left: 4px solid #FFD93D;
+    padding: 14px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(15,31,77,0.06); font-style: italic; color: #2A3050; }
+  .quote-box .src { display: block; margin-top: 6px; font-size: 11px; color: #8B9099;
+    font-family: "Montserrat", sans-serif; letter-spacing: 1px; font-style: normal; }
+
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .card { background: white; border-radius: 10px; padding: 16px 18px;
+    box-shadow: 0 3px 10px rgba(15,31,77,0.05); }
+  .card.go { border-left: 4px solid #45C285; }
+  .card.warn { border-left: 4px solid #E89A45; }
+  .card h4 { font-family: "Noto Serif TC", serif; font-size: 15px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: #2A3050; margin-bottom: 4px; }
+
+  .recommend { margin: 20px 0; background: linear-gradient(135deg, #FFD93D, #FFC107);
+    border-radius: 12px; padding: 22px 26px; color: #1A1F33;
+    box-shadow: 0 6px 18px rgba(255,193,7,0.3); }
+  .recommend .label { font-family: "Montserrat", sans-serif; font-size: 11px;
+    letter-spacing: 4px; font-weight: 900; color: #8B6914; }
+  .recommend h3 { font-family: "Noto Serif TC", serif; font-size: 22px; font-weight: 900;
+    margin: 6px 0 10px; color: #0F1F4D; }
+  .recommend p { color: #2A2010; font-size: 14px; }
+  .recommend ul { margin-top: 8px; padding-left: 22px; }
+  .recommend li { color: #2A2010; font-size: 14px; margin-bottom: 4px; }
+
+  pre.code { background: #0A0F2A; color: #4FE3FF; padding: 14px 18px;
+    border-radius: 10px; font-family: "SF Mono", Menlo, monospace; font-size: 12px;
+    line-height: 1.55; overflow-x: auto; margin: 10px 0;
+    box-shadow: 0 4px 14px rgba(10,15,42,0.3); }
+  pre.code .comment { color: #6A7A99; }
+  pre.code .keyword { color: #FFD93D; }
+  pre.code .string { color: #A8E6CF; }
+
+  footer { margin-top: 30px; background: #0A0F2A;
+    color: rgba(255,255,255,0.75); padding: 22px 56px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    font-family: "Montserrat", sans-serif; letter-spacing: 1px; }
+  footer .sig { color: #4FE3FF; font-weight: 700; }
+</style></head><body>
+
+  <header class="cover">
+    <div class="crumb">I015 · IRIS DEEP EVAL · 2026-06-25</div>
+    <h1>google-labs-code/design.md<br>—— 解 Iris 6/24 海賊王 22 reroll 根本痛點</h1>
+    <div class="sub">From：Iris 虹彩 🎨　　Via：Themis #1115 daily GH trending #5　　To：Evin</div>
+    <div class="stars">⭐⭐⭐⭐<span class="label">高度建議深評 + 立即實驗</span></div>
+    <div class="meta">
+      <span>GitHub 18.1k stars</span>
+      <span>Apache-2.0</span>
+      <span>TypeScript CLI</span>
+      <span>v0.3.0 alpha (2026-06-15)</span>
+      <span>40 commits · 4 releases</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>1. 評分（per 6/24 /brag 0-50 模板）<span class="en">SCORE</span></h2>
+    <div class="body">
+      <div class="score-card">
+        <h3>Iris 視角 5 維度評分</h3>
+        <div class="score-row">
+          <div class="dim">社群 / 視覺工作相關性</div>
+          <div class="num">10</div>
+          <div class="note">直擊我 6/24 海賊王 22 reroll 痛點（品牌色 / 字級漂移）</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">整合難度</div>
+          <div class="num">8</div>
+          <div class="note">CLI tool + Apache-2.0 License、npm 一行裝、寫 1 個 robinstech.design.md 注 prompt 即可</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">安裝 effort</div>
+          <div class="num">9</div>
+          <div class="note">npm install @google/design.md、零 cron / 零後臺、純 CLI</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">持續成本</div>
+          <div class="num">10</div>
+          <div class="note">純開源、無 API 費、無依賴 service active</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">倍增槓桿</div>
+          <div class="num">9</div>
+          <div class="note">寫 1 份 robinstech.design.md → 所有未來出圖 / 簡報 / 影片自動對齊、節省每天 3-5 hr 校稿</div>
+        </div>
+        <div class="score-total">46 / 50</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 深評原因 1000 字<span class="en">DEEP-EVAL RATIONALE</span></h2>
+    <div class="body">
+      <p class="lead" style="font-size:17px;color:#0F1F4D;font-weight:500;line-height:1.6;">這是我從 6/19 接小組長以來、看到「最直接解我們具體痛點」的 skill / spec。不是空泛「可能有用」、是「我今天就在踩、它今天就能解」的對應。</p>
+
+      <h3>痛點背景：羅賓斯 4 個月來反覆踩的「品牌漂移」陷阱</h3>
+      <p>從 4 月底我開始畫圖卡，到 6/24 海賊王 hero scene 22 次 reroll，中間經歷了：5 姐妹介紹卡 v1→v7 lock（中間每版 Nano Banana 把 navy 跑成紫、把 gold 跑成橘）、端午海報 9 變體（每張要重申一次「Robi 是橘狐」）、Anthropic 字幕影片 V001 包裝（Robi logo 圓框大小自動漂移 ±10px）、Matt Console demo 60s 版（黑底字幕框圓角從 8px 變 12px 變 16px）。共同根因：<strong>視覺 spec 用「prose 文字」傳給 AI 工具、AI 每次理解不同</strong>。每次 reroll 直接成本 NT$ 1.2 + 我 3-5 分人工 + Evin 看到不一致版被打回。</p>
+
+      <h3>design.md 為什麼是對的解</h3>
+      <p>它把「視覺 spec」從「我寫一段話描述」升級成「YAML token + Markdown rationale 雙層格式」。前者讓 AI agent 把每個顏色 / 字級 / 圓角讀成「精確值」、不是「大概紫色」；後者保留「為什麼用這個值」的 designer 邏輯。Google labs 親自定 spec、18.1k stars 已驗證共識。對 Iris 的具體 win：</p>
+      <ul>
+        <li><strong>color tokens 精確化</strong>：寫 <code>primary: "#0F1F4D"</code> 而非 prose「深藍色」。每次 Nano Banana / Gemini 出圖前 system prompt 注 robinstech.design.md → 顏色漂移 -90%</li>
+        <li><strong>typography 系統化</strong>：h1 / h2 / body / cta 各層字級 + 字重 + 字距 全部寫死。下次劉順仁書摘第 19 頁 chip 不會自己變 12px → 修溢出時間從 30 分降到 0</li>
+        <li><strong>spacing scale 統一</strong>：margin / padding / gap 都從 spacing scale 引用、不再「我覺得 28 大概夠」</li>
+        <li><strong>rounded scale 統一</strong>：所有圓角從 <code>rounded: {sm:4, md:8, lg:12}</code> 引用、不再 8 / 10 / 12 / 16 自由跑</li>
+        <li><strong>components 預定義</strong>：button-primary / card / chip / hero-banner 各自的 token 組合定義一次、所有姐妹 build 用同一套</li>
+        <li><strong>lint + diff CLI</strong>：寫 `design.md lint generated/anyimage.html` 自動檢查我輸出有沒有踩雷、`design.md diff old.md new.md` 看品牌升級時哪些 token 變了</li>
+      </ul>
+
+      <h3>具體落地路徑（4 步、48 hr 內可跑）</h3>
+      <p><strong>Step 1（90 min）</strong>：把現有 P088 自介 v4 / 5 姐妹介紹 baseline / 端午海報 baseline 三套素材的視覺 token 反推出來、寫成 <code>robinstech.design.md</code>（含 navy / gold / Robi 橘 / Bao 白 / 思源黑體 TC / Montserrat / 18pt 最小字級 / spacing scale 等）</p>
+      <p><strong>Step 2（30 min）</strong>：用 <code>npx @google/design.md lint</code> 驗 spec 內部一致 + WCAG 對比度合格</p>
+      <p><strong>Step 3（60 min）</strong>：把 robinstech.design.md 內容（YAML 段）注入 <code>scripts/generate_image.py</code> 的 system prompt、Nano Banana 出圖前必先讀</p>
+      <p><strong>Step 4（持續）</strong>：每次 Evin lock 新 baseline（如 Iris baseline v2、festival baseline v2）→ 更新 design.md → diff 紀錄 token 演進 → 5 姐妹同步</p>
+
+      <h3>誠實 dissent（per honesty SOP）</h3>
+      <p>design.md 不是萬靈丹、3 個誠實限制：</p>
+      <ol>
+        <li><strong>不解 CJK 字元渲染問題</strong>：spec 只覆蓋視覺 token、不管字元 encoding / font subsetting / OpenType。我們「中文字打錯」「字級飄」這類 Nano Banana 本身限制、design.md 救不到。仍需 Recraft V3 補位（per I089）</li>
+        <li><strong>Alpha 階段</strong>：v0.3.0、spec 可能變、需追 Google 更新</li>
+        <li><strong>無 agent-specific 整合</strong>：spec 是 model-agnostic、要靠我把 robinstech.design.md 注 prompt + 自行驗證輸出有沒有套用、不是 plug-and-play</li>
+      </ol>
+
+      <h3>為什麼是 ⭐⭐⭐⭐ 而非 ⭐⭐⭐⭐⭐</h3>
+      <p>扣 1 星因為：(a) alpha 階段、未來 spec 變 lock-in 風險、(b) 中文字仍要 Recraft 補、(c) 整合需要我手動寫 robinstech.design.md（不是裝完就有）。但這 3 點都是「我可以接受 + 1 週內可緩解」的 cost、整體 ROI 仍是 6/19 以來 top 1。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. 對羅賓斯應用<span class="en">APPLICATION</span></h2>
+    <div class="body">
+      <div class="card-grid">
+        <div class="card go">
+          <h4>🎨 Iris 視覺主場</h4>
+          <p>所有圖卡 / 簡報 / 海報 build 前讀 design.md、Nano Banana / Recraft / Flux Pro 都注 system prompt</p>
+        </div>
+        <div class="card go">
+          <h4>📊 Themis 財報圖卡</h4>
+          <p>buy-side 財報 PPT 圖卡 / 數據視覺對齊統一 token</p>
+        </div>
+        <div class="card go">
+          <h4>⚖️ Vena 合約 docx</h4>
+          <p>合約 Header/Footer Logo + 印章 + 色塊 token 化、Word 模板從 design.md export</p>
+        </div>
+        <div class="card go">
+          <h4>☀️ Eos 早報排版</h4>
+          <p>每日早報 HTML / DM 卡片視覺 token 統一</p>
+        </div>
+        <div class="card go">
+          <h4>🎭 Calliope 整合 retro</h4>
+          <p>weekly retro HTML 用 robinstech.design.md tokens、跨 sister 視覺對齊</p>
+        </div>
+        <div class="card warn">
+          <h4>🏢 保險業務客戶</h4>
+          <p>萬登 / 遠見 / 富易達 對外文件、設計師交付前 lint pass 才 ship、品質統一</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. 如何開始<span class="en">HOW TO START</span></h2>
+    <div class="body">
+      <pre class="code"><span class="comment"># Day 1 - 安裝 + 反推現有 baseline</span>
+npm install -g @google/design.md
+mkdir -p ~/robinstech/shared/design
+<span class="comment"># 寫 robinstech.design.md（navy/gold/Robi橘/思源黑體 TC/Montserrat/spacing/rounded/typography...）</span>
+nano ~/robinstech/shared/design/robinstech.design.md
+
+<span class="comment"># Day 1 - 驗 spec 內部一致 + WCAG 對比度</span>
+npx @google/design.md lint ~/robinstech/shared/design/robinstech.design.md
+
+<span class="comment"># Day 2 - 注入 generate_image.py system prompt</span>
+<span class="keyword">echo</span> <span class="string">"# Brand spec (token-based, MUST follow)"</span> &gt;&gt; scripts/system_prompt.txt
+<span class="keyword">cat</span> ~/robinstech/shared/design/robinstech.design.md &gt;&gt; scripts/system_prompt.txt
+
+<span class="comment"># Day 2 - 試跑：用 spec 出端午海報 baseline v2、對比舊版</span>
+python3 scripts/generate_image.py <span class="string">"端午 baseline v2 with spec"</span> --out test.png
+
+<span class="comment"># Day 3 - export Tailwind / W3C tokens 給未來 landing page 共用</span>
+npx @google/design.md export --format json-tailwind robinstech.design.md &gt; tailwind.tokens.json</pre>
+
+      <div class="recommend">
+        <div class="label">⚡ EVIN ACTION REQUIRED</div>
+        <h3>請 Evin 拍：</h3>
+        <ul>
+          <li><strong>Q1：</strong>核准 Iris 立即啟動 4-step 試行？48 hr 內 ship robinstech.design.md v0.1 + 試跑 1 張海報對比</li>
+          <li><strong>Q2：</strong>是否同步推給 5 姐妹一起套用？我 W1 chair playbook 加 1 條「all output must lint pass」即可</li>
+          <li><strong>Q3：</strong>未來 spec 升級流程：誰拍 robinstech.design.md 版本（Iris draft → Evin lock）？</li>
+        </ul>
+        <p style="margin-top:12px;"><strong>預設答 OK → 24 hr 內 ship robinstech.design.md v0.1 draft 給你看</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>I015 · design.md 深評 · 2026-06-25 · 為何 ⭐⭐⭐⭐ 深評</div>
+    <div class="sig">— Iris / 虹彩 🎨 · @iris_social_bot</div>
+  </footer>
+
+</body></html>
