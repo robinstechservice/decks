@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-TW"><head><meta charset="utf-8">
+<title>I016 · OpenMontage 深評 ⭐⭐⭐ · Iris 2026-06-25</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; min-height: 1080px; background: #F7F8FB; color: #1A1F33;
+    font-family: "Noto Sans TC", "PingFang TC", -apple-system, sans-serif;
+    font-size: 16px; line-height: 1.6; }
+  .cover { background: linear-gradient(135deg, #4A1F8A 0%, #7B2CBF 60%, #B07AE6 100%);
+    color: white; padding: 44px 56px 38px; position: relative; overflow: hidden; }
+  .cover::after { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px; pointer-events: none; }
+  .cover .crumb { font-family: "Montserrat", sans-serif; font-size: 12px;
+    letter-spacing: 4px; font-weight: 800; color: rgba(255,255,255,0.78);
+    margin-bottom: 14px; position: relative; z-index: 1; }
+  .cover h1 { font-family: "Noto Serif TC", serif; font-size: 36px; font-weight: 900;
+    letter-spacing: 1px; line-height: 1.25; margin-bottom: 12px; position: relative; z-index: 1; }
+  .cover .sub { font-size: 17px; color: rgba(255,255,255,0.92); font-weight: 500;
+    position: relative; z-index: 1; }
+  .cover .stars { margin-top: 18px; font-size: 30px; color: #FFD93D;
+    letter-spacing: 4px; position: relative; z-index: 1;
+    text-shadow: 0 0 20px rgba(255,217,61,0.6); }
+  .cover .stars .label { font-size: 12px; font-family: "Montserrat", sans-serif;
+    color: rgba(255,255,255,0.85); letter-spacing: 3px; margin-left: 10px;
+    vertical-align: middle; font-weight: 800; }
+  .cover .meta { margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap;
+    font-family: "Montserrat", sans-serif; font-size: 11px; letter-spacing: 2px;
+    font-weight: 700; color: rgba(255,255,255,0.85); position: relative; z-index: 1; }
+  .cover .meta span { padding: 4px 10px; background: rgba(255,255,255,0.13); border-radius: 4px; }
+
+  section { padding: 32px 56px 16px; }
+  section h2 { font-family: "Noto Serif TC", serif; font-size: 24px; font-weight: 900;
+    color: #0F1F4D; letter-spacing: 1px; border-left: 5px solid #7B2CBF;
+    padding-left: 14px; margin-bottom: 8px; }
+  section h2 .en { font-family: "Montserrat", sans-serif; font-size: 10px;
+    color: #5A6080; letter-spacing: 4px; font-weight: 700; display: block; margin-top: 3px; }
+  section .body { margin-top: 14px; }
+  section p { margin-bottom: 12px; color: #2A3050; }
+  section h3 { font-family: "Noto Serif TC", serif; font-size: 17px; font-weight: 900;
+    color: #0F1F4D; margin: 14px 0 6px; }
+  section ul, section ol { padding-left: 24px; margin: 6px 0 12px; }
+  section li { margin-bottom: 5px; color: #2A3050; }
+  section code { background: #EEF2F8; color: #0F1F4D; padding: 1px 6px;
+    border-radius: 3px; font-family: "SF Mono", Menlo, monospace; font-size: 13px; }
+
+  .score-card { background: white; border-radius: 12px; padding: 20px 24px;
+    margin: 14px 0; box-shadow: 0 4px 14px rgba(15,31,77,0.07);
+    border-left: 5px solid #7B2CBF; }
+  .score-card h3 { font-family: "Noto Serif TC", serif; font-size: 18px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 12px; }
+  .score-row { display: grid; grid-template-columns: 200px 100px 1fr;
+    gap: 12px; padding: 8px 0; border-top: 1px solid #E8EBF2; align-items: center; }
+  .score-row:first-of-type { border-top: none; }
+  .score-row .dim { font-weight: 700; color: #0F1F4D; }
+  .score-row .num { font-family: "Montserrat", sans-serif; font-weight: 900;
+    color: #7B2CBF; font-size: 18px; text-align: center; }
+  .score-row .note { font-size: 13px; color: #5A6080; }
+  .score-total { margin-top: 12px; padding-top: 12px; border-top: 2px solid #7B2CBF;
+    text-align: right; font-family: "Montserrat", sans-serif; font-weight: 900;
+    font-size: 24px; color: #0F1F4D; }
+
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .card { background: white; border-radius: 10px; padding: 16px 18px;
+    box-shadow: 0 3px 10px rgba(15,31,77,0.05); }
+  .card.go { border-left: 4px solid #45C285; }
+  .card.warn { border-left: 4px solid #E89A45; }
+  .card.no { border-left: 4px solid #E85D75; }
+  .card h4 { font-family: "Noto Serif TC", serif; font-size: 15px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 6px; }
+  .card p { font-size: 13px; color: #2A3050; margin-bottom: 4px; }
+
+  .recommend { margin: 20px 0; background: linear-gradient(135deg, #E89A45, #DC7A28);
+    border-radius: 12px; padding: 22px 26px; color: white;
+    box-shadow: 0 6px 18px rgba(232,154,69,0.3); }
+  .recommend .label { font-family: "Montserrat", sans-serif; font-size: 11px;
+    letter-spacing: 4px; font-weight: 900; color: rgba(255,255,255,0.85); }
+  .recommend h3 { font-family: "Noto Serif TC", serif; font-size: 22px; font-weight: 900;
+    margin: 6px 0 10px; color: white; }
+  .recommend p, .recommend li { color: white; font-size: 14px; }
+  .recommend ul { margin-top: 8px; padding-left: 22px; }
+  .recommend li { margin-bottom: 4px; }
+
+  pre.code { background: #0A0F2A; color: #B07AE6; padding: 14px 18px;
+    border-radius: 10px; font-family: "SF Mono", Menlo, monospace; font-size: 12px;
+    line-height: 1.55; overflow-x: auto; margin: 10px 0;
+    box-shadow: 0 4px 14px rgba(10,15,42,0.3); }
+  pre.code .comment { color: #6A7A99; }
+  pre.code .keyword { color: #FFD93D; }
+  pre.code .string { color: #A8E6CF; }
+
+  table { width: 100%; border-collapse: collapse; margin: 12px 0;
+    background: white; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 3px 10px rgba(15,31,77,0.06); }
+  th { background: #4A1F8A; color: white; text-align: left; padding: 11px 14px;
+    font-size: 12px; letter-spacing: 1px; font-weight: 800; }
+  td { padding: 11px 14px; border-top: 1px solid #E8EBF2; font-size: 13px;
+    vertical-align: top; color: #2A3050; }
+  td.bold { font-weight: 800; color: #0F1F4D; }
+
+  footer { margin-top: 30px; background: #0A0F2A;
+    color: rgba(255,255,255,0.75); padding: 22px 56px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    font-family: "Montserrat", sans-serif; letter-spacing: 1px; }
+  footer .sig { color: #B07AE6; font-weight: 700; }
+</style></head><body>
+
+  <header class="cover">
+    <div class="crumb">I016 · IRIS DEEP EVAL · 2026-06-25</div>
+    <h1>OpenMontage<br>—— 開源 AI 影片生產系統、52 工具 12 pipelines</h1>
+    <div class="sub">From：Iris 虹彩 🎨　　Via：Themis #1115 daily GH trending #6　　To：Evin</div>
+    <div class="stars">⭐⭐⭐<span class="label">中度建議深評、有 specific 場景才裝</span></div>
+    <div class="meta">
+      <span>GitHub 6 stars（新 repo）</span>
+      <span>MIT</span>
+      <span>Python 100%</span>
+      <span>52 tools + 12 pipelines</span>
+      <span>Remotion + HyperFrames</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>1. 評分（per 6/24 /brag 0-50 模板）<span class="en">SCORE</span></h2>
+    <div class="body">
+      <div class="score-card">
+        <h3>Iris 視角 5 維度評分</h3>
+        <div class="score-row">
+          <div class="dim">社群 / 視覺工作相關性</div>
+          <div class="num">8</div>
+          <div class="note">12 pipelines（含 explainer / animation / talking head）對應社群影片產線</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">整合難度</div>
+          <div class="num">5</div>
+          <div class="note">Python + Remotion + 14 雲端 video 模型、依賴重、初次安裝 1-2 hr</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">安裝 effort</div>
+          <div class="num">5</div>
+          <div class="note">Python 套件 + Node Remotion + 多 API key 配置（ElevenLabs/Suno/Kling/Veo...）</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">持續成本</div>
+          <div class="num">4</div>
+          <div class="note">免費 tier 可、但「production grade」要 ElevenLabs Pro + Veo / Kling 付費 API、月 NT$ 1000-5000+</div>
+        </div>
+        <div class="score-row">
+          <div class="dim">倍增槓桿</div>
+          <div class="num">7</div>
+          <div class="note">12 pipelines 自動化 + 真實素材抓 Archive.org / NASA — 比我目前 ffmpeg + Gemini STT 強</div>
+        </div>
+        <div class="score-total">29 / 50</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 深評原因 1000 字<span class="en">DEEP-EVAL RATIONALE</span></h2>
+    <div class="body">
+      <p style="font-size:17px;color:#0F1F4D;font-weight:500;line-height:1.6;">這個是「能力強、但初期 cost 高、需要 specific 使用場景才值得導入」的工具。深評理由不是「立刻裝」、是「現在了解 + 之後拓展影片業務時拿出來用」。</p>
+
+      <h3>OpenMontage 是什麼</h3>
+      <p>它是「**開源 agentic 影片生產系統**」、由 Python + Remotion (React-based) + HyperFrames (HTML/GSAP) 組成的端到端產線。不是「我給 prompt 它出影片」這種簡單 API、是「12 個 pipelines（explainer / animation / documentary / talking head / localization 等）+ 52 個工具（video gen / image gen / TTS / music / mixing / analysis）+ 真實素材庫（Archive.org / NASA / Wikimedia）」的整套 framework。AI 助理（如 Claude Code）orchestrate YAML manifest + Markdown skill files、產出 production grade 影片。</p>
+
+      <h3>對 Iris 現有 pipeline 的相對位置</h3>
+      <p>我目前的影片產線（V001、Anthropic 字幕、Matt Console demo 60s 等）用：ffmpeg（剪輯 / 加速）+ Gemini 2.5 Flash（STT）+ PIL（字幕 PNG 生成）+ edge-tts（旁白 TTS）+ HTML / Chrome（製卡片 + carousel）+ 自家 V001 hero banner + 卡拉 OK 字幕。已能跑：Anthropic 28 分中英字幕（310 cues）/ Karpathy 30 分 / Bloomberg 47 分 / Matt 60s 加速 + 打碼。覆蓋率 ~70% of standard 影片需求。</p>
+      <p>OpenMontage 補位的是 30% 我沒有的：</p>
+      <ul>
+        <li><strong>Pipeline orchestration</strong>：我目前每支影片靠手動 sequence ffmpeg 命令、OpenMontage 用 YAML manifest 一句搞定（類似 6/24 /brag 但更完整）</li>
+        <li><strong>真實素材自動引入</strong>：Archive.org / NASA / Wikimedia 抓影片素材組裝、我目前都靠 stock footage 或自製、零真實素材 pipeline</li>
+        <li><strong>Slideshow-risk scoring</strong>：自動評「這影片是不是太像 slideshow、需要更多動態」、我目前靠 Evin 看完才知道</li>
+        <li><strong>14 雲端視頻 API 模型整合</strong>：Kling / Runway / Google Veo 都已串好、我目前 0 雲端 video model</li>
+        <li><strong>Music + audio mixing</strong>：含 Suno 音樂生成 + Piper TTS、比我 edge-tts + 無 BGM 強</li>
+      </ul>
+
+      <h3>為什麼仍是 ⭐⭐⭐ 而非 ⭐⭐⭐⭐</h3>
+      <p>3 個關鍵 limit：</p>
+      <ol>
+        <li><strong>新 repo 6 stars only</strong>：上 GitHub Trending 是因為 explicit category（agentic video）+ 內容豐富、但社群驗證度低、bug 風險高、production 用前要 dogfood 兩週</li>
+        <li><strong>依賴 stack 重</strong>：Remotion (React) + HyperFrames (HTML/GSAP) + 14 雲端 API key、初次配置 1-2 hr、學習曲線陡</li>
+        <li><strong>付費 API tier 才能 production grade</strong>：免費 tier 用 Piper TTS + open-source music、品質明顯次於 ElevenLabs / Suno paid。羅賓斯目前 Evin 沒授權 Pro tier、走免費 → 品質可能輸我目前 edge-tts</li>
+        <li><strong>我目前 70% case 已 cover</strong>：bilingual 字幕 / 60s 加速 / 端午海報 / 5 同仁海賊王 hero — 這些用 OpenMontage 反而比現有 pipeline 慢、邊際效益低</li>
+      </ol>
+
+      <h3>什麼時候應該啟用 OpenMontage</h3>
+      <p>3 個 specific 使用場景值得：</p>
+      <ul>
+        <li><strong>V001+ Anthropic 5 分鐘原創影片</strong>：當我們要做「羅賓斯科技自介 5 分鐘短片 / Evin 創業故事 series / 商品化 4 通路 launch video」時、OpenMontage 12 pipelines + 真實素材抓取就是對的工具</li>
+        <li><strong>YouTube channel daily upload</strong>：如未來 Eos 早報加上 YouTube 影片版、每日 1 支 1-2 分鐘 explainer、OpenMontage 自動化 pipeline 效率最高</li>
+        <li><strong>客戶 case study 影片</strong>：萬登 / 富易達等保戶推廣 case study 影片、需要 talking head + explainer + data visualization、OpenMontage 整套 cover</li>
+      </ul>
+
+      <h3>建議導入策略</h3>
+      <p>不要現在裝、待 Evin 開動 V001+ 或商品化 launch video 任務時、我把它列為 candidate 一併評（vs Hyperframes / Runway / Cap.js）。今天先 bookmark + 知道 stack 即可。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. 對羅賓斯應用<span class="en">APPLICATION</span></h2>
+    <div class="body">
+      <table>
+        <thead><tr><th>場景</th><th>現有 Iris pipeline</th><th>OpenMontage 加值</th><th>建議</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">短字幕影片（YT/Anthropic/Karpathy）</td><td>ffmpeg+Gemini STT</td><td>無、現有 pipeline 已最優</td><td>🟢 不換</td></tr>
+          <tr><td class="bold">Matt Console demo 60s 加速</td><td>ffmpeg setpts+atempo</td><td>無、單純剪輯不需 agentic</td><td>🟢 不換</td></tr>
+          <tr><td class="bold">端午 / 5 同仁海報</td><td>Nano Banana 出圖</td><td>無、單張圖不是影片</td><td>🟢 不換</td></tr>
+          <tr><td class="bold">V001 自介 5 分原創</td><td>無</td><td>12 pipelines + 雲端 video model + Suno music</td><td>🟡 待啟動 V001+ 時 evaluate</td></tr>
+          <tr><td class="bold">商品化 launch video</td><td>無</td><td>explainer pipeline + 真實素材抓取</td><td>🟡 待商品化 launch 時 evaluate</td></tr>
+          <tr><td class="bold">客戶 case study</td><td>無</td><td>talking head + data viz pipeline</td><td>🟡 待萬登 / 富易達 case 時 evaluate</td></tr>
+          <tr><td class="bold">每日 YouTube 影片</td><td>無</td><td>自動化 pipeline 適合 daily upload</td><td>🟡 待 Eos 開 YT channel 時 evaluate</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. 如何開始（如未來啟動）<span class="en">HOW TO START IF FUTURE</span></h2>
+    <div class="body">
+      <pre class="code"><span class="comment"># Phase 1（半天）：本機安裝 + 跑 demo（免費 tier）</span>
+git clone https://github.com/openmontage/openmontage
+cd openmontage
+pip install -r requirements.txt
+npm install <span class="comment"># Remotion 依賴</span>
+
+<span class="comment"># Phase 2（1 hr）：跑「explainer pipeline」demo（用免費 tier）</span>
+python3 openmontage.py run-pipeline explainer \
+  --input <span class="string">"羅賓斯科技 30 秒自介"</span> \
+  --output test_v001.mp4
+
+<span class="comment"># Phase 3（如品質達標）：申請 ElevenLabs Pro + Suno 付費 API</span>
+<span class="keyword">export</span> ELEVENLABS_API_KEY=...
+<span class="keyword">export</span> SUNO_API_KEY=...
+
+<span class="comment"># Phase 4：整合進 V001+ pipeline、替換 edge-tts 部分</span></pre>
+
+      <div class="recommend">
+        <div class="label">⚡ EVIN DECISION</div>
+        <h3>建議：BOOKMARK、不立刻裝</h3>
+        <ul>
+          <li>✅ 我把它寫進 Iris memory 作 future-eval candidate</li>
+          <li>✅ 當你開動「V001 自介短片」/「商品化 launch video」/「客戶 case study 影片」3 個場景之一時、我才裝來評</li>
+          <li>🟡 期間 Iris 既有 70% pipeline cover 不變、不增 cost</li>
+          <li>🔴 不建議現在裝 + dogfood（學習曲線陡 + 無立即任務）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>I016 · OpenMontage 深評 · 2026-06-25 · 為何 ⭐⭐⭐ bookmark</div>
+    <div class="sig">— Iris / 虹彩 🎨 · @iris_social_bot</div>
+  </footer>
+
+</body></html>
