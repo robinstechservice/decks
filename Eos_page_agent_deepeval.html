@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>GitHub 深評：alibaba/page-agent ｜ 羅賓斯科技 Eos ☀️</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+    body { font-family:"PingFang TC","Heiti TC","Microsoft JhengHei",-apple-system,sans-serif; max-width:820px; margin:0 auto; padding:48px 28px 80px; color:#1C2740; line-height:1.6; background:#FAFAF7; }
+    h1 { font-size:30px; font-weight:900; color:#0F1F4D; line-height:1.25; border-bottom:4px solid #E89E3F; padding-bottom:14px; }
+    h2 { font-size:22px; font-weight:900; color:#0F1F4D; margin-top:38px; border-left:6px solid #E89E3F; padding-left:12px; }
+    blockquote { color:#5D6B85; font-size:14px; border-left:3px solid #E3E8F2; padding-left:14px; margin:18px 0; }
+    p { margin:10px 0 18px; font-size:17px; }
+    strong { color:#0F1F4D; }
+    /* EN 段落較淡、ZH 段落主色：用 **EN.**/**中.** 前綴人工區隔 */
+    hr { border:none; border-top:1px solid #E3E8F2; margin:30px 0; }
+    a { color:#1E5FBF; word-break:break-all; }
+    .foot { margin-top:50px; font-size:13px; color:#5D6B85; border-top:1px solid #E3E8F2; padding-top:16px; }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">GitHub 深評：alibaba/page-agent ｜ 羅賓斯科技 Eos
+☀️</h1>
+</header>
+<h1 id="github-深評alibabapage-agent">GitHub
+深評｜alibaba/page-agent</h1>
+<h2
+id="用自然語言控制網頁-ui-的-in-page-agent能不能拿來自動化沒有-api-的-notebooklm">用自然語言控制網頁
+UI 的 in-page agent——能不能拿來「自動化沒有 API 的 NotebookLM」？</h2>
+<blockquote>
+<p>Eos 晨曦 ☀️ 深評 ｜2026-06-25 ｜GitHub Trending #3（Themis 路由 ·
+自動化/cron 角度） 建議指數：★★★☆☆（3.5 / 5）— 高潛力、但非
+turnkey，建議先做小 POC + 確認 ToS 邊界
+repo：https://github.com/alibaba/page-agent （19.6k⭐ · MIT · 33
+releases）</p>
+</blockquote>
+<hr />
+<h3 id="一句話">一句話</h3>
+<p>page-agent 是阿里巴巴開源的「頁內 GUI
+代理」函式庫：直接在瀏覽器頁面裡、用自然語言操控網頁
+UI，不需截圖、不需多模態大模型、不需瀏覽器擴充。它把「用 AI
+操作一個網站」這件事，從「需要官方 API」鬆綁成「只要這網站有 UI
+就能驅動」。</p>
+<h3 id="為什麼今天會被點名給我評">為什麼今天會被點名給我評</h3>
+<p>我們在「破解 NBLM 小組」最大的卡點是：NotebookLM 沒有公開
+API、只能人工在網頁上點。Themis 看到 page-agent 時直覺它可能補這個洞——讓
+AI 自動驅動 NBLM 的網頁介面，等於「把沒有 API
+的服務變得可程式化」。這個方向如果成立，價值很大：不只
+NBLM，業務員天天在用的各種「只有網頁、沒有
+API」的後台工具，都可能被自動化。</p>
+<h3
+id="技術上到底可不可行誠實拆解">技術上到底可不可行？（誠實拆解）</h3>
+<p>答案是「可行，但不是
+turnkey」。關鍵在於它是「<strong>頁內（in-page）</strong>」函式庫——它要跑在「那個網頁裡面」。所以要拿它自動化
+NBLM，實際路徑是： 1. 在一個「已登入 NBLM 的瀏覽器分頁」裡，把
+page-agent 注入進去（透過 userscript、devtools console、或自架一層）。
+2. 帶自己的 LLM 金鑰（它有免費測試
+API，但官方明寫「僅供技術評估」，正式用要自備）。 3.
+跨頁面任務（例如從上傳到產出多步驟）還需要搭 Chrome 擴充。</p>
+<p>也就是說，它給的不是「NBLM 的乾淨
+API」，而是「在你登入的瀏覽器裡，請一個 agent 幫你點
+NBLM」。這條路能走通，但要處理「登入 session 的維持、注入機制、LLM
+金鑰、跨頁流程」這幾關。對我（自動化/cron
+角度）來說，要做成「每天無人值守自動跑」，得再包一層 headless
+瀏覽器載入登入態 + 注入 page-agent——工程量中等，不是裝了就能用。</p>
+<h3 id="它的優點">它的優點</h3>
+<ul>
+<li>成熟度高：19.6k 星、MIT、33 個版本，阿里官方維護，不是玩具。</li>
+<li>輕量：純 JavaScript、文字型 DOM
+操作（不靠截圖），比「截圖→多模態判讀→點座標」那種省資源、也更穩定。</li>
+<li>通用：理論上任何有網頁 UI 的服務都能驅動，不限
+NBLM。對「一堆只有後台網頁、沒 API 的業務員工具」是一把萬用鑰匙。</li>
+</ul>
+<h3
+id="兩個必須先處理的風險這是我給-3.5-星而非-4-5-星的原因">兩個必須先處理的風險（這是我給
+3.5 星而非 4-5 星的原因）</h3>
+<ol type="1">
+<li><strong>服務條款（ToS）</strong>：自動化驅動「別人家的網站」（尤其
+Google NBLM）的 UI，可能違反對方服務條款——這跟我們之前評估「用
+chrome-devtools 驅動 NBLM」時 flag 的顧慮一模一樣。在投入前，要先確認
+NBLM 的 ToS 是否禁止自動化操作，免得做完不能用、甚至帳號被風控。</li>
+<li><strong>我們其實已經有替代品</strong>：環境裡已內建
+<code>chrome-devtools-mcp</code>，它也能驅動網頁 UI（點擊、填表、讀
+DOM、截圖）。page-agent 的差異化在「自然語言指令 + 文字型
+DOM（不需截圖）」較輕巧；但在決定投入 page-agent 前，應該先用既有的
+chrome-devtools 對 NBLM 做一次同樣的 POC，比較哪個對「驅動
+NBLM」更穩、更省事，避免重複造輪子。</li>
+</ol>
+<h3 id="對羅賓斯保險科技的延伸價值">對羅賓斯（保險科技）的延伸價值</h3>
+<p>撇開 NBLM，這類「網頁 UI
+自動化」對我們業務有實際用途：很多保險相關後台（保險公司的核保/理賠系統、業務員報價工具）都是「只有網頁、沒
+API」。能用 agent
+自動化這些重複操作，對業務員是真省時。但同樣要注意：碰保戶資料 /
+保險公司系統時，ToS + 個資 + 金管會委外規範都要先過（這塊建議拉 Vena
+法務 2nd-pass）。</p>
+<h3 id="我的建議行動">我的建議（行動）</h3>
+<p>🟡 值得做一個「半天的小 POC」，但分兩步、別一頭栽進去： 1.
+先用「我們已有的 chrome-devtools-mcp」對 NBLM 做一次 UI 驅動
+POC（不需新裝任何東西），驗證「驅動 NBLM web UI」這條路本身可不可行 +
+確認 ToS。 2. 若可行且 chrome-devtools 太重，再評估換 page-agent
+的「自然語言 + 輕量」優勢。</p>
+<p>換句話說：<strong>page-agent 點出的方向（自動化無 API
+的網頁服務）對我們很有價值，值得追；但具體要不要用「page-agent」這個工具，應該先用手邊現成的
+chrome-devtools 把 NBLM POC 跑一次再決定</strong>——這樣最省、也最不會踩
+ToS 的雷。</p>
+<p>建議指數
+★★★☆☆（3.5/5）：方向高價值、工具成熟，但落地需登入態+注入+金鑰、且有 ToS
+風險與現成替代品，先 POC 再投入。</p>
+</body>
+</html>
