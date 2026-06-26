@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 趨勢分析 ｜ 2026-06-27 ｜ Themis 秉衡</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#1A2E66; --gold:#E89E3F; --gold-soft:#F6E3C4;
+    --ink:#1c2333; --muted:#5b6478; --line:#e4e7ef; --bg:#f5f6fa; --card:#ffffff;
+    --good:#2e7d57; --warn:#b9521f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+  header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;
+    padding:46px 20px 40px;border-bottom:4px solid var(--gold)}
+  header .inner{max-width:1080px;margin:0 auto}
+  .badge{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;
+    font-size:12px;letter-spacing:1px;padding:4px 12px;border-radius:20px;margin-bottom:14px}
+  header h1{font-size:30px;font-weight:800;letter-spacing:.5px}
+  header .sub{color:var(--gold-soft);margin-top:8px;font-size:15px}
+  header .meta{margin-top:16px;font-size:13px;color:#c3cbe6;border-top:1px solid rgba(255,255,255,.15);padding-top:14px}
+  .note{background:#fff8ec;border:1px solid var(--gold);border-left:5px solid var(--gold);
+    border-radius:10px;padding:14px 18px;margin:26px 0;font-size:13.5px;color:#6b4a1c}
+  .note b{color:var(--warn)}
+  .sec-h{display:flex;align-items:center;gap:12px;margin:42px 0 8px}
+  .sec-h .tag{background:var(--navy);color:#fff;font-weight:800;font-size:15px;
+    padding:6px 16px;border-radius:8px;white-space:nowrap}
+  .sec-h h2{font-size:20px;color:var(--navy);font-weight:800}
+  .sec-h .line{flex:1;height:2px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:18px 0;box-shadow:0 2px 10px rgba(15,31,77,.04)}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+  .card .name{font-size:17px;font-weight:800;color:var(--navy)}
+  .card .name a{color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold-soft)}
+  .card .name a:hover{border-color:var(--gold)}
+  .card .lang{display:inline-block;font-size:11.5px;color:var(--muted);background:#eef1f8;
+    border-radius:6px;padding:2px 9px;margin-left:8px;font-weight:600;vertical-align:middle}
+  .stars{font-size:13px;color:var(--muted);white-space:nowrap}
+  .rate{font-size:18px;letter-spacing:2px;color:var(--gold);margin:10px 0 4px}
+  .rate .off{color:#dcdfe8}
+  .desc{font-size:14.5px;color:var(--ink);margin:6px 0 14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 18px;
+    border-top:1px dashed var(--line);padding-top:14px;font-size:13px}
+  .grid .k{color:var(--muted);font-weight:600;font-size:11.5px;letter-spacing:.5px;display:block}
+  .grid .v{color:var(--ink)}
+  .pill{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:14px}
+  .p-install{background:#e6f4ec;color:var(--good)}
+  .p-ref{background:#eef1f8;color:var(--navy2)}
+  .p-skip{background:#f6e9e4;color:var(--warn)}
+  .p-skill{background:var(--gold-soft);color:#8a5a14}
+  .p-proj{background:#e9ecf6;color:#3a4a86}
+  .sister{font-weight:700;color:var(--navy)}
+  .insur-y{color:var(--good);font-weight:700}
+  .insur-n{color:var(--muted)}
+  .top3{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;
+    padding:30px 28px;margin:46px 0 0;border:2px solid var(--gold)}
+  .top3 h2{color:var(--gold);font-size:20px;margin-bottom:6px;font-weight:800}
+  .top3 .lead{color:#c3cbe6;font-size:13px;margin-bottom:18px}
+  .top3 ol{list-style:none;counter-reset:t}
+  .top3 li{counter-increment:t;position:relative;padding:14px 0 14px 52px;
+    border-top:1px solid rgba(255,255,255,.13)}
+  .top3 li:first-child{border-top:none}
+  .top3 li::before{content:counter(t);position:absolute;left:0;top:12px;width:34px;height:34px;
+    background:var(--gold);color:var(--navy);font-weight:800;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:16px}
+  .top3 li b{color:#fff;font-size:15px}
+  .top3 li span{display:block;color:#aeb8da;font-size:13px;margin-top:3px}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:50px;
+    padding-top:20px;border-top:1px solid var(--line)}
+  footer .gold{color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <span class="badge">📊 THEMIS 秉衡 ｜ 每日技術趨勢</span>
+    <h1>GitHub 趨勢分析報告</h1>
+    <div class="sub">GitHub Trending ＋ Claude 生態雙榜 ｜ 各 Top 5 ｜ 保險科技視角</div>
+    <div class="meta">產出日期 2026-06-27 ｜ 資料來源：github.com/trending（daily）＋ GitHub Search API（topic:claude-code, sort=stars）｜ 評估人：Themis 秉衡（羅賓斯科技財報 agent）</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="note">
+    <b>⚠️ 兩點誠實說明（給 Evin）：</b><br>
+    1. 原指令的 B 組 query 用 <code>topic:A OR topic:B OR claude-code</code>，但 GitHub Search API 不允許在 qualifier 之間用 OR（會回 422 Validation Failed）。已改用最具代表性的單一官方 topic <code>topic:claude-code</code>（40,176 個 repo）依星數排序取前 5，涵蓋面最廣。<br>
+    2. B 組多個 repo 星數異常偏高（如 222k、203k 的冷門 repo），<b>高度疑似刷星/星數灌水</b>，星數已不可作為品質指標。下方「建議指數」我是依描述與實際用途評估，<b>非依星數</b>；任何 B 組安裝前都應先人工驗證 repo 真偽與安全性。
+  </div>
+
+  <!-- ============ A. GITHUB TRENDING ============ -->
+  <div class="sec-h">
+    <span class="tag">A. GitHub Trending</span>
+    <h2>每日總榜 Top 5</h2>
+    <div class="line"></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/grafana/grafana" target="_blank">grafana / grafana</a><span class="lang">TypeScript</span></div>
+      <div class="stars">★ 74,884</div>
+    </div>
+    <div class="rate">★★★★<span class="off">★</span></div>
+    <div class="desc">開源可觀測性與數據視覺化平台：把 Prometheus、Loki、Postgres 等多來源的 metrics／logs／traces 做成 dashboard。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">整合 Calliope ／ 自動化 Eos</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-y">✔ 有幫助</span>：API 中台健康度監控、承保／理賠流量看板、業務員 KPI dashboard。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-proj">參考 project</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-ref">參考</span>（可評估自架，取代散落 log）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/google-labs-code/design.md" target="_blank">google-labs-code / design.md</a><span class="lang">TypeScript</span></div>
+      <div class="stars">★ 21,193</div>
+    </div>
+    <div class="rate">★★★★<span class="off">★</span></div>
+    <div class="desc">一套規格格式，讓 coding agent 能「持久理解」品牌視覺識別與設計系統（color／字體／元件規範以 md 落地）。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">視覺 Iris</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-y">✔ 有幫助</span>：統一報告／投保頁／簡報的視覺一致性，正好對應我們報告交付物的品牌規範。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-proj">參考 project（規格）</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-ref">參考</span>（Iris 可借鏡，把 Themis navy/gold 規範寫成 design.md）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/commaai/openpilot" target="_blank">commaai / openpilot</a><span class="lang">Python</span></div>
+      <div class="stars">★ 61,770</div>
+    </div>
+    <div class="rate">★★<span class="off">★★★</span></div>
+    <div class="desc">開源機器人／自駕作業系統，為 300+ 車款升級 ADAS 駕駛輔助。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">財報 Themis（題材面）</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-y">✔ 間接有幫助</span>：UBI 車險／駕駛行為計費、車聯網承保的題材與數據來源啟發（與我們車險主業相關）。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-proj">參考 project</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-skip">不裝</span>（與工作流無關，僅作產業題材閱讀）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/simplex-chat/simplex-chat" target="_blank">simplex-chat / simplex-chat</a><span class="lang">Haskell</span></div>
+      <div class="stars">★ 12,503</div>
+    </div>
+    <div class="rate">★★★<span class="off">★★</span></div>
+    <div class="desc">號稱首個「完全沒有使用者識別碼」的訊息網路，以設計層面達成 100% 隱私。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">法務 Vena</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-y">✔ 間接有幫助</span>：個資去識別化／最小蒐集架構思路，對個資法遵循與客戶通訊隱私設計有參考。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-proj">參考 project</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-ref">參考</span>（隱私架構觀念，非導入）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/kunchenguid/no-mistakes" target="_blank">kunchenguid / no-mistakes</a><span class="lang">Go</span></div>
+      <div class="stars">★ 3,404</div>
+    </div>
+    <div class="rate">★★<span class="off">★★★</span></div>
+    <div class="desc">git push 防呆小工具（防止誤推）。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">自動化 Eos</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-n">✘ 幾乎無關</span>：純開發流程小工具。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-proj">參考 project</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-skip">不裝</span></span></div>
+    </div>
+  </div>
+
+  <!-- ============ B. CLAUDE 生態 ============ -->
+  <div class="sec-h">
+    <span class="tag">B. Claude 生態 Trending</span>
+    <h2>topic:claude-code 星數 Top 5</h2>
+    <div class="line"></div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" target="_blank">nextlevelbuilder / ui-ux-pro-max-skill</a><span class="lang">Python</span></div>
+      <div class="stars">★ 96,859 <span style="color:#b9521f">⚠存疑</span></div>
+    </div>
+    <div class="rate">★★★★<span class="off">★</span></div>
+    <div class="desc">一個 AI Skill，為多平台前端提供「設計智慧」（UI/UX 最佳實踐、版面、元件建議）。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">視覺 Iris</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-y">✔ 有幫助</span>：投保 App、業務員工具、客服前端的 UX，對 Iris 直接可用。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-skill">Claude skill</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-install">裝</span>（驗證 repo 真偽與內容後，給 Iris 評估）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/thedotmack/claude-mem" target="_blank">thedotmack / claude-mem</a><span class="lang">JavaScript</span></div>
+      <div class="stars">★ 84,498 <span style="color:#b9521f">⚠存疑</span></div>
+    </div>
+    <div class="rate">★★★★<span class="off">★</span></div>
+    <div class="desc">跨 session 持久記憶：擷取 agent 每次 session 的行為、用 AI 壓縮後在需要時注入相關 context。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">財報 Themis（自己）＋ 全體</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-y">✔ 有幫助</span>：長期客戶／案件脈絡延續，與我們現有 file-based memory 系統正面對撞、可比較。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-skill">Claude skill / 工具</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-install">裝</span>（先與現有 memory 機制做 PoC 對照，再決定取代或並存）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/farion1231/cc-switch" target="_blank">farion1231 / cc-switch</a><span class="lang">Rust</span></div>
+      <div class="stars">★ 109,013 <span style="color:#b9521f">⚠存疑</span></div>
+    </div>
+    <div class="rate">★★★<span class="off">★★</span></div>
+    <div class="desc">跨平台桌面 All-in-One 助手，用於在 Claude Code／Codex／Gemini CLI 等多個 CLI 助手間切換管理。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">整合 Calliope</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-n">✘ 間接</span>：純開發團隊的工具管理，與保險業務無直接關係。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-proj">參考 project</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-ref">參考</span>（多 CLI 開發者可評估，agent 端用不到）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/affaan-m/ECC" target="_blank">affaan-m / ECC</a><span class="lang">JavaScript</span></div>
+      <div class="stars">★ 222,166 <span style="color:#b9521f">⚠強烈存疑</span></div>
+    </div>
+    <div class="rate">★★★<span class="off">★★</span></div>
+    <div class="desc">Claude Code／Codex 的 agent harness 強化套件：skills、instincts、記憶、安全、research-first 開發。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">整合 Calliope ／ 全體</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-n">✘ 間接</span>：agent 工作流框架，提升 harness 品質，與業務無直接關聯。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-skill">Claude harness/skill</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-ref">參考</span>（星數高度可疑，務必先驗證安全性再碰）</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="name"><a href="https://github.com/NousResearch/hermes-agent" target="_blank">NousResearch / hermes-agent</a><span class="lang">Python</span></div>
+      <div class="stars">★ 203,762 <span style="color:#b9521f">⚠強烈存疑</span></div>
+    </div>
+    <div class="rate">★★★<span class="off">★★</span></div>
+    <div class="desc">「會隨你成長」的 agent（NousResearch 出品，偏自治 agent 框架）。</div>
+    <div class="grid">
+      <div><span class="k">主場姊妹</span><span class="v sister">自動化 Eos</span></div>
+      <div><span class="k">對保險科技</span><span class="v insur-n">✘ 間接</span>：通用 agent 框架，需大量改造才貼合保險場景。</div>
+      <div><span class="k">類型</span><span class="v"><span class="pill p-proj">參考 project / agent</span></span></div>
+      <div><span class="k">建議</span><span class="v"><span class="pill p-ref">參考</span>（觀念可看，星數可疑、暫不導入）</span></div>
+    </div>
+  </div>
+
+  <!-- ============ 今日優先看 3 個 ============ -->
+  <div class="top3">
+    <h2>🎯 今日優先看 3 個</h2>
+    <div class="lead">從雙榜 10 個中，與羅賓斯（InsurTech）實際工作流最相關、且風險可控的三個：</div>
+    <ol>
+      <li><b>google-labs-code/design.md</b>（A 組 ★★★★）
+        <span>視覺一致性規格 → 把 Themis navy/gold 與報告品牌寫成 design.md，Iris 直接受用，零安裝風險。</span></li>
+      <li><b>nextlevelbuilder/ui-ux-pro-max-skill</b>（B 組 ★★★★）
+        <span>UI/UX 設計 skill → 投保 App／業務員工具前端，Iris 主場；驗證 repo 後可裝。</span></li>
+      <li><b>thedotmack/claude-mem</b>（B 組 ★★★★）
+        <span>跨 session 持久記憶 → 與我們現有 file-based memory 做 PoC 對照，攸關長期客戶脈絡延續。</span></li>
+    </ol>
+  </div>
+
+  <footer>
+    Themis 秉衡 📊 ｜ 羅賓斯科技 InsurTech 財報分析 agent ｜
+    報告日期 <span class="gold">2026-06-27</span> ｜ 星數含疑者已標 ⚠，安裝前請人工驗證 repo 安全性
+  </footer>
+
+</div>
+</body>
+</html>
