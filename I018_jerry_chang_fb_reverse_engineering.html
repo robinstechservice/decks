@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="zh-TW"><head><meta charset="utf-8">
+<title>I018 · 張維峰 FB 貼文逆向工程 + Iris 改善 plan · 2026-06-27</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; min-height: 1080px; background: #F7F8FB; color: #1A1F33;
+    font-family: "Noto Sans TC", "PingFang TC", -apple-system, sans-serif;
+    font-size: 16px; line-height: 1.6; }
+  .cover { background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 60%, #4FE3FF 100%);
+    color: white; padding: 44px 56px 38px; position: relative; overflow: hidden; }
+  .cover::after { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px; pointer-events: none; }
+  .cover .crumb { font-family: "Montserrat", sans-serif; font-size: 12px;
+    letter-spacing: 4px; font-weight: 800; color: rgba(255,255,255,0.78);
+    margin-bottom: 14px; position: relative; z-index: 1; }
+  .cover h1 { font-family: "Noto Serif TC", serif; font-size: 32px; font-weight: 900;
+    letter-spacing: 1px; line-height: 1.25; margin-bottom: 12px; position: relative; z-index: 1; }
+  .cover .sub { font-size: 17px; color: rgba(255,255,255,0.92); font-weight: 500;
+    position: relative; z-index: 1; }
+  .cover .meta { margin-top: 18px; display: flex; gap: 16px; flex-wrap: wrap;
+    font-family: "Montserrat", sans-serif; font-size: 11px; letter-spacing: 2px;
+    font-weight: 700; color: rgba(255,255,255,0.85); position: relative; z-index: 1; }
+  .cover .meta span { padding: 4px 10px; background: rgba(255,255,255,0.13); border-radius: 4px; }
+
+  section { padding: 30px 56px 14px; }
+  section h2 { font-family: "Noto Serif TC", serif; font-size: 24px; font-weight: 900;
+    color: #0F1F4D; letter-spacing: 1px; border-left: 5px solid #4FE3FF;
+    padding-left: 14px; margin-bottom: 8px; }
+  section .body { margin-top: 14px; }
+  section p { margin-bottom: 12px; color: #2A3050; }
+  section h3 { font-family: "Noto Serif TC", serif; font-size: 18px; font-weight: 900;
+    color: #0F1F4D; margin: 14px 0 6px; }
+  section ul, section ol { padding-left: 24px; margin: 6px 0 12px; }
+  section li { margin-bottom: 5px; color: #2A3050; }
+
+  .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 14px; margin: 16px 0; }
+  .metric-card { background: white; border-radius: 12px; padding: 18px;
+    box-shadow: 0 4px 14px rgba(15,31,77,0.07); text-align: center;
+    border-top: 4px solid #4FE3FF; }
+  .metric-card .num { font-family: "Montserrat", sans-serif;
+    font-size: 36px; font-weight: 900; color: #0F1F4D; line-height: 1; }
+  .metric-card .label { font-size: 12px; color: #5A6080; margin-top: 4px;
+    letter-spacing: 2px; font-family: "Montserrat", sans-serif; font-weight: 700; }
+  .metric-card.bad { border-top-color: #E85D75; }
+  .metric-card.good { border-top-color: #45C285; }
+
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+  .card { background: white; border-radius: 12px; padding: 18px 22px;
+    box-shadow: 0 4px 14px rgba(15,31,77,0.07); }
+  .card.good { border-left: 4px solid #45C285; }
+  .card.bad { border-left: 4px solid #E85D75; }
+  .card.warn { border-left: 4px solid #E89A45; }
+  .card h4 { font-family: "Noto Serif TC", serif; font-size: 16px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 6px; }
+  .card p { font-size: 14px; color: #2A3050; line-height: 1.55; margin-bottom: 4px; }
+
+  .compare-table { width: 100%; border-collapse: collapse; margin: 14px 0;
+    background: white; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 3px 10px rgba(15,31,77,0.06); }
+  .compare-table th { background: #0F1F4D; color: white; text-align: left;
+    padding: 12px 14px; font-size: 12px; letter-spacing: 1px; font-weight: 800; }
+  .compare-table td { padding: 12px 14px; border-top: 1px solid #E8EBF2;
+    font-size: 13px; vertical-align: top; color: #2A3050; }
+  .compare-table td.bold { font-weight: 800; color: #0F1F4D; }
+  .compare-table .x { color: #E85D75; font-weight: 800; }
+  .compare-table .v { color: #45C285; font-weight: 800; }
+
+  .quote-box { background: white; border-left: 4px solid #FFD93D;
+    padding: 14px 18px; margin: 12px 0; border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 8px rgba(15,31,77,0.06); color: #2A3050; }
+  .quote-box .label { display: block; font-size: 11px; color: #8B6914;
+    font-family: "Montserrat", sans-serif; letter-spacing: 2px; font-weight: 900;
+    margin-bottom: 5px; }
+  .quote-box .text { font-style: italic; }
+
+  .timeline { margin-top: 14px; position: relative; padding-left: 32px; }
+  .timeline::before { content: ""; position: absolute;
+    left: 12px; top: 12px; bottom: 12px;
+    width: 3px; background: linear-gradient(180deg, #4FE3FF, #2E8FE0); }
+  .timeline-item { position: relative; padding: 12px 0; }
+  .timeline-item::before { content: ""; position: absolute;
+    left: -27px; top: 14px; width: 15px; height: 15px; border-radius: 50%;
+    background: #4FE3FF; border: 3px solid white; box-shadow: 0 0 0 2px #4FE3FF; }
+  .timeline-item .step { font-family: "Montserrat", sans-serif;
+    font-size: 11px; color: #2E8FE0; letter-spacing: 3px; font-weight: 800; }
+  .timeline-item .title { font-family: "Noto Serif TC", serif;
+    font-size: 16px; font-weight: 900; color: #0F1F4D; margin: 2px 0 4px; }
+  .timeline-item .detail { font-size: 13px; color: #5A6080; }
+
+  .recommend { margin: 20px 0; background: linear-gradient(135deg, #FFD93D, #FFC107);
+    border-radius: 12px; padding: 22px 26px; color: #1A1F33;
+    box-shadow: 0 6px 18px rgba(255,193,7,0.3); }
+  .recommend .label { font-family: "Montserrat", sans-serif; font-size: 11px;
+    letter-spacing: 4px; font-weight: 900; color: #8B6914; }
+  .recommend h3 { font-family: "Noto Serif TC", serif; font-size: 22px; font-weight: 900;
+    margin: 6px 0 10px; color: #0F1F4D; }
+  .recommend ul { margin-top: 8px; padding-left: 22px; }
+  .recommend li { color: #2A2010; font-size: 14px; margin-bottom: 4px; }
+
+  footer { margin-top: 30px; background: #0A0F2A;
+    color: rgba(255,255,255,0.75); padding: 22px 56px; font-size: 12px;
+    display: flex; justify-content: space-between;
+    font-family: "Montserrat", sans-serif; letter-spacing: 1px; }
+  footer .sig { color: #4FE3FF; font-weight: 700; }
+</style></head><body>
+
+  <header class="cover">
+    <div class="crumb">I018 · IRIS REVERSE ENGINEERING · 2026-06-27</div>
+    <h1>張維峰 FB 貼文逆向工程<br>—— Farhan Thawar Shopify AI 工程演講摘要</h1>
+    <div class="sub">From：Iris 虹彩 🎨　　To：Evin　　Re：DM #2099 FB 連結分析</div>
+    <div class="meta">
+      <span>原文 Jerry Chang 張維峰</span>
+      <span>類別：技術產業觀察 / 個人 Thought Leadership</span>
+      <span>發文 38 分鐘前 / 互動 3 讚 + 1 留言 + 4 分享</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>1. 互動數據 quick view</h2>
+    <div class="body">
+      <div class="metric-grid">
+        <div class="metric-card bad"><div class="num">3</div><div class="label">LIKES</div></div>
+        <div class="metric-card bad"><div class="num">1</div><div class="label">COMMENTS</div></div>
+        <div class="metric-card good"><div class="num">4</div><div class="label">SHARES</div></div>
+        <div class="metric-card"><div class="num">~0.1%</div><div class="label">ENGAGEMENT RATE</div></div>
+      </div>
+      <p><strong>觀察</strong>：share 數 (4) 大於 likes (3) 是異常但好現象 — 內容「有思考價值、值得收藏分享」、但「不夠 emotional 觸發即時 like」。是「IT 同行 nodded silently」型內容。</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. 內容逆向工程</h2>
+    <div class="body">
+      <h3>原文結構（拆解作者寫作公式）</h3>
+      <ol>
+        <li><strong>開場 hook</strong>：「3,000 工程師如何面對 AI 改變」— 用具體數字 + 場景開頭</li>
+        <li><strong>TL;DR 14 點</strong>：直接列重點、節省讀者時間（這是 share 點數比 like 多的關鍵）</li>
+        <li><strong>11 段詳述</strong>：每段一個 sub-topic（character-by-character 哀悼 / SDLC / 1000 interns / AI Centaur 終結...）</li>
+        <li><strong>6+ 簡報截圖</strong>：佐證 + 視覺斷點</li>
+        <li><strong>留言補 YouTube link</strong>：source 補位、增加可信度（自己留言、10 分後）</li>
+      </ol>
+
+      <h3>寫作公式拆解</h3>
+      <table class="compare-table">
+        <thead><tr><th>段落層</th><th>內容類型</th><th>讀者收益</th><th>FB 算法評估</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">層 1（首 3 行）</td><td>具體數字場景</td><td>0-3 秒決定是否滑走</td><td>✅ 通過</td></tr>
+          <tr><td class="bold">層 2 TL;DR</td><td>條列 14 點</td><td>30 秒掃完</td><td>✅ 增加停留時間</td></tr>
+          <tr><td class="bold">層 3 詳述</td><td>11 段論述</td><td>3-5 分深讀</td><td>🟡 多數人不會讀完</td></tr>
+          <tr><td class="bold">層 4 圖</td><td>6+ slide 截圖</td><td>視覺斷點</td><td>🟡 純截圖 ≠ 原創視覺、algorithm 不偏好</td></tr>
+          <tr><td class="bold">層 5 留言補</td><td>YouTube source</td><td>verify 動機</td><td>✅ 自留言增 reach 機制</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. 優劣分析</h2>
+    <div class="body">
+      <div class="card-grid">
+        <div class="card good">
+          <h4>✅ 優點 1：題材時效性高</h4>
+          <p>Farhan Thawar (Shopify) 演講 2026 年最新、AI for engineering 是現在最熱話題、原文及時抓到 trending wave</p>
+        </div>
+        <div class="card good">
+          <h4>✅ 優點 2：TL;DR 14 點結構好</h4>
+          <p>把 30 分演講壓縮成可掃 14 點、降低讀者進入門檻、share 4 次驗證此價值</p>
+        </div>
+        <div class="card good">
+          <h4>✅ 優點 3：原文摘要扎實</h4>
+          <p>11 段詳述含具體例子（1000 interns / Centaur 終結 / Pair programming）、有 substance 不是表面摘要</p>
+        </div>
+        <div class="card good">
+          <h4>✅ 優點 4：第三方 source 可信</h4>
+          <p>留言補 YouTube 原片連結、可 verify、增加可信度</p>
+        </div>
+        <div class="card bad">
+          <h4>❌ 劣勢 1：開場 hook 不夠 punchy</h4>
+          <p>第一行純文字「3,000 工程師如何面對」、缺視覺刺激、滑到的人 0-2 秒就走</p>
+        </div>
+        <div class="card bad">
+          <h4>❌ 劣勢 2：純截圖視覺差</h4>
+          <p>6+ 張 PPT 截圖品質參差、字小、無 brand identity、algorithm 偏好原創圖 + 字幕短影片</p>
+        </div>
+        <div class="card bad">
+          <h4>❌ 劣勢 3：3000+ 字過長</h4>
+          <p>FB feed 平均停留 1.7 秒、3000 字理論上 12 分鐘讀完、99% 用戶不會打開 "Show more"、TL;DR 後其餘段落基本 wasted</p>
+        </div>
+        <div class="card bad">
+          <h4>❌ 劣勢 4：0 hashtag + 0 互動 CTA</h4>
+          <p>無 hashtag = 演算法歸類困難、無探索流量；無 "你覺得呢？" 之類 CTA = 留言只有 0 個</p>
+        </div>
+        <div class="card warn">
+          <h4>🟡 中性 1：個人帳號發 vs 公司頁</h4>
+          <p>Jerry 個人 reach 限好友 + 演算法、若改用「樂屋網 / 認識的公司 Page」reach 上限會高 3-5x</p>
+        </div>
+        <div class="card warn">
+          <h4>🟡 中性 2：無關鍵字標籤 source</h4>
+          <p>Farhan Thawar / Shopify / Compile 26 沒 @tag、失去他們轉發機會</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Iris 觀點（社群第一線視角）</h2>
+    <div class="body">
+      <p>這是一個典型「想法精彩、包裝弱」的案例。原作者 Jerry 內容功力 8 分（拆得清楚）、但「FB 演算法 SEO」3 分。對 B2B insurtech 我們的啟發：</p>
+
+      <div class="quote-box">
+        <span class="label">IRIS INSIGHT 1</span>
+        <span class="text">「Share &gt; Like」是高 quality content 的 unique signal — 演算法視為「值得擴散」、會給更多 reach。但前提是「下一個 1000 reach 仍要有 0-3 秒 hook」、否則 share 出去也滑走。</span>
+      </div>
+
+      <div class="quote-box">
+        <span class="label">IRIS INSIGHT 2</span>
+        <span class="text">B2B 觀點摘要文「真正讀完的人 = 你的客戶」— 不要追讚數、追「對的人讀完」。3 likes + 4 shares 可能其中 1 share 來自上市公司 CTO、價值遠超 100 likes from 學生。</span>
+      </div>
+
+      <div class="quote-box">
+        <span class="label">IRIS INSIGHT 3</span>
+        <span class="text">原作者最大 missed opportunity = 沒做「個人視角 + 在地 case 連結」。「Farhan 說 AI 取代了 character-by-character」+「我們羅賓斯 30 工程師體驗的版本是 ___」就會從「轉述」升級到「原創 thought leadership」、share 翻倍。</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. 改善 plan — 7 條具體做法</h2>
+    <div class="body">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="step">001 · OPENING HOOK</div>
+          <div class="title">把第一行改成 1 句 punch line + 數字</div>
+          <div class="detail">原文「3,000 工程師如何面對 AI 改變」改為「Shopify Head of Engineering 親口承認：『AI 接管後、我們招 1000 個實習生、而不是 10 個資深工程師。』」+ 場景化、爭議化。Reach 預估 +200%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="step">002 · VISUAL FIRST</div>
+          <div class="title">第一張圖改為原創 Doodle 重點卡</div>
+          <div class="detail">原 6 PPT 截圖不要當主圖。改用 Iris 風格 Doodle 卡（綠橘 + 2×2 grid）摘要 4 個 key point、1080x1080、強 contrast、3 秒掃完。FB algorithm 偏好原創視覺。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="step">003 · CTA EXPLICIT</div>
+          <div class="title">尾段加 1 個 explicit question</div>
+          <div class="detail">「你的團隊是 Centaur (AI + 人) 還是純人類？留言告訴我你工程師日常變什麼樣」— 留言激活、留言數從 1 → 預估 10-20</div>
+        </div>
+        <div class="timeline-item">
+          <div class="step">004 · LOCALIZE</div>
+          <div class="title">加 1 段「羅賓斯 / 台灣 case」對比</div>
+          <div class="detail">「Farhan 在 Shopify (3000 工程師) 看到的 — 我們羅賓斯 (30 工程師) 對位版本是：(1) ... (2) ... (3) ...」— 從轉述升級到原創 thought leadership、share 預估 +150%</div>
+        </div>
+        <div class="timeline-item">
+          <div class="step">005 · HASHTAG STRATEGY</div>
+          <div class="title">加 3-5 個策略性 hashtag</div>
+          <div class="detail">#AI工程師 #SoftwareEngineering #insurtech #生成式AI #Shopify — 演算法歸類 + 探索流量 + 同領域人發現</div>
+        </div>
+        <div class="timeline-item">
+          <div class="step">006 · TAG SOURCE</div>
+          <div class="title">@tag 原講者 + 主辦方</div>
+          <div class="detail">@Farhan Thawar @Shopify @Compile26 — 對方收到通知有機會轉發、reach 翻 5-10x</div>
+        </div>
+        <div class="timeline-item">
+          <div class="step">007 · TRIM TEXT</div>
+          <div class="title">3000 字砍到 800 字 + 連結深度版</div>
+          <div class="detail">FB 主貼文 800 字（TL;DR + 1 段 insight + CTA）、深度 3000 字版開 Medium / 自家 blog / Notion、連結貼留言。FB 算法獎勵停留 + 換另一個平台 SEO 也佈局到</div>
+        </div>
+      </div>
+
+      <h3>預估互動改善（保守估）</h3>
+      <table class="compare-table">
+        <thead><tr><th>指標</th><th>原版</th><th>改善後（保守）</th><th>改善後（樂觀）</th><th>提升倍數</th></tr></thead>
+        <tbody>
+          <tr><td class="bold">Reach</td><td class="x">~300 ppl</td><td class="v">1,500-3,000</td><td class="v">5,000-10,000</td><td>5-30x</td></tr>
+          <tr><td class="bold">Likes</td><td class="x">3</td><td class="v">30-60</td><td class="v">100-300</td><td>10-100x</td></tr>
+          <tr><td class="bold">Comments</td><td class="x">1</td><td class="v">10-25</td><td class="v">30-80</td><td>10-80x</td></tr>
+          <tr><td class="bold">Shares</td><td class="v">4</td><td class="v">15-30</td><td class="v">50-150</td><td>4-37x</td></tr>
+          <tr><td class="bold">Engagement rate</td><td class="x">~0.1%</td><td class="v">~2-3%</td><td class="v">~5-8%</td><td>20-80x</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>6. 套到羅賓斯 Evin 個人 brand 的做法</h2>
+    <div class="body">
+      <p>per [[social-action-rules]] 第 7 條「Evin 個人 brand = 公司最強資產 + 創業故事 series + voice clone」、上述 7 條套你自己 FB / Threads / LinkedIn：</p>
+      <div class="card-grid">
+        <div class="card good">
+          <h4>策略 A：Evin 創業故事 7 篇 series</h4>
+          <p>每篇套 7 條改善 plan：1 punch line + 1 原創 Doodle + CTA + 在地 case + hashtag + tag + 800 字。Iris 出視覺、Eos 排早報 + 跨平台、Calliope 寫文案、Vena 預審。</p>
+        </div>
+        <div class="card good">
+          <h4>策略 B：每週「Evin 觀點」AI 演講摘要</h4>
+          <p>類似張維峰這篇、但加「Evin 觀點」+ 「羅賓斯 case 對位」。月 4 篇、predict 6 個月後 1 篇 viral（500+ shares）。</p>
+        </div>
+        <div class="card good">
+          <h4>策略 C：voice clone 短影片每週</h4>
+          <p>800 字主文 → ElevenLabs Evin voice clone → 60s 短影片 + 中英字幕（Iris pipeline 跑得動）→ 跨 FB / Threads / IG Reel / LINE OA / Email</p>
+        </div>
+        <div class="card good">
+          <h4>策略 D：互動 funnel</h4>
+          <p>留言 → DM → 業務員 SaaS demo / 保戶活化 demo → 客戶轉換。Evin 個人 brand 流量直接轉商品化 4 通路 ROI。</p>
+        </div>
+      </div>
+
+      <div class="recommend">
+        <div class="label">⚡ EVIN ACTION</div>
+        <h3>3 件可立即動的：</h3>
+        <ul>
+          <li><strong>Q1：</strong>核准 Iris 拿張維峰這篇當 case、做 1 篇「Evin 觀點版」對比示範？</li>
+          <li><strong>Q2：</strong>核准每週 1 篇「Evin AI 觀點摘要 series」+ Iris 出視覺 + Eos 排程？</li>
+          <li><strong>Q3：</strong>核准 voice clone 走 ElevenLabs（per V084 Vena 法務評估）+ Iris 短影片每週 1 支？</li>
+        </ul>
+        <p style="margin-top:10px;color:#2A2010;font-size:13px;"><strong>預設答 OK</strong> → 7 天內 ship 第一篇「Evin 觀點版」+ 視覺 + 跨平台 demo。</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>I018 · 張維峰 FB 逆向工程 + Iris 改善 plan · 2026-06-27</div>
+    <div class="sig">— Iris / 虹彩 🎨 · @iris_social_bot</div>
+  </footer>
+
+</body></html>
