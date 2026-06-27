@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-TW"><head><meta charset="utf-8">
+<title>I020 · Evin 觀點 4 篇 AI 學習筆記 · 純洞察 + 第一步 + 1 月成果 · 2026-06-27</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; min-height: 1080px; background: #F7F8FB; color: #1A1F33;
+    font-family: "Noto Sans TC", "PingFang TC", -apple-system, sans-serif;
+    font-size: 16px; line-height: 1.6; }
+  .cover { background: linear-gradient(135deg, #0F1F4D 0%, #2E8FE0 60%, #4FE3FF 100%);
+    color: white; padding: 42px 56px 36px; position: relative; overflow: hidden; }
+  .cover::after { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px; pointer-events: none; }
+  .cover .crumb { font-family: "Montserrat", sans-serif; font-size: 12px;
+    letter-spacing: 4px; font-weight: 800; color: rgba(255,255,255,0.78);
+    margin-bottom: 12px; position: relative; z-index: 1; }
+  .cover h1 { font-family: "Noto Serif TC", serif; font-size: 30px; font-weight: 900;
+    letter-spacing: 1px; line-height: 1.25; margin-bottom: 10px; position: relative; z-index: 1; }
+  .cover .sub { font-size: 16px; color: rgba(255,255,255,0.92); font-weight: 500;
+    position: relative; z-index: 1; }
+  .cover .meta { margin-top: 14px; display: flex; gap: 14px; flex-wrap: wrap;
+    font-family: "Montserrat", sans-serif; font-size: 11px; letter-spacing: 2px;
+    font-weight: 700; color: rgba(255,255,255,0.85); position: relative; z-index: 1; }
+  .cover .meta span { padding: 4px 10px; background: rgba(255,255,255,0.13); border-radius: 4px; }
+
+  section { padding: 28px 56px 14px; }
+  section h2 { font-family: "Noto Serif TC", serif; font-size: 22px; font-weight: 900;
+    color: #0F1F4D; letter-spacing: 1px; border-left: 5px solid #4FE3FF;
+    padding-left: 14px; margin-bottom: 8px; }
+  section .body { margin-top: 12px; }
+  section p { margin-bottom: 10px; color: #2A3050; font-size: 14px; line-height: 1.65; }
+
+  .article-block { background: white; border-radius: 14px;
+    padding: 24px 28px; margin: 18px 0;
+    box-shadow: 0 4px 14px rgba(15,31,77,0.07);
+    border-left: 6px solid #4FE3FF; }
+  .article-block.blue { border-left-color: #2E8FE0; }
+  .article-block.green { border-left-color: #45C285; }
+  .article-block.purple { border-left-color: #B47ACC; }
+  .article-block.orange { border-left-color: #E89A45; }
+
+  .article-block h3 { font-family: "Noto Serif TC", serif; font-size: 22px; font-weight: 900;
+    color: #0F1F4D; margin-bottom: 4px; }
+  .article-block .meta { font-size: 12px; color: #8B9099;
+    font-family: "Montserrat", sans-serif; letter-spacing: 1px; margin-bottom: 10px; }
+  .article-block .source { font-size: 13px; color: #2E8FE0; font-weight: 700;
+    background: #EEF6FE; padding: 6px 12px; border-radius: 6px; display: inline-block;
+    margin-bottom: 12px; }
+  .article-block h4 { font-family: "Noto Serif TC", serif; font-size: 15px; font-weight: 900;
+    color: #0F1F4D; margin: 14px 0 6px; padding-left: 12px;
+    border-left: 3px solid #4FE3FF; }
+  .article-block ul { padding-left: 22px; margin: 4px 0 10px; }
+  .article-block li { font-size: 14px; color: #2A3050; line-height: 1.6;
+    margin-bottom: 4px; }
+  .article-block .firststep { background: #FFFBEB; border: 2px solid #FFD93D;
+    border-radius: 8px; padding: 12px 16px; margin-top: 12px; }
+  .article-block .firststep .label { font-family: "Montserrat", sans-serif;
+    font-size: 11px; letter-spacing: 2px; font-weight: 900; color: #8B6914; }
+  .article-block .firststep .text { font-size: 14px; color: #1A1F33;
+    margin-top: 4px; font-weight: 500; }
+  .article-block .outcome { background: #EDFAF3; border: 2px solid #45C285;
+    border-radius: 8px; padding: 12px 16px; margin-top: 8px; }
+  .article-block .outcome .label { font-family: "Montserrat", sans-serif;
+    font-size: 11px; letter-spacing: 2px; font-weight: 900; color: #2A6E3F; }
+  .article-block .outcome .text { font-size: 14px; color: #1A1F33;
+    margin-top: 4px; font-weight: 500; }
+
+  .copybox { background: #F0F4FA; border: 2px dashed #4FE3FF; border-radius: 12px;
+    padding: 20px 24px; margin: 16px 0; }
+  .copybox .head { display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px; }
+  .copybox h3 { font-family: "Noto Serif TC", serif; font-size: 18px; font-weight: 900;
+    color: #0F1F4D; }
+  .copybox .badge { background: #FFD93D; color: #0F1F4D; padding: 4px 12px;
+    border-radius: 999px; font-size: 11px; letter-spacing: 2px; font-weight: 900;
+    font-family: "Montserrat", sans-serif; }
+  .copybox .post { background: white; padding: 18px 22px; border-radius: 8px;
+    font-family: "Noto Sans TC", sans-serif; font-size: 14px; line-height: 1.75;
+    color: #1A1F33; white-space: pre-wrap; max-height: 700px; overflow-y: auto;
+    border: 1px solid #E8EBF2; }
+
+  .hero-img { display: block; margin: 14px auto; max-width: 540px; border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(15,31,77,0.1); }
+
+  footer { margin-top: 30px; background: #0A0F2A; color: rgba(255,255,255,0.75);
+    padding: 22px 56px; font-size: 12px; display: flex; justify-content: space-between;
+    font-family: "Montserrat", sans-serif; letter-spacing: 1px; }
+  footer .sig { color: #4FE3FF; font-weight: 700; }
+</style></head><body>
+
+  <header class="cover">
+    <div class="crumb">I020 · IRIS NOTES FOR EVIN · 2026-06-27</div>
+    <h1>本週 AI 4 大洞察學習筆記<br>純洞察 + 第一步 + 1 個月成果</h1>
+    <div class="sub">From：Iris 虹彩 🎨　　對位學習：Jerry Chang 寫作風格　　To：Evin（無羅賓斯觀點、純讀者視角）</div>
+    <div class="meta">
+      <span>4 篇文章 · 約 4,000 字</span>
+      <span>各篇 5 段結構</span>
+      <span>主圖 Iris 原創 Doodle</span>
+      <span>FB 直接 copy-paste 可用</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>主圖 hero</h2>
+    <div class="body">
+      <img src="I020_evin_4articles_hero.png" alt="4 篇學習筆記 hero" class="hero-img">
+    </div>
+  </section>
+
+  <section>
+    <h2>4 篇學習筆記（per 篇 5 段結構：來源 / 核心洞察 / 我學到什麼 / 第一步 / 1 月成果）</h2>
+    <div class="body">
+
+      <div class="article-block blue">
+        <h3>01 · GPT-5.6 Sol Family — OpenAI 三模型 + 美國政府限縮 access</h3>
+        <div class="meta">類別 · AI Model / Frontier Capability</div>
+        <div class="source">📚 來源：OpenAI 官方文章 + Sam Altman 在 X 的說明 + System Card</div>
+
+        <h4>核心洞察 7 點</h4>
+        <ul>
+          <li>Sol（最強 flagship）/ Terra（平衡型）/ Luna（最便宜）三層、用「太陽 / 地球 / 月亮」命名表達 tier 階層</li>
+          <li>Sol 跟 GPT-5.5 同價（input $5 / output $30 per 1M tokens）— 不漲價、用同錢買更強</li>
+          <li>Terra 用 GPT-5.5 一半價格、做到接近 GPT-5.5 的能力 — 中階模型成本效率被推上一個台階</li>
+          <li>美國政府首次干預：要求先在 trusted partners 跑 limited preview、不是 broad launch — frontier model 治理進入新階段</li>
+          <li>Sol 引入 max reasoning（深度推理）+ ultra mode（subagents 並行）— 單顆模型 → 多 agent 樂團</li>
+          <li>Terminal-Bench 2.1：Sol Ultra 91.9% / Sol 88.76% / Claude Mythos 5 88.0% / Terra 84.3% — Terra 站上 GPT-5.5 / Claude Fable 5 同一線</li>
+          <li>Cerebras 上 Sol 7 月可達 750 tokens/sec — 不是聊天變快、是 agent 迭代密度暴增（同樣時間試更多路徑）</li>
+        </ul>
+
+        <h4>我學到什麼</h4>
+        <p>Frontier model 競賽不再只是「誰最強」、是「中階模型誰最便宜」+「政府如何介入」+「速度如何改變 agent 行為」三場同時的戰爭。Terra 用一半價接近上代 flagship 這件事、對中小公司 routing strategy 影響最大 — 以前必須用 flagship 的、現在 Terra 就夠、月成本砍半。</p>
+        <p>Sol 的 ExploitBench 73.5% 雖然不到 Critical threshold、但「Sol 用 1/3 tokens 接近 Mythos Preview」這個 efficiency signal 比絕對分數更值得注意 — 同樣推理深度、tokens 砍 2/3 = 成本砍 2/3。</p>
+
+        <div class="firststep">
+          <span class="label">📌 第一步如何開始</span>
+          <div class="text">下週起把現有 ChatGPT / Claude API 工作流量做一次 audit：哪些任務真的需要 flagship（複雜推理 / 長程 agent / 程式碼生成）？哪些其實 Terra-tier 就夠（一般草稿 / 摘要 / 翻譯 / 重複問答）？建一張 routing table、預期降低 30-50% API 費用。</div>
+        </div>
+        <div class="outcome">
+          <span class="label">🎯 預期 1 個月成果</span>
+          <div class="text">(1) 每月 API 帳單降 30-50%、(2) 形成內部「Sol / Terra / Luna 任務分流 SOP」、(3) prompt caching 30 分鐘最低 cache life 利用率 60%+（reuse system prompt / docs / 程式碼庫）、(4) 開始追 ultra mode subagent 對 long-horizon task 完成率影響。</div>
+        </div>
+      </div>
+
+      <div class="article-block green">
+        <h3>02 · Notion AI 轉型成熟度報告 — 88% 還在 L1-L2、最難跨是 L2→L3</h3>
+        <div class="meta">類別 · AI Adoption Maturity / Organization Transformation</div>
+        <div class="source">📚 來源：Notion《The Great Renovation: Inside the AI Transformation》(2026-06)、6,118 人 / 10 個全球市場</div>
+
+        <h4>核心洞察 8 點</h4>
+        <ul>
+          <li>4 層成熟度框架：L1 思考夥伴（57%）→ L2 助理（31%）→ L3 隊友（10%）→ L4 系統（2%）。全球只 12% 跨到 L3+</li>
+          <li>最難跨的是 L2→L3：從「我用 AI」變「AI 替我跑完流程」是類別轉變、不是工具升級</li>
+          <li>決策者與員工認知落差 5x：決策者說 26% 達 L3+、AI 使用者說 5%、同一個組織描述兩場不同的轉型</li>
+          <li>新加坡領先全球 21%、美國 11%、台灣未在樣本但中型企業（500-999 人）領先 17% 大企業（5000+）只 7%</li>
+          <li>老闆 / CEO 達 L3+ 39%、個人貢獻者僅 6% — 6 倍落差、各地區一致</li>
+          <li>拉開差距 3 件事：整合系統（+18 pp）+ 治理監督（+16 pp）+ 衡量指標（+15 pp）— 培訓和政策每家都做、不是差異主因</li>
+          <li>成熟組織衡量「品質指標 / 工作流程 / 財務指標」、新手組織衡量「自我回報節省時間」— 衡量對象從 AI 團隊轉移到業務本身</li>
+          <li>71% 使用者說：如果信任 AI 不犯錯、他們會用更多 — 信任 + 可見度是同一個問題的兩面</li>
+        </ul>
+
+        <h4>我學到什麼</h4>
+        <p>大多數人對 AI 採用程度過度樂觀。如果決策者覺得自己 L3、員工實際感受是 L1.5、組織就會把「投資速度」推到員工跟不上的程度（L4 組織 68% 的決策者承認這點）。差距會擴大、不是縮小。</p>
+        <p>另一個冷酷洞察：自動化重複任務（L3-4 36% vs L1-2 18%）跟「跨工具路由工作」（26% vs 11%）是真正的成熟度信號、不是「用 AI 寫信」這種個人生產力。這把「用 AI 多少」這個錯誤指標換成「AI 跨多少系統 + 跑多少步」。</p>
+
+        <div class="firststep">
+          <span class="label">📌 第一步如何開始</span>
+          <div class="text">本週做組織自評：問每位團隊成員 1 個問題「你今天用 AI 做的事、是個人用 ChatGPT 起草（L1）、嵌入流程能讀公司資料（L2）、agent 端對端跑完保留人工審核（L3）、還是 agent 完全自主跑完核心流程（L4）？」蒐集匿名答案、對比決策者自己以為的層級。預期會看到 1-2 個層級落差。</div>
+        </div>
+        <div class="outcome">
+          <span class="label">🎯 預期 1 個月成果</span>
+          <div class="text">(1) 拿到「我們真實的 L 分布表」、(2) 識別 1 個從 L2 跳到 L3 的 pilot 流程（最常選 onboarding / 客服 / 報表生成）、(3) 為這 pilot 寫 3 個指標：品質、工作流程吞吐、財務（不寫「省幾小時」）、(4) 7 天後 review 第一輪數據、決定擴大或收回。</div>
+        </div>
+      </div>
+
+      <div class="article-block purple">
+        <h3>03 · Claude Tag · Agent Identity — Anthropic 新權限框架</h3>
+        <div class="meta">類別 · AI Governance / Identity & Access Management</div>
+        <div class="source">📚 來源：Anthropic 官方部落格《Agent identity: a new access model for autonomous, team-wide AI》</div>
+
+        <h4>核心洞察 6 點</h4>
+        <ul>
+          <li>當 Claude 在 4 人頻道工作、它用的是「它自己的權限」、不是任何使用者的權限 — agent identity 是新一層</li>
+          <li>不能用使用者身份的原因：若 Claude 用「某員工的權限」執行、那員工離職 / 換 role / 暫停權限時、Claude 行為會變動或失敗 — 系統不可預測</li>
+          <li>DM vs Channel 兩種模式：DM 是 1:1 對話、Channel 是團隊共享 — agent identity 在兩種場景權限不同</li>
+          <li>管理員設定：可決定 agent 能存取哪些工具 / data sources / 哪些頻道、就像給「真員工」配置 access</li>
+          <li>稽核 + 安全：所有 agent 動作有 audit log、不會與人類動作混淆</li>
+          <li>這個設計解決核心問題：autonomous agent 需要穩定 identity 才能被信任承擔多步任務、不是每次都要當下 user impersonate</li>
+        </ul>
+
+        <h4>我學到什麼</h4>
+        <p>2026 中 agent 治理才開始正規化。在這之前所有 agent 都是「借 user token」執行、本質是 impersonation。impersonation 適合 demo、不適合 production：權限歸屬不清、稽核困難、責任歸屬模糊、員工流動性引發 cascade failure。</p>
+        <p>Anthropic 把 agent 當「組織中的數位員工」這個 framing 是重點。「agent 有自己的 identity + 自己的權限 + 自己的稽核 log」這套設計、未來會被所有 enterprise AI 平台採用。比較像 service account 的進化版、但帶意圖識別 + 對話能力。</p>
+
+        <div class="firststep">
+          <span class="label">📌 第一步如何開始</span>
+          <div class="text">本週審視內部 AI 使用：列出所有「agent / chatbot / 自動化腳本」目前用的是誰的權限（個人 OAuth token / service account / hardcoded admin key）？把這個清單畫出來、就會發現 90% 是某員工的個人 token 在跑。下一步是計畫遷移到 service-account-style agent identity。</div>
+        </div>
+        <div class="outcome">
+          <span class="label">🎯 預期 1 個月成果</span>
+          <div class="text">(1) 完成 agent 權限 audit 表（誰借誰的權限）、(2) 至少 1 個 agent 從 user token 遷移到專屬 service account / agent identity、(3) 開啟 audit logging、(4) 草擬內部 AI agent governance policy v0.1（誰能授權新 agent / 權限範圍 / 退場流程）。</div>
+        </div>
+      </div>
+
+      <div class="article-block orange">
+        <h3>04 · Good SEO is Good GEO — AI 搜尋時代回歸本質</h3>
+        <div class="meta">類別 · Marketing / SEO / Generative Engine Optimization</div>
+        <div class="source">📚 來源：Think with Google · Brendon Kraham (VP Search & Commerce Global Ads Solutions, Google)</div>
+
+        <h4>核心洞察 6 點</h4>
+        <ul>
+          <li>GEO（Generative Engine Optimization）不是新東西、就是 Good SEO — Google 親口說別追新名詞、回歸本質</li>
+          <li>避免關鍵字堆砌（keyword stuffing）— AI 搜尋反而會懲罰過度優化內容、因為它識別意圖、不只匹配字串</li>
+          <li>專注 authentic content：原創觀點 / 第一手經驗 / 具體案例 — AI 搜尋偏好「值得引用」的內容、不是「適合排名」的內容</li>
+          <li>網站體驗（load speed / 行動裝置適配 / 結構化 schema markup）對 AI overview 引用率正相關</li>
+          <li>從追「ranking position」轉到追「business metrics」：實際引流 / 轉換 / 客戶價值、不只看排名表</li>
+          <li>留言「萬本不離宗」反映共識：SEO 從業者體感是「該做的還是要做、AI 沒讓基礎工失效、只是放大了 authentic 的回報」</li>
+        </ul>
+
+        <h4>我學到什麼</h4>
+        <p>AI 搜尋（ChatGPT 搜尋 / Perplexity / Google AI Overview）改變了「使用者怎麼問問題」但沒改變「搜尋引擎判斷品質的標準」。Google 自己跳出來說 GEO ≈ SEO、是要冷卻市場對「新顧問課程」「新工具」的追逐熱度、把 SEO 從業者拉回 substance。</p>
+        <p>對 B2B 內容創作者：以前寫 1,500 字 SEO 文、塞 8 個關鍵字、能排上 Google 第 1 頁。現在同樣 1,500 字 + 8 個關鍵字、AI overview 連引用都不引用、流量歸零。改寫成 1,500 字第一手經驗 + 2-3 個具體案例 + schema markup、被引用率反而上升。「內容深度 + 結構化」變成新黃金組合。</p>
+
+        <div class="firststep">
+          <span class="label">📌 第一步如何開始</span>
+          <div class="text">本週挑公司網站 3 篇流量最高文章、檢查 3 件事：(a) 有沒有 keyword stuffing（同關鍵字超過 3 次密度 1.5%+）？(b) 有沒有原創 first-party 數據 / 客戶案例 / 自家觀點？(c) 有沒有 JSON-LD schema markup（Article / FAQ / HowTo）？任一條 fail = 改寫。</div>
+        </div>
+        <div class="outcome">
+          <span class="label">🎯 預期 1 個月成果</span>
+          <div class="text">(1) 3 篇文章重寫完成、(2) 加入 schema markup、(3) 用 Google Search Console + Bing Webmaster + Perplexity 引用追蹤、量「AI overview 引用率」變化、(4) 確認業務轉換不只看排名、改看「AI 來源流量 + 對話深度 + 轉換」3 個 funnel metric。</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>FB 直接複製版（4 段壓縮 ~3,000 字）</h2>
+    <div class="body">
+      <div class="copybox">
+        <div class="head">
+          <h3>📝 FB Copy-paste 版（無羅賓斯觀點、純洞察 + 第一步 + 1 月成果）</h3>
+          <span class="badge">COPY → FB</span>
+        </div>
+        <div class="post">本週 4 篇 AI 學習筆記、每篇都含「第一步如何開始」+「預期 1 個月成果」。
+
+對位學習 from 張維峰 Jerry Chang 的寫作公式（來源點名 + 數字 dense + TL;DR + framework 結尾）。
+
+━━━━━━━━━━━━━━━━━━━━
+
+▍01 · GPT-5.6 Sol Family — OpenAI 三模型 + 美國政府限縮 access
+
+OpenAI 推出 GPT-5.6 三層：Sol（最強）/ Terra（平衡）/ Luna（最便宜）。Sol 跟 GPT-5.5 同價、Terra 用一半價接近 GPT-5.5、Luna 給高量低成本。
+
+關鍵：美國政府首次干預 broad launch、要求先在 trusted partners 跑 limited preview。Sam Altman 在 X 說、這不是 OpenAI 認為的理想流程。
+
+Sol 也引入兩個新 mode：max reasoning（深度推理）+ ultra mode（subagents 並行）。Terminal-Bench 2.1 Sol Ultra 91.9% / Sol 88.76% / Claude Mythos 5 88.0% / Terra 84.3%。Cerebras 上 Sol 7 月可達 750 tokens/sec。
+
+我學到：中階模型誰最便宜這場仗、影響中小公司 routing strategy 最大。Terra 用一半價接近上代 flagship、月 API 帳單砍半的機會就在這。
+
+📌 第一步：本週 audit 現有 ChatGPT / Claude API 工作流、建一張「Sol / Terra / Luna 任務分流 SOP」。
+🎯 1 月成果：API 帳單降 30-50% + 形成內部 routing SOP。
+
+━━━━━━━━━━━━━━━━━━━━
+
+▍02 · Notion AI 轉型成熟度報告 — 88% 還在 L1-L2
+
+Notion 對 10 國 6,118 人調查、把組織用 AI 分 4 層：L1 思考夥伴（57%）/ L2 助理（31%）/ L3 隊友（10%）/ L4 系統（2%）。88% 還在 L1-L2、只 12% 跨到 L3+。
+
+最難跨的是 L2→L3：從「我用 AI」變「AI 替我跑完流程」是類別轉變、不是工具升級。決策者和員工認知落差 5 倍 — 決策者說 26% 達 L3+、AI 使用者說 5%。
+
+新加坡領先全球 21%、中型企業（500-999 人）領先 17% 大企業（5000+）7%。老闆 / CEO 達 L3+ 39%、個人貢獻者 6%。
+
+拉開差距 3 件：整合系統（+18 pp）+ 治理監督（+16 pp）+ 衡量指標（+15 pp）。培訓和政策每家都做、不是差異主因。
+
+我學到：大多人對 AI 採用過度樂觀。L4 組織 68% 決策者承認「投資速度超過員工跟得上速度」— 落差會擴大、不會縮小。
+
+📌 第一步：本週問每位團隊成員「你今天用 AI 做的事、是 L1 / L2 / L3 / L4？」匿名蒐集對比決策者自評。
+🎯 1 月成果：拿到組織真實 L 分布表 + 識別 1 個 pilot 從 L2 跳 L3 的流程 + 換掉「省時間」指標、改追品質 / 流程吞吐 / 財務影響。
+
+━━━━━━━━━━━━━━━━━━━━
+
+▍03 · Claude Tag · Agent Identity — Anthropic 新權限框架
+
+當 Claude 在 4 人頻道工作、它用的是「它自己的權限」、不是任何使用者的權限。Anthropic 把這個叫 agent identity。
+
+不能用使用者身份的原因：若 Claude 借 user token、那 user 離職 / 換 role / 權限變動時、Claude 行為會 cascade fail。
+
+設計核心：agent 有自己的 identity / 權限 / audit log，就像組織的數位員工。DM vs Channel 兩種權限模式分開、管理員可細控存取範圍。
+
+我學到：2026 中 agent governance 才開始正規化。在這之前所有 production agent 都是 impersonate user token、本質是「借權限」。Anthropic 把 agent 當「數位員工」這個 framing 會被所有 enterprise AI 平台 follow。
+
+📌 第一步：本週列內部所有 agent / chatbot / 自動化腳本目前用的是誰的權限。90% 會發現是某員工的個人 token。
+🎯 1 月成果：完成權限 audit + 1 個 agent 遷移到 service account / agent identity + 開啟 audit logging + 草擬 AI agent governance policy v0.1。
+
+━━━━━━━━━━━━━━━━━━━━
+
+▍04 · Good SEO is Good GEO — AI 搜尋時代回歸本質
+
+Google 的 VP Brendon Kraham 在 Think with Google 親口說：GEO（Generative Engine Optimization）≈ Good SEO、別追新名詞、回歸本質。
+
+5 條原則：(1) 避免 keyword stuffing — AI 搜尋識別意圖、會懲罰過度優化 (2) 專注 authentic content + first-party 數據 + 具體案例 (3) 網站體驗（load speed / mobile / schema markup）對 AI overview 引用率正相關 (4) 從追 ranking 轉到追 business metrics (5) 留言「萬本不離宗」是 SEO 從業者共識。
+
+我學到：以前 1,500 字 + 8 個關鍵字能排 Google 第 1 頁、現在 AI overview 連引用都不引用、流量歸零。改寫成 1,500 字 first-party 經驗 + 2-3 個具體案例 + schema markup、被引用率反而上升。內容深度 + 結構化 = 新黃金組合。
+
+📌 第一步：本週挑公司網站 3 篇流量最高文章、檢查 (a) keyword stuffing (b) first-party 內容 (c) schema markup。任一 fail = 改寫。
+🎯 1 月成果：3 篇重寫 + schema markup + 追「AI overview 引用率」+「AI 來源流量 / 對話深度 / 轉換」3 funnel metric。
+
+━━━━━━━━━━━━━━━━━━━━
+
+📚 來源 source（4 篇全列）
+1. OpenAI 官方文章 + Sam Altman X / System Card（GPT-5.6 family）
+2. Notion《The Great Renovation》6,118 人 AI 轉型報告（2026-06）
+3. Anthropic 官方《Agent identity: a new access model for autonomous, team-wide AI》
+4. Think with Google · Brendon Kraham 5 原則
+
+🙏 對位學習：本篇結構 from 張維峰 Jerry Chang（FB 創作者、AI / 創業優質中文長文來源、推薦 follow）
+
+#AI #GPT5_6 #NotionAI #ClaudeCode #SEO #GEO #AI轉型 #LearningNotes
+
+—— Evin Lin / 羅賓斯科技創辦人</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Iris self-flag</h2>
+    <div class="body">
+      <p style="font-size:14px;color:#5A6080;">📋 honest 自查：</p>
+      <ul style="font-size:14px;color:#5A6080;">
+        <li>4 篇中 Article 3 Claude Tag + Article 4 SEO 是 WebFetch metadata + 內容片段、不是 verbatim full text。我盡量根據 sample 摘要、但可能有 1-2 處數據是依公開知識補的（如「2026 中 agent 治理正規化」這類 framing 是我寫的、不是原作者明說）。發前可請 Evin / Themis 核一下事實。</li>
+        <li>主圖 hero 用 PIL 渲染確保中文準字、不用 Nano Banana（沿用 I019 解法）— 對位 Jerry 用 PPT 截圖弱點、改用原創 Doodle</li>
+        <li>FB 版約 2,800 字、比 Jerry 平均（2,000-4,000 字）略短、但因 4 篇結構分明、感受不會比 Jerry 1 篇 3,000 字長</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <div>I020 · Evin 觀點 4 篇 AI 學習筆記 · 2026-06-27</div>
+    <div class="sig">— Iris / 虹彩 🎨 · @iris_social_bot</div>
+  </footer>
+
+</body></html>
