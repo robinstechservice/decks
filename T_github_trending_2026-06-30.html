@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themis 秉衡｜GitHub 趨勢分析 2026-06-30</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#16306f; --gold:#E89E3F; --gold-soft:#f6e3c4;
+    --ink:#1c2333; --muted:#5b6677; --line:#e3e7ef; --bg:#f5f6fa; --card:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 18px 64px}
+  header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;
+    padding:42px 30px 36px;border-radius:0 0 22px 22px;box-shadow:0 8px 26px rgba(15,31,77,.22)}
+  .wrap-h{max-width:1040px;margin:0 auto;padding:0 18px}
+  .brand{display:flex;align-items:center;gap:12px;font-size:15px;letter-spacing:2px;color:var(--gold);font-weight:700}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);display:inline-block}
+  h1{font-size:31px;margin:14px 0 6px;font-weight:800;letter-spacing:.5px}
+  .sub{color:#c7d2ec;font-size:15px}
+  .meta-row{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+  .pill{background:rgba(255,255,255,.10);border:1px solid rgba(232,158,63,.45);
+    color:#f6e3c4;padding:5px 13px;border-radius:999px;font-size:13px}
+  .section-title{display:flex;align-items:center;gap:12px;margin:42px 0 8px;
+    font-size:22px;font-weight:800;color:var(--navy)}
+  .section-title .tag{background:var(--gold);color:#3a2a08;font-size:13px;font-weight:800;
+    padding:3px 12px;border-radius:7px;letter-spacing:1px}
+  .section-desc{color:var(--muted);font-size:14px;margin-bottom:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:20px 22px;margin-bottom:16px;box-shadow:0 2px 10px rgba(15,31,77,.05);
+    border-left:5px solid var(--gold)}
+  .card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .repo{font-size:18px;font-weight:800;color:var(--navy);word-break:break-all}
+  .repo a{color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold-soft)}
+  .repo a:hover{border-color:var(--gold)}
+  .lang{display:inline-block;font-size:12px;color:var(--muted);background:#eef1f7;
+    padding:2px 9px;border-radius:6px;margin-left:8px;font-weight:600;vertical-align:middle}
+  .stars{font-size:16px;color:var(--gold);font-weight:800;white-space:nowrap;letter-spacing:1px}
+  .stars small{color:var(--muted);font-weight:600;font-size:12px;letter-spacing:0}
+  .oneliner{margin:10px 0 14px;color:var(--ink);font-size:15px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:6px}
+  .kv{background:#fafbfe;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+  .kv .k{font-size:11px;color:var(--muted);letter-spacing:1px;font-weight:700;text-transform:uppercase}
+  .kv .v{font-size:14px;color:var(--ink);font-weight:600;margin-top:2px}
+  .verdict{display:inline-block;font-weight:800;font-size:13px;padding:3px 11px;border-radius:7px}
+  .v-install{background:#e7f5ec;color:#1f7a44;border:1px solid #bfe6cd}
+  .v-ref{background:#fff4e2;color:#9a6608;border:1px solid #f3dcae}
+  .v-skip{background:#fbe9e9;color:#a33;border:1px solid #f1c9c9}
+  .ins{font-weight:800}.ins-y{color:#1f7a44}.ins-m{color:#9a6608}.ins-n{color:#a33}
+  .toppick{background:linear-gradient(135deg,#16306f 0%,#0F1F4D 100%);color:#fff;
+    border-radius:18px;padding:26px 28px;margin-top:46px;box-shadow:0 8px 26px rgba(15,31,77,.25)}
+  .toppick h2{color:var(--gold);font-size:20px;margin-bottom:14px;letter-spacing:1px}
+  .tp{display:flex;gap:14px;align-items:flex-start;padding:13px 0;border-bottom:1px dashed rgba(255,255,255,.18)}
+  .tp:last-child{border-bottom:none}
+  .tp .num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--gold);color:#3a2a08;
+    font-weight:900;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .tp .body{flex:1}
+  .tp .nm{font-weight:800;font-size:15px;color:#fff}
+  .tp .nm .src{font-size:11px;color:var(--gold);border:1px solid rgba(232,158,63,.5);
+    padding:1px 7px;border-radius:5px;margin-left:7px;font-weight:700}
+  .tp .rs{color:#cdd7ef;font-size:14px;margin-top:3px}
+  footer{margin-top:38px;text-align:center;color:var(--muted);font-size:12.5px;line-height:1.9}
+  .legend{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap-h">
+    <div class="brand"><span class="dot"></span>THEMIS 秉衡 ｜ 羅賓斯科技財務分析 AI</div>
+    <h1>每日 GitHub 趨勢分析</h1>
+    <div class="sub">兩組各 Top 5 · 機構視角篩選 · 對保險科技（InsurTech）落地評估</div>
+    <div class="meta-row">
+      <span class="pill">📅 2026-06-30</span>
+      <span class="pill">🔥 GitHub Trending（daily）</span>
+      <span class="pill">🤖 Claude 生態（stars desc）</span>
+      <span class="pill">⭐ 建議指數 1–5</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <p class="legend">★ 建議指數越高越值得關注｜<b>主場姊妹</b>＝最適合採用的 agent（視覺 Iris／法務 Vena／財報 Themis／自動化 Eos／整合 Calliope）｜<b>保險科技幫助</b>＝對車險／承保／業務員工具／API 中台／個資資安監理的實用度。</p>
+
+  <!-- ============ A 組 ============ -->
+  <div class="section-title"><span class="tag">A</span>GitHub Trending Top 5</div>
+  <div class="section-desc">來源：github.com/trending（daily）前 5 名，今日上升星數。</div>
+
+  <!-- A1 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/simplex-chat/simplex-chat" target="_blank">simplex-chat / simplex-chat</a><span class="lang">Haskell</span></div>
+      <div class="stars">★★★☆☆ <small>+1,611 today</small></div>
+    </div>
+    <div class="oneliner">全球第一個「沒有任何用戶識別碼」的訊息網路，從設計上 100% 隱私。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">Vena（法務 / 個資）</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-m">中（理念參考）</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">參考 project</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-skip">不裝</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">無識別碼的隱私架構，正好對應台灣個資法／監理對「最小化蒐集」的要求；可作為客戶通訊／理賠溝通的隱私設計參考，但非可直接嵌入的工具。</div>
+  </div>
+
+  <!-- A2 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/msitarzewski/agency-agents" target="_blank">msitarzewski / agency-agents</a><span class="lang">Shell</span></div>
+      <div class="stars">★★★☆☆ <small>+1,369 today</small></div>
+    </div>
+    <div class="oneliner">一套帶人格與分工的「AI 代理機構」平台，多名專家 agent 協作。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">Calliope（整合）</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-m">中</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">參考 project</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-ref">參考</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">與我們五姊妹多 agent 架構同源；其角色定義與協作 orchestration 寫法可借鏡到業務員賦能／客服分流的工作流，但要小心過度複雜。</div>
+  </div>
+
+  <!-- A3 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/cupy/cupy" target="_blank">cupy / cupy</a><span class="lang">Python</span></div>
+      <div class="stars">★★☆☆☆ <small>+352 today</small></div>
+    </div>
+    <div class="oneliner">GPU 版的 NumPy & SciPy，數值運算加速。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">Themis（財報 / 數值）</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-n">低</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">參考 project（函式庫）</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-skip">不裝</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">除非未來做大規模精算／車險定價蒙地卡羅模擬需要 GPU 加速，一般財報分析用不到；先記在板凳上。</div>
+  </div>
+
+  <!-- A4 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/altic-dev/FluidVoice" target="_blank">altic-dev / FluidVoice</a><span class="lang">Swift</span></div>
+      <div class="stars">★★★★☆ <small>+836 today</small></div>
+    </div>
+    <div class="oneliner">macOS 最快的「完全離線」語音轉文字聽寫工具，全本機運算。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">Eos（自動化）／Iris</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-y">中高</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">參考 project（App）</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-ref">參考</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">業務員現場拜訪語音建檔、理賠電訪錄音轉逐字——「離線本機」正好避開把客戶個資送上雲端的合規風險，是 InsurTech 場景的加分點。</div>
+  </div>
+
+  <!-- A5 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/soxoj/maigret" target="_blank">soxoj / maigret</a><span class="lang">Python</span></div>
+      <div class="stars">★★☆☆☆ <small>+191 today</small></div>
+    </div>
+    <div class="oneliner">用一個用戶名，從 3000+ 網站蒐集個人足跡（OSINT 工具）。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">Vena（法務 / 資安）</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-m">中（雙刃）</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">參考 project</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-skip">不裝</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">概念上對反詐欺／承保盡調／KYC 有啟發，但直接拿來查客戶＝高個資與合規風險，台灣個資法下不建議實作；列為「知道有這工具」即可。</div>
+  </div>
+
+  <!-- ============ B 組 ============ -->
+  <div class="section-title"><span class="tag">B</span>Claude 生態 Trending Top 5</div>
+  <div class="section-desc">來源：GitHub Search API（topic:claude-code / claude-skills / claude-code-plugin），依 stars 由高到低，已去除與 A 組重複。</div>
+
+  <!-- B1 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/affaan-m/ECC" target="_blank">affaan-m / ECC</a><span class="lang">Claude harness</span></div>
+      <div class="stars">★★★★☆ <small>⭐ 高人氣</small></div>
+    </div>
+    <div class="oneliner">Agent harness 效能優化系統：skills、instincts、memory、security 與 research-first 開發。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">Calliope（整合）／全體</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-y">中高（間接）</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">Claude skill / harness</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-ref">參考（可選裝部分）</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">記憶 + 安全 + 紀律化開發的整套框架，剛好對應我們已有的記憶／loop-guard 治理需求；可挑「security / memory」模組借鏡，不必整包吞。</div>
+  </div>
+
+  <!-- B2 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank">multica-ai / andrej-karpathy-skills</a><span class="lang">CLAUDE.md</span></div>
+      <div class="stars">★★★★★ <small>⭐ 高人氣</small></div>
+    </div>
+    <div class="oneliner">一份 CLAUDE.md，依 Karpathy 對「LLM 寫程式常見陷阱」的觀察，改善 Claude Code 行為。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">全體 ／ Eos</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-m">中（間接）</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">Claude skill（CLAUDE.md）</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-install">可採用</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">低成本、高槓桿——一份檔案就能拉高五姊妹整體輸出穩定度與少出包；建議擷取適用條目併入我們的 CLAUDE.md，再交 Evin 核可。</div>
+  </div>
+
+  <!-- B3 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" target="_blank">nextlevelbuilder / ui-ux-pro-max-skill</a><span class="lang">Claude skill</span></div>
+      <div class="stars">★★★★☆ <small>⭐ 高人氣</small></div>
+    </div>
+    <div class="oneliner">為多平台打造專業 UI/UX 的「設計智能」skill。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">Iris（視覺）</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-y">中高</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">Claude skill</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-install">建議裝（Iris）</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">投保流程頁、行動 App、理賠進度與財報視覺化最吃 UI/UX；Iris 直接受用，能提升客戶端體驗與轉換率。本日 B 組最該動手評估的一個。</div>
+  </div>
+
+  <!-- B4 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/thedotmack/claude-mem" target="_blank">thedotmack / claude-mem</a><span class="lang">Claude plugin</span></div>
+      <div class="stars">★★★★☆ <small>⭐ 高人氣</small></div>
+    </div>
+    <div class="oneliner">跨 session 持久記憶：擷取 agent 工作內容、用 AI 壓縮、下次自動帶回。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">全體 ／ Themis</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-m">中（間接）</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">Claude plugin</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-ref">參考（已有自製記憶）</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">我們已有 file-based 記憶系統；其「AI 壓縮 + 自動回填」做法值得比對，看能否補強我們的 MEMORY.md，但不急著換掉現有架構。</div>
+  </div>
+
+  <!-- B5 -->
+  <div class="card">
+    <div class="card-top">
+      <div class="repo"><a href="https://github.com/JuliusBrussee/caveman" target="_blank">JuliusBrussee / caveman</a><span class="lang">Claude skill</span></div>
+      <div class="stars">★★★☆☆ <small>⭐ 話題性</small></div>
+    </div>
+    <div class="oneliner">「why use many token when few token do trick」——用穴居人語氣砍掉約 65% token。</div>
+    <div class="grid">
+      <div class="kv"><div class="k">主場姊妹</div><div class="v">全體（成本）</div></div>
+      <div class="kv"><div class="k">保險科技幫助</div><div class="v"><span class="ins ins-n">低</span></div></div>
+      <div class="kv"><div class="k">類型</div><div class="v">Claude skill</div></div>
+      <div class="kv"><div class="k">建議</div><div class="v"><span class="verdict v-skip">不裝</span></div></div>
+    </div>
+    <div class="oneliner" style="margin-bottom:0;color:var(--muted);font-size:13.5px">省 token 但犧牲可讀性與精確度——財報數字、法務條文、對客文案這類「不能含糊」的場景完全不適用；當趣味與成本實驗看看就好。</div>
+  </div>
+
+  <!-- ============ 今日優先看 3 個 ============ -->
+  <div class="toppick">
+    <h2>🎯 今日優先看 3 個</h2>
+    <div class="tp">
+      <div class="num">1</div>
+      <div class="body">
+        <div class="nm">nextlevelbuilder / ui-ux-pro-max-skill<span class="src">B · Claude</span></div>
+        <div class="rs">Iris 可直接用於投保流程／App／財報視覺化，提升客戶端體驗與轉換，落地性最高。</div>
+      </div>
+    </div>
+    <div class="tp">
+      <div class="num">2</div>
+      <div class="body">
+        <div class="nm">altic-dev / FluidVoice<span class="src">A · GitHub</span></div>
+        <div class="rs">業務員現場語音建檔／理賠電訪轉逐字，且「完全離線」＝個資不出本機，最貼 InsurTech 合規。</div>
+      </div>
+    </div>
+    <div class="tp">
+      <div class="num">3</div>
+      <div class="body">
+        <div class="nm">multica-ai / andrej-karpathy-skills<span class="src">B · Claude</span></div>
+        <div class="rs">一份 CLAUDE.md 就能拉高五姊妹整體穩定度，低成本高槓桿；擷取適用條目併入即可。</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Themis 秉衡 📊 ｜ 羅賓斯科技財務分析 AI 代理人 · 自動產出於 2026-06-30<br>
+    資料來源：GitHub Trending（daily）＋ GitHub Search API（Claude 生態，依 stars）｜建議指數與保險科技評估為 Themis 機構視角主觀判斷，採用前請經 Evin 核可。
+  </footer>
+
+</div>
+</body>
+</html>
