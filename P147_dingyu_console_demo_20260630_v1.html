@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>P147 羅賓斯科技 × 錠嵂保經 Console Demo 會議紀錄 2026-06-30</title>
+<style>
+:root {
+  --navy: #0A1E3F; --navy-deep: #051435;
+  --gold: #C4972C; --gold-bright: #E8B73A;
+  --red: #D9382B; --green: #16844A; --ink: #121822; --ink-light: #394350;
+  --grey: #6B7280; --bg-soft: #F2F5FA; --bg-yellow: #FFF7E0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Source Han Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color: var(--ink); background: white; font-size: 15px; line-height: 1.75; }
+.page { max-width: 1080px; margin: 0 auto; }
+header { background: linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 100%);
+  color: white; padding: 32px 40px; }
+.chip { background: var(--gold); color: var(--navy); padding: 3px 12px;
+  border-radius: 14px; font-size: 12px; font-weight: 700; margin-right: 8px; }
+h1 { font-size: 28px; font-weight: 900; margin: 10px 0 6px; }
+.sub { color: var(--gold-bright); font-size: 16px; font-weight: 600; }
+.meta-bar { color: rgba(255,255,255,0.75); font-size: 13px; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.2); }
+.meta-bar strong { color: var(--gold-bright); }
+section { padding: 28px 40px; }
+section + section { border-top: 1px solid #e5e8ed; }
+h2 { font-size: 22px; font-weight: 800; color: var(--navy);
+  margin-bottom: 16px; padding-left: 12px; border-left: 5px solid var(--gold); }
+h3 { font-size: 18px; font-weight: 800; color: var(--navy); margin: 20px 0 10px; }
+h4 { font-size: 15px; font-weight: 700; color: var(--ink-light); margin: 14px 0 6px; }
+p { margin-bottom: 12px; color: var(--ink-light); }
+ul { margin-left: 22px; margin-bottom: 14px; }
+li { margin-bottom: 8px; color: var(--ink-light); }
+strong { color: var(--navy); font-weight: 800; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 22px; font-size: 14px; }
+th, td { border: 1px solid #d8dee5; padding: 10px 12px; text-align: left;
+  vertical-align: top; }
+th { background: var(--navy); color: white; font-weight: 700; }
+tr:nth-child(even) td { background: var(--bg-soft); }
+.action-item { background: var(--bg-soft); border-left: 4px solid var(--gold);
+  padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+.quote { background: var(--bg-yellow); border-left: 3px solid var(--gold-bright);
+  padding: 8px 14px; margin: 8px 0; font-size: 14px; color: var(--ink); border-radius: 3px; }
+.transcript { background: var(--bg-soft); padding: 20px;
+  border-radius: 4px; max-height: 900px; overflow-y: auto; }
+.transcript .line { display: flex; gap: 10px; padding: 4px 0; font-size: 13px; }
+.transcript .time { color: var(--grey); font-family: ui-monospace,monospace;
+  font-weight: 600; min-width: 60px; }
+.transcript .speaker { font-weight: 700; min-width: 70px; }
+.transcript .text { color: var(--ink); flex: 1; }
+.transcript .meta { font-size: 11px; color: var(--grey); padding: 6px 0; font-style: italic; }
+.tag-rt { background: var(--green); color: white; padding: 2px 8px; border-radius: 3px; font-size: 12px; font-weight: 700; }
+.tag-dy { background: var(--red); color: white; padding: 2px 8px; border-radius: 3px; font-size: 12px; font-weight: 700; }
+footer { background: var(--navy-deep); color: white; padding: 20px 40px;
+  text-align: center; font-size: 13px; }
+footer .sig { color: var(--gold-bright); font-weight: 800; font-size: 14px; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <span class="chip">P147</span>
+  <h1>羅賓斯科技 × 錠嵂保經 Console / OCR / RPA Demo 會議紀錄</h1>
+  <div class="sub">2026-06-30 · Console 系統 demo + 雙方需求對齊</div>
+  <div class="meta-bar">
+    <strong>主辦：</strong>羅賓斯科技 Matt（業務開發）<br>
+    <strong>客戶方：</strong>錠嵂保險經紀人公司 — 俊男協理 / Selly / Sandy / 其他同事
+    <br>
+    <strong>主題：</strong>Console 系統三大功能展示（OCR 保單匯入 / 廠代碼系統 / 車險核保 RPA 機器人 + 報價）
+    <br>
+    <strong>時長：</strong>約 89 分鐘｜
+    <strong>整理：</strong>Calliope 雅韻 🎭（Gemini 2.5 Pro × 4 chunks 並行 STT）
+    ｜ <strong>目標：</strong>2026 年底（115/12）完整 ready
+    <br>
+    <strong>tier：</strong>🟢 對外可分享（羅賓斯 × 錠嵂雙方對齊用）
+  </div>
+</header>
+
+<section>
+<h2>1. 具體行動（Action Items）</h2>
+
+<div class="action-item">
+  <strong>[Matt → CTO 確認 + 本週回覆]</strong> 預估 RPA 機器人 B2B 模擬業務員去爬報價（先抓 3 家：富邦 / 國泰 / 新光）+ SSO 串接 + 要保書產出之開發時間
+  <br><span style="font-size:13px;color:var(--grey)">時間：1:08:31 · Matt 承諾「我大概這禮拜給你回覆一個時間」</span>
+</div>
+
+<div class="action-item">
+  <strong>[Matt → 錠嵂 IT]</strong> 細部討論 SSO 串接技術細節（兩種狀況：完成 SSO 的辦公室 / 尚未 SSO 用一組帳密的辦公室）
+  <br><span style="font-size:13px;color:var(--grey)">時間：20:43 + 21:34 · 錠嵂目標年底 80-90% 辦公室 SSO 串好</span>
+</div>
+
+<div class="action-item">
+  <strong>[俊男 → 富邦]</strong> 持續對富邦施壓開放線上電子簽名或 MID 認證（俊男 has 已對富邦提出 MID 需求）；富邦目前每年 5 萬件以上車險保單、是錠嵂最大宗
+  <br><span style="font-size:13px;color:var(--grey)">時間：1:07:34 + 1:07:45 · 俊男「我們給他很大的壓力」</span>
+</div>
+
+<div class="action-item">
+  <strong>[錠嵂 → Matt]</strong> 提供以下需求細節：
+  <ul>
+    <li>OCR 匯入想保留 / 不保留之欄位清單</li>
+    <li>業務員資料同步機制（哪些業務員具招攬資格、能登入）</li>
+    <li>報價單留存期間（業務員使用習慣）</li>
+    <li>要保書送發方式（連結 / Email / 紙本 / 平台直接 forward）</li>
+  </ul>
+  <br><span style="font-size:13px;color:var(--grey)">時間：56:35 · 「我們先把需求確定這樣子、價錢老闆們去談」</span>
+</div>
+
+<div class="action-item">
+  <strong>[Matt → 錠嵂]</strong> 線上簽名與台產合作 case 分享（台產可接受線上簽名 + MID 認證）；建議錠嵂與羅賓斯共同努力推動其他產險公司開放線上簽
+  <br><span style="font-size:13px;color:var(--grey)">時間：1:03:38</span>
+</div>
+
+<div class="action-item">
+  <strong>[雙方共識 — 階段性執行]</strong> 不一次做完整個流程；初期聚焦「多家報價 + 取得要保書」、後續再延伸線上簽名 / 簡合套印；目標 2026 年底（115/12）整套 ready
+  <br><span style="font-size:13px;color:var(--grey)">時間：1:00:33 + 1:08:14 · Matt 建議分階段 + 俊男目標年底</span>
+</div>
+
+<div class="action-item">
+  <strong>[Matt → Selly 答疑]</strong> RPA 對 B2B 改版之 fallback 機制：每天預爬幾筆資料偵測介面差異、AI 機器人會 alert + 快速更新指令
+  <br><span style="font-size:13px;color:var(--grey)">時間：1:10:33-1:11:51</span>
+</div>
+
+<div class="action-item">
+  <strong>[商業條件 - 等需求盤點完]</strong> Matt 表示「先把需求盤點 → 估時 → 再談方案（依用量 or package 套組）」；錠嵂方表示「價錢由老闆談、Evin × 趙總層級」
+  <br><span style="font-size:13px;color:var(--grey)">時間：55:51-56:35</span>
+</div>
+
+</section>
+
+<section>
+<h2>2. 雙方需求表（Requirements Matrix）</h2>
+
+<p style="font-size:14px;">本表整合本次會議中雙方對齊之需求項目。<span class="tag-rt">羅</span> = 羅賓斯科技現有能力 / <span class="tag-dy">錠</span> = 錠嵂保經需求。標示「✅」表示雙方已對齊 / 「🟡」表示需後續確認 / 「🔴」表示尚待開發或外部依賴。</p>
+
+<h3>2.1  保單 OCR 匯入</h3>
+<table>
+<tr><th width="22%">項目</th><th width="38%">錠嵂保經需求</th><th width="40%">羅賓斯現況 / 共識</th></tr>
+<tr><td><strong>保單來源</strong></td><td>產險為主（壽險次之）<br>行政人員手動掃描 → 改為自動匯入</td><td>✅ 已支援產險、壽險、行照（30/60 日內限制）；20 頁以下 PDF 順暢辨識</td></tr>
+<tr><td><strong>辨識欄位</strong></td><td>客製化：需要哪些欄位保留 / 哪些不需要</td><td>🟡 待錠嵂主動告知欄位清單、羅賓斯客製設定</td></tr>
+<tr><td><strong>觸發時間點</strong></td><td>業務員交件當下即時匯入（行政不用再 key in）</td><td>✅ 已支援、業務員 / 助理皆可使用</td></tr>
+</table>
+
+<h3>2.2  廠代碼系統（車籍 + 車型查詢）</h3>
+<table>
+<tr><th width="22%">項目</th><th width="38%">錠嵂保經需求</th><th width="40%">羅賓斯現況 / 共識</th></tr>
+<tr><td><strong>車籍查詢來源</strong></td><td>同辦公室核保系統</td><td>✅ 監理所 + 保險公司同時串、撈回車籍 + 驗車 + 車險到期日</td></tr>
+<tr><td><strong>車型核對</strong></td><td>新保場景業務員辨識困難（保發中心多種車型）</td><td>✅ AI 推薦首選 + 候選車型清單；人工核對；報車體險時尤關鍵（重置價差大）</td></tr>
+<tr><td><strong>場景優先級</strong></td><td>新保 > 續保（續保影響較小）</td><td>✅ 設計上同方向</td></tr>
+<tr><td><strong>API 串接</strong></td><td>高頻使用希望 API 串</td><td>✅ 已有 API、可直接打回算出資料</td></tr>
+</table>
+
+<h3>2.3  車險核保 RPA 報價（核心新功能）</h3>
+<table>
+<tr><th width="22%">項目</th><th width="38%">錠嵂保經需求</th><th width="40%">羅賓斯現況 / 共識</th></tr>
+<tr><td><strong>多家同時報價</strong></td><td>初期 3 家：富邦 + 國泰 + 新光<br>後續可能再加</td><td>🟡 用 AI 生成 demo 介面、實作待 CTO 評估</td></tr>
+<tr><td><strong>業務員登入方式</strong></td><td>🟢 SSO 直接登入（目標年底 80-90% 辦公室串好）<br>🟡 部分辦公室仍需業務員帳密（過渡期）</td><td>✅ 兩種都可支援；SSO 最快、帳密次之</td></tr>
+<tr><td><strong>業務員資料</strong></td><td>需給保險公司業務員名冊（具招攬資格者）<br>富邦目前需先提供業務員資料才允許登入</td><td>🟡 串 SSO 後辨識業務員身份；或登入當下抓業務員資訊</td></tr>
+<tr><td><strong>報價速度</strong></td><td>「1 分鐘內知道答案」期待</td><td>✅ 模擬業務員爬 B2B、1-5 分鐘內三家報價回傳</td></tr>
+<tr><td><strong>方案調整</strong></td><td>業務員可改保額（200/400/超額等）</td><td>✅ 跟機器人下指令調整</td></tr>
+<tr><td><strong>報價單留存期間</strong></td><td>到期日為基準（如 7/15 到期、保留到該日）</td><td>🟡 依錠嵂業務員使用習慣決定</td></tr>
+<tr><td><strong>B2B 改版 fallback</strong></td><td>擔心 B2B 改版導致 RPA 失效</td><td>✅ 每天預爬幾筆偵測介面差異、AI 機器人 alert + 快速更新</td></tr>
+<tr><td><strong>穩定性</strong></td><td>核保 API vs B2B 穩定度</td><td>🟢 Matt 建議 B2B 模擬業務員 > 核保 API（B2B 本來給業務員用、保險公司會立刻修正）</td></tr>
+</table>
+
+<h3>2.4  要保書產出與簽署流程</h3>
+<table>
+<tr><th width="22%">項目</th><th width="38%">錠嵂保經需求</th><th width="40%">羅賓斯現況 / 共識</th></tr>
+<tr><td><strong>要保書格式</strong></td><td>電子 PDF（同各家 B2B 介面）</td><td>✅ 已支援、機器人爬下後可下載 PDF</td></tr>
+<tr><td><strong>送發方式</strong></td><td>業務員下載 → 紙本 / LINE / Gmail<br>偏好：可直接 forward 連結 / 輸入客戶 email 一鍵寄出</td><td>🟡 連結方式可開發、需 IT 確認；信件抬頭歸屬問題待釐清</td></tr>
+<tr><td><strong>線上簽名</strong></td><td>🔴 富邦 / 國泰目前不接受線上電子簽名<br>需傳統紙本本人簽名</td><td>✅ 台產可接受 + MID 認證；建議錠嵂共同努力推動其他產險公司開放</td></tr>
+<tr><td><strong>MID 認證</strong></td><td>俊男已對富邦提出 MID 需求、富邦態度保守</td><td>✅ 羅賓斯支援 MID（MID 驗證後甚至連簽都不用）</td></tr>
+<tr><td><strong>後補件流程</strong></td><td>保經可後補件、先繳費後簽名 / 送件</td><td>✅ 系統設計符合此流程</td></tr>
+</table>
+
+<h3>2.5  簡合 / 行政後端</h3>
+<table>
+<tr><th width="22%">項目</th><th width="38%">錠嵂保經需求</th><th width="40%">羅賓斯現況 / 共識</th></tr>
+<tr><td><strong>送件至保險公司</strong></td><td>過往行政每天 mail 送件、希望系統自動</td><td>✅ 已 API 串接、可自動傳輸至保險公司</td></tr>
+<tr><td><strong>狀態追蹤</strong></td><td>顯示「待傳送 / 已傳送 / 已承保 / 已退件」等狀態</td><td>✅ 系統已有狀態管理</td></tr>
+<tr><td><strong>特殊件處理</strong></td><td>客戶簽名簽錯需退回重簽</td><td>✅ 系統可退回客戶端重簽 → 重新送出</td></tr>
+<tr><td><strong>簡合套印</strong></td><td>線上簽完後簡合人員自動套印</td><td>✅ 系統支援、需保險公司同意</td></tr>
+</table>
+
+<h3>2.6  其他平台與商業條件</h3>
+<table>
+<tr><th width="22%">項目</th><th width="38%">錠嵂保經需求</th><th width="40%">羅賓斯現況 / 共識</th></tr>
+<tr><td><strong>跨裝置</strong></td><td>桌機 / 平板 / 手機都能使用</td><td>✅ 已支援、Sandy [22:04] 確認</td></tr>
+<tr><td><strong>商業模式</strong></td><td>「老闆會問價格」<br>趙總（錠嵂）× Evin（羅賓斯）層級談</td><td>🟡 等需求盤點完估時、再提方案（依用量 or package 套組）</td></tr>
+<tr><td><strong>合作模式</strong></td><td>趙總曾提及「投資合作」之可能</td><td>🟡 等本案 A 輪募資進度確定</td></tr>
+<tr><td><strong>時程目標</strong></td><td>2026/12（115 年底）整套 ready</td><td>✅ 雙方共識</td></tr>
+</table>
+</section>
+
+
+<section>
+<h2>3. 摘要（Executive Summary）</h2>
+
+<h3>3.1  會議背景</h3>
+<p>本次會議為羅賓斯科技與錠嵂保險經紀人公司之第二次 Console 系統 demo 會議（上次 demo 後重新開發版本之展示）。錠嵂方主要 stakeholder 為 IT/業務協理俊男、Selly（IT）、Sandy 及其他兩位新加入同事；羅賓斯方由 Matt（BD）主導 demo。本次 demo 之核心目的為：（1）展示 Console 三大模組（OCR / 廠代碼 / RPA 報價）；（2）對齊雙方需求；（3）排定後續開發時程，目標 2026 年底（115/12）整套系統 ready。</p>
+
+<h3>3.2  Demo 1 — 保單 OCR 匯入功能 [00:30 - 05:30]</h3>
+<p>Matt 展示「拖入產險保單 PDF → AI 辨識 → 結構化欄位顯示 → 確認後直接建檔到系統」之完整流程。關鍵 spec：20 頁以下 PDF 順暢辨識；產險要保書 5-10 頁、壽險較長；自動辨識欄位包括身分證字號、要被保險人、保險公司、險種、要保人、業務員、保單號碼、生效時間、保費；行照亦可辨識。客戶端使用情境：業務員交件當下即時匯入、行政不必再 key in。</p>
+<div class="quote">Matt [04:55]：「過往我自己之前碰到的狀況是說，我交件了，可是其實行政還要再打一次。那行政打，它一定是先掃描嘛，然後再去打一些關鍵的一些資料，譬如說聯絡方式啊、地址啊...有了這個方式之後，你就算行駕照它也可以辨識。」</div>
+
+<h3>3.3  Demo 2 — 廠代碼系統（車籍 + 車型查詢） [05:30 - 11:30]</h3>
+<p>Matt 展示「輸入車牌 + 身分證 → 同時撈監理所 + 保險公司資料」之車籍查詢功能。核心痛點：保發中心車型編碼眾多、AI 推薦首選 + 候選清單 + 人工核對之三層設計。錠嵂方關注：（1）「對業務員意義？」— Matt 回應主要用在報車體險（重置價差可達 298 萬，保費差異大）；（2）新保 vs 續保場景區辨 — 續保問題小、新保純手寫業務員辨識困難。羅賓斯亦有 API 串接版本可供高頻使用。</p>
+
+<h3>3.4  Demo 3 — 車險核保 RPA 報價（核心新功能） [11:30 - 19:50]</h3>
+<p>Matt 展示「AI 生成 demo 介面」之 RPA 機器人模擬業務員爬 3 家 B2B（富邦 / 國泰 / 新光）的流程。情境：以特斯拉 Model Y 為例，機器人依業務員權限登入各家 B2B、執行投保試算、產出要保書。結果呈現於統一介面：強制險 / 任意險 / 體傷 / 財損 / 超額 / 乙式車體險之三家報價對照表。錠嵂俊男肯定此設計能解決「業務員等多家窗口報價」之痛點（過往等 3-4 小時）。Matt 強調此 demo 為 AI 模擬展示、實作尚未完成、目的是先 align 期待方向。</p>
+<div class="quote">Matt [17:04]：「客戶其實他都在比啦，我相信他不會只問我們一個業務、他一定是會問了很多個業務。所以我們的重點就是，假設它的時間不管是一分鐘、五分鐘，或者是兩、三分鐘，它都很快速地把報價取回之後，我可以給客戶一個表、一看就知道說最優惠就是新光。」</div>
+
+<h3>3.5  深度討論 — SSO / 業務員資料 / 線上簽名 / MID [20:00 - 1:08:00]</h3>
+<p>會議後半段深度討論四大議題：</p>
+<ul>
+<li><strong>SSO 整合：</strong>錠嵂目標 2026 年底 80-90% 辦公室串好 SSO；過渡期部分辦公室仍需業務員帳密。Matt 確認羅賓斯系統可支援兩種模式（SSO 直登 / 帳密代登）。</li>
+<li><strong>業務員資料同步：</strong>富邦目前需先提供業務員名冊才允許登入；錠嵂表示業務員資料由內部產出、屬於合規之招攬資格清單。</li>
+<li><strong>線上簽名：</strong>台產可接受線上簽名（羅賓斯已落地）；富邦 / 國泰目前態度保守、仍需傳統紙本本人簽名。俊男已對富邦施壓開放 MID 認證（富邦每年錠嵂 5 萬件車險保單、最大宗）；雙方共識共同努力推動產險公司開放線上簽。</li>
+<li><strong>MID 認證：</strong>羅賓斯系統已支援 MID（MID 驗證後甚至不用再簽名）；俊男已對富邦提出 MID 需求、富邦態度保守、需給壓力。</li>
+</ul>
+<div class="quote">俊男 [1:07:47]：「（富邦）他現在是我們最大宗。一年有大概五萬件以上的車險保單、所以這個量很可怕。」</div>
+<div class="quote">Matt [1:03:38]：「現行的事務上、國泰富邦他們沒有辦法接受線上電子簽名、可是台產可以...這個我們是需要跟錠嵂一起努力、就是去跟保險公司談。」</div>
+
+<h3>3.6  商業條件討論 [55:30 - 56:40 + 結尾]</h3>
+<p>未知（疑為錠嵂同事）詢問費用模型，Matt 回應「先把需求盤點完 → 估時 → 再提方案（依用量 or package 套組）」；錠嵂方確認「價錢由老闆談、Evin × 趙總層級」、「我們先把需求確定這樣子」。Matt 提及趙總曾表示有「投資合作」可能性。雙方共識先聚焦業務需求對齊、商業條件分層處理。</p>
+
+<h3>3.7  時程共識 [1:08:14 - 1:09:50]</h3>
+<p>俊男明確要求 2026 年底（115/12）整套 ready；Matt 承諾本週給 RPA 報價開發時間預估。階段性執行原則：初期聚焦「多家報價 + 取得要保書」、後續延伸至線上簽名 + 簡合套印。</p>
+</section>
+
+<section>
+<h2>4. 完整逐字稿（89 分鐘 · STT 100% 真實版）</h2>
+<div class="transcript">
+<div class="line"><span class="time">00:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">沒有一位訪客。那我這邊會先進行一下那個，會議錄影，到時候方便產出那個會議記錄給大家。</span></div>
+<div class="line"><span class="time">00:06</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔，好啊，好啊，好。</span></div>
+<div class="line"><span class="time">00:08</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那我，我就先，呃，待會我主要兩個部分，就是第一個，呃，我會先展示目前有的保單管理系統，OCR 匯入保單的功能。</span></div>
+<div class="line"><span class="time">00:18</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">欸，Matt，對不起，打擾一下。它好像就是，因為我們兩位同事沒有聽過，沒有，完全沒有聽過，所以在講的時候就可能要請你，就是把整個輪廓稍微，稍微再說明一下這樣子。</span></div>
+<div class="line"><span class="time">00:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以，可以可以可以，好。那我，我待會啊，會主要進行兩個部分的展示，那這一個呢，console 系統是上一次給，呃，兩位同仁測試之後，我們再重新開發的部分。那一個呢，是保單管理的功能，那它有 OCR 匯入保單，就是說我們可以把，呃，保單，呃，像助理他們掃描的掃描檔，或者是說照片檔，可以很快速地把它匯進系統，讓系統去做管理。然後第二個部分呢，就是，呃，廠代碼的技術，就是我們可以透過車牌，呃，直接去串接保險公司跟監理站的車籍資料，然後獲取車主的像，呃，驗車時間或者是車險的到期日等等的，方便去做後續的續保通知。好，那第三個呢，就是我們即時有跟保險公司去串接，呃，核保報價的 API，所以我可以同時有多家的報價。那這個功能呢，因為上次有跟，呃，趙總還有俊男哥提到，就是後續啊，會用模擬業務員去登入各個 B2B，各個，各家保險公司的報價系統的方式去撈取他們的報價還有要保書。那我剛，我也用 AI 做了一個 demo，待會我也會展示給大家看這樣子。好，那，那我就先進行這個保單匯入功能的一個展示這樣子。</span></div>
+<div class="line"><span class="time">01:50</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">好，那，對不起，我可以，這個是用在什麼地，什麼，呃，時間點？</span></div>
+<div class="line"><span class="time">01:55</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">呃，譬如說你今天行政，假設說他有壽險保單或者是產險保單，啊因為我知道你之前有提到說你們有跟保險公司串要回拋資料嘛，但是也不是每一個，每一家都有串到，那產險也是，然後也不是每一個欄位都有串到。那現在這個功能就是說，我們既有的資料，過往可能是要透過行政去做登打，那我舉例就是我丟一個壽險保單進來。譬如說，丟一個，等一下喔。</span></div>
+<div class="line"><span class="time">02:28</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">今天可以用，全部用產險的角度看。</span></div>
+<div class="line"><span class="time">02:31</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以啊，那我，對，那我就先匯入一個產險保單，喔，假設這是富邦產的一個保單，這我自己的。好，那我丟進來之後呢，這邊已經有上傳的保單內容，然後我可以點選開始辨識。好，那這邊呢，一次它其實可以拖選多個檔案。那辨識完成之後，它就會像下方這樣，就是已辨識的檔案有哪些這樣。好，那它就會跑這個進度條。那這個我之前已經有丟過了，所以時間的關係，我稍微直接點辨識完的結果給大家看這樣子。</span></div>
+<div class="line"><span class="time">03:06</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">看起來蠻快，辨識的蠻快的。</span></div>
+<div class="line"><span class="time">03:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">它跑這個，稍等一下。對，那我講一下這個辨識喔，那它每次辨識是會有一個檔案數量的限制，但我們大概測過，基本上 20 頁以下的 PDF 檔，它都是能順利辨識完的。那產險保單不會像壽險那麼多，還有什麼財告啊，等等後面很多聲明事項，所以基本上 10 頁，甚至 5 頁可能產險要保書就掃完了，包含建議報告書、書面分析報告等等這樣子。好，那我們掃完之後呢，我們就點確認。好，那左邊呢，就是它接收了這個檔案的內容，那右邊就是它辨識出來的內容。那這邊辨識欄位呢，我們技術人員它設定是先把它所有重要的欄位辨識在右，右上方，譬如像是身分證字號、要被保險人、投保時間、好，保險公司，還有險種，好，要保人、業務員、保單號碼等等的。好，生效時間以及保費。那下面呢，下面這邊也是它全部辨識出來的內容，可是這些就是比較次要的資料，就如果有需要，我們再去做欄位的設定，要保留還是說可以去去做不要保留這樣，或者是由定律這邊主動告知說，有，我只需要哪些欄位就好，那我們就設計那些欄位是被保留下來的這樣子。好，那它辨識完沒有問題之後啊，我們右下方這邊，不好意思我打，這邊打叉。有一個確認並建立保單，我們點下去。好，那它就直接把剛剛辨識的那個保單匯進這個系統內了。那這邊系統到時候應該是可以談看怎麼串，如果有需要這個功能的時候，點開，那就是這個保單的內容這樣子。就不需要再去做人力做登打這樣子。</span></div>
+<div class="line"><span class="time">04:51</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">等於是業務員他在交件，交件的時候其實他就已經。</span></div>
+<div class="line"><span class="time">04:55</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。因為過往我們，我自己啦，我自己之前碰到的狀況是說，我交件了，可是其實行政還要再打一次。那行政打，它一定是先掃描嘛，然後再去打一些關鍵的一些資料，譬如說聯絡方式啊、地址啊，就是還是每一份都還是要花一些時間。那其實有了這個方式之後，你就算行駕照它也可以辨識。等於是我一份保單，要保書、繳費、呃，還有行照，還有，駕照，欸，投保的時候不用駕照，行照，所以這三個東西基本上它都可以掃進去這樣子，直接建檔到裡面。OK，那這是第一個保單管理的功能，其實最主要就是這個匯入保單的功能，然後還有就是可以針對保護去做保單的管理這樣子。好，那保單管理的功能主要是這個。那再來就是廠代碼系統。那這邊呢，我先，這邊的話我先跟大家分享一下，就是只要有車牌跟身分證字號，我們可以查詢到兩種的車籍資料。那我先拿一台車來做展示。</span></div>
+<div class="line"><span class="time">06:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">06:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那我這邊輸入車牌跟身分證字號，我勾選它的車籍跟驗車時間，還有保險到期日，我去點選查詢。好，那它現在呢，就會同時去串完監理所跟保險公司回傳，回傳回來的資料就在這邊。那像這個監理站的資料，這個就是我們去監理站撈回的資料，我把它放大一下。</span></div>
+<div class="line"><span class="time">06:39</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">跟辦公室查到，核保查到的是一樣的畫面。</span></div>
+<div class="line"><span class="time">06:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">是一樣的，是一樣的。如果核保要查這個的話，譬如說它的車號，還有就是車型、廠牌跟型號、出場年月，還有就是下次驗車時間。那其實驗車時間可能跟保險業務員比較沒有關係，那因為我們這個系統也有同時提供給車廠使用。那這個對於他們跟客戶的再行銷是有幫助的，就是他們會發個短訊或者是發個 LINE 跟客戶說，欸，那你什麼時候要驗車，要記得要注意時間，就是讓客戶覺得說我們都有在關心他的車子或者是保單的狀況這樣子。好。那再來就是說有一個車型的部分，因為車型啊，我們是去比對保發中心針對這台車它所給的一個編碼。但是保發中心呢，因為其實說真的，車型它有非常多種，所以我們把，為了，我們會挑出第一個用 AI 推算出來的可能車型的車種。但是跟實際上會不會有落差呢？還是有可能。那我們為了避免說車型如果有錯誤，我們會把它這一個相同車型的廠代碼後面的類似款式把它列出。那比對，最後還是要做一個人工核對啦。確認說車型它的實際上是哪一款車型的時候，再去做點選跟報價，那這樣就可以了。那這個功能呢，我們主要是給保險公司用，因為保險公司他們去撈之後，其實在車型的部分，他們不見得能完全撈到正確的。那我們把它列出來之後，就可以讓核保人員去做勾選，確認說哪一個車型是正確的車型這樣子。OK，那這個資料是會更新的，就是如果說監理站那邊有更新的話，我們重新再刷一次，它就整個資料會重新更新。</span></div>
+<div class="line"><span class="time">08:28</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是給辦公室用的，那對業務員來講它？</span></div>
+<div class="line"><span class="time">08:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我覺得對，對業務員來說的話沒有，因為我保單管理這邊其實已經有保險到期日了。那後續就是怎麼串自動通知的功能。</span></div>
+<div class="line"><span class="time">08:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">08:45</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">因為現在，對不起，我，我問的是，因為廠牌代號你剛才說的，跑出來一堆，那對業務員來講，他是，他會搞不清楚到底要選哪一個，很多都會搞不清楚啊。</span></div>
+<div class="line"><span class="time">08:55</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我們，我們下面這個車型有沒有，是讓他做一個核對的動作，因為假設我們今天去撈 B2B，譬如說業務員他自己去撈 B2B 對不對？其實他也要去確認說客戶的車型是哪一個。假設富邦，他去拿富邦的話，他也要使用這個點選車型的功能。那我們把所有正確的把它列出來，就是讓以利去他去做核對。我們選了這一個通常會是正確的啦，但是如果說他要再做一個確認的話，我們把所有可能的都列出，大家可以去選擇說哪些。</span></div>
+<div class="line"><span class="time">09:27</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以你可能要分新保續保來說明，對嗎？</span></div>
+<div class="line"><span class="time">09:29</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。對對對。</span></div>
+<div class="line"><span class="time">09:31</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">因為續保的問題比較小，它可以。</span></div>
+<div class="line"><span class="time">09:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">續保比較小，續保比較小。</span></div>
+<div class="line"><span class="time">09:35</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">新保對，純手寫的，他可能會搞不清楚嘛，因為一般人我都不知道。</span></div>
+<div class="line"><span class="time">09:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。那我們就是先把它根據它的車牌所撈出來的資料，預，預計有哪些，我們先把它列出。第一個是我們首選推薦的，就是說我們經過我們分析之後，它的年份啊，我們去篩選，去撈出說它可能的車型會是這一個。啊因為你最後要送出了嘛，業務員還是要做一個核對的動作。那如果說你發現不是上面這一款，你拿行照出來確認的時候，下面這邊其中有一款一定是在行照上的那一個，那你就選擇這一款就好。那通常什麼時候會要去用到這個功能？主要是要報車體險。因為你報車體險，它一定要核對重置價格。你看像我舉這一個為例，重置價格是 439 萬，可是你看喔，這邊有一款價差是 298。那它在車體險的保費的報價上就會有很大的差異這樣子，到時候保額也會有差異。所以我們這個算是一個優備啦，就是說讓它再確認說哪一款是正確的這樣子，對。好。OK，那再來的話呢，就是這個呢，是手動的部分，其實我們還有做到一個叫 API 串接，也就是當我們雙方發現說高頻率的使用登打實在是太麻煩了，其實我們可以用 API 去串接，然後讓系統直接打回去算出資料這樣，就不用再手動登打這樣子。好。然後再來是車險的報價，那這邊我先展示一下現有的這個功能。然後這邊我跟大家提醒一下，因為我們的車險的報價的部分啊，它一定是兩個月內，也就是 60 日內才有辦法提出這個車險的試算，那強制險是 30 日內，因為那是保險公司核保的的一個規定。那所以我們系統因為是串他們的核保系統，所以也有這個限制。好，那我現在先抓一台車。欸，我看一下這台車行不行，因為這台車好像也是今天或是昨天到了。</span></div>
+<div class="line"><span class="time">11:36</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">11:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這個如果不行的話，我就撈他昨天撈到的資料。</span></div>
+<div class="line"><span class="time">11:46</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">11:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，那我們這邊呢，有三個必填欄位，就是車號，然後還有身分證號，還有就是生日，我們點取得報價。</span></div>
+<div class="line"><span class="time">11:59</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">12:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">喔，那它這個應該超過續保時間。來，我這邊點一個之前撈得到的。</span></div>
+<div class="line"><span class="time">12:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">12:14</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸，我換一台車好了，稍等一下喔。</span></div>
+<div class="line"><span class="time">12:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">12:26</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">哎呀，我這，這兩台車好像剛好都有很快到了。</span></div>
+<div class="line"><span class="time">12:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">13:02</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">13:05</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸，剛好過。</span></div>
+<div class="line"><span class="time">13:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">13:09</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我用一個，我，我用一個我之前有先錄好的一個影片給大家看好了，等一下喔。</span></div>
+<div class="line"><span class="time">13:14</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">13:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">稍等我一下。</span></div>
+<div class="line"><span class="time">13:19</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">你現在做的還是之前，之前那個，用，跟辦公室串接的那個方式做，還是你要做，因為那天你講的說要用機器人。</span></div>
+<div class="line"><span class="time">13:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，用機器人去跑。我先展示給你先串報價，還是你要直接看用機器人去撈的？</span></div>
+<div class="line"><span class="time">13:36</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">因為這之前我們有測過啦，所以是不是就。</span></div>
+<div class="line"><span class="time">13:39</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">喔，這之前你們看過的是不是？那我就直接給你看未來如果用 RPA。</span></div>
+<div class="line"><span class="time">13:43</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">之前有給我們測啊。</span></div>
+<div class="line"><span class="time">13:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">它會是用什麼樣的方式。</span></div>
+<div class="line"><span class="time">13:46</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">13:47</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好嗎？</span></div>
+<div class="line"><span class="time">13:48</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">好，OK，好。因為，因為這個之前已經測試過了。</span></div>
+<div class="line"><span class="time">13:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好好好，OK，OK。那我分享一下這個畫面喔，稍等一下。</span></div>
+<div class="line"><span class="time">13:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">14:02</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我換，切換個畫面一下。</span></div>
+<div class="line"><span class="time">14:04</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">14:15</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，這個畫面看得到嗎？左上方有一個保險多平台。</span></div>
+<div class="line"><span class="time">14:20</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這個畫面。</span></div>
+<div class="line"><span class="time">14:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好。我先講一下喔，這個是我用 AI 生成的一個展示畫面，那我為了要，我說明一下說到底怎麼，機器人是去爬各家的那個 B2B 系統是怎麼進行的，所以我先用 AI 生成一個展示介面，這個還沒有實際做出來，但我要用這個跟你們核對說，這樣子的效果是不是未來我們期待業務員可以使用的方向，如果是，那我們就可以朝這個方向去做這樣子。好，那這個功能呢，就是如剛剛俊男哥所說的，我們模擬業務員，用一個機器人去模擬業務員，去假設抓三家的報價，就是國泰、富邦跟新光，就這三家。好，那我現在目前呢，請他抓的車子就是這個特斯拉 Model Y 的，好，這台車。那有車牌、有車主，還有這個重置價格。好，這都是 AI 假設的。那我現在讓它重新跑一下這個過程。好，那我點選之後呢，它就會去以業務員的權限去登入各家的 B2B 系統。然後它現在就開始在跑了。那輸入車主的資料，還有就是車籍的廠，車籍資料。好，那下面呢，就會去展示它的進度，就是說它目前到底現在是在爬哪裡，國泰在爬哪裡，富邦在爬哪裡這樣子，都看得到。那左下方這邊就是它的完整的，完成的百分比。好，右邊的話就是它目前的階段，好，現在正在串投保試算，那我們稍等一下。然後投保試算好之後，因為他們會有要保書的生成。好，那這個呢，就是透過機器人拉回來，重新整在一個介面上的呈現的結果。第一家就是國泰，那它幫我撈出了這台車，它的強制險、任意險的保費是多少，保費總額是多少。好，然後富邦產，保費總額是多少，新光產，保費總額是多少。好，那這邊業務員啊，我覺得 AI 這邊有一點小失誤啦，這邊的業務員其實它是每個都是同一人。</span></div>
+<div class="line"><span class="time">16:19</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對啊，我想說奇怪怎麼三個都都不一樣。</span></div>
+<div class="line"><span class="time">16:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對對對，那是 AI，因為 AI 它生成的時候，它有時候會誤解我的意思。但是我要講的就是說，它可以去登入同一個業務員的帳號，然後去進行各家不同保險公司的資料的取回。好，那這邊呢，我們就可以看到說，那它要，它請他報的方案是什麼呢？譬如說強制險，強制險這個沒問題嘛，基本都是這樣，那第三人，體傷、財損、超額、乙式車體險等等的。那三家報回來，其實這個就解決了業務員我們在等待窗口報價的問題。</span></div>
+<div class="line"><span class="time">16:59</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以這大概都在一分鐘之內就可以知道答案了。</span></div>
+<div class="line"><span class="time">17:04</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">沒錯，因為機器人去爬，欸，我先講一下，這個是我模擬的結果，就是說機器人它現在去爬各家。那重點就是我們要讓業務員不要浪費那麼多時間去等不同的窗口。嗯。因為你看喔，我們過往的經驗是什麼？我今天請國泰的業務，他如果快，他跟你說，喔，好，我幫你報。那通常等到他回傳要保書給你，是什麼時候？可能是三、四個小時之後。那如果今天是富邦，他可能會跟你說，可以啊，我現在開會，你稍等我一下。那新光可能跟你說，我現在在開車，我待會幫你處理。就是我們大家應該很常碰到這個狀況。嗯。那有時候客戶其實他都在比啦，我相信他不會只問我們一個業務，他一定是會問了很多個業務。所以我們的重點就是，假設它的時間不管是一分鐘、五分鐘，或者是兩、三分鐘，它都很快速地把報價取回之後，我等於是，我可以給客戶一看，甚至這個一個表，一看就知道說，喔，原來你幫我報了這三家，那，欸，我目前看起來其實最優惠就是新光。那，我們期待的是不是只有報價嘛，一定是那要保書呢？那我們再點選這邊要保書。假設這是一個汽車要保書的一個文件，那我們要去做下載的動作，這邊就有一個下載。那點選之後呢，它就可以去把這份要保書做下載這樣子。就是我們整個的呈現目標就是希望有一個業務員，我們去模擬業務員拿回報價、取回要保書之後，等客戶確認了，我就把那個要保書丟給他，那去做簽名。那未來就是如果線上簽名是 OK 沒有問題的，那我們甚至整個流程都線上簽名好。那簽名好，它是不是 PDF 檔會回傳嘛。回傳之後呢，又可以丟到我剛剛展示的那個 OCR 系統裡面。等於是你全程，你不用，如果需要送紙本的話，你再送紙本嘛，如果不需要，你直接進系統管理了，你完全沒有過人手送件這樣子。</span></div>
+<div class="line"><span class="time">19:10</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那，那這當中我們其實我們有比較好奇的是，它怎麼要，是不是要對，對接我們家的一些原來的系統流程，不然，欸。</span></div>
+<div class="line"><span class="time">19:19</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">是啊，如果說我資料要回拋，一定是要對接你原本的 CRM。然後還有，你看喔，我剛剛是不是有展示一個畫面是業務員，他需要去爬各家的那個，登入各家的畫面有沒有？那個也一定也是要業務員個別的去授權，授權這個機器人使用他的帳號去登入各家的 B2B 系統，才有辦法去做查詢報價、匯整的功能這樣子。</span></div>
+<div class="line"><span class="time">19:49</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">19:52</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">好，那我先了解說這樣子的功能，就俊男兄你看完之後你覺得，欸，這樣是不是確實解決了當初你提到的就是業務員他要多家窗口報價很麻煩的這個問題這樣。</span></div>
+<div class="line"><span class="time">20:04</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">我，我先提啦，其實那其他如果我們同事有問題，他們也可以直接提。</span></div>
+<div class="line"><span class="time">20:08</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以可以可以。</span></div>
+<div class="line"><span class="time">20:08</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">就是，呃，聽，就大致上，我，我沒有看得很細，就看，我只看大方向啦，就是這樣看起來就是很快就可以拿到報價。那因為其中很多很多的細節，比如說我要怎麼讓我們業務員去同意，他這個技術要怎麼弄，其實我，我，我現在不知道，因為一定要我們公司的 IT 參與。因為我們是一個，上次有講過，我們是有一個 portal，然後經過辦公室的 single sign-on 以後進去，或者是每個人，甚至有些辦公室其實他們還沒做 single sign-on 的時候，其實它是有另外一組帳號密碼的。</span></div>
+<div class="line"><span class="time">20:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯，OK。</span></div>
+<div class="line"><span class="time">20:43</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嘿，所以這個可能有兩種，現在目前有兩種不同的狀況，因為每個人合作的辦公室，就喜歡的辦公室不一樣，就每個辦公室跟我們串的的時間點不大一樣。但基本上到年底之前，我們希望到年底之前，我們大概有九，八九成的辦公室都串好了。</span></div>
+<div class="line"><span class="time">21:01</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔。</span></div>
+<div class="line"><span class="time">21:02</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這，這個可能會，我不知道是不是解決，是幫助你們比較。</span></div>
+<div class="line"><span class="time">21:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">喔，我懂你意思。呃，因為各家保險公司有的是開給你們有一個自動登入連結對不對？不用輸入任何帳密，就自動登入可以使用 B2B。</span></div>
+<div class="line"><span class="time">21:15</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那個是跟串，串接好 SSO 的。</span></div>
+<div class="line"><span class="time">21:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">OK，OK，OK。</span></div>
+<div class="line"><span class="time">21:18</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">的 code。另外一種是，一種是另外他們又有另外一組帳號密碼。</span></div>
+<div class="line"><span class="time">21:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就是他們只有頁面而已，沒有跟我們串，任何人串，所以辦公，業務員他是額外從連結進去的，到辦公室的 B2B 裡面去看的。</span></div>
+<div class="line"><span class="time">21:32</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">就現在目前有兩種狀況。</span></div>
+<div class="line"><span class="time">21:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我知道了。一個是 SSO 直接登入嘛，另外一個是保險公司還是給他一組帳密，然後從你們家自動，自己登進去，登打帳密進去對不對？</span></div>
+<div class="line"><span class="time">21:44</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">21:45</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">21:47</span> <span class="speaker" style="color:#7B1FA2">Sandy</span> <span class="text">Matt，我是 Sandy。</span></div>
+<div class="line"><span class="time">21:48</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸，Sandy。</span></div>
+<div class="line"><span class="time">21:49</span> <span class="speaker" style="color:#7B1FA2">Sandy</span> <span class="text">欸，你好。</span></div>
+<div class="line"><span class="time">21:49</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸，你說。</span></div>
+<div class="line"><span class="time">21:50</span> <span class="speaker" style="color:#7B1FA2">Sandy</span> <span class="text">欸，我請問一下這個介面，它是網頁還是 APP？還是它是，它是。</span></div>
+<div class="line"><span class="time">21:57</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">21:58</span> <span class="speaker" style="color:#7B1FA2">Sandy</span> <span class="text">是它的介面是什麼？</span></div>
+<div class="line"><span class="time">21:59</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我現在做的是網頁。</span></div>
+<div class="line"><span class="time">22:02</span> <span class="speaker" style="color:#7B1FA2">Sandy</span> <span class="text">是網頁，所以。</span></div>
+<div class="line"><span class="time">22:03</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">是網頁。</span></div>
+<div class="line"><span class="time">22:04</span> <span class="speaker" style="color:#7B1FA2">Sandy</span> <span class="text">手機、平板、桌機都可以使用。</span></div>
+<div class="line"><span class="time">22:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你，你看喔，你，我，我這邊給你看一下不同的那個頁面它長什麼樣子。這邊我可以選，我剛這個叫電腦，然後 mobile 就是手機。</span></div>
+<div class="line"><span class="time">22:16</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">有沒有，你看手機是長怎麼樣？</span></div>
+<div class="line"><span class="time">22:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">手機是長這樣。</span></div>
+<div class="line"><span class="time">22:18</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你看得到嗎？</span></div>
+<div class="line"><span class="time">22:20</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">可以可以可以。</span></div>
+<div class="line"><span class="time">22:21</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，所以這是手機的呈現的方式這樣。</span></div>
+<div class="line"><span class="time">22:26</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">啊再來就是平板是長這樣。</span></div>
+<div class="line"><span class="time">22:28</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">好，所以原則上它使用工具沒有限制。</span></div>
+<div class="line"><span class="time">22:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">沒有限制。那你你用 APP 有沒有，其實會比較麻煩，因為你還要開發，然後第二個是</span></div>
+<div class="line"><span class="time">22:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">還要上架，然後還有就是 APP 如果更新了有沒有，</span></div>
+<div class="line"><span class="time">22:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">還要去定期的</span></div>
+<div class="line"><span class="time">22:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就是要更新這樣子，就它整個流程會拉得更長一點。</span></div>
+<div class="line"><span class="time">22:48</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">好，我只是要確認一下這個</span></div>
+<div class="line"><span class="time">22:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">介面就對了。</span></div>
+<div class="line"><span class="time">22:51</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對對，這個介面跟一些設備的相容性。然後</span></div>
+<div class="line"><span class="time">22:55</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以的可以的。</span></div>
+<div class="line"><span class="time">22:55</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">業務員他在使用的時候，他需要登入帳號密碼嗎？</span></div>
+<div class="line"><span class="time">23:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">23:02</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這個會討論，這個會跟那個俊男協理提到的有相關，因為目前，因為不確定您這個是需要</span></div>
+<div class="line"><span class="time">23:09</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">輸入帳號密碼，假設這還沒有完全串接之前，是不是需要登入帳號跟密碼，才有辦法進去做使用？</span></div>
+<div class="line"><span class="time">23:19</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">呃，我我舉一個我們跟富邦打的例子喔，就是他們如果用用我們的功能啊，其實只要 SSO 那邊有串好，</span></div>
+<div class="line"><span class="time">23:28</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你不用帳號密碼也可以登。</span></div>
+<div class="line"><span class="time">23:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">串我們這邊是沒是這樣子，但是</span></div>
+<div class="line"><span class="time">23:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我們要進入 B2B 的時候有沒有，除非我們有先跟保險公司每一家都先講好就是說，</span></div>
+<div class="line"><span class="time">23:40</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">呃，</span></div>
+<div class="line"><span class="time">23:41</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你全部都開放 SSO 給我，那大家都不用登了，直接連 SSO 進去各家的 B2B 就好。那如果說，如剛剛提到的，有些同意 SSO，有些不同意 SSO，還是要用帳密，那就變成大家統一透過羅賓斯科技這邊，</span></div>
+<div class="line"><span class="time">23:59</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">有的我自動幫你用 SSO 流進去，有的你給我帳密，</span></div>
+<div class="line"><span class="time">24:03</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">然後我幫你用帳密，用讓機器人用你的帳密進去這樣子。</span></div>
+<div class="line"><span class="time">24:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就是不同的進去方式而已，但是都是用機器人去操作。</span></div>
+<div class="line"><span class="time">24:10</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以原則上是可以串 SSO 的？</span></div>
+<div class="line"><span class="time">24:13</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以，可以串 SSO 的。這樣子登入你會比較方便。</span></div>
+<div class="line"><span class="time">24:17</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">24:18</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">24:19</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">我們目前是希望朝 SSO 方向走，但譬如說在帳號設定這部分，原則上</span></div>
+<div class="line"><span class="time">24:27</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">24:27</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">假設我們公司有設定好 100 組業務員，他是具有招攬資格的，他可以進去好了。</span></div>
+<div class="line"><span class="time">24:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">24:33</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這個設置的前提需要把這些人的資料也一併提供給您嗎？您公司嗎？</span></div>
+<div class="line"><span class="time">24:41</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">24:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我看一下，欸我確認一下，你們 SSO，你們是創識嗎？</span></div>
+<div class="line"><span class="time">24:46</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">不是，是我們家自己的系統。</span></div>
+<div class="line"><span class="time">24:47</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">喔你們自己的是不是？</span></div>
+<div class="line"><span class="time">24:49</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。是完全是我們家系統。因為目前我們現在跟各家產險公司有有串接的有</span></div>
+<div class="line"><span class="time">24:56</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">有以下兩種狀況，第一個就是雖然有串接了，但是我們還是需要提供業務員的資料給產險公司，先讓他在他的核心系統裡面有資料，然後才可以</span></div>
+<div class="line"><span class="time">25:08</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">順利登入進去免帳密。那還有另外一家是，他完全可以吃</span></div>
+<div class="line"><span class="time">25:14</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">我們</span></div>
+<div class="line"><span class="time">25:16</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">在串接時候傳進去的業務員資料，然後不需要再另外，不需要再預先提供給這個人的資料，他可以直接接收每次傳輸的時候這個業務員的最新狀態。</span></div>
+<div class="line"><span class="time">25:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">25:30</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以</span></div>
+<div class="line"><span class="time">25:31</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，我了解一下。</span></div>
+<div class="line"><span class="time">25:32</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">不確定您公司可以採用的狀態會是什麼，因為這個也會</span></div>
+<div class="line"><span class="time">25:37</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">影響到一開始業務員就要需要使用的狀態，總公司需要做的行動這樣子。</span></div>
+<div class="line"><span class="time">25:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，這個我回去，我我確認一下。然後我我想一下喔，</span></div>
+<div class="line"><span class="time">25:49</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">如果是，欸但如果是即時登入，不需要提供業務員資料的話，應該不會有非業務員使用吧？因為這個對你們可能風險</span></div>
+<div class="line"><span class="time">25:59</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">不會，原則上假設我們要登入的時候，我們公司傳輸過去的業務員資料一定是我內部有</span></div>
+<div class="line"><span class="time">26:05</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">有確認過他是可以使用的，才會傳輸這些業務員資料過去，但</span></div>
+<div class="line"><span class="time">26:10</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">因為目前現行有些產險公司他不接受</span></div>
+<div class="line"><span class="time">26:14</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">傳輸的時候，他直接吃這些資料，他覺得還是會有疑慮，所以他還是要我們預先提供正確的業務員資料，先</span></div>
+<div class="line"><span class="time">26:23</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">放在他的系統裡，然後我們，他我們傳輸過去的時候，他會再做一次比對，欸確認</span></div>
+<div class="line"><span class="time">26:28</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他們家有，我們家傳輸過去這是 OK，他才會讓他登進去。</span></div>
+<div class="line"><span class="time">26:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯，我知道我知道。</span></div>
+<div class="line"><span class="time">26:33</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以不確定你們家</span></div>
+<div class="line"><span class="time">26:35</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">公司採用的方式會是什麼。</span></div>
+<div class="line"><span class="time">26:39</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">26:40</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我們其實之前都是配合保經啦，因為像我以富邦他們為例有沒有，他們那個時候就是</span></div>
+<div class="line"><span class="time">26:47</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">保險公司有要求他們必須要留一組名單在他們那裡，所以如同你提到的第一組方式。</span></div>
+<div class="line"><span class="time">26:54</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">就是要先提供名單過去。</span></div>
+<div class="line"><span class="time">26:55</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">其實那是因為保險公司要求的。</span></div>
+<div class="line"><span class="time">26:58</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">26:58</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我們一定，一定是你們怎麼樣最方便就配合你們。</span></div>
+<div class="line"><span class="time">27:02</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">但是如果今天是保險公司要求，這個就應該不是我們能控制。</span></div>
+<div class="line"><span class="time">27:06</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以萬一您今天要，機器人要去爬富邦產，因為像富邦產他目前現行是需要我們先提供業務員資料過去的。</span></div>
+<div class="line"><span class="time">27:15</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以</span></div>
+<div class="line"><span class="time">27:16</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我是怕，對，他就會要你。</span></div>
+<div class="line"><span class="time">27:17</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">在這樣子的狀態之下，就有可能還是需要先提供業務員資料過去給您系統，對不對？</span></div>
+<div class="line"><span class="time">27:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對對，因為你看喔，我我你把我想成是一個中繼站，我其實是幫大你們把所有的</span></div>
+<div class="line"><span class="time">27:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">的業務員資料都</span></div>
+<div class="line"><span class="time">27:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">傳輸過來之後，我模擬業務員，就是我就是各個業務員，去登各家的系統。</span></div>
+<div class="line"><span class="time">27:39</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那</span></div>
+<div class="line"><span class="time">27:40</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">如果</span></div>
+<div class="line"><span class="time">27:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">各家的系統是採用各個業務員的</span></div>
+<div class="line"><span class="time">27:45</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">B2B 帳號去做登入，</span></div>
+<div class="line"><span class="time">27:48</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">所以在他登入的當下，我就會辨識他是哪一位業務員，那就沒問題了。</span></div>
+<div class="line"><span class="time">27:53</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可是如果他是用 SSO，不需要任何的</span></div>
+<div class="line"><span class="time">27:57</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">帳號密碼登入，那他一定要有一個，先有一個稽核機制嘛，確認說</span></div>
+<div class="line"><span class="time">28:02</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你這邊資料送進來了，</span></div>
+<div class="line"><span class="time">28:05</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就是訂律的業務員這樣子。</span></div>
+<div class="line"><span class="time">28:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就一定要那間保險公司要先做一個檢核嘛。那如果這個保險公司他的檢核是比較嚴格的，如我們剛剛提到的，他需要有一個名冊，</span></div>
+<div class="line"><span class="time">28:15</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那我們可能就要提供給他。</span></div>
+<div class="line"><span class="time">28:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那這這個比較，我知道這個比較麻煩，因為變成要定期更新，譬如說有有加有退，</span></div>
+<div class="line"><span class="time">28:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就退你也不能讓他用，那有加你要幫他開，我知道這個會比較麻煩。</span></div>
+<div class="line"><span class="time">28:26</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那如果別家他是可以接受說，</span></div>
+<div class="line"><span class="time">28:29</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你不用給我名冊，你即時傳給我的資料，我就相信你這個資料是</span></div>
+<div class="line"><span class="time">28:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">他目前有業務員資格證的</span></div>
+<div class="line"><span class="time">28:37</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">人可以投保，那那那就沒關係。對啊，我覺得</span></div>
+<div class="line"><span class="time">28:40</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這變成是可能要看保險公司，當然我內部會再確認一下，就是說</span></div>
+<div class="line"><span class="time">28:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我的理解是這樣，那有沒有更快的方式是，我們可以跟保險公司討論說，</span></div>
+<div class="line"><span class="time">28:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">28:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我這邊是不是可以先幫保險公司這邊做第一關的把關？</span></div>
+<div class="line"><span class="time">28:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">譬如說有名冊，假設給我這邊是不是就可以了，我就幫你對過一次了這樣子。</span></div>
+<div class="line"><span class="time">29:01</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這個可能要跟保險公司溝通看看。</span></div>
+<div class="line"><span class="time">29:03</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">我了解。</span></div>
+<div class="line"><span class="time">29:04</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">29:05</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">然後剛才在報價的部分啊，</span></div>
+<div class="line"><span class="time">29:08</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸你說。</span></div>
+<div class="line"><span class="time">29:08</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">就是他有預先報價一些，譬如說任意險是</span></div>
+<div class="line"><span class="time">29:13</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">呃 300、600 這個部分。</span></div>
+<div class="line"><span class="time">29:16</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">29:16</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">假設他要調整的話，譬如說他想要改成 200、400，或者是增加一些超額，或者是</span></div>
+<div class="line"><span class="time">29:23</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">其他保險項目的話，它在哪個地方可以做調整嗎？</span></div>
+<div class="line"><span class="time">29:28</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">29:29</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這邊喔，剛好我這個沒有做這個功能出來，但你你把它想像其實就是機器人它就是用業務員的角度去操作 B2B。</span></div>
+<div class="line"><span class="time">29:37</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">29:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那你如果你操作完，他去操作 B2B 的當下可不可以變更？一定可以嘛。</span></div>
+<div class="line"><span class="time">29:43</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">29:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">一定可以變更，那可是因為我現在是用機器人去做，所以如果我要改呢，我就可能要再跟機器人講一次說，欸我看完了你的報價了，可是我想要調整保額。</span></div>
+<div class="line"><span class="time">29:54</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">所以我們會再做一個，你告訴機器人要再進去各家，再改一下保額，重報一次這樣子。我覺得比較有可能會偏向這樣，除非</span></div>
+<div class="line"><span class="time">30:03</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你在要報價那個當下，你就已經發現保額你要改了，那你一定是暫停他去撈嘛，趕快改保額重新撈這樣子。</span></div>
+<div class="line"><span class="time">30:12</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">不然他撈的速度它是很快，它是資料的串接嘛，你可能按完，你看我剛剛不到一分鐘它就把</span></div>
+<div class="line"><span class="time">30:19</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">保額這些他預訂的都撈出來了，那如果我要改的話一定是</span></div>
+<div class="line"><span class="time">30:23</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">再重，可能再重撈一次啊，</span></div>
+<div class="line"><span class="time">30:25</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">會比較方便也更快。</span></div>
+<div class="line"><span class="time">30:27</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">30:28</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以這個原則上是 default 的保險內容對不對？</span></div>
+<div class="line"><span class="time">30:31</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">呃，這邊是，我先講一下，這邊是 AI 產的預設。</span></div>
+<div class="line"><span class="time">30:36</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">30:37</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">預設的。</span></div>
+<div class="line"><span class="time">30:37</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">至於這個預設，我們要預設成什麼，還是我在介面上就讓你做一個</span></div>
+<div class="line"><span class="time">30:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以去變更的，這個我們可以討論。</span></div>
+<div class="line"><span class="time">30:46</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔了解。</span></div>
+<div class="line"><span class="time">30:47</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。就看實際業務員的實際使用需求，但我我的經驗啦，因為我自己也是</span></div>
+<div class="line"><span class="time">30:52</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">產險業務員出身，就是</span></div>
+<div class="line"><span class="time">30:54</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我的經驗是，基本上除非有特殊，我可能 90% 都是相同的內容。</span></div>
+<div class="line"><span class="time">31:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">31:01</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那我唯一要變更的就是那 10%，所以我們可以討論出一個</span></div>
+<div class="line"><span class="time">31:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">不管什麼業務員他來報，我可能給他的一個基本</span></div>
+<div class="line"><span class="time">31:10</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">款式是什麼，那以從這個基本款式去讓他減少他需要去變更方案的這種可能性這樣子。</span></div>
+<div class="line"><span class="time">31:18</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">31:20</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以目前這個它</span></div>
+<div class="line"><span class="time">31:22</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">產出來的話都是基本的款式嘛對不對？</span></div>
+<div class="line"><span class="time">31:24</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">基本款式，因為你看喔，我這邊車體，乙式車體、強制、體傷、超額，頂多這個電動車嘛，因為有這個電動車附加險，它基本上就是一個</span></div>
+<div class="line"><span class="time">31:35</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">蠻基本的款式，它也沒有任何其他的駕傷啊、道路救援啊等等的。</span></div>
+<div class="line"><span class="time">31:41</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。是。</span></div>
+<div class="line"><span class="time">31:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">31:44</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以假如他後續要調整的話，他要再做一次</span></div>
+<div class="line"><span class="time">31:49</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">報價的動作對不對？</span></div>
+<div class="line"><span class="time">31:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">呃對，也會蠻快的。那如果我們要改成說，能不能在這邊就改，</span></div>
+<div class="line"><span class="time">31:56</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">31:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我可能要跟 IT 討論一下，因為我們在我們的介面改，可是他沒有實際去撈資料回來有沒有，我怕保額會錯，保費會錯。</span></div>
+<div class="line"><span class="time">32:04</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">32:05</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為因為我改，等於我也要跟這三家保險公司講說，我保額改了，所以你保費要幫我重算一次，其實等於</span></div>
+<div class="line"><span class="time">32:13</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">重新要一次報價了。</span></div>
+<div class="line"><span class="time">32:17</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">32:18</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">像剛才有匯入他舊保單的狀態，假設他現在舊保單目前是 300、600 好了，</span></div>
+<div class="line"><span class="time">32:24</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">32:24</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他後來</span></div>
+<div class="line"><span class="time">32:25</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他他他現在覺得他自己狀態很好，他想改成 200、400。</span></div>
+<div class="line"><span class="time">32:31</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以這樣子在現在的模式狀態之下還是會跑成 300、600 對不對？</span></div>
+<div class="line"><span class="time">32:36</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">或者是說他現行是 200、400，</span></div>
+<div class="line"><span class="time">32:41</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">然後保單，舊的保單資料匯入進去之後，</span></div>
+<div class="line"><span class="time">32:45</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他現行狀態跑出來，還是不是還是</span></div>
+<div class="line"><span class="time">32:49</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">預設模式是 300、600？</span></div>
+<div class="line"><span class="time">32:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我我覺得我們可以切，就是一種是新保單，一種是續保件。</span></div>
+<div class="line"><span class="time">32:55</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">32:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">如果是續保件有沒有，</span></div>
+<div class="line"><span class="time">32:58</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">沒有意外的話啦，我的經驗是客戶其實能接受原條件續保，除非他有要加。那我們，因為我們後面不是有那個保單</span></div>
+<div class="line"><span class="time">33:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">工資的功能嘛，就是說我們保單已經匯入了嘛。</span></div>
+<div class="line"><span class="time">33:11</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">假設，我這樣回到那個頁面，稍等一下喔。</span></div>
+<div class="line"><span class="time">33:13</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">33:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我們這邊</span></div>
+<div class="line"><span class="time">33:19</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這邊是保單管理。</span></div>
+<div class="line"><span class="time">33:21</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">假設說我們剛剛匯入的是這張</span></div>
+<div class="line"><span class="time">33:25</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這張保單。</span></div>
+<div class="line"><span class="time">33:27</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">33:28</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">等一下喔。</span></div>
+<div class="line"><span class="time">33:29</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">33:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">富邦產的這張保單，那這張保單呢，我們在隔年</span></div>
+<div class="line"><span class="time">33:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">的 2 月 6 號之前，我們是不是會通知他續保？那其實方案也是這樣。</span></div>
+<div class="line"><span class="time">33:40</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">33:41</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那如果客戶他</span></div>
+<div class="line"><span class="time">33:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">有需要去做</span></div>
+<div class="line"><span class="time">33:46</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">重新報價的動作，我們再讓機器人去撈一個新的報價就好，如果沒有，</span></div>
+<div class="line"><span class="time">33:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">其實這一份文件，他給我們的續保文件有沒有，我們就直接續保就好了啊。</span></div>
+<div class="line"><span class="time">33:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你不用重新報價。</span></div>
+<div class="line"><span class="time">33:57</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">就依這個條件去跑那個報價資料出來。</span></div>
+<div class="line"><span class="time">34:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">了解。</span></div>
+<div class="line"><span class="time">34:01</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">34:02</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就不用那麼麻煩了，你甚至不用動機器人，你只要，因為我們那個</span></div>
+<div class="line"><span class="time">34:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">保險公司，他不是會給我們一份續保通知嗎？續保文件有沒有？我們就把那個續保文件，</span></div>
+<div class="line"><span class="time">34:14</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為我不確定你們現在續保文件是他回紙本給你們，還是他傳輸電子 PDF 檔到你們系統內？</span></div>
+<div class="line"><span class="time">34:22</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">目前是紙本的。</span></div>
+<div class="line"><span class="time">34:23</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">目前是紙本嘛，那</span></div>
+<div class="line"><span class="time">34:26</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">以後，我覺得可以想像兩種可能，第一個是保險公司通通都開放把他們的續保</span></div>
+<div class="line"><span class="time">34:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">資料傳輸到你們的資料庫內，那業務員他就會拿到這一個續保通知的電子文件。</span></div>
+<div class="line"><span class="time">34:41</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那這個電子文件呢，其實第一個我們就可以把它自動化做匯入了，然後第二個是電子文件 PDF 檔，我可以直接傳給客人通知他續保，那再來就是更理想就是線上簽名。那如果說還不行，</span></div>
+<div class="line"><span class="time">34:55</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">保險公司還是提供電子檔有沒有，那電子檔這邊</span></div>
+<div class="line"><span class="time">35:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">不用重新報價，因為你這個就是一份續保文件，我們只要寄給客人，</span></div>
+<div class="line"><span class="time">35:04</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">提醒業務員，提醒業務員就是去寄給客人，</span></div>
+<div class="line"><span class="time">35:09</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">通知他進行續保跟簽名、付款這樣就好了，不用重新報。</span></div>
+<div class="line"><span class="time">35:13</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">35:14</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">我了解。</span></div>
+<div class="line"><span class="time">35:15</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">35:16</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">除非他有需要重新報，那我們再幫他很快的用剛剛</span></div>
+<div class="line"><span class="time">35:20</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這個</span></div>
+<div class="line"><span class="time">35:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">多功能的這種自動化機器人的方式去幫他</span></div>
+<div class="line"><span class="time">35:26</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">35:27</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">RPA 機器人的方式去幫他爬，欸他需要幾家，像他剛剛是富邦嘛，他應該可能頂多再需要一家，譬如說國泰，那我就幫他多爬一個國泰，那這樣就可以了。</span></div>
+<div class="line"><span class="time">35:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">35:40</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">好，姐，請問這個報價單它可以</span></div>
+<div class="line"><span class="time">35:43</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">可以存續的期間是幾天？</span></div>
+<div class="line"><span class="time">35:45</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">35:46</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">可以存續的期間？因為譬如說報價單它都會有時效性嘛。</span></div>
+<div class="line"><span class="time">35:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">35:51</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那假設我今天 6 月 30 號跑出來，</span></div>
+<div class="line"><span class="time">35:54</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">然後就是跑</span></div>
+<div class="line"><span class="time">35:56</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">三家好，就如您現在現在系統上面三家好了。那我目前可能三家都</span></div>
+<div class="line"><span class="time">36:03</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">先保留著還沒有決定，</span></div>
+<div class="line"><span class="time">36:06</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他這個可以</span></div>
+<div class="line"><span class="time">36:07</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">因為譬如說他現在到期日是 7 月 15 號嘛，其實還沒有很久的時間。</span></div>
+<div class="line"><span class="time">36:12</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">36:13</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那這樣子的話，他這個系統介面的資料會可以留存多久？跟他的有效性時間？</span></div>
+<div class="line"><span class="time">36:20</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這個就看你你們的需求是什麼，因為</span></div>
+<div class="line"><span class="time">36:22</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這個我們可以提是不是？</span></div>
+<div class="line"><span class="time">36:23</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以提，因為這是我我幫你們撈回來嘛對不對？那撈回來，你希望留存多久給業務員看，就要你們決定了，因為我我不確定你們業務員的使用習慣或大多數業務員，我自己的習慣是我報價撈回來，我可能今天立刻就傳了。那</span></div>
+<div class="line"><span class="time">36:40</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我會給客戶，譬如說</span></div>
+<div class="line"><span class="time">36:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">日期假設</span></div>
+<div class="line"><span class="time">36:45</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">他是 6 月，7 月 15，那我可能在 7 月 15 以前我都會保留這份資料。那最後幾天的時候，我會再發個通知提醒他說，你是不是要趕快我要續保了，要幫你續保，你要趕快去繳費。</span></div>
+<div class="line"><span class="time">36:57</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那他繳完費之後呢，因為</span></div>
+<div class="line"><span class="time">37:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我記得保經是可以後補件嘛，就是說先繳費後補簽名，再送件</span></div>
+<div class="line"><span class="time">37:04</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">生效日還是可以回到繳費那一天</span></div>
+<div class="line"><span class="time">37:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">的那個生效日。</span></div>
+<div class="line"><span class="time">37:08</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">37:10</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">所以文件的保留上應該不用特地限時間吧，如果沒有特別需求的話。</span></div>
+<div class="line"><span class="time">37:16</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">37:17</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那產出要保書的這個部分啊，</span></div>
+<div class="line"><span class="time">37:20</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">37:21</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他可以是</span></div>
+<div class="line"><span class="time">37:23</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">紙本或者是</span></div>
+<div class="line"><span class="time">37:25</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是一個連結給客戶嗎？他他的那個方式</span></div>
+<div class="line"><span class="time">37:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">產出要保書的方式是什麼？</span></div>
+<div class="line"><span class="time">37:31</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">37:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">37:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸，我先，你們之前有用過那個富邦還是中信的那個 B2B 嗎？</span></div>
+<div class="line"><span class="time">37:40</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">37:41</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">有有有，有用過。</span></div>
+<div class="line"><span class="time">37:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">有用過喔，那你你把它想像就是我們是在操作那個介面，所以那個介面它會生成的東西就是一個電子的 PDF 檔。</span></div>
+<div class="line"><span class="time">37:50</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">一個電子 PDF 檔。</span></div>
+<div class="line"><span class="time">37:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，那那個 PDF 檔你要印出，你要印出來給業務，</span></div>
+<div class="line"><span class="time">37:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">其實這個應該是業務決定啦，應該是公司，因為畢竟每個業務的方式不一樣，還是業務要拿那個 PDF 檔直接傳給客戶，這個就是看業務員的選擇了。</span></div>
+<div class="line"><span class="time">38:06</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔好，所以它就是一個 PDF 檔這樣子。</span></div>
+<div class="line"><span class="time">38:09</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">38:09</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">然後下載下來，然後下載下來簽署，看業務員是要直接 forward 給客戶，或者是他下載下來去給找客戶嘛。</span></div>
+<div class="line"><span class="time">38:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，因為</span></div>
+<div class="line"><span class="time">38:18</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">看客戶，看業務員的性質，如果他今天是他可能要跟他去談其他的壽險保單，那我想他可能會親自拿過去。</span></div>
+<div class="line"><span class="time">38:26</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">38:27</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可是如果說客戶今天人在屏東，業務在</span></div>
+<div class="line"><span class="time">38:31</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">台中、台北，</span></div>
+<div class="line"><span class="time">38:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那他會不會特地跑這一趟，可能就要看他的評估。</span></div>
+<div class="line"><span class="time">38:36</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">搞不好他其實是寄給他，</span></div>
+<div class="line"><span class="time">38:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">然後就是線上請他簽一簽，或者是印出來，還是郵寄給他，就意思是一樣。</span></div>
+<div class="line"><span class="time">38:43</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯，了解。</span></div>
+<div class="line"><span class="time">38:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">38:44</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那他可以直接在這個系統然後 key 入那個</span></div>
+<div class="line"><span class="time">38:48</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">38:49</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">保戶的手機或是 email 直接 forward 出去嗎？</span></div>
+<div class="line"><span class="time">38:53</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你說直接傳輸出去，那，我想想看喔，</span></div>
+<div class="line"><span class="time">38:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你要直接寄出去的話，</span></div>
+<div class="line"><span class="time">38:59</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">39:00</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">你說我</span></div>
+<div class="line"><span class="time">39:01</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">目前現行，目前現行</span></div>
+<div class="line"><span class="time">39:02</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我這邊幫他寄嗎？</span></div>
+<div class="line"><span class="time">39:03</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">不不不，譬如說現行的各家 B2B 它就是產出一個檔案嘛，PDF 檔，然後業務員會下載下來。</span></div>
+<div class="line"><span class="time">39:10</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">39:10</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">下載下來之後他可能 Gmail 給他或是 LINE 傳給他。</span></div>
+<div class="line"><span class="time">39:14</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">39:14</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">的方式，或者是他自己印紙本下來。</span></div>
+<div class="line"><span class="time">39:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">39:17</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那您這個系統</span></div>
+<div class="line"><span class="time">39:19</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">下載檔案這樣聽起來應該是絕對沒問題，那有沒有可能就是</span></div>
+<div class="line"><span class="time">39:24</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他可以輸入客戶的 email，然後就</span></div>
+<div class="line"><span class="time">39:28</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">寄出去了，</span></div>
+<div class="line"><span class="time">39:30</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">或者是其他直接轉送出去的方式。</span></div>
+<div class="line"><span class="time">39:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我想想看喔，可是這樣子寄的話，會變成是用我公司這邊的 mail 幫他寄出呢，這樣子業務員 OK 嗎？</span></div>
+<div class="line"><span class="time">39:43</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">39:45</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為因為變成我要幫他寄，你是說我要幫業務員用他的信箱寄給客戶嗎？</span></div>
+<div class="line"><span class="time">39:50</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">不是不是，就直接用您的系統寄出去，因為像安達產的旅平險啊，</span></div>
+<div class="line"><span class="time">39:54</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">39:54</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">他可以直接</span></div>
+<div class="line"><span class="time">39:57</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">把要保書</span></div>
+<div class="line"><span class="time">39:58</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">39:59</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">直接，我我記得有一家他是可以直接，但我我不確定他發送出去之後他顯示的那個</span></div>
+<div class="line"><span class="time">40:06</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">40:09</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那個抬頭會是什麼，但我只是想說您這個可不可以直接就這樣 forward 出去，或者是給他一串連結，</span></div>
+<div class="line"><span class="time">40:15</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">然後我們就複製那個連結給客戶。</span></div>
+<div class="line"><span class="time">40:18</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">40:20</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">喔你的意思是檔案也不用下載了，你就給連結給客戶，讓客戶自己去打開。</span></div>
+<div class="line"><span class="time">40:24</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對，他點開之後就是一個 PDF，然後 maybe 客戶就他可以自己下載下來填寫了，有沒有這種就是我一件式就可以完成的事情？</span></div>
+<div class="line"><span class="time">40:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">40:35</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這個我可以跟 IT 確認一下，如果檔案我們這邊有取得，要怎麼呈現，應該是我們可以協助你看要怎麼呈現，但是我怕一件事啦，就是</span></div>
+<div class="line"><span class="time">40:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">40:45</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為有一些事情給業務員做還是有好處的，就是說</span></div>
+<div class="line"><span class="time">40:49</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">40:49</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">他可以知道這個是哪一個業務員通知他的。我我舉個例子喔，</span></div>
+<div class="line"><span class="time">40:55</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我系統假設給他，</span></div>
+<div class="line"><span class="time">40:57</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">但</span></div>
+<div class="line"><span class="time">40:58</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">如果他是</span></div>
+<div class="line"><span class="time">40:59</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">看得到是我羅賓斯科技這邊給他，可是他不知道是這位業務員，然後有其他業務員是親自拿給他，或者是用他的 LINE 傳給他，</span></div>
+<div class="line"><span class="time">41:09</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我怕那個業務員的客戶的感受會不太一樣。</span></div>
+<div class="line"><span class="time">41:13</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔，那您提到這個事情的話，那我再另外問一下。</span></div>
+<div class="line"><span class="time">41:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">41:17</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">現現行我們在打 B2B 產出的要保書裡面，它會帶入</span></div>
+<div class="line"><span class="time">41:23</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">在在要保書的下方會，它會帶入業務員的登錄證字號還有他的姓名。</span></div>
+<div class="line"><span class="time">41:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">41:30</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以原則上客戶萬一他文件弄散了，他還是會知道</span></div>
+<div class="line"><span class="time">41:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">41:35</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這件是誰，那不知道您這個系統，它產出之後</span></div>
+<div class="line"><span class="time">41:39</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">會不會有，有 mark 業務員的一些相關資料？</span></div>
+<div class="line"><span class="time">41:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">會。</span></div>
+<div class="line"><span class="time">41:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我我們</span></div>
+<div class="line"><span class="time">41:45</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">會不會是一個空白的？</span></div>
+<div class="line"><span class="time">41:46</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我跟，我的意思是說，</span></div>
+<div class="line"><span class="time">41:49</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你他就是跟你的業務員去登打 B2B 是一樣的，</span></div>
+<div class="line"><span class="time">41:53</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">所以產出的就會是那個業務員的登錄證字號，只是說我們讓機器人去做人業務員要做的事情，其他通通都沒有改變。</span></div>
+<div class="line"><span class="time">42:03</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">42:05</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">所以他產出的 PDF 檔上面的要保文件，還是會是登入帳號的這個業務員，他本身的登錄證字號這樣子，這是不變的。</span></div>
+<div class="line"><span class="time">42:14</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔，好。</span></div>
+<div class="line"><span class="time">42:15</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以文件上面還是會顯示</span></div>
+<div class="line"><span class="time">42:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">一定會有，一定會有。那我講的是寄送方式，就是說業務員他傳 LINE 給客戶，客戶一定知道是這位業務員傳給他了嘛，但是如果我統一都由系統寄，一定很方便，只是這樣子會不會對於客戶對業務員</span></div>
+<div class="line"><span class="time">42:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">提供文件的這個方式</span></div>
+<div class="line"><span class="time">42:35</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">42:35</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">是有幫助的，我覺得這個我們可以討論，但就是便利跟對業務員產生信任這件事情，我覺得可能要取得一個平衡。</span></div>
+<div class="line"><span class="time">42:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">不然其實你要全部都電子化是最好的，但是有時候業務員</span></div>
+<div class="line"><span class="time">42:48</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">在適時的碰個面、露個面、傳個訊息，我覺得他有，可能他有他的業務的需求在，這個就看</span></div>
+<div class="line"><span class="time">42:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我們可以討論，就看或者是你們收集業務員的需求確認後，喔不用，我就是需要全部電子傳輸，那我們就來進行看怎麼樣全部電子傳輸這個動作這樣子。</span></div>
+<div class="line"><span class="time">43:07</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">我了解。</span></div>
+<div class="line"><span class="time">43:08</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，因為這個可能有業務考量。</span></div>
+<div class="line"><span class="time">43:10</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">43:11</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">好的，所以</span></div>
+<div class="line"><span class="time">43:13</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">43:14</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">在簽名這個部分是檔案下來，然後提供給客戶簽名跟業務員簽名，還有我們公司簽署嘛對不對？</span></div>
+<div class="line"><span class="time">43:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">43:22</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">43:23</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">43:24</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">然後</span></div>
+<div class="line"><span class="time">43:25</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">繳件這個部分就是直接從我們公司繳件給保險公司嘛對不對？</span></div>
+<div class="line"><span class="time">43:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">沒錯沒錯，因為你要蓋你們的檢核章才能送出嘛對不對？我們這邊只是前端就是協助說取得報價、取得要保書，那後面呢，再進一步就是協助送出到客戶那邊，</span></div>
+<div class="line"><span class="time">43:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">用電子的方式，那到至於到後面，簽名回來，蓋檢核，業務員簽名，然後跟檢核章，這一定要有保經資格才有辦法做這件事情。</span></div>
+<div class="line"><span class="time">43:55</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">後端段就是收件的部分就是完全就是按照目前我們保經公司的作業這樣。</span></div>
+<div class="line"><span class="time">44:02</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，那其實，我不確定你們內部系統檢核章能不能用電子章蓋，</span></div>
+<div class="line"><span class="time">44:09</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為我不知道你們可不可以，</span></div>
+<div class="line"><span class="time">44:11</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">但是富邦我們有在討論把他們的檢核章用電子章蓋，</span></div>
+<div class="line"><span class="time">44:16</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">然後送出。</span></div>
+<div class="line"><span class="time">44:17</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">[停頓]</span></div>
+<div class="line"><span class="time">44:19</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">假如檢核章用電子章蓋，那前端的作業會是什麼？</span></div>
+<div class="line"><span class="time">44:25</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">就是在往前一點客戶簽署跟業務員簽署這個地方是</span></div>
+<div class="line"><span class="time">44:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我我先講一下，你是專業會議記錄員。</span></div>
+<div class="line"><span class="time">44:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你還記得之前我有給你們測試一個叫業務員 Power Up 的系統，有沒有？就是業務員可以出單，然後給保護簽名回來，到公司蓋簽署這樣子。那個系統它就是一個非常完整的全線上電子化的。我這邊登打完保單之後，客戶端呢，他只需要去做確認，個人資料的確認，然後線上的簽名，要保書就直接套印上去了。那再來呢，就是下一段就是業務員會上系統，點開這個電子檔，進行業務員的簽名，然後最後呢，就是公司的簡合章送出，簡合章蓋上去，簡合人員還是要做最後確認，確認這個案件沒有問題了，有業務員簽名了，簡合章簡合下去，然後送出。</span></div>
+<div class="line"><span class="time">45:20</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">然後就到保險公司去。</span></div>
+<div class="line"><span class="time">45:21</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">45:21</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這個線上簽名跟簽署這個作業的系統，</span></div>
+<div class="line"><span class="time">45:27</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">45:27</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是您公司的還是保經公司的？</span></div>
+<div class="line"><span class="time">45:31</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我我們開發的，我們開發給保經公司用的。</span></div>
+<div class="line"><span class="time">45:33</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">開發的，給保經公司用的。</span></div>
+<div class="line"><span class="time">45:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，但是保經是跟保險公司系統也有串接的，因為我們東西簡合要送出對不對？要保險公司跟保經公司這邊有一個約，就是其實原本就有約，只是換個方式是說我們幫你把資料線上傳輸過去。那我們目前是跟台產就是做這樣子。</span></div>
+<div class="line"><span class="time">45:57</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我我給你看一下，欸你說。</span></div>
+<div class="line"><span class="time">45:59</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這個線上簽署的使用的設備會限制是，因為這個頁面是網頁版嘛。</span></div>
+<div class="line"><span class="time">46:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">46:10</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">那假設要線上簽署的時候，線上簽名，這個系統會是呃一個另外的系統，還是一樣在這個頁面上面繼續做執行？</span></div>
+<div class="line"><span class="time">46:26</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">都是在這個畫面，只是我們在簽名的時候會跳我們另外一個簽名的，呃因為它還是要核對身份，只要輸入那個電話，然後收 OTP，就可以進入簽名的動作。</span></div>
+<div class="line"><span class="time">46:37</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我展示一下給你看好，你稍等一下喔，我展示一下給你看。</span></div>
+<div class="line"><span class="time">46:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">給你看一個。不好意思你稍等一下，我找一個之前有的。</span></div>
+<div class="line"><span class="time">47:03</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我這邊。我之前剛好都有錄起來，我覺得用錄影的方式我來解說會比較清楚一點。</span></div>
+<div class="line"><span class="time">47:20</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這邊你們看得到嗎？</span></div>
+<div class="line"><span class="time">47:22</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">可以可以。</span></div>
+<div class="line"><span class="time">47:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我用解說的。這個就是之前你操作那個系統，那業務員建單的部分啊，我們稍微後面，我先稍微跳一下喔。這邊就是假設以旅平險為例好了。</span></div>
+<div class="line"><span class="time">47:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我稍微跳一下。我們這邊點建立保單，然後我們輸入客人的身份證字號。</span></div>
+<div class="line"><span class="time">47:58</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，我們點建立保單。</span></div>
+<div class="line"><span class="time">48:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">稍微跳一下，它因為它一步一步講。</span></div>
+<div class="line"><span class="time">48:12</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">等一下，好，這邊是建立保單的動作，那之前你有選過嘛，就是選那個國家日期。</span></div>
+<div class="line"><span class="time">48:35</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我稍微這邊加速一下，我跳到那個客戶端那邊。</span></div>
+<div class="line"><span class="time">48:39</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，這邊有都建立了。好，那這邊呢就是登打要保人的資料。只要登打過一次之後系統就會有記憶。好，那再來看到就是這邊的報價喔。我們這邊的報價啊，其實是去撈台產的系統的。那後面呢，如果你們有需要說我要去以剛剛的機器人的那個方式去串三家兩家的報價，也是可以，那就需要一點時間。</span></div>
+<div class="line"><span class="time">49:12</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，那假設說我以一家台產的為例。</span></div>
+<div class="line"><span class="time">49:21</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">49:29</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，假設我們就隨便選了一個方案。</span></div>
+<div class="line"><span class="time">49:47</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這邊我稍微加速一下下。點選方案之後它就會有這個方案的細項，我們可以把它下拉。稍微加速一下，好，這邊呢就是業務員端。我們確認主被保險人的資料。</span></div>
+<div class="line"><span class="time">50:15</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，這邊我再稍微加速一下喔。好，OK。這邊啊，我們把整個業務員端的搬上線上之後有沒有，我們業務員端已經建立完保單之後，我們會提供一組連結，那這個連結呢有一點像你剛剛提到的 PDFTron 的簽名的部分，我們就會把這個連結直接傳給客戶，那客戶打開。</span></div>
+<div class="line"><span class="time">50:48</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">稍微我跳一下後面，看有沒有後面的畫面給你。</span></div>
+<div class="line"><span class="time">51:10</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸你稍等一下，不好意思，我直接開一個畫面給你看，讓你知道說它後面客戶端那邊會是長什麼樣子。</span></div>
+<div class="line"><span class="time">51:31</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我先切換個畫面一下喔，稍等。</span></div>
+<div class="line"><span class="time">51:47</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">不好意思我登一下系統，給我一分鐘。</span></div>
+<div class="line"><span class="time">51:49</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">慢慢來慢慢來。</span></div>
+<div class="line"><span class="time">51:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好。因為剛好這個是給富邑的夥伴們做的，所以我有一個測試的給你看。</span></div>
+<div class="line"><span class="time">52:53</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，這邊啊，是我們做，先做一個測試的版本給富邑的他們看，然後去確認有沒有符合業務員的實際需求。好，那我用一個建，我建一個單的方式給你看看看。那日期的話呢，因為保險公司他們這邊目前是 T+2 啊，但這個都可以加速，可以跟他們談。</span></div>
+<div class="line"><span class="time">53:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我先用我自己。</span></div>
+<div class="line"><span class="time">53:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我待會呢，主要展示的就是後面簽名的部分我們是怎麼解決的。</span></div>
+<div class="line"><span class="time">53:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，那先讓它跑出個方案。好，那假設說我選了一個這個豪華遊 992 的一天，好，看一下內容，沒有問題我就選。完之後呢，我就按確認，那它已經幫我把之前有的要保人資料都做登錄了。那這些欄位呢，我們目前還有再去做優化修改，有一些不必要的，就是可以做刪掉。那接下來我填的這邊呢就是 KYC，保險公司需要的，待會還會有書面分析報告，都可以全線上化。</span></div>
+<div class="line"><span class="time">54:16</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">54:27</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，然後這邊是書面分析報告。</span></div>
+<div class="line"><span class="time">54:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這邊呢，以後我們會改成就是預選欄位，這樣就不用這樣一個一個點。</span></div>
+<div class="line"><span class="time">54:49</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這邊以後也會自動帶入。</span></div>
+<div class="line"><span class="time">55:00</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">目前可以執行的商品就是車險跟旅平險對不對？</span></div>
+<div class="line"><span class="time">55:04</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，那目前旅平險的話，在這個系統上是旅平險，那如果你說剛爬那個報價有沒有，像是只要它 B2B 有開放旅平的，我通通也都可以幫你做。</span></div>
+<div class="line"><span class="time">55:19</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔了解。</span></div>
+<div class="line"><span class="time">55:19</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，所以只要 P2B 能串什麼，我們就用機器人去幫業務員撈，那這樣以後業務員只要下指令或點一鍵就可以了。</span></div>
+<div class="line"><span class="time">55:30</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">喔了解。</span></div>
+<div class="line"><span class="time">55:33</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">我可以問一下，它那個每串一次就是要收一次費用嗎？還是是說它是吃到飽還是，在時間內，多久時間內會算一次這樣子？</span></div>
+<div class="line"><span class="time">55:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你是指說 B2B 嗎？</span></div>
+<div class="line"><span class="time">55:45</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">55:46</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">串 B2B 不用啊，是我們，你是指說使用我們這個服務是不是？</span></div>
+<div class="line"><span class="time">55:50</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">對啊對啊對啊。</span></div>
+<div class="line"><span class="time">55:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我覺得這個可能等我們先把你們的需求先盤點出來，然後我們先確定說要花多少時間，再來討論方案，因為可能會依照說業務員的使用量，或者是我們可能討論是一個 package，一個套組方案，就是這個可能要確認一下你們需要的時間，我們整個修整完你們要的版本之後，我覺得再提價格可能會比較精確一點。</span></div>
+<div class="line"><span class="time">56:20</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">好，因為因為我們老闆一定會問這個問題。</span></div>
+<div class="line"><span class="time">56:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對對對，我知道我知道，對。其實那個什麼，趙總那一天都有說要那個可能是投資合作，所以我也不確定他們現在會不會有。</span></div>
+<div class="line"><span class="time">56:32</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">對，這個這個，因為你，你知道嗎？</span></div>
+<div class="line"><span class="time">56:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">56:35</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">我知道，因為價錢是當然是老闆們去談啦，那就是我們先把需求確定這樣子。</span></div>
+<div class="line"><span class="time">56:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">56:40</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，要先把需求跟我講，因為你你們跟我說你們需要什麼，像我剛剛大概有記錄，還有會議記錄，我才能知道說喔，那你們需要的可能主要是哪些，那我們就，我就跟 IT 討論說針對這些功能我們去做時間的就預估，大概需要多久，這樣子。</span></div>
+<div class="line"><span class="time">56:57</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這樣聽起來會很難嗎？因為我看有些已經都完整了，只是把它串在一起嘛。</span></div>
+<div class="line"><span class="time">57:01</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對啊，對啊，所以因為那個我們後來有改嘛，我們有改版本就是因為我們之前有討論，你看像這種，有的保險公司就會，就會那個，像現在就是台產可能有一些小問題，好，但沒關係，我這邊秀另外一個。</span></div>
+<div class="line"><span class="time">57:17</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">以後會經常遇到對不對？</span></div>
+<div class="line"><span class="time">57:19</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">台產不太，台產不穩的時候才會，才會這樣子，但其他家就不知道，B2B 不會啦，B2B 是串他們自己的就不會。</span></div>
+<div class="line"><span class="time">57:29</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">台產，所以你剛剛要的這些東西是跟他們拿費率的嗎？還是是說你到他們的 B2B？</span></div>
+<div class="line"><span class="time">57:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我我是跟他們的，不是，這個是我跟他們拿費率，不是到他們 B2B，可是如果到他們 B2B 一定是更穩。</span></div>
+<div class="line"><span class="time">57:41</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">喔了解。</span></div>
+<div class="line"><span class="time">57:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為到 B2B 等於是，我就是以業務員身份去報價了，我不是直接串他的核保系統，但是聽起來，對，你說你說。</span></div>
+<div class="line"><span class="time">57:48</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">57:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">就是我自己的經驗啦，我們發現喔，跟保險公司串核保的 API，它可以給你串，可是它的穩定性就必須很仰賴各家保險公司，可是如果我去串 B2B，它是更穩定，因為 B2B 它本來就是做給業務員去用的，所以說它有什麼狀況，它都可以立刻去做修正。</span></div>
+<div class="line"><span class="time">58:16</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">聽起來應該是這樣，對。</span></div>
+<div class="line"><span class="time">58:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對啊，這是我們的經驗，我們的經驗。</span></div>
+<div class="line"><span class="time">58:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這個是業務員，保護他簽完名之後有沒有，它會到我們一個後台來，那這個簽名的後台就是給業務員跟簡合人員去看的。譬如說簽名完之後會跳一個單號出來，保單號碼也會跳出來，這個保單號碼是真實的保單號碼，因為我們已經跟保險公司 API 串接了，那我點選，好，那這個這個剛才已經簽過了，那如果說是還沒簽的，我找一個，看有沒有，喔這邊有一個還沒簽的。喔這個過期了，好沒關係，看看，要被保，喔這邊有一個待業務員簽名，我點進去。</span></div>
+<div class="line"><span class="time">59:12</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">還沒付錢。但是大概會是這個畫面，點進去之後，</span></div>
+<div class="line"><span class="time">59:19</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">點進去之後會有一個，</span></div>
+<div class="line"><span class="time">59:20</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">59:21</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">另外的畫面讓它簽署這樣子。</span></div>
+<div class="line"><span class="time">59:22</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，這邊比較不好意思，這邊沒有展示出來，因為它前面沒付款，這是一個測試版。這邊會有一份要保書，然後要保書之後呢，右邊會有一個業務員簽名，點擊之後它就可以直接業務員簽名，簽完之後直接套印在這個要保書上了，所以我們現在所有的紙本作業，你可以想像，只要保險公司可以接受，或者是公司法尊這邊是 OK 的，它基本上全部都不需要有任何紙本的出現。因為包含到業務的，客戶的簽名，然後還有業務員的簽名，甚至最後我給你看簡合這邊。我這邊有一個簡合有沒有？</span></div>
+<div class="line"><span class="time">1:00:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">啊幹嘛，這個過。</span></div>
+<div class="line"><span class="time">1:00:12</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">了解，基本上它就是會顯示各個狀態對不對？</span></div>
+<div class="line"><span class="time">1:00:15</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">它會顯示各個狀態，如果還有就是，我們還有設定一些，如果它有特殊件，譬如說業務員發現客人簽名簽錯了，我們是可以退回的，就是退到客戶端，讓客戶重新簽，然後我們再送出這樣子。</span></div>
+<div class="line"><span class="time">1:00:32</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">了解。</span></div>
+<div class="line"><span class="time">1:00:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那這個就是，我必須講這是一個很完整很理想的整段，那當然它的時間就會拉拉得很長，所以我會，我會建議是說我們初期啊，我們先從拿到多家報價跟取得要保書這邊開始，然後後面我們都確認取得要保書都沒有問題，都是很順利的，業務員都很習慣這樣子幫他們寄出，呃給他們 PDF 檔的方式，因為以前是給紙本嘛，或者是說窗口報價也是給他 PDF 檔，那給他 PDF 檔，再幫他寄出，業務員都覺得哇，真的很方便，我們下一步再來繼續進行說簽名，甚至業務員線上簽名，甚至是簡合人員線上套印，我覺得都 OK。</span></div>
+<div class="line"><span class="time">1:01:22</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">了解，所以假設今天這張保單完成了，然後也提供保險公司也承保了，這個地方就會看到它的狀態是已完成之類的這樣對不對？</span></div>
+<div class="line"><span class="time">1:01:33</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這邊的保單狀態也會有更新嗎？</span></div>
+<div class="line"><span class="time">1:01:36</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你看喔，它這邊是，因為這邊是，我這這是測試環境，這邊是待傳送至保險公司有沒有，那我們正式系統上面會顯示已傳送至保險公司。</span></div>
+<div class="line"><span class="time">1:01:48</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">1:01:48</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">然後這邊就會有已傳送出的時間，那這個保單呢，就已經送至保險公司了，那以往我們行政作業是什麼？就是行政要要它送出嘛對不對？行政要每天每天送 mail 過去嘛，可是在這個系統上是不用了，它直接就傳輸過去了。</span></div>
+<div class="line"><span class="time">1:02:09</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">1:02:13</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">這個有點類似目前行動投保的部分，那因為目前現行行動投保，它還要簽署一份行動投保的同意書，我不知道這個作業之下有沒有需要另外簽署其他文件？</span></div>
+<div class="line"><span class="time">1:02:30</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸，我我講一下喔，這個啊，線上簽署的這個流程有沒有，你把它想像就是，它其實就是業務員簽名的動作，它不是行動投保，因為行動投保你還是要拿到客戶旁邊去給客戶簽，對嗎？行動投保是這樣。</span></div>
+<div class="line"><span class="time">1:02:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">行動投保是你拿平板去到客戶家或者是跟他約在哪裡，那他有一個簽一個行，行動投保聲明，之後再給他客戶又在平板上簽名，但是這一個系統，它是把業務員整個流程全部做成線上化之後，只要保險公司同意，你不用簽有任何聲明書，我們唯一要聲明的就是在我客戶登錄的時候會有個資同意，因為畢竟我們要使用到他的個人資料，那客戶會去做勾選，保險公司那邊也會有一些同意條款，勾選完之後就可以去做簽名、付款跟送出的動作。</span></div>
+<div class="line"><span class="time">1:03:32</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">所以假設保險公司同意的狀態之下，就不用再另外簽署其他文件。</span></div>
+<div class="line"><span class="time">1:03:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，但是這個，這個我要特別提醒喔，你看為什麼我們現在這邊是台產對不對？因為線上簽名這件事情，以現行的食物，我我覺得未來的，是需要跟定律一起努力，就是去跟保險公司談，現行的食物上，國泰富邦他們沒有辦法接受線上電子簽名，可是台產可以，所以我們串台產很順利就是因為，我們只要確認客戶簽名是他本人簽，再來業務員簽完，最後是經代的簡合章簽蓋完，送過去，他們是能收的，那這樣子就超級方便，你不用任何的聲明書，只要保險公司同意，它就認這張保單是真實成立的這樣子。</span></div>
+<div class="line"><span class="time">56:23</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">所以你剛剛說的富邦跟國泰，就是他要加上一個線上聲明書，他們才會願意接受是嗎？</span></div>
+<div class="line"><span class="time">56:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">沒有，我跟你講，他們目前還是偏保守，他們就是要看到你是本人簽名，真實的本人簽名這樣，他們不接受線上。你你今天就算 PDF 印出來給，他要的就是說，他要的很傳統啦，就是他要真實的，他不要線上簽名的文件啦，他要你送正本進去啦，他不接受你這個線上簽的方式。</span></div>
+<div class="line"><span class="time">56:56</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">好，因為因為這件事情其實我昨天有稍微跟他們的人稍微請他們去探聽一下，因為我就沒有講到我們這件事情啦，就是說我只是說，我現在公司內部正在研究一個電子線上的做法。</span></div>
+<div class="line"><span class="time">57:11</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">對，然後他據說他們內部要去討論，因為他們現在對於我，他們在服務上面其實他們已經打折了，就服務的水平上面啦，其實他們用以前都是用人嘛，我說好，我要解決你跟我們的問題，因為他們人常常找不到，所以我們業務員很多的抱怨。</span></div>
+<div class="line"><span class="time">57:27</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">喔真的喔？</span></div>
+<div class="line"><span class="time">57:28</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">57:28</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">還是找不到是不是？</span></div>
+<div class="line"><span class="time">57:30</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">不是，就是以前可能是一個鐘頭或兩個鐘頭就回了，現在是半天隔天才回，因為有些很急，這服務跟以前比它已經打折了，所以我一直跟他們高層要求這件事情，所以他們現在一直在開發線上很多東西，就是把他們附壽的東西拿給我們用，但是那個速度很很慢很慢，一直還是在抱怨。</span></div>
+<div class="line"><span class="time">57:55</span> <span class="speaker" style="color:#C2185B">對方</span> <span class="text">怎麼樣的東西？</span></div>
+<div class="line"><span class="time">57:55</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">是類似像 B2B 那種進階的？</span></div>
+<div class="line"><span class="time">57:57</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">應該這麼說，他們我們有很多業務員其實來自於富壽，那富壽他們有來反應說可不可以開放一些像他們富壽的一些一些，因為它屬於他們內部的登錄的業務員，所以他們可以直接開系統給他們用，但是我們外部通路不行。</span></div>
+<div class="line"><span class="time">59:14</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">喔是喔？</span></div>
+<div class="line"><span class="time">59:15</span> <span class="speaker" style="color:#666666">未知</span> <span class="text">當然啦當然啦，因為他們是登錄在他們家嘛，我登錄在定律啊，業務員登錄在定律嘛，所以這件事情，它一定會有的一些差異嘛，差別，所以我有請他說你們是現成的系統開放給我們就好，但是這個這個開放的速度超慢，因為我們其實已經講了，講了，講了快一年了，所以動作很慢，動作很慢，所以我們業務員現在的抱怨其實我常常接到，就是服務不，就找不來啦，態度很差。</span></div>
+<div class="line"><span class="time">1:06:48</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">他回應很</span></div>
+<div class="line"><span class="time">1:06:49</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">很不讓人家接受，所以這件事情所以我們給他很大的壓力。</span></div>
+<div class="line"><span class="time">1:06:54</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯哼。</span></div>
+<div class="line"><span class="time">1:06:54</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">我們給他很大的壓力，所以假設你，我我我就昨天就直接問了啦，說你這個部分可以解決，如果可以解決的話，其實對他們跟對我們都很好。</span></div>
+<div class="line"><span class="time">1:07:03</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">都很好啊，因為其實我們也也是可以確認是客戶本人簽喔，因為你看我發一封驗證信去給他，他要驗證完確認是他本人收到那個驗證碼，他才能登入去做簽名的動作。</span></div>
+<div class="line"><span class="time">1:07:17</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那如果說，因為現在保險公司，如之前Aven講的嘛，他們是MID認證嘛，如果他硬要到MID，那也沒關係，但是只要MID驗證後，甚至連簽都不用，因為MID就是確認是他本人了。</span></div>
+<div class="line"><span class="time">1:07:31</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">是。</span></div>
+<div class="line"><span class="time">1:07:32</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">連可能簽都不用，對啊。</span></div>
+<div class="line"><span class="time">1:07:34</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好，因為MID的部分我其實也有提出來。</span></div>
+<div class="line"><span class="time">1:07:37</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">1:07:38</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">我提出提出給富邦說，這這件事情看你們要到什麼程度，你要告訴我，我們再來往下走。</span></div>
+<div class="line"><span class="time">1:07:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:07:45</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">因為他現在是我們最大宗。</span></div>
+<div class="line"><span class="time">1:07:47</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">一年有大概五萬件以上的車險保單，所以這個量很可怕。</span></div>
+<div class="line"><span class="time">1:07:54</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對啊，就其實他們本來就應該要</span></div>
+<div class="line"><span class="time">1:07:58</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">我不知道，我不知道他們是卡卡在哪裡。</span></div>
+<div class="line"><span class="time">1:07:59</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">他們太大了，他們太大了。</span></div>
+<div class="line"><span class="time">1:08:01</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">太大他們會很小心。</span></div>
+<div class="line"><span class="time">1:08:03</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">他們要顧及很多很多的方面啦，所以，呃，沒關係，這個這個我們會去努力啦。</span></div>
+<div class="line"><span class="time">1:08:09</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，謝謝謝謝。</span></div>
+<div class="line"><span class="time">1:08:10</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">你只要告訴我們說你們現在什麼樣的方式都可以配合。</span></div>
+<div class="line"><span class="time">1:08:14</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">然後可以做到，然後在很短的時間內，我們是希望是，其實我對不起，因為我不知道現在要開發多少東西啦，我是希望說在今年年底之前，很多東西我們都可以ready，就是至少報價，報價聽看聽起來沒有很大的問題吧，對不對？</span></div>
+<div class="line"><span class="time">1:08:29</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:08:29</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">機器人這一塊應該沒有很大的問題。</span></div>
+<div class="line"><span class="time">1:08:31</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">報價這邊我大概可以給你一個預估時間，就是你確，我們可能SSO那一段，然後會議記錄這邊我確認一下，我大概這禮拜給你回覆一個時間說，假設這個PRA，我們各家的B2B，或者是先抓三家B2B，要去爬報價這件事情的話，我剛做成我剛剛那樣子的方式，大概會需要多久，我這這禮拜給你回覆這樣，那我先確認一下，我先對齊我們兩邊的需求是不是正確的，就是我會議記錄會後會再給大家，但我目前基本上聽起來就是說，呃，第一個就是業務員登入的方式，如果業務員可以用，呃，SSO的方式，然後不用給名冊，那這是最快的。</span></div>
+<div class="line"><span class="time">1:09:13</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那這是最快可以登入的方式，那登入好之後，透過機器人去爬各家的B2B，假設三家，爬下來，然後還要產出要保書。那要保書看是要給業務員或寄給客戶，這個我們就可以再討論，那整個的是這樣的流程，大概會需要多久的時間有辦法製造完成，還有就是，呃，抓下來的要保書嘛，因為畢竟那個資料要回等於要回存在定禦那邊啦，整個系統的這個串接，大概會需要多久這樣子，這個我會再跟CTO這邊確認，然後給你們回覆。</span></div>
+<div class="line"><span class="time">1:09:45</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">1:09:46</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那我們目標是年底，年底整個整個整個把它弄好這樣子。</span></div>
+<div class="line"><span class="time">1:09:50</span> <span class="speaker" style="color:#666666">未知女聲</span> <span class="text">那個Matt。</span></div>
+<div class="line"><span class="time">1:09:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸。</span></div>
+<div class="line"><span class="time">1:09:52</span> <span class="speaker" style="color:#666666">未知女聲</span> <span class="text">欸。</span></div>
+<div class="line"><span class="time">1:09:52</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">我想請教一下喔，我們剛剛想說你用機器人去爬各家的B2B啊，爬報價。呃，因為我不知道現在的RPA它怎麼樣去爬，就是說會不會是今天，假設今天半夜，呃，產險公司端的B2B改版，所以也就是今天的B2B跟明天的B2B的頁面上面某一些欄位，它稍微有點調整，那今天還可以用RPA爬，然後明天可能因為頁面的位置，某些欄位不太一樣，它就不能爬，就需要去RPA這邊就需要去調整，會不會有這個狀況？</span></div>
+<div class="line"><span class="time">1:10:33</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">如果，呃，你講的是B2B的改版嘛，對不對？</span></div>
+<div class="line"><span class="time">1:10:37</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:10:37</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">一般啊，像我自己是很少碰到了，富邦改版很少碰到，如果有有改的話有沒有，我們CTO他一定會去抓一個就是，因為系統其實一定會更新，各家更新的時間可能不一樣，他也不見得及時會去通知我們，那機器人去爬的時候，他一定會回饋給我們說，欸，你我今天抓的東西跟昨天是有不一樣的，那我們可以教，就機器人其實可以教，AI它很厲害，他可以去判斷說我給他的這個指令，假設是昨天的版本，跟今天有差異的時候，請你回報給我，那回報給我的時候，我們可以設定嘛，譬如說我每天就先讓它去預爬幾筆資料，那那個資料不見得是你們真實業務的，我的預爬是為了讓系統提早知道說，哦，現在系統有改哦，在凌晨的時候改了，那明天早上九點上班之後的業務員要爬的話，我可能要快速的一個機器人要去做更新，才有辦法去輸入新的欄位，去要到新的這個報價資料，說爬可能比較比較怪啦，應該說是模擬業務員去打報價這樣子，就是機器人去幫業務員打報價，把它想成這樣子會比較簡單一點。</span></div>
+<div class="line"><span class="time">1:11:51</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">因為我目前遇過說，如果是用RPA去爬網的話，假設網站，晚上的時候銀行他們就是改版，然後第二天RPA跑就會整個就是會異常。</span></div>
+<div class="line"><span class="time">1:12:04</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">1:12:05</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">就是要緊急找工程師處理，所以</span></div>
+<div class="line"><span class="time">1:12:08</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">這個，這個可能就是要看那個當初他們設計這個RPA的機制，正常來講應該是如果你爬到有異常，異於昨天，你可能會有一個定時，譬如說每個小時或一天什麼時候會去做爬，做這個模擬的動作，那你模擬的過程已經有出現異常了，正常是會回報給技術人員，在第一時間回報，其他的還沒用的時候，就已經先知道說他有異常，就會立刻去做更動。</span></div>
+<div class="line"><span class="time">1:12:36</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:12:36</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對，因為如你所說是真的，因為系統他什麼時候改，他可能在凌晨啊，我們我們不知道啊，人是不知道，但機器會知道。</span></div>
+<div class="line"><span class="time">1:12:44</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">1:12:45</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:12:46</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">1:12:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好啦，那應該看看還有沒有什麼其他的問題，因為我，我覺得這個會議我的主要目的是展示現有的功能，然後還有了解業務員的真實需求，因為我要確認好業務員，譬如說我剛剛的那樣子多加報價的方式，是業務員真正的需要，那我就會朝這個方向去，然後我把會議記錄整理出來之後，大概這一兩天我把會議記錄整理出來之後，再給大家看過，那大家確認一下沒有問題，我就可能會直接請CTO來評估預計要完成的時間，還有就是兩邊需要提供哪些資料，需要串接哪些資料這樣子，大概是這樣子，然後就會有一個預估的時程，那我預估時程我提供給，呃，各位同仁之後啊，那可能就可以請IT一同進來，就是重新估一下這樣的時間，兩邊如果要共同完成的話需要多久這樣子。</span></div>
+<div class="line"><span class="time">1:13:46</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好，因為我們資訊長是還沒有，他雖然在這個群組裡面，但是他還沒，沒有特，因為沒有特別注意這邊，就是那天老闆的決定，因為決定，其實我也蠻，我說怎麼那麼這麼快就做決定。</span></div>
+<div class="line"><span class="time">1:14:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">[笑] 他們來，我也不知道他們後來聊了怎樣，對啊。</span></div>
+<div class="line"><span class="time">1:14:03</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:14:05</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">所以，因為這個禮拜五我可能要把一些做一些簡單的報告跟結論給給趙總，所以說在會議記錄上面，就是您，那就麻煩您就可以盡快提供給我們確認。</span></div>
+<div class="line"><span class="time">1:14:18</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">1:14:18</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">然後那個那個估跟給CTO要看的這個部分，我就再看看有沒有機會在，就大象就好了，因為細象還沒談嘛，所以我覺得大大象的部分，就是時間表，我也一起提供給趙總知道，讓他知道說，欸，這個我們現在接下來這個合作案大概會有什麼樣的發展，然後我們會得到什麼樣的效果。</span></div>
+<div class="line"><span class="time">1:14:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對對。</span></div>
+<div class="line"><span class="time">1:14:43</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">因為因為我希望在業務員這一端，就是，呃，他可能在五分鐘之內或三分鐘之內就搞定了。</span></div>
+<div class="line"><span class="time">1:14:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">1:14:51</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">新新的或者是續，新保健跟續保健。</span></div>
+<div class="line"><span class="time">1:14:56</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">能夠在很短很短的時間做好，聽起來現在賢總可以，只要有B2B，然後他們B2B上面有報價功能的，就是車險、旅行險，然後有些保險公司是有簡單的住火險。</span></div>
+<div class="line"><span class="time">1:15:11</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:15:11</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">這都可以，就是可以做嘛，就是就機器人就可以做嘛，對不對？</span></div>
+<div class="line"><span class="time">1:15:16</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">你你你把它想像一下喔，B2B就是保險公司給業務員用的，至於他開放什麼險種，只要有開放，業務員能報的，機器人都可以模擬業務員去報。</span></div>
+<div class="line"><span class="time">1:15:29</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">所以</span></div>
+<div class="line"><span class="time">1:15:29</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">只要他保險公司有開放的，通通都可以。</span></div>
+<div class="line"><span class="time">1:15:32</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">就是你們不用特別去開發什麼程式來對應什麼樣的險種，都不用。</span></div>
+<div class="line"><span class="time">1:15:38</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">呃，我覺得我們到時候應該是會有一個機器的架構，就是說我教機器人，你是模擬業務員去報價，至於險種呢，我也會教他，我會告訴他說旅平險你需要打入哪些東西，車險你需要輸入哪些東西，如果這家保險公司有開放住火，甚至個商，我不確定個商有沒有，也可以去打住火跟個商。</span></div>
+<div class="line"><span class="time">1:16:02</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">OK。</span></div>
+<div class="line"><span class="time">1:16:03</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為我其實記得其實線上很多開放的，欸，我不確定定壽能不能打，但是我知道保障型那些是不行，但定壽能不能打，我不確定B2B有沒有。</span></div>
+<div class="line"><span class="time">1:16:16</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">車險的，我先講產險的部分，產險的部分就是旅平、車險，我目前看到是有，像中信這兩個險種都有，那富邦的話呢，我目前是看到應該是車險吧，旅平險我不確定他們有沒有開，這個可能要你們，你們接觸比較多家，如果有用過的話，可以再給我一些回饋這樣，哪些有開。</span></div>
+<div class="line"><span class="time">1:16:38</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">我們每一家我們都有做記錄了，我們都有權限可以處理，可以看啊，應該是我們還蠻完整的。</span></div>
+<div class="line"><span class="time">1:16:43</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">哦，可以啊，可以，如果如果那個俊男兄你這邊有一個表啊，可以讓我知道的話，這樣更好，這樣我們在機器人這邊就可以告訴他說，你要去爬哪幾家的時候，車險你可能我們就先掉哪幾家，旅平險是哪幾家這樣，就可以快速的去設定，讓他知道這樣。</span></div>
+<div class="line"><span class="time">1:17:01</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好，這個我們內部可以，可以簡單，其實我們有應該有現成的，然後我所知道的。</span></div>
+<div class="line"><span class="time">1:17:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，因為不然我也是要一家一家去問啊，一家一家去踹這樣子。</span></div>
+<div class="line"><span class="time">1:17:10</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">對對對對。</span></div>
+<div class="line"><span class="time">1:17:11</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，OK，那我就把會議記錄我大概這兩天給你，然後我看能不能趕週五之前就給你一個重點的，譬如說時程，然後接下來兩邊合作的內容，還有就是預計發展的那個結果，就是目標就是說讓業務員更快速的取得報價，還有完成新建投保跟續保這樣子，主要這幾個目的。</span></div>
+<div class="line"><span class="time">1:17:32</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">你之前所談的那個PowerUp那個部分啊，其實就是它只會慢一點，其實他們本來就是你們現有的功能，對不對啊？對吧？</span></div>
+<div class="line"><span class="time">1:17:40</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">那是我們現有的功能，沒錯，但是那個功能目前是否台產，就是只有台產有串這樣子。</span></div>
+<div class="line"><span class="time">1:17:47</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">因為他他們是可以接受電子簽名這一塊嘛，其他家是沒有承認嘛。</span></div>
+<div class="line"><span class="time">1:17:53</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">其他家我們一直在跟他們溝通，但是你也知道，就是保險公司他就是業績大，說話就大聲，所以就是</span></div>
+<div class="line"><span class="time">1:17:59</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">了解了解，對。</span></div>
+<div class="line"><span class="time">1:18:00</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">有有那個定律的聲音，他們會比較</span></div>
+<div class="line"><span class="time">1:18:03</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">了解了解了解，這也是為什麼要合作的原因啦，就是</span></div>
+<div class="line"><span class="time">1:18:06</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對啊對啊對啊，就是我們其實早就做出來在那裡了，只是就是等保險公司說OK，好，我們來串吧這樣子，對啊。</span></div>
+<div class="line"><span class="time">1:18:14</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">你們除了測試這兩家，還有哪，這三家還有哪幾家？</span></div>
+<div class="line"><span class="time">1:18:18</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">呃，富邦，新安，對，新安也在談，但但我跟你講一個，我講一個很現實啦，就是說即便他們的高層同意有沒有，IT也是取決於各家的能力。</span></div>
+<div class="line"><span class="time">1:18:32</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">這還要，還要另外開發是不是？</span></div>
+<div class="line"><span class="time">1:18:35</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">因為因為你看哦，沒有，我講的意思是有些IT是他們內部的，有些是外包的，譬如說像旺旺啊，華南，有沒有，他們即便他們是同意的，可是假設他們同意好了，可是他們的IT人員因為是外包，那一來一往的溝通，有時候就好幾個月半年就過去了，像像台產我們當初在跟他談，他們的副總同意，好，我們大家簽完約，然後到他們IT是內部的，那我們進行上就會比較快，對啊，IT，因為他們其實產險公司的IT又他們既定的排程，所以第一個一定是先打通上面，上面同意了，那就是壓他們IT把這個計劃往前排，那我們就可以趕快完成這件事情這樣，因為我們做好了，也要他IT可以去串接這樣子，才有辦法，對啊。</span></div>
+<div class="line"><span class="time">1:19:21</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好，這個這個問題我們這邊比較沒有那麼大。</span></div>
+<div class="line"><span class="time">1:19:24</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對啊對啊對啊，這個這個就是保險公司那邊一定需要就你們的幫忙這樣子，對，啊系統這邊我們可以完成。</span></div>
+<div class="line"><span class="time">1:19:32</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好，那接下來就是可能要跟我們的對，內部IT對接，那個</span></div>
+<div class="line"><span class="time">1:19:36</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">哦，沒問題。</span></div>
+<div class="line"><span class="time">1:19:37</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">哦，那個就會花一點時間。</span></div>
+<div class="line"><span class="time">1:19:39</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">會會會，我覺得那是必要的，因為我們先把業務員的需求，我這邊先跟你們這邊先整理好，那我們提給IT，再安排他們進行會議，我覺得這樣會比較有效率一點。</span></div>
+<div class="line"><span class="time">1:19:50</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好。</span></div>
+<div class="line"><span class="time">1:19:51</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">那Yihan跟Selly，你們也還有什麼什麼問題，可以直接，直接詢問的。</span></div>
+<div class="line"><span class="time">1:19:57</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以可以直接問我，或者是說留言給我，我都會看，然後我會去跟我們內部討論這樣子。</span></div>
+<div class="line"><span class="time">1:20:02</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好，因為我會我會可能會把我們兩位同仁也拉到那個原來那個群組裡面去了。</span></div>
+<div class="line"><span class="time">1:20:07</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以可以。</span></div>
+<div class="line"><span class="time">1:20:07</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">我們有什麼什麼樣的問題就直接在上面詢問，或是你回答的時候就不用再轉來轉去了。</span></div>
+<div class="line"><span class="time">1:20:13</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">尤其是業務員碰到的實際問題，就是大家，因為畢竟你們在，你們是業務員後面，馬上就會問你們嘛，那如果你們收集到的問題是這個系統其實已經可以解決的，那我覺是一個最好的見證啦，就是說我們可以做這個東西的功能，確實有解決到他的需要這樣，而不是我做了一個他不要的東西，那我覺得就會很花大家的時間跟資源這樣子。</span></div>
+<div class="line"><span class="time">1:20:39</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">了解了解，因為我們在另外一個體系，就是那邊大概有八九千人。</span></div>
+<div class="line"><span class="time">1:20:44</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">1:20:44</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">那個那個小白很多，所以這個勢必要非常friendly，就是他就是</span></div>
+<div class="line"><span class="time">1:20:50</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">對啊。</span></div>
+<div class="line"><span class="time">1:20:50</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">沒有用過的人還是會可以用，小白還可以用，這個很重要。</span></div>
+<div class="line"><span class="time">1:20:54</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">OK OK。</span></div>
+<div class="line"><span class="time">1:20:55</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">對。</span></div>
+<div class="line"><span class="time">1:20:56</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">會的會的。</span></div>
+<div class="line"><span class="time">1:20:56</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">Matt。</span></div>
+<div class="line"><span class="time">1:20:57</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">欸，你說。</span></div>
+<div class="line"><span class="time">1:20:57</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">我是Selly，不好意思，有關於這個作業流程啊，有沒有一個簡單的流程圖可以提供給我們參考？譬如，譬如先登錄或者是SO串接，然後再報價，然後取得要保書，然後轉發給客戶或業務員，有沒有這樣一個簡易的流程圖可以提供給我們參考一下？</span></div>
+<div class="line"><span class="time">1:21:20</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">可以，我我先把那個會議記錄產出，啊我先對一下我們兩邊的共識，就是說以後期待的流程是不是長這樣，如果是，我產出一個完整的流程圖給你這樣子，會比較精準一點。</span></div>
+<div class="line"><span class="time">1:21:33</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">好，沒問題。</span></div>
+<div class="line"><span class="time">1:21:34</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">沒問題，嗯。</span></div>
+<div class="line"><span class="time">1:21:35</span> <span class="speaker" style="color:#AD1457">Selly</span> <span class="text">嗯。</span></div>
+<div class="line"><span class="time">1:21:36</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，OK，那我就趕週五，我趕週五之前給你，就看能不能週四就趕給你，趕給俊男哥這邊。</span></div>
+<div class="line"><span class="time">1:21:42</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好，麻煩麻煩麻煩。</span></div>
+<div class="line"><span class="time">1:21:42</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">做個總結，好，謝謝你喔，那那如果沒有其他問題，我們今天會議就到這邊。</span></div>
+<div class="line"><span class="time">1:21:47</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">好的好的。</span></div>
+<div class="line"><span class="time">1:21:48</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，謝謝，謝謝大家。</span></div>
+<div class="line"><span class="time">1:21:49</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">謝謝，謝謝大家，謝謝，謝謝。</span></div>
+<div class="line"><span class="time">1:21:51</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">好，拜拜。</span></div>
+<div class="line"><span class="time">1:21:52</span> <span class="speaker" style="color:#1565C0">俊男</span> <span class="text">拜拜。</span></div>
+<div class="line"><span class="time">1:21:52</span> <span class="speaker" style="color:#2E7D32">Matt</span> <span class="text">拜拜。</span></div>
+</div>
+</section>
+
+<footer>
+<div class="sig">—— Calliope 雅韻 🎭 · 羅賓斯科技 報告代理人</div>
+<div>P147 羅賓斯科技 × 錠嵂保經 2026-06-30 · STT: Gemini 2.5 Pro × 4 chunks 並行 · SOP/04 4 段 + Matt 雙方需求表</div>
+</footer>
+
+</div>
+</body>
+</html>
