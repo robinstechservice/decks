@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Evin × David 顧問對談 · Voiss AI 合作策略會前會</title>
+<style>
+:root {
+  --navy:#0F1F4D; --navy-light:#1E3A6F; --gold:#E89E3F; --gold-light:#F2C28A;
+  --green:#2BA84A; --purple:#7C3AED; --ink:#121822; --ink-light:#394350;
+  --grey:#6B7280; --bg:#F8FAFC; --bg-card:#FFFFFF; --border:#E5E7EB;
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:0; background:var(--bg);
+  font-family:"Source Han Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",-apple-system,sans-serif;
+  color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.65; }
+.container { max-width:1100px; margin:0 auto; }
+.hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+  padding:40px 56px 32px 56px; color:white; }
+.hero-eyebrow { font-size:12px; letter-spacing:4px; color:var(--gold);
+  font-weight:600; text-transform:uppercase; margin-bottom:12px; }
+.hero-title { font-size:28px; font-weight:800; margin:0 0 6px 0; letter-spacing:-0.5px; }
+.hero-subtitle { font-size:15px; color:rgba(255,255,255,0.85); margin:0; }
+.hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15); }
+.hero-meta-label { font-size:10px; letter-spacing:1px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:4px; }
+.hero-meta-val { font-size:14px; font-weight:600; }
+.attendees-band { background:var(--bg-card); padding:18px 56px;
+  border-bottom:1px solid var(--border); }
+.attendees-label { font-weight:700; color:var(--navy); font-size:13px; margin-bottom:8px; }
+.speaker-chip { display:inline-block; color:white; padding:3px 12px;
+  border-radius:100px; font-size:12px; font-weight:600; margin-right:4px; margin-bottom:4px; }
+.att-detail { margin-top:10px; }
+.att-row { padding:5px 0; font-size:13px; }
+.att-name { font-weight:700; margin-right:12px; }
+.att-role { color:var(--ink-light); margin-right:12px; }
+.att-note { color:var(--grey); font-size:12px; }
+.section { padding:32px 56px; background:var(--bg-card); border-bottom:1px solid var(--border); }
+.section-eyebrow { font-size:11px; letter-spacing:3px; color:var(--gold);
+  font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+.section-title { font-size:22px; font-weight:800; color:var(--navy);
+  margin:0 0 16px 0; padding-bottom:8px; border-bottom:3px solid var(--gold); display:inline-block; }
+.summary-body { font-size:14px; color:var(--ink-light); line-height:1.75; }
+.summary-body strong { color:var(--navy); }
+.topics-list { list-style:none; margin:0; padding:0; counter-reset:topic; }
+.topics-list li { background:#FFFBEB; border-left:3px solid var(--gold);
+  padding:14px 18px; margin-bottom:12px; border-radius:0 4px 4px 0; counter-increment:topic; }
+.topic-title { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.topic-title::before { content:counter(topic) "."; color:var(--gold);
+  font-family:"Montserrat",sans-serif; font-weight:800; margin-right:6px; }
+.topic-time { font-family:"Montserrat",monospace; font-size:11px; color:var(--grey); margin-bottom:8px; }
+.topic-summary { font-size:13px; color:var(--ink-light); margin-bottom:8px; }
+.topic-quote { font-size:12.5px; color:var(--navy); font-style:italic;
+  border-left:2px solid var(--gold); padding-left:10px; margin:6px 0; }
+.action-table { width:100%; border-collapse:collapse; font-size:13px; }
+.action-table th { background:var(--navy); color:white; padding:12px 14px;
+  text-align:left; font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+.action-table td { padding:14px; border-bottom:1px solid var(--border);
+  vertical-align:top; color:var(--ink-light); }
+.ai-num { font-family:"Montserrat",sans-serif; font-weight:800;
+  color:var(--gold); font-size:20px; width:40px; }
+.ai-item { font-weight:600; color:var(--ink); width:55%; }
+.ai-owner { font-weight:700; color:var(--navy); white-space:nowrap; }
+.ai-deadline { color:var(--grey); white-space:nowrap; }
+.transcript { background:var(--bg); padding:20px 24px; max-height:800px;
+  overflow-y:auto; border-radius:4px; font-size:13px; border:1px solid var(--border); }
+.ts-line { padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.04);
+  display:flex; gap:10px; align-items:flex-start; }
+.ts-line:last-child { border-bottom:none; }
+.ts-time { font-family:"Montserrat",monospace; font-size:11px;
+  color:var(--grey); font-weight:600; flex-shrink:0; width:80px; padding-top:2px; }
+.ts-speaker { font-weight:700; flex-shrink:0; width:100px; }
+.ts-content { color:var(--ink-light); flex:1; line-height:1.6; }
+.notice-box { background:#FEF3C7; border-left:4px solid var(--gold);
+  padding:14px 18px; margin:16px 0; border-radius:0 4px 4px 0; font-size:12.5px; }
+.notice-box strong { color:var(--navy); }
+.footer { padding:18px 56px; background:var(--navy);
+  color:rgba(255,255,255,0.7); text-align:center; font-size:11px; }
+.footer strong { display:block; color:var(--gold); font-size:13px; margin-bottom:4px; }
+@media print { .transcript { max-height:none; overflow:visible; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">Evin × David 顧問對談 · Voiss AI 合作策略會前會</h1>
+  <p class="hero-subtitle">羅賓斯科技 Evin（CEO） × David（羅賓斯科技顧問）</p>
+  <div class="hero-grid">
+    <div><div class="hero-meta-label">日期</div><div class="hero-meta-val">2026-07-02</div></div>
+<div><div class="hero-meta-label">時長</div><div class="hero-meta-val">約 35 分鐘</div></div>
+<div><div class="hero-meta-label">主題</div><div class="hero-meta-val">Voiss AI 合作探尋</div></div>
+<div><div class="hero-meta-label">出席</div><div class="hero-meta-val">2 人</div></div>
+  </div>
+</div>
+
+<div class="attendees-band">
+  <div class="attendees-label">與會人員</div>
+  <span class="speaker-chip" style="background:#E89E3F">David</span> <span class="speaker-chip" style="background:#0F1F4D">Evin</span> <span class="speaker-chip" style="background:#0F1F4D">林奕帆 Evin</span>
+  <div class="att-detail"><div class="att-row">
+          <span class="att-name" style="color:#0F1F4D">林奕帆 Evin</span>
+          <span class="att-role">羅賓斯科技創辦人 &amp; CEO</span>
+          <span class="att-note">主持人 / 會議發起者</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#E89E3F">David</span>
+          <span class="att-role">羅賓斯科技顧問</span>
+          <span class="att-note">受邀提供建議者</span>
+        </div></div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 具體行動</p>
+  <h2 class="section-title">行動項清單（2 件）</h2>
+  <table class="action-table">
+    <thead><tr><th>#</th><th>具體行動</th><th>負責人</th><th>時限</th></tr></thead>
+    <tbody><tr>
+          <td class="ai-num">1</td>
+          <td class="ai-item">A 將 Voiss AI 的 Demo 影片發給 David 參考。</td>
+          <td class="ai-owner">Evin</td>
+          <td class="ai-deadline">晚間會議前</td>
+        </tr>
+<tr>
+          <td class="ai-num">2</td>
+          <td class="ai-item">A 與 David 晚間 6:30 共同出席與 Voiss AI 團隊的餐會。</td>
+          <td class="ai-owner">Evin, David</td>
+          <td class="ai-deadline">當晚 6:30</td>
+        </tr></tbody>
+  </table>
+  <div class="notice-box"><strong>備註：</strong>會議目的：Evin 向 David update 羅賓斯科技最新進度、介紹有潛力的新創 Voiss AI，並探尋兩家公司未來合作可行性；邀請 David 當晚 6:30 餐會共同出席評估。</div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 議題索引</p>
+  <h2 class="section-title">4 個關鍵討論主題</h2>
+  <ul class="topics-list"><li>
+          <div class="topic-title">Voiss AI 團隊現況與合作潛力</div>
+          <div class="topic-time">時間軸 02:22:00</div>
+          <div class="topic-summary">A 介紹晚間要會面的 Voiss AI 團隊，該團隊技術實力佳，但商業化與募資遇到瓶頸。A 認為這是一個合作契機，他的公司有客戶但技術待加強，對方有技術但缺客戶，雙方可以互補，甚至考慮併購或換股。</div>
+          <div class="topic-quote">「我覺得技術不錯，但是在台灣不好商業化變現。」</div><div class="topic-quote">「變成他變成內部到我這裡來，變我的 IT 好了，然後我拿他的技術跟我既有的通路去變現。」</div>
+        </li>
+<li>
+          <div class="topic-title">晚間會議目標與 David 的角色</div>
+          <div class="topic-time">時間軸 05:12:00</div>
+          <div class="topic-summary">A 說明晚間餐會的目的是深入了解 Voiss AI 團隊，並探索合作的可能性。他希望 David 能協助促進討論，將話題導向「A 公司出場景，Voiss AI 出技術」的合作框架，並評估對方的合作意願。</div>
+          <div class="topic-quote">「你大概是往，就是我們可以齊力的合作，就是定調應該就是我出場景，他出技術。」</div><div class="topic-quote">「幫我添個油，這個添個火吧，這樣子。」</div>
+        </li>
+<li>
+          <div class="topic-title">A 公司新平台「Console」詳解</div>
+          <div class="topic-time">時間軸 09:39:00</div>
+          <div class="topic-summary">A 詳細介紹自家新平台「Console」，說明其為了解決舊有 SaaS 平台過度依賴保險公司 API 的痛點而開發。Console 主要提供三大服務：1. 使用 OCR 進行保單數位化建檔。2. 透過 RPA 機器人自動抓取各家保險公司 B2B 系統的報價。3. 整合電信公司的 MID 服務，實現合法的數位簽署。此平台已成功簽下大型保經公司。</div>
+          <div class="topic-quote">「我們現在用 console，那他他是很快的把過去三年的經驗呢，就是我覺得 SaaS 好的東西全部都導到這個 console 站。」</div><div class="topic-quote">「這裡面我不要去串保險公司 API，我是跟保險公司要他的 B2B 系統。」</div>
+        </li>
+<li>
+          <div class="topic-title">合作模式與責任分工討論</div>
+          <div class="topic-time">時間軸 21:24:00</div>
+          <div class="topic-summary">David 提醒在合作中需明確劃分主次角色，避免「雙頭馬車」，並提前思考當合作結果不如預期時的責任歸屬問題。A 表示認同，並設定由自己的公司作為主導方（SI），Voiss AI 作為技術提供方。雙方也討論到 Voiss AI 目前以專案接案為主的模式，導致收款慢、利潤低，可能是其經營困境的原因。</div>
+          <div class="topic-quote">「一定要有一個主，一個次，否則這個合作就會很麻煩，變成雙頭馬車。」</div><div class="topic-quote">「當結果不好的時候，誰來誰誰誰必須要承擔這個責任呢？」</div>
+        </li></ul>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 會議摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body">本次會議由羅賓斯科技創辦人 Evin 主持，與顧問 David 進行 1 對 1 對談，目的有三：(1) 向 David update 羅賓斯科技最新發展進度（Console 平台、產險數位化、保經業合作），(2) 介紹一家有潛力的新創「Voiss AI」（工研院技術背景、AI 語音技術），(3) 探尋羅賓斯科技與 Voiss AI 未來合作的可行性，並邀請 David 於當晚 6:30 餐會共同出席、協助評估合作方向。<br><br>Voiss AI 現況：技術實力堅強（工研院背景），但在台灣市場的商業化與募資上遇到困難。羅賓斯科技擁有保險業客戶通路，但缺乏深入的 AI 語音技術。Evin 提出雙方可進行策略合作、甚至併購或換股的可能性，由羅賓斯科技擔任系統整合商（SI），導入 Voiss AI 的技術來服務現有客戶。<br><br>Evin 詳細介紹了羅賓斯自家新開發的「Console」平台，該平台透過 OCR、RPA 及 MID 技術，為保經公司提供保單數位化、多方報價與電子簽署等服務，已獲得遠見、錠嵂等大型保經公司的採用。David 提醒合作中需明確劃分主次角色，避免「雙頭馬車」，並提前思考責任歸屬。下一步是與 Voiss AI 團隊在晚間餐會上，深入探討「羅賓斯出場景、Voiss AI 出技術」的合作框架。</div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 完整逐字稿</p>
+  <h2 class="section-title">逐字稿（含時間軸）</h2>
+  <div class="transcript"><div class="ts-line">
+          <span class="ts-time">00:28:55</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸，哈囉 David。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:95</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">David 稍等我一下喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:781</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">David 聽得到嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:111</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">哈囉 David。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:851</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">你你麥克風。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:831</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">David 你的麥克風要開一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:32:741</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">哈囉 David。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:57:331</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">David 聽得到嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:08:311</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">喂，David。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:13:468</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">現在呢？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:14:428</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸，可以可以可以，有了有了，你把麥克風打開了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:17:428</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:18:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">嗨 David，在家？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:19:948</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯哼哼，你好，早。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:21:828</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，欸，就是晚上要碰面喔，我介紹那個，跟你討論這個，這個，這個團隊，他也是做那個，我覺得跟你之前待的那家公司做的東西很類似啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:38:188</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">他叫 Voiss AI。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:41:18</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:42:988</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">然後，我看一下喔，這家團隊，他的，他已經跟台灣的一些銀行在合作了，那，晚點我發他，他有一些 demo 給我，就是他現在主要有幾個產品，一個是 AI 的教練，那他這個 AI 的教練有賣到銀行，賣到和泰車吧，主要就是說用，他就做做一些資料庫嘛，RAG 等等之類的，然後讓和泰車的業務員可以直接跟那個 AI 教練就直接去去對話嘛，問他問題，那，或者是讓那個 AI 教練去扮演客戶啦，來反而反過來詢問業務員問題，那他們就可以做那種一對一的這種面對面的這種問答嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:32:218</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯哼嗯哼。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:32:778</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">這是一個，然後第二個，第二個產品是，我看到他給我的也有，也有客服，所以呢他也可以做 inbound，就是說假設某個產業有一些客服，他訓練他一些知識，那一個，比如說保險業好了，那保險業，保險業的保戶打電話進來問客服專業的問題或是他自己的這些個資等等，那他讓那個電話客服去去回覆啦，這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:00:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那我我覺得，我那天帶我們的團隊去跟，他們來拜訪我們嘛，所以看完之後覺得這個，這個團隊還蠻有 potential 的，然後語，語系也處理到國語台語，這樣子，所以英語多語系。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:17:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那，但，所以我我的想法就是說，那這個團隊現在在 pivot 啦，就是說，我覺得技術不錯，但是在台灣不好商業化變現，然後他在募資也募得比較辛苦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:35:188</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">然後我我上一次是跟他談說，因為，我跟他比較反過來，他有技術沒有客戶，那我反而是比較多的客戶，但是我比較，我的技術團隊現在沒那麼大，而且我也沒有語音的這些資源可以去投入，所以本來想說兩邊如果聊得 OK，我們可以開始一些策略合作，或者是一些股權交換等等，變成他變成內部到我這裡來，變我的 IT 好了，然後我我拿他的技術跟我既有的通路去變現，這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:11:158</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯嗯嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:12:938</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那這個是，可能他，他也沒有拒絕這樣的意向，所以我們晚上吃飯，我就想要多了解他，然後他也知道靈犀科技。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:25:218</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">是嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:25:748</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸他也知道，他也知道，他也知道。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:27:998</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，他也知道大陸做的，他可能自己去 Google 吧或或或怎麼樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:33:538</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">他沒有把那個，那兩個靈犀搞混掉吧？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:37:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">常常很多人都是這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:39:698</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸這我不清楚，但是同樣賽道的做這種，這比較怎麼講，語音，語音助理還是說，就是這個賽道的靈犀，他應該是跟他同個賽道的啦，所以他應該不會不會搞混。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:55:18</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">我不曉得喔，因為就算在，我建議你，你可以提前再跟他確認一下，就是，因為人家我們在打那個打字的時候，這個靈犀一打進去的，很自然就會出現心有靈犀那個靈魂那個靈，對，但是你知道我們公司那個靈不是，而且那麼那麼巧就是在大陸本來就有一個在杭州的靈犀科技。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:22:288</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:22:838</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對，就心有靈犀那個靈犀科技，他基本上他在做的是電商，他是屬於阿里系的公司，他跟我們在做的事情一點都都不一樣，一點都不一樣，對對對對，所以我建議你你你你提前還是跟他打個招呼，免得他到時候，對對對，我我的想法是這樣子啦，那如果他聽過我們公司的的話，那那那可以聊啊，可以聊，我們反正就作為一個交流嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:48:618</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對對對，我覺得今天主要是交流，然後你就幫我，我覺得因為你認識我比較久，所以事實上我約他吃飯，除了更認識他，我也帶有一個目的啦，就是我想要，他募資相對比較辛苦嘛，所以我我在這個階段可以去跟他有更深的這個併購啦、換股，我覺得這對我來講是個幫助，所以我帶有一些目的啦，那你就看看狀況，幫我添個油，油，這個，添個火吧，這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:19:18</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">你是想促成嗎？還是說只是在評估？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:23:448</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸，我還在評估，但是我覺得你，您您，如果今天出來，當然你有這方面的專業，本來你本業上互相交流，我也樂見。那假設呢，我們吃飯的時候後面如果有帶到說，欸，雙方怎麼進一步合作，你大概是往，就是我們可以齊力的合作，就是定調應該就是我出場景，他出技術，然後在這個框架下，我們可以往下怎麼走得更深入，那讓他更有興趣，這樣子我覺得這個，我這次吃飯主要的目的就是這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:56:698</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯，明白，明白。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:58:538</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對，那要談一些比較具體的，或者是一些那種，因為就是，就不談虛的吧，我的我的問題是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:07:618</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">不談虛，不不不，不一定。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:08:708</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對吧，不談虛的，那既然要談實的話，就是往合作的方向去談實實在在要去做的時候，那就要把很多可能未來會發生的一些合作上的的問題，大家都可以簡單的打開天窗就就聊一下嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:26:618</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，我覺得非常好，就是我們不會有具體數字啦，但是，就我比較想要知道他的意向，擔憂嘛，或者是期待這樣子，那對我我來講，我也他想要知道，畢竟合作他可能想要知道我這邊的期待嘛，跟那個框架、邊界，我們怎麼大概有個概念，那，反正今天吃飯算輕鬆，他也會帶他的創始團隊來，一個二對二這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:50:568</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">哦，OK，OK，好吧。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:52:438</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">二對二，就是你們公司？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:55:18</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">你你那邊就是？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:55:828</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我我我這邊就我跟你啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:56:718</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">就我們兩個？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:57:428</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，啊本來要帶 Roy 啦，但是 Roy 有晚上有事，啊我想說您您也很有經驗，啊我也一段時間沒看到你了，反正我們就一起吃個飯交流，我覺得都好啦，也沒有一定要促成什麼。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:10:448</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">但有有不錯團隊一起介紹給你認識啊，這樣，剛好又是你的本賽道。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:16:918</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:18:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對啊，那你呢？最近，最近在忙些什麼？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:24:818</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">沒有啊，就是還在搞那本書啊，還在跟編輯在校稿啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:31:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">正經事的話啦，正經事的話。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:33:518</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對啊對，還沒有什麼好辛苦，沒什麼好辛苦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:37:718</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那我我這邊就是，那我跟你 update 我我現在的狀況，你會比較清楚。就是，我們，這一兩個月呢，在利用的協助下，我們弄了，就反正也弄，再再弄了一個服務吧，弄了一個平台，對對標以前的那個叫 SaaS，我們現在用 console。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:00:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那他他是很快的把過去三年的經驗呢，就是我覺得 SaaS 好的東西全部都導到這個 console 站，那他現在是完整的，前中後台這些都已經完成了。那，我們，其實才一個月的時間拿 console 站去跟這幾個保經溝通，就已經簽約了一家遠，遠見保經，他有 1000 個業務員，然後錠嵂保經也很大嘛，這個，他們的這個總經理對這個系統，甚至是跟我們的投資啦，等於是他也要跟這次羅賓斯科技的投資，也很有興趣，所以我們我們現在就是，我覺得好，好消息就是說，有兩個，至少業務員都 1000 個以上的，然後來採用我們的這個 console 服務。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:49:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那 console 服務是什麼？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:50:608</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">是上次你說的那個嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:53:718</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，我沒有，我以前的叫 SaaS，就是說他他，就是兩個差在說 SaaS 要完成的是一個交易，然後呢他透過跟保險公司的 API 串接，要要整個從報價啦、出單啦的交易都在這個 SaaS 的這個站裡面，但是 SaaS 現在遇到很大的問題，我這兩年為了打這個系統花了，把我募資的錢都燒掉了，就花了大概應該三五千萬應該有。那最主要我認知到一件事就是說，因為他為了要跟保險公司串 API，所以我的決定權幾乎都在保險公司，舉例來講，保險公司說他沒空，我就我就涼涼，這樣子，所以一直以來就只跟一家保險公司叫台產，even 到現在這些 API 串接都還有一些問題啦，等，等等，就是你要跟保險公司串 API，第一個你要給他，你要給他，你你要跟他關係很好，他才願意把 API 給你啊，然後等他時程排序，再來是你要給他業績，不然他動不動就要把這個東西關掉，所以這個都是我這幾年的，等於是踩坑的經驗啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">12:00:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，那，但是後來我們就說不行，這件事情要，所以後來回到 console，console 呢他變成是一個，我依賴保險公司的依賴度沒那麼大，我主要的這個服務技術都是我我自己可以處理的。那 console 呢怎麼去打保經代，他目前就是三個服務，那，一個完成，兩個要，要，要再繼續，就是要再往下做一些投入跟開發，但即使是這樣，都已經有兩家保險公司買單這個 idea，然後願意往下繼續這個跟我們合作投入啦等等付費。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">12:43:688</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，那我講 console 的三個，三個服務呢，第一個叫做保單的建立，就是說現在的保經代他們的保單還，他們有很多保戶的資料，但是這些保，保戶的資料對他們現在來講比較像檔案，就是說你把要保書、保單存檔，這樣子，他們目前做到這一段，但是如果你只是檔案，並不是資料，你沒辦法在後後面，你要做更多的 AI 的應用啊、分析啦，你是沒辦法的，你只是有個檔案可以傳遞而已，所以這裡面其實用的技術就是 OCR，就是把它既有的這些保單把它變成 OCR，變成數位的資料，然後，並且這個數位的資料呢，可以跟他家的後台整合在一起，那光這個很多保險公司的痛點就有被被打到，因為他，他們現在可能是請什麼工讀生 key 單啊，大家 key 的正確率啦、成本啊，這些都很高，那 OCR 就可以大幅簡化這件事情，這是第一個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:46:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那第二個是，這個多家的報價，就他們的痛點確實也是報價上要，要做到這個多家的報，希望做到多家的報價，但是他們現在沒有辦法，只能要花很多時間啦，用人工去做這件事情。好，那我們，我們現在呢研究，就覺得有一個地方可以做，就是說，這裡面我不要去串保險公司 API，我是跟保險公司要他的 B2B 系統，因為他們花很多時間在開發這些系統，那我拿到系統之後，我就用，我就用機器人 RPA 去，去，透過他的 B2B 系統去跟他尋到報價，那因為是用機器人在做這件事情，只要這個東西開發的成，夠穩定，對對於保經代公司來講，還是可以很快的可以得到多家的報價，所以這個他們，他們非常期待這個產品。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:45:188</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，所以第二個功能就是 RPA 機器人去，B2B，保險公司的 B2B 系統去取得報價這樣子。好，那再來就是說取得報價之後呢，接下來他要通知客戶跟客戶簽名，那這一段他們現行上也是期待說，我們這邊的 solution 是透過跟那個 MID 電信公司去得到這個，這個簽名的認證啦，所以這三段合起來其實也也是幫保險公司去做數位化的交易，但是他這三段就是我都可以自己掌控，OCR 我自己可以掌控，RPA 我自己可以掌控，然後跟，跟這個，這個，跟這個，電信公司去串那個，MID，這個也是我自己可以掌控，所以我們現在就是變成回過來就是現在用 console 站在，在，在跟，在服務這些大型的超過 1000 個業務員的這些保經代。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:49:788</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">目前，目前是這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:53:688</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">OK，所以是上，上次你說的那個車險是不是？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:58:988</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸對，車險有一個服務是那個，沒有，console 可以做的就，就就更多了，他可以做，他報價當然車險、旅平這些都可以，就是保險公司的 B2B 平台呢，他本來就會自己做，每家保險公司是不是自己都有自己的開發的這個數位系統，提供給這些保經代去用，讓這些保經代用這個系統可以得到保險公司的報價，等於也是在省他這一段的能力。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:27:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:27:588</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">所以，所以 B2B 系統不只車險，他是這個系統裡面有的寵物啦、旅平啦、車啦，任何的險種，都可以取得報價。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:35:688</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">都可以取得報價。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:36:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">都可以取得報價，但是他就是人在裡面 key，所以人在裡面 key 是不是，對於保經代的痛點就是說，14 家保險公司是個別給他們自己的 B2B，但是對於經代來講，他不太可能就要同時進這麼多家嘛，每家都要重複，那我們只是在這裡做了一個機器人，做了一個界面說，你只要，基本的資料，我們這邊幫你自動處理一次，接下來就派出機器人小兵去各個保險公司的 B2B 裡面去把你想要的報價摳回來，然後一次給你，以及給你的客戶這樣子。那如果你的客戶有興趣，接下來是要簽名嘛，那這個簽名呢，現在因為，因為這個保局對於簽名，你你線上簽名啊，還是說什麼，影印簽名，他很很隱晦啦，那唯一他認可的就是 MID，那 MID 是跟電信公司合作，MID 就是 mobile 的 ID，它的核心概念就是說，你去辦手機門號的時候已經做過那個雙因子的認證了，所以呢你只要電信公司同意，保局就允許說你不用再做一次身份的這個驗證，那你你只要去 MID 那邊有一個，他們現在這個系統也都成熟了，所以跟他取得一個，這個 MID 的認證通過，然後他也會幫你做數位簽章，反正呢這一段就是已經有一個數位認證的簽名方式，那對對於業務員來講，就是那你就省了再去找他簽名嘛，因為我們，我們如果是在產險這裡，金額畢竟都不會太大，可以省簽，可以省這個去碰到客戶的這一段，舟車勞頓，那這一段多數業務員是不想要去花花費的這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:35:588</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">哦，所以等於說這個 MID 這一塊就是這個三大，我，幾大我忘了，大概三大吧，三大電信營商，你這邊都要去這個合作，他們。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:48:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">不用不用不用，不用三大，就是 MID 已經是有，有公司發展，所以他自己跟三大串好了，我不用，我我我對，我對他就好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:57:988</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">明白，明白明白，OK OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:00:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">所以等於說，但是客戶就是要手機啦，是這個意思嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:03:688</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">客戶一定要手機。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:05:388</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:05:688</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">客戶一定要手機，對，然後而且要開 5G 嘛，就我們我們做過那個，對也不能 Wi-Fi，因為畢竟是手機，所以你那時候還是有一些條件的限制啦，但是我覺得現在因為大家也越來越習慣了，所以這個應該，我覺得是目前來講，取代這個親晤親簽最好的 solution 這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:28:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">OK，OK，OK，聽起來很好啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:31:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">進展很大。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:33:688</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我覺得挺好，然後 console 呢就會變成說，希望他是業務員，使用，想要數位化在台灣的第，第第一站就對了，所以你看現在就是業務員他他，只要是，他想數位化或是 bother 他的事情，我們都把它整到這 console 站裡面，所以現在就是先從，建單花你的時間嘛，先從提高你的效率，OCR 這個開始，那報價也花你的時間，所以我們又有 RPA 來解決報價。那接下來就會是，就有很多東西可以做了，所以，我才想要跟那個，那個，他叫，Voiss AI，就是晚上要介紹給您認識的，就是業務員也需要很多的教育訓練嘛，他們自己本身先天的知識跟，跟，他的，他的公司賦予他的，有一段落差，比如說他公司要他全能，但是他可能不不這麼熟投資型保單，也可能不這麼熟醫療險保單等等，那這裡面就有很多教育訓練的，的服務提供可以把它放在 console 站裡面，這就是接下來我我想要讓 console 功能越長越多的，的的一個概，一個一個，一個模，一個圖形啦。所以接下來我也會到教育訓練，然後，往這一段去走，那希望提供給業務員越來越，就是目前 console，看起來是在省他的時間，但是如果有辦法讓這個教育訓練進來，或者是，極端就是讓這些 AI 的機器人幫他去 close 客戶，那我就有可能從節省時間到創造收益。如果這兩個段都完成，我覺得 console 就非常有價值這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:27:688</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯，我，我我是覺得這個是好事啦，這是好事。呃，回到就是你跟那個晚上的那家 AI 的科技公司要聊的這個合作，我們剛剛提到就是不談虛的嘛，就是實實在在的，如果假設我們要往合作的方向去的時候，那可能，可能要想的就包括就是說今天，今天怎麼去規劃日後的一個分工？剛剛你已經畫了一個很大概的一個邊界，就是你擁有客戶資源，那他有比較強的科技，至少就是你覺得這個服務所需要，背後所需要的科技他所，他他他他擁有這個東西。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:14:88</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">那，我的想法還是說今天，欸把將來的一些合作上可能碰到的矛盾，我只是說可能，可能碰到的矛盾，可以先想一想，比如說先拋出來，但是不見得馬上要有答案，因為你這個東西到不同，就是說在在，雖然是面，因為面對的是你的客戶，對吧，你帶客戶資源進來嘛，對吧？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:43:988</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:44:488</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">我我只是舉個例子，這個邊界比如說服務這一端，客，客戶的這些這些，對接服務這一端。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:52:588</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，我跟你分享這個，這個我稍微有想過，就是說，我覺得兩邊合作還有一個好處是，一個營收會變兩家，就是說，客戶，客戶是我的嘛，我是不是搭他的服務？所以呢，假設今天定，就就舉定率好了，他是不是付了一個 100 萬給我？那這個 100 萬呢一定是我出頭嘛，因為客戶是我的，所以付給我之後，我認了一個營收。那 Voiss AI 呢，他是我的技術提供商，所以這時候由我這裡會再轉營收給他，所以 100 萬會變 200 萬。那這個對他跟我，因為我們畢竟還是不同的公司，他也需要更多的營收來支撐，他在募資嘛。所以我我那時候在想這件事情，我覺得，我覺得是好的，只是我，我也怕說這個會不會還是有一些什麼風險或什麼我沒有考慮到的這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">23:44:488</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯，你講的是財務上嘛，對吧？財務上在會計上這個帳怎麼跑嘛？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">23:50:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">沒有，還有實際上，就是這客戶就是我的啦，我我來嘛，就是說，跟他畫的界線是，我導客戶進來，我，我，我在裡面變 SI，對不對？所以一定是我面對客戶嘛。那我是 SI 的話呢，客戶的營收一定進我這裡，然後你是我的 SI 的協力商，所以我把跟你談好的開發費還是說這個佣金比例，我再給你這樣，所以他他其實只會收到我，他的，我我不知道這樣劃分邊界 O不OK？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:24:388</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">我我聽明白，你的意思，其實，很就簡單講，就是說以你為主，對吧？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:30:588</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:31:88</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">以他為輔，因為他只是作為一個技術提供商，這是你的想法，那他也必須要認同。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:38:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，沒錯沒錯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:38:988</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">OK，因為一定要有一個，一個主一個次，否則這個合作就會很麻煩，變成雙頭馬車，就會很麻煩。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:46:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我覺得這是最重要的，嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:48:88</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對，然後你剛剛提到的一點很重要就是說，這個結果出來了以後，結果好的大家都開心，當結果不好的時候，誰來誰誰誰誰必須要承擔這個責任呢？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:59:988</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">哦，好，了解，我想一下，這裡面的責任就是，其實對我們兩邊來講都是，其實就是工嘛，就是說，他，他必須要投入 IT 的資源，那，所謂結果不好就是客戶最終驗收不過，對不對？不願意，不願意付，不願意付費。那，那那。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:23:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">那個，那個，那個，那個等於說已經如果走到這一步的話，表示這個合作從一開始就是有問題的啊，包括就是說可能他的技術有問題，或者是講，講講白一點，你你你你你 manage 這個客戶的這個這個態度方式那麼到位，對吧，我們就講講很白，對啊，那那這個時候，我我我我不是說一定會出現這個情況，那，只是說既然要談合作，我們就必須要把一些醜話，一些不好的，最糟糕的情況都說出來，然後如何去避免它，萬一發生的時候如何去改善它。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">26:02:888</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對啊，因為，因為說實在的話，如果是，這個是一個技術，技術活嘛，技術活嘛，就是一個以技術驅動整個業務發展的一個項目嘛，但是呢，他，他他他這個項目不像以前我們在接保險公司的這種，這種專案，就是就是就是專案開發，然後就像你講的，以前做 SaaS 的時候是很辛苦，對吧，不單單是說今天是受制於人，更是說今天，你你你你完全被人家拿捏了嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">26:37:688</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">26:38:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對啊，那但是呢現在，就是今天今天有 AI 的這樣的一個，一個技術技術項目的時候，那，包括就是說，我我我就簡單講吧，他這個東西絕對不是交付一個系統就結束了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">26:52:588</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">沒有，是常委。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">26:53:488</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">他是常委很長的，就是後面的這個，這個維護啊等等的，那那這個東西，假設他是技術方，那他技術他就必須要跳出來，他說，你就是我們就就就得要求他去負責。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">27:07:688</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">27:08:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">他去負責這個維護，因為這個 AI 不斷在迭代更新。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">27:12:188</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對吧？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">27:12:888</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">他是不斷在迭代更新的啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">27:15:888</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">所以啊，所以我覺得這個東西，我不曉得他他如果以前有有有過類似的合作經驗，他可能就。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">27:21:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">有做過啊，他有做過，他就是因為這一段很辛苦，然後他就覺得雖然他做到銀行，做到 big name，和泰這些應該都很大了，但是，他人也不多，他就六個人，然後都是工程師，但還是虧損，然後尾巴很長，收款很慢，所以我覺得這個就是那天他也蠻坦白跟我說，他在創業上面這邊遇到的狀況，所以他有點是來尋求我們幫助的，因為我們，反正他，他看起來我，我們也很辛苦啦，先說，我們也沒有太好過，但是他看起來他就是想要尋求說，我們能不能給他一些募資的建議啦，給他一些客戶經營的建議，因為像他現在閃著打這些金融業，比較多像是專案基礎的專案公司，他覺得這個，這個也不是長久之計這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">28:14:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">所以我想他理解啦，那個開發的過程很，很漫長，然後，然後，可能多數我再猜也是虧本生意吧，我再我再猜是這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">28:25:288</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">有可能吧。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">28:26:788</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">有可能。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">28:27:388</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我覺得是啊，一定是啊，因為不然不會，不會是到現在還虧損啊，然後，手中的有的資金可能可以用的也也只剩一段時間這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">28:39:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">可能就是這六個，六個小伙子，六個小伙子自己，自己籌錢幹的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">28:45:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對啊對啊，沒有他們，他們早期有投資，不過他們現在也，也找到了一個，一個 VC 啦，只是，畢竟我覺得他那個 founder 是，是 CT，是技術腦，所以在跟我們聊的時候他，我我覺得他，是感受得到我們在，因為我們都是 CEO 嘛，所以雖然我沒有技術背景，但是我們在處理業務或者是處理，處理跟投資人，欸怎麼去講這些故事啊，什麼怎麼樣就是說我有 A，假設我投資人要投我要要 ABC，我怎麼樣想辦法讓 ABC 促成，所以我投資人可以很願意拿錢出來投資我，再幫我找錢，我覺得這段就是他比較缺乏的。所以那那一天交流起來的感覺是說，欸他的技術好，但是他其實募資跟，跟那個，跟業務、商業拓展都是他，他目前的短板，那這個是我我們團隊比較擅長的事情，所以本來是說，但技術是我的短板嘛，他看起來在這塊比我強，而且強了強不少，就希望這樣可以有一個合作的機會。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">29:51:288</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">你說他們那六個人都是技術背景的，都是開發的？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">29:55:688</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，他自己也是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">29:57:588</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">然後他們是從台灣什麼學校畢業的？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">30:02:888</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">你知道嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">30:03:288</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">他是，我不知道，但是他，他他是那個，可能工研院，他裡面有一些，因為我們的工研院呢，你現在也可以問他，他我們的工研院早期也在做很多語音，因為他從語音的開發嘛，那個國家很早就做，那後來有單，就是他，那個單位後來裁撤掉，還是說裡面的高階的人，應該是裁撤掉，裁撤掉之後他就，他自己就把那個團隊裡面的人併併進來，所以他的技術是有，我覺得是有一定水準的，是用掉這些國家級優秀的人才的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">30:40:588</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">你能不能夠提前跟他問清楚啊？或者是說。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">30:44:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">他其實那天有講，只是我沒有記，他有他，因為他來找我 demo 嘛，他都會講得很清楚，但是我有一些他的 demo 的影片啦，就是，我覺得背景，背景我等下可能可以再問一下，然後，demo 的影片我等下可以發給你，你可以先看看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">31:02:688</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">31:02:988</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那大概你就知道說他的，這肯定有一些技術才可以做到，這個程度嘛，像我是做不到啦，像我我做不到這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">31:12:888</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯哼嗯哼，OK，OK，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">31:15:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，所以回過來還是說，然後還有就是我們兩邊都在募資，所以，我現在其實會被比較常 challenge 的就是說，營收，就反正也是技術嘛，因為團隊說說到剩六六個規模，所以技術上面的亮點肯定就比較少，然後再來就是說，他的這些影音如果我可以用他這些技術，想辦法去在我現在願意付費的，這個保經代老闆裡面願意再付更多錢，這個對我募資上，我覺得就故事性可能就更好，那對他也是，他現在就是，沒有一個亮點，就是好像各個銀行這裡用一點，那裡用一點，誰用一點，但是他也沒打穿到說，欸，比比如舉例，保險業 20% 都用他的服務，他他也沒有，都這麼強的聚焦在一個產業的力道這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">32:10:688</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">嗯，所以他現在營收規模你知道嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">32:14:188</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我知道，他，我覺得在，應該不到千萬台幣，所以他應該是每個案子，比如說什麼中信銀給他一個案子幾百萬，比如說兩百萬一年這樣子，類似，他們現在就是靠這種接案，接幾個銀行的案子啦這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">32:35:188</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">不到千萬是一年不到千萬？千萬是，你說兩百萬跟一千萬差距很大。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">32:40:988</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">沒有，因為我大概知道他的，呃，因為我我問他他的 burn rate，那主要都是工程師嘛，那他他工程師，應該也都是用到，畢竟要做 AI，所以六個人，我那時候稍微交流一下，每個如果是 150、200 萬，你抓，你就抓 1200，但是他還是在虧損，所以他營收肯定沒有到，沒有到 1200。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:03:388</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">這六個人不是合夥人哦？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:05:988</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸，只有他，股，股權應該在他身上。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:11:488</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">等一下，他他他自己 100%，呃也不叫 100% 吧，就是他跟這個募資的，募資方可能他，就是他這樣，那其他。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:21:188</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，他現在應該是，對，其他都是拿薪水的，所以他應該，我我的理解應該就是 73，他早期有一個天使，佔了他三成股票吧還是多少，好，那那現在持有的就是他跟那個天使嘛，那那剩下的都是工程師，就剛剛講的什麼。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:39:288</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">我知道，那他肯定就是不能賺錢的啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:43:288</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">不能不能，這不能賺錢一定是肯定的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:46:88</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">對，因為他這些等於說是拿薪水的工程師嘛，不是合夥人工程師嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:51:788</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">33:52:288</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">合夥人工程師就是要持股，一旦持股了以後，然後這些人，第一個持股表示他我他認同這家公司，認同這個賽道，然後他也比較能夠心甘情願的，比如說拿稍微低一點的薪水，對吧，收入，然後因為他等於說有股份在嘛，然後大家會奔著就是把這個公司做強做大去的嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">34:18:188</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，對沒錯沒錯，他，但是我不知道他股權有沒有設計 ESOP，像我們是有嘛，像每個人可能或多或少都有設，我我不知道他有沒有設，但他，我可以確定就是說他應該是沒有，應該是沒有 co-founder，這這些員工應該都是他後面陸陸續續找來的，所以股份主要集中在他身上這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">34:39:88</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">明白，好，沒有，這個這個只是在了解背景而已啦，不是說今天挑戰誰啦，這是了解一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">34:45:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">懂懂懂，理解理解，理解理解理解。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">34:48:488</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，所以，大概是這樣，所以我我等下就發一下他的給我的，一些 demo 的東西先給 David 看，那我們就晚上就，就就來聊聊這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:00:88</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">好，時間 6 點半，地點再發給我。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:03:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">有有有，我都我都有，欸，我沒發給你嗎？你來我們辦公室，就是我們隔壁的，欸，我我就最方便都是訂那個韓式烤肉啦，上次跟你一起吃過的，我們公司旁邊的那個那個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:15:88</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">6 點半那家是吧？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:15:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對對對對對對對，我們就訂。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:17:588</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">OK OK OK，好好，那我知道，我知道，你不用發了，6 點半。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:21:588</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，謝謝謝謝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:22:588</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">好，那我們晚點見，再跟 David 多聊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:24:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，謝謝，拜拜。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:25:888</span>
+          <span class="ts-speaker" style="color:#E89E3F">David</span>
+          <span class="ts-content">OK，謝謝，拜拜。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">35:26:888</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">拜拜，嗯哼。</span>
+        </div></div>
+</div>
+
+<div class="footer">
+  <strong>羅賓斯科技股份有限公司 Robinstech</strong>
+  2026 數位發展部 GenAI Stars 金質獎得主  ·  Calliope AI 代理人 產出  ·  2026-07-02
+</div>
+
+</div>
+</body>
+</html>
