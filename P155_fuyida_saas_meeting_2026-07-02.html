@@ -1,0 +1,3199 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>富易達 SaaS 修正需求討論會議</title>
+<style>
+:root {
+  --navy:#0F1F4D; --navy-light:#1E3A6F; --gold:#E89E3F; --gold-light:#F2C28A;
+  --green:#2BA84A; --purple:#7C3AED; --ink:#121822; --ink-light:#394350;
+  --grey:#6B7280; --bg:#F8FAFC; --bg-card:#FFFFFF; --border:#E5E7EB;
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:0; background:var(--bg);
+  font-family:"Source Han Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",-apple-system,sans-serif;
+  color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.65; }
+.container { max-width:1100px; margin:0 auto; }
+.hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+  padding:40px 56px 32px 56px; color:white; }
+.hero-eyebrow { font-size:12px; letter-spacing:4px; color:var(--gold);
+  font-weight:600; text-transform:uppercase; margin-bottom:12px; }
+.hero-title { font-size:28px; font-weight:800; margin:0 0 6px 0; letter-spacing:-0.5px; }
+.hero-subtitle { font-size:15px; color:rgba(255,255,255,0.85); margin:0; }
+.hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15); }
+.hero-meta-label { font-size:10px; letter-spacing:1px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:4px; }
+.hero-meta-val { font-size:14px; font-weight:600; }
+.attendees-band { background:var(--bg-card); padding:18px 56px;
+  border-bottom:1px solid var(--border); }
+.attendees-label { font-weight:700; color:var(--navy); font-size:13px; margin-bottom:8px; }
+.speaker-chip { display:inline-block; color:white; padding:3px 12px;
+  border-radius:100px; font-size:12px; font-weight:600; margin-right:4px; margin-bottom:4px; }
+.att-detail { margin-top:10px; }
+.att-row { padding:5px 0; font-size:13px; }
+.att-name { font-weight:700; margin-right:12px; }
+.att-role { color:var(--ink-light); margin-right:12px; }
+.att-note { color:var(--grey); font-size:12px; }
+.section { padding:32px 56px; background:var(--bg-card); border-bottom:1px solid var(--border); }
+.section-eyebrow { font-size:11px; letter-spacing:3px; color:var(--gold);
+  font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+.section-title { font-size:22px; font-weight:800; color:var(--navy);
+  margin:0 0 16px 0; padding-bottom:8px; border-bottom:3px solid var(--gold); display:inline-block; }
+.summary-body { font-size:14px; color:var(--ink-light); line-height:1.75; }
+.summary-body strong { color:var(--navy); }
+.topics-list { list-style:none; margin:0; padding:0; counter-reset:topic; }
+.topics-list li { background:#FFFBEB; border-left:3px solid var(--gold);
+  padding:14px 18px; margin-bottom:12px; border-radius:0 4px 4px 0; counter-increment:topic; }
+.topic-title { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.topic-title::before { content:counter(topic) "."; color:var(--gold);
+  font-family:"Montserrat",sans-serif; font-weight:800; margin-right:6px; }
+.topic-time { font-family:"Montserrat",monospace; font-size:11px; color:var(--grey); margin-bottom:8px; }
+.topic-summary { font-size:13px; color:var(--ink-light); margin-bottom:8px; }
+.topic-quote { font-size:12.5px; color:var(--navy); font-style:italic;
+  border-left:2px solid var(--gold); padding-left:10px; margin:6px 0; }
+.action-table { width:100%; border-collapse:collapse; font-size:13px; }
+.action-table th { background:var(--navy); color:white; padding:12px 14px;
+  text-align:left; font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+.action-table td { padding:14px; border-bottom:1px solid var(--border);
+  vertical-align:top; color:var(--ink-light); }
+.ai-num { font-family:"Montserrat",sans-serif; font-weight:800;
+  color:var(--gold); font-size:20px; width:40px; }
+.ai-item { font-weight:600; color:var(--ink); width:55%; }
+.ai-owner { font-weight:700; color:var(--navy); white-space:nowrap; }
+.ai-deadline { color:var(--grey); white-space:nowrap; }
+.transcript { background:var(--bg); padding:20px 24px; max-height:800px;
+  overflow-y:auto; border-radius:4px; font-size:13px; border:1px solid var(--border); }
+.ts-line { padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.04);
+  display:flex; gap:10px; align-items:flex-start; }
+.ts-line:last-child { border-bottom:none; }
+.ts-time { font-family:"Montserrat",monospace; font-size:11px;
+  color:var(--grey); font-weight:600; flex-shrink:0; width:80px; padding-top:2px; }
+.ts-speaker { font-weight:700; flex-shrink:0; width:100px; }
+.ts-content { color:var(--ink-light); flex:1; line-height:1.6; }
+.notice-box { background:#FEF3C7; border-left:4px solid var(--gold);
+  padding:14px 18px; margin:16px 0; border-radius:0 4px 4px 0; font-size:12.5px; }
+.notice-box strong { color:var(--navy); }
+.footer { padding:18px 56px; background:var(--navy);
+  color:rgba(255,255,255,0.7); text-align:center; font-size:11px; }
+.footer strong { display:block; color:var(--gold); font-size:13px; margin-bottom:4px; }
+@media print { .transcript { max-height:none; overflow:visible; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">富易達 SaaS 修正需求討論會議</h1>
+  <p class="hero-subtitle">富易達（客戶方） × SaaS 廠商 · UI/UX 需求對焦 · 76 min</p>
+  <div class="hero-grid">
+    <div><div class="hero-meta-label">日期</div><div class="hero-meta-val">2026-07-02</div></div>
+<div><div class="hero-meta-label">時長</div><div class="hero-meta-val">約 76 分鐘</div></div>
+<div><div class="hero-meta-label">主題</div><div class="hero-meta-val">SaaS 系統客製需求</div></div>
+<div><div class="hero-meta-label">出席</div><div class="hero-meta-val">含 A / Stan / Rocky / Leo / Matt / Lana / Jenny 等</div></div>
+  </div>
+</div>
+
+<div class="attendees-band">
+  <div class="attendees-label">與會人員</div>
+  <span class="speaker-chip" style="background:#6B7280">A</span> <span class="speaker-chip" style="background:#6B7280">B</span> <span class="speaker-chip" style="background:#6B7280">C</span> <span class="speaker-chip" style="background:#6B7280">Leo</span> <span class="speaker-chip" style="background:#6B7280">Matt</span> <span class="speaker-chip" style="background:#6B7280">Rocky</span> <span class="speaker-chip" style="background:#6B7280">Stan</span>
+  <div class="att-detail"><div class="att-row">
+          <span class="att-name" style="color:#6B7280">A</span>
+          <span class="att-role">客戶代表</span>
+          <span class="att-note">主要演示 SaaS 系統並提出修改需求</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#6B7280">Stan</span>
+          <span class="att-role">廠商代表</span>
+          <span class="att-note">主要回覆技術與專案範疇問題</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#6B7280">Leo</span>
+          <span class="att-role">客戶代表</span>
+          <span class="att-note">中途加入會議，確認技術細節與需求</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#6B7280">Matt</span>
+          <span class="att-role">需求提出者/產品端</span>
+          <span class="att-note">主導會議，詳細說明旅平險介面需調整的各項 UI/UX 需求與預設值。</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#6B7280">Rocky</span>
+          <span class="att-role">技術/工程端代表</span>
+          <span class="att-note">在會議中途簡短發言，確認測試環境帳號相關事宜。</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#6B7280">B</span>
+          <span class="att-role">審核者/需求方</span>
+          <span class="att-note">主要負責提出問題、確認業務邏輯並指出流程或介面上的問題。</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#6B7280">C</span>
+          <span class="att-role">技術人員</span>
+          <span class="att-note">在系統出現短暫問題時發言，可能為開發或技術支援角色。</span>
+        </div></div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 具體行動</p>
+  <h2 class="section-title">行動項清單（19 件）</h2>
+  <table class="action-table">
+    <thead><tr><th>#</th><th>具體行動</th><th>負責人</th><th>時限</th></tr></thead>
+    <tbody><tr>
+          <td class="ai-num">1</td>
+          <td class="ai-item">提供會議錄影檔案給廠商</td>
+          <td class="ai-owner">A</td>
+          <td class="ai-deadline">會後</td>
+        </tr>
+<tr>
+          <td class="ai-num">2</td>
+          <td class="ai-item">向工程師(Rocky)確認，修改旅平險的共用元件（如 KYC）是否會同步影響車險模組</td>
+          <td class="ai-owner">Stan</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">3</td>
+          <td class="ai-item">重新評估將「車險」納入專案所需的人天工時，並提出新報價</td>
+          <td class="ai-owner">Stan</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">4</td>
+          <td class="ai-item">找出並提供最初僅含旅平險的專案報價單給客戶 (Evan)</td>
+          <td class="ai-owner">Stan / Rocky</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">5</td>
+          <td class="ai-item">廠商需在 UAT 環境完整測試車險的端對端投保流程，以評估可行性</td>
+          <td class="ai-owner">Stan / 工程團隊</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">6</td>
+          <td class="ai-item">將車險報價功能需求轉交工程團隊進行時程與可行性評估。</td>
+          <td class="ai-owner">Stan</td>
+          <td class="ai-deadline">無</td>
+        </tr>
+<tr>
+          <td class="ai-num">7</td>
+          <td class="ai-item">修改旅平險出發日期邏輯，預設為 T+2 工作日，並自動跳過週末。</td>
+          <td class="ai-owner">Stan / 工程團隊</td>
+          <td class="ai-deadline">無</td>
+        </tr>
+<tr>
+          <td class="ai-num">8</td>
+          <td class="ai-item">為所有 KYC、投保目的、職業類別、險種等欄位設定預設值，以簡化操作流程。</td>
+          <td class="ai-owner">Stan / 工程團隊</td>
+          <td class="ai-deadline">無</td>
+        </tr>
+<tr>
+          <td class="ai-num">9</td>
+          <td class="ai-item">開發功能，將使用者選擇的保險方案之保額、保費等資訊，自動帶入後續所有相關欄位。</td>
+          <td class="ai-owner">Stan / 工程團隊</td>
+          <td class="ai-deadline">無</td>
+        </tr>
+<tr>
+          <td class="ai-num">10</td>
+          <td class="ai-item">向 Rocky 申請一組獨立的測試環境帳號以利開發。</td>
+          <td class="ai-owner">Stan</td>
+          <td class="ai-deadline">無</td>
+        </tr>
+<tr>
+          <td class="ai-num">11</td>
+          <td class="ai-item">確認當保險險種為複選時，下方主約欄位的正確顯示邏輯。</td>
+          <td class="ai-owner">A</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">12</td>
+          <td class="ai-item">與 Lana 再次確認「個資使用同意書」的正確流程與顯示位置。</td>
+          <td class="ai-owner">A</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">13</td>
+          <td class="ai-item">與工程師確認是否能移除「提交成功」的彈出視窗，讓流程直接跳轉。</td>
+          <td class="ai-owner">B</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">14</td>
+          <td class="ai-item">與工程師確認是否能將保戶端的 KYC「要被保人聲明事項」整個區塊隱藏。</td>
+          <td class="ai-owner">B</td>
+          <td class="ai-deadline">待確認</td>
+        </tr>
+<tr>
+          <td class="ai-num">15</td>
+          <td class="ai-item">將「資料確認」頁面的所有詳細資訊區塊改為預設收合。</td>
+          <td class="ai-owner">B</td>
+          <td class="ai-deadline">未提及</td>
+        </tr>
+<tr>
+          <td class="ai-num">16</td>
+          <td class="ai-item">將第二個「個人資料蒐集」的標題修改為「確認個資同意條款」。</td>
+          <td class="ai-owner">B</td>
+          <td class="ai-deadline">未提及</td>
+        </tr>
+<tr>
+          <td class="ai-num">17</td>
+          <td class="ai-item">將「前往簽名」確認頁的所有詳細資訊區塊改為預設收合。</td>
+          <td class="ai-owner">B</td>
+          <td class="ai-deadline">未提及</td>
+        </tr>
+<tr>
+          <td class="ai-num">18</td>
+          <td class="ai-item">調查並修正業務員後台無法下載完整「要保書」與「業務員報告書」的問題。</td>
+          <td class="ai-owner">B</td>
+          <td class="ai-deadline">未提及</td>
+        </tr>
+<tr>
+          <td class="ai-num">19</td>
+          <td class="ai-item">提供本次會議的錄影檔案與摘要給 B 與 Jenny。</td>
+          <td class="ai-owner">A</td>
+          <td class="ai-deadline">會後</td>
+        </tr></tbody>
+  </table>
+  <div class="notice-box"><strong>備註：</strong>本次會議為富易達 SaaS 系統之修正需求討論會，聚焦於旅平險介面優化、車險模組可行性、KYC 欄位預設值、個資同意條款流程等 14 個議題。廠商方需回覆車險納入專案之人天與新報價。</div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 議題索引</p>
+  <h2 class="section-title">14 個關鍵討論主題</h2>
+  <ul class="topics-list"><li>
+          <div class="topic-title">會議開場與演示方式確認</div>
+          <div class="topic-time">時間軸 00:00:00</div>
+          <div class="topic-summary">會議開始，與會者 A 說明他將直接操作 SaaS 系統畫面，指出需要修改的部分，並詢問此種演示方式是否可行。廠商代表 Stan 表示同意，並確認會議已開始錄影，要求會後提供錄影檔案。雙方確認將以即時操作搭配說明的方式進行討論。</div>
+          <div class="topic-quote">「我可不可以直接操作 SaaS 的畫面給你們看，然後直接說哪個部分要做修改，這樣可以？」</div><div class="topic-quote">「那你可能會後也同時寄一份給我們。」</div>
+        </li>
+<li>
+          <div class="topic-title">專案範疇釐清：旅平險 vs. 車險</div>
+          <div class="topic-time">時間軸 00:01:04</div>
+          <div class="topic-summary">討論核心聚焦於專案範疇。客戶代表 A 在操作介面時，廠商代表 Stan 指出，最初的專案合約與估價只包含「旅平險」的開發與修改，並未包含「車險」。目前系統中看到的車險功能，是因為當初為了方便，將整個舊版 SaaS 系統「複製 (clone)」過來，但車險的流程與功能並未經過正式開發、測試或驗證。這對客戶來說是個意外，因為他們的主管（張總）期待八月時旅平險與車險都能上線。</div>
+          <div class="topic-quote">「但我們之前做應該只有做旅平險嘛，沒有做車險。」</div><div class="topic-quote">「其實應該沒有包含車險的部分，它這個你現在看得到車險，應該是它當初整個就是把它 clone 下來，它就是把它複製下來。」</div>
+        </li>
+<li>
+          <div class="topic-title">共用元件修改與新需求確認</div>
+          <div class="topic-time">時間軸 00:01:50</div>
+          <div class="topic-summary">客戶代表 A 提問，系統中如 KYC、書面分析報告等流程是旅平險與車險共用的，修改旅平險流程時，車險是否會一併更新。Stan 表示這需要跟工程師確認，但強調即使部分元件共用，也不代表整個車險流程是可用的。客戶代表 Leo 加入後，再次確認主管期待車險功能，並認為既然 KYC、簽核、結帳等流程共用，修改後車險應該也能運作。Stan 重申，車險是「新需求」，需要重新評估開發與測試所需的人天工時並另外報價。</div>
+          <div class="topic-quote">「那些東西跟車險是通用的欸，也是要這邊改完再去改那邊嗎？還是它是可以一起改？」</div><div class="topic-quote">「因為我們現在預計要在八月初希望可以整個弄好給張總這邊嘛。」</div><div class="topic-quote">「這個其實算是新的需求喔，因為原本只有旅平險而已。」</div>
+        </li>
+<li>
+          <div class="topic-title">車險功能可行性與測試狀態討論</div>
+          <div class="topic-time">時間軸 00:11:20</div>
+          <div class="topic-summary">客戶代表 Leo 提出，他記得在 UAT 環境中，車險的 API 已經打通過，因此認為流程應該是可行的。Stan 解釋，API 打通不等於整個投保流程（從資料輸入到保險公司成功出單）是順暢且經過驗證的。過去的經驗顯示，車險模組幾乎沒有成功出單的紀錄，他們無法保證其穩定性。因此，若要正式啟用車險功能，廠商需要時間進行完整的流程測試、評估可能的問題，並估算修改所需的人力與時間。</div>
+          <div class="topic-quote">「我一直以為你們改完旅平這邊，我的車險應該是可以照同邏輯繼續去跑，對嗎？」</div><div class="topic-quote">「即便今天我們真的能夠在這邊去操作，就是車險那邊我們真的能夠操作，然後資料可以帶出去到保險公司那邊，但我也不知道能不能夠保證說保險公司那邊就真的能夠順利核保。」</div>
+        </li>
+<li>
+          <div class="topic-title">確認車險報價需求與時程</div>
+          <div class="topic-time">時間軸 00:19:05</div>
+          <div class="topic-summary">Stan 首先確認，除了旅平險外，車險的報價功能也需要製作。Leo 確認此需求，並強調時程非常急迫，因為系統延期過一次，現在必須在 8 月 1 日上線。Stan 表示無法保證能在 8 月 1 日完成，但他會將此需求轉交給工程團隊進行評估，並請 Matt 和 Leo 等待評估結果。雙方達成共識，由 Stan 負責推進內部評估流程。</div>
+          <div class="topic-quote">「所以現在就是連車險你們都會需要做，所以我們這邊要再出報價給你們。」</div><div class="topic-quote">「現在 8 月 1 號必須得上。」</div>
+        </li>
+<li>
+          <div class="topic-title">旅平險介面優化：出發日與回程日邏輯調整</div>
+          <div class="topic-time">時間軸 00:20:01</div>
+          <div class="topic-summary">Matt 提出旅平險投保流程的第一項調整：出發日期應預設為 T+2 工作日。他指出目前的系統雖然會跳轉兩天，但沒有排除週末。需求是系統需能自動判斷，若 T+2 遇到週六或週日，應自動順延至下週一。Stan 確認理解此邏輯，並補充說明國定假日的判斷較複雜，需要後台維護，建議先處理週末的排除。接著，Matt 提到回程日期不應早於出發日期，系統應有防呆機制，當選擇出發日期後，回程日期的最早可選日應自動更新。</div>
+          <div class="topic-quote">「這個旅途出發時間啊，可能要幫我改一下，直接改成 T+2 的時間。」</div><div class="topic-quote">「它有辦法就是自己去辨識工作日，應該是要下兩個工作日之後嗎？」</div>
+        </li>
+<li>
+          <div class="topic-title">旅平險介面優化：各欄位預設值與資料自動帶入</div>
+          <div class="topic-time">時間軸 00:23:05</div>
+          <div class="topic-summary">Matt 提出一系列旨在簡化業務員操作流程的預設值需求。他強調，從選擇方案開始，保額與保費等關鍵資訊應自動帶入後續的分析報告頁面，避免人工重複輸入。其他需求包含：移除多餘的確認區塊、將「原住民身分」預設為「否」、「聯絡人資料同要保人」預設勾選、投保目的預設為「保障」、職業類別預設為風險最低的第四類、險種預設為「旅平險」等。Stan 對於預設 KYC 題目提出法遵疑慮，但 Matt 表示此為高層（張總）指示，為提升操作效率，要求直接實作，後續法遵溝通由張總負責。</div>
+          <div class="topic-quote">「因為我們等一下在打那個分析報告的時候有沒有，這些相同的內容，它沒有帶入，它必須要我再手打一次這樣子。」</div><div class="topic-quote">「我想要直接把它預設成否，因為不具原住民身分的人比較多。」</div><div class="topic-quote">「聯絡人資料同要保人，也幫我預設打勾。」</div>
+        </li>
+<li>
+          <div class="topic-title">保險商品內容自動填寫需求</div>
+          <div class="topic-time">時間軸 00:32:26</div>
+          <div class="topic-summary">Matt 指出目前系統最大的痛點之一：在最後填寫保險商品資訊時，所有欄位都是空白的，需要業務員手動填入先前選擇的方案內容，非常耗時且容易出錯。他要求系統應能根據前面選擇的方案（如旅平險），自動將主約名稱、年期（預設一年）、保額（如 1000 萬）、保費（如 992 元）等資訊完整帶入對應欄位。Stan 確認此需求，雙方同意年期可預設為一年，其餘資訊則根據使用者選擇的方案動態帶入，以達成流程自動化。</div>
+          <div class="topic-quote">「這邊就是我要講的，你看我剛剛那個保額有沒有，有沒有辦法就是，我在選擇那個方案的時候，這邊因為是我接下來要填的，它自動幫我做帶入。」</div><div class="topic-quote">「這個主約就是旅平險，然後年期就是一年，這邊打一年，然後保額的話是 1000 萬，然後保費就是 992。」</div>
+        </li>
+<li>
+          <div class="topic-title">保險險種複選與主約欄位連動邏輯</div>
+          <div class="topic-time">時間軸 00:38:05</div>
+          <div class="topic-summary">討論當使用者複選「強制險」與「任意險」時，下方「主約」欄位的顯示邏輯。初步討論認為主約欄位應綁定上方險種選擇，不可手動修改，以確保資料一致性。然而，當遇到複選情境時，現有單一主約欄位無法對應，此邏輯問題被標記為待辦事項，需後續釐清。</div>
+          <div class="topic-quote">「他強調加認是有可能的，所以你不可能把它改成單選。」</div><div class="topic-quote">「但其實理論上如果是根據上面的話，就不應該讓他再改，他應該要鎖死才對。」</div><div class="topic-quote">「那如果說我要根據上面我選的東西帶進來的話，那要嘛就是說你今天是複選，我就兩個都帶，它應該不會是只有一個。」</div>
+        </li>
+<li>
+          <div class="topic-title">個資使用同意條款的流程與位置</div>
+          <div class="topic-time">時間軸 00:42:02</div>
+          <div class="topic-summary">與會者發現「個資利用同意」條款的顯示位置不正確。B 指出，此同意應由「保戶」而非「業務」確認，且應在流程最開始，當業務要開始填寫保戶資料時就取得同意，而非在資料都已填寫完畢後才出現。目前的流程被認為在邏輯上存在根本問題，雖然暫時維持現狀，但已確認為未來需要修正的重點。</div>
+          <div class="topic-quote">「我們這個個資利用同意是不是應該要坐在保戶那邊啊？是要讓保戶登入的時候，我要讓他同意收集個資利用對不對？」</div><div class="topic-quote">「其實因為你一開始在業務，他在填那些資料的時候，他其實就已經是取得用戶的個資了，他不是到這邊才取得用戶個資。」</div>
+        </li>
+<li>
+          <div class="topic-title">保戶端介面與流程優化</div>
+          <div class="topic-time">時間軸 00:45:07</div>
+          <div class="topic-summary">討論保戶端操作流程的多項優化建議。包含：建議移除「提交成功」的彈出視窗，讓流程直接跳轉；討論是否移除保戶登入時的「姓名」欄位，以簡化驗證步驟，但因涉及底層邏輯而暫緩；確認 OTP 驗證碼維持手動觸發發送；並根據客戶要求，將業務員填寫的 KYC「要被保人聲明事項」區塊在保戶端隱藏。</div>
+          <div class="topic-quote">「提交成功不用跳了，不用跳這個，直接到這邊就好了。」</div><div class="topic-quote">「張董說這個東西就是不用給保戶看。」</div><div class="topic-quote">「這個東西的格子有辦法拉到這裡？應該沒有辦法，因為他那個就是當初舊的 Sass 裡面他就是這樣做的。」</div>
+        </li>
+<li>
+          <div class="topic-title">UI 介面簡化：預設收合資訊區塊</div>
+          <div class="topic-time">時間軸 00:57:42</div>
+          <div class="topic-summary">講者 A 提出在「資料確認」及「前往簽名」頁面中，應將所有詳細資訊區塊（如保費方案、保單資料、業務員建議等）預設為收合狀態，僅顯示標題列。目的是簡化畫面，讓使用者聚焦在當前操作。講者 B 確認此需求為將區塊預設「縮合不展開」。此項調整旨在優化使用者體驗，避免頁面資訊過於繁雜。</div>
+          <div class="topic-quote">「這些全部都隱藏起來，就留表頭就好了。」</div><div class="topic-quote">「其實你就是要縮合就對了。對，縮合就好了。」</div>
+        </li>
+<li>
+          <div class="topic-title">釐清與修改重複的「個資同意」條款</div>
+          <div class="topic-time">時間軸 00:58:15</div>
+          <div class="topic-summary">講者 A 指出流程中出現兩次「個人資料蒐集」的同意環節，造成使用者困惑。講者 B 推測是為了法律上的嚴謹性，區分業務員代填與使用者本人同意的兩個階段。為解決此問題，雙方同意將第二個同意環節的標題修改為「確認個資同意條款」，使其與前一階段的用語有所區別，讓流程更清晰。</div>
+          <div class="topic-quote">「我不知道為什麼要兩遍。」</div><div class="topic-quote">「這個的敘述跟前一個是一模一樣的，他會不知道為什麼他要簽兩個一模一樣的東西。」</div>
+        </li>
+<li>
+          <div class="topic-title">後台系統文件下載不完整問題</div>
+          <div class="topic-time">時間軸 01:05:17</div>
+          <div class="topic-summary">講者 A 演示在完成所有簽署流程後，於業務員後台（SaaS 系統）中發現文件下載不全的問題。系統應產出「要保書」、「業務員報告書」與「書面分析報告書」三份文件，但實際在後台只能下載到「書面分析報告書」，另外兩份關鍵文件遺失。這導致業務員無法取得完整的已簽署文件備存，影響案件完整性。此問題被視為一個需要修正的系統錯誤。</div>
+          <div class="topic-quote">「你看這邊有一個要保書，然後還有一個這個...業報書，就是業務員的招攬人員報告書。」</div><div class="topic-quote">「後台簽名完成之後，它只能載其中一個檔案，就是這個書面分析報告書，前面的兩個檔案都沒辦法載。」</div>
+        </li></ul>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 會議摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body">本會議紀錄整合自 4 段錄音（總時長約 76 分鐘）之逐字內容，涵蓋雙方就 SaaS 系統客製化需求所進行之深度對談。<br>共識別 14 個主要議題、19 項具體行動、566 段逐字對話。<br>主要議題涵蓋：<br>1. 會議開場與演示方式確認<br>2. 專案範疇釐清：旅平險 vs. 車險<br>3. 共用元件修改與新需求確認<br>4. 車險功能可行性與測試狀態討論<br>5. 確認車險報價需求與時程<br>6. 旅平險介面優化：出發日與回程日邏輯調整<br>7. 旅平險介面優化：各欄位預設值與資料自動帶入<br>8. 保險商品內容自動填寫需求</div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 完整逐字稿</p>
+  <h2 class="section-title">逐字稿（含時間軸）</h2>
+  <div class="transcript"><div class="ts-line">
+          <span class="ts-time">00:00:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">如果到時候我是要產出一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:02</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，然後，那我等一下，我用的方式可能是我先把我有匯整出來的一些問題，那回饋給你，然後跟</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:11</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">demo 那天張總有提到一些操作流程的部分，我可不可以直接操作 SaaS 的畫面給你們看，然後直接說哪個部分要做修改，這樣可以？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:21</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">哦，那你可能，你現在有開錄影嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:24</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">有。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:25</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，那你可能會後也同時寄一份給我們。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:28</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">可以可以可以可以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:29</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，那我，我想一下喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:35</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我之前有記錄一個，這個我不知道這樣子寫對不對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:43</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">就是我寫說我碰到的問題，還是我直接操作的時候邊操作邊講這樣子？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:50</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">可以啊，你就邊操作，然後我們邊看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:00:52</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">OK，好。那我我這邊就是，我就先用這個富易達 SaaS 的這個畫面。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這邊這樣看得到嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:02</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，是，應該就只有旅平啦，沒有車險嘛，對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:06</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">如果這邊建單流程改的話，有沒有，下面有一些地方是共通的，應該會一起改。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:13</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">呃，但我們之前做應該只有做旅平嘛，沒有沒有做車。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:18</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">這是上，這個，沒有沒有不是，它這個是另外一件事情，它這個是，它，欸不好意思，我先跟 Jenny 講一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:25</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">就是它這個是富易達的，不是羅賓斯科技的 SaaS 的案子，對對對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:32</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">另外我記得我們之前啊，那時候在過，就是比如說有，不是那時候還有跟 Nana 嗎？有在訪談，那個整個流程，然後最後的定案其實應該都是針對旅平險的部分而已，沒有針對車險這一塊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:50</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，那我好奇問一件事喔，你看喔，像我現在建保單對不對，我建到最下面有所謂的 KYC 跟書面分析報告，那些東西跟車險是通用的欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:02:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">也是要這邊改完再去改那邊嗎？還是它是可以一起改？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:02:04</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">這個我就不確定了，可能要問一下工程那邊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:02:08</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好啊，那這一點可能...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:02:09</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">你先說。 我會再，我會再跟 Rocky 那邊說一下，但是其實它兩邊應該是會有，有些地方還是都不一樣，它有些是共用的，可是不代表說它整個流程就是，比如說你今天改了，然後旁邊就是車險那邊就一定都可以用。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:02:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，那，這點可能要麻煩你幫我確認，因為張總他現在八月份的期待就是，我們跟保險公司串完車險跟旅平，就是台產這邊，他就是，我們現在在趕啦，在趕給他說，能產出那個旅平險跟車險，至少車險的第三責任險可以產出這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:02:50</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那，Max 我要跟你再說一下，那個當初你們，就是當初我們談的那個，人天工時啊，其實應該沒有包含車險的部分，它這個你現在看得到車險，應該是它當初整個就是把它 clone 下來，它就是把它複製下來，所以你現在看得到車險，但其實車險的整個流程我們是沒有去過，過過的，然後是不是能夠順利的投保，其實我們也不知道。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:03:21</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">所以這如果說你們今天要連車險都要能夠一起的話，可能我們就要另外再起一個專案是 for 車險的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:03:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">因為當初的專案其實就只有 for 旅平險，並沒有車險這一塊，只是說當初為了方便，所以那個工程那邊可能就是整個就把它複製下來，它連改都沒有改，甚至那個車險後面沒有把它藏起來這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:03:46</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">哦，沒關係，那你一起幫我估進來吧，因為這樣我也好跟 Evan 說，當初估是只有旅平，你現在等於是車險要另外再加人天工時去估這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:03:54</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對，因為這個我就跟他講。 對，因為這個其實我們，我記得之前好像也有，也有跟你討論到，就是它的車險應該就是原本 SaaS 的那個車險嘛，對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:04:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，就是有強制險跟第三人可以投保這樣子，原本就可以投保，對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:04:10</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對對對，但我們之前其實在討論的過程中就有一些問題存在啊，比如說像我們之前有討論到就是說會有駕駛人傷害險嘛，你說裡面其實是有含的，那如果他有駕駛人傷害險的話，理論上你應該要提供名冊可以讓他去寫有哪些人，但是這個流程裡面是現在是都沒有的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:04:33</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">沒關係，這個先註記好了，就是以先，我鄉鄉看喔，以先強制險跟第三人，就是賠財產損失跟那個，人受傷的，這個部分就可以了，沒有駕傷也沒關係。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:04:51</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">我我只是先舉例啦，但是那個整個世界流程可能我們也都，如果說你們真的有這樣的需求，可能我們自己都還要先測過，然後可能工程他那邊要去評估，才有辦法把就是往下，再去說，再跟你們說我們到底能不能夠就是去做，然後以及什麼時候可以完成這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:05:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我想一下喔，所以你的意思是我今天就算不管駕駛人傷害險的部分，你也沒有辦法就是跟我說現在立刻，跟 Rocky 他們討論就可以立刻估出多久，還要先讓工程師去測是不是？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:05:28</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對對對，因為其實之前，我有詢問過你這邊嘛，就是說，聽起來在 SaaS 那邊，因為我有問過頂伸，就是在 SaaS 車險的部分其實幾乎沒有成什麼單，我記得他好像跟我說好像就只有成過一單的樣子，那一單好像還是很久很久以前的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:05:49</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">以前的那一單，我想一下，我，欸我那時候好像也不是用 SaaS，應該是我出的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:05:54</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，我那時候不是用 SaaS。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:05:56</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對，所以那個其實就代表說，其實你們整個流程是沒有完全走過，就是說我們沒有辦法去證明這個東西它其實是可以用的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:06:06</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，但我們後來，我後來這幾次測試的時候，我看那個 Leo 他是有打通過的欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:06:12</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">呃，所以我才說會需要試試看，就是打通不代表可以產出東西來喔，你有通跟你最後能不能夠在保險公司那邊，比如說產生要保書或什麼，那個是兩件事情。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:06:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">有通可能只是說我資料，他可能收得到，但是他收了不代表說那個資料是正確的或者是...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:06:40</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">哦，因為骨幹之前也沒，也沒測過說到底車險到保險公司去，他有沒有回答出投保成功，你的意思是這樣嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:06:48</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對對對。 他旅平險是因為有驗證過這件事情。 對啊，因為旅平險我們有出過單嘛，因為頂伸他們就是都有出過嘛，然後整個流程其實是大家都有走過，是沒有問題的。但車險這邊看起來應該不是這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:07:07</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我想想看，你方便讓我打個電話給 Leo 一下嗎？我現在馬上問他。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:07:11</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">可以可以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:07:12</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，你稍等我一下喔，我這邊先跟他聯絡一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:10:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸 Stan 不好意思，我直接啊，把 Leo 拉進來 OK 嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:10:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">可以啊可以啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:10:31</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，我覺得這樣可能討論會比較清楚一點，因為我剛也跟他確認他記得是他車險有打通過，但如你所說啦，就是到底保險公司那邊的狀況怎麼樣，我可能直接請他上來就是說明一下這樣會比較清楚一點。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:10:48</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">嗯，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:11:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">所以後面是 Jenny 這邊會協助處理這邊，還是主要是你？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:11:11</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">就是我們兩個都會一起啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:11:13</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">OK OK，好，我看看喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:11:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸 Leo，好，那 Leo，就是我們現在正在討論那個張總這邊要提出要修改的部分啦，然後我想說就直接 SaaS 這邊走一遍，給 Stan 看，那請他幫我就是記錄需求，提給 Rocky，那我們剛討論到的點就是說，因為我們現在預計要在八月初希望可以整個弄好給張總這邊嘛，那我剛跟 Stan 這邊確認的部分是，要改，變成我現在只能先提出旅平險這邊 SaaS 的修改需求，然後他們去做修改。那車險的部分變成是，是要另外再起一個專案的，不是說旅平險這邊改好，譬如說後面的 KYC，然後還有到後面保護流程的優化等等的，我這邊都改好了，不見得車險那邊會連帶動一起改，就我不知道這樣理解對不對 Stan？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:12:12</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">應該是說，我先把整個的經過好了，重新再講一遍，因為之前可能一開始 Leo 沒有在這個專案裡面。富易達這個專案...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:12:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">你說，你說。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:12:26</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對，富易達這個專案其實當初我們在討論的過程中，應該都只有討論旅平險的部分。那只是說後來可能工程，因為當初最後的結論是說好，我們就直接把就是舊的那，就是現行的那一版 SaaS 就是複製一份過來，然後可能去調整一些地方，比如說像是簽名啊，然後檢核章那些部分，是不是很很大的去修改它的流程，然後然後就提供，就交付給科技這邊嘛，那當時其實我們就只有專門針對旅平險這一塊而已。然後而且實際我們也有去走過說，旅平險它確實是可以，可以順利出單的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:13:18</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">就是我們真的有測過嘛，是OK沒問題的，但是呢，車險這一塊呢，其實是從來都沒有測過的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:13:29</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">然後就像我剛剛有詢問您這邊，就是也有詢問頂伸，其實在過去車險這邊似乎也只有出過一單。嗯。而且那一單還是很久很久以前出的。嗯。然後好像也沒有人能夠確定說真的能夠從這邊去順利的，就是讓保險公司就是出單核保。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:13:58</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">欸那個 Leo 我們測試環境啊，車險可以走到最後一步的話，是不是代表說保險公司那邊是 OK 的？就至少會進到這個資料。API 就照我們之前，我們之前測的，但我們自己應該是在 UAT 環境有跑完完整，包含到信用卡檢方的部分都完整，但確實，就是也是 Stan 所說的，就是台產那邊到底有沒有接到我們的保單後，是不是可以真的順利出單，這件事情也是，我覺得也是要再跟台產確認過啦。那，但我想問的是，我我認知中，因為 KYC 跟後面的一些簽核還有結帳這段流程，旅平跟車險應該都是用同一套流程，所以我一直以為你們改完旅平這邊，我的車險應該是可以照同邏輯繼續去跑，對嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:14:48</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">如果它原本就是同一套的話，理論上是旅平這邊改完，車險那邊應該也是會同時去變成就是改完後的樣子，這是沒有問題，我是說邏輯上啦，就是如果照如你剛剛這樣講的。因為其實我對於它的內部結構我不是那麼的清楚。對，那我剛剛只是在說，就是即便啦，今天我們真的能夠在這邊去操作，就是車險那邊我們真的能夠操作，然後資料可以帶出去到保險公司那邊，但我也不知道能不能夠保證說保險公司那邊就真的能夠順利核保。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:15:25</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">那 Stan 是這樣子，因為，因為張總那邊其實期待就不只，從來就不只做旅平險，他的期待一開始就是旅平加車險，所以我想要這邊你們是不是可以一起幫我把旅平，因為旅平看起來也是可以通，沒有問題，那車險這邊你們是不是也可以在 UAT 環境用富易達的這個版本來完整的跑通？那也方便我們這邊順利後面的交付給台產。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:15:51</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">就是，Leo 你...(聽不清) 我剛剛講的就是跑通是一件事情，能不能出單...(聽不清)</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:15:56</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">台產這邊有另外...(聽不清) 台產這邊我會另外去追，但就是系統我們的流程層面的部分，希望你們這邊可以幫我們協助這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:16:05</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">哦。 你你你稍微說慢一點，那聲音有一點不太清楚。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:16:09</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">(聽不清)</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:16:10</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那如果是這樣的話，我會需要再跟工程那邊說，就是你們現在有另外，這個其實算是新的需求喔，因為原本只有旅平而已，是是沒有含車險的，所以如果現在是在車險這邊也要的話，那我會需要重新提出需求，然後請工程再去評估，所以他們也會需要再重新去評估它可能在車險這邊會所需要的開發的，不管是測試啊，或者是就是開發的人天工時的部分。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:16:47</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">然後我頂多確定沒有包含到喔？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:16:50</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">沒有沒有，所以我剛剛一直，就是一開始不是有跟你講那個前因後果嗎？就是一開始我們就只有討論旅平而已，沒有車險這一塊。之所以車險會出現，是因為我們當初工程就是整份把它複製過去，它連調都沒有調，它也沒有把它藏起來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:17:08</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">所以你們才認為車險這邊應該是可以照原本的邏輯繼續去跑，你們想像上？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:17:16</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">是一份過去，然後只是去調細部的的流程而已，當初我們一直以來雙方都是基於旅平險在做討論而已，沒有車險這一塊。那我說是說現在車險會出現在上面，只是因為當初就是複製一份過來，然後都沒有去改，看得到車險這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:17:39</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">對。 OK，這個，這一部分有什麼，有報價單，一開始的我們談的資本的東西嗎？我想要確認一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:17:51</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">蛤？您說什麼？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:17:53</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">我說，你再說一次，因為 Leo 那邊收訊比較不好。 (聽不清)</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:17:58</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">我想要，Stan 我想要問一下，Rocky 他這邊有可以需求單還是報價單這樣的東西嗎？我也想要跟 Evan 這邊講一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:07</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">哦，會有啊，我們當初在，對對對，在旅平這邊我記得有出那個，人天工時的那個報價單。對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:17</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">所以你有寄給 Evan 嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:19</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">應該有吧，應該是 Rocky 那邊提供的啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:21</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">他那個時候應該是用那個 LINE 的方式啊，他他的人天工時都是用那個骨幹科技跟羅賓斯的那個共同群組內，我看他都是用 LINE。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:32</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">應該會有，會有文件啦，應該是會有文件。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:36</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">那可以等一下可以再幫我寄一份出來嗎？不然 Evan 應該會來問。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:40</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">我問，我等一下問一下 Rocky 那邊，理論上應該是會有文件，因為在財務那邊應該它也會需要有那個相對應的文件，因為這算專案。對。 OK。 好啊，好啊，那部分沒問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:18:57</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，那那那我這邊，那個，Stan 我就繼續先講旅平這邊需要調整的地方，因為這張總反應的這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:05</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">我先再確認一下，所以現在就是連車...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:00</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">Stan 我就繼續先講旅平這邊需要調整的地方，因為這張總反應的這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:05</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">我先再確認一下，所以現在就是連車險你們都會需要做。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:12</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">所以我們這邊要再出報價給你們。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:15</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這樣的理解是對的嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:16</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">沒錯，而且時間有點趕，因為 8 月 1 號，現在又延了一次了，所以現在 8 月 1 號必須得上。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:24</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">能不能 8 月 1 號上我不能保證啦，那我只能說我把你們的需求轉交給工程那邊，由工程那邊去評估這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:35</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，知道了，這麻煩，這麻煩 Stan 多幫忙。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:38</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:40</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">感謝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:42</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那 Matt，那我們就繼續吧，在旅平這邊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:45</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好好，OK，那 Leo 你這邊需求你就反應完整，再來就我這邊，我會直接講。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:52</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">好，沒問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:53</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">OK OK，好，那 Leo 你後面就看你要不要參與了，因為只是我反應那個需求給 Stan 這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:58</span>
+          <span class="ts-speaker" style="color:#6B7280">Leo</span>
+          <span class="ts-content">沒問題，我可以旁聽。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:00</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">OK，那那個 Stan 我這邊先講一下就是這個旅途出發時間啊，可能要幫我改一下，直接改成 T+2 的時間，因為你看我這邊點試算，</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:10</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">它就會幫我跳出說不得早於 7 月 2 號。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:15</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">那那其實這個應該是可以預設。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:18</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">就是我我雖然今天是 7 月，就它已經幫我跳兩天後，可是兩天後因為不是工作日啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:26</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">它它有辦法就是自己去辨識工作日，應該是要下兩個工作日之後嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:32</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那個 Matt，所以你的需求應該是說，它用現在的時間加兩天之後，它必須是平日，星期一到星期五，如果不是，就要自己順延到就是平日的時間。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:48</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:20:49</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">但，那我要先講喔，因為國定假日，系統沒有辦法判斷它是國定假日喔，除非你有一個後台自己去輸國定假日，不然我們頂多就只能去判斷，比如說加了兩天之後，如果碰到六日，我們就順延到星期一。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:06</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">沒關係，我覺得先把六日排除，因為六日的頻率比國定假日高太多了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:12</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，那我們就只先做這件事情喔，因為國定假日你你會需要人工去輸入去額外處理，那個比較麻煩。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:22</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">沒關係，你你到時候需求單就是這個點上面你你有特別註明就是說，我我這邊有提到就是先以平日這樣，就是那個六日這樣，啊國定假日因為需人工就暫不考慮這樣就好，就你有註明這點就可以了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:35</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:36</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，OK，然後，像，好，假設說我現在就先跳到 7 月 6 號這樣子，然後我點試算。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:45</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">等一下喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:46</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後像這個啊，呃，這個日期，我看一下喔，它應該會自動往後跳才對。自動往後跳至少一天。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:21:58</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">就就這個回程日期一定不會在我去程日期之前。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:06</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:06</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">我不知道你能不能理解，就是它的邏輯應該不會再，不會小於去程日期，一定會大於，甚至等於，等於也不可能，一定會大於。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:21</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">因為它這邊應該是自行輸入吧？它這個應該是自己輸的，所以你的意思是說它今天自行輸，如果是小於去程日期，就會跳警示嗎？還是怎麼樣？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:34</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對。呃，我想想看喔，因為我剛剛跳一個，不知道，啊我知道為什麼，因為我剛先填了 7 月 5 號，後面再去選前面，那那這個沒關係，這個應該沒事。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:44</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">喔，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:45</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，OK。然後再來的話就是方案的選擇，那我覺得這邊沒有什麼太大的問題啦，就是跳出幾個方案就是讓客人去做參考這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:55</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:22:58</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:23:04</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，然後這邊啊我需要你記一件事情喔，這個方案的保費跟這裡這個方案的這個最大的這個主約保額，你這邊先幫我記一下這兩個數字，因為我們等一下在打那個分析報告的時候有沒有，這些相同的內容它沒有帶入，它必須要我再手打一次這樣子。好，然後等一下我會跟你講是在哪裡。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:23:27</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:23:29</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">OK，然後這個方案與保費的確認這邊，看能不能幫我隱藏或者是刪掉好了，就是這個是不用，就是因為這邊已經有了這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:23:41</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這裡，這個這個不用。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:23:54</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">我到時候那個錄影啊，我會再整一個會議記錄給你，可能這樣你會比較清楚一個一個核對，如果你來不及記的話，我就先用口頭說明這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:05</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:07</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，然後我們邀保人資訊這邊啊，因為之前有建建檔，這邊都會帶入，那這個沒有什麼太大問題，那重點是是否具原住民身分這邊，我想要直接把它預設成否，因為不具原住民身分的人比較多，所以我就是直接先預設否，那如果這個邀保人是的話，業務員再去點是就好了，所以它預設是否，不要是空白這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">喔好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:31</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">嗯，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:33</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:34</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後這邊被保人，因為它我只有一個嘛，所以它已經勾主被保人了，然後這邊聯絡人資料同要保人也幫我預設打勾。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:47</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">呃，你你們確定這個要要勾喔？要預設？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:51</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，我先預設。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:53</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">因為，因為其實就以投保食物來講啊，被保人的聯絡資料，我其實假設是紙本，都會填跟要保人一模一樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:25:05</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">因為這樣不然後面的聯絡人跟地址會有一連串都不相同這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:25:12</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">沒關係，你們確定這個要 default 先勾。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:25:15</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，我先我先預設就好，那如果他覺得不是這一個，那他再點取消去選別的就好了。但是他把它預設。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:25:33</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，然後這邊都，對，這個都有預設了，這沒有問題，然後受益人跟被保人，法定繼承人，這沒有問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:25:46</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這沒有問題。然後投保目的啊，能不能也幫我都預設第一個？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:25:56</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那個 Matt 我要先提醒一下喔，就是這種東西預設，我不曉得法規上會不會有問題喔，但技術上是可以做的，但是...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:26:06</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">沒關係，我們有跟張總講過了。我現在就是全部都先幫你預設，那你們後面，因為，我知道 Lana 之前有講啦，那個是張總要去跟 Lana 溝通的事情，但我這邊就是先幫他以業務員操作最便利的方式去去修正這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:26:22</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，我只是想要再提醒一下，就是說技術上一定可以做，因為那個就只是先 default 先預帶。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:26:29</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，對對對對，我先預打。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:26:31</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">法規的問題，就是你們自己要再去確認，或者是說你們願意承擔這個風險。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:26:38</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">我知道，我知道，這個這個我當初在改的時候，我其實就跟 Lana 講過，我說要不要我幫你預設，Lana 說因為法遵問題，可是後來我們 demo 給張總看的時候，他就說怎麼要填那麼多東西，怎麼沒有預設，都先預設好，那他說那個法遵問題他會再去跟 Lana 溝通這樣子。所以我這邊的任務就是先把它做...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:26:57</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">可是你們要確定喔，就是說我現在就是會根據你們的需求真的去改了，那改完之後如果你們又要再調回來，就是會，所以說還是你們要先確認，就是說張總那邊真的是 OK，就是真的就是這樣，還是說我把它再等你們，那我們只是先記錄下來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:27:17</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">不用不用，你不用等了，你就直接改吧，對啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:27:19</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:27:20</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，你就直接改吧。好，OK，然後這個都先預設第一個沒關係。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:27:27</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">就在，所以是，你可以往上一下嗎？我再確認一下，就是因為你剛剛是勾要保人等於被保險人嘛，所以就是它就是下面這邊它都一起帶，就是第一個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:27:43</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">不同人它也是都直接帶第一個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:27:45</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">不同人的話，它的聯絡資料帶第一個也沒問題，因為只是帶聯絡資料嘛，就是手機跟信箱而已啊，還有地址這樣子。這這都 OK，這完全都 OK，因為我們投保食物上就是下面有一串的被保人，頂多就是姓名、身分證號跟出生年月日不相同，可是其實他們的聯絡手機跟信箱還有地址全部都是同一個人，這就是投保的食物就是這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:11</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，好，我只是想說再跟你確認。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:14</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">沒事沒事。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:15</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">所以下面我們通通都直接就 default 帶，那那個你的那個 KYC 也要 default 帶嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:21</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，我覺得都都預設。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:24</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那你要預設你要長什麼樣子，可能你要跟我說。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:26</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">我先我先勾給你喔。因為我這個 KYC 如果沒有預設，有一些核保過不了，所以其實我這些點的也是預，也是等於是預設的意思啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:38</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對啊，所以我問你...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:39</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">所以等一下點的都一樣，你知道嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:43</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，所以這邊通通你們都要預設，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:45</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">預設，全部都預設，對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:28:51</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">因為我不這樣子填，我牌廠那邊就會回報給我說不行，那我變成我還是要這樣子填，然後就沒差。對啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:00</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">對啦，但是就是說這個其實就它就不是人人自己點的啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:07</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">所以我剛才會跟你說，就是這會在法遵上它是有一定的一題跟風險存在，那但是技術上都可以做得到，那你們想要先就是 default 是設定。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:19</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">先預設，對，先預設沒關係。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:21</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">做得到，對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:22</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，謝謝。好，那假設我這邊都預設，譬如說就是長這樣，那這個後面錄影我再給你。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:29</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，那假設說我現在就按確認，那就會跑到這邊嘛，好，接下來這邊也要預設喔，要保人的職業直接幫我預設第四類，然後被保人與要保人關係就是先也是預設本人，然後被保人職業也是第四類。因為這個是風險等級的意思啦，類別越大，它的等風險越低，類別越高它的風險越高，所以我們就直接預設是低風險這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:56</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:57</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後本次投保目的及需求也都是保障。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:30:02</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，然後是否指定保險公司這邊我們就先用否就好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:30:13</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">欸，拍謝，我前面有一個預設，我第一個可能要，我前面的有一個第一題的預設應該是要改否才對，不好意思，就是是否投保其他商業保險的，應該是否，我我不小心勾到是了，因為如果是的話這邊還要再去說明為什麼這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:30:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這一題在上一頁也有一個一模一樣的第一題，那它應該是預設是否才對，不好意思。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:30:37</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:30:38</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">到時候你應該會對完需求之後再出一個流程跟我對一次對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:30:44</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">呃，好，反正我們就是先寫，先寫下來啦，然後到時候再，我可能整理完再逐一再跟你對一次這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:30:55</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好好。然後業務來源的話我們就勾既有客戶這樣就好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:05</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後預投保的險種啊，也先幫我預設，我看看喔，任意險，這個應該還好，這不用預設。業務來源先勾這個既有客戶。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:17</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後預投保險種，任意或旅平嘛，旅平，看看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:24</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">欸，那個 Matt 我跟你確認一下，所以現在這個應該是已經在你們的環境裡面了，是嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:31</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這個是在測試環境，富易達的測試環境。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:34</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那這樣的話，你會如果說像我現在進去的話會需要帳號嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:43</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">有，有一組 Rocky 給的測試環境帳號，我不知道可不可以用，還是他需要再開一組給你？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:51</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，那幫我再問 Rocky 好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:31:53</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，因為那個是它該給我，然後它幫我創的，我用那個帳號去進行操作這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:01</span>
+          <span class="ts-speaker" style="color:#6B7280">Rocky</span>
+          <span class="ts-content">可以通用啊，不會互踢而已。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:04</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好像會互踢喔，對，我之前好像會互踢。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:07</span>
+          <span class="ts-speaker" style="color:#6B7280">Rocky</span>
+          <span class="ts-content">建議都開一組給 Stan。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:09</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，所以變成我也沒辦法給你用這樣。好，OK。然後預投保保險種類啊，也先幫我勾旅平。這個如果他要改車險，他會自己去改就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:26</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後這邊就是我要講的，你看我剛剛那個保額有沒有，有沒有辦法就是我在選擇那個方案的時候，這邊因為是我接下來要填的，它自動幫我做帶入。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:41</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這個保額是 1000，1000 萬。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:44</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">我知道，就是你剛剛選的方案的上面旅平它是...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:32:47</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，因為我們現在都是電腦線上化嘛，可是在紙本的時候是我可以左右看，就是說我看左邊這張紙是 1000 萬，所以我右邊這一欄我填 1000 萬，但是因為我現在沒有辦法回到上一頁，所以我在操作的人其實我是有可能會忘的，有可能會忘記說，那我剛剛那個保額是 500 萬還是 1000 萬，雖然說我剛是點 1000 沒錯，但是系統這邊張總就問說，那為什麼這個還要再打一次，應該可以直接帶入這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:33:18</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">呃，那我再確認一下你的需求喔，所以你的意思是說我們要根據前面的那邊的保額，比如說選擇的保額 1000 萬，對，那你這邊就要比如說填寫，就是要幫你直接帶 1000，然後下面要幫你勾好萬元，是這個意思嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:33:37</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，沒錯沒錯，這個都預設沒關係。這個是萬元，但是它預設...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:33:45</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">是要預設還是說是要根據方案？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:33:48</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">要根據前面那一個，對不起，要根據前面那一個選擇的方案。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:33:51</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">喔，好。因為這個條件判斷會完全不一樣，所以是根據那個方案，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:33:58</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">理解。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:34:02</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">那如果它是因為如果它是車險的話有沒有，它的保額可能就是 300 萬或 500 萬，那一樣是萬元啦。那這邊其他是多做的，因為他們有其他險種才會需要用到這種東西，這是人壽保險的需求。那再來這個保費支出啊，其實也是剛剛上面有的有的金額，就 992。這個我如果沒有記的話，我會很容易也會忘記。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:34:26</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">喔，所以費用也要帶就對了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:34:29</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">也要帶，對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:34:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">那那個年繳是是要 default 嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:34:35</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">對，default 就是年繳就好了，因為其實它繳的就是車險就一年，旅平險就是那一段時間，其實都是年繳。它也只有年繳可以選，對啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:34:48</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:34:55</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這邊啊，這邊我想要跟你討論一下就是，呃，風險看，喔，那也不用想，先預設台產就好了。這邊應該可以預設帶入台產吧？台灣產物保險這樣，因為目前就是只有串台產，之後要改再改其他就好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:14</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">還是這個可以做成下拉嗎？我給你一個名單，然後預設第一個是台產這樣子，其他...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:21</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">我要先講一下，你們這個都是新的需求，所以如果要改的話，它真的也會需要一些時間喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:27</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">我知道，我知道，因為這個是...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:29</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">你這個如果要改的話，前端可能也會動到，因為你這個如果要改下拉選單的話，那前端有可能就是要重做。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:40</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">沒關係，那就簡單一點就台灣就好了，我只要預設台灣兩個字，就是因為目前是串台灣產物。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:46</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:47</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後這個參考啊，就是勾保險公司官網，這也都預設。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:35:56</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後這邊就是台灣，因為目前就台灣產物。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:01</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">先這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:06</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">那那那我繼續喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:08</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">嗯，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:10</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">好，再來是保險商品這邊，這邊其實就是根據前面的那個方案，然後全部都能帶進來，譬如說我這邊勾選旅平險對不對，它這個主約就是旅平險，然後年期就是一年，這邊打一年，然後保額的話是 1000 萬，然後保費就是 992。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:33</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">也是前面的數字。但是年期這邊前面會有嗎？會有資訊嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:39</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這邊其實都勾一年就好，因為你都預設幫我一年就好，因為車險也是一年，旅平險也是我只能抓一年，它小於一年。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:48</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">好，所以應該是說年期是預設，它應該沒辦法根據前面的東西去帶，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:36:56</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">沒辦法，沒辦法，沒辦法。然後保額的話就是像剛剛那個前面的方案那邊去做帶入。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:05</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">啊保費也是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:09</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">然後主約就根據這個，它所勾選的這個險種，任意車險或者是旅平險這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:17</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">你剛剛那個，我再再看一下，剛剛那個險種，它應該險種剛剛是沒有說是說先 default 旅平而已嘛，對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:26</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">險種，這邊對，這邊先 default 旅平。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:30</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">那如果他有需要改任意車險的話，他再去改任意車險這樣子。欸，這個可不可以做成不要讓它複選啊？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:40</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">欸我想想看喔，複選。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:43</span>
+          <span class="ts-speaker" style="color:#6B7280">Stan</span>
+          <span class="ts-content">因為它應該是會，它有可能會需要複選啊，因為它強制加任意，它有可能是強制加，所以你不可能做單選，然後再來是，因為我不曉得它這邊旅平是有包不便嗎還是怎麼樣，所以它後面還有一個其他可能可以再加別的啦，我不確定，所以它應該還是要做複選這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:06</span>
+          <span class="ts-speaker" style="color:#6B7280">Matt</span>
+          <span class="ts-content">這不會不會，這個是險種...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:00</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">一樣，所以它後面可能有一個其他，可能可以再加別的啦，我不確定，所以它應該還是要做複選這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:07</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這不會不會，這個是險種的大類別，就是一個險種，因為強制險跟任意險是分開，所以它就是一個險種一格這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那你其他的什麼不變啊，都還是在旅平險底下這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:19</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好好好，但它強加認是有可能的，所以你不可能把它改成單選這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:24</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，沒關係，因為它這個有，有人有可能只投保強制，也確實是這樣，啊有人有只投保任意，啊有人兩個都有這樣子，這個也是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:34</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後這邊啊，讓它預設是旅平，如果不是的話，沒有讓它自己手打就好，譬如說它可能要改成</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:41</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">車險。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:42</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那就這樣它自己去改這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:47</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">只要讓它可以改就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:49</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">哦，了解，但是它這邊的邏輯應該是根據它上面選的險種。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:55</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，沒錯沒錯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:57</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:38:58</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">就它這個應該就不會是 default 旅平，它是根據它上面選的，然後它會帶進來，啊如果說</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:08</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">但其實理論上如果是根據上面的話，就不應該讓他再改，他應該要鎖死才對，還是你們就是不管，就是可以讓他再改？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">呃，我覺得讓，讓他可以改好了，因為我現在怕他前面點錯，然後他帶進來又沒辦法改這樣子，然後他就會以為他是對的，那在這邊的話，至少他也可以再做個確認，就是說你你這邊東西我都幫你帶好了，你這邊確認一下是不是正確的這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我讓他確認。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:33</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">因，呃，他</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:36</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">他其實如果他這邊改，他上面也要改哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:39</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我看看，哦，那我想一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:41</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對哦，這邊選好，下面的話應該是</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:46</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">主約是旅平險、車險。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:50</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">主約旅平險、車險、第三人責任。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:39:57</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，這個綁定前面好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">他他他這邊不要，不能改，要改就改這裡，要嘛他是旅平險，要嘛他是傷害險，或者是強制險跟任意險這樣子。對啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:09</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">那，那我再跟你確認一次需求，那就是說他上面這邊選定完之後，下面那邊是直接帶入，而且帶入之後是不能改，他是鎖死的。他要改他要回到上面那邊去去選別的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那這邊可以幫我</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:26</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好你說。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:27</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">但如果他是複選呢？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:29</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">如果複選嗎？就他勾選這兩個嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:31</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">對啊，那他這邊就是是會帶兩個？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">他會帶兩個，一般我們都是寫車險而已，我們好像不會寫那麼複雜。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:42</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我自己是都寫車險而已，其實我不會，雖然可以勾啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:40:47</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">呃，這件事情可能會需要再，因為車險現在還沒有做啦，但可能到時候這個後面的邏輯可能會有一些問題，因為你現在主約這邊，它只有一個欄位，但是因為上面可以複選，那如果說我要根據上面我選的東西帶進來的話，那要嘛就是說你今天是複選，我就兩個都帶，它應該不會是只有一個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:13</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:14</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">對，所以這可能要再你們，看是你們這邊要再想一下，因為它的邏輯是根據上面的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:23</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">哦好，這個我再確認，這個我再確定一下好了，到時候你整理出來之後我再跟你講。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:29</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:29</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，OK，謝謝。好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那這個我帶確認。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:34</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那沒關係，我先打旅平險。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後再來就是保障範圍啊，就是，我看一下，這個就是第一個就可以了，提供DM，然後符合需求，這個都全部預設這，這兩個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:41:59</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後，我確認一下哦。呃，個資利用同意，欸，我們這個個資利用同意是不是，是不是應該要坐在保戶那邊啊？是要讓保戶登入的時候，我要讓他同意收集個資利用對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:15</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">理論上是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:17</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，因為我後來發現怎麼坐在這邊？因為我我是業務啊，我不用收集什麼，我不用給公司收集我的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:25</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">但這個應該是，應該是 call 之前的，所以我也不確定為什麼會。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">之前沒有，之前沒有這個欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:34</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">所以這個是後來加的，是不是？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，因為你還記得我們有跟 Lana 提，他說，對對對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:42</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">這個的話，它應該是要出現在前面啦，就是剛剛上一頁，在他填那個，其實應該是一開始啦，他應該是要在第一頁一開始就就要讓他勾了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:55</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這個，這個應該是要給保戶勾啦，所以應該是我下一個階段要操作的保戶要進去之前他要勾的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:04</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，沒關係，你先你先走。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我先操作，我先操作，因為我想說怎麼跳這個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:09</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">啊那個時候因為要操作，所以就急著往下這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:20</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，那個六，現在不知道怎麼了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">等一下，我看一下，我看一下我上面有沒有。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:27</span>
+          <span class="ts-speaker" style="color:#6B7280">C</span>
+          <span class="ts-content">什麼什麼怎麼了？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:28</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">就是，等下給你看一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:35</span>
+          <span class="ts-speaker" style="color:#6B7280">C</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，又可以了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:37</span>
+          <span class="ts-speaker" style="color:#6B7280">C</span>
+          <span class="ts-content">哎呦，他怕我。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:39</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">每次都這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:42</span>
+          <span class="ts-speaker" style="color:#6B7280">C</span>
+          <span class="ts-content">主人來了，他就會怕了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:43:44</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對啊。好，那個那個，我剛剛看到，這個本契約是經，我看看，這邊親戚，應該預設，他人介紹，預設他人介紹。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這個預設他人介紹沒關係，啊如果他要改，再讓他去改就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:04</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">嗯，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，OK。然後，招攬時是否已確認要保人、被保險人、受益人身分，這個也是是，就是預設是是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:13</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後是否向要保人、被保人確認，是，這個都是是。然後是否親見，好，這個也都是是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:20</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">身故受益人是否指定配偶或直系血親、法定繼承人，是。好，然後要被保人投保目的需求，增加保障，好。預設這些。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這些預設。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:32</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:34</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">嗯，然後，這個，這個業報書啊，能不能跟前面的，我想想看哦，因為它，它變成分兩段了，它是能不能整在一起啊？就是我整個做完之後就直接跳去保戶那邊了，不用我下一步還要跑來這裡這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:53</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">我跟你講，因為它這個畫面都已經切好了，如果現在要...(聽不清)</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:56</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">OK，又要時間就對了，好，我知道了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:44:58</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">他那個要重做。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">預設就好，沒關係，預設就好，預設就好，然後確認送出。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:06</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後，這個提交成功不用跳了，不用跳這個，直接到這邊就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:13</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">還是畫面已經做好了，刪掉也要時間？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:18</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">它應該是，就是你你這個如果要改的話，這你是說這個提交成功這個，這一個不要是不是？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">不用，不用跳這個啊，因為我們以前就是直接跳連結出來了，應該是不會有這個東西。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:32</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">它這個，好，所以你你不需要。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:35</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，不需要這個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:36</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">因為我再記錄一下，可能工程他那邊要看。好，謝謝。是可以省略還是說它已經有些邏輯在裡面，不跳不行。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:46</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，沒關係，如果真的沒辦法就，就至少不要讓我按好了，就直接到下一步去了這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:45:54</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">這個可能都要看啦，看他當初寫的邏輯是什麼，因為他有可能是判定你一定要去戳這顆按鈕，它才能夠往下，如果你不戳，它是沒有辦法往下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:06</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，因為以前是填完上面的東西之後，就會直接跳到這裡。投保網址已成功傳至信箱、手機，然後跟那個，就是連結這樣，好，那我現在，我現在接下來就直接進入保戶端了喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:22</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，所以現在就是我們都，就是業務這邊都做完了嘛，也寫完了嘛，KYC 也都做完了，然後現在就是要讓保戶去做簽名的動作了嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:34</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，沒錯。好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:39</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後我想一下，這個姓名有辦法刪掉嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:42</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">什麼什麼姓？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:43</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">姓名，就我不用填姓名，我身分證跟手機就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:48</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">在哪一頁？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:50</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對不起，這一頁。保戶的登入畫面，因為其實姓名，我就是已經發給他本人了啊，我自己應該是不用填我自己的名字。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:02</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">這個要看他背後寫的邏輯，如果他背後寫的邏輯就是有帶這個的話，就你還是要填，你即便把它，你如果要刪的話，它就整個程式它都要去看說哪裡要吃這個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:15</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">麻煩你幫我評估一下，就是因為這個對保戶來講不是必要必填資料，現階段不是必填資料。如果它不會動到後面整個程式，只是把一個欄位拿掉的話，麻煩幫我拿掉。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:28</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，但，但它這個是，不是自動帶嗎？還是為什麼你要？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:34</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">沒有，我是手打的。它是手打的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:38</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">哦，好。譬如說，我我再給你看一次，一開始我進來是這樣，都空白對不對？好。然後我要打我的姓名。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:49</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">哦好，了解，所以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:55</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後我收個驗證碼。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:58</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">欸，但我覺得應該不行哦，我猜它應該當初就是，之前做的，就是科技之前的那個工程團隊，它應該是透過姓名、身分證跟手機三個去做判斷，可能有一個不行，你就沒辦法進到後面的簽名，我猜是它是透過這樣的邏輯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:20</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">就是你要填三個，三個都要符合了，它才會讓你進到簽名的流程。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:26</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">應該是。我直接測試一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:30</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">對。哦，你是說後面會卡住是不是？還是我前面就進不去了？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:34</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">對，你，我猜是這樣，你試試看，你就比如說打你的名字，但是，不，打別人的名字，或者是你不填，然後只填，那你打別人的名字，然後你的身分證、你的手機，應該是，我猜應該是進不去，你要打別人的名字，你就隨便打。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:52</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">別人的名字，對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:54</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:56</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，你看，錯誤。哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:48:58</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">所以它這個是整個邏輯通通都，就是在裡面的，它就是要去判定。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:04</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">它也沒辦法預設對不對？因為這是保護端接收到的東西。對對對，所以它沒辦法預設。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:12</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，想想看哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:15</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，刪除的是大工程。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:17</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">對，他要改它，它會有很多地方要改，會會很麻煩。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:24</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">呃，好，沒關係，那先這樣。然後，這個我之前好像有講過，就是我按下一步的時候啊，它應該是可以直接發送驗證碼給我。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:38</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">所以現在不行嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:40</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">現在變成我要點，我要點它才會發送。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:44</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">我現在點。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:47</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我剛剛我剛剛發送過一次了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:51</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">因為我們一般，我們一般像銀行 OTP，我點了。沒有，現在都是會你要去，有的會要你觸發，因為它怕你那個，就是像你去 Momo 那些，它應該也是，你現在應該都是改成你去戳它，它才會，它才會發送。以前比較早期是沒有錯，你好像到下一步它就會自動發，可是後來好像，我印象中比較多應該都是大家會變成是你，就是使用者會去觸發它，然後它才會發送，然後發送之後它才會開始計時，就是什麼時候可以再發下一封這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:50:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那剛剛我們不是有一頁是那個個資使用收集同意條款有沒有？那個地方，之前 Lana 的意思是要坐在我們保戶登入之前。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:50:45</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">就是一樣是那個內容啦，只是它是要畫面應該是要切在，我這個保戶輸入姓名、手機跟身分證號之前。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:50:56</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">沒有，我覺得你這個東西你們可能要再去確認一下，其實它正確的邏輯應該是這樣，其實因為你一開始在業務，他在填那些資料的時候，他其實就已經是取得用戶的個資了，他不是到這邊才取得用戶個資，他是在一開始他就取得用戶個資。一開始就取得用戶個資。對，所以你，所以說他其實在前面那邊其實應該是，比如說，因為我們現在是用線上的方式嘛，但是如果說是以傳統，比如說我們是面對面的，應該是說今天業務員會跟保戶說，我現在要取得你的個資喔，那你是否同意讓我使用？對。然後我在這邊勾說同意。對。對，所以我覺得他剛剛那個流程應該是這樣的架構，而不是今天我都已經寫完了，你的個資都在我身上了，然後我才說，你進來這邊再同意。你可能，這邊可能要再去釐清一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:52:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我剛剛因為按太快，我有點忘記了，我那個同意條款啊，我是，它不是必要的欄位對不對？它只是給我看而已嘛，還是我一定要把它按箭頭向下，我才能進入下一步？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:52:15</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">這個其實我覺得你們會需要跟 Lana 去釐清這件事情，就是說因為你們現在是走線上嘛，那線上的時候，比如說你前面填的那些個資，其實你就已經是取得了喔，你已經是取得用戶的個資了，那是不是在，因為它現在不是網投，網投的話，它是用戶，就是一開始就是我跟你說，啊我願意讓你使用，然後我開始輸入我自己的個資，然後你你存取我的個資。但是這個比較像是變相的的做法，就是說好，我今天業務人員我在線上 key 這些資料，但是這些資料其實你已經給我了喔，理論上我應該已經取得你的同意了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:53:01</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我懂你意思，沒關係，這個我先，我先把它流程優化，看他後面有什麼需要提的，再跟他討論好了。因為之前，我記得他有跟我講說，我記得他有跟我們啦，包含你，就是他有跟我們講說那個個資同意，他是在保戶登入之前，有一個同意條款。那但是確實如你所說啦，就是說現實我們其實都已經碰面坐下來就開始收集了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:53:27</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">對啊，所以那個流程其實，我剛剛仔細想了一下，這樣是有点问题的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:53:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，沒關係，那就先維持，先維持這樣子好了，就先不變。它，我整個流程優化給他看，如果後面他有需要去調整，那再說，因為我也是照他之前跟我講的去做這樣子，就我們啦，我們。好，那我現在到這邊啊，就是方案的確認嘛，然後跟要被保人資料。然後這些欄位，因為我看確實都有縮了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:54:01</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後下一步。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:54:09</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這個，這個啊，張董說這個東西就是不用給保戶看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:54:14</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這個，因為這是業務員填的，所以跟保戶沒關係這樣子，就他不用看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:54:20</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那我不知道如果要快速一點處理的話，是可以把它隱藏嗎？還是怎麼樣？要被保人聲明事項這個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:54:29</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">首先你們要，你們要先確認真的這個就不秀給他看。對，對，不秀給他看。然後的話，我們再跟工程討論看看說，這個應該是可以直接藏起來啦，我猜，但我們不會去刪它，我們只會讓它不秀。沒關係，就因為如果你刪，後面又要動很多，你就先藏就好。因為給客戶端，我們實務上的操作就是我前面填好，就是我業務員填好了，就是客戶不用去看這個東西，他也不會知道這個東西，這個是我問客戶的時候，我已經提早填好了這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:55:03</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，那所以是這一整頁都不需要？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:55:07</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">上面這邊。上面這邊，要保人、被保人聲明事項這邊縮起來就好，就是下面這個。這整個 KYC 啊，應該說這整個 KYC 這個，要保目的，一直往下，一直往下，到這邊，共15題這邊。好，就是這15題。對，對對對，好。然後再來是確認條款啊，確認條款這邊，我看看哦，確認條款，欸，你這個要被保人聲明事項這邊應該是整個都可以，整個都可以隱藏，就到這裡，這裡，這邊都可以隱藏起來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:55:41</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">嗯。甚至連這個，這個表頭都不用秀出來，因為這個它不需要知道這個東西。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:55:49</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">哦，好。就是如果你們有確定的話，那我們就把它藏起來。OK，OK。好，所以等於它剛剛的下一步就是到這裡了嘛，對不對？就是到條款的確認。好，然後這邊條款的確認啊，我操作印象沒錯的話，它待會會有兩次條款的確認，所以我們可能要把後面那個就是把它隱藏掉，不用或不用再做。我我待會跟你講一下是什麼狀況。像這邊我們就是會需要一直按往下，然後，呃，這個我不知道為什麼會做成這樣，這個東西的格子有辦法拉到這裡？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:56:28</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">呃，應該沒有辦法，因為它，它那個就是，它這個就是當初舊的那個 Sass 裡面它就是這樣做的，啊我就說就是我們其實當初就是說我們只是把那一個複製過來，那如果說你這個要改的話，它就會大改，因為它背後勾啊的那些會觸發的邏輯就你完全都會動到。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:56:53</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，我想問一下，就是說，我我可不可以有一個版本是，好，我現在先以最小修正方案去符合他的優化需求，那如果，我可能最小優化方案知道的時間是幾乎就已經貼近要 8 月 1 號之前才能完成，那就照這個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">的優化需求。那如果我可能最小優化方案知道的時間是幾乎就已經貼近要8月1號之前才能完成，那就照這個模式。那如果可能估完時間是一個禮拜、兩個禮拜內可以，那我才再跟你討論進一步說是不是可以讓它</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:17</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">就是...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:19</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">呃，了解，我我了解。那</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:22</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">可能我們先，先不去動這個，我猜動這個它會要...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:26</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:26</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">的時間會...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:27</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那先不，先不動這個，沒關係。好，那我就先照你的操作。我就先這邊都一樣，就是確認相關資訊與條款，這個都一樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，然後我就點下一步。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:39</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好。好，下一步之後，</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:43</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這些</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:44</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">全部都隱藏起來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:46</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">就留表頭就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:48</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">保費方案與資訊這個隱藏。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:50</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">保單資料這個隱藏。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:52</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">全部都隱藏。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:57:54</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">只要留這個表頭就好，然後留一個像，可以往下拓展的鍵就可以了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:00</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">其實你就是要縮合就對了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:02</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，縮合就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:04</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">全部縮起來，就是不展開啊，就是全部 default 就是縮合不展開。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:08</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，我看一下喔，保費支出。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:13</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我看看，哦，這裡又有一是個人資料蒐集。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:17</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">就我前面那邊是要被保人條款同意有沒有，然後我這裡又有一次個人資料蒐集，我不知道為什麼要兩遍。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:26</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">呃，所以我剛剛才會說，就是，我不曉得它是不是為了嚴謹，就是說，因為我剛，其實理論上，業務，它在填寫資料的時候，你就已經是收集個資了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:41</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:41</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">所以他那，我猜是這樣的邏輯，所以他那邊會有一個，然後到這邊，應該是說，因為那個是你自己勾的嘛，那那那邊是業務自己勾的，到這邊其實才用戶他才有辦法自己勾選嘛，所以他為了保險起見，他在這邊再做一個讓用戶可以自己再同意。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:03</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">就是說，哦有哦，是，是真的我有同意。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:09</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">我猜啦，我猜他當初這樣做的邏輯是這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:12</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我知道。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:13</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">嗯，我想一下。一點，所以他就做，兩邊都做。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:18</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，這我我這個表頭這邊啊，</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:22</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我我看這個可能要</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:27</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">你你我覺得你全部隱藏好了，就是保費方案對不對，一直隱藏到</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:33</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這個</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:35</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">業務員建議及聲明項目全部隱藏。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:39</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">這個東西可能，我們可以隱藏，但是這個你們可能真的要跟富易達，然後還有他們法尊要去確認，因為這些東西其實都...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:59:48</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那個我之前在看的時候，這個我我大概講一下為什麼會有這些東西，其實這個跟法尊沒關係，這個是以前IT人員在建置的時候，他們是按照他們的對於保單認知的邏輯來建置的，但是並沒有實際符合業務員實際投保上的需求。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:00:08</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那我現在的調整其實是</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:00:11</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">沒有，因為你看他這邊，你看他這邊是資料確認，所以你在資料確認這邊，如果你完全都沒有秀任何的資料，然後純粹只是讓他去</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:00:24</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">就是勾說</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:00:26</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，沒問題，可能會有點奇怪，但如果說你們覺得這樣是OK的，我們也是可以做啦，那我只是說可能還是要提醒一下，因為在這邊用戶，然後你們說是做資料確認這件事情。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:00:40</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">呃，我想想看哦，資料填寫。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:02</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">你這邊可以幫我，這邊資料確認這邊啊，可以幫我改成</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:07</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">看一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，沒關係，你先說吧，就是先隱藏吧。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:19</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，就是全部對不對？然後只留...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:22</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，然後留這個業務員建，就是只留這個確認相關資訊與條款這邊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:28</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">嗯，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那這邊啊，這個字要幫我改一下，就是確認個資同意條款這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">個資同意條款。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:41</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">哦，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:41</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">因為這個的敘述跟前一個是一模一樣的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:45</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:47</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">他會不知道為什麼他要簽兩個一模一樣的東西這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:52</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:53</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:54</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，然後這邊就一樣先這樣，就往下，然後打勾打勾。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:59</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，然後我前往簽名。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:08</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，OK，然後這邊</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:12</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，這邊</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我都不知道為什麼前往簽名的下一步還是這個，我一直以為會進入到前往簽名。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:24</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，這邊呢，我看看哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:28</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這邊也直接都隱藏，就是從這個保費方案資訊</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:33</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">隱藏到這個</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">業務員建建議及聲明事項全部都隱藏，還有保費這邊都隱藏，直接秀出下面這個投保尚未完成，需完成簽名後才能實際投保。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:48</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後這個也，這個要保書這邊把它縮起來就好了，只留這個要保書簽名。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:54</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後前往簽名這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:03</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，等下我，我有一個會議。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:07</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">所以這個是要保書縮起來，然後下面留簽名就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:10</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，對。欸，不好意思，我方便給我一分鐘時間嗎？我跟我同事講一下，因為我本來11點有會議，我跟他說我會晚點到。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:19</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">啊，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:20</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">不好意思，耽誤你們時間，我想說一次把它講完，我大概再五到十分鐘可以解決這個事情，不好意思。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:26</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:03:27</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:08</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好。好，然後再來，就是</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:13</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">前往簽名這邊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，那這邊沒有問題，就是它會發驗證碼。欸，你看哦，這邊我一一點進來，它就直接發送了，就沒有叫我再點選了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:24</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">跟剛剛前面那邊是不一樣的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，我先收個驗證碼。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">261589</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:41</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">確認。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:45</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">那所以你們是希望一進來就發，不要再點，對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:48</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我覺得其實可以，你看我簽名也是這樣啊，根本就沒差。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:52</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:52</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我覺得這樣反而更方便。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:55</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，那那沒關係，我跟請工程他們那邊看一下，就是如果覺得這樣比較好的話。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，謝謝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:01</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">謝謝。好，那我我這邊其實</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，看看哦，要保書。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:07</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">書面分析報告。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:09</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對，都沒有問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:11</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:12</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後這些，好，然後那個Stan啊，我這邊有沒有麻煩你幫我看一下這幾個文件哦，你看這邊有一個要保書。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:19</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後還有一個這個</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:22</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這個叫業報書，就是業務員的招攬人員報告書，好，第三個是富易達的書面分析報告書。這邊看起來有三個PDF檔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，那我我待會在業務員端那邊啊，我發現就是後台簽名完成之後，它只能載其中一個檔案，就是這個書面分析報告書，前面的兩個檔案都沒辦法載，然後我等下會秀那個欄位給你看。好，我這邊先完成簽名。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:50</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">我沒有聲音。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:52</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:53</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:55</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">喂，那個...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:56</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">有有有。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:05:57</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">哦，不好意思，你剛剛都沒有，你剛剛...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:00</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，我這邊先完成簽名給你看，然後我再說待會的流程，我稍微加速一下，不好意思。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:06</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，這邊先隨便簽一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:15</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">欸，你好像網，你，是你網路不穩，還是我網路不穩？因為你這邊有個圈圈在轉，說網路連線中斷。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:21</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">哦，真的嗎？那你現在聽得清楚我在說什麼嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:24</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">可以可以可以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好好好，OK。我，好，還好我都有錄影，不好意思。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那我現在這邊簽名完成了，然後我就把它</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:37</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">完成簽名送出，前往付款頁。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:42</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">前往繳費。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:44</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，那這邊</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:47</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">不好意思，你稍等一下，我直接走完整個流程。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:06:50</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:02</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，謝謝你幫忙欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:04</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我這這個工程好大哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:07</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">嗯，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:09</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">欸，那你們後續還有那個，SaaS測試？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:14</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">有，我知道，因為今天那個Evan應該會跟Stela的會議，然後會後的話，確切後面要怎麼進行，他會再跟我說。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:24</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好。對，因為我禮拜二就有跟他提醒這件事情了，是不是我直接把Ray跟你就是安排個會議，那他說等他跟今天Stela的會議之後再，我我再再跟你約這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:35</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">嗯，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:36</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">不好意思讓你等。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:39</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">等一下，3</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:44</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">7257，1228572。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:53</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">確認付款。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:55</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，OK，那我現在這邊完成了。好，然後我到後台去。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:08:01</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">不好意思，我接個電話，不好意思。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:08:03</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:10:07</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，Kevin，那個Stan，不好意思。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:10:11</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，那，我們繼續。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:10:14</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，OK，那我再來的話，我就進簽名系統。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:10:20</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:10:22</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">後台簽名系統，我看一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:10:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">投保網要保人簽名，簽名後台。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:03</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">00253578</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:06</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">要保人手機。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:20</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，我這邊登錄之後，那剛剛已經有跳這一件，就是業務員簽署了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後業務員簽名，這OK，沒問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後我點新增簽名。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:39</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">送出，這沒問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:48</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">送出要保書。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:49</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，這沒問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:52</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">送出要保書。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:11:53</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後檢核人員檢核。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:01</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">確認沒有問題，檢核。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:03</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，你看哦，這邊檢核人員有三份文件嘛，要保書，然後跟那個書，業務員的招攬人員報告書，業報書，還有就是書面分析報告書。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:18</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那都檢核。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:19</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">確定檢核送出。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:24</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，送出之後，你看我回到業務員SaaS這邊哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">我這邊是不是剛剛有一個我那個送出的這一單嘛，對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:37</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">嗯，對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:38</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那你看，你看哦，我這邊啊，下載報告書，就是我要看這個客戶的已簽名的要保書，或者是下載已經簽名的報告書的話的文件只有，只有一個東西而已。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:52</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">只有這個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:55</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">可是它應該要有...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:57</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">Matt，Matt。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:58</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">要保書。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:12:59</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">Matt，你那個是另外的畫面，我看不到。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:02</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，不好意思，這裡。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸，抱歉，你剛剛這邊前面看得到嗎？就是這邊SaaS這邊，然後我們點進保單總覽有沒有，我們這邊是不是業務員可以去下載已經出單的這個保單資料裡面的已簽名的報告書，還有就是要保文件嘛，對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:21</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">那這個的要保文件我是沒辦法下載的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:26</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">然後這個的報告書裡面只有</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:32</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">書面分析的這份文件。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:38</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這邊，這份文件，可是沒有那個...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:42</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">Matt，你現在又又在不同的畫面。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:45</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">欸？這邊這樣可以嗎？不好意思。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:46</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">可以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:13:49</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">就是我要表達是說，要保書跟書面分析報告書確實都是業務員需要去下載跟記錄的，但是他現在看不到他已經有簽名的要保文件，還有業務員報告書這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:06</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">他是看不到的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:08</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">業務員自己是看不到的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:10</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">但是他卻看得到已經簽核的書面分析報告書這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:16</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">這樣這樣你能理解嗎？就這邊的文件有欠。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:20</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，所以就是在要保書那邊，其實它也要可以下載，對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:25</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">因為我們有做這個功能嘛，下載要保書，那這個要保書就包含說剛剛台產的第一頁的保單內容，還有第二頁的業務員報告書，那我一直以為這個的報告書是業務員報告書，但目前看起來是那個書面分析報告書這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:45</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">這個可能要請工程看一下，它背後的邏輯是什麼。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:50</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">可以可以，就是這邊應該他要取得完整的文件啦，這樣才會整個案件才完整這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:56</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">這這個有可能是當初設計就是，就是這樣，因為我猜他們太可能會去改改這個東西。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:05</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">當初，我我記得當初沒有那麼豐富，當初好像只有複製連結跟再次投保，當初這邊是沒辦法下載東西。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:13</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，那我請他們再看一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:15</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好好好，OK。那主要今天應該需要你確認的需求應該是這樣，那可能後面再麻煩你幫我出個流程，然後我再跟你對這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:25</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好啊，那你再把今天那個錄影的...</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:27</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:28</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">的檔案給我。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:30</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好好好，我我會，我會給你兩個東西，一個就是這個錄影的影片連結，然後我會開權限給你，然後我會再用一個AI機器人做一個會議。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:39</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">你你你就同時分享給我跟Jenny這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:44</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">Jenny嗎？好，Jenny我要怎麼給他？我想一下，我是丟到群組給他嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:49</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">我等下再給你他的Email好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:51</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好好好，OK，好，那那你就先這樣，我就把用mail傳給你們。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:56</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，謝謝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:57</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">好，謝謝你哦，謝謝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:58</span>
+          <span class="ts-speaker" style="color:#6B7280">B</span>
+          <span class="ts-content">好，拜拜。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:15:59</span>
+          <span class="ts-speaker" style="color:#6B7280">A</span>
+          <span class="ts-content">謝謝，好，拜拜。</span>
+        </div></div>
+</div>
+
+<div class="footer">
+  <strong>羅賓斯科技股份有限公司 Robinstech</strong>
+  2026 數位發展部 GenAI Stars 金質獎得主  ·  Calliope AI 代理人 產出  ·  2026-07-02
+</div>
+
+</div>
+</body>
+</html>
