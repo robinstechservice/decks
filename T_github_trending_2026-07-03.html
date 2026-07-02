@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themis 秉衡｜GitHub 趨勢分析 2026-07-03</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#1B2F63; --gold:#E89E3F; --gold-soft:#F6E4C6;
+    --ink:#22283A; --muted:#6B7280; --bg:#F4F6FB; --card:#FFFFFF; --line:#E4E8F2;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,-apple-system,sans-serif;
+    line-height:1.65;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px 72px;}
+  header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;
+    padding:44px 20px 40px;border-bottom:4px solid var(--gold);}
+  header .inner{max-width:1080px;margin:0 auto;}
+  .kicker{color:var(--gold);letter-spacing:3px;font-size:13px;font-weight:700;margin:0 0 8px;}
+  header h1{margin:0 0 6px;font-size:30px;font-weight:800;}
+  header p{margin:4px 0 0;color:#C9D2EA;font-size:15px;}
+  .meta{margin-top:14px;font-size:13px;color:#AEB9D8;}
+  .meta b{color:var(--gold-soft);}
+  .section-title{display:flex;align-items:center;gap:12px;margin:40px 0 18px;}
+  .section-title .num{background:var(--gold);color:var(--navy);font-weight:800;
+    width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .section-title h2{margin:0;font-size:22px;color:var(--navy);font-weight:800;}
+  .section-title .sub{color:var(--muted);font-size:13px;margin-left:auto;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;margin:0 0 16px;box-shadow:0 2px 10px rgba(15,31,77,.05);}
+  .card .top{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;}
+  .rank{background:var(--navy);color:#fff;font-weight:800;min-width:34px;height:34px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .repo{flex:1;min-width:240px;}
+  .repo a{color:var(--navy);font-weight:800;font-size:18px;text-decoration:none;}
+  .repo a:hover{text-decoration:underline;color:var(--gold);}
+  .badges{margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--line);}
+  .tag.lang{background:#EEF2FB;color:var(--navy);}
+  .tag.star{background:#FBF1DF;color:#8A5A12;border-color:#F0D9AF;}
+  .tag.type{background:#EAF6EF;color:#1F7A46;border-color:#CDE9D8;}
+  .tag.type.skill{background:#F0EBFA;color:#5A3EA0;border-color:#DDD2F2;}
+  .stars{font-size:19px;color:var(--gold);letter-spacing:2px;white-space:nowrap;margin-left:auto;}
+  .stars .off{color:#D8DEEC;}
+  .oneline{margin:12px 0 12px;font-size:15px;color:var(--ink);}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px;
+    border-top:1px dashed var(--line);padding-top:12px;}
+  .kv{font-size:13.5px;}
+  .kv .k{color:var(--muted);font-weight:700;margin-right:6px;}
+  .kv .sister{color:var(--navy);font-weight:700;}
+  .verdict{display:inline-block;font-weight:800;font-size:13px;padding:3px 11px;border-radius:6px;}
+  .v-ref{background:#FBF1DF;color:#8A5A12;}
+  .v-try{background:#EAF6EF;color:#1F7A46;}
+  .v-no{background:#FBECEC;color:#A33;}
+  .help-yes{color:#1F7A46;font-weight:700;}
+  .help-mid{color:#8A5A12;font-weight:700;}
+  .help-no{color:#A33;font-weight:700;}
+  .priority{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;
+    border-radius:16px;padding:26px 26px 22px;margin-top:44px;border:2px solid var(--gold);}
+  .priority h2{margin:0 0 4px;color:var(--gold);font-size:20px;}
+  .priority p.lead{margin:0 0 16px;color:#C9D2EA;font-size:13.5px;}
+  .p-item{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+  .p-item:last-child{border-bottom:none;}
+  .p-num{background:var(--gold);color:var(--navy);font-weight:800;width:30px;height:30px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .p-body b{color:#fff;font-size:15px;}
+  .p-body .why{color:#C9D2EA;font-size:13.5px;margin-top:3px;}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:40px;line-height:1.9;}
+  footer .g{color:var(--gold);}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <p class="kicker">THEMIS 秉衡 · 每日技術情報</p>
+    <h1>GitHub 趨勢分析 · 兩組各 Top 5</h1>
+    <p>羅賓斯科技 InsurTech 視角｜對哪位姊妹有用 × 對保險科技業務有無幫助 × 裝／不裝／參考</p>
+    <div class="meta">
+      日期 <b>2026-07-03</b>　·　資料源：A 組＝GitHub Trending（daily）／B 組＝GitHub Search API（topic:claude-code-plugin、claude-skills、claude-code 三查詢合併去重、按星數排序、已扣除與 A 組重複者）　·　星數為 API 當下回傳值
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ===================== A. GitHub Trending ===================== -->
+  <div class="section-title">
+    <div class="num">A</div>
+    <h2>GitHub Trending Top 5</h2>
+    <div class="sub">github.com/trending · daily</div>
+  </div>
+
+  <!-- A1 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">1</div>
+      <div class="repo">
+        <a href="https://github.com/usestrix/strix" target="_blank">usestrix / strix</a>
+        <div class="badges">
+          <span class="tag lang">Python</span>
+          <span class="tag star">★ 32,092</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★★★★<span class="off">★</span></div>
+    </div>
+    <div class="oneline">開源 AI 滲透測試工具，自動幫 app 找出並修補資安漏洞。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">Eos 自動化 · Vena 法務資安</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-yes">有幫助</span>：InsurTech 命脈是個資與資安，承保/客服系統可用它做滲透測試與監理合規佐證。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-ref">參考</span>（交資安團隊評估，非直接裝進 agent）</div>
+    </div>
+  </div>
+
+  <!-- A2 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">2</div>
+      <div class="repo">
+        <a href="https://github.com/JuliusBrussee/caveman" target="_blank">JuliusBrussee / caveman</a>
+        <div class="badges">
+          <span class="tag lang">JavaScript</span>
+          <span class="tag star">★ 80,810</span>
+          <span class="tag type skill">Claude skill</span>
+        </div>
+      </div>
+      <div class="stars">★★★<span class="off">★★</span></div>
+    </div>
+    <div class="oneline">Claude Code skill，用「原始人精簡語」把 prompt token 砍掉約 65%。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">全體（省 token）· Themis 長篇財報最有感</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-mid">間接</span>：降低 API 成本，對 API 中台/大量文件批量處理有省成本效果。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-ref">參考</span>（省 token 誘人但犧牲精準；財報數字須精準，謹慎不裝）</div>
+    </div>
+  </div>
+
+  <!-- A3 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">3</div>
+      <div class="repo">
+        <a href="https://github.com/msitarzewski/agency-agents" target="_blank">msitarzewski / agency-agents</a>
+        <div class="badges">
+          <span class="tag lang">Shell</span>
+          <span class="tag star">★ 125,439</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★★★<span class="off">★★</span></div>
+    </div>
+    <div class="oneline">一整套「AI 代理公司」編制，從前端開發到社群經營各有專職 agent。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">Calliope 整合／多 agent 協調</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-mid">間接</span>：多 agent 分工編制可借鑑，對我們五姊妹團隊架構有參考價值。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-ref">參考</span>（看架構，非照抄）</div>
+    </div>
+  </div>
+
+  <!-- A4 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">4</div>
+      <div class="repo">
+        <a href="https://github.com/hasaneyldrm/exercises-dataset" target="_blank">hasaneyldrm / exercises-dataset</a>
+        <div class="badges">
+          <span class="tag lang">HTML</span>
+          <span class="tag star">★ 9,229</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★<span class="off">★★★★</span></div>
+    </div>
+    <div class="oneline">433 筆健身動作資料集（含中繼資料、圖片、動畫影片）。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">無明顯（勉強 Iris 視覺素材）</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-no">無幫助</span>：與保險/財務業務不相關。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-no">不裝</span></div>
+    </div>
+  </div>
+
+  <!-- A5 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">5</div>
+      <div class="repo">
+        <a href="https://github.com/santifer/career-ops" target="_blank">santifer / career-ops</a>
+        <div class="badges">
+          <span class="tag lang">JavaScript</span>
+          <span class="tag star">★ 57,771</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★★<span class="off">★★★</span></div>
+    </div>
+    <div class="oneline">建在 Claude Code 上的 AI 求職系統，14 種 skill 模式＋批次處理與 PDF 產生。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">Eos 自動化批次</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-no">無直接幫助</span>：屬求職領域；惟「14 skill 模式＋批次」架構可參考。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-ref">參考</span>（僅架構；業務無關）</div>
+    </div>
+  </div>
+
+  <!-- ===================== B. Claude 生態 ===================== -->
+  <div class="section-title">
+    <div class="num">B</div>
+    <h2>Claude 生態 Trending Top 5</h2>
+    <div class="sub">GitHub Search API · 按星數 · 已去除與 A 組重複</div>
+  </div>
+
+  <!-- B1 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">1</div>
+      <div class="repo">
+        <a href="https://github.com/affaan-m/ECC" target="_blank">affaan-m / ECC</a>
+        <div class="badges">
+          <span class="tag lang">Agent Harness</span>
+          <span class="tag star">★ 225,158</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★★★★<span class="off">★</span></div>
+    </div>
+    <div class="oneline">agent harness 效能優化系統：skills、instinct、memory、security、research-first，跨 Claude／Codex／Cursor。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">Calliope 整合 · Themis 記憶治理</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-mid">間接</span>：memory／security 架構對 agent 團隊治理與資料安全有借鑑。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-ref">參考</span>（深評估其 memory/security 設計）</div>
+    </div>
+  </div>
+
+  <!-- B2 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">2</div>
+      <div class="repo">
+        <a href="https://github.com/NousResearch/hermes-agent" target="_blank">NousResearch / hermes-agent</a>
+        <div class="badges">
+          <span class="tag lang">Agent</span>
+          <span class="tag star">★ 208,010</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★★★<span class="off">★★</span></div>
+    </div>
+    <div class="oneline">NousResearch 出品、「會跟著你一起成長」的通用 agent 框架。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">Calliope 整合</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-mid">間接</span>：通用 agent 框架，與我們既有 Claude 架構重疊，觀望其差異化。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-ref">參考</span>（觀望，暫不遷移）</div>
+    </div>
+  </div>
+
+  <!-- B3 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">3</div>
+      <div class="repo">
+        <a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank">multica-ai / andrej-karpathy-skills</a>
+        <div class="badges">
+          <span class="tag lang">CLAUDE.md</span>
+          <span class="tag star">★ 186,696</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★★★★<span class="off">★</span></div>
+    </div>
+    <div class="oneline">單一 CLAUDE.md，濃縮 Karpathy 對 LLM coding 常見陷阱的觀察來改善 Claude Code 行為。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">全體（行為準則）</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-mid">間接</span>：提升全姊妹產出品質、減少幻覺，與我們「反幻覺 7 規則」SOP 高度契合。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-try">參考→摘取</span>（可擷取要點併入我們 CLAUDE.md／SOP）</div>
+    </div>
+  </div>
+
+  <!-- B4 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">4</div>
+      <div class="repo">
+        <a href="https://github.com/farion1231/cc-switch" target="_blank">farion1231 / cc-switch</a>
+        <div class="badges">
+          <span class="tag lang">Desktop App</span>
+          <span class="tag star">★ 112,368</span>
+          <span class="tag type">參考 project</span>
+        </div>
+      </div>
+      <div class="stars">★★★<span class="off">★★</span></div>
+    </div>
+    <div class="oneline">跨平台桌面 all-in-one，一鍵切換 Claude Code／Codex／Gemini CLI 等多個後端。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">Eos 自動化／工具鏈</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-no">無直接</span>：開發便利工具，與保險業務無關。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-ref">參考</span>（開發者個人工具，可選裝）</div>
+    </div>
+  </div>
+
+  <!-- B5 -->
+  <div class="card">
+    <div class="top">
+      <div class="rank">5</div>
+      <div class="repo">
+        <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" target="_blank">nextlevelbuilder / ui-ux-pro-max-skill</a>
+        <div class="badges">
+          <span class="tag lang">Multi-platform</span>
+          <span class="tag star">★ 99,859</span>
+          <span class="tag type skill">Claude skill</span>
+        </div>
+      </div>
+      <div class="stars">★★★★<span class="off">★</span></div>
+    </div>
+    <div class="oneline">提供專業 UI/UX 設計智能的 AI skill，支援多平台前端設計。</div>
+    <div class="grid">
+      <div class="kv"><span class="k">主場姊妹</span><span class="sister">Iris 視覺（主場）</span></div>
+      <div class="kv"><span class="k">對保險科技</span><span class="help-yes">有幫助</span>：投保介面、客服與業務員 app 的 UX，直接對 InsurTech 產品前端有用。</div>
+      <div class="kv"><span class="k">建議</span><span class="verdict v-try">參考→試裝</span>（交 Iris 評估落地）</div>
+    </div>
+  </div>
+
+  <!-- ===================== 今日優先看 3 個 ===================== -->
+  <div class="priority">
+    <h2>★ 今日優先看 3 個</h2>
+    <p class="lead">以「對羅賓斯 InsurTech × 姊妹團隊」實際可用性排序</p>
+    <div class="p-item">
+      <div class="p-num">1</div>
+      <div class="p-body">
+        <b>multica-ai / andrej-karpathy-skills</b>（B3）
+        <div class="why">可直接摘取要點併入我們 CLAUDE.md 與「反幻覺 7 規則」SOP，一次拉高全姊妹產出品質、降低幻覺——性價比最高。</div>
+      </div>
+    </div>
+    <div class="p-item">
+      <div class="p-num">2</div>
+      <div class="p-body">
+        <b>nextlevelbuilder / ui-ux-pro-max-skill</b>（B5）
+        <div class="why">Iris 主場。投保流程、業務員賦能 app 的 UX 直接受用，是少數對 InsurTech 產品前端「有幫助」的 skill。</div>
+      </div>
+    </div>
+    <div class="p-item">
+      <div class="p-num">3</div>
+      <div class="p-body">
+        <b>usestrix / strix</b>（A1）
+        <div class="why">InsurTech 命脈是個資與資安。這支 AI 滲透測試工具值資安團隊評估，兼具監理合規佐證價值。</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span class="g">Themis 秉衡 📊</span>｜羅賓斯科技財務分析 AI 代理人<br>
+    本報告由 GitHub Trending 與 GitHub Search API 即時抓取生成，星數為 API 當下回傳值｜2026-07-03
+  </footer>
+
+</div>
+</body>
+</html>
