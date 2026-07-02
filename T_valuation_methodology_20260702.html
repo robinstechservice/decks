@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>估值方法對照：傳統保經 vs 數位 InsurTech · Themis · 2026-07-02</title>
+<style>
+:root{--navy:#0F1F4D;--navy2:#1B2F66;--gold:#E89E3F;--ink:#2C3345;--soft:#5D6B85;--bg:#F4F6FB;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);padding:26px 16px;max-width:900px;margin:0 auto;line-height:1.65;font-size:14px;}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:22px 26px;border-radius:16px;margin-bottom:14px;}
+header h1{font-size:19px;font-weight:800;}header .sub{color:#C9D2E8;font-size:12.5px;margin-top:6px;}
+h2{font-size:15.5px;color:var(--navy);margin:16px 0 7px;padding-bottom:5px;border-bottom:2px solid #E3E8F2;}
+table{width:100%;border-collapse:collapse;margin:6px 0;font-size:12.5px;}
+th,td{border:1px solid #D9E0EC;padding:6px 8px;text-align:left;vertical-align:top;}
+th{background:var(--navy);color:#fff;font-weight:700;}
+.verified{color:#1A7A3C;font-weight:700;}.est{color:#B5781A;font-weight:700;}
+.warn{background:#FFF1F0;border-left:4px solid #D9534F;border-radius:8px;padding:10px 13px;margin:8px 0;font-size:13px;color:#7A2E2A;}
+.ok{background:#FFF6E8;border-left:5px solid var(--gold);border-radius:8px;padding:10px 13px;margin:8px 0;font-size:13px;color:#5A4420;}
+b{color:var(--navy);}small{color:var(--soft);}
+footer{font-size:11.5px;color:var(--soft);text-align:center;margin-top:16px;}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:8px;margin-right:4px;}
+.tv{background:#E4F5EA;color:#1A7A3C;}.te{background:#FBEEDD;color:#B5781A;}
+</style></head><body>
+<header>
+<h1>估值方法對照：傳統保經 vs 數位 InsurTech（錠嵂 POC / A 輪 參考）</h1>
+<div class="sub">Themis 秉衡 📊 ｜ 2026-07-02 ｜ <span class="tag tv">綠=已驗證(附來源)</span><span class="tag te">黃=估算/假設</span></div>
+</header>
+
+<div class="warn"><b>先修正一個關鍵錯誤：</b>市場常見誤述「傳統保經 EV/EBITDA 只有 4-5x」。那是<b>小型 M&A 成交倍數</b>，不是公開市場公司倍數。<b>傳統保險經紀是「高倍數」生意</b>（經常性收入、90%+ 留存、25-30% 毛利），公開大型公司達 16-18x。用「傳統 4-5x vs 數位 12-18x、溢價 3-4x」的 framing 進對外 deck 會被專業保經（如錠嵂）一眼看穿。</div>
+
+<h2>一、已驗證公開市場 comps</h2>
+<table>
+<tr><th>類別</th><th>估值倍數</th><th>說明</th><th>標記</th></tr>
+<tr><td>傳統保經－大型公開<br><small>Marsh／Aon／Gallagher／Brown&Brown</small></td><td>EV/EBITDA <b>16-18x</b></td><td>90%+ 客戶留存、80%+ 經常性收入、25-30% EBITDA margin</td><td class="verified">已驗證</td></tr>
+<tr><td>傳統保經－中型 agency<br><small>EBITDA 100萬-1,000萬美元</small></td><td>EV/EBITDA <b>約 11-12x</b></td><td>2025 年區間 11.4-11.9x</td><td class="verified">已驗證</td></tr>
+<tr><td>保經 M&A 成交</td><td>平台 <b>11-14x</b>、tuck-in <b>7.5-12x</b></td><td>大型交易 AssuredPartners 14.5x、Risk Strategies 16.0x</td><td class="verified">已驗證</td></tr>
+<tr><td>數位 InsurTech（公開）</td><td>營收倍數 <b>6-10x</b>；資本密集數位車險/carrier <b>1.5-3.5x</b> net revenue</td><td>多數<b>尚未 EBITDA 獲利</b>→ 市場用「營收倍數(P/S)」評價、EV/EBITDA 常無意義</td><td class="verified">已驗證</td></tr>
+<tr><td>成熟獲利型 InsurTech<br><small>claims / infra 型</small></td><td>EV/EBITDA <b>12-18x</b></td><td>已獲利才適用 EBITDA 倍數</td><td class="verified">已驗證</td></tr>
+</table>
+<small>案例錨：Lemonade Q1'26 營收 $258M（+71% YoY）仍虧損、目標 Q4'26 adj-EBITDA 轉正；Root 已轉單季獲利。→ 說明數位保險「先衝營收成長、後獲利」，估值看成長與營收倍數。</small>
+
+<h2>二、正確的「數位溢價」framing（取代錯誤版）</h2>
+<div class="ok">
+・<b>傳統保經本來就不便宜</b>（11-18x EBITDA）——溢價故事不能建立在「傳統只有 4-5x」的假前提上。<br>
+・<b>數位/InsurTech 的價值</b>來自「高成長 + 可規模化 + 營收倍數」，多數用 <b>P/S</b> 而非 EV/EBITDA。<br>
+・對錠嵂講羅賓斯數位化的估值，建議用「<b>高成長率 + 營收倍數(P/S) + 可規模化護城河</b>」，不要硬套「4-5x → 12-18x 溢價」。
+</div>
+
+<h2>三、台灣在地折價（估算／假設，非事實）</h2>
+<table>
+<tr><th>項目</th><th>處理</th><th>標記</th></tr>
+<tr><td>台灣未上市保經（錠嵂／遠見／富易達）</td><td>無公開估值倍數可查 → 用全球 comps <b>× 折價</b>推估，<b>不編造精確倍數</b></td><td class="est">估算</td></tr>
+<tr><td>折價因子</td><td>未上市流動性折價 約 20-30%（一般私募慣例）＋ 規模折價 ＋ 台灣資本市場估值普遍低於美國</td><td class="est">假設</td></tr>
+<tr><td>台灣 AI/SaaS 上市 comps（iKala 等）</td><td>需<b>即時 verify</b> 本益比，不憑印象引用</td><td class="est">待查證</td></tr>
+</table>
+<small>⚠️ 以上台灣折價數字為方法性假設。進正式對外/法定文件前，需以「真實私募交易 comp 或第三方獨立估值」替換，方可作為承諾數字。</small>
+
+<h2>四、錠嵂 specific</h2>
+<ul style="margin-left:18px;font-size:13px;">
+<li>母公司 <b>CUII（美國上市）</b>：可查即時市值/倍數作為錨（建議 ship 前拉即時數）。</li>
+<li>錠嵂實收資本 <b>3.66 億</b>（<span class="est">數字待確認</span>，Calliope 提供、進 deck 前 double check）。</li>
+<li>未上市子公司估值方法：<b>可比公司倍數 × 流動性折價</b>（income/market approach），標明為估算。</li>
+</ul>
+
+<h2>五、對外 deck 建議</h2>
+<div class="ok">用「<b>估值方法 + 已驗證全球 comps + 明標的台灣折價假設</b>」呈現，<b>不放未查證的台灣精確單一倍數</b>。要放台灣數字，先取得真來源或標成估算，才進錠嵂 deck。這樣既有說服力、又守得住專業對手的檢視。</div>
+
+<footer>Themis 秉衡 📊 ｜ 羅賓斯科技 ｜ 估值方法對照 · 2026-07-02<br>
+Sources（已驗證項）：Multiples.vc（insurance brokers / insurtech comps）、Leader's Edge（2026 broker M&A）、insurancejournal.com（2026 broker valuation）、Windsor Drake Insurtech Valuation Q1 2026、Finro、Statista。台灣折價為方法性假設、需在地 comp 佐證。</footer>
+</body></html>
