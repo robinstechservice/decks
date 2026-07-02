@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>台北南欣扶輪社 · 第 41 屆社長暨職員就職典禮 · 司儀會前會</title>
+<style>
+:root {
+  --navy:#0F1F4D; --navy-light:#1E3A6F; --gold:#E89E3F; --gold-light:#F2C28A;
+  --green:#2BA84A; --purple:#7C3AED; --ink:#121822; --ink-light:#394350;
+  --grey:#6B7280; --bg:#F8FAFC; --bg-card:#FFFFFF; --border:#E5E7EB;
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:0; background:var(--bg);
+  font-family:"Source Han Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",-apple-system,sans-serif;
+  color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.65; }
+.container { max-width:1100px; margin:0 auto; }
+.hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+  padding:40px 56px 32px 56px; color:white; }
+.hero-eyebrow { font-size:12px; letter-spacing:4px; color:var(--gold);
+  font-weight:600; text-transform:uppercase; margin-bottom:12px; }
+.hero-title { font-size:28px; font-weight:800; margin:0 0 6px 0; letter-spacing:-0.5px; }
+.hero-subtitle { font-size:15px; color:rgba(255,255,255,0.85); margin:0; }
+.hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15); }
+.hero-meta-label { font-size:10px; letter-spacing:1px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:4px; }
+.hero-meta-val { font-size:14px; font-weight:600; }
+.attendees-band { background:var(--bg-card); padding:18px 56px;
+  border-bottom:1px solid var(--border); }
+.attendees-label { font-weight:700; color:var(--navy); font-size:13px; margin-bottom:8px; }
+.speaker-chip { display:inline-block; color:white; padding:3px 12px;
+  border-radius:100px; font-size:12px; font-weight:600; margin-right:4px; margin-bottom:4px; }
+.att-detail { margin-top:10px; }
+.att-row { padding:5px 0; font-size:13px; }
+.att-name { font-weight:700; margin-right:12px; }
+.att-role { color:var(--ink-light); margin-right:12px; }
+.att-note { color:var(--grey); font-size:12px; }
+.section { padding:32px 56px; background:var(--bg-card); border-bottom:1px solid var(--border); }
+.section-eyebrow { font-size:11px; letter-spacing:3px; color:var(--gold);
+  font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+.section-title { font-size:22px; font-weight:800; color:var(--navy);
+  margin:0 0 16px 0; padding-bottom:8px; border-bottom:3px solid var(--gold); display:inline-block; }
+.summary-body { font-size:14px; color:var(--ink-light); line-height:1.75; }
+.summary-body strong { color:var(--navy); }
+.topics-list { list-style:none; margin:0; padding:0; counter-reset:topic; }
+.topics-list li { background:#FFFBEB; border-left:3px solid var(--gold);
+  padding:14px 18px; margin-bottom:12px; border-radius:0 4px 4px 0; counter-increment:topic; }
+.topic-title { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.topic-title::before { content:counter(topic) "."; color:var(--gold);
+  font-family:"Montserrat",sans-serif; font-weight:800; margin-right:6px; }
+.topic-time { font-family:"Montserrat",monospace; font-size:11px; color:var(--grey); margin-bottom:8px; }
+.topic-summary { font-size:13px; color:var(--ink-light); margin-bottom:8px; }
+.topic-quote { font-size:12.5px; color:var(--navy); font-style:italic;
+  border-left:2px solid var(--gold); padding-left:10px; margin:6px 0; }
+.action-table { width:100%; border-collapse:collapse; font-size:13px; }
+.action-table th { background:var(--navy); color:white; padding:12px 14px;
+  text-align:left; font-size:12px; letter-spacing:1px; text-transform:uppercase; }
+.action-table td { padding:14px; border-bottom:1px solid var(--border);
+  vertical-align:top; color:var(--ink-light); }
+.ai-num { font-family:"Montserrat",sans-serif; font-weight:800;
+  color:var(--gold); font-size:20px; width:40px; }
+.ai-item { font-weight:600; color:var(--ink); width:55%; }
+.ai-owner { font-weight:700; color:var(--navy); white-space:nowrap; }
+.ai-deadline { color:var(--grey); white-space:nowrap; }
+.transcript { background:var(--bg); padding:20px 24px; max-height:800px;
+  overflow-y:auto; border-radius:4px; font-size:13px; border:1px solid var(--border); }
+.ts-line { padding:6px 0; border-bottom:1px solid rgba(0,0,0,0.04);
+  display:flex; gap:10px; align-items:flex-start; }
+.ts-line:last-child { border-bottom:none; }
+.ts-time { font-family:"Montserrat",monospace; font-size:11px;
+  color:var(--grey); font-weight:600; flex-shrink:0; width:80px; padding-top:2px; }
+.ts-speaker { font-weight:700; flex-shrink:0; width:100px; }
+.ts-content { color:var(--ink-light); flex:1; line-height:1.6; }
+.notice-box { background:#FEF3C7; border-left:4px solid var(--gold);
+  padding:14px 18px; margin:16px 0; border-radius:0 4px 4px 0; font-size:12.5px; }
+.notice-box strong { color:var(--navy); }
+.footer { padding:18px 56px; background:var(--navy);
+  color:rgba(255,255,255,0.7); text-align:center; font-size:11px; }
+.footer strong { display:block; color:var(--gold); font-size:13px; margin-bottom:4px; }
+@media print { .transcript { max-height:none; overflow:visible; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">台北南欣扶輪社 · 第 41 屆社長暨職員就職典禮 · 司儀會前會</h1>
+  <p class="hero-subtitle">Jimmy 社長 × Evin 秘書長 × Owen 社員 · 為週五就職典禮圓滿成功預作對焦</p>
+  <div class="hero-grid">
+    <div><div class="hero-meta-label">日期</div><div class="hero-meta-val">2026-07-02</div></div>
+<div><div class="hero-meta-label">時長</div><div class="hero-meta-val">約 26 分鐘</div></div>
+<div><div class="hero-meta-label">主題</div><div class="hero-meta-val">就職典禮流程對焦</div></div>
+<div><div class="hero-meta-label">出席</div><div class="hero-meta-val">3 人</div></div>
+  </div>
+</div>
+
+<div class="attendees-band">
+  <div class="attendees-label">與會人員</div>
+  <span class="speaker-chip" style="background:#0F1F4D">Evin</span> <span class="speaker-chip" style="background:#2BA84A">Jimmy</span> <span class="speaker-chip" style="background:#7C3AED">Owen</span> <span class="speaker-chip" style="background:#0F1F4D">林奕帆 Evin</span>
+  <div class="att-detail"><div class="att-row">
+          <span class="att-name" style="color:#0F1F4D">林奕帆 Evin</span>
+          <span class="att-role">台北南欣扶輪社秘書長</span>
+          <span class="att-note">會議司儀之一</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#2BA84A">Jimmy</span>
+          <span class="att-role">台北南欣扶輪社社長</span>
+          <span class="att-note">會議主持人 / 活動協調人</span>
+        </div>
+<div class="att-row">
+          <span class="att-name" style="color:#7C3AED">Owen</span>
+          <span class="att-role">台北南欣扶輪社社員</span>
+          <span class="att-note">會議司儀之一</span>
+        </div></div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 具體行動</p>
+  <h2 class="section-title">行動項清單（6 件）</h2>
+  <table class="action-table">
+    <thead><tr><th>#</th><th>具體行動</th><th>負責人</th><th>時限</th></tr></thead>
+    <tbody><tr>
+          <td class="ai-num">1</td>
+          <td class="ai-item">司儀需於活動當天下午 4:30 到場，熟悉場地並測試麥克風等設備。</td>
+          <td class="ai-owner">Evin, Owen</td>
+          <td class="ai-deadline">活動當天 16:30</td>
+        </tr>
+<tr>
+          <td class="ai-num">2</td>
+          <td class="ai-item">司儀需自行準備簡短的開場詞與自我介紹稿。</td>
+          <td class="ai-owner">Evin, Owen</td>
+          <td class="ai-deadline">活動前</td>
+        </tr>
+<tr>
+          <td class="ai-num">3</td>
+          <td class="ai-item">Owen需提供一張較為正式的西裝照片給 Alice，用於更新活動簡報。</td>
+          <td class="ai-owner">Owen</td>
+          <td class="ai-deadline">錄音未提及</td>
+        </tr>
+<tr>
+          <td class="ai-num">4</td>
+          <td class="ai-item">司儀需事先練習貴賓名單的發音，確保介紹時流暢正確。</td>
+          <td class="ai-owner">Evin, Owen</td>
+          <td class="ai-deadline">活動前</td>
+        </tr>
+<tr>
+          <td class="ai-num">5</td>
+          <td class="ai-item">Alice 需在活動簡報中增加司儀介紹頁面，並將Owen加入貴賓介紹的頁面。</td>
+          <td class="ai-owner">Alice (由 Jimmy 轉達)</td>
+          <td class="ai-deadline">活動前</td>
+        </tr>
+<tr>
+          <td class="ai-num">6</td>
+          <td class="ai-item">Evin 需將Owen加入司儀工作群組，方便後續溝通。</td>
+          <td class="ai-owner">Evin</td>
+          <td class="ai-deadline">會議後</td>
+        </tr></tbody>
+  </table>
+  <div class="notice-box"><strong>備註：</strong>會議目的：由 Jimmy 社長協助 Evin 秘書長與 Owen 社員更了解本週五就職典禮完整流程，確保典禮圓滿成功。</div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 議題索引</p>
+  <h2 class="section-title">7 個關鍵討論主題</h2>
+  <ul class="topics-list"><li>
+          <div class="topic-title">會議開場與文件說明</div>
+          <div class="topic-time">時間軸 00:00:00</div>
+          <div class="topic-summary">會議開始，確認錄音。Jimmy 說明已將兩份文件（司儀主持稿、活動 PPT）傳給Owen，並請 Evin 投影程序表，作為討論基礎。</div>
+          <div class="topic-quote">「我就錄音喔，然後待會有會議記錄。」</div><div class="topic-quote">「有兩個檔案，Owen你看一下有沒有收到。」</div>
+        </li>
+<li>
+          <div class="topic-title">司儀到場時間與準備事項</div>
+          <div class="topic-time">時間軸 00:02:35</div>
+          <div class="topic-summary">討論並確認司儀需於活動當天下午 4:30 到場，以便熟悉場地、測試設備，並進行最後的排練。</div>
+          <div class="topic-quote">「第一個是，看看明天我們司儀的部分，就到場時間，看看四點半，可不可以就到場。」</div>
+        </li>
+<li>
+          <div class="topic-title">典禮流程細節討論：開場與扶輪歌詠</div>
+          <div class="topic-time">時間軸 00:03:35</div>
+          <div class="topic-summary">討論典禮開場流程。司儀需要在開場時有一段簡短的開場詞與自我介紹。確認 6:00 開始為暖場音樂，6:30 典禮正式開始。接著討論扶輪歌詠環節，由 Peter Lee 主席帶領，並說明如何引導不同社的社友起立。</div>
+          <div class="topic-quote">「可能司儀你們在開場的時候，有個簡短的，算是開場詞這樣。」</div><div class="topic-quote">「六點開始會是先有暖場的音樂啦。」</div>
+        </li>
+<li>
+          <div class="topic-title">貴賓介紹流程與注意事項</div>
+          <div class="topic-time">時間軸 00:10:03</div>
+          <div class="topic-summary">說明貴賓介紹分為兩輪。司儀需輪流念出貴賓名單，並配合貴賓起立揮手的節奏。Jimmy 強調需注意貴賓的職稱與名字發音，避免念錯，並要看著被介紹者，配合其動作。</div>
+          <div class="topic-quote">「我們兩位司儀就可以分配，基本上就一人念一個啦，輪流念這樣子。」</div><div class="topic-quote">「就是要看著，那個被介紹的人起立揮手，要配合他的動作這樣。」</div>
+        </li>
+<li>
+          <div class="topic-title">新社友入社儀式與頒發聘書</div>
+          <div class="topic-time">時間軸 00:14:10</div>
+          <div class="topic-summary">詳細說明新社友宣誓入社的完整流程，包括上台、宣讀誓詞、佩戴徽章、頒發證書及合照。之後是頒發第 41 屆理監事及職員聘書的流程，將分兩梯次進行，並最後大合照。</div>
+          <div class="topic-quote">「這個就會按照 Alice 這邊的流程，一個一個動作來做這樣。」</div><div class="topic-quote">「那每個梯次頒發完，然後拍照，再請下個梯次上台。」</div>
+        </li>
+<li>
+          <div class="topic-title">大合照與典禮結束</div>
+          <div class="topic-time">時間軸 00:16:27</div>
+          <div class="topic-summary">典禮完成後將進行大合照，司儀需協助指揮合照人員上、下台。合照結束後，司儀任務即完成，晚宴正式開始。</div>
+          <div class="topic-quote">「請社長鳴鐘，宣布典禮完成。」</div><div class="topic-quote">「大合照就按照這個順序，那請司儀就指揮一下合照人員，上台下台這樣。」</div>
+        </li>
+<li>
+          <div class="topic-title">司儀稿與簡報內容確認</div>
+          <div class="topic-time">時間軸 00:17:15</div>
+          <div class="topic-summary">Evin 與Owen確認需要自行準備逐字稿。同時發現簡報中缺少司儀介紹頁面，且第一輪貴賓介紹頁面也少了Owen。Jimmy 表示會請 Alice 補上，Owen也同意提供更正式的照片。</div>
+          <div class="topic-quote">「我們要做主持稿，我記得去年有，今年沒有對不對？」</div><div class="topic-quote">「我會請 Alice 修正，在前面那個開場的時候就要加個頁面，司儀這樣。」</div>
+        </li></ul>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 會議摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body">本次會議由台北南欣扶輪社社長 Jimmy 主持，與秘書長 Evin、社員 Owen 進行對焦。會議目的：由 Jimmy 協助 Evin 與 Owen 更了解本週五（就職典禮日）的完整流程，確保典禮圓滿成功。<br><br>主要討論議題包括：(1) 確認司儀到場時間與準備事項（下午 4:30 到場彩排）；(2) 逐項檢視典禮流程（含開場、貴賓介紹、社長致詞、新社友入社、頒發聘書、大合照等環節）；(3) 分配司儀工作（Evin 與 Owen 輪流介紹貴賓）；(4) 確認所需文件與簡報內容。<br><br>重要決議：司儀需於活動當天下午 4:30 到場彩排；司儀需自行準備開場詞與自我介紹稿；確認貴賓名單的發音與介紹順序。下一步行動為 Evin 與 Owen 將根據會議結論準備司儀稿，並於活動當天進行最終彩排；同時 Alice 將協助更新簡報，補上司儀介紹頁面。</div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 完整逐字稿</p>
+  <h2 class="section-title">逐字稿（含時間軸）</h2>
+  <div class="transcript"><div class="ts-line">
+          <span class="ts-time">00:00:00</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">delay 了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:01:835</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">哈囉，Evin。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:03:145</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我就錄音。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:04:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我欸，我，我就錄音喔，然後待會有會議記錄，我們那個Owen我們就看著會議記錄。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:12:355</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">有，我也有，我也有，我們再交流一下會議記錄，我的也在錄。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:16:725</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">喔你的也在錄，欸可是這是我開開的啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:19:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">啊你不是用 Google Meet 啦，你是用另外自己的那個錄音的東西。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:23:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">我用 Notion，我的是 Notion。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:24:825</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">你用 Notion，Notion 也不錯啊，Notion 做會議記錄也蠻好的，等一下可以來互相看看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:29:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好。欸那，那 Jimmy 哥可能你稍微帶帶我們兩個，我需要投影昨天 Alice 給的東西嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:37:625</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">呃，我也，我剛才也傳給Owen了，哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:42:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後有兩個檔案，Owen你看一下有沒有收到。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:46:855</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">有。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:47:655</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">沒關係我丟，我丟到。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:49:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">欸，等一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:50:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我丟一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:51:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">可以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:54:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">Evin 也可以投影一下這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">00:58:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:01:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那我來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:02:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">第一個檔案就是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:04:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">呃。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:07:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">Alice 幫忙準備的一個簡單的主持稿啦，按照那個流程。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:14:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那第二個檔案就是當場，那個螢幕上會放出的 PPT 這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:23:955</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:25:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那 PPT 比較簡單，反正都是一頁式的這樣，一頁一頁一頁。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:32:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那主持稿裡面，主持稿裡面就是，呃，當然會把就是整個活動流程的要素列出來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:44:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後，呃。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:47:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">有一個簡單的，比如說介紹接下來幹嘛的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:53:155</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">Jimmy 我現在是要開什麼？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:54:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:55:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我要開程序表這個是，還是要開什麼？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">01:57:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">你可以開程序表，程序表。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:00:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">程序表，OK，好，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:01:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:10:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">程序。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:11:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">有看到了嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:12:655</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我什麼。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:14:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸有有有有有，我開，我放了，我放了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:18:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:20:155</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">這個。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:20:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">看一下有沒有出來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:22:755</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">應該有，停止分享，有了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:25:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:30:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這樣有幾個幾個事情就請你們幫忙，那第一個是看看明天我們司儀的部分，就到場時間，看看四點半，可以就到場。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:47:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，一方面。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:48:555</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">四點半。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:48:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，一方面可以先熟悉場地嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:52:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那再來測試，測試麥克風啊那些設備。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:58:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，OK，四點半。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">02:59:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">再來就是，再來就簡單。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:01:855</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">我可以，我會提早到，我會提早到台北，啊可能就直接在南港附近等這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:07:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:08:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再來就是明天到場，就可以做最後一個排練這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:17:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這是明天的到場時間。那第二個是，這樣在主持上面，那 Alice 這邊這個程序表，它是比較簡單的內容啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:30:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那我看了之後，我看了之後就是，我想說，可能司儀你們在開場的時候，有個簡短的，算是開場詞這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:44:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:45:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，點點出今天這個活動的的一個重要性啦，這樣把大家的精神先，精神跟眼球先，把它先集中起來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">03:58:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，這是第一個，那第二個當然就是你們的自我介紹這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:04:55</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">這個，這個，這個是在六點的時候嘛，就是我們開場沒錯嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:08:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對對對，沒錯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:09:555</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:10:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:13:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">六點開始會是先有暖場的音樂啦，暖場的音樂。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:22:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK，但第一個講話的就是我跟 Evin 嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:24:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:26:55</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">應該是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:27:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那，那暖場音樂反正他們表演樂團藍調奇遇就他們自己就開始，先把，先把現場的氣氛先，先帶熱嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:41:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後我們正式活動開始是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:45:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">看一下，應該是六點半。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:50:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK，哦，所以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:51:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">六點半。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">04:52:355</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">呃，六點的時候他們會自己上台，我們也不需要介紹，他們就忙他們的，然後呢，我們明天到現場可能跟他 run 一下，他在什麼時候會停下來，那我們就要進開場詞這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:05:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對對，他這邊寫六點二十五。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:07:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，他停下來就六點二十五，表演結束。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:12:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:13:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後再來，當然司儀就先，先打說請工作，就是請工作人員，這個，協助舞台移到舞台中央，然後請 main table 的貴賓就座這樣，這是先打一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:31:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">五分鐘換場，這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:33:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對對，好，那開場前就會有一個開場音效這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:39:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">05:40:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">然後，然後，呃，Jimmy 哥我問一下，就是，就是你說，他們，他們那個，我們請這個主席到舞台中間，然後 main table 的貴賓進場以後，我們就開始自我介紹之類的，就是進這一段嘛，你講的是這個時間嘛，不是六點，是六點半的時候。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:03:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">就是六點半，六點半要，對，對，請 main table 做貴賓就座之後，好，然後我們就要開始介紹，就是今天，對，然後 DJ 就會開始放那個開場音效嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:22:555</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:23:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，就氣勢磅礡的，然後告一段落之後，那你們就，就開始，你們就會有一個簡短的開場。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:34:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK，講一段話，然後自我介紹完，然後就講社長鳴鐘宣布典禮開始，就這樣子嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:41:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，對，這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:42:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK，OK，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">06:45:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後再來，我，宣布典禮開始後，那就，扶輪歌詠，那就請聯誼主委 Peter，Peter Lee 上台為我們領唱這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:01:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK，欸，Jimmy 哥我問一下喔，就是，就是你鳴鐘宣布典禮開始以後，你只會講一段很短的話，沒錯嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:09:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對對，那很短，欸，那大概就是，就是，就是講這句話而已，欸，就是台北南欣扶輪社這個什麼第 41 屆社長這些，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:20:55</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">典禮開始，然後講完，OK，然後頂多可能多一兩句，不會再講其他的事情，因為你等下有社長致詞嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:27:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">等下有社長致詞這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:28:655</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:29:855</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK，OK，好，然後就進入歌詠。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:32:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，扶輪歌詠，那扶輪歌詠就請 Peter Lee，聯誼主委為我們上台領唱。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:38:855</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:39:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這個就交給 Peter Lee 了，那，我們司儀就是提醒說，啊那第一首歌扶輪社友，我們歡迎您，這個是請別社的社友，請他們，欸，好，起立這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:56:355</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">起立。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:57:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，就是別社的，南欣還不用。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">07:59:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:00:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">我們歡迎別社的社友，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:03:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那唱完請坐下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:08:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這到這邊 OK 嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:10:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK，OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:11:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那第二首就是唱這個南欣的社歌，這個就請南欣社全體社友，我們自己的社友起立這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:19:655</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:20:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那唱完請坐下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:24:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:25:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再來就是，來到這邊 OK 嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:28:955</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:30:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這邊回頭一下就是說，前面你們在 main table 貴賓就座，那開場音效結束後，那你們會大概就一個一句兩句的一個開場白這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:48:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這個可以稍微準備一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:52:355</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">08:53:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，然後開場白之後，那就介紹說，你們就分別介紹，我們是今天的司儀，我是，呃，秘書長 Evin，那這個，Owen是，欸，Owen你新年度的職務我看一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:11:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">我應該沒有吧。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:12:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">有啦，還是有啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:14:55</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">哦，應該會分配到對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:16:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對啊對啊，反正就是不用實際做什麼啦，就掛名性質啦，我看一下你新年度的職務。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:24:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:30:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:32:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，我我這個再找一下，欸，你新年度我看一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:38:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:40:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，這個我再找一下，好，那就自我介紹這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:43:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:43:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那這邊，這邊就開場，開場的部分就就結束嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:49:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:52:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">09:53:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後再來就是，到扶輪歌詠結束，這樣大家都 OK 嗎？欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:00:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:01:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:02:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那接下來就介紹貴賓。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:05:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那貴賓的話，這邊，Alice 有準備名單給 Evin 了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:16:155</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">有。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:17:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，然後，那這第一階段的介紹貴賓，那我們兩位司儀就可以分配，基本上就一人念一個啦，輪流念這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:27:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:28:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那譬如說，呃，這個，首先當然介紹第，地區總監嘛，DG Jason，欸，然後介紹到他們都請他們起手，起立揮手，跟大家，跟大家揮揮手這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:43:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:46:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那就輪流介紹，那那介紹的時候，就，就是也要看著，那個被介紹的人起立揮手，要配合他的動作這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:57:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">10:57:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，配合他動作，他坐下，你再介紹下一位，欸，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:03:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">就不用，呃，不要說只只念自己的，然後也不管說被介紹者，然後再趕時間這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:10:555</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:11:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那這是一個，就是配合他們起立揮手動作，那再來就是說，他們的，扶輪社他們自己的 nickname，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:22:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那一般都 OK，可能可能先唱，可以練先練過一遍。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:28:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那有些名字比較特別的，好，那可以如果不會念先確認這樣，好，那避免念錯，就是對，這個貴賓失禮這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:40:355</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:41:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那所以這邊就會是重點就是，你們分配一下，就是說誰念誰，誰念哪一位貴賓，然後名字發音對一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:54:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">11:55:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那接下來就社長致詞，那，社長上台致詞，那社長請回座，接下來總，地區總監上台致詞，謝謝請回座，輔導社長致詞，俊男社長致詞，啊，這些都 OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">12:15:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那那個再幫我，這個往下面跑，嘿。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">12:21:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再來卸任社長致詞，然後就請 IPP William 上台。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">12:27:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那，這個，工作人員，請工作人員協助移，主席台到舞台邊這樣，因為待會，他們致詞完，致詞完，就是 William 致詞完，那請工作人員將主席台，就是大舞台上那個，那個主席台移到邊邊，因為接下來要致贈紀念品，由我來，頒贈紀念品給 William 這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:04:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，講得清楚嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:06:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:07:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那最後再來就是說頒發第 41 屆的理事，還有職員聘書。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:14:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這個就，就唱名，欸，唱名，然後，那，呃，舞台上，就是大螢幕上也會有名單，就照著念就行。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:26:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，分兩個梯次這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:30:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那每個梯次頒發完，然後拍照，再請，那個，下個梯次上台。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:41:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那兩個梯次，那第一梯次，頒贈完聘書，拍完照之後，請他們先往後，退一步，先留在舞台上。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">13:54:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那第二梯次再上台頒聘書，拍照，然後最後，再一起大合照。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:04:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這樣 OK 嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:05:955</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:07:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:09:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後最後再來就是說新社友宣誓入社，那兩位，Oscar 跟唐偉這樣，那這個就會，按照，Alice 這邊的流程，一個一個動作來做這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:24:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:27:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，第一個是，呃，就請他們，上台就位，然後請我們，呃，扶輪社友起立這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:37:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這個會是，應該就是我們自己的南欣的社友啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:42:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:43:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再來，呃，請宣誓人 Oscar、唐偉面向四大考驗期，舉右手，讀，先，先讀誓詞。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:53:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:54:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那誓詞當天，明天會 Alice 會給他們一人一份這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:58:755</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">14:59:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再來請 DG Jessie 佩戴扶輪徽章，請 Jimmy 社長佩戴社友名牌，頒發社友證書，然後一起合照。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:09:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後再來請我們台北南欣社社友上台，好，列隊上台，好，那來歡迎兩位新社友。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:19:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那上台基本上都從，面向舞台的右邊，魚貫排成一列上台這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:25:555</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:26:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:27:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:28:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這邊都 OK，那就第二輪的介紹貴賓。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:33:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:34:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那這個，也是按照之前第一輪一樣，那你們就，呃，分配就一人念一個貴賓這樣子，請他們起立揮揮手這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">15:48:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再來就是歡喜時間，好，歡喜時間這邊就請那個，呃，Roger，欸，糾察長 Roger，欸，上台，他就是會來，呃，來念這個 IOU 的，就是其他各社，別社的 IOU 的單子這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:13:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:16:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那，那這邊就，典禮就到這邊，請社長鳴鐘，宣布典禮完成這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:24:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那我這邊鳴鐘之後，那就大合照。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:30:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，大合照就按照這個順序，那，請司儀就指揮一下合照人員，上台下台這樣，欸，那至於具體動作，我想那個現場，那個，呃，攝影師應該也會指揮大家比什麼動作啦，比YA幾讚什麼的這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:50:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:52:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:53:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那到這邊你們任務就結束了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:57:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">16:57:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那就請大家回座，好，就說我們晚宴開，晚宴開始這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:04:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那這邊就 OK 了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:06:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">你們的任務到這邊，有沒有問題這樣？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:12:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那個Owen，我覺得應該我們要打逐字稿，我記得去年有，今年沒有對不對？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:18:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:19:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">今年，今年我們要自己做就對了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:22:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">呃，對，然後就以這個 Alice 這一份作為骨幹，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:26:655</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">OK，好，那我們要再生。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:28:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，那雖然有逐字稿，就是當然，呃，不要一頭，不要說一直低頭看稿子，好，就是讀一下也要看一下，眼光也要掃射一下全場這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:42:455</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好的。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:43:355</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那你們這邊比較需要自己創作的就是開場詞啦，一小段的開場詞跟自我介紹。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:52:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:53:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:54:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，然後我看看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">17:58:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">呃，另外。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:00:755</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">剛才 Alice 傳的那個 PPT 上面。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:08:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">哦，它少一頁東西，這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:12:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">就是兩位司儀的頁面，欸，你們要，就是開場要自我介紹。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:19:655</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸，我請 Alice，沒有Owen啊，我有我啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:21:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">介紹貴賓。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:22:655</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">沒有，你是秘書長，你不是，你的頁面是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:26:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我不是主持人啊，哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:27:755</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">對對對對對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:28:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，對，然後，呃，因為這個是到介紹貴賓才有你嘛，才有第一個是 Evin 嘛，然後第二，第二輪是，呃，Evin 跟，Owen一起嘛，兩個，所以我這邊會請，Alice 修正，好，在前面那個開場的時候就要加個頁面，司儀這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:52:455</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">18:53:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，司儀，我會請，那個，加上去，把你們兩個加上去，然後再來第一輪貴賓介紹的時候也要把Owen加上去這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:05:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:06:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，那到這邊都清楚嗎？這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:09:655</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸，為什麼貴賓介紹還要我跟Owen，就，就其實是主持人的意思嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:13:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對啊，貴賓介紹都是司儀的工作。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:17:655</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">然後投影會需要。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:18:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">哦，哦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:19:755</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">但是我們兩個介紹，懂了懂了懂了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:20:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對，你們介紹貴賓，那很簡單就是讓大家知道他們的頭銜。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:27:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">然後請，請起立，跟大家揮揮手這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:33:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:34:555</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">那這個，這一頁應該也要有Owen啦，這一頁就是我要介紹貴賓嘛，就是我跟Owen要介紹嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:39:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對對，介紹貴賓的第一輪，也要有Owen這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:44:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對啊，就是這個少一個Owen的照片，了解。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:46:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，對，那，Alice 應該比較忙啦，所以會忙中有漏這樣，我會提醒他這樣，好，還有前面司儀的頁面也要把你們加上去。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">19:57:755</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">哦，OK，好好，了解了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:00:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，好，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:00:555</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:03:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">Owen。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:04:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">有。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:04:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">欸，你那個照片，照片比較居家生活，有沒有比較穿西裝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:11:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">我都是生活照喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:12:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">都是生活照。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:14:655</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">呃，有，我應該有，我找一下，我等一下就傳上來，馬上。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:16:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">AIPP 啊，AIPP 啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:18:155</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">大家配，穿個西裝一下。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:23:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再麻煩你。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:26:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那看看這邊還有沒有其他問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:33:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">呃。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:34:855</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">應該。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:37:955</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">呃，名單的部分。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:41:655</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">名單。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:42:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">Evin，Evin 要先 run 一過，因為怕名字念錯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">20:45:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對對，所以名單你們待會，我我，因為我坐捷運，我待會，我會先，接掛在線上，那你們就可以名單先試著念念一遍這樣。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:00:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">但是我現在名單是要看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:04:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:07:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那，Evin，Evin 你名單可以傳上。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:10:155</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:11:155</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">名單，就職前，就職前到。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:27:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">這個吧，是不是？DG Jessie。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:30:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">DSID，PP Fred。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:33:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">AG Stanley，PDAG Eric，PP Pauline，什麼 Pauline 啊？Pauline。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:42:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:43:55</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">PK Gary，IPP Queenie。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:47:155</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">欸，Evin 你傳給我好不好？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:49:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸，好，等一下喔。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:51:55</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">對，你傳給我，我再，我再練習一下，因為不一定誰念到嘛，明天才才對嘛。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">21:57:55</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">它就自己把它知道怎麼念這樣子。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:00:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">分享，等一下喔，Owen，OW。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:07:755</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">我再拉個群組好了，把你拉拉進來。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:10:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">欸可以讓那個吧，Owen先進來秘書的群組，這個任務結束之後再，再讓Owen離開，可以嗎？</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:18:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">可以啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:19:655</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">就是我跟你那個群，這樣就不用太多群組了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:20:555</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">這樣就不用太多群組了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:22:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:22:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">沒有，那個群組是我跟，就其實多了 Alice 啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:26:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">哦，OK，OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:27:355</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對，因為這個是整年，他們可能跟秘書長跟社長。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:31:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">那我就是用到明天晚上啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:32:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">對啊對啊對啊對啊，這樣我們比較好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:34:655</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">我再離開就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:36:155</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">哦，謝謝謝謝謝謝，那像我就把東西再傳一次給你就好了，看也好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:39:755</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">對對對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:40:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:41:255</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">這樣我們隨時，好啊，那這個就，我覺得應該還好啦，我覺得主要現在就是說，等一下我生看看逐字稿好了，叫 AI 生一版，然後名字，然後明天Owen我們四點半就用逐字稿對一對，劃分一下，然後名字念一念，應該就沒問題了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">22:58:355</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">可以，因為他有報到先後順序的問題，所以要看他現場給的那一版，我們自己最主要是先背名字怎麼念。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">23:07:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">對。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">23:08:455</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">懂懂懂懂懂，沒問題啊，沒問題，沒問題，對對對，名字不要念錯就好，就是這個名字不會照這個順序啦，但是我們不要念錯就好了，嗯。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">23:16:255</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">他，他到時候好像都會給我們小圖卡吧，我記得去年，給我好很多紙，就一直照那張那些紙來念就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">23:24:555</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">23:26:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那個，因為現場，到時候現場 Alice 有可能會忙其他的事情，好，所以我們的基本態度就是，呃，萬一，萬一他沒有辦法給我們東西，好，那我們就照現有的去，這個，宣讀貴賓的名單，好，那如果，因為現場會，一定會亂啦，那叫到，宣讀到的不在，不在的話沒關係，就繼續往下面這樣，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:00:955</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">懂。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:01:655</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:09:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，OK。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:10:955</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那基本重點就在這些。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:16:855</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那看看。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:20:55</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">這樣 OK 啦，沒問題，我再，我接下來就是。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:22:555</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">Owen等下就進群組嘛，我們如果，要再約時間或是有一些文件我們就在群組上面討論就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:29:355</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">可以可以。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:30:255</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，那再麻煩你。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:31:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，我這邊沒問題，好，感謝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:34:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">感謝，然後兩位都是這個，非常帥氣挺拔，身高 180，站出去，那個氣勢絕對沒問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:47:55</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">沒問題。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:47:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">可以啦，我就蹭一下Owen啊。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:49:755</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">Owen那我蹭一下你的光啦。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:52:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">你之前也都有，有主持，擔任過司儀的經驗嘛，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:57:455</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">我我我，我我有。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">24:59:55</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">Owen經驗超豐富的好不好，我覺得比我多很多啊，我跟著你就好了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:04:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">OK，好，所以這個，這個，呃，相信一定都這個，現場，這個都會很順利這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:14:155</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">那就要麻煩兩位了這樣，欸。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:15:955</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，辛苦了，謝謝，謝謝 Jimmy。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:17:755</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">謝謝Owen。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:18:855</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">哦，好，我們再群組討論喔，謝了謝了。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:21:455</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">好，好，謝謝。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:22:55</span>
+          <span class="ts-speaker" style="color:#0F1F4D">Evin</span>
+          <span class="ts-content">好，拜拜。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:22:555</span>
+          <span class="ts-speaker" style="color:#7C3AED">Owen</span>
+          <span class="ts-content">拜拜，拜拜。</span>
+        </div>
+<div class="ts-line">
+          <span class="ts-time">25:23:55</span>
+          <span class="ts-speaker" style="color:#2BA84A">Jimmy</span>
+          <span class="ts-content">謝謝，拜拜。</span>
+        </div></div>
+</div>
+
+<div class="footer">
+  <strong>羅賓斯科技股份有限公司 Robinstech</strong>
+  2026 數位發展部 GenAI Stars 金質獎得主  ·  Calliope AI 代理人 產出  ·  2026-07-02
+</div>
+
+</div>
+</body>
+</html>
