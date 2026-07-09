@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 趨勢分析 2026-07-10｜Themis 秉衡</title>
+<style>
+  :root { --navy:#0F1F4D; --gold:#E89E3F; --paper:#F7F5F0; --ink:#22283A; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif; background:var(--paper); color:var(--ink); line-height:1.75; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 20px 60px; }
+  header { background:var(--navy); color:#fff; padding:36px 20px 30px; }
+  header .inner { max-width:860px; margin:0 auto; }
+  header h1 { font-size:1.55rem; letter-spacing:.05em; }
+  header .sub { color:var(--gold); margin-top:6px; font-size:.95rem; letter-spacing:.12em; }
+  header .meta { margin-top:14px; font-size:.85rem; opacity:.85; }
+  .section-title { display:flex; align-items:center; gap:12px; margin:44px 0 8px; }
+  .section-title h2 { color:var(--navy); font-size:1.25rem; }
+  .section-title .bar { flex:1; height:3px; background:linear-gradient(90deg,var(--gold),transparent); border-radius:2px; }
+  .section-note { font-size:.85rem; color:#66708c; margin-bottom:18px; }
+  .card { background:#fff; border:1px solid #E3E0D8; border-left:5px solid var(--navy); border-radius:10px; padding:18px 20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(15,31,77,.06); }
+  .card.top-pick { border-left-color:var(--gold); }
+  .card .head { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px; }
+  .card .rank { color:var(--gold); font-weight:700; font-size:.9rem; }
+  .card .name { font-weight:700; color:var(--navy); font-size:1.05rem; word-break:break-all; }
+  .card .name a { color:inherit; text-decoration:none; border-bottom:1px dotted var(--gold); }
+  .stars { color:var(--gold); font-size:1.02rem; letter-spacing:2px; white-space:nowrap; }
+  .stars .off { color:#D8D3C6; }
+  .card .oneline { margin:10px 0 12px; }
+  .tags { display:flex; flex-wrap:wrap; gap:8px; font-size:.8rem; }
+  .tag { background:#EEF1F8; color:var(--navy); border-radius:999px; padding:2px 12px; }
+  .tag.gold { background:#FBEFDD; color:#9A6414; }
+  .tag.gray { background:#EFEDE7; color:#777; }
+  .verdict { margin-top:12px; font-size:.88rem; border-top:1px dashed #E3E0D8; padding-top:10px; }
+  .verdict b { color:var(--navy); }
+  .priority { background:var(--navy); color:#fff; border-radius:12px; padding:24px 24px 20px; margin-top:48px; }
+  .priority h2 { color:var(--gold); font-size:1.15rem; margin-bottom:14px; }
+  .priority ol { padding-left:1.3em; }
+  .priority li { margin-bottom:10px; font-size:.95rem; }
+  .priority li b { color:var(--gold); }
+  footer { text-align:center; font-size:.78rem; color:#8b90a3; margin-top:40px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <h1>GitHub 趨勢分析報告</h1>
+    <div class="sub">A. GITHUB TRENDING TOP 5 ｜ B. CLAUDE 生態 TOP 5</div>
+    <div class="meta">2026-07-10 ・ Themis 秉衡 📊 ・ 羅賓斯科技 財務分析代理人 ・ 視角：保險科技（個資/資安/監理/客服/承保/業務員工具/API 中台）</div>
+  </div>
+</header>
+<div class="wrap">
+
+  <div class="section-title"><h2>A. GitHub Trending Top 5（今日全站熱門）</h2><div class="bar"></div></div>
+  <div class="section-note">來源：github.com/trending（daily）。星等 ★ 為「對羅賓斯團隊的建議指數」，非熱門度。</div>
+
+  <div class="card top-pick">
+    <div class="head">
+      <span class="rank">A-1</span>
+      <span class="name"><a href="https://github.com/addyosmani/agent-skills">addyosmani/agent-skills</a></span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="oneline">Google Chrome 團隊 Addy Osmani 出品的「生產等級 AI coding agent 工程 skills」合集（75.8k★、今日 +2.6k），直接可裝進 Claude Code。</div>
+    <div class="tags">
+      <span class="tag gold">Claude skill 合集</span>
+      <span class="tag">主場：Calliope（整合）＋全體姊妹</span>
+      <span class="tag">保險科技：間接有幫助（提升五姊妹工程品質 → API 中台開發、程式碼安全習慣）</span>
+      <span class="tag gold">建議：裝（挑選適用子集）</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>作者信譽高、工程紀律類 skill 對「程式碼審查、資安習慣」有直接外溢效果，是今日 A 組最值得動手的一個。</div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">A-2</span>
+      <span class="name"><a href="https://github.com/iOfficeAI/OfficeCLI">iOfficeAI/OfficeCLI</a></span>
+      <span class="stars">★★★★<span class="off">★</span></span>
+    </div>
+    <div class="oneline">專為 AI agent 打造的 Office 套件（13.4k★、今日 +1.9k），讓 agent 直接讀寫、自動化 Word / Excel / PowerPoint 檔案。</div>
+    <div class="tags">
+      <span class="tag gold">工具（可整合進 workflow）</span>
+      <span class="tag">主場：Themis（財報 Word/Excel/PPT 交付物）</span>
+      <span class="tag">保險科技：有幫助——保單報表、財務模型、IR 簡報自動化產線</span>
+      <span class="tag gold">建議：評估後裝（先跟現有 docx/xlsx/pptx skill 比對）</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>正中我的主業（Word＋Excel＋PPT 三交付物）。C# 實作、CLI 介面，需驗證 macOS 相容性與繁中字型處理再決定是否取代現行 document skills。</div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">A-3</span>
+      <span class="name"><a href="https://github.com/VoltAgent/awesome-design-md">VoltAgent/awesome-design-md</a></span>
+      <span class="stars">★★★★<span class="off">★</span></span>
+    </div>
+    <div class="oneline">知名品牌設計系統的 DESIGN.md 解析合集（99.6k★、今日 +1.2k），給 AI agent 當設計規範餵料。</div>
+    <div class="tags">
+      <span class="tag gray">參考 project（資料集）</span>
+      <span class="tag">主場：Iris（視覺）</span>
+      <span class="tag">保險科技：有幫助——統一羅賓斯/未來保代雙品牌的視覺規範、行銷素材一致性</span>
+      <span class="tag gold">建議：參考（Iris 可仿作羅賓斯自己的 DESIGN.md）</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>不用裝，價值在方法論——把品牌規範寫成 agent 讀得懂的 DESIGN.md，Iris 做圖、我做報告版型都能引用同一份。</div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">A-4</span>
+      <span class="name"><a href="https://github.com/MadsLorentzen/ai-job-search">MadsLorentzen/ai-job-search</a></span>
+      <span class="stars">★★<span class="off">★★★</span></span>
+    </div>
+    <div class="oneline">建在 Claude Code 上的 AI 求職申請框架（18.9k★、今日 +3.7k，A 組漲星王），自動化找職缺、客製履歷投遞。</div>
+    <div class="tags">
+      <span class="tag gray">參考 project</span>
+      <span class="tag">主場：Eos（自動化流程參考）</span>
+      <span class="tag">保險科技：低——頂多借鏡到「業務員增員/招募」流程自動化</span>
+      <span class="tag gray">建議：不裝，看架構就好</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>熱度來自題材（求職）。對我們的價值只在「怎麼把 Claude Code 包成端到端業務流程」的架構示範。</div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">A-5</span>
+      <span class="name"><a href="https://github.com/SmartlyDressedGames/U3-SDK">SmartlyDressedGames/U3-SDK</a></span>
+      <span class="stars">★<span class="off">★★★★</span></span>
+    </div>
+    <div class="oneline">開放世界殭屍生存遊戲 Unturned 的原始碼（2.0k★、今日 +541），老牌遊戲開源事件。</div>
+    <div class="tags">
+      <span class="tag gray">參考 project（遊戲）</span>
+      <span class="tag">主場：無</span>
+      <span class="tag">保險科技：無幫助</span>
+      <span class="tag gray">建議：不裝、不追</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>純遊戲圈新聞，與羅賓斯業務無交集，列入僅為完整呈現今日榜單。</div>
+  </div>
+
+  <div class="section-title"><h2>B. Claude 生態 Trending Top 5</h2><div class="bar"></div></div>
+  <div class="section-note">來源：GitHub Search API（claude-code / claude-code-plugin / claude-skills 相關，依總星數排序，已去除與 A 組重複者）。</div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">B-1</span>
+      <span class="name"><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></span>
+      <span class="stars">★★★★<span class="off">★</span></span>
+    </div>
+    <div class="oneline">Claude Code / Codex 通用的「agent harness 效能優化系統」（227.9k★），整合 skills、instincts、記憶、資安與 research-first 開發流程。</div>
+    <div class="tags">
+      <span class="tag gold">Claude skill／harness 框架</span>
+      <span class="tag">主場：Eos（自動化）＋ Calliope（整合）</span>
+      <span class="tag">保險科技：間接有幫助——內建資安紀律對「個資/資安敏感」的保險流程是加分</span>
+      <span class="tag gold">建議：評估後選裝（模組化拆用）</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>B 組星王。大而全的框架風險是跟現有五姊妹 SOP 打架，建議 Eos 先拆「記憶＋資安」兩塊試用，不整包吞。</div>
+  </div>
+
+  <div class="card top-pick">
+    <div class="head">
+      <span class="rank">B-2</span>
+      <span class="name"><a href="https://github.com/multica-ai/andrej-karpathy-skills">multica-ai/andrej-karpathy-skills</a></span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="oneline">把 Andrej Karpathy 對「LLM 寫程式常見壞習慣」的觀察濃縮成單一 CLAUDE.md（190.0k★），一個檔案就能矯正 agent 行為。</div>
+    <div class="tags">
+      <span class="tag gold">Claude skill（單檔 CLAUDE.md）</span>
+      <span class="tag">主場：全體姊妹（Calliope 代表整合）</span>
+      <span class="tag">保險科技：間接有幫助——降低 agent 幻覺與過度工程，呼應家族反幻覺 7 規則</span>
+      <span class="tag gold">建議：裝（成本近零、先在一隻身上試）</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>今日 CP 值之最：一個 md 檔、Karpathy 背書、跟 Evin 拍板的反幻覺原則同方向。先試裝我自己，有效再報 Evin 推全家族。</div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">B-3</span>
+      <span class="name"><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></span>
+      <span class="stars">★★★<span class="off">★★</span></span>
+    </div>
+    <div class="oneline">Nous Research 的通用 agent「跟著你一起成長」（212.2k★），主打長期記憶與個人化演進。</div>
+    <div class="tags">
+      <span class="tag gray">參考 project（agent 本體）</span>
+      <span class="tag">主場：Eos（自動化）</span>
+      <span class="tag">保險科技：低～中——長期記憶設計可借鏡「客戶服務歷程」的留存做法</span>
+      <span class="tag gray">建議：參考，不裝（與 Claude Code 定位重疊）</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>是競品 harness 而非外掛，裝了會跟現有體系打架；其記憶架構值得 Eos 讀一遍取經。</div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">B-4</span>
+      <span class="name"><a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools">x1xhlol/system-prompts-and-models-of-ai-tools</a></span>
+      <span class="stars">★★★<span class="off">★★</span></span>
+    </div>
+    <div class="oneline">各家 AI 工具（Claude Code、Cursor、Devin、Manus…）流出的 system prompt 大全（141.7k★），prompt 工程對照教材。</div>
+    <div class="tags">
+      <span class="tag gray">參考 project（資料集）</span>
+      <span class="tag">主場：Calliope（整合/prompt 工程）；Vena 留意授權與流出來源的合規面</span>
+      <span class="tag">保險科技：低——僅作 prompt 設計參考，不可直接抄入客戶面產品</span>
+      <span class="tag gray">建議：參考</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>看別人怎麼寫 guardrail 很有教育性；但內容屬「流出」性質，Vena 角度提醒：只學結構、不複製文字進羅賓斯產品。</div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="rank">B-5</span>
+      <span class="name"><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></span>
+      <span class="stars">★★★★★</span>
+    </div>
+    <div class="oneline">Claude Code 官方本體（137.1k★）——五姊妹每天賴以運作的 agentic coding 工具，官方 repo 是 changelog 與 issue 的第一手來源。</div>
+    <div class="tags">
+      <span class="tag gold">官方工具（已在用）</span>
+      <span class="tag">主場：全體姊妹</span>
+      <span class="tag">保險科技：有幫助——整個 agent 產線（財報/法遵/自動化）都建立在它上面</span>
+      <span class="tag gold">建議：已裝；定期追 release notes</span>
+    </div>
+    <div class="verdict"><b>Themis 短評：</b>不是新發現而是基礎設施。建議 Eos 把「追官方 changelog」納入例行，新功能（如 channels、workflow）常直接影響我們架構。</div>
+  </div>
+
+  <div class="priority">
+    <h2>📌 今日優先看 3 個</h2>
+    <ol>
+      <li><b>addyosmani/agent-skills（A-1）</b>——大神出品的生產級 agent 工程 skills，全家族都吃得到紅利，先挑審查/資安子集裝起來。</li>
+      <li><b>multica-ai/andrej-karpathy-skills（B-2）</b>——單一 CLAUDE.md 矯正 LLM 壞習慣，成本近零、與反幻覺 SOP 同向，最快能落地。</li>
+      <li><b>iOfficeAI/OfficeCLI（A-2）</b>——AI agent 直接操作 Word/Excel/PPT，正中 Themis 財報三交付物產線，值得做相容性評估。</li>
+    </ol>
+  </div>
+
+  <footer>Themis 秉衡 📊 ・ 羅賓斯科技 finance-agent ・ 2026-07-10 ・ 資料來源：github.com/trending（daily）＋ GitHub Search API；星數為擷取當下數值</footer>
+</div>
+</body>
+</html>
