@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>會議紀錄 · 羅賓斯科技 IT 交接（Leon → Tony）· 2026-07-15</title>
+<style>
+:root {
+  --navy:#0F1F4D; --navy-light:#1E3A6F; --gold:#E89E3F; --gold-light:#F2C28A;
+  --teal:#14B8A6; --ink:#121822; --ink-light:#394350;
+  --grey:#6B7280; --bg:#F8FAFC; --bg-card:#FFFFFF; --border:#E5E7EB;
+}
+* { box-sizing: border-box; }
+body { margin:0; padding:0; background:var(--bg);
+  font-family:"Source Han Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",-apple-system,sans-serif;
+  color:var(--ink); -webkit-font-smoothing:antialiased; line-height:1.65; }
+.container { max-width:1100px; margin:0 auto; }
+.hero { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+  padding:40px 56px 32px 56px; color:white; }
+.hero-eyebrow { font-size:12px; letter-spacing:4px; color:var(--gold);
+  font-weight:600; text-transform:uppercase; margin-bottom:12px; }
+.hero-title { font-size:30px; font-weight:800; margin:0 0 6px 0; letter-spacing:-0.5px; }
+.hero-subtitle { font-size:16px; color:rgba(255,255,255,0.85); margin:0; }
+.hero-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  margin-top:24px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.15); }
+.hero-meta-label { font-size:10px; letter-spacing:1px; color:var(--gold);
+  text-transform:uppercase; margin-bottom:4px; }
+.hero-meta-val { font-size:14px; font-weight:600; }
+.attendees { background:var(--bg-card); padding:18px 56px;
+  border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px; font-size:13px; flex-wrap:wrap; }
+.attendees-label { font-weight:700; color:var(--navy); }
+.speaker-chip { display:inline-block; color:white; padding:3px 12px;
+  border-radius:100px; font-size:12px; font-weight:600; margin-right:4px; }
+.section { padding:32px 56px; background:var(--bg-card); border-bottom:1px solid var(--border); }
+.section-eyebrow { font-size:11px; letter-spacing:3px; color:var(--gold);
+  font-weight:700; text-transform:uppercase; margin-bottom:6px; }
+.section-title { font-size:24px; font-weight:800; color:var(--navy);
+  margin:0 0 16px 0; padding-bottom:8px; border-bottom:3px solid var(--gold); display:inline-block; }
+.summary-body p { font-size:14.5px; color:var(--ink-light); margin:8px 0; }
+.summary-body p.summ-head { font-weight:800; color:var(--navy); margin:18px 0 4px 0;
+  padding-left:12px; border-left:4px solid var(--gold); font-size:15px; }
+.topics-list { list-style:none; margin:0; padding:0;
+  display:grid; grid-template-columns:1fr 1fr; gap:8px; counter-reset:topic; }
+.topics-list li { background:#FFFBEB; border-left:3px solid var(--gold);
+  padding:10px 14px; font-size:13px; color:var(--ink);
+  border-radius:0 4px 4px 0; counter-increment:topic; position:relative; line-height:1.5; }
+.topics-list li::before { content:counter(topic); display:inline-block;
+  width:22px; height:22px; border-radius:100px;
+  background:var(--gold); color:white; text-align:center;
+  font-weight:700; font-size:11px; line-height:22px;
+  margin-right:8px; font-family:"Montserrat",sans-serif; vertical-align:1px; }
+.action-list { display:flex; flex-direction:column; }
+.ai-row { padding:9px 0; border-bottom:1px solid var(--border); }
+.ai-row:last-child { border-bottom:none; }
+.ai-main { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+.ai-num { font-family:"Montserrat",sans-serif; font-weight:800;
+  color:var(--gold); font-size:16px; flex-shrink:0; min-width:22px; }
+.ai-owner { color:#fff; font-weight:700; font-size:11px; padding:2px 9px;
+  border-radius:100px; flex-shrink:0; }
+.ai-dl { color:var(--grey); font-weight:600; font-size:12px; flex-shrink:0;
+  background:var(--bg); border:1px solid var(--border); border-radius:4px; padding:1px 7px; }
+.ai-item { font-weight:600; color:var(--ink); font-size:14px; line-height:1.4; }
+.ai-context { font-size:12px; color:var(--grey); line-height:1.45; margin:3px 0 0 32px; }
+.notice-box { background:#FEF3C7; border-left:4px solid var(--gold);
+  padding:14px 18px; margin:0 0 18px 0; border-radius:0 4px 4px 0; font-size:12.5px; color:var(--ink-light); line-height:1.6; }
+.notice-box strong { color:var(--navy); }
+.legend { display:flex; gap:16px; flex-wrap:wrap; margin:0 0 12px 0; font-size:12px; }
+.legend span { display:inline-flex; align-items:center; gap:5px; font-weight:600; }
+.legend i { width:11px; height:11px; border-radius:3px; display:inline-block; }
+details.transcript-wrap { margin-top:4px; }
+details.transcript-wrap > summary { cursor:pointer; font-size:14px; font-weight:700; color:var(--navy);
+  padding:12px 16px; background:var(--bg); border:1px solid var(--border); border-radius:6px; list-style:none; }
+details.transcript-wrap > summary::-webkit-details-marker { display:none; }
+details.transcript-wrap > summary::before { content:"▸ "; color:var(--gold); }
+details.transcript-wrap[open] > summary::before { content:"▾ "; }
+.transcript { background:var(--bg); padding:16px 20px; max-height:640px; margin-top:10px;
+  overflow-y:auto; border-radius:6px; font-size:13px; border:1px solid var(--border); }
+.ts-line { padding:5px 0; border-bottom:1px solid rgba(0,0,0,0.04);
+  display:flex; gap:10px; align-items:flex-start; }
+.ts-line:last-child { border-bottom:none; }
+.ts-time { font-family:"Montserrat",monospace; font-size:11px;
+  color:var(--grey); font-weight:600; flex-shrink:0; width:42px; padding-top:2px; }
+.ts-speaker { font-weight:700; flex-shrink:0; width:42px; }
+.ts-content { color:var(--ink-light); flex:1; line-height:1.6; }
+.footer { padding:18px 56px; background:var(--navy);
+  color:rgba(255,255,255,0.7); text-align:center; font-size:11px; }
+.footer strong { display:block; color:var(--gold); font-size:13px; margin-bottom:4px; }
+@media (max-width:720px) {
+  .hero,.attendees,.section,.footer { padding-left:22px; padding-right:22px; }
+  .hero-grid { grid-template-columns:1fr 1fr; }
+  .topics-list { grid-template-columns:1fr; }
+  .ai-context { margin-left:0; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hero">
+  <p class="hero-eyebrow">會議紀錄 · MEETING MINUTES</p>
+  <h1 class="hero-title">羅賓斯科技 IT 交接 — Leon 交接給 Tony</h1>
+  <p class="hero-subtitle">Console／GCP／SaaS 系統與基礎設施　·　Evin（執行長）· Leon（交接方 / 前 CTO）· Tony（新進 IT）</p>
+  <div class="hero-grid">
+    <div><div class="hero-meta-label">日期</div><div class="hero-meta-val">2026 年 7 月 15 日</div></div>
+    <div><div class="hero-meta-label">時長</div><div class="hero-meta-val">約 77 分鐘</div></div>
+    <div><div class="hero-meta-label">形式</div><div class="hero-meta-val">線上交接（錄影）</div></div>
+    <div><div class="hero-meta-label">出席</div><div class="hero-meta-val">3 人</div></div>
+  </div>
+</div>
+
+<div class="attendees">
+  <span class="attendees-label">與會者：</span>
+  <span class="speaker-chip" style="background:#0F1F4D">Evin（執行長）</span>
+  <span class="speaker-chip" style="background:#14B8A6">Leon（交接方 / 前 CTO）</span>
+  <span class="speaker-chip" style="background:#E89E3F">Tony（新進 IT）</span>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 01 · 具體行動</p>
+  <h2 class="section-title">行動項清單（16 件）</h2>
+  <div class="action-list">
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">01</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">向Evin申請GCP帳號與權限</span>
+      </div>
+      <div class="ai-context">Tony需要GCP權限以存取雲端資源，Evin表示會提供帳號。[72:00]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">02</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">申請個人AI帳號（100美元額度）</span>
+      </div>
+      <div class="ai-context">Tony需申請自己的AI帳號供個人開發使用。[13:01]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">03</span>
+        <span class="ai-owner" style="background:#14B8A6">Leon</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">協助設定公司Service AI帳號（200美元額度）並將MacMini服務切換至該帳號</span>
+      </div>
+      <div class="ai-context">Leon將協助將MacMini的AI服務從其個人帳號切換至新的Service帳號。[17:01]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">04</span>
+        <span class="ai-owner" style="background:#14B8A6">Leon</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">帶領Tony了解Service AI帳號設定與MacMini切換流程</span>
+      </div>
+      <div class="ai-context">Leon將在操作Service AI帳號設定時，帶Tony一同進行，以便Tony學習。[17:17]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">05</span>
+        <span class="ai-owner" style="background:#0F1F4D">Evin</span>
+        <span class="ai-dl">8月5日</span>
+        <span class="ai-item">確保公司Service AI帳號於8月5日前設定完成</span>
+      </div>
+      <div class="ai-context">為避免Leon的AI帳號於8月6日到期後服務中斷，Evin需確保Service帳號提前設定。[18:49]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">06</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">檢視GitLab Console專案的CICD設定與部署流程</span>
+      </div>
+      <div class="ai-context">Tony需自行研究Console專案的GitLab CI YAML設定檔，了解其CICD流程。[19:06]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">07</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">設定個人VPN連線以存取辦公室內部網路</span>
+      </div>
+      <div class="ai-context">Tony需自行設定VPN連線，以便存取MacMini、測試環境及保險公司白名單服務。[47:45]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">08</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">學習為新進工程師設定VPN的規則與流程</span>
+      </div>
+      <div class="ai-context">Tony需學習VPN設定，以便未來為其他工程師提供協助。[47:34]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">09</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">尋找Windows遠端連線程式以管理MacMini</span>
+      </div>
+      <div class="ai-context">Tony使用Windows系統，需找到合適的遠端連線程式來管理MacMini。[48:39]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">10</span>
+        <span class="ai-owner" style="background:#14B8A6">Leon</span>
+        <span class="ai-dl">本週 (將於8月6日生效)</span>
+        <span class="ai-item">取消個人Cloud Code訂閱方案</span>
+      </div>
+      <div class="ai-context">Leon已取消其Cloud Code訂閱，以停止公司支付該筆費用。[59:10]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">11</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">本週</span>
+        <span class="ai-item">檢視SARS相關後端微服務專案（Auth, SSO, PDF, Sign, Insurancy, Notification, Report）</span>
+      </div>
+      <div class="ai-context">Tony需了解SARS後端微服務的Repo與功能，特別是核心的Insurancy專案。[70:00]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">12</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">未定</span>
+        <span class="ai-item">檢查GCP上CICD機器的硬碟空間並進行清理</span>
+      </div>
+      <div class="ai-context">Tony需定期SSH連線至GCP的CICD機器，檢查並清理硬碟空間，避免爆滿。[72:51]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">13</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">未定</span>
+        <span class="ai-item">規劃SARS相關系統與GCP資源移轉給羅賓斯保代</span>
+      </div>
+      <div class="ai-context">若SARS停用，Tony需規劃如何將相關系統與GCP資源移轉給羅賓斯保代，因其仍有需求且域名歸屬羅賓斯科技。[73:25]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">14</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">未定</span>
+        <span class="ai-item">關閉為台產白名單設定的靜態IP</span>
+      </div>
+      <div class="ai-context">若SARS停用，Tony需關閉為台產保險公司白名單設定的靜態IP，以節省每月30-40美元的費用。[74:08]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">15</span>
+        <span class="ai-owner" style="background:#E89E3F">Tony</span>
+        <span class="ai-dl">明日會議前</span>
+        <span class="ai-item">準備明日交接會議的問題清單</span>
+      </div>
+      <div class="ai-context">Tony需準備問題，以便在明日與Leon的交接會議中提問與實作。[75:08]</div>
+    </div>
+    <div class="ai-row">
+      <div class="ai-main">
+        <span class="ai-num">16</span>
+        <span class="ai-owner" style="background:#0F1F4D">Evin</span>
+        <span class="ai-dl">今日</span>
+        <span class="ai-item">安排明日下午4:30至6:00的交接與合約會議</span>
+      </div>
+      <div class="ai-context">Evin需安排明日會議，其中4:30-5:30為Tony與Leon的交接，5:30-6:00為Evin與Leon的合約討論。[76:35]</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 02 · 議題索引</p>
+  <h2 class="section-title">討論議題（12 項）</h2>
+  <ul class="topics-list">
+    <li>CICD與GCP部署架構概述</li>
+    <li>GCP帳號與權限申請流程</li>
+    <li>Console專案架構與CICD流程</li>
+    <li>AI Cloud Code帳號與費用移轉</li>
+    <li>Console的OCR功能與Prompt設計</li>
+    <li>FutureGo專案（前端、後端、規劃邏輯）</li>
+    <li>Robins Tech官網維護與Nginx配置</li>
+    <li>辦公室VPN設定與MacMini遠端連線</li>
+    <li>MacMini上AI機器人管理與問題排除</li>
+    <li>SARS系統拆分與GCP專案規劃</li>
+    <li>SARS微服務架構與Insurancy核心專案</li>
+    <li>台產白名單IP成本與關閉</li>
+  </ul>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 03 · 摘要</p>
+  <h2 class="section-title">會議摘要</h2>
+  <div class="summary-body">
+  <p>本次會議旨在進行羅賓斯科技的IT交接，由即將離職的CTO Leon向新任IT Tony進行系統、專案與基礎設施的說明與移轉。CEO Evin在場，負責決策與協調，確保公司IT運作的順暢銜接。</p>
+  <p class="summ-head">(1) 目的與三方角色</p>
+  <p>Leon作為交接方，詳細介紹了公司現有IT架構、專案部署流程、帳號權限管理及重要系統的運作方式。Tony作為接手者，積極提問並理解各項細節，並將負責後續的維護與開發。CEO Evin則負責確認交接內容的完整性、成本效益，並做出關鍵的行政與商務決策，特別是關於系統去留與資源分配。</p>
+  <p class="summ-head">(2) Console/CICD/GCP 部署架構</p>
+  <p>Console專案為全端應用，採用Nest.js與JavaScript開發，其CICD流程綁定於GitLab，透過YAML設定檔自動化Docker建置、映像檔部署至GCP的Dev CICD機器，並由Nginx啟動服務。部署流程分為Dev、Release（亦稱UAT/pre-prod，需VPN連線）及Main（公開環境）分支。Console的OCR功能內建於專案中，透過呼叫Gemini Pro API並嵌入大量Prompt進行字元辨識，特別針對保單、身份證等文件設計欄位提取邏輯。GCP雲端架構龐大，SARS專案使用20多台VM，架構複雜，Console與FutureGo則不走此複雜路線。目前前端服務（如Console、FutureGo官網、Robins Tech官網）多集中於單一Web VM，後端服務則分開，此設計雖節省成本但增加維護難度。Leon已為GCP建立Robins Tech Dev、UAT、Product三個新專案，以利未來拆分。CICD流程由GitLab觸發GCP上的CI/CD機器執行建置，而非直接在GitLab上建置。Leon提醒，若沿用現有基礎設施，需遵循既有Nginx配置與CICD YAML設定，避免改動導致多個網站服務中斷。</p>
+  <p class="summ-head">(3) 帳號與權限(GCP、AI/MacMini)</p>
+  <p>Tony需向Evin申請GCP權限，並了解未來可能需SSH連線至GCP機器進行維護（如清理硬碟空間）。AI Cloud Code（MacMini）的帳號交接，Leon目前使用的公司付費帳號（200美元額度）將於8月6日到期後取消。Tony將申請自己的100美元額度帳號，而公司AI服務（MacMini）則會改用一個新的「Service」帳號，額度為100美元。Leon將協助將MacMini的AI服務綁定至此Service帳號，並帶Tony了解操作流程。Tony需調整其虛擬信用卡額度以支付兩個帳號的費用。MacMini的遠端管理需透過VPN連線至辦公室內部網路，Tony需自行設定VPN連線，並學習為新進工程師設定VPN的流程。MacMini上的AI機器人有多個，每個有其獨立的記憶與功能，需注意session過期等問題，有時需直接連線至終端機處理。</p>
+  <p class="summ-head">(4) SARS 去留與 Insurancy/富易達拆分、domain 移轉</p>
+  <p>SARS系統被視為沉重包袱，若決定停用，約95%相關系統可關閉，但剩餘功能需重建基礎設施。SARS的核心專案「Insurancy」包含車險與旅平險邏輯，是富易達與羅賓斯保代拆分的最大難點，因其與羅賓斯保代系統高度耦合，且皆為Java開發。若SARS停用，相關GCP資源需移轉給羅賓斯保代，但因域名歸屬羅賓斯科技，羅賓斯保代需自行切分。FutureGo專案包含前端（Monorepo，含未來保官網與萬燈保代官網）及後端（Python，由一軒負責，串接保險公司API）。其「快速規劃」功能透過廉價LLM進行自然語言互動，並依據Excel邏輯表進行保額組合調整，此邏輯主要由後端處理。Console的車險報價功能即是串接FutureGo後端，但因SARS中台產的複雜報價規則（如車齡、竊盜險）未完全移轉，導致報價常出錯。羅賓斯科技官網（NewWebsite）為純前端Vue專案，若需更新內容，目前需直接修改程式碼，未來可能需加設後台系統。</p>
+  <p class="summ-head">(5) 台產白名單IP等成本</p>
+  <p>若SARS停用，需記得關閉為台產保險公司白名單設定的靜態IP，這些IP每月約產生30-40美元的費用，以節省公司開支。</p>
+  <p class="summ-head">(6) 後續安排</p>
+  <p>Leon將於明日（週四）下午4:30至5:30與Tony進行一小時的交接問答與實作指導（包含MacMini與GCP操作），隨後與Evin進行合約討論。週五可能視情況安排額外交接時間，以確保Tony能充分理解並接手所有IT職責。Evin也提及部分GCP專案未來可能完全砍掉，但Tony仍需管理現有運作的GCP資源。</p>
+  </div>
+</div>
+
+<div class="section">
+  <p class="section-eyebrow">PART 04 · 逐字稿</p>
+  <h2 class="section-title">掛名逐字稿</h2>
+  <div class="notice-box">＊本逐字稿由會議錄影經 <strong>Gemini 聽錄音分語者</strong>（依聲音＋角色語境判斷 Leon／Tony／Evin）整理，共 943 段。技術術語（GitLab、Console、CICD、GCP、SARS、Insurancy、domain 等）已就常見誤字校正，金額/日期等關鍵處仍請以錄影為準。</div>
+  <div class="legend">
+    <span><i style="background:#0F1F4D"></i>Evin（執行長／決策）</span>
+    <span><i style="background:#14B8A6"></i>Leon（主講／交接）</span>
+    <span><i style="background:#E89E3F"></i>Tony（提問／接手）</span>
+  </div>
+  <details class="transcript-wrap">
+    <summary>展開掛名逐字稿（共 943 段）</summary>
+    <div class="transcript">
+<div class="ts-line"><span class="ts-time">00:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">欸他,欸他看一次好了。</span></div>
+<div class="ts-line"><span class="ts-time">00:02</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">看一次哦,所以,嗯。</span></div>
+<div class="ts-line"><span class="ts-time">00:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">看一次專案嗎?還是我要</span></div>
+<div class="ts-line"><span class="ts-time">00:09</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為那邊,你說。都是部署,部署方式還有測試,測試的時候的部署方式。我覺得這個很重要。</span></div>
+<div class="ts-line"><span class="ts-time">00:20</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">00:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">現在的話,因為那邊之前都是,都是完全我自己動的,所以現在那邊流程應該是蠻簡單的,就是它就是 branch 去 trigger,然後直接推上 GitLab, GitLab 那邊就會直接去 call 那個,那個,那個 CI runner,那它就會去 call GCP 的有一台機器會去跑這個 pipeline。</span></div>
+<div class="ts-line"><span class="ts-time">00:44</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你是說直接把它合進主分支之後,它就會自動去做 CICD 的操作。</span></div>
+<div class="ts-line"><span class="ts-time">00:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,對,CICD 全部都綁在 GitLab 上面了。然後它跑的機器是跑在,欸你,你 GCP 有進去了嗎?</span></div>
+<div class="ts-line"><span class="ts-time">01:03</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我還沒有欸,我還沒有。</span></div>
+<div class="ts-line"><span class="ts-time">01:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,你 GCP 可能要請那個 Putty 或 Rocky 那邊幫你開,那個我也沒有權限,所以那個,那個一定要請他們先拉你進去。然後因為機器非常非常多台,然後我就大概講啦,那這個因為我也沒有到每一台都進去看過,所以,嗯,嗯,做過,那我們先先一個一個,以專案,專案面向來講好了。那第一個是,欸,那你可能,大家看不太到。</span></div>
+<div class="ts-line"><span class="ts-time">01:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你你放大一點,你到時候你。</span></div>
+<div class="ts-line"><span class="ts-time">01:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為它那個圖,等一下,我先傳那個過去好了。你幫我把這個連結給那個 Tony,然後請 Tony 那邊下載,或者他直接在線上預覽也可以。</span></div>
+<div class="ts-line"><span class="ts-time">01:55</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">01:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那因為 GCP 那邊蠻龐大的,所以,Evin,我我傳一個 LINE 的那個 Google Drive 的連結給你。你再幫我給 Tony。</span></div>
+<div class="ts-line"><span class="ts-time">02:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那我我應該是講要先白專案講啦,那剛好講到 GCP 的話,先先提一下好了。那 GCP 這個是那個 GCP 的雲端架構圖。那你看得到我畫面嗎?</span></div>
+<div class="ts-line"><span class="ts-time">02:26</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">可以哦。</span></div>
+<div class="ts-line"><span class="ts-time">02:27</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我看得到,只是有點。</span></div>
+<div class="ts-line"><span class="ts-time">02:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">02:29</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你可以放大一點嗎?</span></div>
+<div class="ts-line"><span class="ts-time">02:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,這樣應該是最大了。你可能,你可能請他直接從他電腦開可能比較清楚,因為那個字很小。Tony 你直接開。那個你那個連結你可以直接開啟,然後那個在資料夾的那個 GCP 裡面有兩個,有兩個環境圖。</span></div>
+<div class="ts-line"><span class="ts-time">02:51</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸那個,好像請,你用先幫我通過一下我的那個。</span></div>
+<div class="ts-line"><span class="ts-time">02:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你不是開所有人啦,你是不是,欸我好像是開所有人嗎?</span></div>
+<div class="ts-line"><span class="ts-time">03:00</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK, sorry,等我一下。</span></div>
+<div class="ts-line"><span class="ts-time">03:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你把它,你把它全部改成所有人,他才可以開,我等下再把它改回來。</span></div>
+<div class="ts-line"><span class="ts-time">03:05</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好,欸你有 robinstack.com.tw 的權限了嗎?你有 email 了嗎?</span></div>
+<div class="ts-line"><span class="ts-time">03:10</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有,我有。</span></div>
+<div class="ts-line"><span class="ts-time">03:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK,那那那那你應該可以,你重整一下。</span></div>
+<div class="ts-line"><span class="ts-time">03:15</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦,有了。</span></div>
+<div class="ts-line"><span class="ts-time">03:16</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是我昨天全部傳給你的那些,你現在應該都可以打開了。</span></div>
+<div class="ts-line"><span class="ts-time">03:20</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我看到了。</span></div>
+<div class="ts-line"><span class="ts-time">03:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那,就 GCP 裡面有一個 GCP 架構測試環境。</span></div>
+<div class="ts-line"><span class="ts-time">03:29</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">測試嗎?</span></div>
+<div class="ts-line"><span class="ts-time">03:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯,測試正式其實架構都差不多,反正架構正式那邊會再多幾個什麼那個 Jumper 跟一些從外部連進來的一些機器啦。那這邊我大概講啦,因為這邊,老實說現在你用得到的專案跟這邊有關係的只剩下 SARS。那 Console 什麼都不走這個,都不走這一套了,因為這一套太複雜了,我們以我們現在,以 Robin&#x27;s Tech 現在的架構不太需要這麼,這麼複雜的。那,</span></div>
+<div class="ts-line"><span class="ts-time">04:01</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我覺得這個其實就不用講了,這個反正。</span></div>
+<div class="ts-line"><span class="ts-time">04:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,SARS 現在都是這一段啊,SARS 這一段,要把它拆掉的話會花非常非常非常多的時間。</span></div>
+<div class="ts-line"><span class="ts-time">04:11</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">沒事,這個超過,這個,我比較,你可不可以先從 Console 跟,這個我覺得還好,因為這個到時候也是交給股幹他們去處理。</span></div>
+<div class="ts-line"><span class="ts-time">04:23</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦,OK,好,那,那再過來的話就是,那再回到 Console, Console 因為我現在沒有,我沒有辦法帶你畫面,因為我 GitLab 那邊,我沒有權限可以帶你看哦。那,就是重來一次,就是。</span></div>
+<div class="ts-line"><span class="ts-time">04:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">還是,還是 Leon,因為我們交,有沒有可能 Tony, Tony 有沒有可能你帳密先給他,他就可以開,還是什麼?</span></div>
+<div class="ts-line"><span class="ts-time">04:44</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒有,像他直接開啊,他直接開就可以了。</span></div>
+<div class="ts-line"><span class="ts-time">04:46</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我我那些程式碼我可以開啊,程式碼我可以開。</span></div>
+<div class="ts-line"><span class="ts-time">04:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊,他要找的是 GitLab 架構的部分。</span></div>
+<div class="ts-line"><span class="ts-time">04:52</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這是,這個是 GCP 的介面嗎?</span></div>
+<div class="ts-line"><span class="ts-time">04:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">現在這個是 GCP,但我想要,因為他想要,那個 Evin 意思是想要先讓我講 Console 嘛,那 Console 跟 GCP 這邊相對單純啦,那從 GitLab trigger 那邊 CICD 那邊你應該,那邊應該你可以自己看啦,那邊其實也沒有什麼好講的。</span></div>
+<div class="ts-line"><span class="ts-time">05:11</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸,Leon 等一下,那你,你要投影嗎?還是其實你自己看電腦就可以了?</span></div>
+<div class="ts-line"><span class="ts-time">05:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我沒有,因為我 GitLab 我沒有權限啊,所以我我我沒有辦法,我沒有,我沒有畫面可以看啊。</span></div>
+<div class="ts-line"><span class="ts-time">05:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒事,我給,我給 Tony 投影,然後你,你跟著。</span></div>
+<div class="ts-line"><span class="ts-time">05:26</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦,可以啊。</span></div>
+<div class="ts-line"><span class="ts-time">05:27</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他就可以跟你同步啦,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">05:30</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那我現在要先加會議。</span></div>
+<div class="ts-line"><span class="ts-time">05:31</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對,我把,我把會議連結給你。</span></div>
+<div class="ts-line"><span class="ts-time">05:43</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">稍等一下。</span></div>
+<div class="ts-line"><span class="ts-time">06:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你也可以直接看程式碼。因為我 YAML 檔其實都寫好了,直接在那個 GitLab CI 那邊。</span></div>
+<div class="ts-line"><span class="ts-time">06:42</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">06:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我把我的都關掉了。然後你投影。</span></div>
+<div class="ts-line"><span class="ts-time">06:48</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸,Leon 你看得到嗎?</span></div>
+<div class="ts-line"><span class="ts-time">06:50</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以。</span></div>
+<div class="ts-line"><span class="ts-time">06:51</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,OK,好好好,那那現在換那個 Tony 那邊的,他那邊操作。</span></div>
+<div class="ts-line"><span class="ts-time">06:58</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">欸,我看,你看一下 GitLab。好,那這個 Console 這個專案其實就是,它就是前端,它全端專案,因為那時候覺得它,因為我本身是前端出身的,所以我講說就放在一起,因為不然後端再隔開的話,第一也沒有起必要性啦,因為它後端並沒有這麼複雜。然後它這邊並沒有太多的,太多要需要點的一些 service 或服務這樣,沒有。所以這邊就很單純,它就是,我是直接 Nest.js 的架構,然後加前後端,所以包含後端的 API 全部都在這裡這樣。那你可以往下滑,看那個 GitLab CI,那你剛剛,我剛剛講那一段其實就在這裡,GitLab CI YAML,那個檔案上面。</span></div>
+<div class="ts-line"><span class="ts-time">07:41</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">上面一點,上面一點。</span></div>
+<div class="ts-line"><span class="ts-time">07:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦,這裡,對對對對對,這個就是設定檔,那這邊就是去,它怎麼包含跑 Docker build,然後把那個 build 成 image,然後丟上去到機器上面,這邊我都有,這邊都,應該蠻算清楚啦。那它 branch 都有,都已經有設定好了,每個 branch 都有對應的機器,然後跟對應的 CICD 流程。嗯,都在這邊,你說自己看就可以了,這個,這個也沒有什麼好講的。那這邊是照之前寫的架構,因為它的 build 的機器是一台叫那個,我叫名字,Dev CICD 吧,然後它透過 rsync 這一個,這個工具來把 image 轉拋到機器上面。然後這就在機器上面直接透過 Nginx 啟起來,就這樣。嗯,所以 Console 這邊蠻單純的。</span></div>
+<div class="ts-line"><span class="ts-time">08:34</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你這樣這麼快聽得懂。</span></div>
+<div class="ts-line"><span class="ts-time">08:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦,我覺得這個我可能還要再研究一下,再看一下。</span></div>
+<div class="ts-line"><span class="ts-time">08:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,你。</span></div>
+<div class="ts-line"><span class="ts-time">08:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">08:40</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">到時候給他。</span></div>
+<div class="ts-line"><span class="ts-time">08:41</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這些東西其實基本上你不用動,都現在都 OK,依照,不然就是可能 Console 未來可能要有要動,我亂講,可能之後要串簽名系統好了,那這邊才有可能需要動。但除此之外,CICD 這邊全部都設定好的了。</span></div>
+<div class="ts-line"><span class="ts-time">08:58</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸,他現在如果要新增功能,因為他想要新增一個匯出的功能的話,他就。</span></div>
+<div class="ts-line"><span class="ts-time">09:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不成問題。</span></div>
+<div class="ts-line"><span class="ts-time">09:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">09:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊都不用動,CICD 這邊都是設定好的,所以你先繼續用就可以了,你可以先開發功能,慢慢再來看這些 infra 就好了。</span></div>
+<div class="ts-line"><span class="ts-time">09:14</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK,我反正我就切個,切個分支,然後最後合到測試環境,然後再到。</span></div>
+<div class="ts-line"><span class="ts-time">09:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">09:23</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸,這個 release。</span></div>
+<div class="ts-line"><span class="ts-time">09:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">到 release, release 到 main。</span></div>
+<div class="ts-line"><span class="ts-time">09:25</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">到 release,然後再到 main。</span></div>
+<div class="ts-line"><span class="ts-time">09:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Master 沒有在用了, Master 那個我 protected 起來了,所以 Master 不要用。那流程就是 Dev,然後到 release, release 到 main。那 Dev 這邊代表的環境也就是 dev.robinstack.com.tw,欸,忘記了,那個測試環境是 Dev 吧。</span></div>
+<div class="ts-line"><span class="ts-time">09:44</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">Dev,對。</span></div>
+<div class="ts-line"><span class="ts-time">09:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">應該是。Dev.對,Dev-Console。</span></div>
+<div class="ts-line"><span class="ts-time">09:51</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">然後還有設一個那個 pre-prod 的 pre-prod 的環境。</span></div>
+<div class="ts-line"><span class="ts-time">09:58</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦,我忘記 UAT 是什麼。我看一下哦。忘記了。</span></div>
+<div class="ts-line"><span class="ts-time">10:06</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">是。</span></div>
+<div class="ts-line"><span class="ts-time">10:07</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,反正 UAT 就是給 pre-prod 用的,那當初會設這樣的環境是因為 UAT 跟 pre-prod 跟 Dev 這邊都是有 VPN 保護的。那它會在一開始都被,在 GCP 的 load balancer 的時候就去擋這一塊。然後最後到 main, main 這邊才沒有 VPN,那 Console 同理,它也是這樣的,同樣的架構。</span></div>
+<div class="ts-line"><span class="ts-time">10:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯,你是說 Dev 是在內網。</span></div>
+<div class="ts-line"><span class="ts-time">10:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,Dev 跟那個 release 都是在內網。</span></div>
+<div class="ts-line"><span class="ts-time">10:41</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">10:42</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我知道名字怪怪的啦,但這個都,這這名字都,我是 follow 之前的啦,因為方便後續作業啦。</span></div>
+<div class="ts-line"><span class="ts-time">10:48</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">10:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Release 也就稱 UAT,也稱 pre-prod。</span></div>
+<div class="ts-line"><span class="ts-time">10:54</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK,好。</span></div>
+<div class="ts-line"><span class="ts-time">10:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,這個你稍微,稍微記一下,對對對對,全部的專案都是這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">11:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK。哦,然後是這個,好,這邊 Console 這邊看你有什麼問題想問。</span></div>
+<div class="ts-line"><span class="ts-time">11:19</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯,我看一下。這個是生產用的設定檔。</span></div>
+<div class="ts-line"><span class="ts-time">11:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">欸,sorry,哪一個?</span></div>
+<div class="ts-line"><span class="ts-time">11:26</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這個。</span></div>
+<div class="ts-line"><span class="ts-time">11:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個是,對,我 Docker Compose, SARS 這些都另外設出來。</span></div>
+<div class="ts-line"><span class="ts-time">11:29</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">自動調這個。對,它自動調這個。</span></div>
+<div class="ts-line"><span class="ts-time">11:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,它會自動調這個 Compose 的指令下去跑。</span></div>
+<div class="ts-line"><span class="ts-time">11:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK,好。</span></div>
+<div class="ts-line"><span class="ts-time">11:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯,那主要就是切 port 跟一些環境變數的引入這樣。</span></div>
+<div class="ts-line"><span class="ts-time">11:42</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好,我了解。</span></div>
+<div class="ts-line"><span class="ts-time">11:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯,這邊還好,這邊都沒有太複雜的東西。</span></div>
+<div class="ts-line"><span class="ts-time">11:47</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">寫得蠻乾淨的。</span></div>
+<div class="ts-line"><span class="ts-time">11:51</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對,我剛剛有稍微拉到 Drive 看一下。</span></div>
+<div class="ts-line"><span class="ts-time">11:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對是,因為這邊,這邊應該相對 SARS 來說,因為它功能不多啦,然後我就全部都放在單一個節點上面,所以它不會太複雜,你去多花點時間再看過,你應該 OK 的。</span></div>
+<div class="ts-line"><span class="ts-time">12:10</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。對,只是它是用那個什麼 TypeScript 還有那個 Node.js。</span></div>
+<div class="ts-line"><span class="ts-time">12:16</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,沒錯,我是去,我是完全 JavaScript 寫的,所以這部分看你自己的專案熟悉度啦,那老實說因為現在就沒有什麼在,不太會再自己寫 code 啦,大部分都 review 而已,所以我覺你也可以讓 AI 寫,我覺得也 OK,那你要,你要跟他做好驗證這樣。</span></div>
+<div class="ts-line"><span class="ts-time">12:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯,欸,你是用你,你的 Cloud 你是怎麼用 Cloud 對這個開發,你是,你是那個 Cloud 就是 200,200 美的帳號是連你的那個,你是用那個帳號開發嗎?</span></div>
+<div class="ts-line"><span class="ts-time">12:51</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯,沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">12:53</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸,那他現在怎麼處理?變成那個 Tony 自己申請一個,然後你的,你的我就不付。</span></div>
+<div class="ts-line"><span class="ts-time">13:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你可以用 MacMini 那個啊。他你 200 美用不用的到,你看你 MacMini 那邊如果,嗯,我不覺得 200 美用的完啦,老實說我自己再開發也是,我自己,我自己私人,我自己公司用也是用 100 美而已啊,200 美是蠻多的 token 啦。</span></div>
+<div class="ts-line"><span class="ts-time">13:17</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒有,現在是 100 美,只是現在。</span></div>
+<div class="ts-line"><span class="ts-time">13:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">13:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他,他申請一個,但是你的,你的我要怎麼終止?</span></div>
+<div class="ts-line"><span class="ts-time">13:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我這邊可以那個啊,我就 log,我就把它終止掉就好了,我這邊可以現在終止啊。</span></div>
+<div class="ts-line"><span class="ts-time">13:29</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可是你現在終止,等一下我們再討論,那那個 AI 那一段要把它,就是不急著終止啦,你你用到不要再有付費就好了,或是你現在開始換掉信用卡也可以,你你你,因為我這個應該還有一點時間嘛,你把它用完就好,也不要浪費。</span></div>
+<div class="ts-line"><span class="ts-time">13:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">欸,我看一下,我看一下時間什麼時候。</span></div>
+<div class="ts-line"><span class="ts-time">13:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他總之就是兩個,一個是不要再讓我付到錢嘛,就是等於這一期是付最後一期了。再來是 AI agent 那邊不能斷,要把它銜接好這樣。</span></div>
+<div class="ts-line"><span class="ts-time">14:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK,這我這部分我可以協助啦。然後我看,我先看到什麼時候。帳單是到 21,哦,到 21 號欸,快到了。</span></div>
+<div class="ts-line"><span class="ts-time">14:10</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那個切到。</span></div>
+<div class="ts-line"><span class="ts-time">14:13</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">21,等下我先回來,21,就還有一個一周啦,應該可以。我覺得最好就是你換信用卡,因為你自己的也要。</span></div>
+<div class="ts-line"><span class="ts-time">14:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒有啊,那個都是綁公司的信用卡,這都不是綁我的哦。</span></div>
+<div class="ts-line"><span class="ts-time">14:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸,對,我知道,我知道,但是你現在利用率這個是你,你,你是放在利用率點 robinstag 這個帳號。</span></div>
+<div class="ts-line"><span class="ts-time">14:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對對對對,沒錯,我都是在 robinstag.com.tw 底下的。跟我私人我都是切開啦。</span></div>
+<div class="ts-line"><span class="ts-time">14:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">哦,那怎麼,那這個也不會太久,那我應該是。</span></div>
+<div class="ts-line"><span class="ts-time">14:44</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我建議現在的做法是不用,我就不用那麼複雜了,你如果,你 MacMini 那邊,我我覺得應該是先 100 美就好了,但是如果你後面大量用 Fable 的話,因為看起來 Fable 應該也不太會再變成是額外那個啦,應該是不可能。然後。</span></div>
+<div class="ts-line"><span class="ts-time">15:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你現在不是 200 美嗎?你要,你說再改。</span></div>
+<div class="ts-line"><span class="ts-time">15:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">現在是 200 美啊,你現在是 200 美啊,但它之後 Fable 它說會變成是另外一種額度啊。講是這樣講啦,我不覺得會啦,但是你可以再看一下。那我覺得你現在分就分兩塊,你應該可以單純一點,你要,你要單純的話就是你分兩個帳號,一個是給那個,那個 Tony 這邊,他自己 100 美,可能 100 美就跑,然後你 MacMini 那邊再 100 美,這樣也是 200 美。不過是 token 數比較少,因為這樣子有 10 倍。那如果你要省錢的話,你就是那個 service 那個帳號,你也一起給 Tony 登入。</span></div>
+<div class="ts-line"><span class="ts-time">15:35</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">MacMini 也用那個 Service 這個帳號 200 美的，然後 Tony 在開發的時候也用 Service 這個帳號 200 美的。</span></div>
+<div class="ts-line"><span class="ts-time">15:42</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這樣是 20 倍的 Token。</span></div>
+<div class="ts-line"><span class="ts-time">15:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">應該不用啦，我們那天討論完，就是公司的 AI 是用 Service。</span></div>
+<div class="ts-line"><span class="ts-time">15:50</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後 Tony 自己開發的是用他自己的帳號去申請。</span></div>
+<div class="ts-line"><span class="ts-time">15:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">15:55</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這樣是最單純的嗎？</span></div>
+<div class="ts-line"><span class="ts-time">15:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這樣是最單純的，對。</span></div>
+<div class="ts-line"><span class="ts-time">15:58</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">15:59</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">15:59</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那 OK 啊。</span></div>
+<div class="ts-line"><span class="ts-time">16:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那，那，那現在 Tony 這邊已經沒問題了嗎？他自己的 100 美，他昨天已經，已經開始了嗎？</span></div>
+<div class="ts-line"><span class="ts-time">16:08</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我還沒有那個，因為我要今天確認一下要怎樣的方案。</span></div>
+<div class="ts-line"><span class="ts-time">16:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那現在就改成這樣，你自己用 Tony.link 那個去申請。</span></div>
+<div class="ts-line"><span class="ts-time">16:16</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦好，那我就直接用公司虛擬信用卡去買。</span></div>
+<div class="ts-line"><span class="ts-time">16:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後 Service。</span></div>
+<div class="ts-line"><span class="ts-time">16:21</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那要不要用卡？</span></div>
+<div class="ts-line"><span class="ts-time">16:23</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">要不要用卡？</span></div>
+<div class="ts-line"><span class="ts-time">16:23</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">他有說啊，因為你用，對啊，你都用 NT Gravity 了，你可以，你也可以算不同的模型啊。</span></div>
+<div class="ts-line"><span class="ts-time">16:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">或者你付 NT Gravity 其實也 OK 啊。</span></div>
+<div class="ts-line"><span class="ts-time">16:32</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">還是，還是要，還是要用 CodeX？CodeX 也可以？</span></div>
+<div class="ts-line"><span class="ts-time">16:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，CodeX 看你啊，就是現在 5.0 大家說比 Babel 還強啊，所以，對啊，我覺得都，這都看，看你個人啊，都可以。</span></div>
+<div class="ts-line"><span class="ts-time">16:46</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">5.0 也蠻厲害的。</span></div>
+<div class="ts-line"><span class="ts-time">16:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">嗯，反正你把東西弄好就好。</span></div>
+<div class="ts-line"><span class="ts-time">16:51</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那，那現在就是說，利用 Leon 的怎麼轉到，怎麼轉到 Service？</span></div>
+<div class="ts-line"><span class="ts-time">16:59</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我 Service 也會再去申請一個 100 美。</span></div>
+<div class="ts-line"><span class="ts-time">17:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我這邊就 Cancel 啊，我這邊就 Cancel，然後你 Service 那邊，你如果不介意的話，我可以幫你操作這一段啊，因為我信用卡卡號這邊都還有記，我就是幫你 Service 訂閱 100 美的，然後我幫你換 MacMini 裡面的那個 Section 這樣，換掉就好了。</span></div>
+<div class="ts-line"><span class="ts-time">17:15</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那，謝謝你。</span></div>
+<div class="ts-line"><span class="ts-time">17:17</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那你做的時候可不可以帶那個 Tony 一起做一次？</span></div>
+<div class="ts-line"><span class="ts-time">17:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以啊，你看你今天到幾點，我等下可以一起操作啊，那應該蠻快的。</span></div>
+<div class="ts-line"><span class="ts-time">17:25</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好，你今天一起把這個弄，他也可以協助我們這一段。</span></div>
+<div class="ts-line"><span class="ts-time">17:29</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你說他，你說 Leon 會過來？</span></div>
+<div class="ts-line"><span class="ts-time">17:31</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">Leon 會過來，他可以遠端。</span></div>
+<div class="ts-line"><span class="ts-time">17:32</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒有沒有，沒有我直接 VPN 連進去就好了，我應該都不會被擋。</span></div>
+<div class="ts-line"><span class="ts-time">17:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對對對，你後，後續你也要架那個 VPN，因為你可能都要連進去 MacMini 做一些維護。</span></div>
+<div class="ts-line"><span class="ts-time">17:42</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對，我覺得需要，我應該會。</span></div>
+<div class="ts-line"><span class="ts-time">17:43</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">VPN 會在。</span></div>
+<div class="ts-line"><span class="ts-time">17:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那這個 OK，那就，可是，但是你們現在付錢，你已經有那個卡號了，那時候已經有申請。</span></div>
+<div class="ts-line"><span class="ts-time">17:53</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有，我有。</span></div>
+<div class="ts-line"><span class="ts-time">17:54</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">所以你那個卡號到時候要用，已經，已經通過了嗎？對不對？</span></div>
+<div class="ts-line"><span class="ts-time">17:57</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那已經通過了。</span></div>
+<div class="ts-line"><span class="ts-time">17:58</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">所以你要幫你自己的，還有幫。</span></div>
+<div class="ts-line"><span class="ts-time">18:01</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，所以兩個都要在我那邊用我那個虛擬信用卡買，還是？</span></div>
+<div class="ts-line"><span class="ts-time">18:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">他現在要再申請一個。</span></div>
+<div class="ts-line"><span class="ts-time">18:08</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">沒有，因為我那個額度，我我當時只有設我一個，我一個人夠的那個，我說我每天只有，每個月只有 3500 吧，就剛好差不多一個，那我就要調高。</span></div>
+<div class="ts-line"><span class="ts-time">18:19</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你申請 4 萬，你用一年嘛，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">18:21</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">18:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那也沒差，你用兩個就是，就是半年，你半年之後。</span></div>
+<div class="ts-line"><span class="ts-time">18:26</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那每個月那額度會有差嗎？因為每個月我給他設好像 3500。</span></div>
+<div class="ts-line"><span class="ts-time">18:32</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">哦，對對對對對，所以會爆。</span></div>
+<div class="ts-line"><span class="ts-time">18:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">18:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，沒關係，那你到時候再處理這一段，然後再申請驗證。</span></div>
+<div class="ts-line"><span class="ts-time">18:41</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">18:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後讓 Leon。</span></div>
+<div class="ts-line"><span class="ts-time">18:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以這樣，這樣你們這樣 Service 那個你要等確定嘛，不然我是綁我之前那一張喔。</span></div>
+<div class="ts-line"><span class="ts-time">18:50</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸，你不用申請，他用他之前那張就可以了，他只是把它換成。</span></div>
+<div class="ts-line"><span class="ts-time">18:53</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">18:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我就把它換成 Service 而已啊，我卡號這邊都還有啊，所以無所謂，你如果不介意的話 OK 啊，我就幫你操作這一段，你就不用改那個。</span></div>
+<div class="ts-line"><span class="ts-time">19:04</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">OK 嗎？</span></div>
+<div class="ts-line"><span class="ts-time">19:05</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好，可以。</span></div>
+<div class="ts-line"><span class="ts-time">19:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，那你回到，回到這個叫什麼？GitLab 吧，還有什麼問題要問？</span></div>
+<div class="ts-line"><span class="ts-time">19:11</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好，那 Console 這邊看你還有什麼問題。</span></div>
+<div class="ts-line"><span class="ts-time">19:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那其他的話就是在你可以往左邊 GitLab 這邊，你這是用 GitHub 還是 GitLab？</span></div>
+<div class="ts-line"><span class="ts-time">19:20</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">GitLab。</span></div>
+<div class="ts-line"><span class="ts-time">19:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK，那你應該扣，你左邊那邊會有 Build。</span></div>
+<div class="ts-line"><span class="ts-time">19:26</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">左邊的 Build，對啊，Pipeline 這邊都在這裡，一些設定，然後跑的那個流程都是在這邊 Build 的。</span></div>
+<div class="ts-line"><span class="ts-time">19:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以你只要看它 Trigger 的東西，它是，它 Merge Branch 都會去跑 Trigger 了，就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">19:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後剩下的設定都是在這裡，它會連到我們 GCP 的一台那個 CI/CD 的機器去跑 Build 這一段，它沒有在 GitLab Build。</span></div>
+<div class="ts-line"><span class="ts-time">19:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為 GitLab Build 是太久了。</span></div>
+<div class="ts-line"><span class="ts-time">19:54</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，了解。</span></div>
+<div class="ts-line"><span class="ts-time">19:55</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">連到，連到我們 GCP 的那個一台 CI/CD 的機器上面，Run 呢就跑在上面這樣。</span></div>
+<div class="ts-line"><span class="ts-time">20:03</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好，了解了解。</span></div>
+<div class="ts-line"><span class="ts-time">20:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯，這個你再，這個人的時候再慢慢看。</span></div>
+<div class="ts-line"><span class="ts-time">20:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那 Console 應該到這裡。</span></div>
+<div class="ts-line"><span class="ts-time">20:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">等一下，他在記錄。</span></div>
+<div class="ts-line"><span class="ts-time">20:19</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">20:33</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦。</span></div>
+<div class="ts-line"><span class="ts-time">20:35</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後，再過來的話是。</span></div>
+<div class="ts-line"><span class="ts-time">20:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">換，換我分享螢幕。</span></div>
+<div class="ts-line"><span class="ts-time">20:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">Console 延伸那個 OCR 的功能，現在是寫在哪裡？</span></div>
+<div class="ts-line"><span class="ts-time">20:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">都在裡面，OCR，包含 OCR 的所有邏輯都是在那個，剛剛你看到那個專案裡面，那 OCR 那邊就很單純啊，就是它只是 Call 那個，忘記我是哪個模型了，反正我就 Call 一個 GPT 的一個，一個模型，然後去幫我把那個，但我就是下大量的 Prompt，然後去做 OCR 的這段辨識這樣，所以這段沒有什麼含金量，就是純粹是 Call GPT 而已。</span></div>
+<div class="ts-line"><span class="ts-time">21:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那他比較重，你可以。</span></div>
+<div class="ts-line"><span class="ts-time">21:13</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你說是哪一個專案？</span></div>
+<div class="ts-line"><span class="ts-time">21:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Console，Console 裡面有 OCR，你有看過字元辨識那個專案嗎？</span></div>
+<div class="ts-line"><span class="ts-time">21:21</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你說 Console 裡面的 OCR？</span></div>
+<div class="ts-line"><span class="ts-time">21:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">21:26</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">它是獨立一個專案還是在 Console 裡面？</span></div>
+<div class="ts-line"><span class="ts-time">21:29</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">在 Console 裡面的。</span></div>
+<div class="ts-line"><span class="ts-time">21:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">21:33</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">Leon 你幫我找一下，因為這個算重要。</span></div>
+<div class="ts-line"><span class="ts-time">21:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">是，你說直接看。</span></div>
+<div class="ts-line"><span class="ts-time">21:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我開，等一下，我有點忘記在哪裡，找一下。</span></div>
+<div class="ts-line"><span class="ts-time">21:45</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，看一下，直接看 OCR Service 嗎？</span></div>
+<div class="ts-line"><span class="ts-time">21:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦，我是選這個，你看我畫面好了。</span></div>
+<div class="ts-line"><span class="ts-time">21:56</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">21:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">看到嗎？</span></div>
+<div class="ts-line"><span class="ts-time">22:00</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">呃，等一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">22:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">等一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">22:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">右下角。</span></div>
+<div class="ts-line"><span class="ts-time">22:09</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，等等等等，我還沒進去。</span></div>
+<div class="ts-line"><span class="ts-time">22:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒事。</span></div>
+<div class="ts-line"><span class="ts-time">22:15</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸，等一下，為什麼？</span></div>
+<div class="ts-line"><span class="ts-time">22:18</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我是要先關掉我自己的？</span></div>
+<div class="ts-line"><span class="ts-time">22:20</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸，那我們沒有看到。</span></div>
+<div class="ts-line"><span class="ts-time">22:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你看不到我的嗎？</span></div>
+<div class="ts-line"><span class="ts-time">22:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對啊，因為你沒有，你他，他沒退出，你沒有，你沒辦法。</span></div>
+<div class="ts-line"><span class="ts-time">22:26</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那你，那你把你的關掉。</span></div>
+<div class="ts-line"><span class="ts-time">22:28</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你要退出。</span></div>
+<div class="ts-line"><span class="ts-time">22:31</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你停止分享。</span></div>
+<div class="ts-line"><span class="ts-time">22:33</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">是我為什麼進不去這個？等一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">22:36</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，好好好，沒事沒事，我找到了。</span></div>
+<div class="ts-line"><span class="ts-time">22:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">有了嗎？</span></div>
+<div class="ts-line"><span class="ts-time">22:39</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有有有。</span></div>
+<div class="ts-line"><span class="ts-time">22:41</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那你看得到我程式碼嗎？</span></div>
+<div class="ts-line"><span class="ts-time">22:45</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">沒有，這是誰的？這是你的嗎？</span></div>
+<div class="ts-line"><span class="ts-time">22:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你看得到我程式碼嗎？</span></div>
+<div class="ts-line"><span class="ts-time">22:50</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">呃，沒有，現在是，現在是一個 YouTube 畫面。</span></div>
+<div class="ts-line"><span class="ts-time">22:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">一個 YouTube 畫面，靠腰，分享錯了，Sorry。</span></div>
+<div class="ts-line"><span class="ts-time">22:58</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你可能錯螢幕了，應該是。</span></div>
+<div class="ts-line"><span class="ts-time">23:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，分享錯了，等我一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">23:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個，有嗎？</span></div>
+<div class="ts-line"><span class="ts-time">23:05</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有，有。</span></div>
+<div class="ts-line"><span class="ts-time">23:06</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那這邊就是 Console 專案，那裡面有一個東西叫，我就把它寫成 Script，然後叫，那個，測試，這是去提取的，那這邊就是去 Call 一個模型。</span></div>
+<div class="ts-line"><span class="ts-time">23:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我就是 Call Gemini Pro，那個不是，不是，不是 GPT，我記錯了，變成是，是 Gemini，然後後面我就是 Call 有大量的，因為我不知道你有沒有看過裡面的功能，功能裡面會有，它提取的，文件會有不同，第一個是保單嘛，然後另外一種是有身份證字，身份證，然後駕照等等這些資訊，它就對應不同的 Prompt，就就是把這些 Prompt 寫在這裡，然後它會去，就是把這些 Prompt 給 AI，然後請它去把這些字元辨識，字元給辨識出來，然後塞回去我對應好的欄位上面，就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">24:01</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，你你有，你有寫一個那個保單的裡面的一些欄位讓它去取。</span></div>
+<div class="ts-line"><span class="ts-time">24:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">會，它會最後面會對回去。</span></div>
+<div class="ts-line"><span class="ts-time">24:12</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">24:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你看，這邊，我這邊跟它講，這個是投保日期，所以它會跟它講是什麼手寫的啊，然後它穿的是什麼樣式啊，然後是這個樣式的話，你就是把那個裡面的內容提取出來，然後塞回去這個欄位裡面。</span></div>
+<div class="ts-line"><span class="ts-time">24:30</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，懂懂懂懂。</span></div>
+<div class="ts-line"><span class="ts-time">24:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，這邊就這樣，那這個就跟你一般下指令，跟你一般在做程式開發一樣嘛，你就會下指令請 AI 幫你操作，你下那個 Prompt，那一樣意思，我就是請下，我就下 Prompt，然後 Call API，然後去做字元辨識，這樣，那也沒差，它在這裡面。</span></div>
+<div class="ts-line"><span class="ts-time">24:51</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK，寫在程式碼裡面，Prompt 是寫在程式碼裡面。</span></div>
+<div class="ts-line"><span class="ts-time">24:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對對對，它就是 Call API。</span></div>
+<div class="ts-line"><span class="ts-time">24:57</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，沒錯沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">24:59</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦。</span></div>
+<div class="ts-line"><span class="ts-time">25:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那這邊就這樣咯。</span></div>
+<div class="ts-line"><span class="ts-time">25:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">25:05</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這樣這樣可以。</span></div>
+<div class="ts-line"><span class="ts-time">25:07</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">25:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">Leon 可以，接下來是 FutureGo。</span></div>
+<div class="ts-line"><span class="ts-time">25:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">FutureGo。</span></div>
+<div class="ts-line"><span class="ts-time">25:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">FutureGo。</span></div>
+<div class="ts-line"><span class="ts-time">25:14</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">等一下。</span></div>
+<div class="ts-line"><span class="ts-time">25:16</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">FutureGo 要講什麼？</span></div>
+<div class="ts-line"><span class="ts-time">25:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">FutureGo 就是告訴他說這個前端長在哪裡，然後後端長在哪，他怎麼維護這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">25:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">有上面是有寫啦，然後，我現在 GitLab 我現在進不去，你那個，我現在打一串給你，你那個你有傳給，你有傳給那個嗎？</span></div>
+<div class="ts-line"><span class="ts-time">25:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">有有有，你有給 Tony 這邊嗎？</span></div>
+<div class="ts-line"><span class="ts-time">25:39</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有有。</span></div>
+<div class="ts-line"><span class="ts-time">25:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你有看到一個未來保嗎？</span></div>
+<div class="ts-line"><span class="ts-time">25:43</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">等一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">25:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你進我傳給你的連結。</span></div>
+<div class="ts-line"><span class="ts-time">25:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你開 GitLab，那個是 GitLab 專案，然後，嗯，我可以帶一下程式碼啦，不過也差不多。</span></div>
+<div class="ts-line"><span class="ts-time">25:54</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">未來保嗎？</span></div>
+<div class="ts-line"><span class="ts-time">25:55</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">未來保。</span></div>
+<div class="ts-line"><span class="ts-time">25:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">25:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你直接看後端好了，前端。</span></div>
+<div class="ts-line"><span class="ts-time">25:59</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">前端在哪？</span></div>
+<div class="ts-line"><span class="ts-time">26:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，我這邊一樣是寫前端專案。</span></div>
+<div class="ts-line"><span class="ts-time">26:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那但是它還是有分出一個後端，因為它後端那邊是有另外一個一軒，我不知道你有沒有跟他接觸了，那他那時候是幫我負責 FutureGo 的後端，因為那邊要跟保險公司那邊做串接。</span></div>
+<div class="ts-line"><span class="ts-time">26:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊是寫 Python，所以就會有另外的，另外的，另外你需要看的東西啊。</span></div>
+<div class="ts-line"><span class="ts-time">26:32</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那前端的話，FutureGo 現在這個專案裡面有分兩個東西，一個是那個未來，那個，萬燈，未來保代這邊的官網，就是這個。</span></div>
+<div class="ts-line"><span class="ts-time">26:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個是 FutureGo 嘛，然後另外一個是未來保代的官網，那我一起把它放在同一個地方，我是做 Monorepo 這樣。</span></div>
+<div class="ts-line"><span class="ts-time">27:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以你看到 Apps 底下會有一個 App 跟 Web 兩個，Web 就是這個。</span></div>
+<div class="ts-line"><span class="ts-time">27:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Web 就是官網。</span></div>
+<div class="ts-line"><span class="ts-time">27:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那官網就很簡單，它是純靜態的，所以就沒什麼，沒什麼，沒什麼內容，它也沒有什麼功能，沒有互動，就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">27:19</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，好。</span></div>
+<div class="ts-line"><span class="ts-time">27:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">27:21</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">27:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，它就是純，純，純前端，應該沒什麼互動吧。</span></div>
+<div class="ts-line"><span class="ts-time">27:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">看一下，我，我也忘了。</span></div>
+<div class="ts-line"><span class="ts-time">27:30</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸，那個網址可以再給我一次嗎？</span></div>
+<div class="ts-line"><span class="ts-time">27:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以啊，這個，欸，那我要傳哪裡？我傳，沒事，我傳那個，我傳那個 Google Meet 裡面。</span></div>
+<div class="ts-line"><span class="ts-time">27:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個是純前端，然後因為這邊是我後來做的專案，它就沒有，我就沒有一起弄在那個前端部版位置這邊，等一下我會再跟你講這邊，這邊是更，更龐大的。</span></div>
+<div class="ts-line"><span class="ts-time">28:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，然後這個是 Web，然後另外一個是，這個是未來保，不過未來保這邊現在年久失修，所以應該是問題應該很多。</span></div>
+<div class="ts-line"><span class="ts-time">28:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那我還是稍微帶過，那這邊的話功能就是，你可能功能面你可能再問那個，問 Matt 或者是其他人這樣。</span></div>
+<div class="ts-line"><span class="ts-time">28:26</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後裡面的，這邊的主要的核心邏輯就是你會去，要跟保險公司串接，然後去把那個報價單拿回來，那這邊串接的串，三間，就是台產、新安跟，跟那個富邦，那做完的只有台產跟富邦，那新安那邊後來就沒有再繼續，那新安那邊他是跟另外一間公司在合作的，所以那邊非常難處置，那後面看起來是公司計畫這邊應該是有調整啦，所以那個可能看或許要不要再接，那那一段的，這一段的核心邏輯就都是在 FutureGo 的 Backend 的這個專案底下。</span></div>
+<div class="ts-line"><span class="ts-time">29:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊的話，也稍微提一下，就是這邊原本是台產的邏輯都是從 SARS 那邊來的，那，但是這邊現在有缺的是。</span></div>
+<div class="ts-line"><span class="ts-time">29:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒有沒有沒有，沒關係，因為，因為報價這端會有 RPH 取代，這未來保我想讓 Tony 知道的是，規劃邏輯那一段就可以了。</span></div>
+<div class="ts-line"><span class="ts-time">29:33</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，規劃邏輯喔。</span></div>
+<div class="ts-line"><span class="ts-time">29:35</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">規劃邏輯應該就在前端，OK，可以啊，沒問題。</span></div>
+<div class="ts-line"><span class="ts-time">29:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那 Proposal 吧，我找一下。</span></div>
+<div class="ts-line"><span class="ts-time">29:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那你有跟 Tony 講一下，我跟那個 Tony，就是他這，這一個呢是，他這個網站最主要就是要快速取得報價跟快速規劃，這是兩個不同的功能，那因為快速取得報價現在會用 RPH 取代，所以我們就不走串保險公司，所以這裡面的快速取的報價你可以先都忽略，但是快速規劃來，這個你要，你要請一下 Leon 怎麼，怎麼。</span></div>
+<div class="ts-line"><span class="ts-time">30:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不然我就，我就帶一次畫面吧。</span></div>
+<div class="ts-line"><span class="ts-time">30:11</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好，好。</span></div>
+<div class="ts-line"><span class="ts-time">30:12</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊它一開始進來界面那時候是做想要用聊天的方式做互動啦，那這邊一樣是串有一個，串一個 LLM 的 API，那這邊是串廉價的，因為不然這邊用高級模型的話會很貴，而且很慢，所以，然後這邊就是下 Prompt，它去做一些簡單的辨識，就看它過不過得了，然後這邊後續會去朝。</span></div>
+<div class="ts-line"><span class="ts-time">30:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我，等一下，我打我老婆的資料。</span></div>
+<div class="ts-line"><span class="ts-time">30:47</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">它等於用自然語言，我們就把那些資料塞給保險公司，那那時候因為有串幾家保險公司，所以就可以自動取得，取得它的報價這樣。</span></div>
+<div class="ts-line"><span class="ts-time">30:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊的話就是會去跑，把這些丟，然後丟給 LLM，然後它就自動幫你辨識什麼是什麼，什麼是什麼，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">31:06</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後這邊就是剛剛，這邊是程式碼，程式碼。</span></div>
+<div class="ts-line"><span class="ts-time">31:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你可以問一軒，一軒比我還熟。</span></div>
+<div class="ts-line"><span class="ts-time">31:12</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你早上韓國</span></div>
+<div class="ts-line"><span class="ts-time">31:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">一軒，早上那個車牌。</span></div>
+<div class="ts-line"><span class="ts-time">31:17</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，那個就是他做的。</span></div>
+<div class="ts-line"><span class="ts-time">31:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，這就是廠代碼系統，我這邊只是擴大API而已，所以這邊很單純，就是串service而已。</span></div>
+<div class="ts-line"><span class="ts-time">31:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，然後剛剛提到的是指這邊，就是它這邊是有一個Excel的大表。</span></div>
+<div class="ts-line"><span class="ts-time">31:32</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那那張表我記得我在裡面應該也有給你，我看一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">31:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">回來寶。</span></div>
+<div class="ts-line"><span class="ts-time">31:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這張，就是那個資料夾裡面會有一個科選智能規劃邏輯的一張Excel表。</span></div>
+<div class="ts-line"><span class="ts-time">31:44</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個就是，這個邏輯就是從這邊來的。</span></div>
+<div class="ts-line"><span class="ts-time">31:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊就是選選勾勾勾選，然後它會去勾不同的東西，然後它就會去移動這個Excel這張表的的位置。</span></div>
+<div class="ts-line"><span class="ts-time">32:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">它會去移動這個保額組合的位置，然後去指定它現在的那個保險的內容是300萬還是100萬。</span></div>
+<div class="ts-line"><span class="ts-time">32:09</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">它就會加一減一加一減一這樣的邏輯。</span></div>
+<div class="ts-line"><span class="ts-time">32:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊的加一減一這些邏輯全部都是在那個backend，backend那邊去決定的。</span></div>
+<div class="ts-line"><span class="ts-time">32:19</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那前端這邊只是負責pass資料過去而已。</span></div>
+<div class="ts-line"><span class="ts-time">32:23</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以都是在FutureGo backend，那你這邊，這邊這個專案就不是我寫的，所以這邊你就要問一軒了。</span></div>
+<div class="ts-line"><span class="ts-time">32:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">所以一軒現在有兩個，一個是規劃的邏輯，一個是車機資料。</span></div>
+<div class="ts-line"><span class="ts-time">32:35</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就是廠代碼，這個功能開發的是一軒。</span></div>
+<div class="ts-line"><span class="ts-time">32:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後API，API現在也在那裡。</span></div>
+<div class="ts-line"><span class="ts-time">32:42</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對對對，那是API。</span></div>
+<div class="ts-line"><span class="ts-time">32:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">所以這三個開發是一軒開發的。</span></div>
+<div class="ts-line"><span class="ts-time">32:46</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那Console，Console的功能就是把這些開發的功能接接回來，跟前端整合在一起。</span></div>
+<div class="ts-line"><span class="ts-time">32:57</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK嗎？</span></div>
+<div class="ts-line"><span class="ts-time">33:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">懂。</span></div>
+<div class="ts-line"><span class="ts-time">33:02</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸，那個這樣Console這個裡面有一個車險報價嗎？</span></div>
+<div class="ts-line"><span class="ts-time">33:05</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那個backend是哪邊啊？</span></div>
+<div class="ts-line"><span class="ts-time">33:07</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那個backend的那個，我想問一下那個backend的的專案在哪哪邊啊？</span></div>
+<div class="ts-line"><span class="ts-time">33:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">也在，他是分另外一個group。</span></div>
+<div class="ts-line"><span class="ts-time">33:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你兩個group都有嗎？有一個group叫RobinsTW吧，然後另外一個叫RobinsTWFrontEnd吧，好像是這樣分的。</span></div>
+<div class="ts-line"><span class="ts-time">33:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你應該會有兩個group喔。</span></div>
+<div class="ts-line"><span class="ts-time">33:27</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">33:30</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">你說另外一個叫，就沒有點FrontEnd的？</span></div>
+<div class="ts-line"><span class="ts-time">33:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，沒有點FrontEnd那個就是backend。</span></div>
+<div class="ts-line"><span class="ts-time">33:37</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，懂。</span></div>
+<div class="ts-line"><span class="ts-time">33:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後你裡面搜尋。</span></div>
+<div class="ts-line"><span class="ts-time">33:40</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">看一下。</span></div>
+<div class="ts-line"><span class="ts-time">33:41</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">啊？</span></div>
+<div class="ts-line"><span class="ts-time">33:42</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這個</span></div>
+<div class="ts-line"><span class="ts-time">33:43</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸，有有有有有，我看一下。</span></div>
+<div class="ts-line"><span class="ts-time">33:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒事。</span></div>
+<div class="ts-line"><span class="ts-time">33:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，那個都是舊他們的，以前他們的命名啦。</span></div>
+<div class="ts-line"><span class="ts-time">33:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個改那個都很都很麻煩。</span></div>
+<div class="ts-line"><span class="ts-time">34:00</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸，等一下，那個</span></div>
+<div class="ts-line"><span class="ts-time">34:02</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">FutureGo嗎？</span></div>
+<div class="ts-line"><span class="ts-time">34:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">34:05</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你你那個Tony他在找東西，你稍微等他一下。</span></div>
+<div class="ts-line"><span class="ts-time">34:09</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒事啊，嗯。</span></div>
+<div class="ts-line"><span class="ts-time">34:14</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">欸，叫什麼？</span></div>
+<div class="ts-line"><span class="ts-time">34:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">FutureGo backend。</span></div>
+<div class="ts-line"><span class="ts-time">34:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後它這邊還有一些那個，它這邊也有接LM，因為要產一些什麼推薦的理由，然後還有跑什麼分析的分數，它這邊也是有串LM上去的。</span></div>
+<div class="ts-line"><span class="ts-time">34:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，細節的部分你可能就問一軒這樣。</span></div>
+<div class="ts-line"><span class="ts-time">34:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後還有對那個代碼，這個都是蠻麻煩的東西。</span></div>
+<div class="ts-line"><span class="ts-time">34:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對那個每間保險公司裡面的那個內部代碼，我們之前有整理一張表，然後那張表是去對這些東西。</span></div>
+<div class="ts-line"><span class="ts-time">34:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊都還有一些細節啦。</span></div>
+<div class="ts-line"><span class="ts-time">34:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個稍微有點多，那我直接傳那個Excel給你好了。</span></div>
+<div class="ts-line"><span class="ts-time">35:02</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，好。</span></div>
+<div class="ts-line"><span class="ts-time">35:03</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">保險選種的。</span></div>
+<div class="ts-line"><span class="ts-time">35:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">傳。</span></div>
+<div class="ts-line"><span class="ts-time">36:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那FutureGo差不多這樣。</span></div>
+<div class="ts-line"><span class="ts-time">36:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">看還有沒有什麼想了解的。</span></div>
+<div class="ts-line"><span class="ts-time">36:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後，我順便帶一下Console啦，因為看起來你對那個那個產品了解還還應該蠻多疑惑的。</span></div>
+<div class="ts-line"><span class="ts-time">36:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那Console那邊就裡面有一個車險報價。</span></div>
+<div class="ts-line"><span class="ts-time">36:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個報價其實就是串那個FutureGo的backend。</span></div>
+<div class="ts-line"><span class="ts-time">36:22</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，這個。</span></div>
+<div class="ts-line"><span class="ts-time">36:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊現在很多問題，這邊現在非常多問題。</span></div>
+<div class="ts-line"><span class="ts-time">36:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是包含那個，主要遇到的問題就是不是每一台車子都可以報出價格來。</span></div>
+<div class="ts-line"><span class="ts-time">36:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">它要是這個價格，這個這個車子，不論在測試環境還是正式環境都是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">36:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">保險公司那邊就是要真的這台車的保險快要到期了，它才能報出價錢來。</span></div>
+<div class="ts-line"><span class="ts-time">36:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那</span></div>
+<div class="ts-line"><span class="ts-time">36:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那在SARS那邊其實也有這樣的問題。</span></div>
+<div class="ts-line"><span class="ts-time">36:50</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那SARS那邊的做法就是它之前有針對台產這間保險公司，把所有的規則都列出來。</span></div>
+<div class="ts-line"><span class="ts-time">36:58</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為它不是只有快到期這一個條件式而已。</span></div>
+<div class="ts-line"><span class="ts-time">37:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">它有大量的條件式，包含它車子年齡太舊啦，然後什麼，它多久以前的車子一定要加竊盜險啊，等等的這些這些邏輯在裡面。</span></div>
+<div class="ts-line"><span class="ts-time">37:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那之前SARS有寫一個非常非常大的表，然後這張表現在就是沒有搬過來這裡。</span></div>
+<div class="ts-line"><span class="ts-time">37:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以這邊很常就是報價都會報錯。</span></div>
+<div class="ts-line"><span class="ts-time">37:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">最大原因就是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">37:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個或許看你們怎麼team的。</span></div>
+<div class="ts-line"><span class="ts-time">37:30</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那那張舊的表我們看得到嗎？還是？</span></div>
+<div class="ts-line"><span class="ts-time">37:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以啊，都在那個，都在SARS裡面啊。</span></div>
+<div class="ts-line"><span class="ts-time">37:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個要搬沒有這麼好搬啦。</span></div>
+<div class="ts-line"><span class="ts-time">37:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不是，它不是一個簡單的一個這張的表就可以搬過來，沒有，它散落了好幾個地方這樣。</span></div>
+<div class="ts-line"><span class="ts-time">37:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那對，這部分你可以在跟一軒討論。</span></div>
+<div class="ts-line"><span class="ts-time">37:51</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦。</span></div>
+<div class="ts-line"><span class="ts-time">37:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">37:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那這邊FutureGo就差不多這樣。</span></div>
+<div class="ts-line"><span class="ts-time">38:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸，你介紹完了。</span></div>
+<div class="ts-line"><span class="ts-time">38:02</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你你你現在是先介紹報價這一段。</span></div>
+<div class="ts-line"><span class="ts-time">38:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後前面是讓那個Tony自己看嘛。</span></div>
+<div class="ts-line"><span class="ts-time">38:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，Console，對啊，Console裡面功能功能你們自己看啦。</span></div>
+<div class="ts-line"><span class="ts-time">38:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我我只是剛好，剛好剛剛講到FutureGo，我對一下Console的這個功能，讓它知道說這邊對應的service是哪一個這樣。</span></div>
+<div class="ts-line"><span class="ts-time">38:20</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這邊對FutureGo的backend的專案。</span></div>
+<div class="ts-line"><span class="ts-time">38:23</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">38:24</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">38:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">38:26</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">38:29</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">38:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後再來是</span></div>
+<div class="ts-line"><span class="ts-time">38:33</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你剛剛你有交接科技的網站嗎？</span></div>
+<div class="ts-line"><span class="ts-time">38:37</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">現在這幾科技的網站喔？</span></div>
+<div class="ts-line"><span class="ts-time">38:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">科技的網站喔？</span></div>
+<div class="ts-line"><span class="ts-time">38:40</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">38:41</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我沒動過，喔有啦，那個我只有動過。</span></div>
+<div class="ts-line"><span class="ts-time">38:45</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">因為這個我可能也要改版。</span></div>
+<div class="ts-line"><span class="ts-time">38:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">RobinsTW</span></div>
+<div class="ts-line"><span class="ts-time">38:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個嘛，你是不是說這個嗎？</span></div>
+<div class="ts-line"><span class="ts-time">38:53</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對，我們在保代有一個網站，科技的網站。</span></div>
+<div class="ts-line"><span class="ts-time">38:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這是我們官網啊。</span></div>
+<div class="ts-line"><span class="ts-time">38:57</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">Console，對，這是我們官網。</span></div>
+<div class="ts-line"><span class="ts-time">38:58</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，哎呀，我也不知道這個網站在哪裡。</span></div>
+<div class="ts-line"><span class="ts-time">39:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那個專案上百個。</span></div>
+<div class="ts-line"><span class="ts-time">39:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">通常我找把這個網址傳給我們。</span></div>
+<div class="ts-line"><span class="ts-time">39:07</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你打Robins科技就可以，RobinsTech。</span></div>
+<div class="ts-line"><span class="ts-time">39:09</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">RobinsTech，對。</span></div>
+<div class="ts-line"><span class="ts-time">39:12</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">39:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你可能要</span></div>
+<div class="ts-line"><span class="ts-time">39:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所有服務的連結。</span></div>
+<div class="ts-line"><span class="ts-time">39:22</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，就這個。</span></div>
+<div class="ts-line"><span class="ts-time">39:23</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個你有，這個你有看過嗎？</span></div>
+<div class="ts-line"><span class="ts-time">39:26</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">他今天也是。</span></div>
+<div class="ts-line"><span class="ts-time">39:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">等一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">39:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK，這個所有服務的連結。</span></div>
+<div class="ts-line"><span class="ts-time">39:30</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">39:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，這個你要，這個你要看過。</span></div>
+<div class="ts-line"><span class="ts-time">39:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是所有的service的連結這樣。</span></div>
+<div class="ts-line"><span class="ts-time">39:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那我大部分都是從這邊去整理，然後去記它是對應的repo是哪一個。</span></div>
+<div class="ts-line"><span class="ts-time">39:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不然這個我也沒辦法記得。</span></div>
+<div class="ts-line"><span class="ts-time">39:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，官網是哪一個？</span></div>
+<div class="ts-line"><span class="ts-time">39:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">哦，所以他可能前後端，他自己找。</span></div>
+<div class="ts-line"><span class="ts-time">39:59</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你你知道這張也是有表單，說</span></div>
+<div class="ts-line"><span class="ts-time">40:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我現在</span></div>
+<div class="ts-line"><span class="ts-time">40:01</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有傳了，我看到了。</span></div>
+<div class="ts-line"><span class="ts-time">40:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，它叫NewWebsite。</span></div>
+<div class="ts-line"><span class="ts-time">40:11</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，NewWebsite，公關。</span></div>
+<div class="ts-line"><span class="ts-time">40:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，對，然後它是純，也是純前端，它沒有串後端。</span></div>
+<div class="ts-line"><span class="ts-time">40:16</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以之前的話，像一些最新消息要更新，你就要直接去寫code這樣。</span></div>
+<div class="ts-line"><span class="ts-time">40:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那如果後續看那邊他想要做類似像部落格那樣的系統。</span></div>
+<div class="ts-line"><span class="ts-time">40:29</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你可能就要幫他加一個後台起來。</span></div>
+<div class="ts-line"><span class="ts-time">40:32</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">讓它可以直接從後台去更新。</span></div>
+<div class="ts-line"><span class="ts-time">40:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後對，可能要再export API出來，讓那個機器人可以串，然後可以做到社群跟官網同步同步這樣發。</span></div>
+<div class="ts-line"><span class="ts-time">40:47</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">40:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">40:50</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊我也沒有，這邊我也沒有琢磨太多。</span></div>
+<div class="ts-line"><span class="ts-time">40:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊是用，這邊也是用Vue寫的。</span></div>
+<div class="ts-line"><span class="ts-time">40:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以我那時候也是看一段時間。</span></div>
+<div class="ts-line"><span class="ts-time">40:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">也是稍微看過啦。</span></div>
+<div class="ts-line"><span class="ts-time">41:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">但這邊就純前端啦，所以沒有什麼，沒有什麼，沒有什麼技術。</span></div>
+<div class="ts-line"><span class="ts-time">41:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">不是你全部砍掉，重新用LiveCode。</span></div>
+<div class="ts-line"><span class="ts-time">41:07</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">重新砍應該，我覺得可能可能快一點。</span></div>
+<div class="ts-line"><span class="ts-time">41:11</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">41:12</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對啊，OK，對啊。</span></div>
+<div class="ts-line"><span class="ts-time">41:13</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你就叫用AI貼給他說弄一個更好的網站出來。</span></div>
+<div class="ts-line"><span class="ts-time">41:20</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，好，之後可以試試看。</span></div>
+<div class="ts-line"><span class="ts-time">41:24</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後那未來可以加。</span></div>
+<div class="ts-line"><span class="ts-time">41:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我再跟討論，就是功能那些東西。</span></div>
+<div class="ts-line"><span class="ts-time">41:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊我還是要，這邊我還是要提醒一下。</span></div>
+<div class="ts-line"><span class="ts-time">41:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為它後面都是有串一些那個config，因為它要配合那個，因為</span></div>
+<div class="ts-line"><span class="ts-time">41:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">等一下後面GCP這邊也會再更詳細講啦。</span></div>
+<div class="ts-line"><span class="ts-time">41:42</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那因為他們之前的架構就是一台機器裡面，然後透過那個reverse proxy去把多個網站全部集中在同一個機器上面。</span></div>
+<div class="ts-line"><span class="ts-time">41:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以現在我們一台機器裡面有十幾個20個服務這樣。</span></div>
+<div class="ts-line"><span class="ts-time">41:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">都在一台，像前端就是全部塞在同一台機器裡面。</span></div>
+<div class="ts-line"><span class="ts-time">42:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">但後端的話就是分開。</span></div>
+<div class="ts-line"><span class="ts-time">42:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那那以後去改版的話，你這些config跟一些CICD pipeline的那個YAML設定檔這些。</span></div>
+<div class="ts-line"><span class="ts-time">42:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你就是要，如果你要用繼續用這套infra的話，你就要follow它的規則，不然你改的東西，像你改branch name，你全部，你全部其他的那個網站都全掛了。</span></div>
+<div class="ts-line"><span class="ts-time">42:24</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦。</span></div>
+<div class="ts-line"><span class="ts-time">42:25</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哇塞。</span></div>
+<div class="ts-line"><span class="ts-time">42:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對對對對對，所以這個就是你要，你</span></div>
+<div class="ts-line"><span class="ts-time">42:29</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我建議是follow啦，因為那個要改又知識體大。</span></div>
+<div class="ts-line"><span class="ts-time">42:34</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，好，OK。</span></div>
+<div class="ts-line"><span class="ts-time">42:36</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">不要改那個config嘛，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">42:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不要改那個config就好。</span></div>
+<div class="ts-line"><span class="ts-time">42:38</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">不要改那個config嘛，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">42:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是你不要進，你你不要直接連進機器去去改那些那個Nginx的設定啦。</span></div>
+<div class="ts-line"><span class="ts-time">42:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你盡量是follow之前的的YAML的設定這樣就好了。</span></div>
+<div class="ts-line"><span class="ts-time">42:51</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，好，follow，OK。</span></div>
+<div class="ts-line"><span class="ts-time">42:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，尤其像這種，對，尤其像這個前端專案這種就相對單純。</span></div>
+<div class="ts-line"><span class="ts-time">42:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就就不太需要自己再建這樣。</span></div>
+<div class="ts-line"><span class="ts-time">43:02</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">43:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">43:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那其實如果整個SARS不要了，應該就沒這個問題了，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">43:08</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">因為我只留Console。</span></div>
+<div class="ts-line"><span class="ts-time">43:09</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">43:10</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">43:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">43:12</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">就沒有這個問題。</span></div>
+<div class="ts-line"><span class="ts-time">43:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">43:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">SARS就是一個很重很重的包袱。</span></div>
+<div class="ts-line"><span class="ts-time">43:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">所以我們今天有討論SARS要不要留，不留其實就沒有。</span></div>
+<div class="ts-line"><span class="ts-time">43:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你只要守Console。</span></div>
+<div class="ts-line"><span class="ts-time">43:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">43:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這樣Tony會很方便接。</span></div>
+<div class="ts-line"><span class="ts-time">43:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我後續現在就是要，就是就是要繼續講SARS啦。</span></div>
+<div class="ts-line"><span class="ts-time">43:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那SARS就跟這些東西都有關係，然後跟GCP整個VM20幾台都有關係了。</span></div>
+<div class="ts-line"><span class="ts-time">43:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那個進SARS前可不可以先讓Tony知道VPN那邊的設計你是怎麼弄的？</span></div>
+<div class="ts-line"><span class="ts-time">43:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦，VPN。</span></div>
+<div class="ts-line"><span class="ts-time">43:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那個沒什麼設計啦。</span></div>
+<div class="ts-line"><span class="ts-time">43:51</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是你有看到MacMini下面有一台機器嗎？</span></div>
+<div class="ts-line"><span class="ts-time">43:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">有一台小烏龜。</span></div>
+<div class="ts-line"><span class="ts-time">43:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">現在你看辦公室裡面。</span></div>
+<div class="ts-line"><span class="ts-time">43:58</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，有看到。</span></div>
+<div class="ts-line"><span class="ts-time">43:59</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">有一個像塔的一個路由器。</span></div>
+<div class="ts-line"><span class="ts-time">44:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">華碩的吧，我記得沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">44:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">塔的路由器。</span></div>
+<div class="ts-line"><span class="ts-time">44:06</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">等一下。</span></div>
+<div class="ts-line"><span class="ts-time">44:07</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊要寫一個Mini的那個。</span></div>
+<div class="ts-line"><span class="ts-time">44:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">MacMini下面有一台那個中華電信的Mesh。</span></div>
+<div class="ts-line"><span class="ts-time">44:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">有嗎？</span></div>
+<div class="ts-line"><span class="ts-time">44:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">上面有發藍色的。</span></div>
+<div class="ts-line"><span class="ts-time">44:16</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">藍色的。</span></div>
+<div class="ts-line"><span class="ts-time">44:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">像塔。</span></div>
+<div class="ts-line"><span class="ts-time">44:18</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對，藍色的，它上面有發光。</span></div>
+<div class="ts-line"><span class="ts-time">44:19</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">有有有有有，它是一個塔。</span></div>
+<div class="ts-line"><span class="ts-time">44:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，就那台，它就路由器。</span></div>
+<div class="ts-line"><span class="ts-time">44:27</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">44:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，然後</span></div>
+<div class="ts-line"><span class="ts-time">44:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，我忘記怎麼進去了。</span></div>
+<div class="ts-line"><span class="ts-time">44:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我連一下，我連一下VPN回去，我等我一下。</span></div>
+<div class="ts-line"><span class="ts-time">44:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">45:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這裡。</span></div>
+<div class="ts-line"><span class="ts-time">45:09</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你打那個192.168.50.1，就可以連進那個這台路由器。</span></div>
+<div class="ts-line"><span class="ts-time">45:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後帳密的話是那個，那個那邊有。</span></div>
+<div class="ts-line"><span class="ts-time">45:19</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">或者，我可以直接給你這個。</span></div>
+<div class="ts-line"><span class="ts-time">45:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你要給他那個嗎？你直接給他那個全部的帳號密碼嗎？</span></div>
+<div class="ts-line"><span class="ts-time">45:27</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可能也是先開給他，沒關係，我到時候再來想。</span></div>
+<div class="ts-line"><span class="ts-time">45:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦，你再自己處理，那我我都寫在上面。</span></div>
+<div class="ts-line"><span class="ts-time">45:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個這台的話就是這個。</span></div>
+<div class="ts-line"><span class="ts-time">45:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為它好幾台機器，所以要注意。</span></div>
+<div class="ts-line"><span class="ts-time">45:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這台是中華電信Mesh，這個ZenWiFi XT12這個。</span></div>
+<div class="ts-line"><span class="ts-time">45:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以你就是直接進去，然後帳密。</span></div>
+<div class="ts-line"><span class="ts-time">45:47</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">中華電信Mesh。</span></div>
+<div class="ts-line"><span class="ts-time">45:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">45:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後</span></div>
+<div class="ts-line"><span class="ts-time">45:51</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我就直接用它內建的功能。</span></div>
+<div class="ts-line"><span class="ts-time">45:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我找一下，我也忘記在哪裡了。</span></div>
+<div class="ts-line"><span class="ts-time">46:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊就WiFi設定。</span></div>
+<div class="ts-line"><span class="ts-time">46:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">VPN，這裡。</span></div>
+<div class="ts-line"><span class="ts-time">46:06</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後我是用WireGuard這個。</span></div>
+<div class="ts-line"><span class="ts-time">46:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那現在這邊就每個人的。</span></div>
+<div class="ts-line"><span class="ts-time">46:15</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有嗎？看到畫面嗎？</span></div>
+<div class="ts-line"><span class="ts-time">46:16</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦，有看到。</span></div>
+<div class="ts-line"><span class="ts-time">46:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">46:18</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後你這邊就自己去申請。</span></div>
+<div class="ts-line"><span class="ts-time">46:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後它VPN，這個我覺得還蠻好用的啦。</span></div>
+<div class="ts-line"><span class="ts-time">46:23</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後它是可以直接手機跟電腦都可以用這樣。</span></div>
+<div class="ts-line"><span class="ts-time">46:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">啊不是。</span></div>
+<div class="ts-line"><span class="ts-time">46:28</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那邊，那邊申請完，然後我就可以用VPN連上這邊的。</span></div>
+<div class="ts-line"><span class="ts-time">46:32</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒錯沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">46:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你就會連回辦公室，那你就是連回這台，這台路由器上面。</span></div>
+<div class="ts-line"><span class="ts-time">46:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但是你還是要幫我每個人設。</span></div>
+<div class="ts-line"><span class="ts-time">46:42</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">以後有新加入的人。</span></div>
+<div class="ts-line"><span class="ts-time">46:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你你那時候是</span></div>
+<div class="ts-line"><span class="ts-time">46:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">每個人都是設一個專屬的。</span></div>
+<div class="ts-line"><span class="ts-time">46:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，盡量啦，因為這樣你要找是誰在搞鬼，你才有辦法找啊。不然你全部，他可以全部人都設同一個啊，沒問題啊，不過</span></div>
+<div class="ts-line"><span class="ts-time">46:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這樣就蠻危險的，因為</span></div>
+<div class="ts-line"><span class="ts-time">46:58</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">公司這個連進來的話，就是主要就是要作隔閡嘛，辦公室，然後</span></div>
+<div class="ts-line"><span class="ts-time">47:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">像測試環境這些都是都必須要連回辦公室的</span></div>
+<div class="ts-line"><span class="ts-time">47:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">IP，因為辦公室這邊我弄了固定IP，所以</span></div>
+<div class="ts-line"><span class="ts-time">47:12</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">它連進一些機器，還有包含最主要應該是保險公司啦。保險公司那邊的都是需要白名單才能打通。</span></div>
+<div class="ts-line"><span class="ts-time">47:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以你在家的話還是在哪裡，你就要連回VPN你才能打通這些service，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">47:28</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，所以你第一要學會</span></div>
+<div class="ts-line"><span class="ts-time">47:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">用VPN，還有你要學會那個設計的規則，因為</span></div>
+<div class="ts-line"><span class="ts-time">47:34</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">假設之後還有新的工程師，他還要你可能初期是你先處理這件事情。</span></div>
+<div class="ts-line"><span class="ts-time">47:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊你就這沒什麼，就加進去，然後打使用者名稱，照著他步驟做就好。</span></div>
+<div class="ts-line"><span class="ts-time">47:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以你自己要可能要自己先進來幫自己開一組。</span></div>
+<div class="ts-line"><span class="ts-time">47:48</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">47:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">47:50</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後還有管理那個MacMini也是，你管理MacMini你一定要</span></div>
+<div class="ts-line"><span class="ts-time">47:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你一定要連進辦公室，因為那個MacMini那一台是沒有沒有開那個</span></div>
+<div class="ts-line"><span class="ts-time">48:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">欸，也不會。</span></div>
+<div class="ts-line"><span class="ts-time">48:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為它內網啦，因為你要走內網，它是並沒有讓它是走外網連那個遠端連線的，所以你一定要連回辦公室，它才有辦法連回MacMini。</span></div>
+<div class="ts-line"><span class="ts-time">48:12</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">48:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，OK。</span></div>
+<div class="ts-line"><span class="ts-time">48:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">48:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">48:16</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好，OK，那接下來是那個</span></div>
+<div class="ts-line"><span class="ts-time">48:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就回到MacMini好了，就是AI</span></div>
+<div class="ts-line"><span class="ts-time">48:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">AI Cloud Code現在它怎麼去銜接你？</span></div>
+<div class="ts-line"><span class="ts-time">48:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以啊。</span></div>
+<div class="ts-line"><span class="ts-time">48:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那我現在我剛剛先連VPN嘛。</span></div>
+<div class="ts-line"><span class="ts-time">48:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後我是用Mac啦，所以我適用那個Screen Sharing。</span></div>
+<div class="ts-line"><span class="ts-time">48:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你是用Mac嗎？Tony你是用Mac嗎？</span></div>
+<div class="ts-line"><span class="ts-time">48:36</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">不是，我是用Windows。</span></div>
+<div class="ts-line"><span class="ts-time">48:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦，Windows，應該也可以。</span></div>
+<div class="ts-line"><span class="ts-time">48:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你可能要去找個那個遠端連線的程式，差不多意思。</span></div>
+<div class="ts-line"><span class="ts-time">48:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後那邊那個那邊都有，所以我就是</span></div>
+<div class="ts-line"><span class="ts-time">48:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">欸，點錯個。</span></div>
+<div class="ts-line"><span class="ts-time">48:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後MacMini那邊我有寫一個IP。</span></div>
+<div class="ts-line"><span class="ts-time">48:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個。</span></div>
+<div class="ts-line"><span class="ts-time">48:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">192.168.50.149。</span></div>
+<div class="ts-line"><span class="ts-time">48:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">一樣那邊都有。</span></div>
+<div class="ts-line"><span class="ts-time">48:59</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我這邊給你。</span></div>
+<div class="ts-line"><span class="ts-time">49:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對嗎？現在有看到畫面嗎？</span></div>
+<div class="ts-line"><span class="ts-time">49:06</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">有。</span></div>
+<div class="ts-line"><span class="ts-time">49:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，我現在就進來了。</span></div>
+<div class="ts-line"><span class="ts-time">49:09</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後這邊，欸，這邊我來講嗎？你之前你有講過了嗎？</span></div>
+<div class="ts-line"><span class="ts-time">49:13</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸，對，你你講比較清楚，你可以再講，他當副手。</span></div>
+<div class="ts-line"><span class="ts-time">49:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊就，因為就第一個是當初也不知道會用量變這麼大啦。</span></div>
+<div class="ts-line"><span class="ts-time">49:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以那時候就是用比較簡單的設計方式。</span></div>
+<div class="ts-line"><span class="ts-time">49:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是它這個就是一個一個的Cloud的section。</span></div>
+<div class="ts-line"><span class="ts-time">49:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那我就是把它分多個，那每一個Cloud的section它後面就是連一個Telegram Bot。</span></div>
+<div class="ts-line"><span class="ts-time">49:35</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">透過的是那個那個Telegram的MCP去接的。</span></div>
+<div class="ts-line"><span class="ts-time">49:41</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後對，MCP。</span></div>
+<div class="ts-line"><span class="ts-time">49:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是透過這個Telegram的MCP，然後去把Bot接起來，然後它就變成是一個機器人，然後機器人我們再拉到這個群組裡面去做對話，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">50:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那之前，然後要講什麼？</span></div>
+<div class="ts-line"><span class="ts-time">50:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">像這個的話你就可以看啊。</span></div>
+<div class="ts-line"><span class="ts-time">50:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為我們有多個Bot，所以</span></div>
+<div class="ts-line"><span class="ts-time">50:12</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就會有多個，像這個。</span></div>
+<div class="ts-line"><span class="ts-time">50:19</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">等一下。</span></div>
+<div class="ts-line"><span class="ts-time">50:22</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，這你可以下PWD，然後去看它每一個的section是後面的是哪一個機器人，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">50:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我現在鍵盤怪怪的，我打不出，我找不出半形的。</span></div>
+<div class="ts-line"><span class="ts-time">50:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">進來。</span></div>
+<div class="ts-line"><span class="ts-time">50:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個就話現在就它跟我講路徑，就Report Agent，那這個就是做簡報的機器人。</span></div>
+<div class="ts-line"><span class="ts-time">50:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那你就可以到Telegram那邊去看，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">50:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊的話，因為它的記憶就是</span></div>
+<div class="ts-line"><span class="ts-time">50:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">它這個一定要用，我的意思是說它AI這個一定要繼續用Cloud Code嗎？它不可能這時候換到另外一個，那這邊等於都廢棄掉了。</span></div>
+<div class="ts-line"><span class="ts-time">51:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">要換到另外一個哦，應該可以啊。</span></div>
+<div class="ts-line"><span class="ts-time">51:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">它其實都大家，大家的設計都大同小異啦，不過</span></div>
+<div class="ts-line"><span class="ts-time">51:07</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但是你之前存的這些記錄就要就最好</span></div>
+<div class="ts-line"><span class="ts-time">51:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這不會，是不會，因為它大家一樣都是用什麼的。那只是</span></div>
+<div class="ts-line"><span class="ts-time">51:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為像就一些很要改啦，像這個主要是Cloud的MD嘛，這個可能就要改成像你是Gemini的話，可能就要改成Gemini MD啊，等等這些。</span></div>
+<div class="ts-line"><span class="ts-time">51:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那其他的結構應該我想像上應該是差不多啦。</span></div>
+<div class="ts-line"><span class="ts-time">51:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">但我沒有這樣，我沒有加過其他人的機器人就是了，我之前是只有加Cloud的。</span></div>
+<div class="ts-line"><span class="ts-time">51:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，那像現在你看到這個就是某一個機器人裡面的，你可以把它想像成它的不到大腦啦，有點像它的記憶啦，然後跟它要做的事情，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">51:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以我們那時候就會設計什麼Knowledge Base啊，這些告訴它我們之前做了什麼啊，然後什麼東西是我要的啊。</span></div>
+<div class="ts-line"><span class="ts-time">51:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後我就是把那個給我的這些簡報啊，等等的資料去把它pattern，把它pattern成MD，然後讓它存下來，讓它知道我們的公司在做什麼啊，之類的。</span></div>
+<div class="ts-line"><span class="ts-time">52:08</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，好，了解。</span></div>
+<div class="ts-line"><span class="ts-time">52:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，這邊就大概這樣。</span></div>
+<div class="ts-line"><span class="ts-time">52:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後這邊有多個機器人，你到時候再自己再進來看。</span></div>
+<div class="ts-line"><span class="ts-time">52:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後因為那時候有想要做一個就是機器人之間他們可以互相溝通，然後互相聊的，那中間的一些橋接的方式就是在share這個資料夾裡面。</span></div>
+<div class="ts-line"><span class="ts-time">52:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦，那這邊大概就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">52:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊會比較常遇到的問題就是它有時候什麼session過期三小的。</span></div>
+<div class="ts-line"><span class="ts-time">52:42</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以你就要上來看它它是什麼原因造成它session過期，或者是它要啟動。</span></div>
+<div class="ts-line"><span class="ts-time">52:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">譬如說它要講，它可能開一個application好了，然後導致它這個session被卡住。</span></div>
+<div class="ts-line"><span class="ts-time">52:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那那個那個它開這個動作的允許的動作，因為它是在Mac的作業系統的層級，所以它這個也不會轉拋回Telegram，讓Telegram這邊可以下指令去允許這件事情。</span></div>
+<div class="ts-line"><span class="ts-time">53:12</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以你就一定要回到terminal，或者回到機器來，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">53:17</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">53:18</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">53:20</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">這個OK啦，這個我我自己好像最近也都自己處理。</span></div>
+<div class="ts-line"><span class="ts-time">53:24</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">應該可以，反正對話的方式應該都可以處理。</span></div>
+<div class="ts-line"><span class="ts-time">53:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那MacMini就大概到這邊。</span></div>
+<div class="ts-line"><span class="ts-time">53:32</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，OK啦。</span></div>
+<div class="ts-line"><span class="ts-time">53:33</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">可以，可以。</span></div>
+<div class="ts-line"><span class="ts-time">53:34</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那</span></div>
+<div class="ts-line"><span class="ts-time">53:36</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸，那，最後你</span></div>
+<div class="ts-line"><span class="ts-time">53:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">呃，那個什麼，SARS還是放後面啦，所以你可以現在先幫忙變更成service。</span></div>
+<div class="ts-line"><span class="ts-time">53:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Service，哦，好。</span></div>
+<div class="ts-line"><span class="ts-time">53:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對對對，就直接在這裡處理好。</span></div>
+<div class="ts-line"><span class="ts-time">53:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK啊。</span></div>
+<div class="ts-line"><span class="ts-time">53:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那我第一件事情我就是先把我Cloud的方案給，我先cancel掉。</span></div>
+<div class="ts-line"><span class="ts-time">54:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為現在那個MacMini上面那台是綁我這一個這一個的的的帳號，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">54:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸，那你cancel</span></div>
+<div class="ts-line"><span class="ts-time">54:13</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你cancel它不會影響嗎？</span></div>
+<div class="ts-line"><span class="ts-time">54:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不會馬上關，它到這個月跑完。</span></div>
+<div class="ts-line"><span class="ts-time">54:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後我剛剛看它的付費日期，因為那時候我們是從中間，7月6號的時候那時候換成Max，換成20倍的Max，所以它可能計價可能是從7月6號開始算。</span></div>
+<div class="ts-line"><span class="ts-time">54:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以這邊應該是可以繼續用到8月6號。</span></div>
+<div class="ts-line"><span class="ts-time">54:36</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">54:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個看你要現在，你如果現在換的話，你換過去，因為你</span></div>
+<div class="ts-line"><span class="ts-time">54:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">其實好像也不用啊，利用力我現在也沒有要把它砍掉啊。</span></div>
+<div class="ts-line"><span class="ts-time">54:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">看你啊，如果你沒有要砍這邊就繼續跑啊。</span></div>
+<div class="ts-line"><span class="ts-time">54:50</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為你現在砍蠻蠻蠻可惜的，因為它剛刷新，你要，因為你現在換過去，你service那邊100美就要起跑了嘛。</span></div>
+<div class="ts-line"><span class="ts-time">55:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就要開始付費了，對。</span></div>
+<div class="ts-line"><span class="ts-time">55:05</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">欸，那你講一下流程好了，之後讓Tony來來處理好，先記著，Tony要記著。</span></div>
+<div class="ts-line"><span class="ts-time">55:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這沒什麼。</span></div>
+<div class="ts-line"><span class="ts-time">55:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊你就是把我這個帳號cancel掉，沒有，這沒什麼，這沒什麼，記啦，就是訂閱而已。</span></div>
+<div class="ts-line"><span class="ts-time">55:18</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">就cancel，然後再綁定成</span></div>
+<div class="ts-line"><span class="ts-time">55:22</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那怎麼再怎麼再連到service的？</span></div>
+<div class="ts-line"><span class="ts-time">55:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你直接進機器，因為它一定要拿，它一定要拿那個帳號的session，所以你一定要進terminal這裡。</span></div>
+<div class="ts-line"><span class="ts-time">55:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後我直接開另外一個好了。</span></div>
+<div class="ts-line"><span class="ts-time">55:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">應該是可以這樣吧。</span></div>
+<div class="ts-line"><span class="ts-time">55:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">哦，但你不能綁兩個帳號，你只能一個，所以才需要把舊的砍掉。</span></div>
+<div class="ts-line"><span class="ts-time">55:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，每一個terminal都只能，然後你從這邊下login吧。</span></div>
+<div class="ts-line"><span class="ts-time">55:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，sign in with your account，你就從這邊登錄。</span></div>
+<div class="ts-line"><span class="ts-time">55:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">但你還要，譬如說你只改到service那邊去好了。</span></div>
+<div class="ts-line"><span class="ts-time">55:59</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">現在這邊也是綁service，我記得沒錯。</span></div>
+<div class="ts-line"><span class="ts-time">56:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">欸，沒有。</span></div>
+<div class="ts-line"><span class="ts-time">56:06</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">反正它你這邊按login，它就會問你你現在是要從，你現在已經訂閱了，還是怎樣。</span></div>
+<div class="ts-line"><span class="ts-time">56:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那還是你是用那個</span></div>
+<div class="ts-line"><span class="ts-time">56:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那因為我們都是用，我們都偷吃啦，偷吃這個那個比較多的用量。</span></div>
+<div class="ts-line"><span class="ts-time">56:18</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以我通常都是用Cloud account subscription，從這邊你去登錄service那個帳號，它就可以拿到Cloud的Cloud的section。</span></div>
+<div class="ts-line"><span class="ts-time">56:29</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">56:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">56:32</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那如果以現在我利用，等一下哦，我利用力我利用力這個帳號不其實就是讓它繼續扣嘛。</span></div>
+<div class="ts-line"><span class="ts-time">56:43</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">只是以後登錄的時候要記得利用力這個這個這個登錄帳號密碼就對了。</span></div>
+<div class="ts-line"><span class="ts-time">56:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，你那邊可以reset啊。</span></div>
+<div class="ts-line"><span class="ts-time">56:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以我也不用給你帳密啊。</span></div>
+<div class="ts-line"><span class="ts-time">57:00</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，它再重新登錄進來就好了。</span></div>
+<div class="ts-line"><span class="ts-time">57:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，對啊，對啊，對啊。</span></div>
+<div class="ts-line"><span class="ts-time">57:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">建議你可以換過去啦，你可以8月6號你把它換過去，利用力這個帳號你就可以drop掉啊。</span></div>
+<div class="ts-line"><span class="ts-time">57:09</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以不用，可以不用再付這一筆錢了，一年我記得也是40美吧。</span></div>
+<div class="ts-line"><span class="ts-time">57:17</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">沒有，你這個本來就是，不是，這個本來就有一個C-level的人是永遠要用這個帳號，只是它以後會改成它的名字而已。</span></div>
+<div class="ts-line"><span class="ts-time">57:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯，OK。</span></div>
+<div class="ts-line"><span class="ts-time">57:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這樣就OK啊。</span></div>
+<div class="ts-line"><span class="ts-time">57:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這樣就可以繼續訂閱，沒問題啊。</span></div>
+<div class="ts-line"><span class="ts-time">57:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那這邊就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">57:39</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">Tony OK嗎？反正改這個帳號，到時候再討論一下。</span></div>
+<div class="ts-line"><span class="ts-time">57:45</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">是直接，是直接剛剛那邊login指令那邊登錄其他帳號就可以了嗎？</span></div>
+<div class="ts-line"><span class="ts-time">57:53</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">要先把它刪掉，然後再登錄。</span></div>
+<div class="ts-line"><span class="ts-time">57:57</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">利用力這個要先去刪掉，是吧？</span></div>
+<div class="ts-line"><span class="ts-time">58:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">利用力，什麼意思？什麼意思？</span></div>
+<div class="ts-line"><span class="ts-time">58:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">聽不懂。</span></div>
+<div class="ts-line"><span class="ts-time">58:06</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，是，是剛剛你打那個，在那邊打那個login那邊，我說在那邊直接登其他支帳號，就可以把這個log out了嗎？</span></div>
+<div class="ts-line"><span class="ts-time">58:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊，其實就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">58:19</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦，OK，好。</span></div>
+<div class="ts-line"><span class="ts-time">58:31</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">這個到8月6號吧，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">58:35</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對，看起來是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">58:38</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">58:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我可以先，我可以先取消啊，取消就是到8月6號。</span></div>
+<div class="ts-line"><span class="ts-time">58:44</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不然你們應該會忘記取消，這邊就會繼續進下去。</span></div>
+<div class="ts-line"><span class="ts-time">58:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但是我要記得8月5號前要變更成service，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">58:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊。</span></div>
+<div class="ts-line"><span class="ts-time">58:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">但其實這個影響了就影響MacMini那邊而已。</span></div>
+<div class="ts-line"><span class="ts-time">59:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你馬上訂馬上就好了。</span></div>
+<div class="ts-line"><span class="ts-time">59:02</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">哦，懂懂懂，就是說不行趕快。</span></div>
+<div class="ts-line"><span class="ts-time">59:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">影響不大啦。</span></div>
+<div class="ts-line"><span class="ts-time">59:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">59:06</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那好啊，那可以就cancel了，到時候改成service。</span></div>
+<div class="ts-line"><span class="ts-time">59:09</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">可以。</span></div>
+<div class="ts-line"><span class="ts-time">59:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">59:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Cancel plan，對，到8月6號沒有錯。</span></div>
+<div class="ts-line"><span class="ts-time">59:17</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">59:19</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">59:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，那cancel了。</span></div>
+<div class="ts-line"><span class="ts-time">59:23</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那記得，8月6號要處理service，最好8月5號就先處理。</span></div>
+<div class="ts-line"><span class="ts-time">59:28</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後到時候要把反正你要用service那邊去變成這個的帳號，就換成service了。</span></div>
+<div class="ts-line"><span class="ts-time">59:51</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">OK嗎？</span></div>
+<div class="ts-line"><span class="ts-time">59:52</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯，可以。</span></div>
+<div class="ts-line"><span class="ts-time">59:56</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那最後就是那個SARS吧，看五分鐘10分鐘要要大概講一下吧。</span></div>
+<div class="ts-line"><span class="ts-time">60:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒辦法大概講，這邊超多東西的。</span></div>
+<div class="ts-line"><span class="ts-time">60:07</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我就只能，那我</span></div>
+<div class="ts-line"><span class="ts-time">60:10</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">哦，那沒事啊，那你照你的節奏交交接就好。</span></div>
+<div class="ts-line"><span class="ts-time">60:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">呃</span></div>
+<div class="ts-line"><span class="ts-time">60:18</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就看你要不要繼續做GCP拆分啊，如果不做的話，就現在保持這樣寫也OK啊。</span></div>
+<div class="ts-line"><span class="ts-time">60:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那我我就不講GCP，我就GCP我就淺淺的講，我不講我現在做了多少東西，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">60:34</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你還是都講好，我怕如果到時候又有那個，那至少我還有錄影可以回去調一下。</span></div>
+<div class="ts-line"><span class="ts-time">60:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好。</span></div>
+<div class="ts-line"><span class="ts-time">60:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">還有一個是台產的，還是你先講台產現在跟他們串到什麼，那明章那邊是在處理哪一段？</span></div>
+<div class="ts-line"><span class="ts-time">60:51</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那邊就是在弄那個啊，那時候就只弄了白名單啊。</span></div>
+<div class="ts-line"><span class="ts-time">60:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">白名單，因為要要做遷移嘛。</span></div>
+<div class="ts-line"><span class="ts-time">60:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以有create新的專案。</span></div>
+<div class="ts-line"><span class="ts-time">61:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是GCP這邊，你這你這Tony你這也是用哪一套那個CSP，你有用GCP嗎？</span></div>
+<div class="ts-line"><span class="ts-time">61:07</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">沒有。</span></div>
+<div class="ts-line"><span class="ts-time">61:08</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">所以我們是AWS的。</span></div>
+<div class="ts-line"><span class="ts-time">61:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK，嗯，那邏輯稍微有一點點不一樣，不過還好大同小異啦。</span></div>
+<div class="ts-line"><span class="ts-time">61:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那它這邊</span></div>
+<div class="ts-line"><span class="ts-time">61:18</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好，這不好講。</span></div>
+<div class="ts-line"><span class="ts-time">61:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">反正這個組織這邊就是它從那邊，我要解釋股感這邊嗎？</span></div>
+<div class="ts-line"><span class="ts-time">61:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">呃，快速講啊。</span></div>
+<div class="ts-line"><span class="ts-time">61:32</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那股感那邊，股感就是有另外一間外包公司，他們現在是跟我們一起在maintain這個GCP的組織。</span></div>
+<div class="ts-line"><span class="ts-time">61:44</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後後面的service全部都一樣。</span></div>
+<div class="ts-line"><span class="ts-time">61:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後前台的話就是之前就會幾台VM機器做拆分，分開，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">61:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那外包公司那邊，現在股感那邊他們主要負責是羅賓斯保代那邊的東西。</span></div>
+<div class="ts-line"><span class="ts-time">62:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那羅賓斯保代它的前台長得不一樣。</span></div>
+<div class="ts-line"><span class="ts-time">62:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後我們SARS前台長得不一樣，但是後面的後端service用的全部都是同一套。</span></div>
+<div class="ts-line"><span class="ts-time">62:12</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這樣子就會造成什麼問題，就是他們改東西，我們我們這邊被影響，我們改東西，他們被我們影響。</span></div>
+<div class="ts-line"><span class="ts-time">62:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這件事情就不OK嘛,因為兩間公司原本就已經都是拆開了,所以應該就是要坐徹底切分。那徹底切分就是從GCP這邊開始切分。</span></div>
+<div class="ts-line"><span class="ts-time">62:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那GCP這邊切分並不容易,因為之前的東西其實耦合度很高,然後很複雜。</span></div>
+<div class="ts-line"><span class="ts-time">62:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後我這邊就大概講一下,就是從Robins.tw這個組織開始一下,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">62:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那你知道,你周進來,你周進來的話,你就會看到這主要的project是Wilson Test的GCP這一個project。</span></div>
+<div class="ts-line"><span class="ts-time">62:51</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那後面的話,這邊這三個是我我創的。</span></div>
+<div class="ts-line"><span class="ts-time">62:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是Robins Tech Dev, UAT, Product。那這樣才是正確的切分方式啊,當然以前可能可能沒有要切那麼細還是怎樣,反正沒有把環境在專案面就切出來。那我說我現在就是把這三個都切出來。</span></div>
+<div class="ts-line"><span class="ts-time">63:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那我現在要做的事情就是把這個Wilson這個專案把它拆分成這三個,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">63:17</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">理想上大概是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">63:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那再過來的話就是</span></div>
+<div class="ts-line"><span class="ts-time">63:26</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我想一下。</span></div>
+<div class="ts-line"><span class="ts-time">63:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">SAS,我可能開那個</span></div>
+<div class="ts-line"><span class="ts-time">63:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這是</span></div>
+<div class="ts-line"><span class="ts-time">63:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那</span></div>
+<div class="ts-line"><span class="ts-time">63:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這些圖我要,那這些圖我要講嗎?就都講嗎?</span></div>
+<div class="ts-line"><span class="ts-time">63:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對啊,就簡單講一下。</span></div>
+<div class="ts-line"><span class="ts-time">63:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好啊,那這真的是簡單講啦,因為這個講,這個講一個半小時。</span></div>
+<div class="ts-line"><span class="ts-time">63:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">現在就分兩個,測試環境跟正式環境。那測試環境這邊比較單純。</span></div>
+<div class="ts-line"><span class="ts-time">64:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那它就前面都會擋一個Robins,那主要就是要擋VPN這些東西,都會在這裡,在這裡擋。</span></div>
+<div class="ts-line"><span class="ts-time">64:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊進來,主要就是Dev Web這一個台機器,就是前端機器都會在這邊。</span></div>
+<div class="ts-line"><span class="ts-time">64:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊進來的話就是Dev2。它的命名都沒有命得很清楚,所以這邊都要稍微就是避一下,這樣就好。</span></div>
+<div class="ts-line"><span class="ts-time">64:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊就是後端機器,主要的後端機器都在這裡。那Dev2開發環境,UAT的話就叫Dev1,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">64:28</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後後面的話它會跑另外的那個Rabbit跟Search的一些Service,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">64:34</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那Rabbit就是一些傳送的東西啦,Search,Search我不太清楚是什麼,這個我還沒碰過。</span></div>
+<div class="ts-line"><span class="ts-time">64:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那其他的的話就對外出口,NAT在這裡。</span></div>
+<div class="ts-line"><span class="ts-time">64:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後DB的IP。</span></div>
+<div class="ts-line"><span class="ts-time">64:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">測試環境大概是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">64:51</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後正式的話就更複雜一點,因為它有要從不同來的地方做來源,像它其他架構差不多,但它有其他的像有Jump Server,它可以直接從從從內部去做,去說從前端的機器直接去打後端的機器,它不用從外面再繞一圈,它會有這樣的一個Jumper的設計。</span></div>
+<div class="ts-line"><span class="ts-time">65:14</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">65:15</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">65:16</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後其他的的話就是一個一個的Service。那這邊一樣是從Robins進來,然後去走像這個是主叫的前端機器Web,然後走後端的話就是Server。</span></div>
+<div class="ts-line"><span class="ts-time">65:29</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後因為它要保護Server這台機器,所以它上面要架了一層Server Dash Web,來讓Web可以連進去,就是不會直接去踩到Server,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">65:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個就要特別注意,因為你一定要連進Server Web,你才能把它進來這裡。</span></div>
+<div class="ts-line"><span class="ts-time">65:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">主要注意的應該就這個,其他還好。</span></div>
+<div class="ts-line"><span class="ts-time">65:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那架構圖大概這樣。那</span></div>
+<div class="ts-line"><span class="ts-time">65:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">實際進專,實際進來的話你就是</span></div>
+<div class="ts-line"><span class="ts-time">66:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">從哪邊跟你講。</span></div>
+<div class="ts-line"><span class="ts-time">66:06</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">現在有幾台機器啊?這這些都是。</span></div>
+<div class="ts-line"><span class="ts-time">66:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這些都是啊。</span></div>
+<div class="ts-line"><span class="ts-time">66:10</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">OK。20幾台。</span></div>
+<div class="ts-line"><span class="ts-time">66:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那我我想從哪裡開始說。</span></div>
+<div class="ts-line"><span class="ts-time">66:19</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">像它現在就是把三個環境全部的VM機器都開在同一個地方。</span></div>
+<div class="ts-line"><span class="ts-time">66:26</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那</span></div>
+<div class="ts-line"><span class="ts-time">66:29</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我看一下,我介紹,等一下,我想,我想</span></div>
+<div class="ts-line"><span class="ts-time">66:35</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">你可以用產品說,SAS,SAS是哪幾台?就是全部都是SAS,沒有,有的應該是</span></div>
+<div class="ts-line"><span class="ts-time">66:41</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">SAS。</span></div>
+<div class="ts-line"><span class="ts-time">66:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">像因為就前端機器就是都放在一起啊,像正式環境的話Web,你剛剛看到的那些所有的專案,Console,SAS,Future Go,所有的都是都在這裡。</span></div>
+<div class="ts-line"><span class="ts-time">66:57</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">都放Web裡面。</span></div>
+<div class="ts-line"><span class="ts-time">66:58</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,都放Web。那當然好處是省錢啦,壞處也是就比較難維護一點啦,然後後面要拆要幹嘛就很麻煩。然後包含它環境都一起擺在同一個地方,就都不好拆啦。</span></div>
+<div class="ts-line"><span class="ts-time">67:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那這邊你要拆的話其實</span></div>
+<div class="ts-line"><span class="ts-time">67:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你有,那我就不講拆這件事情好了,我從我就以從SAS這邊介紹它的後面的服務好了。</span></div>
+<div class="ts-line"><span class="ts-time">67:30</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">67:32</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">67:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我要從哪邊。</span></div>
+<div class="ts-line"><span class="ts-time">67:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我從專案帶好了。</span></div>
+<div class="ts-line"><span class="ts-time">67:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">等我一下。</span></div>
+<div class="ts-line"><span class="ts-time">67:54</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Future Go。</span></div>
+<div class="ts-line"><span class="ts-time">67:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,看到我畫面嗎?</span></div>
+<div class="ts-line"><span class="ts-time">68:00</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這是SAS嗎?</span></div>
+<div class="ts-line"><span class="ts-time">68:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">SAS嘛。那蠻可怕的啦,因為它的Repo就是開了這麼多個,這是我們現在全公司所有的Repo。應該有五六十個吧。</span></div>
+<div class="ts-line"><span class="ts-time">68:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,然後SAS它你可能要我先大概講過,因為你可能沒有很熟悉它的功能,所以你可能要自己到時候你也要一個一個去對。</span></div>
+<div class="ts-line"><span class="ts-time">68:20</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">像它從一開始的登錄,它就開了一個微服務。那這個叫Auth。Auth這邊就是去處理登錄的東西,這邊都是Java。</span></div>
+<div class="ts-line"><span class="ts-time">68:30</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那登錄的包含Log什麼都在這裡。然後因為我們有跟保代合作,所以它還有登錄的時候它有做SSO,就是它從從他們保代自己的系統登錄後,他們可以不用再過登錄系統,就可以直接進SAS系統,這樣。那這個東西叫在SSO,所以是在這裡。</span></div>
+<div class="ts-line"><span class="ts-time">68:51</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後它在後端的話,它會是一個一個的Port,所以它連接的方式是</span></div>
+<div class="ts-line"><span class="ts-time">69:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">在哪裡?</span></div>
+<div class="ts-line"><span class="ts-time">69:06</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這個。</span></div>
+<div class="ts-line"><span class="ts-time">69:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">我找一下。</span></div>
+<div class="ts-line"><span class="ts-time">69:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這邊會有一個微服務的對應表。那這邊大部分都跟SAS有關係,然後這邊我們有把Port全部都寫下來了,就是它一個一個對應的名稱跟它對應的Port,那你這邊就要去對它的功能的話,就要去找這個這個Repo。它沒有放在同一個地方,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">69:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那剛剛講的是Auth,然後還有SSO。然後PDF,PDF這邊你也沒有到手,因為這邊也不是他寫的,所以它也是這個是,這個你把它想成是常態碼的P,那叫PDF。</span></div>
+<div class="ts-line"><span class="ts-time">69:52</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">這樣,然後後面還有一些簽名系統,一樣是Sign,這個一樣就是一個一個你去找Repo對,這樣就好了。</span></div>
+<div class="ts-line"><span class="ts-time">70:00</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">70:01</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Sign在哪裡?</span></div>
+<div class="ts-line"><span class="ts-time">70:04</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒關係。好,然後再過來就是最大的,也是所有的核心就叫Insurancy。</span></div>
+<div class="ts-line"><span class="ts-time">70:10</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">Insurancy裡面就包含的車險跟旅平險,全部都在這個專案底下。那這個現在就是富易達那邊遇到最大的狀況,就是在這裡,因為要跟剛剛提到的那個Robins保代那邊做拆分。那主要就是這個專案現在才不開,導致後面一堆一堆的問題。</span></div>
+<div class="ts-line"><span class="ts-time">70:29</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這個這個專案就是核心中的核心,這個就要自己去看,這樣。那那邊也都是Java,所以我帶不動,我大部分也都是請請AI幫我,AI幫我改的。</span></div>
+<div class="ts-line"><span class="ts-time">70:42</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">70:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,這個你再自己去看,這個就蠻多東西的。</span></div>
+<div class="ts-line"><span class="ts-time">70:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">再過來的話,然後還有一些通知跟一些報表系統,那也都是一個一個的Service。</span></div>
+<div class="ts-line"><span class="ts-time">70:56</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">其他這些好像沒有在用了,Translator跟報表,富易達報表跟Dashboard報表這個沒有在用的,所以應該是上面的這部分。</span></div>
+<div class="ts-line"><span class="ts-time">71:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那SAS它後端大概關聯的是這樣。</span></div>
+<div class="ts-line"><span class="ts-time">71:17</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,已經出黑利了,我覺得那個Tony可以關了。</span></div>
+<div class="ts-line"><span class="ts-time">71:21</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">這個,這個沒辦法,這個是這樣,有可能就把它關掉了,對啊。這個你聽聽就好,應該沒有打算再讓他繼續發展下去了。</span></div>
+<div class="ts-line"><span class="ts-time">71:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">SAS介紹完了嘛,對不對?</span></div>
+<div class="ts-line"><span class="ts-time">71:37</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,就這樣,然後如果決定是SAS都要關掉的話,這邊這邊大概九成五的東西都可以關掉。</span></div>
+<div class="ts-line"><span class="ts-time">71:45</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">其實就是。</span></div>
+<div class="ts-line"><span class="ts-time">71:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不過你這邊的。</span></div>
+<div class="ts-line"><span class="ts-time">71:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,不過你這剩下的你那個Infra跟那些你就要自己重建,但是你相信重建一定比你擺這些改的快很多。</span></div>
+<div class="ts-line"><span class="ts-time">71:56</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">71:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對。</span></div>
+<div class="ts-line"><span class="ts-time">71:57</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那GCP這邊我要怎麼登進去啊?這邊。</span></div>
+<div class="ts-line"><span class="ts-time">72:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我開賬號給你,我開賬號給你,但你應該先GCP應該還好,你先把精力,GCP我有其他的在幫我處理,而且現在也處理不了。</span></div>
+<div class="ts-line"><span class="ts-time">72:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">可是你還是要嘛,因為你任何新功能你自己要上版,你還是要進來GCP這裡對不對?</span></div>
+<div class="ts-line"><span class="ts-time">72:18</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">可是上版是不是CICD那邊就可以。</span></div>
+<div class="ts-line"><span class="ts-time">72:21</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">不用,CI那邊,對,CICD的那些都算好了,所以理論上他也不太需要進來這裡。</span></div>
+<div class="ts-line"><span class="ts-time">72:27</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那你會需要進來機器,陳正子有說過進來啦,就是那個Dev的CICD什麼空間爆了,所以我還是有SSH進來處理啦,所以這個你還是要看一下。</span></div>
+<div class="ts-line"><span class="ts-time">72:40</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">像那時候是測試吧,還是UAT,那這個這個我寫,就是CICD這台機器,你到時候就連進來看一下,去清清硬碟,這樣。</span></div>
+<div class="ts-line"><span class="ts-time">72:51</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦,好。</span></div>
+<div class="ts-line"><span class="ts-time">72:52</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那GCP沒有人數限制嗎?我再新增Tony就好。</span></div>
+<div class="ts-line"><span class="ts-time">72:55</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">沒有,沒有沒有人數限制,可以。</span></div>
+<div class="ts-line"><span class="ts-time">72:57</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對啊,但是你還有Admin的權限嗎?</span></div>
+<div class="ts-line"><span class="ts-time">73:02</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">最高權限應該是Puddy那裡哦。</span></div>
+<div class="ts-line"><span class="ts-time">73:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">因為我也不是最高權限。</span></div>
+<div class="ts-line"><span class="ts-time">73:09</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">看起來可以啊,我是啊。</span></div>
+<div class="ts-line"><span class="ts-time">73:11</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">73:12</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">我應該是。</span></div>
+<div class="ts-line"><span class="ts-time">73:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,然後然後這邊提外話給個建議啦,因為Robins保代那邊他還是需要這些東西,就算你今天SAS不要了,所以這些東西你們應該都要移轉給他們。</span></div>
+<div class="ts-line"><span class="ts-time">73:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">然後你你沒有辦法把這個賬號直接給他們,因為他們域名,這個域名是我們的,所以你們域名是要自己留著,所以他們一定要切出去。</span></div>
+<div class="ts-line"><span class="ts-time">73:35</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦,懂。</span></div>
+<div class="ts-line"><span class="ts-time">73:36</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以這個你,對,這個你再自己再想看怎麼處理。</span></div>
+<div class="ts-line"><span class="ts-time">73:41</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">懂。</span></div>
+<div class="ts-line"><span class="ts-time">73:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,那大概這樣。</span></div>
+<div class="ts-line"><span class="ts-time">73:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那其他的</span></div>
+<div class="ts-line"><span class="ts-time">73:49</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦對,如果如果確定沒有SAS沒有繼續做的話,那個IP這邊要去關一關,我記得一個,因為我三個環境,那個這個都是開給那個台產那邊的白名單的IP。</span></div>
+<div class="ts-line"><span class="ts-time">74:00</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那這邊費用我記得也不低,一個月這三個環境加起來可能要一個月要30美左右,30、40美。</span></div>
+<div class="ts-line"><span class="ts-time">74:08</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">所以這個IP要記得去關一關。</span></div>
+<div class="ts-line"><span class="ts-time">74:11</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">這個是什麼?</span></div>
+<div class="ts-line"><span class="ts-time">74:12</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">白名單的。</span></div>
+<div class="ts-line"><span class="ts-time">74:13</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">就是給。</span></div>
+<div class="ts-line"><span class="ts-time">74:14</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">就是給,對對對,給台產的白名單,因為那時候要買GCP嘛,買GCP到新的專案底下,所以IP就有先開,這是靜態IP。</span></div>
+<div class="ts-line"><span class="ts-time">74:22</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦,這個IP要錢對不對?台產的IP。</span></div>
+<div class="ts-line"><span class="ts-time">74:25</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對對,這都要錢的,對對對。</span></div>
+<div class="ts-line"><span class="ts-time">74:29</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">懂。</span></div>
+<div class="ts-line"><span class="ts-time">74:31</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯,好,看有什麼想問。</span></div>
+<div class="ts-line"><span class="ts-time">74:34</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">讓他消化一下,然後明天,明天5點到6點是我跟你對合約。</span></div>
+<div class="ts-line"><span class="ts-time">74:43</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦。</span></div>
+<div class="ts-line"><span class="ts-time">74:44</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對的過程中。</span></div>
+<div class="ts-line"><span class="ts-time">74:45</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">5點到6點。</span></div>
+<div class="ts-line"><span class="ts-time">74:49</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">或者你你什麼時間方便你再跟我說。</span></div>
+<div class="ts-line"><span class="ts-time">74:53</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以啊,5點到6點OK。</span></div>
+<div class="ts-line"><span class="ts-time">74:55</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,然後停,因為你到週五嘛,所以那個Tony這裡看一下他明天有沒有東西要問你,如果有的話,就就是在你跟我過合約之前。</span></div>
+<div class="ts-line"><span class="ts-time">75:08</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後如果明天這一天再,他還是有一些問題,最後一天就是禮拜五,所以可能可能會有連續三天的那個交接詢問,但明天跟後天應該不會那麼重,大概是幫我回應一下他的一些疑惑就可以了。</span></div>
+<div class="ts-line"><span class="ts-time">75:13</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">75:24</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">75:27</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">75:28</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">明天我看我要不要就直接直接看操作一下那一台之類的。</span></div>
+<div class="ts-line"><span class="ts-time">75:33</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那一台。</span></div>
+<div class="ts-line"><span class="ts-time">75:34</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">然後然後Leon幫我看一下怎麼操作這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">75:38</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你要操作。</span></div>
+<div class="ts-line"><span class="ts-time">75:39</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">你說MacMini啊?</span></div>
+<div class="ts-line"><span class="ts-time">75:40</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對啊,MacMini,然後還有還有GCP裡面的一些東西。</span></div>
+<div class="ts-line"><span class="ts-time">75:46</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦,可以啊,可以啊。</span></div>
+<div class="ts-line"><span class="ts-time">75:48</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">對,不過你全線都還沒開。</span></div>
+<div class="ts-line"><span class="ts-time">75:51</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">對,那明天你方便留你你大概要留多久,也可能要一個小時。</span></div>
+<div class="ts-line"><span class="ts-time">75:57</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">75:58</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">對啊,我就明天再想一下要問什麼。</span></div>
+<div class="ts-line"><span class="ts-time">76:01</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">要問什麼。</span></div>
+<div class="ts-line"><span class="ts-time">76:02</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那我明天跟你約一個半小時好不好?6,一個小時給。</span></div>
+<div class="ts-line"><span class="ts-time">76:06</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">那可以早一點嗎?</span></div>
+<div class="ts-line"><span class="ts-time">76:07</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">可以早一點嗎?白天時間,可以在早早上或下午嗎?</span></div>
+<div class="ts-line"><span class="ts-time">76:13</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">我不,我明天也是停,等一下我看一下,我看一下。</span></div>
+<div class="ts-line"><span class="ts-time">76:29</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">如果Leon方便的話,4點半到6點你方便嗎?</span></div>
+<div class="ts-line"><span class="ts-time">76:33</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">哦,可以,這樣我就好,可以。</span></div>
+<div class="ts-line"><span class="ts-time">76:35</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,那我就發給你,可以嗎?然後你就是4點半到5點半留給你。</span></div>
+<div class="ts-line"><span class="ts-time">76:40</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯,好。</span></div>
+<div class="ts-line"><span class="ts-time">76:41</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但你你可以不用完,不用完就是我我接著跟Leon,可以。</span></div>
+<div class="ts-line"><span class="ts-time">76:44</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,沒關係。</span></div>
+<div class="ts-line"><span class="ts-time">76:45</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">但你不要用超過一個小時。</span></div>
+<div class="ts-line"><span class="ts-time">76:47</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,OK。</span></div>
+<div class="ts-line"><span class="ts-time">76:48</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,那明天你就看你們對的狀況,如果需要可能禮拜五會再一次。</span></div>
+<div class="ts-line"><span class="ts-time">76:55</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">然後5點到6點這樣子,好嗎?</span></div>
+<div class="ts-line"><span class="ts-time">76:58</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">OK。</span></div>
+<div class="ts-line"><span class="ts-time">77:00</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,這樣OK嗎?</span></div>
+<div class="ts-line"><span class="ts-time">77:01</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">嗯,好。</span></div>
+<div class="ts-line"><span class="ts-time">77:01</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">好,謝謝Leon。</span></div>
+<div class="ts-line"><span class="ts-time">77:02</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">好,謝謝Leon。</span></div>
+<div class="ts-line"><span class="ts-time">77:03</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">好,不會。</span></div>
+<div class="ts-line"><span class="ts-time">77:04</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">拜拜。</span></div>
+<div class="ts-line"><span class="ts-time">77:04</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">拜拜。</span></div>
+<div class="ts-line"><span class="ts-time">77:05</span><span class="ts-speaker" style="color:#14B8A6">Leon</span><span class="ts-content">拜拜。</span></div>
+<div class="ts-line"><span class="ts-time">77:11</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">等一下我再把有沒有什麼你最後GCP你完全不用管,因為那個應該我全部都會砍掉。</span></div>
+<div class="ts-line"><span class="ts-time">77:19</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">哦。</span></div>
+<div class="ts-line"><span class="ts-time">77:20</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那這個。</span></div>
+<div class="ts-line"><span class="ts-time">77:21</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">那那之後這個記錄可以再給我,就是這個。</span></div>
+<div class="ts-line"><span class="ts-time">77:25</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">富易達。</span></div>
+<div class="ts-line"><span class="ts-time">77:26</span><span class="ts-speaker" style="color:#E89E3F">Tony</span><span class="ts-content">富易達,對,富易達。</span></div>
+<div class="ts-line"><span class="ts-time">77:26</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">富易達讓你嘗試一下我們。</span></div>
+<div class="ts-line"><span class="ts-time">77:30</span><span class="ts-speaker" style="color:#0F1F4D">Evin</span><span class="ts-content">那個,因為他只要兩個。</span></div>
+    </div>
+  </details>
+</div>
+
+<div class="footer">
+  <strong>羅賓斯科技股份有限公司</strong>
+  IT 交接會議記錄　·　Leon 交接 Tony　·　2026-07-15　·　內部機密　·　由 雅韻 Calliope 🎼 整理
+</div>
+
+</div>
+</body>
+</html>
