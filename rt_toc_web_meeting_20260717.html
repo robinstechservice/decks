@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="zh-TW"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>會議紀錄 · 羅賓斯科技 — 車險 ToC 網站製作 討論</title><style>
+:root{--navy:#0F1F4D;--navy2:#1E3A6F;--gold:#E89E3F;--gold-soft:#FFFBEB;--ink:#121822;--ink2:#394350;--grey:#6B7280;--bg:#F8FAFC;--card:#fff;--bd:#E5E7EB;}
+*{box-sizing:border-box;}body{margin:0;background:var(--bg);font-family:"Source Han Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);line-height:1.65;}
+.ct{max-width:1100px;margin:0 auto;}
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:38px 54px 30px;}
+.eb{font-size:12px;letter-spacing:4px;color:var(--gold);font-weight:600;text-transform:uppercase;margin-bottom:11px;}
+.ht{font-size:28px;font-weight:800;margin:0 0 6px;}.hs{font-size:15px;color:rgba(255,255,255,.85);margin:0;}
+.hg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);}
+.hl{font-size:10px;letter-spacing:1px;color:var(--gold);text-transform:uppercase;margin-bottom:4px;}.hv{font-size:14px;font-weight:600;}
+.att{background:var(--card);padding:16px 54px;border-bottom:1px solid var(--bd);display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px;}
+.att b{color:var(--navy);}.chip{display:inline-block;color:#fff;padding:3px 12px;border-radius:100px;font-size:12px;font-weight:600;}
+.sec{padding:30px 54px;background:var(--card);border-bottom:1px solid var(--bd);}
+.se{font-size:11px;letter-spacing:3px;color:var(--gold);font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+.st{font-size:23px;font-weight:800;color:var(--navy);margin:0 0 15px;padding-bottom:7px;border-bottom:3px solid var(--gold);display:inline-block;}
+.ai-row{padding:9px 0;border-bottom:1px solid var(--bd);}.ai-row:last-child{border-bottom:none;}
+.ai-main{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.ai-n{font-family:"Montserrat",sans-serif;font-weight:800;color:var(--gold);font-size:16px;min-width:22px;}
+.ai-o{color:#fff;font-weight:700;font-size:11px;padding:2px 9px;border-radius:100px;}
+.ai-dl{color:var(--grey);font-weight:600;font-size:12px;background:var(--bg);border:1px solid var(--bd);border-radius:4px;padding:1px 7px;}
+.ai-i{font-weight:600;color:var(--ink);font-size:14px;}.ai-ctx{font-size:12px;color:var(--grey);margin:3px 0 0 32px;}
+.tp{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px;counter-reset:t;}
+.tp li{background:#FFFBEB;border-left:3px solid var(--gold);padding:10px 14px;font-size:13px;border-radius:0 4px 4px 0;counter-increment:t;line-height:1.5;}
+.tp li::before{content:counter(t);display:inline-block;width:22px;height:22px;border-radius:100px;background:var(--gold);color:#fff;text-align:center;font-weight:700;font-size:11px;line-height:22px;margin-right:8px;font-family:"Montserrat",sans-serif;vertical-align:1px;}
+.sm p{font-size:14.5px;color:var(--ink2);margin:8px 0;}.sm p.sh{font-weight:800;color:var(--navy);margin:16px 0 4px;padding-left:12px;border-left:4px solid var(--gold);font-size:15px;}
+.nb{background:#FEF3C7;border-left:4px solid var(--gold);padding:13px 17px;margin:0 0 16px;border-radius:0 4px 4px 0;font-size:12.5px;color:var(--ink2);line-height:1.6;}.nb b{color:var(--navy);}
+.leg{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 12px;font-size:12px;}.leg span{display:inline-flex;align-items:center;gap:5px;font-weight:600;}.leg i{width:11px;height:11px;border-radius:3px;}
+details>summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--navy);padding:12px 16px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;list-style:none;}
+details>summary::-webkit-details-marker{display:none;}details>summary::before{content:"▸ ";color:var(--gold);}details[open]>summary::before{content:"▾ ";}
+.tr{background:var(--bg);padding:16px 20px;max-height:640px;overflow-y:auto;border-radius:6px;font-size:13px;border:1px solid var(--bd);margin-top:10px;}
+.ts-line{padding:5px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;gap:10px;align-items:flex-start;}.ts-line:last-child{border-bottom:none;}
+.ts-time{font-family:"Montserrat",monospace;font-size:11px;color:var(--grey);font-weight:600;flex-shrink:0;width:42px;padding-top:2px;}
+.ts-spk{font-weight:700;flex-shrink:0;width:66px;}.ts-c{color:var(--ink2);flex:1;line-height:1.6;}
+.ft{padding:18px 54px;background:var(--navy);color:rgba(255,255,255,.7);text-align:center;font-size:11px;}.ft b{display:block;color:var(--gold);font-size:13px;margin-bottom:4px;}
+@media(max-width:720px){.hero,.att,.sec,.ft{padding-left:20px;padding-right:20px;}.hg{grid-template-columns:1fr 1fr;}.tp{grid-template-columns:1fr;}.ai-ctx{margin-left:0;}}
+</style></head><body><div class="ct">
+<div class="hero"><p class="eb">會議紀錄 · MEETING MINUTES</p><h1 class="ht">羅賓斯科技 — 車險 ToC 網站製作 討論</h1><p class="hs">Evin（羅賓斯 執行長）· Tony（羅賓斯 IT／工程）</p>
+<div class="hg"><div><div class="hl">日期</div><div class="hv">2026 年 7 月 17 日</div></div><div><div class="hl">時長</div><div class="hv">約 17 分鐘</div></div><div><div class="hl">主題</div><div class="hv">車險 ToC 網站製作</div></div><div><div class="hl">形式</div><div class="hv">線上（錄影）</div></div></div></div>
+<div class="att"><b>與會者：</b><span class="chip" style="background:#0F1F4D">Evin（羅賓斯 執行長）</span><span class="chip" style="background:#E89E3F">Tony（羅賓斯 IT）</span></div>
+<div class="sec"><p class="se">PART 01 · 具體行動</p><h2 class="st">行動項清單（6 件）</h2><div><div class="ai-row"><div class="ai-main"><span class="ai-n">01</span><span class="ai-o" style="background:#0F1F4D">Evin</span><span class="ai-dl">未定</span><span class="ai-i">將產品櫥窗新增「商業險」與「綠能險」項目</span></div><div class="ai-ctx">Tony 提出業務擴展需求 [12:34]</div></div>
+<div class="ai-row"><div class="ai-main"><span class="ai-n">02</span><span class="ai-o" style="background:#0F1F4D">Evin</span><span class="ai-dl">未定</span><span class="ai-i">補齊公司背景介紹與保險公司列表資訊</span></div><div class="ai-ctx">網站內容完善需求 [07:52]</div></div>
+<div class="ai-row"><div class="ai-main"><span class="ai-n">03</span><span class="ai-o" style="background:#0F1F4D">Evin</span><span class="ai-dl">未定</span><span class="ai-i">取得並設定專人諮詢的 Line 連結</span></div><div class="ai-ctx">目前僅為預留空位 [15:10]</div></div>
+<div class="ai-row"><div class="ai-main"><span class="ai-n">04</span><span class="ai-o" style="background:#E89E3F">Tony</span><span class="ai-dl">未定</span><span class="ai-i">開發會員註冊頁面（含身分證、姓名、Email 欄位）</span></div><div class="ai-ctx">優化使用者體驗，取代人工後台註冊 [16:15]</div></div>
+<div class="ai-row"><div class="ai-main"><span class="ai-n">05</span><span class="ai-o" style="background:#E89E3F">Tony</span><span class="ai-dl">未定</span><span class="ai-i">將所有表單申請資料統一導向至 service 信箱</span></div><div class="ai-ctx">統一後端處理流程 [13:44]</div></div>
+<div class="ai-row"><div class="ai-main"><span class="ai-n">06</span><span class="ai-o" style="background:#E89E3F">Tony</span><span class="ai-dl">未定</span><span class="ai-i">測試 AI 機器人與後台整合，實現自動化上版</span></div><div class="ai-ctx">提升內容維護效率 [10:31]</div></div></div></div>
+<div class="sec"><p class="se">PART 02 · 議題索引</p><h2 class="st">討論議題（8 項）</h2><ul class="tp"><li>網站架構與風格一致性確認</li>
+<li>產品櫥窗內容規劃（汽機車、商業、綠能險）</li>
+<li>表單申請資料處理流程（統一寄送至 service）</li>
+<li>後台編輯功能與 AI 自動化上版可行性</li>
+<li>理賠資源與常見問題頁面配置</li>
+<li>會員登入機制調整（由人工改為自主註冊）</li>
+<li>註冊欄位需求定義（身分證、姓名、Email）</li>
+<li>公司背景與保險公司資訊補齊</li></ul></div>
+<div class="sec"><p class="se">PART 03 · 摘要</p><h2 class="st">會議摘要</h2><div class="sm"><p class="sh">目的與與會角色</p>
+<p class="">本次會議由羅賓斯科技執行長 Evin 與 IT 工程師 Tony 共同討論車險 ToC 網站的開發進度與功能規劃。Evin 負責定義產品需求、使用者體驗及商業目標；Tony 負責技術架構、實作細節及可行性評估。</p>
+<p class="sh">主要討論</p>
+<p class="">會議重點在於網站各頁面（首頁、產品櫥窗、理賠資源、常見問題）的內容架構與功能實作。Evin 展示了參考競品設計的網站原型，強調風格需與羅賓斯科技官網一致。雙方確認了「產品櫥窗」將包含汽車險、機車險，並應 Tony 要求新增商業險與綠能險。針對「保費試算」與「立即申請」功能，雙方達成共識，將採取表單收集資料並統一寄送至 service 信箱的處理模式。此外，針對「會員登入」機制，Evin 原先參考競品採後台人工註冊，但 Tony 建議改為開放客戶自行註冊，以提升效率與使用者體驗。</p>
+<p class="sh">共識與待議</p>
+<p class="">雙方共識網站需具備後台編輯功能，並討論了利用 AI 機器人自動化更新內容與上版的可行性。待議事項包括：Evin 需補齊公司背景資訊、保險公司列表、以及取得正式的 Line 諮詢連結；Tony 則需規劃會員註冊頁面，並確認註冊所需的欄位（身分證、姓名、Email 等）。</p>
+<p class="sh">後續</p>
+<p class="">Evin 將負責整理常見問題文案、補齊公司背景與保險公司資訊；Tony 將進行會員註冊頁面開發，並協助將機器人與後台整合，以實現自動化內容更新。</p></div></div>
+<div class="sec"><p class="se">PART 04 · 逐字稿</p><h2 class="st">掛名逐字稿</h2>
+<div class="nb">＊本逐字稿由會議錄影經 <b>Gemini 聽錄音分語者</b>整理，共 231 段；技術/專有術語可能有辨識誤差，關鍵處以錄影為準。</div>
+<div class="leg"><span><i style="background:#0F1F4D"></i>Evin（羅賓斯 執行長）</span><span><i style="background:#E89E3F"></i>Tony（羅賓斯 IT）</span></div>
+<details><summary>展開掛名逐字稿（共 231 段）</summary><div class="tr"><div class="ts-line"><span class="ts-time">00:14</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">那我退出。</span></div>
+<div class="ts-line"><span class="ts-time">00:28</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">好。</span></div>
+<div class="ts-line"><span class="ts-time">00:31</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">開這個螢幕。</span></div>
+<div class="ts-line"><span class="ts-time">00:35</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這怎麼可以，就這麼個。</span></div>
+<div class="ts-line"><span class="ts-time">00:38</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">你開這個螢幕，然後你不要用這個，你就螢幕跟我分享，你你就跳出去就好。</span></div>
+<div class="ts-line"><span class="ts-time">00:43</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，我從外面。</span></div>
+<div class="ts-line"><span class="ts-time">00:46</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">這個可以把它拿掉。</span></div>
+<div class="ts-line"><span class="ts-time">00:47</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">好，開始吧。</span></div>
+<div class="ts-line"><span class="ts-time">01:02</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">沒有，我剛剛問經理，他說那個已經給過了，所以沒事了。</span></div>
+<div class="ts-line"><span class="ts-time">01:10</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，不見，好，那下一。</span></div>
+<div class="ts-line"><span class="ts-time">02:20</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，對，對，看到我的Line。</span></div>
+<div class="ts-line"><span class="ts-time">02:24</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，對，這個就是有隔離，有隔離的服務啦，好，來吧。</span></div>
+<div class="ts-line"><span class="ts-time">02:34</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對呀，那這樣就對我們比較方便。</span></div>
+<div class="ts-line"><span class="ts-time">02:38</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，這個是必加，必加的，必加的。</span></div>
+<div class="ts-line"><span class="ts-time">02:43</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">產品儲窗認識我們。</span></div>
+<div class="ts-line"><span class="ts-time">02:45</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，產品儲窗認識我們，理賠資源還有常見問題。</span></div>
+<div class="ts-line"><span class="ts-time">02:49</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">OK。</span></div>
+<div class="ts-line"><span class="ts-time">02:50</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後它這還有個專人諮詢，然後這個這個因為那個我考這邊，就是因為我們沒有我們的Line，所以它只是先做一個這個在這邊。</span></div>
+<div class="ts-line"><span class="ts-time">02:59</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">我沒有Line啊，就這意思。</span></div>
+<div class="ts-line"><span class="ts-time">03:02</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔，對。</span></div>
+<div class="ts-line"><span class="ts-time">03:04</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，所以我那個只是一個空的專人諮詢在這邊，我有。</span></div>
+<div class="ts-line"><span class="ts-time">03:07</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">03:15</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">欸，等一下，我把它刪除去了。</span></div>
+<div class="ts-line"><span class="ts-time">03:16</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">沒有沒有，還有還有。</span></div>
+<div class="ts-line"><span class="ts-time">03:20</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">應該還有。</span></div>
+<div class="ts-line"><span class="ts-time">03:23</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，然後等一下我確認一下還有沒有。</span></div>
+<div class="ts-line"><span class="ts-time">03:26</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">沒辦法，因為這個不會構成說。</span></div>
+<div class="ts-line"><span class="ts-time">03:29</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">應該是有。</span></div>
+<div class="ts-line"><span class="ts-time">03:31</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後，然後產品儲窗就是它會有它的一些一些各種的寫，對，各種的寫。</span></div>
+<div class="ts-line"><span class="ts-time">03:43</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">有啦，有啦。</span></div>
+<div class="ts-line"><span class="ts-time">03:46</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">產品儲窗就是它有一些它自己的各種的寫，然後點進去它就會有介紹，介紹，然後還有一些Icon，Icon，然後還有一些一些Blog，對。</span></div>
+<div class="ts-line"><span class="ts-time">04:00</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">全部都過來要。</span></div>
+<div class="ts-line"><span class="ts-time">04:03</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">可以，那我這邊這邊就是我後台，我有做一個後台可以編輯這些內容，對。</span></div>
+<div class="ts-line"><span class="ts-time">04:10</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後這邊也是，這邊也差不多。</span></div>
+<div class="ts-line"><span class="ts-time">04:15</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後這邊對照我們的。</span></div>
+<div class="ts-line"><span class="ts-time">04:20</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">沒事沒事，你把他的椅子講完，然後再秀我們可能記起來。</span></div>
+<div class="ts-line"><span class="ts-time">04:23</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔，好。</span></div>
+<div class="ts-line"><span class="ts-time">04:25</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後認識我們。</span></div>
+<div class="ts-line"><span class="ts-time">04:27</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">產品儲窗就寫死了，就進車跟汽車這樣子。</span></div>
+<div class="ts-line"><span class="ts-time">04:32</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，對。</span></div>
+<div class="ts-line"><span class="ts-time">04:33</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">沒關係，你拉產品儲窗的。</span></div>
+<div class="ts-line"><span class="ts-time">04:35</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">細節不要，你往，欸，這是他的首頁嗎？</span></div>
+<div class="ts-line"><span class="ts-time">04:41</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">沒有，他首頁是長這樣。</span></div>
+<div class="ts-line"><span class="ts-time">04:44</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">這樣。</span></div>
+<div class="ts-line"><span class="ts-time">04:47</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">然後有一個試算保費介紹，私家好往下。</span></div>
+<div class="ts-line"><span class="ts-time">04:51</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">然後講他的服務，那我看一下條款的細節是什麼。</span></div>
+<div class="ts-line"><span class="ts-time">04:58</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">喔，它有個VIP條款。</span></div>
+<div class="ts-line"><span class="ts-time">05:01</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">喔，可以幫你做這些事情，線上申請，我看這種價。</span></div>
+<div class="ts-line"><span class="ts-time">05:07</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">還有一個教學。</span></div>
+<div class="ts-line"><span class="ts-time">05:11</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">師傅資料，對，好，送出申請。</span></div>
+<div class="ts-line"><span class="ts-time">05:15</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">所以你看他也不是線上啊，他是等於是，對不對，你留資料。</span></div>
+<div class="ts-line"><span class="ts-time">05:20</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">就留資料，然後他們後台再幫你申請這樣。</span></div>
+<div class="ts-line"><span class="ts-time">05:25</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">然後立即聯繫，往下。</span></div>
+<div class="ts-line"><span class="ts-time">05:27</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">然後重點之下，它有一些禁止事項跟禁止，對，然後跟重點，你還沒看到嗎？左下角一定要把保險公司，保代公司的資料放上去。</span></div>
+<div class="ts-line"><span class="ts-time">05:40</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，喔這個我好像沒有寫，這個，這個。</span></div>
+<div class="ts-line"><span class="ts-time">05:44</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">沒事沒事。</span></div>
+<div class="ts-line"><span class="ts-time">05:46</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">05:47</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">但是你往下，它這麼多都有，你按Line、小紅書，這些都是他的渠道。</span></div>
+<div class="ts-line"><span class="ts-time">05:53</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對啊，這些我也都沒有，因為我沒有這些資訊。</span></div>
+<div class="ts-line"><span class="ts-time">05:56</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那下你就做好，然後我開你隨便點，點，它會跳過去。</span></div>
+<div class="ts-line"><span class="ts-time">06:02</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">喔，所以它其實在行銷裡面的內容評分部的。</span></div>
+<div class="ts-line"><span class="ts-time">06:08</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對不對，這些都是，對，那人家會更有信心的。</span></div>
+<div class="ts-line"><span class="ts-time">06:12</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">蠻多的，對。</span></div>
+<div class="ts-line"><span class="ts-time">06:14</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">欸，你掉了。</span></div>
+<div class="ts-line"><span class="ts-time">06:17</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">遠輸在，但是那個IG語。</span></div>
+<div class="ts-line"><span class="ts-time">06:21</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">IG沒有了。</span></div>
+<div class="ts-line"><span class="ts-time">06:22</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">可能他移除了。</span></div>
+<div class="ts-line"><span class="ts-time">06:24</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那我看看其他的。</span></div>
+<div class="ts-line"><span class="ts-time">06:26</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">有沒有Email，Email就一定。</span></div>
+<div class="ts-line"><span class="ts-time">06:28</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，Email就應該是一定，然後。</span></div>
+<div class="ts-line"><span class="ts-time">06:32</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">小紅書。</span></div>
+<div class="ts-line"><span class="ts-time">06:33</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這書也蠻厲害的。</span></div>
+<div class="ts-line"><span class="ts-time">06:39</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">看起來掛了。</span></div>
+<div class="ts-line"><span class="ts-time">06:41</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">06:45</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">不要好，不要好。</span></div>
+<div class="ts-line"><span class="ts-time">06:47</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">然後X我看看。</span></div>
+<div class="ts-line"><span class="ts-time">06:49</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">X，抖音，抖音有。</span></div>
+<div class="ts-line"><span class="ts-time">06:51</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">然後這個S.com。</span></div>
+<div class="ts-line"><span class="ts-time">06:57</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這個好像要登錄，這個我不太確定。</span></div>
+<div class="ts-line"><span class="ts-time">07:00</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，沒事。</span></div>
+<div class="ts-line"><span class="ts-time">07:01</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，我回到一些那個。</span></div>
+<div class="ts-line"><span class="ts-time">07:02</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">07:03</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">好，那再看他其他的部分。</span></div>
+<div class="ts-line"><span class="ts-time">07:06</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">上面我看一下。</span></div>
+<div class="ts-line"><span class="ts-time">07:08</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，大概這，這是產品儲窗還是這邊。</span></div>
+<div class="ts-line"><span class="ts-time">07:10</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，產品儲窗，剛剛這個。</span></div>
+<div class="ts-line"><span class="ts-time">07:13</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這產品儲窗。</span></div>
+<div class="ts-line"><span class="ts-time">07:14</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">07:15</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那剛剛這個是有沒有。</span></div>
+<div class="ts-line"><span class="ts-time">07:17</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">剛剛是首頁。</span></div>
+<div class="ts-line"><span class="ts-time">07:18</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">喔，剛剛首頁，喔，那那是我們。</span></div>
+<div class="ts-line"><span class="ts-time">07:25</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，不錯啊，這這頁也是我們介紹，然後往下。</span></div>
+<div class="ts-line"><span class="ts-time">07:29</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後他介紹，我往下。</span></div>
+<div class="ts-line"><span class="ts-time">07:33</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">介紹VJack，介紹必加，然後再介紹保險公司，往下。</span></div>
+<div class="ts-line"><span class="ts-time">07:39</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">需要寫出往下，我把保險公司拿掉，他不感秀。</span></div>
+<div class="ts-line"><span class="ts-time">07:43</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，我有留那個十個保險公司的那個。</span></div>
+<div class="ts-line"><span class="ts-time">07:47</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">我覺得我們可以秀出來。</span></div>
+<div class="ts-line"><span class="ts-time">07:49</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">我們可以想，那上美之有。</span></div>
+<div class="ts-line"><span class="ts-time">07:52</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">可是我好像忘記餵給他我們公司的背景，所以。</span></div>
+<div class="ts-line"><span class="ts-time">07:54</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">沒事沒事，不急，然後理賠資源我們。</span></div>
+<div class="ts-line"><span class="ts-time">07:59</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">理賠資源。</span></div>
+<div class="ts-line"><span class="ts-time">08:00</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，這上面。</span></div>
+<div class="ts-line"><span class="ts-time">08:01</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔這個，喔這個。</span></div>
+<div class="ts-line"><span class="ts-time">08:04</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">好，做好了，那你就這樣。</span></div>
+<div class="ts-line"><span class="ts-time">08:07</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">細部步驟要看。</span></div>
+<div class="ts-line"><span class="ts-time">08:09</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">細部步驟。</span></div>
+<div class="ts-line"><span class="ts-time">08:11</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">08:13</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這也重要，再加。</span></div>
+<div class="ts-line"><span class="ts-time">08:17</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">喔，他做一個表單啦。</span></div>
+<div class="ts-line"><span class="ts-time">08:19</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，然後你送出就會送到那個人員的那裡。</span></div>
+<div class="ts-line"><span class="ts-time">08:22</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">OK，了解。</span></div>
+<div class="ts-line"><span class="ts-time">08:23</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">08:24</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這個我們也可以做，可以送。</span></div>
+<div class="ts-line"><span class="ts-time">08:26</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，然後常見問題。</span></div>
+<div class="ts-line"><span class="ts-time">08:29</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，這邊就是一些問題。</span></div>
+<div class="ts-line"><span class="ts-time">08:32</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">整理一下，到時候整理好再丟給我。</span></div>
+<div class="ts-line"><span class="ts-time">08:35</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">你那邊有分報價投保。</span></div>
+<div class="ts-line"><span class="ts-time">08:37</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這個，這個我用我們後台可以自己，後台人員可以自己去操作。</span></div>
+<div class="ts-line"><span class="ts-time">08:42</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這樣我們就不用再有什麼上版那些成本，就速度也比較快。</span></div>
+<div class="ts-line"><span class="ts-time">08:46</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔，所以等一下可以，對對對，等一下可以看一下。</span></div>
+<div class="ts-line"><span class="ts-time">08:50</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">那如果這個跟 Cloud 整合起來，我到時候讓我們的機器人去，去連你這裡上版的功能，我就可以直接下指令讓它自己付版上去了。</span></div>
+<div class="ts-line"><span class="ts-time">09:03</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">喔，我就給他帳號，他就可以做這件事了，對不對？</span></div>
+<div class="ts-line"><span class="ts-time">09:07</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">因為這些其實都是身分證放上去啦，我就叫他去爬最新的文章放上去就好，所以明天就完全完成。</span></div>
+<div class="ts-line"><span class="ts-time">09:15</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">你意思讓機器人來操作這個後台？</span></div>
+<div class="ts-line"><span class="ts-time">09:19</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，他自己去身分證，然後我再做變更。</span></div>
+<div class="ts-line"><span class="ts-time">09:21</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">應該是可以吧，可是我還是，還是需要一個測試。</span></div>
+<div class="ts-line"><span class="ts-time">09:29</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">沒有，我還是推薦就是，就是我們人員然後，然後問問 AI 說要怎樣文章，然後他在自己透過後台上傳。</span></div>
+<div class="ts-line"><span class="ts-time">09:40</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這就是不是 AI native 的方式，是 AI 幫你去抓文章自己上傳。</span></div>
+<div class="ts-line"><span class="ts-time">09:45</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，那這這也是可以的。</span></div>
+<div class="ts-line"><span class="ts-time">09:49</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">但是因為這個就是要壞掉成本比較高，因為他，他只是你放上文章，他不要是交易那些，幫 AI 來做就好。</span></div>
+<div class="ts-line"><span class="ts-time">10:02</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">我們現在的那個臉書也都是 AI 自己上網去發發臉書的內容，所以我覺得這個以後應該知道那樣自己自己上來，自己產品上，然後看我們的吧。</span></div>
+<div class="ts-line"><span class="ts-time">10:18</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">我覺得我們現在就去我們自己的那個，產品內容嗎？這樣股價有了嗎？</span></div>
+<div class="ts-line"><span class="ts-time">10:25</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">去，我，對，我這個，就是我們的公司背景。</span></div>
+<div class="ts-line"><span class="ts-time">10:31</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這超容易的啊，你到時候把這給我，我叫，我叫那個，其實現在應該就可以把後台權限給我，然後我讓機器人跟這個整合在一起去玩看看，因為我們的機器人已經幫我們做簡報做好幾個月了，他完全知道我們的背景這邊要怎麼寫。</span></div>
+<div class="ts-line"><span class="ts-time">10:58</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，好。</span></div>
+<div class="ts-line"><span class="ts-time">10:59</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那要講我們的嗎？</span></div>
+<div class="ts-line"><span class="ts-time">11:00</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">我們的首頁就這樣，然後我是參照參照我們之前那個我們羅賓斯科技的那官網，我用比較相同的風格，色調也差不多。</span></div>
+<div class="ts-line"><span class="ts-time">11:11</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">就是有點深藍色，有點科技感。</span></div>
+<div class="ts-line"><span class="ts-time">11:15</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">所以我整體有保持這種風格，然後保險公司我想我們可以拉出來，就放在這邊。</span></div>
+<div class="ts-line"><span class="ts-time">11:32</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後下面就有我們的一些 VIP 的一些服務。</span></div>
+<div class="ts-line"><span class="ts-time">11:38</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後在下面就是我們的申請理賠的流程。</span></div>
+<div class="ts-line"><span class="ts-time">11:45</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後這邊的話，這邊的話我也還沒做這個立即申請，因為他因為還不知道我們申請的流程是怎樣，就是我們申請的流程。</span></div>
+<div class="ts-line"><span class="ts-time">11:59</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那應該要完全就選，就是選他，他按下去就是這五個啊，我就，我就填在我們這。</span></div>
+<div class="ts-line"><span class="ts-time">12:06</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，那填那五個要傳到哪邊之類的？</span></div>
+<div class="ts-line"><span class="ts-time">12:09</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">你先傳到，你現在的對的網站都傳到 service，就傳到我們 service 裡面。</span></div>
+<div class="ts-line"><span class="ts-time">12:15</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">你說傳到我們那個 email 就好？</span></div>
+<div class="ts-line"><span class="ts-time">12:17</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對對對對。</span></div>
+<div class="ts-line"><span class="ts-time">12:19</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">傳到我們傳到我們 email 就好，OK 好。</span></div>
+<div class="ts-line"><span class="ts-time">12:23</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，OK 那我知道了，傳到我們 email 好。</span></div>
+<div class="ts-line"><span class="ts-time">12:27</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後產品儲窗，產品儲窗我做比較多更動，對。</span></div>
+<div class="ts-line"><span class="ts-time">12:32</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後一樣就是汽車險還有機車險。</span></div>
+<div class="ts-line"><span class="ts-time">12:34</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">還可以加商業險，綠能險，幫我多加這兩個。</span></div>
+<div class="ts-line"><span class="ts-time">12:37</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔。</span></div>
+<div class="ts-line"><span class="ts-time">12:40</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">等一下。</span></div>
+<div class="ts-line"><span class="ts-time">12:42</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">我現在一定要會回去。</span></div>
+<div class="ts-line"><span class="ts-time">12:43</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">OK OK。</span></div>
+<div class="ts-line"><span class="ts-time">12:46</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後這邊的話，其實裡面那些字大部分都參考他的，對。</span></div>
+<div class="ts-line"><span class="ts-time">12:53</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後我這這邊有做一些更動，就是風格把它用一致，對。</span></div>
+<div class="ts-line"><span class="ts-time">12:59</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後然後這些我們都可以自己加，這些我們都可以在後台自己加，這些文案都可以再後台自己加。</span></div>
+<div class="ts-line"><span class="ts-time">13:09</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那保費試算呢？現在還沒有？</span></div>
+<div class="ts-line"><span class="ts-time">13:11</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">保費試算現在沒有，因為因為我不知道試算的邏輯是怎麼樣。</span></div>
+<div class="ts-line"><span class="ts-time">13:16</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那那 B 加的保費試算還進去？</span></div>
+<div class="ts-line"><span class="ts-time">13:19</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">B 加的，他也是要，他也是填一些東西送出，送出，但是不知道送給誰，不知道他傳給誰。</span></div>
+<div class="ts-line"><span class="ts-time">13:26</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">你就把它想他一定有 email，他一定是送給他的客戶客戶。</span></div>
+<div class="ts-line"><span class="ts-time">13:31</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">一樣的意思。</span></div>
+<div class="ts-line"><span class="ts-time">13:33</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，等一下喔。</span></div>
+<div class="ts-line"><span class="ts-time">13:38</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，還是請他說他是全扣下來。</span></div>
+<div class="ts-line"><span class="ts-time">13:40</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">全扣下來。</span></div>
+<div class="ts-line"><span class="ts-time">13:43</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">然後寄到 service 這樣。</span></div>
+<div class="ts-line"><span class="ts-time">13:44</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">寄到 service。</span></div>
+<div class="ts-line"><span class="ts-time">13:46</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，都寄到 service，好，OK。</span></div>
+<div class="ts-line"><span class="ts-time">13:50</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">嗯，好，產品儲窗。</span></div>
+<div class="ts-line"><span class="ts-time">13:56</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔這邊其實蠻像的，對。</span></div>
+<div class="ts-line"><span class="ts-time">14:01</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">欸等一下。</span></div>
+<div class="ts-line"><span class="ts-time">14:02</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，其實這是我們參把用到這裡。</span></div>
+<div class="ts-line"><span class="ts-time">14:05</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，這是我們就是我要再哪裡快出來，做我就是，我會讓他去跑我們那個羅賓斯科技的官網。</span></div>
+<div class="ts-line"><span class="ts-time">14:13</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">嗯。</span></div>
+<div class="ts-line"><span class="ts-time">14:14</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">可能拿那邊的資料來用一下，這樣。</span></div>
+<div class="ts-line"><span class="ts-time">14:16</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，多頁這樣。</span></div>
+<div class="ts-line"><span class="ts-time">14:18</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那邊有超久，我們想看。</span></div>
+<div class="ts-line"><span class="ts-time">14:21</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，然後理賠資源，理賠資源他就是掉到這裡。</span></div>
+<div class="ts-line"><span class="ts-time">14:25</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">就他們那邊理賠資源也是掉到這裡。</span></div>
+<div class="ts-line"><span class="ts-time">14:27</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，因為一頁嘛。</span></div>
+<div class="ts-line"><span class="ts-time">14:29</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對對對對，你申請這裡，你到時候再付。</span></div>
+<div class="ts-line"><span class="ts-time">14:33</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">立即申請下進去是沒有的。</span></div>
+<div class="ts-line"><span class="ts-time">14:34</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，是沒有的，他只是往下跳一下。</span></div>
+<div class="ts-line"><span class="ts-time">14:37</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對，所以你要再做進去一個表單。</span></div>
+<div class="ts-line"><span class="ts-time">14:39</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">14:40</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">好，常見問題。</span></div>
+<div class="ts-line"><span class="ts-time">14:41</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">常見問題。</span></div>
+<div class="ts-line"><span class="ts-time">14:43</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">這是全扣他的對不對？</span></div>
+<div class="ts-line"><span class="ts-time">14:45</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">呃，目前預設是扣他的。</span></div>
+<div class="ts-line"><span class="ts-time">14:49</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對，但是這些我們可以後台自己用。</span></div>
+<div class="ts-line"><span class="ts-time">14:51</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後這邊，這邊登入我知道要修改一下，因為他們這些，他們這邊登入是他們他們的客戶。</span></div>
+<div class="ts-line"><span class="ts-time">15:00</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對對對，專門諮詢的。</span></div>
+<div class="ts-line"><span class="ts-time">15:02</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔專門諮詢，我要說就是他原本他這邊是一個 LINE 的窗口。</span></div>
+<div class="ts-line"><span class="ts-time">15:06</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔，所以你在連連那個。</span></div>
+<div class="ts-line"><span class="ts-time">15:07</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對對對，但是但是現在我沒有，他就只往下跳，對。</span></div>
+<div class="ts-line"><span class="ts-time">15:10</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">你再記得跟那個人要 LINE 把它放進去。</span></div>
+<div class="ts-line"><span class="ts-time">15:12</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對對對。</span></div>
+<div class="ts-line"><span class="ts-time">15:14</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後登入這邊，登入跟他比較不同的是他，他的登入是他們的保護，他們的保護去登入的，就他們後台幫他們保護去註冊一個會員，然後可以讓他們登入。</span></div>
+<div class="ts-line"><span class="ts-time">15:31</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那我也試啊。</span></div>
+<div class="ts-line"><span class="ts-time">15:32</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">我們也要做這樣，就是用身分證驗證。</span></div>
+<div class="ts-line"><span class="ts-time">15:36</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">車主，他鎖定車主。</span></div>
+<div class="ts-line"><span class="ts-time">15:39</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">車主身分證還有公司統編。</span></div>
+<div class="ts-line"><span class="ts-time">15:41</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">就這樣就可以登入。</span></div>
+<div class="ts-line"><span class="ts-time">15:43</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對。</span></div>
+<div class="ts-line"><span class="ts-time">15:44</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">就是有一個註冊頁啦，然後之後用註冊。</span></div>
+<div class="ts-line"><span class="ts-time">15:47</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">喔沒有，他沒有註冊，是他們後台人員自己自己去自己去註冊。</span></div>
+<div class="ts-line"><span class="ts-time">15:53</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">自己去幫我們辦。</span></div>
+<div class="ts-line"><span class="ts-time">15:55</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">他在這邊沒有註冊頁喔，他這邊完全沒有註冊頁。</span></div>
+<div class="ts-line"><span class="ts-time">15:58</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那有登入頁？</span></div>
+<div class="ts-line"><span class="ts-time">15:59</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對對對，他有登入頁。</span></div>
+<div class="ts-line"><span class="ts-time">16:00</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那隨便人都可以登入？</span></div>
+<div class="ts-line"><span class="ts-time">16:02</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">沒有沒有沒有，不行。</span></div>
+<div class="ts-line"><span class="ts-time">16:04</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">就就要他的保護才會有這些帳號資料。</span></div>
+<div class="ts-line"><span class="ts-time">16:09</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">就他們後台人員幫他們保護去註冊好，他們才知道。</span></div>
+<div class="ts-line"><span class="ts-time">16:12</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那我們不要，我們要客戶可以自己註冊。</span></div>
+<div class="ts-line"><span class="ts-time">16:15</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">客戶可以自己註冊。</span></div>
+<div class="ts-line"><span class="ts-time">16:17</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對對對，所以多做一個註冊頁。</span></div>
+<div class="ts-line"><span class="ts-time">16:19</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">那你就麻煩你。</span></div>
+<div class="ts-line"><span class="ts-time">16:20</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那你可能要跟我說他們需要什麼資料來註冊。</span></div>
+<div class="ts-line"><span class="ts-time">16:23</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">對啊，就身分證姓名，就像那個，車主身分證。</span></div>
+<div class="ts-line"><span class="ts-time">16:29</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">你說像這樣就好。</span></div>
+<div class="ts-line"><span class="ts-time">16:30</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">對啊，然後然後 email。</span></div>
+<div class="ts-line"><span class="ts-time">16:33</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">然後。</span></div>
+<div class="ts-line"><span class="ts-time">16:35</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">那那電話嗎還是？</span></div>
+<div class="ts-line"><span class="ts-time">16:38</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">我覺得越簡單越好，現在只要 email。</span></div>
+<div class="ts-line"><span class="ts-time">16:43</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">好，可以。</span></div>
+<div class="ts-line"><span class="ts-time">16:44</span><span class="ts-spk" style="color:#E89E3F">Tony</span><span class="ts-c">問你喔，你如果如果是你你註冊。</span></div>
+<div class="ts-line"><span class="ts-time">16:48</span><span class="ts-spk" style="color:#0F1F4D">Evin</span><span class="ts-c">沒有，因為 email 比較容易取得，電話號碼每個人通常只會有一個，就是比較唯一的東西，也比較不容易被偽造。</span></div></div></details></div>
+<div class="ft"><b>羅賓斯科技股份有限公司</b>羅賓斯科技 — 車險 ToC 網站製作 討論　·　2026 年 7 月 17 日　·　內部機密　·　由 雅韻 Calliope 🎼 整理</div>
+</div></body></html>
