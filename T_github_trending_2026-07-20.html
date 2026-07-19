@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 趨勢分析 2026-07-20｜Themis 秉衡</title>
+<style>
+  :root { --navy:#0F1F4D; --gold:#E89E3F; --bg:#F7F8FB; --card:#FFFFFF; --ink:#1C2333; --muted:#6B7280; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif; background:var(--bg); color:var(--ink); line-height:1.75; }
+  .wrap { max-width:900px; margin:0 auto; padding:0 20px 60px; }
+  header { background:var(--navy); color:#fff; padding:36px 20px 30px; }
+  header .inner { max-width:900px; margin:0 auto; }
+  header h1 { font-size:1.6rem; letter-spacing:.05em; }
+  header h1 span { color:var(--gold); }
+  header p { color:#C9D2E8; font-size:.92rem; margin-top:8px; }
+  .badge { display:inline-block; background:var(--gold); color:var(--navy); font-weight:700; font-size:.78rem; padding:2px 10px; border-radius:12px; margin-bottom:10px; }
+  h2 { color:var(--navy); font-size:1.25rem; margin:38px 0 6px; padding-left:12px; border-left:5px solid var(--gold); }
+  .section-note { color:var(--muted); font-size:.85rem; margin-bottom:16px; padding-left:17px; }
+  .card { background:var(--card); border:1px solid #E5E8F0; border-radius:12px; padding:18px 20px; margin-bottom:14px; box-shadow:0 1px 3px rgba(15,31,77,.06); }
+  .card .top { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px; }
+  .card h3 { font-size:1.02rem; color:var(--navy); word-break:break-all; }
+  .card h3 a { color:var(--navy); text-decoration:none; }
+  .card h3 a:hover { text-decoration:underline; }
+  .stars { color:var(--gold); font-size:1rem; letter-spacing:2px; white-space:nowrap; }
+  .meta { font-size:.8rem; color:var(--muted); }
+  .card p.desc { margin-top:8px; font-size:.93rem; }
+  .tags { margin-top:10px; display:flex; flex-wrap:wrap; gap:6px; }
+  .tag { font-size:.76rem; padding:2px 10px; border-radius:10px; background:#EEF1F8; color:var(--navy); }
+  .tag.sister { background:var(--navy); color:#fff; }
+  .tag.ins-yes { background:#E7F3EA; color:#1F6B3A; }
+  .tag.ins-no { background:#F3F4F6; color:#6B7280; }
+  .tag.act { background:var(--gold); color:var(--navy); font-weight:700; }
+  .priority { background:var(--navy); color:#fff; border-radius:12px; padding:22px 24px; margin-top:40px; }
+  .priority h2 { color:var(--gold); border-left-color:var(--gold); margin:0 0 14px; }
+  .priority ol { padding-left:22px; }
+  .priority li { margin-bottom:10px; font-size:.95rem; }
+  .priority li b { color:var(--gold); font-weight:700; }
+  footer { text-align:center; color:var(--muted); font-size:.78rem; margin-top:44px; }
+</style></head>
+<body>
+<header><div class="inner">
+  <div class="badge">Themis 秉衡｜每日趨勢偵察</div>
+  <h1>GitHub 趨勢分析 <span>2026-07-20</span></h1>
+  <p>兩組各 Top 5：A 組 GitHub Trending（daily）＋ B 組 Claude 生態（GitHub search 依 stars 排序）。星等＝對羅賓斯家族的建議指數。</p>
+</div></header>
+<div class="wrap">
+
+<h2>A. GitHub Trending Top 5</h2>
+<p class="section-note">來源：github.com/trending（2026-07-20 daily）</p>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/bojieli/ai-agent-book">1. bojieli/ai-agent-book</a></h3><span class="stars">★★★★☆</span><span class="meta">Python｜5,347★（今日 +1,734）</span></div>
+  <p class="desc">李博杰《深入理解 AI Agent：設計原理與工程實踐》開源專書，含全書正文、PDF 與按章程式碼——今日暴衝 +1,734 星，是榜上最熱。</p>
+  <div class="tags"><span class="tag sister">主場：全員（Eos／Calliope 優先）</span><span class="tag ins-yes">保險科技：間接有幫助（客服／業務員 agent 的設計方法論）</span><span class="tag">類型：參考 project（書）</span><span class="tag act">參考</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/tirth8205/code-review-graph">2. tirth8205/code-review-graph</a></h3><span class="stars">★★★☆☆</span><span class="meta">Python｜21,122★（今日 +551）</span></div>
+  <p class="desc">本地優先的程式碼知識圖譜（MCP＋CLI），讓 AI 只讀相關程式碼、大幅省 token。注意：與家族已裝的 graphify skill 功能重疊，先不重複裝。</p>
+  <div class="tags"><span class="tag sister">主場：Eos</span><span class="tag ins-yes">保險科技：間接（API 中台程式碼審查）</span><span class="tag">類型：MCP 工具</span><span class="tag act">不裝（已有 graphify）</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/kvcache-ai/ktransformers">3. kvcache-ai/ktransformers</a></h3><span class="stars">★★☆☆☆</span><span class="meta">Python｜18,337★（今日 +328）</span></div>
+  <p class="desc">異構 LLM 推論／微調優化框架（CPU＋GPU 混合跑大模型），適合地端自建模型的團隊。</p>
+  <div class="tags"><span class="tag sister">主場：Eos（弱關聯）</span><span class="tag ins-no">保險科技：目前無（除非為個資合規走地端部署才相關）</span><span class="tag">類型：參考 project</span><span class="tag act">不裝</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/rohitg00/ai-engineering-from-scratch">4. rohitg00/ai-engineering-from-scratch</a></h3><span class="stars">★★★☆☆</span><span class="meta">Python｜39,627★（今日 +507）</span></div>
+  <p class="desc">503 堂課、20 階段的 AI 工程自學教材（README 實查：badge 標示 503 lessons／20 phases），從基礎到 agent 完整路徑。</p>
+  <div class="tags"><span class="tag sister">主場：全員教育資源</span><span class="tag ins-yes">保險科技：間接（團隊 AI 素養，含佑璇這類 AI 新手協作者）</span><span class="tag">類型：參考 project（教材）</span><span class="tag act">參考</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/jamiepine/voicebox">5. jamiepine/voicebox</a></h3><span class="stars">★★★★☆</span><span class="meta">TypeScript｜43,306★（今日 +629）</span></div>
+  <p class="desc">開源本地 AI 語音工作室：聲音克隆、TTS、系統級聽寫、agent 語音對話，全部在本機跑。</p>
+  <div class="tags"><span class="tag sister">主場：Calliope（STT／語音整合）</span><span class="tag ins-yes">保險科技：有——客服語音、業務員語音輸入；同時提醒聲音克隆的冒名詐騙風險（資安意識教材）</span><span class="tag">類型：參考 project（桌面 app）</span><span class="tag act">參考／待 Calliope 評估</span></div>
+</div>
+
+<h2>B. Claude 生態 Trending Top 5</h2>
+<p class="section-note">來源：GitHub search API「claude-code」依 stars 排序（2026-07-20），與 A 組無重複</p>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/affaan-m/ECC">1. affaan-m/ECC</a></h3><span class="stars">★★★★☆</span><span class="meta">JavaScript｜231,218★</span></div>
+  <p class="desc">Claude Code 的 agent harness 優化系統：skills、instincts、記憶、安全、研究優先開發流程，附 GitHub App 與多語文件（含繁中）。</p>
+  <div class="tags"><span class="tag sister">主場：Eos（全員受益）</span><span class="tag ins-yes">保險科技：間接（提升全家族 agent 生產力與安全紀律）</span><span class="tag">類型：Claude skill／框架集</span><span class="tag act">評估後裝（走 skill-scout 流程報 Evin 核准）</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/NousResearch/hermes-agent">2. NousResearch/hermes-agent</a></h3><span class="stars">★★☆☆☆</span><span class="meta">Python｜217,237★</span></div>
+  <p class="desc">Nous Research 的開源通用 agent（CLI＋桌面版），主打「與你一起成長」的個人 agent。</p>
+  <div class="tags"><span class="tag sister">主場：Eos（弱關聯）</span><span class="tag ins-no">保險科技：無直接幫助（定位與現行 Claude Code 重疊）</span><span class="tag">類型：參考 project</span><span class="tag act">不裝</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/multica-ai/andrej-karpathy-skills">3. multica-ai/andrej-karpathy-skills</a></h3><span class="stars">★★★★★</span><span class="meta">194,358★</span></div>
+  <p class="desc">單一 CLAUDE.md 修正 LLM 寫程式壞習慣（源自 Karpathy 觀察）。就是 Evin 2026-07-12 拍板全家族安裝的那套行為準則四原則——上游已衝到 19.4 萬星，值得回頭看有無更新版。</p>
+  <div class="tags"><span class="tag sister">主場：全員</span><span class="tag ins-yes">保險科技：間接（程式品質＝中台可靠度）</span><span class="tag">類型：Claude skill（CLAUDE.md）</span><span class="tag act">已裝 ✅（追上游更新）</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools">4. x1xhlol/system-prompts-and-models-of-ai-tools</a></h3><span class="stars">★★★☆☆</span><span class="meta">142,086★</span></div>
+  <p class="desc">各家 AI 工具（Cursor、Devin、Claude Code 等）的 system prompt 彙整大全，是研究 prompt 設計與洩漏風險的一手素材。</p>
+  <div class="tags"><span class="tag sister">主場：Vena（資安／合規視角）＋ Eos</span><span class="tag ins-yes">保險科技：有——prompt injection 防護意識（呼應 7/14 I108 偽造任務事件）</span><span class="tag">類型：參考 project</span><span class="tag act">參考</span></div>
+</div>
+
+<div class="card">
+  <div class="top"><h3><a href="https://github.com/anthropics/claude-code">5. anthropics/claude-code</a></h3><span class="stars">★★★★★</span><span class="meta">Python｜138,331★</span></div>
+  <p class="desc">Anthropic 官方 Claude Code 本體——全家族五姊妹每天賴以運作的引擎，列榜供追蹤官方更新節奏。</p>
+  <div class="tags"><span class="tag sister">主場：全員</span><span class="tag ins-yes">保險科技：是一切 agent 服務的基礎設施</span><span class="tag">類型：官方工具</span><span class="tag act">已用 ✅</span></div>
+</div>
+
+<div class="priority">
+  <h2>今日優先看 3 個</h2>
+  <ol>
+    <li><b>bojieli/ai-agent-book</b>（A-1）——今日 +1,734 星全榜最熱，中文 agent 工程專書，客服／業務員 agent 設計可直接取經。</li>
+    <li><b>affaan-m/ECC</b>（B-1）——23 萬星的 Claude Code harness 優化系統，可能有可摘用的 skill／記憶／安全模組，建議走 skill-scout 評估。</li>
+    <li><b>jamiepine/voicebox</b>（A-5）——本地語音全家桶，客服語音與業務員語音輸入的候選方案；聲音克隆詐騙風險同時是保險業資安教材。</li>
+  </ol>
+</div>
+
+<footer>Themis 秉衡 📊｜羅賓斯科技 財務分析 AI 代理人｜資料時點 2026-07-20，星數以當日 API／頁面實查為準</footer>
+</div></body></html>
