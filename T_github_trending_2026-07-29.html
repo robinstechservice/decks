@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themis 秉衡｜GitHub 趨勢分析 2026-07-29</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --gold:#E89E3F; --ink:#1a2233; --sub:#5a6478;
+    --line:#e3e7f0; --bg:#f6f8fc; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px 64px}
+  header{background:linear-gradient(135deg,var(--navy) 0%,#1b3170 100%);color:#fff;padding:38px 24px 30px;
+         border-bottom:4px solid var(--gold)}
+  header .inner{max-width:960px;margin:0 auto}
+  .brand{font-size:13px;letter-spacing:3px;color:var(--gold);font-weight:700;margin-bottom:6px}
+  h1{margin:0 0 6px;font-size:26px;font-weight:800}
+  .meta{font-size:13px;color:#c9d2ea}
+  .lede{max-width:960px;margin:22px auto 6px;background:var(--card);border:1px solid var(--line);
+        border-left:4px solid var(--gold);border-radius:8px;padding:16px 20px;font-size:14.5px}
+  h2{margin:38px 0 4px;font-size:20px;color:var(--navy);border-bottom:2px solid var(--navy);
+     padding-bottom:8px;display:flex;align-items:center;gap:10px}
+  h2 .tag{font-size:11px;background:var(--navy);color:#fff;padding:3px 9px;border-radius:20px;letter-spacing:1px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:16px 0;
+        box-shadow:0 1px 3px rgba(15,31,77,.05)}
+  .card .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .repo{font-size:17px;font-weight:800;color:var(--navy)}
+  .repo a{color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold)}
+  .lang{font-size:12px;color:var(--sub);font-weight:600}
+  .stars{color:var(--gold);font-size:16px;letter-spacing:1px;white-space:nowrap}
+  .stars .n{color:var(--sub);font-size:12px;margin-left:4px}
+  .desc{margin:8px 0 12px;font-size:14.5px}
+  .row{display:flex;flex-wrap:wrap;gap:8px;font-size:12.5px}
+  .chip{background:#eef2fb;border:1px solid var(--line);border-radius:20px;padding:4px 11px;color:var(--ink)}
+  .chip b{color:var(--navy)}
+  .chip.act{background:#fff4e6;border-color:#f2d4a6}
+  .chip.act b{color:#c47a1a}
+  .verdict{margin-top:10px;font-size:13.5px;color:var(--sub);border-top:1px dashed var(--line);padding-top:9px}
+  .verdict b{color:var(--navy)}
+  .top3{background:var(--navy);color:#fff;border-radius:12px;padding:24px 26px;margin:40px 0 10px}
+  .top3 h3{margin:0 0 14px;color:var(--gold);font-size:18px;letter-spacing:1px}
+  .top3 ol{margin:0;padding-left:20px}
+  .top3 li{margin:0 0 12px;font-size:14.5px}
+  .top3 li b{color:#fff}
+  .top3 a{color:var(--gold);text-decoration:none;border-bottom:1px dotted var(--gold)}
+  footer{text-align:center;color:var(--sub);font-size:12px;margin-top:36px}
+  @media(max-width:560px){h1{font-size:22px}.repo{font-size:15.5px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <div class="brand">THEMIS 秉衡 · 羅賓斯科技財務分析</div>
+    <h1>每日 GitHub 趨勢分析</h1>
+    <div class="meta">2026-07-29（週三）｜A. GitHub Trending Top 5 ＋ B. Claude 生態 Trending Top 5｜以「對姊妹家族＋保險科技業務」的實用度評星</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="lede">
+    今天掃兩組共 10 個熱門 repo。整體看：<b>Claude 生態</b>這組跟我們最貼身（agent 品質、多模型中台、prompt 工程），<b>GitHub Trending</b>這組偏工具與框架、對保險科技多屬「間接參考」。星等（★1～5）代表<b>對我們的實用度</b>而非 GitHub 星數；⚠️ 註：GitHub search API 回傳的 raw 星數異常膨脹，本報告不採信絕對值、只用相對排序。10 個全數評為「參考／不裝」——沒有可直接安裝的新財務 skill，維持現有 pipeline。
+  </div>
+
+  <!-- ===================== A 組 ===================== -->
+  <h2><span class="tag">A</span> GitHub Trending Top 5</h2>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/pascalorg/editor" target="_blank">pascalorg/editor</a></div>
+      <div><span class="lang">TypeScript</span> &nbsp; <span class="stars">★★☆☆☆<span class="n">2/5</span></span></div>
+    </div>
+    <div class="desc">建立與分享 3D 建築專案的線上編輯器。</div>
+    <div class="row">
+      <span class="chip">主場：<b>Iris（視覺）</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>低</b>（不動產／建築領域，與車險核心無關）</span>
+      <span class="chip act">結論：<b>不裝</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>漂亮的 3D 工具，但離我們業務太遠，純觀摩前端 3D 互動即可。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/jenkinsci/jenkins" target="_blank">jenkinsci/jenkins</a></div>
+      <div><span class="lang">Java</span> &nbsp; <span class="stars">★★★☆☆<span class="n">3/5</span></span></div>
+    </div>
+    <div class="desc">老牌開源 CI/CD 自動化伺服器。</div>
+    <div class="row">
+      <span class="chip">主場：<b>Eos（自動化）</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>間接</b>（部署／排程自動化、API 中台 CI）</span>
+      <span class="chip act">結論：<b>參考</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>成熟穩定但偏重；我們的 cron／launchd 已夠用，除非要正式化 API 中台的 CI 流水線才考慮。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/moeru-ai/airi" target="_blank">moeru-ai/airi</a></div>
+      <div><span class="lang">TypeScript</span> &nbsp; <span class="stars">★★★☆☆<span class="n">3/5</span></span></div>
+    </div>
+    <div class="desc">可自架的 AI 陪伴角色，支援語音對話與遊戲互動。</div>
+    <div class="row">
+      <span class="chip">主場：<b>Calliope（整合）</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>中</b>（語音客服／業務員陪跑對話介面有想像空間）</span>
+      <span class="chip act">結論：<b>參考</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>語音對話架構值得抽出來看，若未來要做「業務員語音問答助手」可參考其 self-host 架法。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/andrewyng/aisuite" target="_blank">andrewyng/aisuite</a></div>
+      <div><span class="lang">Python</span> &nbsp; <span class="stars">★★★★☆<span class="n">4/5</span></span></div>
+    </div>
+    <div class="desc">Andrew Ng 團隊：多家生成式 AI 供應商的統一呼叫介面（一行切換 model）。</div>
+    <div class="row">
+      <span class="chip">主場：<b>Calliope（整合）</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>高</b>（多模型切換／API 中台成本與備援策略）</span>
+      <span class="chip act">結論：<b>參考（重點看）</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>與我們「API 中台＋全站 Opus/Fable 費用把關」策略高度相關，是抽象多供應商層的乾淨範例。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/affaan-m/ECC" target="_blank">affaan-m/ECC</a></div>
+      <div><span class="lang">JavaScript</span> &nbsp; <span class="stars">★★★★☆<span class="n">4/5</span></span></div>
+    </div>
+    <div class="desc">AI agent 效能優化系統（skills／instincts／記憶／安全／研究一體的 agent harness）。</div>
+    <div class="row">
+      <span class="chip">主場：<b>Eos／Themis</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>中高</b>（agent 記憶／資安治理與我們家族架構同題）</span>
+      <span class="chip act">結論：<b>參考（重點看）</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>把「技能＋記憶＋安全」整合成 harness 的思路，正對我們五姊妹的治理痛點，值得拆解學。</div>
+  </div>
+
+  <!-- ===================== B 組 ===================== -->
+  <h2><span class="tag">B</span> Claude 生態 Trending Top 5</h2>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/anthropics/claude-code" target="_blank">anthropics/claude-code</a></div>
+      <div><span class="lang">TypeScript</span> &nbsp; <span class="stars">★★★★★<span class="n">5/5</span></span></div>
+    </div>
+    <div class="desc">Anthropic 官方 agentic coding 工具，理解整個 codebase、直接在終端機協作。</div>
+    <div class="row">
+      <span class="chip">主場：<b>全體（我們就跑在它上面）</b></span>
+      <span class="chip">類型：<b>核心平台</b></span>
+      <span class="chip">保險科技幫助：<b>核心基礎設施</b></span>
+      <span class="chip act">結論：<b>已裝／必看更新</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>我們的地基，官方 repo 的 release note 每天值得掃一眼，掌握新 skill／channel 能力。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank">multica-ai/andrej-karpathy-skills</a></div>
+      <div><span class="lang">Markdown</span> &nbsp; <span class="stars">★★★★☆<span class="n">4/5</span></span></div>
+    </div>
+    <div class="desc">單一 CLAUDE.md 改善 Claude Code 行為，源自 Andrej Karpathy 的觀察與四原則。</div>
+    <div class="row">
+      <span class="chip">主場：<b>全體／Themis</b></span>
+      <span class="chip">類型：<b>參考（skill/規範）</b></span>
+      <span class="chip">保險科技幫助：<b>間接</b>（提升所有 agent 產出品質＝報告更可靠）</span>
+      <span class="chip act">結論：<b>參考（家族已同源）</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>與我們已安裝的 karpathy-skills 家規同源；比對它是否有新條文可回補到 shared/sop。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools" target="_blank">x1xhlol/system-prompts-and-models-of-ai-tools</a></div>
+      <div><span class="lang">Markdown</span> &nbsp; <span class="stars">★★★★☆<span class="n">4/5</span></span></div>
+    </div>
+    <div class="desc">蒐集 Claude Code、Cursor、Devin 等主流 AI 工具的完整 system prompt 與模型設定。</div>
+    <div class="row">
+      <span class="chip">主場：<b>全體</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>間接</b>（prompt engineering 學習素材）</span>
+      <span class="chip act">結論：<b>參考</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>逆向工程一線工具 prompt 的教材，優化我們自己 skill 的 system prompt 時很有料。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/garrytan/gstack" target="_blank">garrytan/gstack</a></div>
+      <div><span class="lang">Shell</span> &nbsp; <span class="stars">★★★★☆<span class="n">4/5</span></span></div>
+    </div>
+    <div class="desc">Garry Tan 的 Claude Code 實戰設定：23 個各司其職（CEO／設計／工程經理…）的角色化工具。</div>
+    <div class="row">
+      <span class="chip">主場：<b>Calliope（整合）／全體</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>間接</b>（多 agent 角色編排的組織範例）</span>
+      <span class="chip act">結論：<b>參考</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>把 agent 拆成組織角色的實作範例，正好對照我們五姊妹分工，可借其編排哲學。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div class="repo"><a href="https://github.com/NousResearch/hermes-agent" target="_blank">NousResearch/hermes-agent</a></div>
+      <div><span class="lang">Python</span> &nbsp; <span class="stars">★★★☆☆<span class="n">3/5</span></span></div>
+    </div>
+    <div class="desc">NousResearch 的「會跟你一起成長」的通用 agent 框架。</div>
+    <div class="row">
+      <span class="chip">主場：<b>Eos（自動化）</b></span>
+      <span class="chip">類型：<b>參考 project</b></span>
+      <span class="chip">保險科技幫助：<b>低～中</b>（通用 agent 框架，非財務／監理專用）</span>
+      <span class="chip act">結論：<b>參考</b></span>
+    </div>
+    <div class="verdict"><b>一句評：</b>另一套 agent 記憶／成長框架，概念可看，但我們已站在 Claude Code 上，落地誘因不高。</div>
+  </div>
+
+  <!-- ===================== 今日優先 ===================== -->
+  <div class="top3">
+    <h3>★ 今日優先看 3 個</h3>
+    <ol>
+      <li><b><a href="https://github.com/anthropics/claude-code" target="_blank">anthropics/claude-code</a>（★5）</b>——我們的核心地基，掃 release note 掌握新能力，成本最低、回報最直接。</li>
+      <li><b><a href="https://github.com/andrewyng/aisuite" target="_blank">andrewyng/aisuite</a>（★4）</b>——多模型統一介面，最貼我們「API 中台＋Opus/Fable 費用把關」策略，是抽象供應商層的乾淨範本。</li>
+      <li><b><a href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank">multica-ai/andrej-karpathy-skills</a>（★4）</b>——與家族已裝 karpathy 家規同源，比對是否有新條文可回補 shared/sop，直接拉高全員產出品質。</li>
+    </ol>
+  </div>
+
+  <footer>
+    Themis 秉衡 📊 · 羅賓斯科技財務分析 AI 代理人 · 2026-07-29 自動生成<br>
+    註：星等為「對我們的實用度」相對評分；GitHub API raw 星數異常，未採信絕對值。
+  </footer>
+</div>
+</body>
+</html>
