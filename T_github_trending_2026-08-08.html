@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themis 秉衡｜GitHub 趨勢分析 2026-08-08</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#1B2E63; --gold:#E89E3F; --gold-soft:#F6E4C6;
+    --ink:#1c2333; --muted:#5b6478; --line:#e5e8f0; --bg:#f4f6fb; --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,-apple-system,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.7;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px 64px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+    padding:34px 26px 30px;border-radius:0 0 22px 22px;box-shadow:0 6px 22px rgba(15,31,77,.18);}
+  header .kicker{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:13px;}
+  header h1{margin:8px 0 4px;font-size:26px;line-height:1.35;}
+  header .sub{color:#cdd6ee;font-size:14px;margin-top:6px;}
+  header .meta{margin-top:14px;font-size:12.5px;color:#aeb9dd;border-top:1px solid rgba(255,255,255,.15);padding-top:10px;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:20px 0 6px;font-size:12.5px;color:var(--muted);}
+  .legend b{color:var(--navy);}
+  h2.sec{margin:34px 0 6px;font-size:20px;color:var(--navy);
+    border-left:6px solid var(--gold);padding-left:12px;}
+  h2.sec span{color:var(--muted);font-size:13px;font-weight:400;margin-left:8px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:18px 20px;margin:14px 0;box-shadow:0 2px 10px rgba(15,31,77,.05);}
+  .card .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px;justify-content:space-between;}
+  .card .name{font-size:17px;font-weight:700;color:var(--navy);word-break:break-all;}
+  .card .name a{color:inherit;text-decoration:none;border-bottom:2px solid var(--gold-soft);}
+  .stars{color:var(--gold);font-size:16px;letter-spacing:1px;white-space:nowrap;}
+  .stars .off{color:#d9d2c4;}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px;}
+  .badge{font-size:11.5px;padding:3px 9px;border-radius:999px;font-weight:600;}
+  .b-lang{background:#eef1f8;color:var(--navy2);}
+  .b-star{background:#fff5e8;color:#b9781f;}
+  .b-sis{background:var(--navy);color:#fff;}
+  .b-type{background:#eafaf1;color:#1f7a4d;}
+  .b-type.ref{background:#f3f0fa;color:#5a3fa0;}
+  .desc{margin:8px 0 2px;font-size:14.5px;}
+  .row{font-size:13.5px;margin:5px 0;color:var(--ink);}
+  .row b{color:var(--navy2);}
+  .ins{background:#f0f6ff;border-left:3px solid var(--gold);color:#dc6a00;background:#fff8ee;
+    padding:2px 8px;border-radius:4px;font-weight:600;}
+  .verdict{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;padding:4px 12px;border-radius:8px;}
+  .v-install{background:#e5f6ec;color:#137a3b;}
+  .v-ref{background:#fdf1e0;color:#a9651a;}
+  .v-skip{background:#f2f3f6;color:#6b7280;}
+  .priority{background:linear-gradient(135deg,#12234f,#233a7a);color:#fff;border-radius:16px;
+    padding:22px 24px;margin-top:34px;box-shadow:0 6px 22px rgba(15,31,77,.2);}
+  .priority h2{margin:0 0 12px;color:var(--gold);font-size:19px;}
+  .priority ol{margin:0;padding-left:20px;}
+  .priority li{margin:9px 0;font-size:14.5px;color:#eef2ff;}
+  .priority li b{color:#fff;}
+  .priority .tag{color:var(--gold);font-weight:700;}
+  footer{margin-top:30px;font-size:12px;color:var(--muted);text-align:center;line-height:1.8;}
+  .note{font-size:12px;color:var(--muted);background:#fbfbfe;border:1px dashed var(--line);
+    border-radius:10px;padding:10px 14px;margin:16px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">THEMIS 秉衡 📊 ｜ 每日情報</div>
+  <h1>GitHub 趨勢分析 · 兩組各 Top 5</h1>
+  <div class="sub">A. GitHub Trending（daily）＋ B. Claude 生態 Trending（stars 排序）</div>
+  <div class="meta">日期 2026-08-08｜資料源：github.com/trending、GitHub Search API（topic:claude-code, sort=stars）｜星數為擷取當下之來源數值，僅供相對熱度參考</div>
+</header>
+
+<div class="legend">
+  <span><b>建議指數</b> ★1～5</span>
+  <span><b>主場姊妹</b> 視覺 Iris／法務 Vena／財報 Themis／自動化 Eos／整合 Calliope</span>
+  <span><b>保險科技</b> 個資·資安·監理·客服·承保·業務員工具·API 中台</span>
+</div>
+
+<div class="note">⚠️ 資料誠實註記：本次來源回傳的星數偏高（多支破十萬），與一般認知量級有落差；因無法離開此環境向 GitHub 官方二次核對，星數僅按「來源原值」呈現、當作<strong>相對排序</strong>用，不作為絕對事實引用。評級與判斷以「repo 用途本身」為準，不看星數灌水。</div>
+
+<!-- ============ A ============ -->
+<h2 class="sec">A. GitHub Trending Top 5 <span>綜合熱門（每日）</span></h2>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/PrimeIntellect-ai/prime-agent">PrimeIntellect-ai / prime-agent</a></div>
+    <div class="stars">★★★<span class="off">★★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">TypeScript</span>
+    <span class="badge b-star">6,407★</span>
+    <span class="badge b-sis">主場：Eos 自動化</span>
+    <span class="badge b-type ref">參考 project</span>
+  </div>
+  <div class="desc">一句話：會<strong>自我改進、能跑長時間自主任務</strong>的編碼代理（RLM agent）框架。</div>
+  <div class="row"><b>保險科技：</b>間接。長任務自主化理論上可套在批次承保／理賠試算，但客製門檻高、目前無現成保險用例。</div>
+  <span class="verdict v-ref">建議：參考（不裝）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/addyosmani/agent-skills">addyosmani / agent-skills</a></div>
+    <div class="stars">★★★★<span class="off">★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">JavaScript</span>
+    <span class="badge b-star">83,872★</span>
+    <span class="badge b-sis">主場：Calliope 整合</span>
+    <span class="badge b-type">Claude skill 合輯</span>
+  </div>
+  <div class="desc">一句話：Google 工程名家 addyosmani 整理的<strong>「生產級」AI coding agent 技能合輯</strong>。</div>
+  <div class="row"><b>保險科技：</b>間接但實用——提升全家族 agent 的工程品質與一致性；可挑選對報告產線／API 開發有用的 skill 移植。</div>
+  <span class="verdict v-ref">建議：參考、選裝有用者（★★★★）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/cloudflare/computer">cloudflare / computer</a></div>
+    <div class="stars">★★★<span class="off">★★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">TypeScript</span>
+    <span class="badge b-star">5,657★</span>
+    <span class="badge b-sis">主場：Eos 自動化</span>
+    <span class="badge b-type ref">參考 project</span>
+  </div>
+  <div class="desc">一句話：Cloudflare 出品，<strong>給 agent 一台可操作的雲端電腦／瀏覽器沙箱</strong>。</div>
+  <div class="row"><b>保險科技：</b>可做網頁自動取件（監理公告、TWSE 抓資料）；但全站已有 GCIS／司法院／TWSE 免費 API 工具箱，重疊度高。</div>
+  <span class="verdict v-ref">建議：參考（不急裝）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/mattpocock/skills">mattpocock / skills</a></div>
+    <div class="stars">★★★<span class="off">★★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">Shell</span>
+    <span class="badge b-star">208,763★</span>
+    <span class="badge b-sis">主場：Calliope 整合</span>
+    <span class="badge b-type">Claude skill 合輯</span>
+  </div>
+  <div class="desc">一句話：TypeScript 名師 Matt Pocock 公開的<strong>個人 .agents 技能目錄</strong>。</div>
+  <div class="row"><b>保險科技：</b>低。內容偏前端／TS 工程，財會與監理用途少；可當 skill 寫法範本翻閱。</div>
+  <span class="verdict v-skip">建議：翻閱即可（不裝）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/obra/superpowers">obra / superpowers</a></div>
+    <div class="stars">★★★★<span class="off">★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">Shell</span>
+    <span class="badge b-star">268,724★</span>
+    <span class="badge b-sis">主場：Calliope 整合</span>
+    <span class="badge b-type ref">參考方法論</span>
+  </div>
+  <div class="desc">一句話：一套「實際有效」的<strong>代理技能框架＋軟體開發方法論</strong>。</div>
+  <div class="row"><b>保險科技：</b>間接。方法論層級的東西，可提升全家族 agent 的工作流紀律；值得抽方法論、不必整包安裝。</div>
+  <span class="verdict v-ref">建議：讀方法論、擇優吸收（★★★★）</span>
+</div>
+
+<!-- ============ B ============ -->
+<h2 class="sec">B. Claude 生態 Trending Top 5 <span>topic:claude-code · stars 排序（已去除與 A 重複）</span></h2>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/affaan-m/ECC">affaan-m / ECC</a></div>
+    <div class="stars">★★★★<span class="off">★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">JavaScript</span>
+    <span class="badge b-star">238,570★</span>
+    <span class="badge b-sis">主場：Calliope／Eos</span>
+    <span class="badge b-type ref">參考 project</span>
+  </div>
+  <div class="desc">一句話：跨 Claude／Codex／Cursor 的 <strong>agent harness 效能優化系統</strong>（技能＋直覺＋記憶＋安全＋研究優先）。</div>
+  <div class="row"><b>保險科技：</b><span class="ins">memory＋security 模組對合規稽核、個資留痕有價值</span>；整包過大，宜挑「記憶」「安全」部件參考。</div>
+  <span class="verdict v-ref">建議：參考、選部件（★★★★）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/NousResearch/hermes-agent">NousResearch / hermes-agent</a></div>
+    <div class="stars">★★★<span class="off">★★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">Python</span>
+    <span class="badge b-star">227,075★</span>
+    <span class="badge b-sis">主場：Eos 自動化</span>
+    <span class="badge b-type ref">參考 project</span>
+  </div>
+  <div class="desc">一句話：NousResearch 的<strong>「會隨你成長」的通用代理</strong>。</div>
+  <div class="row"><b>保險科技：</b>泛用型，無現成保險用例；先觀望其記憶／成長機制是否可借鏡。</div>
+  <span class="verdict v-skip">建議：觀望（不裝）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/farion1231/cc-switch">farion1231 / cc-switch</a></div>
+    <div class="stars">★★★<span class="off">★★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">Rust</span>
+    <span class="badge b-star">125,453★</span>
+    <span class="badge b-sis">主場：Calliope 整合</span>
+    <span class="badge b-type ref">參考工具</span>
+  </div>
+  <div class="desc">一句話：跨平台桌面版<strong>多模型／多 CLI 切換管理器</strong>（Claude Code／Codex／OpenCode…一站切換）。</div>
+  <div class="row"><b>保險科技：</b>不直接相關；但<strong>Leon 維運全家族五支 bot 的模型／金鑰管理有實用價值</strong>，可請 Leon 評估。</div>
+  <span class="verdict v-ref">建議：Leon 評估運維用（★★★）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill">nextlevelbuilder / ui-ux-pro-max-skill</a></div>
+    <div class="stars">★★★<span class="off">★★</span></div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">Python</span>
+    <span class="badge b-star">114,487★</span>
+    <span class="badge b-sis">主場：Iris 視覺</span>
+    <span class="badge b-type">Claude skill</span>
+  </div>
+  <div class="desc">一句話：給多平台的<strong>專業 UI/UX 設計智能 skill</strong>。</div>
+  <div class="row"><b>保險科技：</b>客服／業務員 App 介面、報告與 IR 版面美化有直接幫助；屬 Iris 主場，可請 Iris 試裝評估。</div>
+  <span class="verdict v-ref">建議：Iris 評估選裝（★★★）</span>
+</div>
+
+<div class="card">
+  <div class="top">
+    <div class="name"><a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs / graphify</a></div>
+    <div class="stars">★★★★★</div>
+  </div>
+  <div class="badges">
+    <span class="badge b-lang">Python</span>
+    <span class="badge b-star">104,013★</span>
+    <span class="badge b-sis">主場：Themis 財報／Calliope</span>
+    <span class="badge b-type">Claude skill</span>
+  </div>
+  <div class="desc">一句話：把<strong>程式庫＋文件＋SQL＋PDF 變成「可查詢的知識圖譜」</strong>的 <code>/graphify</code> skill（本地 AST、每條邊都可解釋、無向量庫）。</div>
+  <div class="row"><b>保險科技：</b><span class="ins">財報／監理法規／保單條款 PDF → 知識圖譜，正中 Themis 財務分析主場</span>；且 Leon 全域 CLAUDE.md 已掛 <code>/graphify</code>，全站可直接用。</div>
+  <span class="verdict v-install">建議：強推、已可用（★★★★★）</span>
+</div>
+
+<!-- ============ Priority ============ -->
+<div class="priority">
+  <h2>🎯 今日優先看 3 個</h2>
+  <ol>
+    <li><span class="tag">[B]</span> <b>Graphify-Labs / graphify</b> ★★★★★ — 財報／監理 PDF → 知識圖譜，Themis 主場、全站已可用，先拿一份財報實測查詢。</li>
+    <li><span class="tag">[A]</span> <b>addyosmani / agent-skills</b> ★★★★ — 生產級 skill 合輯，挑對報告產線／API 有用的移植，全站提質。</li>
+    <li><span class="tag">[A]</span> <b>obra / superpowers</b> ★★★★ — agent 工作流方法論，值得全家族抽取吸收、不必整包裝。</li>
+  </ol>
+</div>
+
+<footer>
+  羅賓斯科技 · Themis 秉衡 📊 財務分析 AI 代理人<br>
+  本報告為每日 GitHub 情報彙整，星數依來源原值僅供相對熱度參考、非絕對事實；安裝前請走 Iris 每日許願／Evin 核准流程。<br>
+  2026-08-08
+</footer>
+</div>
+</body>
+</html>
