@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themis｜GitHub 趨勢分析 2026-08-23</title>
+<style>
+  :root{--navy:#0F1F4D;--gold:#E89E3F;--ink:#1c2333;--mute:#6b7488;--line:#e6e9f0;--bg:#f6f7fb;--card:#ffffff;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:940px;margin:0 auto;padding:0 18px 60px;}
+  header{background:linear-gradient(135deg,var(--navy) 0%,#1a2f6b 100%);color:#fff;padding:34px 24px 30px;border-radius:0 0 18px 18px;}
+  header .kick{color:var(--gold);font-weight:700;letter-spacing:.14em;font-size:13px;}
+  header h1{margin:8px 0 6px;font-size:26px;font-weight:800;}
+  header .sub{color:#c7d0e6;font-size:14px;}
+  header .meta{margin-top:14px;font-size:12.5px;color:#9fb0d6;border-top:1px solid rgba(255,255,255,.15);padding-top:12px;}
+  h2.sec{margin:38px 0 6px;font-size:20px;color:var(--navy);border-left:6px solid var(--gold);padding-left:12px;}
+  .seclead{color:var(--mute);font-size:13px;margin:0 0 14px 18px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:14px 0;box-shadow:0 1px 3px rgba(15,31,77,.05);}
+  .card .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;justify-content:space-between;}
+  .repo{font-size:17px;font-weight:800;color:var(--navy);word-break:break-all;}
+  .repo a{color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold);}
+  .stars{color:var(--gold);font-weight:800;font-size:16px;letter-spacing:1px;white-space:nowrap;}
+  .lang{display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:6px;vertical-align:middle;}
+  .oneline{margin:8px 0 12px;font-size:14.5px;}
+  .rows{display:grid;grid-template-columns:110px 1fr;gap:4px 10px;font-size:13.5px;}
+  .rows .k{color:var(--mute);font-weight:700;}
+  .tag{display:inline-block;background:#eef1f8;color:var(--navy);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;margin-right:4px;}
+  .verdict{font-weight:800;}
+  .go{color:#1a7f4b;} .maybe{color:#b8860b;} .no{color:#b23b3b;}
+  .hit{color:#1a7f4b;font-weight:700;} .nohit{color:#8a94a8;}
+  .prio{background:linear-gradient(135deg,#fff8ec,#fdf1da);border:1px solid var(--gold);}
+  .prio h2{color:var(--navy);border:none;padding:0;margin:0 0 4px;}
+  .prio ol{margin:8px 0 0;padding-left:22px;}
+  .prio li{margin:8px 0;font-size:14.5px;}
+  .warn{background:#fff4f4;border:1px solid #f0c9c9;border-radius:12px;padding:12px 16px;font-size:13px;color:#7a2b2b;margin:14px 0;}
+  footer{margin-top:34px;text-align:center;color:var(--mute);font-size:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="kick">THEMIS 秉衡 · 每日情報</div>
+  <h1>GitHub 趨勢分析</h1>
+  <div class="sub">GitHub Trending × Claude 生態 熱門 repo 掃描與採用建議</div>
+  <div class="meta">日期 2026-08-23　·　範圍 GitHub Trending Top 5 + Claude 生態 Top 5（共 10 個）　·　主場對照：視覺 Iris｜法務 Vena｜財報 Themis｜自動化 Eos｜整合 Calliope</div>
+</header>
+
+<div class="wrap">
+
+<div class="warn">
+  ⚠️ 資安提醒（Vena 視角）：B 組多個 repo 顯示 20 萬～24 萬顆星、且與功能不成比例，疑似 star 灌水／刷榜（GitHub 近期常見）。星數僅供排序參考，<b>採用前務必做供應鏈與程式碼查核</b>，勿因高星就信任。
+</div>
+
+<h2 class="sec">A. GitHub Trending Top 5</h2>
+<p class="seclead">來源：github.com/trending（daily）前 5 名。</p>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/openai/codex">openai/codex</a><span class="lang">Rust</span></div><div class="stars">★★★☆☆</div></div>
+  <div class="oneline">OpenAI 官方、跑在終端機的輕量 coding agent（對標 Claude Code）。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>自動化 Eos（開發流程）</div>
+    <div class="k">保險科技</div><div><span class="nohit">間接</span>：加速內部開發，非直接觸及承保／客服／監理。</div>
+    <div class="k">類型</div><div><span class="tag">參考 project</span>競品觀察</div>
+    <div class="k">建議</div><div class="verdict no">不裝</div>
+    <div class="k">理由</div><div>我們家族已標準化 Claude Code，換 harness 成本高；留作競品趨勢觀察即可。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/mattpocock/skills">mattpocock/skills</a><span class="lang">Shell</span></div><div class="stars">★★★★☆</div></div>
+  <div class="oneline">知名 TS 教育者 Matt Pocock 公開的 .agents skill 集，主打「給真工程師用」。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>整合 Calliope（全家族 skill 體質）</div>
+    <div class="k">保險科技</div><div><span class="nohit">間接</span>：提升 agent 產出品質，非業務直用。</div>
+    <div class="k">類型</div><div><span class="tag">Claude skill 集</span></div>
+    <div class="k">建議</div><div class="verdict maybe">參考／選裝</div>
+    <div class="k">理由</div><div>可挑對財報／文件流程有用的單顆 skill 借鏡，不整包搬。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a><span class="lang">JavaScript</span></div><div class="stars">★★★★☆</div></div>
+  <div class="oneline">Claude Code／Codex 的 agent 效能優化系統，含 skills／memory／security 模組。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>自動化 Eos ＋ 法務 Vena（security）</div>
+    <div class="k">保險科技</div><div><span class="hit">有幫助</span>：memory 與 security 模組對「客戶資料存取控管、合規稽核」有借鏡價值。</div>
+    <div class="k">類型</div><div><span class="tag">skill／framework</span></div>
+    <div class="k">建議</div><div class="verdict maybe">參考</div>
+    <div class="k">理由</div><div>此 repo 同時登上 A 組 trending；架構值得研究，先讀 security 設計再談導入。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/obra/superpowers">obra/superpowers</a><span class="lang">Shell</span></div><div class="stars">★★★★☆</div></div>
+  <div class="oneline">一套「真的能用」的 agentic skills 框架與軟體開發方法論。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>整合 Calliope（方法論／SOP）</div>
+    <div class="k">保險科技</div><div><span class="nohit">間接</span>：改善開發紀律，利於長期維運。</div>
+    <div class="k">類型</div><div><span class="tag">skill 框架</span></div>
+    <div class="k">建議</div><div class="verdict maybe">參考</div>
+    <div class="k">理由</div><div>與我們 shared/sop 精神相近，可對照補強家族方法論。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/Wei-Shaw/sub2api">Wei-Shaw/sub2api</a><span class="lang">Go</span></div><div class="stars">★★☆☆☆</div></div>
+  <div class="oneline">把 Claude／OpenAI／Gemini／Grok 訂閱轉成共享 API gateway。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>自動化 Eos</div>
+    <div class="k">保險科技</div><div><span class="nohit">無直用</span></div>
+    <div class="k">建議</div><div class="verdict no">不裝</div>
+    <div class="k">理由</div><div><b>合規紅旗（Vena）</b>：共享訂閱恐違各家 ToS，做財務／保險業務不宜承擔此風險。</div>
+  </div>
+</div>
+
+<h2 class="sec">B. Claude 生態 Trending Top 5</h2>
+<p class="seclead">來源：GitHub Search API（topic:claude-code / claude-skills / claude-code-plugin，依 star 排序，已去除與 A 組重複的 affaan-m/ECC）。</p>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></div><div class="stars">★★★☆☆</div></div>
+  <div class="oneline">Nous Research 出的「會跟你一起成長」的 agent。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>自動化 Eos</div>
+    <div class="k">保險科技</div><div><span class="nohit">間接</span>：通用 agent，需看 memory 機制是否可控。</div>
+    <div class="k">類型</div><div><span class="tag">參考 project</span></div>
+    <div class="k">建議</div><div class="verdict maybe">參考（星數存疑）</div>
+    <div class="k">理由</div><div>23 萬星與知名度不成比例，先驗證再論；概念可觀察。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/farion1231/cc-switch">farion1231/cc-switch</a></div><div class="stars">★★★☆☆</div></div>
+  <div class="oneline">跨平台桌面 All-in-One 助手，統一管理／切換 Claude Code、Codex 等多帳號與供應商。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>自動化 Eos ＋ 整合 Calliope</div>
+    <div class="k">保險科技</div><div><span class="nohit">間接</span>：管理多 agent／多帳號的維運工具。</div>
+    <div class="k">類型</div><div><span class="tag">桌面工具 project</span></div>
+    <div class="k">建議</div><div class="verdict maybe">選裝（維運用）</div>
+    <div class="k">理由</div><div>我們五隻 agent 帳號切換若變複雜可評估；但涉 token 管理，Vena 先審資安。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill">nextlevelbuilder/ui-ux-pro-max-skill</a></div><div class="stars">★★★★☆</div></div>
+  <div class="oneline">提供設計智能的 AI skill，跨框架產出專業 UI/UX。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>視覺 Iris（本命主場）</div>
+    <div class="k">保險科技</div><div><span class="hit">有幫助</span>：業務員賦能 App、投保／理賠客戶端介面設計可直接受用。</div>
+    <div class="k">類型</div><div><span class="tag">Claude skill</span></div>
+    <div class="k">建議</div><div class="verdict go">Iris 值得裝／試</div>
+    <div class="k">理由</div><div>與我們 InsurTech 前端需求高度對口，先由 Iris 沙盒試跑一個實案。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a></div><div class="stars">★★★★★</div></div>
+  <div class="oneline">把 codebase／docs／SQL schema／PDF 轉成可查詢的知識圖譜（含社群偵測、god node）。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>財報 Themis（本命）＋ 全家族</div>
+    <div class="k">保險科技</div><div><span class="hit">高度有幫助</span>：把監理函令、保單條款、財報 PDF、法規轉成知識圖譜 → 承保、法遵、客服查詢一次到位。</div>
+    <div class="k">類型</div><div><span class="tag">Claude skill</span></div>
+    <div class="k">建議</div><div class="verdict go">強推（我們已裝 graphify）</div>
+    <div class="k">理由</div><div>本站已內建 graphify skill；此上游版本值得追蹤更新，優先納入財報／監理文件流程。</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="top"><div class="repo"><a href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail</a></div><div class="stars">★★★☆☆</div></div>
+  <div class="oneline">讓 agent 像「最懶的資深工程師」思考——最好的 code 是不寫的 code，主打極簡。</div>
+  <div class="rows">
+    <div class="k">主場姊妹</div><div>全家族（工程紀律）</div>
+    <div class="k">保險科技</div><div><span class="nohit">間接</span></div>
+    <div class="k">類型</div><div><span class="tag">Claude skill</span></div>
+    <div class="k">建議</div><div class="verdict maybe">參考</div>
+    <div class="k">理由</div><div>與家規「簡潔優先／不寫沒被要求的東西」同源，可作 prompt 借鏡。</div>
+  </div>
+</div>
+
+<div class="card prio">
+  <h2>🎯 今日優先看 3 個</h2>
+  <ol>
+    <li><b>Graphify-Labs/graphify（★5）</b> — Themis 本命。監理／保單／財報 PDF → 知識圖譜，承保與法遵直接受用；本站已有 skill，追上游更新即可。</li>
+    <li><b>nextlevelbuilder/ui-ux-pro-max-skill（★4）</b> — Iris 視覺主場。對業務員 App／客戶投保理賠介面高度對口，建議沙盒試一個實案。</li>
+    <li><b>mattpocock/skills（★4）</b> — Calliope 整合。可挑對財報／文件流程有用的單顆 skill 借鏡，提升全家族產出品質。</li>
+  </ol>
+</div>
+
+<footer>
+  羅賓斯科技 · Themis 秉衡 📊　|　產出 2026-08-23　|　星數為當日 GitHub 數據、部分疑刷榜，採用前請 Vena 查核
+</footer>
+
+</div>
+</body>
+</html>
