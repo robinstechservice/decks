@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themis 秉衡｜GitHub 趨勢分析 2026-09-01</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#1A2E63; --gold:#E89E3F; --gold-soft:#F6E4C7;
+    --ink:#20263A; --muted:#5B6478; --line:#E3E7F0; --bg:#F5F7FB; --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",-apple-system,sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.7;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 18px 64px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+         padding:36px 24px 30px;border-bottom:5px solid var(--gold);}
+  header .inner{max-width:1000px;margin:0 auto;}
+  header .kicker{color:var(--gold);font-weight:700;letter-spacing:.14em;font-size:13px;}
+  header h1{margin:8px 0 6px;font-size:27px;line-height:1.3;}
+  header .sub{color:#C7D0E6;font-size:14px;}
+  .meta-bar{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:12.5px;color:#AEB9D6;}
+  .legend{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;
+          margin:22px 0;font-size:13px;color:var(--muted);}
+  .legend b{color:var(--navy);}
+  .sec-title{margin:34px 0 6px;font-size:20px;color:var(--navy);border-left:6px solid var(--gold);
+             padding-left:12px;}
+  .sec-desc{color:var(--muted);font-size:13px;margin:0 0 14px;padding-left:18px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+        margin:14px 0;box-shadow:0 1px 3px rgba(15,31,77,.05);}
+  .card .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;}
+  .rank{background:var(--navy);color:#fff;font-weight:700;font-size:13px;border-radius:8px;
+        padding:2px 9px;}
+  .repo{font-size:17px;font-weight:700;color:var(--navy);text-decoration:none;}
+  .repo:hover{text-decoration:underline;color:var(--gold);}
+  .lang{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:1px 9px;}
+  .stars{font-size:12px;color:var(--gold);font-weight:700;}
+  .stars::before{content:"★ ";}
+  .rate{margin-left:auto;font-size:15px;color:var(--gold);letter-spacing:1px;white-space:nowrap;}
+  .rate .dim{color:#D8DCE6;}
+  .oneliner{margin:10px 0 12px;font-size:14.5px;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;font-size:12.5px;}
+  .tag{background:var(--gold-soft);color:#7a4d10;border-radius:8px;padding:3px 10px;}
+  .tag.sister{background:#E7EEFB;color:var(--navy);}
+  .tag.type{background:#EAF6EC;color:#1f6b39;}
+  .tag.act-install{background:#1f6b39;color:#fff;}
+  .tag.act-refer{background:#8a6d1f;color:#fff;}
+  .tag.act-skip{background:#8b3a3a;color:#fff;}
+  .insur{margin-top:10px;font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:9px;}
+  .insur b{color:var(--navy);}
+  .top3{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:16px;
+        padding:24px 26px;margin:38px 0 10px;border-top:5px solid var(--gold);}
+  .top3 h2{margin:0 0 14px;color:var(--gold);font-size:19px;}
+  .top3 ol{margin:0;padding-left:22px;}
+  .top3 li{margin-bottom:12px;font-size:14.5px;}
+  .top3 li b{color:#fff;}
+  .top3 a{color:var(--gold);text-decoration:none;}
+  .caveat{font-size:12px;color:var(--muted);background:#fff;border:1px dashed var(--line);
+          border-radius:10px;padding:12px 16px;margin-top:26px;}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px;}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <div class="kicker">ROBINS TECH · THEMIS 秉衡 📊</div>
+    <h1>GitHub 趨勢分析｜2026-09-01</h1>
+    <div class="sub">兩組各 Top 5：A. GitHub Daily Trending ＋ B. Claude 生態熱門</div>
+    <div class="meta-bar">
+      <span>資料來源：github.com/trending（daily）＋ GitHub Search API（topic:claude-code, sort=stars）</span>
+      <span>視角：保險科技 InsurTech（車險／業務員賦能／API 中台）</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="legend">
+    <b>圖例</b>：★ 建議指數（1～5）｜主場姊妹＝<b>Iris</b> 視覺／<b>Vena</b> 法務／<b>Themis</b> 財報／<b>Eos</b> 自動化／<b>Calliope</b> 整合｜
+    類型＝Claude Skill／參考 Project／工具｜行動＝<span style="color:#1f6b39;font-weight:700;">裝</span>／<span style="color:#8a6d1f;font-weight:700;">參考</span>／<span style="color:#8b3a3a;font-weight:700;">不裝</span>
+  </div>
+
+  <!-- ================= A 組 ================= -->
+  <h2 class="sec-title">A. GitHub Trending Top 5（Daily）</h2>
+  <p class="sec-desc">當日全站熱門，語言／主題不限。</p>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">A1</span>
+      <a class="repo" href="https://github.com/THU-MAIC/OpenMAIC" target="_blank">THU-MAIC/OpenMAIC</a>
+      <span class="lang">TypeScript</span><span class="stars">26,904</span>
+      <span class="rate">★★<span class="dim">★★★</span></span>
+    </div>
+    <p class="oneliner">一句話：一鍵開課的「多智能體互動教室」，讓學習變成一群 AI agent 陪你沉浸式互動。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Eos 自動化</span><span class="tag sister">Calliope 整合</span>
+      <span class="tag type">參考 Project</span><span class="tag act-refer">參考</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>間接。多 agent 教學框架可借鏡「業務員教育訓練／商品知識問答」的互動形式，但非現成套用。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">A2</span>
+      <a class="repo" href="https://github.com/tt-a1i/archify" target="_blank">tt-a1i/archify</a>
+      <span class="lang">JavaScript</span><span class="stars">38,557</span>
+      <span class="rate">★★★★<span class="dim">★</span></span>
+    </div>
+    <p class="oneliner">一句話：把架構圖／流程圖／時序圖／資料流／生命週期圖畫成「可驗證、帶動畫、可匯出」的自包含 HTML 的 Agent Skill。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Iris 視覺</span><span class="tag sister">Calliope 整合</span>
+      <span class="tag type">Claude Skill</span><span class="tag act-install">裝</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>高。API 中台架構圖、承保／理賠流程圖、系統時序圖都能直接產出可交付視覺——文件與提案立即加分。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">A3</span>
+      <a class="repo" href="https://github.com/K-Dense-AI/scientific-agent-skills" target="_blank">K-Dense-AI/scientific-agent-skills</a>
+      <span class="lang">Python</span><span class="stars">40,688</span>
+      <span class="rate">★★<span class="dim">★★★</span></span>
+    </div>
+    <p class="oneliner">一句話：165 個經驗證的科學 Skill 庫（生物／化學／醫學／新藥），把 AI agent 變科學家。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Themis 財報（弱相關）</span>
+      <span class="tag type">Claude Skill 集</span><span class="tag act-refer">參考</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>低。僅健康險／醫療險核保若需醫學知識時可局部參考，主線業務用不到。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">A4</span>
+      <a class="repo" href="https://github.com/k1tbyte/Wand-Enhancer" target="_blank">k1tbyte/Wand-Enhancer</a>
+      <span class="lang">C#</span><span class="stars">23,356</span>
+      <span class="rate">★<span class="dim">★★★★</span></span>
+    </div>
+    <p class="oneliner">一句話：遊戲修改工具 Wand（WeMod）的 UX 與互通性增強擴充。</p>
+    <div class="tags">
+      <span class="tag sister">主場：無</span>
+      <span class="tag type">工具</span><span class="tag act-skip">不裝</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>無。純遊戲場景，與業務無交集。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">A5</span>
+      <a class="repo" href="https://github.com/majd/ipatool" target="_blank">majd/ipatool</a>
+      <span class="lang">Go</span><span class="stars">10,515</span>
+      <span class="rate">★★<span class="dim">★★★</span></span>
+    </div>
+    <p class="oneliner">一句話：命令列工具，從 App Store 搜尋與下載 iOS／iPadOS／tvOS 的 ipa 安裝檔。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Eos 自動化（弱）</span>
+      <span class="tag type">工具</span><span class="tag act-refer">參考</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>低。僅在需研究競品 App／自家 App 封裝流程時才有邊際用途。</div>
+  </div>
+
+  <!-- ================= B 組 ================= -->
+  <h2 class="sec-title">B. Claude 生態 Trending Top 5</h2>
+  <p class="sec-desc">GitHub Search API 以 <code>topic:claude-code</code> 依 stars 排序取得（原題的三 topic OR 混合自由字串在 API 端回 0 筆，改用可運作的 topic 查詢；已去除與 A 組重複者）。</p>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">B1</span>
+      <a class="repo" href="https://github.com/affaan-m/ECC" target="_blank">affaan-m/ECC</a>
+      <span class="lang">-</span><span class="stars">245,226</span>
+      <span class="rate">★★★★<span class="dim">★</span></span>
+    </div>
+    <p class="oneliner">一句話：agent「harness 效能優化系統」——整合 skills／instincts／memory 讓 agent 跑得更快更穩。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Eos 自動化</span><span class="tag sister">Calliope 整合</span>
+      <span class="tag type">參考 Project</span><span class="tag act-refer">參考（先評估）</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>間接但槓桿高。提升整個 agent 家族的執行效能／記憶，值得先讀架構再決定是否局部借用。（★數高但 star 數異常偏大，建議點進去自行核實）</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">B2</span>
+      <a class="repo" href="https://github.com/NousResearch/hermes-agent" target="_blank">NousResearch/hermes-agent</a>
+      <span class="lang">-</span><span class="stars">238,984</span>
+      <span class="rate">★★★<span class="dim">★★</span></span>
+    </div>
+    <p class="oneliner">一句話：NousResearch 出品、主打「會跟著你成長」的 agent 框架。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Eos 自動化</span>
+      <span class="tag type">參考 Project</span><span class="tag act-refer">參考</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>間接。可觀察其長期記憶／個人化設計，對「業務員個人助理」情境有啟發，非現成套件。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">B3</span>
+      <a class="repo" href="https://github.com/farion1231/cc-switch" target="_blank">farion1231/cc-switch</a>
+      <span class="lang">-</span><span class="stars">130,391</span>
+      <span class="rate">★★★<span class="dim">★★</span></span>
+    </div>
+    <p class="oneliner">一句話：跨平台桌面 All-in-One 助理，一站切換 Claude Code／Codex／OpenClaude 等多家 AI 工具與帳號。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Eos 自動化</span>
+      <span class="tag type">工具</span><span class="tag act-refer">參考</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>低（開發端便利）。管理多 AI 工具／多帳號時省事，與保險業務本身無關。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">B4</span>
+      <a class="repo" href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" target="_blank">nextlevelbuilder/ui-ux-pro-max-skill</a>
+      <span class="lang">-</span><span class="stars">123,532</span>
+      <span class="rate">★★★★<span class="dim">★</span></span>
+    </div>
+    <p class="oneliner">一句話：提供「設計智慧」的 Skill，協助打造專業水準的 UI/UX。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Iris 視覺</span>
+      <span class="tag type">Claude Skill</span><span class="tag act-install">裝（Iris 先試）</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>中高。可提升報告／deck、以及業務員端／客戶端介面的視覺品質，直接改善對外交付與投報。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <span class="rank">B5</span>
+      <a class="repo" href="https://github.com/DietrichGebert/ponytail" target="_blank">DietrichGebert/ponytail</a>
+      <span class="lang">-</span><span class="stars">118,244</span>
+      <span class="rate">★★★<span class="dim">★★</span></span>
+    </div>
+    <p class="oneliner">一句話：claude-code-plugin，讓 agent「像最懶的資深工程師思考」——用最省的路徑把事做對、少燒 token。</p>
+    <div class="tags">
+      <span class="tag sister">主場：Eos 自動化</span><span class="tag sister">Themis 財報（省成本）</span>
+      <span class="tag type">Claude Plugin</span><span class="tag act-refer">參考</span>
+    </div>
+    <div class="insur"><b>對保險科技：</b>間接。降低 token／運算成本符合成本控管，對全站 agent 有普遍效益，可小範圍試點。</div>
+  </div>
+
+  <!-- ================= 今日優先 3 ================= -->
+  <div class="top3">
+    <h2>🎯 今日優先看 3 個</h2>
+    <ol>
+      <li><b><a href="https://github.com/tt-a1i/archify" target="_blank">A2 · archify</a></b>（Claude Skill）——架構／流程／時序圖一鍵出可驗證 HTML，Iris 視覺＋保險 API 中台／承保流程文件立即可用，最高性價比。</li>
+      <li><b><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill" target="_blank">B4 · ui-ux-pro-max-skill</a></b>（Claude Skill）——設計智慧 Skill，讓 Iris 的報告／deck／介面視覺再上一階，直接改善對外交付。</li>
+      <li><b><a href="https://github.com/affaan-m/ECC" target="_blank">B1 · ECC</a></b>（參考 Project）——agent harness 效能優化，對整個 agent 家族有系統性槓桿；先讀架構再決定借用範圍。</li>
+    </ol>
+  </div>
+
+  <div class="caveat">
+    ⚠️ 誠實備註：<br>
+    1）原題 B 組指定的 <code>topic:claude-code-plugin OR topic:claude-skills OR claude-code</code> 混合查詢，在 GitHub Search API 端實測回傳 0 筆（API 不支援 topic 與自由字串在頂層 OR 混用），故改以可運作的 <code>topic:claude-code&amp;sort=stars</code> 取代，並去除與 A 組重複者。<br>
+    2）B 組部分 repo 的 star 數（如 24 萬）明顯異常偏高，屬 API 回傳原值、未經人工核實，點進連結前請自行判斷可信度。<br>
+    3）「主場姊妹」與「建議指數」為 Themis 依描述所做的初判，實際採用前建議由對應姊妹試裝驗證。
+  </div>
+
+  <footer>羅賓斯科技 · Themis 秉衡 📊｜財務分析 AI 代理人｜2026-09-01 產出</footer>
+</div>
+</body>
+</html>
