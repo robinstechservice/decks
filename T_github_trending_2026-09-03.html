@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GitHub 趨勢分析 · 2026-09-03 · Themis 秉衡</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#1B2E63; --gold:#E89E3F; --gold-soft:#f6e3c6;
+    --ink:#1c2333; --muted:#5b6478; --line:#e3e7f0; --bg:#f5f6fa; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC",sans-serif;
+    line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 18px 64px}
+  header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;
+    padding:38px 18px 30px;text-align:center;border-bottom:4px solid var(--gold)}
+  header .kicker{color:var(--gold);letter-spacing:3px;font-size:13px;font-weight:700;text-transform:uppercase}
+  header h1{margin:8px 0 6px;font-size:26px;font-weight:800}
+  header .sub{color:#c9d2e8;font-size:14px}
+  header .byline{margin-top:12px;font-size:12px;color:#9fb0d6}
+  .note{background:var(--gold-soft);border-left:4px solid var(--gold);color:#6b4a12;
+    font-size:12.5px;padding:10px 14px;border-radius:0 8px 8px 0;margin:22px 0}
+  h2.section{margin:34px 0 4px;font-size:20px;color:var(--navy);font-weight:800;
+    border-bottom:3px solid var(--navy);padding-bottom:8px;display:flex;align-items:center;gap:10px}
+  h2.section .tag{background:var(--navy);color:#fff;font-size:12px;padding:3px 10px;border-radius:20px;font-weight:700}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 20px;margin:16px 0;box-shadow:0 1px 3px rgba(15,31,77,.05)}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .card .name{font-size:17px;font-weight:800;color:var(--navy)}
+  .card .name a{color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold-soft)}
+  .card .name a:hover{border-color:var(--gold)}
+  .card .lang{font-size:12px;color:var(--muted);font-weight:600;margin-top:2px}
+  .stars{white-space:nowrap;font-size:15px;color:var(--gold);font-weight:700;letter-spacing:1px}
+  .stars .lbl{display:block;font-size:11px;color:var(--muted);font-weight:600;text-align:right;letter-spacing:0}
+  .desc{margin:10px 0 12px;font-size:14px;color:#333}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .pill{font-size:12px;padding:4px 10px;border-radius:20px;font-weight:600;border:1px solid var(--line);background:#fafbff;color:var(--ink)}
+  .pill.sis{background:#eaf0ff;border-color:#cddaff;color:#25408f}
+  .pill.ins-y{background:#e6f6ec;border-color:#bfe6cd;color:#1d6b3c}
+  .pill.ins-m{background:#fff5e2;border-color:#f0dcae;color:#8a6212}
+  .pill.ins-n{background:#f4f4f6;border-color:#e0e0e6;color:#6a6a75}
+  .pill.act-y{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .pill.act-r{background:#fff;color:var(--navy);border-color:var(--navy)}
+  .pill.act-n{background:#fbecec;color:#9a2f2f;border-color:#efc9c9}
+  .verdict{margin-top:10px;font-size:13.5px;color:#2a2f3d;background:#f7f8fc;
+    border-radius:8px;padding:9px 12px;border-left:3px solid var(--gold)}
+  .verdict b{color:var(--navy)}
+  .top3{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;
+    border-radius:14px;padding:24px 24px 20px;margin:36px 0 8px}
+  .top3 h2{margin:0 0 14px;color:var(--gold);font-size:19px;border:none}
+  .top3 ol{margin:0;padding-left:22px}
+  .top3 li{margin:12px 0;font-size:14.5px;color:#eef2fb}
+  .top3 li b{color:#fff}
+  .top3 .g{color:var(--gold);font-weight:700}
+  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:40px;
+    border-top:1px solid var(--line);padding-top:18px}
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">Robins Tech · Themis 秉衡 📊</div>
+  <h1>GitHub 趨勢分析</h1>
+  <div class="sub">2026-09-03 · GitHub Trending Top 5 ＋ Claude 生態 Trending Top 5</div>
+  <div class="byline">羅賓斯科技財務分析 AI 代理人｜評估角度：對五姊妹與保險科技業務的實用性</div>
+</header>
+<div class="wrap">
+
+  <div class="note">
+    ⚠️ 說明：A 組取自 <b>github.com/trending（daily）</b>頭 5 名；B 組取自 GitHub Search API
+    <code>topic:claude-code</code> 依 stars 排序（原指定的多重 <code>OR</code> 查詢遭 API 回 422/0，已改用單一 topic 並排除與 A 組重複者）。
+    ★ 星等為本站評估的「建議指數」，非 GitHub star 數；括號內 GitHub star 數直接引自 API 當日回傳（部分 topic 內 repo 星數異常偏高，僅原樣轉述、未背書）。
+  </div>
+
+  <!-- ================= A. GitHub Trending ================= -->
+  <h2 class="section"><span class="tag">A</span> GitHub Trending Top 5</h2>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/fmtlib/fmt">fmtlib/fmt</a></div>
+        <div class="lang">C++ · GitHub star ≈ 22k</div></div>
+      <div class="stars">★★☆☆☆<span class="lbl">建議指數 2/5</span></div>
+    </div>
+    <div class="desc">現代 C++ 字串格式化庫，`std::format` 的事實標準前身，幾乎是所有 C++ 專案的底層依賴。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Eos（自動化／工程）</span>
+      <span class="pill ins-n">保險科技：低（純基礎設施）</span>
+      <span class="pill">參考 project</span>
+      <span class="pill act-n">不裝</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>成熟穩定但屬底層 C++ 函式庫，與我們的 Python／Claude agent 流程無交集，僅工程參考價值。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/google-research/timesfm">google-research/timesfm</a></div>
+        <div class="lang">Python · Google Research</div></div>
+      <div class="stars">★★★☆☆<span class="lbl">建議指數 3/5</span></div>
+    </div>
+    <div class="desc">Google 預訓練的時序基礎模型（time-series foundation model），開箱即用做預測。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Themis（財報／預測）</span>
+      <span class="pill ins-m">保險科技：中（精算／現金流／需求預測）</span>
+      <span class="pill">參考 project</span>
+      <span class="pill act-r">參考</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>保費收入、理賠頻率、現金流的時序預測有實打實用途，可與 Themis「5 年財務模型」互補；先做小樣本 POC 驗證再談導入。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail</a></div>
+        <div class="lang">JavaScript · 亦入 B 組（Claude 生態）</div></div>
+      <div class="stars">★★☆☆☆<span class="lbl">建議指數 2/5</span></div>
+    </div>
+    <div class="desc">一個讓 AI agent「像全場最懶的資深工程師思考」的工具——主張最好的程式碼是你從沒寫的那行。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Eos（自動化）</span>
+      <span class="pill ins-n">保險科技：低（通用開發理念）</span>
+      <span class="pill">Claude skill 概念</span>
+      <span class="pill act-r">參考</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>理念（少寫程式、KISS）與家族 karpathy 四原則的「簡潔優先」同源，可當提示語參考；本身無保險科技落地價值。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></div>
+        <div class="lang">Python</div></div>
+      <div class="stars">★★☆☆☆<span class="lbl">建議指數 2/5</span></div>
+    </div>
+    <div class="desc">開源、全本地的語音克隆／語音設計／影片配音／轉錄一站式方案。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Calliope（整合／語音）</span>
+      <span class="pill ins-m">保險科技：中（客服語音／業務員話術轉錄）</span>
+      <span class="pill">參考 project</span>
+      <span class="pill act-r">參考（謹慎）</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>本地 STT／配音對客服與業務員教材有用，但「語音克隆」踩個資與合規紅線（保險銷售話術聲音仿造風險高），僅取其轉錄能力、克隆功能不採用。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/sngyai/Sequoia-X">sngyai/Sequoia-X</a></div>
+        <div class="lang">Python</div></div>
+      <div class="stars">★☆☆☆☆<span class="lbl">建議指數 1/5</span></div>
+    </div>
+    <div class="desc">中國股票自動選股系統，內建多種技術分析形態與飛書自動通知。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Themis（勉強沾邊）</span>
+      <span class="pill ins-n">保險科技：無</span>
+      <span class="pill">參考 project</span>
+      <span class="pill act-n">不裝</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>純二級市場技術選股，與保險科技與本站基本面／財報工作無關；技術形態程式碼零參考需求。</div>
+  </div>
+
+  <!-- ================= B. Claude 生態 ================= -->
+  <h2 class="section"><span class="tag">B</span> Claude 生態 Trending Top 5</h2>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></div>
+        <div class="lang">JavaScript · topic:claude-code</div></div>
+      <div class="stars">★★★☆☆<span class="lbl">建議指數 3/5</span></div>
+    </div>
+    <div class="desc">Claude Code／Codex／Cursor 的「agent harness 效能優化系統」——整合 skills、instincts、memory、security 與 research-first 開發。</div>
+    <div class="meta">
+      <span class="pill sis">主場：全體（尤其 Eos）</span>
+      <span class="pill ins-m">保險科技：中（提升全站 agent 品質／安全）</span>
+      <span class="pill">Claude skill 框架</span>
+      <span class="pill act-r">參考（可評估）</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>與我們的 skills＋memory＋loop guard 架構高度重疊，值得拆看它的 memory／security 設計借鑑；整包導入前需審查其安全模組與家族 SOP 是否衝突。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></div>
+        <div class="lang">Python · NousResearch</div></div>
+      <div class="stars">★★☆☆☆<span class="lbl">建議指數 2/5</span></div>
+    </div>
+    <div class="desc">「會隨你一起成長」的通用 agent 框架。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Eos（自動化）</span>
+      <span class="pill ins-n">保險科技：低（通用 agent）</span>
+      <span class="pill">參考 project</span>
+      <span class="pill act-r">參考</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>知名團隊出品、值得追蹤其記憶／成長機制，但屬另一套 agent runtime，與 Claude Code 家族基座不同，短期無導入必要。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/farion1231/cc-switch">farion1231/cc-switch</a></div>
+        <div class="lang">Rust</div></div>
+      <div class="stars">★★☆☆☆<span class="lbl">建議指數 2/5</span></div>
+    </div>
+    <div class="desc">跨平台桌面 All-in-One 助理／模型切換器（Claude Code、Codex、OpenCode、Grok 等）。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Calliope（整合）</span>
+      <span class="pill ins-n">保險科技：低（開發工具）</span>
+      <span class="pill">參考 project</span>
+      <span class="pill act-n">不裝</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>桌面 GUI 切換多家 CLI，與本站「terminal 長駐＋雲端 cron」流程不合；家族已釘死 opus-5 單一模型政策，切換器無使用場景。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill">nextlevelbuilder/ui-ux-pro-max-skill</a></div>
+        <div class="lang">Python · Claude skill</div></div>
+      <div class="stars">★★★☆☆<span class="lbl">建議指數 3/5</span></div>
+    </div>
+    <div class="desc">提供跨平台專業 UI/UX 設計智慧的 AI skill。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Iris（視覺）</span>
+      <span class="pill ins-m">保險科技：中（業務員工具／客戶投保介面）</span>
+      <span class="pill">Claude skill</span>
+      <span class="pill act-r">參考（可評估裝）</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>對 Iris 做業務員 App／客戶投保流程介面設計最對味；先由 Iris 試跑一個保險情境樣張，效果好再正式登錄。</div>
+  </div>
+
+  <div class="card">
+    <div class="top">
+      <div><div class="name"><a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a></div>
+        <div class="lang">Python · Claude skill（本站已裝）</div></div>
+      <div class="stars">★★★★☆<span class="lbl">建議指數 4/5</span></div>
+    </div>
+    <div class="desc">把任何 codebase＋docs＋SQL schema＋設定檔＋PDF 變成可查詢的知識圖譜；即 /graphify skill。</div>
+    <div class="meta">
+      <span class="pill sis">主場：Themis（財報文件圖譜）＋全體</span>
+      <span class="pill ins-y">保險科技：中高（財報／監理／契約知識圖譜）</span>
+      <span class="pill">Claude skill</span>
+      <span class="pill act-y">已裝 · 續用</span>
+    </div>
+    <div class="verdict"><b>一句評：</b>本站已安裝、命中率最高的一支：可把 10-K／監理函令／保單條款／財務底稿建成可查圖譜，直接支援基本面與揭露預審工作；建議擴用到監理文件與 5 年財務模型底稿。</div>
+  </div>
+
+  <!-- ================= 今日優先看 3 個 ================= -->
+  <div class="top3">
+    <h2>🎯 今日優先看 3 個</h2>
+    <ol>
+      <li><b>Graphify-Labs/graphify</b> <span class="g">★4</span>（B 組）— 本站已裝、最實用。把財報／監理／保單條款文件圖譜化，支援 Themis 基本面研究與 SOP/14 揭露預審。<b>行動：擴用到監理文件與財務底稿。</b></li>
+      <li><b>google-research/timesfm</b> <span class="g">★3</span>（A 組）— 時序預測基礎模型，對接精算／現金流／保費需求預測，與 Themis「5 年財務模型」互補。<b>行動：小樣本 POC 驗證預測誤差。</b></li>
+      <li><b>nextlevelbuilder/ui-ux-pro-max-skill</b> <span class="g">★3</span>（B 組）— UI/UX 設計 skill，Iris 主場，用於業務員工具與客戶投保介面。<b>行動：Iris 試跑一個保險情境樣張。</b></li>
+    </ol>
+  </div>
+
+  <footer>
+    Robins Tech · Themis 秉衡 📊｜財務分析 AI 代理人｜資料來源：github.com/trending（daily）＋ GitHub Search API｜產製日 2026-09-03
+  </footer>
+</div>
+</body>
+</html>
