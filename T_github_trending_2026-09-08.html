@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Themis 秉衡｜GitHub 趨勢分析 2026-09-08</title>
+<style>
+  :root{
+    --navy:#0F1F4D; --navy2:#1a2f6b; --gold:#E89E3F; --gold-soft:#f6e3c6;
+    --ink:#1b2330; --muted:#5c6575; --line:#e6e9f0; --bg:#f7f8fb; --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+       background:var(--bg);color:var(--ink);line-height:1.7;-webkit-text-size-adjust:100%;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px 64px;}
+  header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:34px 20px 30px;
+         border-bottom:4px solid var(--gold);}
+  header .inner{max-width:960px;margin:0 auto;}
+  .badge{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-size:13px;
+         padding:3px 12px;border-radius:999px;letter-spacing:.5px;}
+  header h1{margin:12px 0 4px;font-size:26px;letter-spacing:.5px;}
+  header p{margin:0;color:#c8d2ec;font-size:14px;}
+  .caveat{background:var(--gold-soft);border-left:5px solid var(--gold);border-radius:8px;
+          padding:12px 16px;margin:22px 0;font-size:14px;color:#6a4d1c;}
+  h2.section{color:var(--navy);font-size:20px;margin:34px 0 6px;padding-bottom:8px;
+             border-bottom:2px solid var(--navy);display:flex;align-items:center;gap:10px;}
+  h2.section .tag{background:var(--navy);color:#fff;font-size:12px;padding:2px 10px;border-radius:6px;}
+  .sub{color:var(--muted);font-size:13px;margin:2px 0 14px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+        margin:14px 0;box-shadow:0 1px 3px rgba(15,31,77,.05);}
+  .card .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;}
+  .repo{font-size:17px;font-weight:700;color:var(--navy);word-break:break-all;}
+  .repo a{color:var(--navy);text-decoration:none;border-bottom:1px dashed var(--gold);}
+  .meta{color:var(--muted);font-size:12.5px;}
+  .stars{color:var(--gold);font-size:13px;font-weight:700;white-space:nowrap;}
+  .stars.warn{color:#c0392b;}
+  .oneliner{margin:10px 0 12px;font-size:14.5px;}
+  .rows{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .chip{font-size:12.5px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fafbfe;}
+  .chip b{color:var(--navy);}
+  .rate{font-size:16px;letter-spacing:1px;}
+  .star-on{color:var(--gold);} .star-off{color:#d9dde6;}
+  .verdict{font-weight:700;}
+  .v-install{color:#1e8449;} .v-ref{color:#b9770e;} .v-skip{color:#a2402f;}
+  .prio{background:var(--navy);color:#fff;border-radius:12px;padding:20px 22px;margin:34px 0 0;}
+  .prio h2{margin:0 0 12px;color:var(--gold);font-size:19px;}
+  .prio ol{margin:0;padding-left:22px;}
+  .prio li{margin:10px 0;font-size:14.5px;color:#eef2fb;}
+  .prio li b{color:#fff;}
+  footer{color:var(--muted);font-size:12.5px;text-align:center;margin-top:30px;}
+  @media(max-width:520px){header h1{font-size:22px;}.repo{font-size:16px;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner">
+    <span class="badge">THEMIS 秉衡 📊 財務分析 AI</span>
+    <h1>GitHub 趨勢分析｜2026-09-08</h1>
+    <p>A. GitHub Trending Top 5（daily）　＋　B. Claude 生態 Trending Top 5（by stars）</p>
+  </div>
+</header>
+<div class="wrap">
+
+  <div class="caveat">
+    ⚠️ <b>星數 caveat（反幻覺提醒）</b>：本次 GitHub search API 回傳的 B 組（Claude 生態）多個 repo 星數高達 10–25 萬，數量級明顯異常、疑似灌水或指標受污染。<b>請看內容與用途、不要看星數排名</b>。星數僅照 API 原值忠實呈現，未經我背書。另：官方要求的 <code>topic:… OR …</code> 合併查詢實測回傳 0 筆（GitHub 混用 topic: 與自由字 OR 的已知怪異），我改以三個 topic 分別查詢後聯集、去重、依星數排序取前 5，語意等價。
+  </div>
+
+  <!-- ============ A 組 ============ -->
+  <h2 class="section"><span class="tag">A</span> GitHub Trending Top 5</h2>
+  <div class="sub">來源：github.com/trending（daily）</div>
+
+  <!-- A1 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/heygen-com/hyperframes">heygen-com/hyperframes</a></span>
+      <span class="meta">TypeScript</span>
+      <span class="stars">★ 45,820</span>
+    </div>
+    <div class="oneliner">「寫 HTML → 直接算出影片」，專為 AI agent 設計的程式化影片生成引擎（HeyGen 出品）。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★★</span><span class="star-off">★</span></span>
+      <span class="chip"><b>主場</b>：Iris（視覺）</span>
+      <span class="chip"><b>InsurTech</b>：中等 — 業務員教育短影音／理賠說明／保單解說影片可自動化</span>
+      <span class="chip"><b>類型</b>：Project（本站已有同名 hyperframes skill 套件）</span>
+      <span class="chip verdict v-ref">建議：參考／可裝</span>
+    </div>
+  </div>
+
+  <!-- A2 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/microsoft/markitdown">microsoft/markitdown</a></span>
+      <span class="meta">Python</span>
+      <span class="stars">★ 180,149</span>
+    </div>
+    <div class="oneliner">把 Office 文件／PDF／各式檔案轉成乾淨 Markdown 的 Python 工具（微軟官方）。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★★★</span></span>
+      <span class="chip"><b>主場</b>：Themis（財報 ingest）</span>
+      <span class="chip"><b>InsurTech</b>：高 — 保單／10-K／財報 PDF → MD 餵給 agent，是承保／財報分析的前處理利器</span>
+      <span class="chip"><b>類型</b>：Project（CLI 工具）</span>
+      <span class="chip verdict v-install">建議：裝</span>
+    </div>
+  </div>
+
+  <!-- A3 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/mksglu/context-mode">mksglu/context-mode</a></span>
+      <span class="meta">TypeScript</span>
+      <span class="stars">★ 20,802</span>
+    </div>
+    <div class="oneliner">AI coding agent 的 context 視窗優化：沙箱化工具輸出（號稱減 98%）、持久 session 記憶、跨 17 平台 MCP 路由。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★</span><span class="star-off">★★</span></span>
+      <span class="chip"><b>主場</b>：Eos（自動化）</span>
+      <span class="chip"><b>InsurTech</b>：間接 — 降 token 成本、穩定多 agent 記憶，對家族運維有利</span>
+      <span class="chip"><b>類型</b>：Project（MCP + hooks）</span>
+      <span class="chip verdict v-ref">建議：參考</span>
+    </div>
+  </div>
+
+  <!-- A4 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/jo-inc/camofox-browser">jo-inc/camofox-browser</a></span>
+      <span class="meta">JavaScript</span>
+      <span class="stars">★ 9,659</span>
+    </div>
+    <div class="oneliner">隱形 headless 瀏覽器，主打繞過 Cloudflare／bot 偵測／反爬，Puppeteer/Playwright 直接替換。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★</span><span class="star-off">★★★</span></span>
+      <span class="chip"><b>主場</b>：Vena（法務把關）／Eos</span>
+      <span class="chip"><b>InsurTech</b>：低且有合規風險 — 「繞過反爬」屬灰色地帶，個資／監理站不宜採用</span>
+      <span class="chip"><b>類型</b>：Project</span>
+      <span class="chip verdict v-skip">建議：不裝（合規顧慮）</span>
+    </div>
+  </div>
+
+  <!-- A5 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/MoonTechLab/LunaTV">MoonTechLab/LunaTV</a></span>
+      <span class="meta">TypeScript</span>
+      <span class="stars">★ 9,695</span>
+    </div>
+    <div class="oneliner">影音串流聚合前端；採 CC BY-NC-SA、明文禁止商業化。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★</span><span class="star-off">★★★★</span></span>
+      <span class="chip"><b>主場</b>：無</span>
+      <span class="chip"><b>InsurTech</b>：無幫助</span>
+      <span class="chip"><b>類型</b>：Project（消費級應用）</span>
+      <span class="chip verdict v-skip">建議：不裝</span>
+    </div>
+  </div>
+
+  <!-- ============ B 組 ============ -->
+  <h2 class="section"><span class="tag">B</span> Claude 生態 Trending Top 5</h2>
+  <div class="sub">來源：GitHub search topic:claude-code / claude-skills / claude-code-plugin 聯集，依 stars 排序（星數異常，見上方 caveat）</div>
+
+  <!-- B1 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></span>
+      <span class="meta">JavaScript</span>
+      <span class="stars warn">★ 252,798 ⚠</span>
+    </div>
+    <div class="oneliner">Claude 的 agent harness 效能優化系統：skills、instincts、memory、security、research-first 開發框架。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★</span><span class="star-off">★★</span></span>
+      <span class="chip"><b>主場</b>：Calliope（整合）</span>
+      <span class="chip"><b>InsurTech</b>：間接 — 通用 agent 強化，非保險專用</span>
+      <span class="chip"><b>類型</b>：Skill/框架混合</span>
+      <span class="chip verdict v-ref">建議：參考（星數可疑、先觀望）</span>
+    </div>
+  </div>
+
+  <!-- B2 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></span>
+      <span class="meta">Python</span>
+      <span class="stars warn">★ 243,040 ⚠</span>
+    </div>
+    <div class="oneliner">NousResearch 的「會跟你一起成長」通用 agent。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★</span><span class="star-off">★★</span></span>
+      <span class="chip"><b>主場</b>：Calliope（整合）</span>
+      <span class="chip"><b>InsurTech</b>：間接 — 通用 agent，無保險場景</span>
+      <span class="chip"><b>類型</b>：Project</span>
+      <span class="chip verdict v-ref">建議：參考</span>
+    </div>
+  </div>
+
+  <!-- B3 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/farion1231/cc-switch">farion1231/cc-switch</a></span>
+      <span class="meta">Rust</span>
+      <span class="stars warn">★ 131,541 ⚠</span>
+    </div>
+    <div class="oneliner">跨平台桌面 All-in-One 助手，一鍵切換 Claude Code / Codex / OpenCode 等多後端設定。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★★</span><span class="star-off">★</span></span>
+      <span class="chip"><b>主場</b>：Eos（自動化）</span>
+      <span class="chip"><b>InsurTech</b>：間接但實用 — 我們家族多 agent 多設定，統一管理／切換有價值</span>
+      <span class="chip"><b>類型</b>：Project（桌面 App）</span>
+      <span class="chip verdict v-ref">建議：參考／可裝</span>
+    </div>
+  </div>
+
+  <!-- B4 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/DietrichGebert/ponytail">DietrichGebert/ponytail</a></span>
+      <span class="meta">JavaScript</span>
+      <span class="stars warn">★ 130,921 ⚠</span>
+    </div>
+    <div class="oneliner">讓 AI agent 像「最懶的資深工程師」思考 —「最好的程式是你根本沒寫的那段」。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★</span><span class="star-off">★★</span></span>
+      <span class="chip"><b>主場</b>：Themis（行為準則呼應）</span>
+      <span class="chip"><b>InsurTech</b>：間接 — 契合我們「簡潔優先／不寫沒被要求的東西」家規</span>
+      <span class="chip"><b>類型</b>：Skill（行為調校）</span>
+      <span class="chip verdict v-ref">建議：參考</span>
+    </div>
+  </div>
+
+  <!-- B5 -->
+  <div class="card">
+    <div class="top">
+      <span class="repo"><a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill">nextlevelbuilder/ui-ux-pro-max-skill</a></span>
+      <span class="meta">Python</span>
+      <span class="stars warn">★ 125,809 ⚠</span>
+    </div>
+    <div class="oneliner">提供跨平台專業 UI/UX 設計智慧的 AI skill。</div>
+    <div class="rows">
+      <span class="chip rate"><span class="star-on">★★★★</span><span class="star-off">★</span></span>
+      <span class="chip"><b>主場</b>：Iris（視覺）</span>
+      <span class="chip"><b>InsurTech</b>：有幫助 — 業務員 App／客服介面／報告視覺設計可借力</span>
+      <span class="chip"><b>類型</b>：Skill</span>
+      <span class="chip verdict v-ref">建議：參考（給 Iris 評估裝）</span>
+    </div>
+  </div>
+
+  <!-- ============ 優先 3 ============ -->
+  <div class="prio">
+    <h2>🎯 今日優先看 3 個</h2>
+    <ol>
+      <li><b>microsoft/markitdown（A2, ★★★★★）</b> — 保單／財報 PDF 直接轉 Markdown 餵 agent，Themis 財報 ingest 立即可用，微軟官方、風險最低。</li>
+      <li><b>nextlevelbuilder/ui-ux-pro-max-skill（B5, ★★★★）</b> — Iris 主場，業務員介面／客服／報告視覺設計的現成 skill，值得評估安裝。</li>
+      <li><b>farion1231/cc-switch（B3, ★★★★）</b> — Eos 主場，統一管理／切換家族多 agent 的多後端設定，運維省事。</li>
+    </ol>
+  </div>
+
+  <footer>
+    Themis 秉衡 📊｜羅賓斯科技 財務分析 AI｜資料抓取 2026-09-08｜星數為 API 原值、非背書
+  </footer>
+
+</div>
+</body>
+</html>
