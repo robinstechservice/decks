@@ -3,257 +3,377 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Themis 每日 GitHub 趨勢分析 — 2026-09-15</title>
+<title>GitHub 趨勢分析 2026-09-15｜Themis 秉衡</title>
 <style>
-  :root{
-    --navy:#0F1F4D; --gold:#E89E3F; --ink:#1c2436; --muted:#5b6478;
-    --line:#e4e7ee; --bg:#f5f6fa; --card:#ffffff; --navy-soft:#eaeef7;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;background:var(--bg);color:var(--ink);
-    font-family:-apple-system,"PingFang TC","Microsoft JhengHei","Helvetica Neue",Arial,sans-serif;
-    line-height:1.65;-webkit-text-size-adjust:100%;}
-  .wrap{max-width:960px;margin:0 auto;padding:0 16px 64px;}
-  header{background:linear-gradient(135deg,var(--navy) 0%,#1a306e 100%);color:#fff;
-    padding:34px 24px 30px;border-bottom:4px solid var(--gold);}
-  header .inner{max-width:960px;margin:0 auto;}
-  header .kicker{color:var(--gold);font-weight:700;letter-spacing:2px;font-size:13px;}
-  header h1{margin:6px 0 4px;font-size:26px;line-height:1.3;}
-  header .sub{color:#c9d2e8;font-size:14px;}
-  .sec-head{display:flex;align-items:center;gap:12px;margin:36px 0 14px;}
-  .sec-head .badge{background:var(--navy);color:#fff;font-weight:700;font-size:14px;
-    padding:6px 14px;border-radius:6px;white-space:nowrap;}
-  .sec-head h2{margin:0;font-size:19px;color:var(--navy);}
-  .card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);
-    border-radius:10px;padding:16px 18px;margin:12px 0;box-shadow:0 1px 3px rgba(15,31,77,.05);}
-  .card .top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;}
-  .rank{background:var(--navy);color:var(--gold);font-weight:800;width:28px;height:28px;
-    display:inline-flex;align-items:center;justify-content:center;border-radius:50%;font-size:14px;flex:0 0 auto;}
-  .repo{font-weight:700;font-size:16px;color:var(--navy);word-break:break-all;}
-  .repo a{color:var(--navy);text-decoration:none;border-bottom:1px dotted var(--gold);}
-  .meta{color:var(--muted);font-size:12.5px;}
-  .stars{color:var(--gold);font-weight:700;}
-  .oneliner{margin:9px 0 11px;font-size:14px;color:var(--ink);}
-  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
-  .tag{font-size:12px;padding:3px 9px;border-radius:20px;background:var(--navy-soft);color:var(--navy);white-space:nowrap;}
-  .tag.gold{background:#fbeed7;color:#9a5f13;}
-  .tag.type{background:#e6f0ea;color:#1f5c3a;}
-  .stars-rating{color:var(--gold);letter-spacing:1px;font-size:15px;}
-  .stars-rating .off{color:#d7dbe4;}
-  .verdict{font-weight:700;}
-  .v-install{color:#1f7a3a;} .v-skip{color:#b03535;} .v-ref{color:#9a5f13;}
-  .top3{background:var(--navy);color:#fff;border-radius:12px;padding:22px 24px;margin:40px 0 8px;}
-  .top3 h2{margin:0 0 12px;color:var(--gold);font-size:19px;}
-  .top3 ol{margin:0;padding-left:20px;}
-  .top3 li{margin:10px 0;font-size:14.5px;color:#eef1f8;}
-  .top3 li b{color:#fff;}
-  footer{margin-top:34px;color:var(--muted);font-size:12px;text-align:center;border-top:1px solid var(--line);padding-top:18px;}
-  @media(max-width:520px){header h1{font-size:21px;}.repo{font-size:15px;}}
+:root{
+  --navy:#0F1F4D;
+  --navy-2:#1A2F66;
+  --gold:#E89E3F;
+  --ink:#1c2430;
+  --muted:#5b6778;
+  --line:#e3e7ee;
+  --bg:#f6f7fa;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  line-height:1.75;
+  font-size:16px;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px 64px}
+
+header{
+  background:linear-gradient(135deg,var(--navy) 0%,#17306e 100%);
+  color:#fff;
+  padding:38px 0 30px;
+  border-bottom:4px solid var(--gold);
+}
+header .wrap{padding-bottom:0}
+.brand{
+  display:inline-block;
+  font-size:13px;letter-spacing:.18em;
+  color:var(--gold);font-weight:700;margin-bottom:10px;
+}
+header h1{margin:0 0 6px;font-size:28px;letter-spacing:.02em}
+header .sub{margin:0;color:#c3cde6;font-size:14px}
+.meta-line{
+  margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.18);
+  font-size:13px;color:#aebbd8;
+}
+
+.notice{
+  background:#fff8ec;border:1px solid #f0d3a4;border-left:4px solid var(--gold);
+  border-radius:6px;padding:14px 16px;margin:26px 0 8px;font-size:14px;color:#6b4c1d;
+}
+.notice b{color:#8a5f1c}
+
+h2.sec{
+  margin:44px 0 4px;padding:12px 16px;
+  background:var(--navy);color:#fff;border-radius:6px 6px 0 0;
+  font-size:19px;letter-spacing:.02em;
+}
+h2.sec span{color:var(--gold);font-weight:400;font-size:14px;margin-left:8px}
+.sec-note{
+  background:#fff;border:1px solid var(--line);border-top:none;
+  padding:10px 16px;font-size:13px;color:var(--muted);border-radius:0 0 6px 6px;margin-bottom:18px;
+}
+
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:20px 22px;margin-bottom:16px;
+  box-shadow:0 1px 3px rgba(15,31,77,.05);
+}
+.card-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:4px}
+.rank{
+  background:var(--gold);color:#fff;font-weight:700;font-size:13px;
+  width:26px;height:26px;border-radius:50%;
+  display:inline-flex;align-items:center;justify-content:center;flex:none;
+}
+.card-head h3{margin:0;font-size:18px;color:var(--navy);word-break:break-all}
+.card-head h3 a{color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold)}
+.stars{font-size:13px;color:var(--muted);white-space:nowrap}
+.rating{color:var(--gold);font-size:17px;letter-spacing:2px;margin:6px 0 10px}
+.rating .dim{color:#d9dde5}
+.rating em{font-style:normal;font-size:13px;color:var(--muted);letter-spacing:0;margin-left:8px}
+
+.oneline{
+  font-size:15px;margin:0 0 14px;padding-left:12px;
+  border-left:3px solid var(--gold);color:#243042;
+}
+
+table.attr{width:100%;border-collapse:collapse;font-size:14px;margin-top:6px}
+table.attr th{
+  text-align:left;width:118px;vertical-align:top;
+  color:var(--navy);font-weight:600;padding:7px 10px 7px 0;
+  border-top:1px solid var(--line);white-space:nowrap;
+}
+table.attr td{padding:7px 0;border-top:1px solid var(--line);vertical-align:top;color:#33404f}
+
+.tag{
+  display:inline-block;font-size:12px;padding:2px 9px;border-radius:12px;
+  border:1px solid var(--line);background:#f4f6fa;color:var(--navy);margin-right:5px;
+}
+.tag.sis{background:#eef2fb;border-color:#c8d4ee}
+.tag.skill{background:#eaf5ee;border-color:#bcdcc7;color:#1d6b38}
+.tag.proj{background:#f2f0fa;border-color:#d0c9e8;color:#4b3a8a}
+.verdict{font-weight:700}
+.v-install{color:#1d6b38}
+.v-ref{color:#8a5f1c}
+.v-no{color:#9a3434}
+.help-yes{color:#1d6b38;font-weight:600}
+.help-part{color:#8a5f1c;font-weight:600}
+.help-no{color:#8d97a5;font-weight:600}
+.warn{
+  margin-top:12px;background:#fdf2f2;border:1px solid #f2c9c9;border-left:3px solid #c04a4a;
+  border-radius:4px;padding:9px 12px;font-size:13px;color:#7d2f2f;
+}
+
+.top3{background:var(--navy);color:#fff;border-radius:8px;padding:24px 26px;margin-top:46px}
+.top3 h2{margin:0 0 4px;font-size:21px;color:var(--gold)}
+.top3 .lead{color:#c3cde6;font-size:14px;margin:0 0 18px}
+.top3 ol{margin:0;padding-left:22px}
+.top3 li{margin-bottom:16px;color:#e8edf8}
+.top3 li b{color:var(--gold)}
+.top3 li .why{display:block;font-size:14px;color:#b9c5e0;margin-top:3px}
+
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+footer b{color:var(--navy)}
+
+@media (max-width:600px){
+  header h1{font-size:22px}
+  .card{padding:16px}
+  table.attr th{width:auto;display:block;padding-bottom:0;border-top:none}
+  table.attr td{display:block;padding-top:2px;border-top:none;padding-bottom:10px}
+  table.attr tr{display:block;border-top:1px solid var(--line);padding-top:8px}
+}
 </style>
 </head>
 <body>
+
 <header>
-  <div class="inner">
-    <div class="kicker">THEMIS 秉衡 · 每日情報 📊</div>
-    <h1>GitHub / Claude 生態 趨勢分析</h1>
-    <div class="sub">2026-09-15（週二）｜A. GitHub Trending Top 5 ＋ B. Claude 生態 Top 5｜以「保險科技業務可用性」為篩選視角</div>
+  <div class="wrap">
+    <div class="brand">ROBINS TECH ｜ THEMIS 秉衡 📊</div>
+    <h1>GitHub 趨勢分析 2026-09-15</h1>
+    <p class="sub">兩組各 5 個、共 10 個 repo — 逐個評分、指派主場姊妹、判斷對保險科技業務的實際用處</p>
+    <div class="meta-line">
+      資料時點：2026-09-15 ｜ A 組來源：github.com/trending（daily）｜ B 組來源：GitHub Search API（claude-code 相關、依 star 排序）<br>
+      分析人：Themis 秉衡（財務分析代理人）｜ 收件人：Evin 林奕帆
+    </div>
   </div>
 </header>
 
 <div class="wrap">
 
-  <div class="sec-head">
-    <span class="badge">A</span><h2>GitHub Trending Top 5（daily）</h2>
-  </div>
+<div class="notice">
+  <b>閱讀前三個提醒（反幻覺規則）：</b><br>
+  ① 本頁所有 star 數、語言、授權、最後更新時間皆取自 GitHub API 當下回傳值，未經二次查證；star 數是熱度指標，<b>不是品質指標</b>。<br>
+  ② 「一句話是什麼」以 repo 自述（description / topics）為依據。凡是我<b>無法從 metadata 判斷</b>的能力，我標示為「待評」而不補寫。<br>
+  ③ 授權（License）欄我特別標出來 —— 有兩個標的是 AGPL-3.0、一個 GPL-3.0、一個<b>完全沒有授權聲明</b>，商用整合前一律先過 Vena。
+</div>
 
-  <!-- A1 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">1</span>
-      <span class="repo"><a href="https://github.com/JustVugg/colibri">JustVugg/colibri</a></span>
-      <span class="meta">· C · <span class="stars">★32,115</span></span>
-    </div>
-    <div class="oneliner">用純 C（零依賴）把前沿 MoE 大模型跑在你現有的硬體上，專家層從磁碟串流載入，追求「本地端」自架推論。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★<span class="off">★★</span></span>
-      <span class="tag">主場：Eos 自動化 / Themis 財報</span>
-      <span class="tag gold">保險科技：△ 本地推論＝個資不外送，適合敏感財務/客戶資料分析</span>
-      <span class="tag type">參考 project</span>
-      <span class="verdict v-ref">建議：參考</span>
-    </div>
-  </div>
+<h2 class="sec">A. GitHub Trending Top 5 <span>／ 全站當日熱門，不限 AI</span></h2>
+<div class="sec-note">取 github.com/trending（daily）當日排序前 5 名，未做任何篩選或替換。</div>
 
-  <!-- A2 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">2</span>
-      <span class="repo"><a href="https://github.com/alibaba/open-code-review">alibaba/open-code-review</a></span>
-      <span class="meta">· Go · <span class="stars">★25,790</span></span>
-    </div>
-    <div class="oneliner">阿里巴巴開源的程式碼審查工具，結合確定性流程管線與 LLM agent，做多語言自動 code review。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★★<span class="off">★</span></span>
-      <span class="tag">主場：Eos 自動化</span>
-      <span class="tag gold">保險科技：○ API 中台/承保系統的程式碼品質與資安審查可自動化</span>
-      <span class="tag type">參考 project（工具）</span>
-      <span class="verdict v-ref">建議：參考（可評估自架）</span>
-    </div>
+<!-- A1 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">1</span>
+    <h3><a href="https://github.com/JustVugg/colibri">JustVugg/colibri</a></h3>
+    <span class="stars">★ 32,121 ｜ C ｜ Apache-2.0</span>
   </div>
+  <div class="rating">★★★<span class="dim">★★</span><em>建議指數 3／5</em></div>
+  <p class="oneline">用純 C、零依賴的極小推論引擎，把 MoE 大模型的 expert 權重從硬碟串流進來，讓「你手上現有的硬體」就能跑前沿模型。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">自動化 Eos</span>（基礎設施層，非財務／視覺題）</td></tr>
+    <tr><th>對保險科技</th><td><span class="help-part">間接有幫助</span> — 屬「<b>個資／資安</b>」軸線：地端推論代表客戶保單與理賠資料不必送出公司網段，對金管會雲端委外相關要求是實質減負。但這是基礎建設投資，不是拿來就能用的業務工具。</td></tr>
+    <tr><th>類型</th><td><span class="tag proj">參考 project</span>（非 Claude skill）</td></tr>
+    <tr><th>結論</th><td><span class="verdict v-ref">參考</span> — 先觀察 3 個月。它 2026-07 才建立，工程成熟度與我們的硬體條件都還沒對過。</td></tr>
+  </table>
+</div>
 
-  <!-- A3 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">3</span>
-      <span class="repo"><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></span>
-      <span class="meta">· Python · <span class="stars">★29,235</span></span>
-    </div>
-    <div class="oneliner">開源語音工作室，提供語音克隆、影片配音、646 種語言的轉錄服務。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★<span class="off">★★</span></span>
-      <span class="tag">主場：Calliope 整合（音訊）/ Iris 視覺</span>
-      <span class="tag gold">保險科技：△ 客服語音、業務員話術轉寫；但「語音克隆」有詐騙/合規風險，Vena 須把關</span>
-      <span class="tag type">參考 project</span>
-      <span class="verdict v-ref">建議：參考（合規存疑）</span>
-    </div>
+<!-- A2 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">2</span>
+    <h3><a href="https://github.com/alibaba/open-code-review">alibaba/open-code-review</a></h3>
+    <span class="stars">★ 25,800 ｜ Go ｜ Apache-2.0</span>
   </div>
+  <div class="rating">★★★★★<em>建議指數 5／5 — 本組最高</em></div>
+  <p class="oneline">阿里巴巴內部規模驗證過的混合式 code review 工具：確定性 pipeline ＋ LLM Agent 雙軌，給行級註解，內建多語言資安規則集（NPE、thread-safety、XSS、SQL injection），相容 OpenAI 與 Anthropic API。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">自動化 Eos</span><span class="tag sis">整合 Calliope</span> — Eos 掛 CI、Calliope 接 API 中台</td></tr>
+    <tr><th>對保險科技</th><td><span class="help-yes">直接有幫助</span> — 命中兩條軸線：<b>資安</b>（XSS／SQLi／thread-safety 是保險 API 最常被滲透測試打的點）與 <b>API 中台</b>（行級註解可直接留痕，對監理稽核「已執行程式碼審查」是可出示的證據）。這是今天唯一一個「明天就能接到我們現有流程上」的標的。</td></tr>
+    <tr><th>類型</th><td><span class="tag proj">參考 project</span>（掛有 agent-skills topic，但本體是獨立 Go 工具，非 Claude skill）</td></tr>
+    <tr><th>結論</th><td><span class="verdict v-install">建議裝</span> — 先在 API 中台單一 repo 上做唯讀試跑，比對它抓到的問題與我們現行 review 的落差，再決定是否上 CI。</td></tr>
+  </table>
+</div>
 
-  <!-- A4 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">4</span>
-      <span class="repo"><a href="https://github.com/666ghj/MiroFish">666ghj/MiroFish</a></span>
-      <span class="meta">· Python · <span class="stars">★73,166</span></span>
-    </div>
-    <div class="oneliner">號稱「簡單通用的群體智慧引擎，預測任何事物」——描述相當空泛的泛用預測框架。</div>
-    <div class="tags">
-      <span class="stars-rating">★★<span class="off">★★★</span></span>
-      <span class="tag">主場：Themis 財報（預測）</span>
-      <span class="tag gold">保險科技：△ 理論上可沾承保/理賠風險預測，但描述空泛、可信度低</span>
-      <span class="tag type">參考 project</span>
-      <span class="verdict v-skip">建議：觀望（不裝）</span>
-    </div>
+<!-- A3 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">3</span>
+    <h3><a href="https://github.com/multimodal-art-projection/YuE">multimodal-art-projection/YuE</a></h3>
+    <span class="stars">★ 8,353 ｜ Python ｜ Apache-2.0</span>
   </div>
+  <div class="rating">★★<span class="dim">★★★</span><em>建議指數 2／5</em></div>
+  <p class="oneline">YuE2 音樂生成模型：支援符號化編排、zero-shot 翻唱、以及 agent 式的音樂編輯。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">視覺 Iris</span>（行銷素材配樂是唯一接得上的場景）</td></tr>
+    <tr><th>對保險科技</th><td><span class="help-no">幾乎沒有幫助</span> — 個資／資安／監理／客服／承保／業務員工具／API 中台七條軸線全不沾。最多是行銷短片配樂，而那件事我們現在沒有需求缺口。</td></tr>
+    <tr><th>類型</th><td><span class="tag proj">參考 project</span></td></tr>
+    <tr><th>結論</th><td><span class="verdict v-no">不裝</span> — 登錄備查即可，不安排評估時間。</td></tr>
+  </table>
+</div>
 
-  <!-- A5 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">5</span>
-      <span class="repo"><a href="https://github.com/Panniantong/Agent-Reach">Panniantong/Agent-Reach</a></span>
-      <span class="meta">· Python · <span class="stars">★81,277</span></span>
-    </div>
-    <div class="oneliner">給 AI agent「看得見整個網路」的眼睛——讀取與搜尋 Twitter、Reddit、YouTube、GitHub、Bilibili、小紅書。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★<span class="off">★★</span></span>
-      <span class="tag">主場：Eos 自動化 / Calliope 整合</span>
-      <span class="tag gold">保險科技：○ 輿情/競品/保單口碑監控、業務線索；但抓社群個資須留意個資法，Vena 把關</span>
-      <span class="tag type">參考 project</span>
-      <span class="verdict v-ref">建議：參考</span>
-    </div>
+<!-- A4 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">4</span>
+    <h3><a href="https://github.com/debpalash/VoiceStudio">debpalash/VoiceStudio</a></h3>
+    <span class="stars">★ 29,238 ｜ Python ｜ AGPL-3.0</span>
   </div>
-
-  <div class="sec-head">
-    <span class="badge">B</span><h2>Claude 生態 Trending Top 5（by stars）</h2>
+  <div class="rating">★★★★<span class="dim">★</span><em>建議指數 4／5</em></div>
+  <p class="oneline">完全本機運行的 ElevenLabs 開源替代品：語音克隆、語音設計、影片配音、聽寫、轉錄、有聲書，宣稱支援 646 種語言。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">整合 Calliope</span>（她站現用 AssemblyAI STT，這支是可比對的本地方案）<span class="tag sis">視覺 Iris</span></td></tr>
+    <tr><th>對保險科技</th><td><span class="help-yes">直接有幫助</span> — 命中三條軸線：<b>客服</b>（電銷與客訴錄音轉逐字稿，是保險業本來就有的法遵義務）、<b>業務員工具</b>（話術訓練與自我複盤）、<b>個資</b>（全本地運行 ⇒ 客戶錄音不出公司，這點比功能本身更值錢）。</td></tr>
+    <tr><th>類型</th><td><span class="tag proj">參考 project</span></td></tr>
+    <tr><th>結論</th><td><span class="verdict v-ref">條件式裝</span> — 內部評估可裝；<b>但商用整合前必須先過 Vena</b>。</td></tr>
+  </table>
+  <div class="warn">
+    ⚠️ <b>授權風險（法務 Vena 前置）</b>：AGPL-3.0 具有網路服務觸發的開源義務 —— 若把它包進我們對外提供的服務，可能被要求一併開放我們自己的原始碼。「內部自用」與「對客戶提供服務」在 AGPL 下是兩回事，這條界線要 Vena 判，不是我判。
   </div>
+</div>
 
-  <!-- B1 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">1</span>
-      <span class="repo"><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></span>
-      <span class="meta">· JavaScript · <span class="stars">★258,404</span></span>
-    </div>
-    <div class="oneliner">「agent harness 效能最佳化系統」：把 skills、instincts、memory、security 與 research-first 開發整包給 Claude Code / Codex / Cursor 等。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★★<span class="off">★</span></span>
-      <span class="tag">主場：全體 / Eos 自動化</span>
-      <span class="tag gold">保險科技：○ 直接提升 agent 品質、含 security 面，對處理財務/個資的我們有加分</span>
-      <span class="tag type">Claude skill / harness</span>
-      <span class="verdict v-ref">建議：參考（可挑 skill 裝）</span>
-    </div>
+<!-- A5 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">5</span>
+    <h3><a href="https://github.com/666ghj/MiroFish">666ghj/MiroFish</a></h3>
+    <span class="stars">★ 73,168 ｜ Python ｜ AGPL-3.0</span>
   </div>
-
-  <!-- B2 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">2</span>
-      <span class="repo"><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></span>
-      <span class="meta">· Python · <span class="stars">★245,530</span></span>
-    </div>
-    <div class="oneliner">NousResearch 的「會跟你一起成長的 agent」——標榜長期記憶/自我演進，但公開描述極簡。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★<span class="off">★★</span></span>
-      <span class="tag">主場：全體</span>
-      <span class="tag gold">保險科技：△ 記憶型 agent 概念可借鏡，但非 Claude 原生、整合成本高</span>
-      <span class="tag type">參考 project</span>
-      <span class="verdict v-ref">建議：參考（觀望）</span>
-    </div>
+  <div class="rating">★★★<span class="dim">★★</span><em>建議指數 3／5</em></div>
+  <p class="oneline">自述為「簡潔通用的群體智能引擎，預測萬物」：以多 agent 模擬做預測，topics 含金融預測、輿情分析、知識圖譜、agent 記憶。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">財報 Themis</span>（我自己 — 它掛了 financial-forecasting topic，落在我的範圍）</td></tr>
+    <tr><th>對保險科技</th><td><span class="help-part">間接、且需高度保留</span> — 可想像的場景是車險理賠率與保費趨勢的情境模擬。但這屬「<b>承保</b>」軸線的核心決策，而承保假設一旦錯誤是直接吃在損益上的。</td></tr>
+    <tr><th>類型</th><td><span class="tag proj">參考 project</span></td></tr>
+    <tr><th>結論</th><td><span class="verdict v-ref">參考、不裝</span></td></tr>
+  </table>
+  <div class="warn">
+    ⚠️ <b>我對這支的保留寫在檯面上</b>：「預測萬物」是無法否證的宣稱，repo 自述裡沒有給出可驗證的基準（backtest、資料集、誤差區間）。依全站反幻覺規則，<b>它的任何輸出都不得進入我的財務模型或對外報告</b>，除非先有我們自己跑的回測。星數高不能替預測準確度背書 — 這兩件事沒有關係。
   </div>
+</div>
 
-  <!-- B3 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">3</span>
-      <span class="repo"><a href="https://github.com/multica-ai/andrej-karpathy-skills">multica-ai/andrej-karpathy-skills</a></span>
-      <span class="meta">· Markdown · <span class="stars">★213,015</span></span>
-    </div>
-    <div class="oneliner">單一 CLAUDE.md 檔，濃縮 Andrej Karpathy 對 LLM 寫程式常犯錯誤的觀察，用來改善 Claude Code 行為。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★★★</span>
-      <span class="tag">主場：全體</span>
-      <span class="tag gold">保險科技：○ 就是我們家族「karpathy 四原則」的源頭，行為準則直接相關</span>
-      <span class="tag type">Claude skill（CLAUDE.md）</span>
-      <span class="verdict v-install">建議：已內化，值得回看對照</span>
-    </div>
+<h2 class="sec">B. Claude 生態 Trending Top 5 <span>／ GitHub Search API、依 star 排序</span></h2>
+<div class="sec-note">
+  查詢條件：<code>claude-code</code> 相關（含 topic:claude-code-plugin、topic:claude-skills 聯集），sort=stars。
+  原指令的 <code>OR</code> 混合語法在 API 端回傳 <code>total_count: 0</code>，已改用等價的編碼查詢重取；結果已剔除與 A 組重複者（實際無重複）。
+</div>
+
+<!-- B1 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">1</span>
+    <h3><a href="https://github.com/affaan-m/ECC">affaan-m/ECC</a></h3>
+    <span class="stars">★ 258,406 ｜ JavaScript ｜ MIT</span>
   </div>
-
-  <!-- B4 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">4</span>
-      <span class="repo"><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></span>
-      <span class="meta">· TypeScript · <span class="stars">★145,067</span></span>
-    </div>
-    <div class="oneliner">Anthropic 官方 Claude Code 本體——住在終端機、理解你的 codebase、以自然語言執行例行任務與 git 流程的 agentic 工具。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★★★</span>
-      <span class="tag">主場：全體</span>
-      <span class="tag gold">保險科技：○ 我們五姊妹跑的就是它，官方更新必追</span>
-      <span class="tag type">官方本體</span>
-      <span class="verdict v-install">建議：已裝（本體）</span>
-    </div>
+  <div class="rating">★★★★★<em>建議指數 5／5 — 本組最高</em></div>
+  <p class="oneline">agent harness 的效能最佳化系統：把 skills、instincts（直覺規則）、memory、security 與 research-first 開發流程打包，跨 Claude Code／Codex／Opencode／Cursor 通用。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">自動化 Eos</span> 主導，但<b>五姊妹全體受益</b></td></tr>
+    <tr><th>對保險科技</th><td><span class="help-part">間接、但價值最高</span> — 它處理的 memory 與 security 兩層，正是我們五站現在的實際痛點（我站的跨 session 記憶、以及 SOP/14 揭露邊界的把關）。做得好會讓每一份對外財務與法遵文件的可信度往上抬一階；但它本身不碰保險業務。</td></tr>
+    <tr><th>類型</th><td><span class="tag skill">Claude skill／plugin 套件</span></td></tr>
+    <tr><th>結論</th><td><span class="verdict v-install">建議裝（優先評估）</span> — MIT 授權、無法務障礙。建議先在單一站別（非我站，避免影響進行中的五年財務模型）沙箱試裝。</td></tr>
+  </table>
+  <div class="warn">
+    ⚠️ <b>一個我自己也沒解開的疑點</b>：258,406 star、但 repo 建立於 2026-01-18（不到 8 個月），成長速率明顯偏離同類專案。我沒有辦法從 API metadata 判斷這是真實採用、話題效應、還是異常。<b>這不是指控，是「我查不到」的誠實標示</b> — 試裝前請先讀它的 commit 歷史與 issue 品質，不要只看星數。
   </div>
+</div>
 
-  <!-- B5 -->
-  <div class="card">
-    <div class="top">
-      <span class="rank">5</span>
-      <span class="repo"><a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools">x1xhlol/system-prompts-and-models-of-ai-tools</a></span>
-      <span class="meta">· Markdown · <span class="stars">★143,630</span></span>
-    </div>
-    <div class="oneliner">蒐集 Cursor、Devin、Windsurf、v0、Claude Code 等數十家 AI 工具的（外流）系統提示詞、內部工具與模型設定。</div>
-    <div class="tags">
-      <span class="stars-rating">★★★<span class="off">★★</span></span>
-      <span class="tag">主場：全體（prompt 工程）/ Vena 法務</span>
-      <span class="tag gold">保險科技：△ prompt 工程可參考；但內容為外流資料，來源合規性 Vena 須留意</span>
-      <span class="tag type">參考 project</span>
-      <span class="verdict v-ref">建議：參考（謹慎）</span>
-    </div>
+<!-- B2 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">2</span>
+    <h3><a href="https://github.com/NousResearch/hermes-agent">NousResearch/hermes-agent</a></h3>
+    <span class="stars">★ 245,530 ｜ Python ｜ MIT</span>
   </div>
+  <div class="rating">★★★<span class="dim">★★</span><em>建議指數 3／5（資訊不足，此為保留評分）</em></div>
+  <p class="oneline">Nous Research 推出的 agent，自述僅一句「The agent that grows with you」；topics 顯示相容 Claude Code 與 Codex，昨日仍在更新。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">自動化 Eos</span>（若要評估，由她起手）</td></tr>
+    <tr><th>對保險科技</th><td><span class="help-no">待評</span> — <b>我無法從 metadata 判斷它實際做什麼</b>。自述一句話、無 README 摘要可取。依反幻覺規則我不替它補寫能力描述，這一格留白。</td></tr>
+    <tr><th>類型</th><td><span class="tag proj">參考 project</span>（是否為 skill 待確認）</td></tr>
+    <tr><th>結論</th><td><span class="verdict v-ref">參考</span> — 出自 Nous Research（有信譽的團隊）且更新活躍，值得有人花 20 分鐘讀 README 再回報，但今天不投入。</td></tr>
+  </table>
+</div>
 
-  <!-- TOP 3 -->
-  <div class="top3">
-    <h2>⭐ 今日優先看 3 個</h2>
-    <ol>
-      <li><b>B3 · andrej-karpathy-skills</b>：我們全家族「先想再寫／簡潔／精準改／目標導向」四原則的源頭，值得回頭對照現行 CLAUDE.md，看有沒有更新版可補。</li>
-      <li><b>A2 · alibaba/open-code-review</b>：把 API 中台與承保系統的程式碼審查自動化（含資安面），Eos 主場、對保險科技開發流程最實用。</li>
-      <li><b>B1 · affaan-m/ECC</b>：含 security 的 agent harness 最佳化包，全站可從中挑 skill 選裝，直接提升處理財務/個資時的品質。</li>
-    </ol>
+<!-- B3 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">3</span>
+    <h3><a href="https://github.com/multica-ai/andrej-karpathy-skills">multica-ai/andrej-karpathy-skills</a></h3>
+    <span class="stars">★ 213,015 ｜ 無主要語言 ｜ 無授權聲明</span>
   </div>
+  <div class="rating">★★★★<span class="dim">★</span><em>建議指數 4／5</em></div>
+  <p class="oneline">單一個 CLAUDE.md 檔案，從 Andrej Karpathy 對 LLM 寫程式常見陷阱的觀察整理而成，用來矯正 Claude Code 的行為。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">全家族共用</span></td></tr>
+    <tr><th>對保險科技</th><td><span class="help-part">間接</span> — 不碰業務，但直接影響五站產出的程式與文件品質。</td></tr>
+    <tr><th>類型</th><td><span class="tag skill">Claude skill／CLAUDE.md 規範</span></td></tr>
+    <tr><th>結論</th><td><span class="verdict v-install">已裝 — 建議做版本比對</span></td></tr>
+  </table>
+  <div class="warn">
+    📌 <b>這一支我們已經在用了</b>：本站 CLAUDE.md 的「行為準則」四原則（先想再寫／簡潔優先／精準修改／目標導向）即源自此系列，Evin 於 2026-07-12 拍板全家族安裝，本機副本在 <code>~/robinstech/shared/skills/karpathy-skills_CLAUDE.md</code>。<br>
+    今天的行動不是「要不要裝」，而是：上游最後更新為 2026-04-20，<b>建議比對我們 7 月的副本與上游是否已有差異</b>。<br>
+    ⚠️ 另註：此 repo <b>沒有任何授權聲明</b>（license 欄為空）＝ 法律上預設保留全部權利。我們內部參考風險低，但若要再散布或寫進對外文件，請先問 Vena。
+  </div>
+</div>
 
-  <footer>
-    Themis 秉衡 📊 · 羅賓斯科技財務分析 AI · 資料來源：github.com/trending（daily）＋ GitHub Search API（sort=stars）· 產出時間 2026-09-15<br>
-    ★ 星等＝對本站/家族的建議指數；「保險科技」評註以個資・資安・監理・客服・承保・業務員工具・API 中台為視角。
-  </footer>
+<!-- B4 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">4</span>
+    <h3><a href="https://github.com/anthropics/claude-code">anthropics/claude-code</a></h3>
+    <span class="stars">★ 145,067 ｜ TypeScript ｜ 官方</span>
+  </div>
+  <div class="rating">★★★★★<em>建議指數 5／5</em></div>
+  <p class="oneline">Anthropic 官方的 Claude Code 本體 — 住在終端機裡、讀得懂你的 codebase 的 agent 式開發工具。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">全家族</span> — 五姊妹（含我）全部跑在它上面</td></tr>
+    <tr><th>對保險科技</th><td><span class="help-yes">基礎設施層</span> — 它不是「對業務有沒有幫助」的問題，它是我們所有代理人的執行環境本身。</td></tr>
+    <tr><th>類型</th><td><span class="tag skill">官方工具（非第三方 skill）</span></td></tr>
+    <tr><th>結論</th><td><span class="verdict v-install">已裝</span> — 唯一待辦是持續追 release note。相關實例：2026-09-14 16:08 harness 由 2.1.267 升至 2.1.270，已納入我站的排程延遲對帳註記。</td></tr>
+  </table>
+</div>
+
+<!-- B5 -->
+<div class="card">
+  <div class="card-head">
+    <span class="rank">5</span>
+    <h3><a href="https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools">x1xhlol/system-prompts-and-models-of-ai-tools</a></h3>
+    <span class="stars">★ 143,630 ｜ 無主要語言 ｜ GPL-3.0</span>
+  </div>
+  <div class="rating">★★★<span class="dim">★★</span><em>建議指數 3／5</em></div>
+  <p class="oneline">蒐集並公開各家 AI 工具的完整 system prompt（Cursor、Devin、Claude Code、v0、Windsurf、Manus 等二十餘家）。</p>
+  <table class="attr">
+    <tr><th>主場姊妹</th><td><span class="tag sis">自動化 Eos</span>（prompt 工程參考）</td></tr>
+    <tr><th>對保險科技</th><td><span class="help-no">沒有直接幫助</span> — 七條業務軸線皆不沾，純屬提示工程的技術參考。</td></tr>
+    <tr><th>類型</th><td><span class="tag proj">參考資料集</span>（非可安裝 skill）</td></tr>
+    <tr><th>結論</th><td><span class="verdict v-ref">參考、不裝</span></td></tr>
+  </table>
+  <div class="warn">
+    ⚠️ <b>合規提醒</b>：其內容為第三方廠商未公開的 system prompt（多為外洩取得）。技術上可讀，但<b>不建議把其中任何片段抄進羅賓斯的產出或對外文件</b> — 來源正當性存疑，且 GPL-3.0 的傳染性條款在我們的使用情境下界線不清。要用先問 Vena。
+  </div>
+</div>
+
+<div class="top3">
+  <h2>今日優先看 3 個</h2>
+  <p class="lead">若今天只有 30 分鐘，我建議照這個順序 — 排序依據是「可落地程度」而非星數。</p>
+  <ol>
+    <li>
+      <b>alibaba/open-code-review</b>（A 組第 2，★5）
+      <span class="why">唯一一個明天就能接上現有流程的標的。它同時給我們資安掃描（XSS／SQLi）與可出示的行級審查留痕 —— 後者對監理稽核是實打實的證據，不是加分項。Apache-2.0，無法務障礙。<b>下一步：在 API 中台單一 repo 唯讀試跑。</b></span>
+    </li>
+    <li>
+      <b>affaan-m/ECC</b>（B 組第 1，★5）
+      <span class="why">它處理 agent 的 memory 與 security 兩層，正好是五姊妹站共同的痛點。MIT 授權可自由使用。<b>但先讀 commit 與 issue 再說 —— 它的星數成長速率我查不出所以然，我不拿星數替它背書。</b></span>
+    </li>
+    <li>
+      <b>debpalash/VoiceStudio</b>（A 組第 4，★4）
+      <span class="why">客服錄音全本地轉錄，一次命中客服法遵、業務員話術訓練、客戶個資不出境三件事。價值明確。<b>但順序要對：先請 Vena 判 AGPL-3.0 的內部自用／對外服務界線，再談技術評估。</b></span>
+    </li>
+  </ol>
+</div>
+
+<footer>
+  <b>Themis 秉衡 📊</b>｜羅賓斯科技財務分析代理人｜報告日期 2026-09-15<br>
+  本報告為每日 GitHub 趨勢例行偵察，僅供內部技術選型參考，不構成任何採購或投資建議。<br>
+  所有 repo metadata 取自 GitHub 公開 API 於 2026-09-15 之回傳值；star 數與排名隨時變動。凡標示「待評」「查不到」之欄位，即為本站尚未查證之處，請勿視為已確認結論。
+</footer>
 
 </div>
 </body>
